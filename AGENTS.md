@@ -10,13 +10,18 @@
 
 ## Phase 반복 프로세스
 
-[PLAN.md](docs/PLAN.md)의 각 Phase는 아래 사이클로 진행한다. 모든 기록은 `docs/PROGRESS.md`에 남긴다.
+[PLAN.md](docs/PLAN.md)의 각 Phase는 아래 사이클로 진행한다. 전체 현황은 `docs/PROGRESS.md`에, 검증 상세와 핸드오프는 `docs/progress/phase-*.md`에 남긴다.
 
-1. **착수**: PROGRESS.md에서 해당 Phase를 🚧로 표시
+1. **착수**: `PROGRESS.md`와 해당 Phase 문서에서 상태를 🚧로 표시
 2. **실행**: 체크리스트 항목을 순서대로 진행. 각 단계의 **검증 기준을 먼저 정하고 실행**
-3. **검증 기록**: 검증 결과(성공/실패 + 근거)를 Phase의 `검증 결과` 표에 기록. 실패 시 원인·대응책도 함께
-4. **핸드오프**: Phase 완료 시 `다음 Phase로 핸드오프` 섹션 작성 — 다음 Phase가 알아야 할 결정 사항, 산출물 위치, 미해결 이슈
-5. **완료**: Phase를 ✅로 표시, 로그 테이블에 커밋 해시 추가, **PROGRESS.md를 같은 커밋에 포함해** 커밋
+3. **검증 기록**: 검증 결과(성공/실패 + 근거)는 해당 Phase 문서의 `검증 결과` 표에 기록. 실패 시 원인·대응책도 함께 기록
+4. **핸드오프**: Phase 완료 시 해당 Phase 문서에 `다음 Phase로 핸드오프` 섹션 작성 — 다음 Phase가 알아야 할 결정 사항, 산출물 위치, 미해결 이슈, 즉시 실행할 작업을 기록. `PROGRESS.md`에는 요약과 링크만 반영
+5. **완료**: `PROGRESS.md`와 해당 Phase 문서의 상태를 ✅로 표시하고, `PROGRESS.md` 로그에 커밋 해시를 추가한 뒤 두 문서를 **같은 커밋에 포함해** 커밋
+
+**문서 역할 규칙**:
+- `PROGRESS.md`는 현재 상태, Phase별 한 줄 요약, 다음 작업, 핸드오프 링크를 제공하는 인덱스다.
+- `docs/progress/phase-*.md`는 체크리스트, 검증 기준·결과, 결정 사항, 산출물, 미해결 이슈, 핸드오프의 원본이다.
+- 상세 내용을 두 문서에 중복 기록하지 않는다. 핸드오프의 상세 내용은 Phase 문서를 기준으로 하고 `PROGRESS.md`에는 현재 작업에 필요한 요약과 링크만 둔다.
 
 **게이트 규칙**: 검증 실패/미해결 이슈가 있으면 다음 Phase로 넘어가지 않는다. (단, 이슈를 핸드오프에 명시하고 보류 처리한 경우는 예외)
 
@@ -41,11 +46,13 @@
 | 소재 | 위치 | 난이도 |
 |---|---|---|
 | 다국어 문자열 테이블 | `resources.assets` 내 **Common_Strings** (키값 방식 `Key_XXX`) | 🟢 최우선 |
-| 카드/국가 Lua | `StreamingAssets/Lua/*.lua` (평문 ~6,500줄) | 🟢 쉬움 (단, 살아있는지 검증 필요) |
-| UI/튜토리얼 | `resources.assets`, `level0~3` 씬 | 🟡 |
+| 카드/국가 텍스트 | `resources.assets` 내 `TS_Cards` 등 TextAsset | 🟢 실게임 반영 확인 |
+| 다국어 UI 문자열 | `resources.assets` 내 `Common_Strings` | 🟢 실게임 반영 확인 |
+| UI/튜토리얼 | `resources.assets`, `level0~3` 씬 | 🟡 일부 사용 여부 미검증 |
+| 카드/국가 Lua | `StreamingAssets/Lua/*.lua` | ❌ Phase 1에서 죽은 잔재로 확인, 작업 대상 아님 |
 | SDF 폰트 아틀라스 | `resources.assets` (CJK 없음) | 🔴 핵심 장벽 |
 
-⚠️ **작업 착수 전 필수**: 수정 → 실게임 반영 테스트로 "살아있는 소스"를 먼저 검증 (Lua는 잔재 파일일 수 있음)
+⚠️ **작업 착수 전 필수**: 아직 사용 여부가 확인되지 않은 소스는 수정 → 실게임 반영 테스트로 "살아있는 소스"를 먼저 검증한다. Phase 1 결과 `StreamingAssets/Lua`는 작업 대상에서 제외한다.
 
 ## 게임 경로
 
