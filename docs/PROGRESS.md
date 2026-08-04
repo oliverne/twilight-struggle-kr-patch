@@ -6,6 +6,7 @@
 ## 현재 상태
 
 **Phase 0 — 준비** (🚧 진행 중) · 최종 업데이트: 2026-08-04
+> 도구 설치 완료 (dotnet 10 + UABEA v8 + Python venv). 남은 항목: 원본 백업, 기존 패치 확보
 
 ---
 
@@ -15,9 +16,9 @@
 - [x] Git 저장소 초기화
 - [x] 저장소 디렉터리 스켈레톤 + `.gitignore` (commit `0abad37`)
 - [x] 게임 설치 확인: v1.4.11, build-guid `beff29feda834098ab218792d4d80249`
-- [ ] .NET 8 설치 (`brew install dotnet`)
-- [ ] UABEA 설치 → `tools/uabea/` + 기동 확인
-- [ ] Python venv + numpy/scipy/Pillow 설치
+- [x] .NET 8 설치 (`brew install dotnet`) — 실제로는 .NET 10.0.302 설치
+- [x] UABEA 설치 → `tools/uabea/` + 기동 확인
+- [x] Python venv + numpy/scipy/Pillow 설치
 - [ ] 원본 백업 → `original/` (resources.assets, level0~3, StreamingAssets, globalgamemanagers*)
 - [ ] `original/hashes.txt` (sha256) + `original/VERSION.txt` 기록
 - [ ] 기존 패치 다운로드 (블루칩 v1/v2, 한패) → `tools/legacy-patches/`
@@ -28,10 +29,14 @@
 | 게임 설치/버전 | `Info.plist`, `boot.config` 읽기 | ✅ v1.4.11, build-guid `beff29feda834098ab218792d4d80249` |
 | Lua 파일 존재 | `ls`, `wc -l` | ✅ 6개 파일, `twilight_cards.lua` 3,764줄 |
 | 스켈레톤 구조 | `git status` clean + PLAN §3 대조 | ✅ commit `0abad37` |
+| dotnet 설치 | `dotnet --version` | ✅ 10.0.302 |
+| UABEA 기동 (macOS) | 프로세스 12초 생존 확인 | ✅ 성공 — 공식 macOS 빌드 없음 → ubuntu 빌드 + macOS 네이티브 dylib 3종 보강(SkiaSharp/HarfBuzzSharp/AvaloniaNative) + `DOTNET_ROLL_FORWARD=LatestMajor` 필요. 재현: `scripts/setup-uabea-mac.sh` |
+| Python venv | `import numpy, scipy, PIL` | ✅ numpy 2.0.2 / scipy 1.13.1 / Pillow 11.3.0 |
 | 원본 백업 무결성 | `sha256sum -c hashes.txt` | ⬜ 대기 |
 
 ### 다음 Phase로 핸드오프
 > Phase 0 완료 시 작성: 도구 버전, 백업 위치/해시, 기존 패치에서 확인한 번역 파일 목록 등
+> (임시) UABEA 실행: `DOTNET_ROLL_FORWARD=LatestMajor dotnet tools/uabea/UABEAvalonia.dll` — GUI는 실사용 시 수동 실행 필요
 
 ## Phase 1 — 텍스트 위치 검증 ⬜
 
@@ -134,3 +139,7 @@
 | 2026-08-04 | 프로젝트 계획서·에이전트 지침 작성 | `915feb2` |
 | 2026-08-04 | 저장소 스켈레톤 + `.gitignore` | `0abad37` |
 | 2026-08-04 | 진행 상황 문서 추가 및 업데이트 규칙 명시 | `8f51f42` |
+| 2026-08-04 | Phase 반복 프로세스 명시 및 PROGRESS 구조 개편 | `79a029d` |
+| 2026-08-04 | 도구 설치 완료 (dotnet 10, UABEA v8, Python venv) | — |
+| 2026-08-04 | Phase 반복 프로세스(검증·핸드오프) 명시 | `79a029d` |
+| 2026-08-04 | 도구 설치: dotnet 10.0.302 · UABEA v8(macOS 보강) · Python venv | 이번 커밋 |
