@@ -5,8 +5,8 @@
 
 ## 현재 상태
 
-**Phase 1 — 텍스트 위치 검증** (🚧 진행 중) · 최종 업데이트: 2026-08-04
-> 남은 항목: 실게임 실행 후 반영 여부 확인 (사용자 수동)
+**Phase 1 — 텍스트 위치 검증** (🚧 진행 중) · 최종 업데이트: 2026-08-05
+> 실험 A/C 실패(Lua는 죽은 코드). 실험 B 적용 완료 — 실게임 확인 대기
 
 ---
 
@@ -52,9 +52,9 @@
 ## Phase 1 — 텍스트 위치 검증 🚧
 
 ### 체크리스트
-- [ ] 실험 A: Lua 카드 이름 변경 → 실게임 반영 확인
-- [ ] 실험 C: Lua 로드 경로 매핑 확인 (A 실패 시)
-- [ ] 실험 B: UABEA로 `Common_Strings` / `TS_Cards` 문자열 변경 → 실게임 반영 확인
+- [x] 실험 A: Lua 카드 이름 변경 → 실게임 반영 확인 — ❌ 미반영
+- [x] 실험 C: Lua 로드 경로 매핑 확인 — ❌ Lua는 죽은 코드
+- [ ] 실험 B: 에셋 `Common_Strings` / `TS_Cards` 문자열 변경 → 실게임 반영 확인 — 적용 완료, 확인 대기
 - [ ] 살아있는 텍스트 소스 확정 → 주 작업 대상 기록
 
 ### 준비 상황
@@ -63,11 +63,23 @@
 - 적용 결과: 게임 폴더 Lua 변경 완료. 복원: `scripts/restore-original.sh`
 - **확인 방법**: 게임 실행 → 새 게임 시작 → 손패에 Asia Scoring 카드 확인 시 이름이 `테스트카드_KR_아시아스코어링`으로 표시되는지
 
+**실험 B 준비 (에셋 소스 발견)**
+- AssetsTools.NET(UABEA 동봉)은 이 게임의 Unity 6 포맷 파싱 실패 (ClassId 전부 0) → **UnityPy(Python)** 로 전환, 파싱 성공
+- `resources.assets` 내 TextAsset 18개 발견 — 핵심: `Common_Strings`(200KB, 323행, 열: Key/EN/FR/DE/ES/PL/PT/JP/IT/RU/NL/CH), `TS_Cards`(162KB), `TS_Strings`, `TS_Ingame`, `TS_RulesTutorial`(195KB)
+- 텍스트 덤프: `tools/dump/*.txt` (git 제외)
+- 수정 도구: `scripts/patch_textasset.py` (raw 편집 방식)
+- ⚠️ **알려진 문제**: UnityPy가 자신이 저장한 파일을 다시 읽어 재저장하면 데이터 유실 → 항상 원본에서 한 번에 모든 치환 적용
+- 테스트 파일: `patched/resources.assets` — TS_Cards 카드 이름 → `테스트카드_KR_아시아스코어링`, Common_Strings Key_PlayOffline EN → `[KR]오프라인_플레이_테스트`
+- 적용: `scripts/install-asset-test.sh` (해시 검증, 멱등) — **게임에 적용됨**
+- **확인 방법**: 게임 실행 → (1) 메인 메뉴 "Play Offline" 버튼 문구, (2) 새 게임에서 Asia Scoring 카드 이름
+- 분기: 메뉴만 변경 → Common_Strings / 카드만 변경 → TS_Cards / 둘 다 → 둘 다 유효
+
 ### 검증 결과
 | 항목 | 방법 | 결과 |
 |---|---|---|
 | 실험 A | Lua 수정 → 실게임 실행 | ❌ 실패 — 카드 이름 미반영 (`Asia Scoring` 그대로) |
 | 실험 C (원인 분석) | `LoadLuaFile`/`twilight/database` 문자열을 GameAssembly.dylib·전체 에셋·global-metadata에서 검색 | ❌ 전부 0건 → StreamingAssets/Lua는 **죽은 잔재 파일**, 로드되지 않음. 반면 `Asia Scoring`은 `resources.assets`에 11회 존재 → 진짜 소스는 에셋 |
+| 실험 B 준비 | UnityPy 파싱 + TextAsset 구조 확인 + 치환 + 무결성 검증 | ✅ 파싱 성공 (오브젝트 42,653개), 치환 후 재읽기 검증 통과 (byte_size 합계 13.13MB = 원본 동일). 실게임 확인 대기 |
 
 ### 다음 Phase로 핸드오프
 > 확정된 텍스트 소스 위치, 수정 방법, 주의사항
@@ -163,4 +175,6 @@
 | 2026-08-04 | 기존 패치 확보 (블루칩 v1/v2 zip, 한글 Lua 확인) → **Phase 0 완료** | `e55fa20` |
 | 2026-08-04 | 백업/복원 스크립트화 + CLEANUP.md 추가 | `15e82e8` |
 | 2026-08-04 | README 작성 | `aa02bf1` |
+| 2026-08-04 | 실험 A 준비: 테스트 Lua + 적용 스크립트 → **Phase 1 착수** | `844cf75` |
+| 2026-08-05 | 실험 A/C 실패 기록, UnityPy 도구 전환, 실험 B 적용 | `224e4fc` |
 | 2026-08-04 | 실험 A 준비: 테스트 Lua + 적용 스크립트 → **Phase 1 착수** | 이번 커밋 |
