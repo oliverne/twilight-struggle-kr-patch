@@ -66,7 +66,8 @@
 ### 검증 결과
 | 항목 | 방법 | 결과 |
 |---|---|---|
-| — | — | ⬜ 대기 |
+| 실험 A | Lua 수정 → 실게임 실행 | ❌ 실패 — 카드 이름 미반영 (`Asia Scoring` 그대로) |
+| 실험 C (원인 분석) | `LoadLuaFile`/`twilight/database` 문자열을 GameAssembly.dylib·전체 에셋·global-metadata에서 검색 | ❌ 전부 0건 → StreamingAssets/Lua는 **죽은 잔재 파일**, 로드되지 않음. 반면 `Asia Scoring`은 `resources.assets`에 11회 존재 → 진짜 소스는 에셋 |
 
 ### 다음 Phase로 핸드오프
 > 확정된 텍스트 소스 위치, 수정 방법, 주의사항

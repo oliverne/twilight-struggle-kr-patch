@@ -17,3 +17,6 @@ fonts/**/*.png
 
 # OS
 .DS_Store
+
+# 게임 텍스트 덤프 (게임 파생물, 로컬 전용)
+tools/dump/
