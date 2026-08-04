@@ -8,6 +8,11 @@
 - 메시지는 **한국어**로 작성
 - 예: `docs: Phase 0 실행 계획 문서 추가`, `feat(scripts): macOS 설치 스크립트 작성`
 
+## 진행 상황 기록 규칙
+
+- Phase를 진행하면서 **`docs/PROGRESS.md`를 항상 함께 업데이트**한다.
+- 체크리스트 완료 시 체크, 실패/보류 시 사유 기록, 주요 이벤트는 하단 로그에 커밋 해시와 함께 추가.
+
 ## 프로젝트 개요
 
 - Steam Twilight Struggle(App ID 406290, Unity 6 / 6000.0.58f2, IL2CPP) 한글 패치 복원
