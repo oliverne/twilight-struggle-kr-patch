@@ -41,7 +41,7 @@
 
 **원본 백업**
 - `original/` 24MB, 14파일, 무결성 검증 완료 (v1.4.11, build-guid `beff29feda834098ab218792d4d80249`)
-- 복원 방법: `original/` 내용을 게임 Data 폴더로 역복사
+- 복원 방법: `scripts/restore-original.sh` (백업: `scripts/backup-original.sh`, 정리: [CLEANUP.md](CLEANUP.md))
 
 **기존 패치 (번역 추출 대상)**
 - `tools/legacy-patches/v1.0.1/TwilightStruggle_Data/` — 100% 한글화 버전 (v1.1.3 대상, TTF 방식)
@@ -153,6 +153,5 @@
 | 2026-08-04 | Phase 반복 프로세스 명시 및 PROGRESS 구조 개편 | `79a029d` |
 | 2026-08-04 | 도구 설치 완료 (dotnet 10, UABEA v8, Python venv) | `688838e` |
 | 2026-08-04 | 원본 백업 + 무결성 검증 | `71e7609` |
-| 2026-08-04 | 기존 패치 확보 (블루칩 v1/v2 zip, 한글 Lua 확인) → **Phase 0 완료** | 이번 커밋 |
-| 2026-08-04 | Phase 반복 프로세스(검증·핸드오프) 명시 | `79a029d` |
-| 2026-08-04 | 도구 설치: dotnet 10.0.302 · UABEA v8(macOS 보강) · Python venv | 이번 커밋 |
+| 2026-08-04 | 기존 패치 확보 (블루칩 v1/v2 zip, 한글 Lua 확인) → **Phase 0 완료** | `e55fa20` |
+| 2026-08-04 | 백업/복원 스크립트화 + CLEANUP.md 추가 | `15e82e8` |
