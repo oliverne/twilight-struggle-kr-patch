@@ -5,8 +5,8 @@
 
 ## 현재 상태
 
-**Phase 1 — 텍스트 위치 검증** (🚧 진행 중) · 최종 업데이트: 2026-08-05
-> 실험 A/C 실패(Lua는 죽은 코드). 실험 B 적용 완료 — 실게임 확인 대기
+**Phase 1 — 텍스트 위치 검증** ✅ 완료 · 최종 업데이트: 2026-08-05
+> 다음: Phase 2 — 문자열 추출 & 번역 소스 구축 (핸드오프 참조)
 
 ---
 
@@ -49,13 +49,13 @@
 - 양쪽 모두 `resources.assets` + `StreamingAssets/Lua/` 추출 완료, Lua에 한글 번역 포함 (UTF-8, CRLF)
 - ⚠️ 기존 패치는 구버전(v1.1.3/v1.4.2) 대상 → 현재 게임(v1.4.11)과 문자열 대조 시 버전차 예상
 
-## Phase 1 — 텍스트 위치 검증 🚧
+## Phase 1 — 텍스트 위치 검증 ✅
 
 ### 체크리스트
 - [x] 실험 A: Lua 카드 이름 변경 → 실게임 반영 확인 — ❌ 미반영
 - [x] 실험 C: Lua 로드 경로 매핑 확인 — ❌ Lua는 죽은 코드
-- [ ] 실험 B: 에셋 `Common_Strings` / `TS_Cards` 문자열 변경 → 실게임 반영 확인 — 적용 완료, 확인 대기
-- [ ] 살아있는 텍스트 소스 확정 → 주 작업 대상 기록
+- [x] 실험 B: 에셋 `Common_Strings` / `TS_Cards` 문자열 변경 → 실게임 반영 확인 — ✅ 둘 다 반영됨
+- [x] 살아있는 텍스트 소스 확정 → 주 작업 대상 기록
 
 ### 준비 상황
 - 테스트 파일: `patched/StreamingAssets/Lua/twilight_cards.lua` — `Asia Scoring` 카드 이름을 `테스트카드_KR_아시아스코어링`으로 변경 (UTF-8, LF 유지)
@@ -79,10 +79,40 @@
 |---|---|---|
 | 실험 A | Lua 수정 → 실게임 실행 | ❌ 실패 — 카드 이름 미반영 (`Asia Scoring` 그대로) |
 | 실험 C (원인 분석) | `LoadLuaFile`/`twilight/database` 문자열을 GameAssembly.dylib·전체 에셋·global-metadata에서 검색 | ❌ 전부 0건 → StreamingAssets/Lua는 **죽은 잔재 파일**, 로드되지 않음. 반면 `Asia Scoring`은 `resources.assets`에 11회 존재 → 진짜 소스는 에셋 |
-| 실험 B 준비 | UnityPy 파싱 + TextAsset 구조 확인 + 치환 + 무결성 검증 | ✅ 파싱 성공 (오브젝트 42,653개), 치환 후 재읽기 검증 통과 (byte_size 합계 13.13MB = 원본 동일). 실게임 확인 대기 |
+| 실험 B 준비 | UnityPy 파싱 + TextAsset 구조 확인 + 치환 + 무결성 검증 | ✅ 파싱 성공 (오브젝트 42,653개), 치환 후 재읽기 검증 통과 (byte_size 합계 13.13MB = 원본 동일) |
+| 실험 B 실게임 | 수정 `resources.assets` 적용 후 게임 실행 | ✅ 성공 — **메뉴 문구·카드 이름 둘 다 변경됨** (두 소스 모두 유효). 한글은 `ㅁ`으로 깨져 표시 → 인코딩/주입은 정상, **SDF 폰트에 CJK 글리프가 없어 렌더링만 실패** (Phase 3 핵심 난제 확인) |
 
 ### 다음 Phase로 핸드오프
-> 확정된 텍스트 소스 위치, 수정 방법, 주의사항
+
+**확정된 텍스트 소스 (실험 B로 검증됨)**
+- `resources.assets` 내 TextAsset — `Common_Strings`(메뉴/UI), `TS_Cards`(카드) 둘 다 실게임 반영 확인
+- 기타 후보(미검증): `TS_Strings`, `TS_Ingame`, `Common_Ingame`, `TS_RulesTutorial`(튜토리얼·규칙) — Phase 2에서 사용 여부 확인
+- `StreamingAssets/Lua`는 죽은 코드 — 작업 대상 아님
+
+**문자열 포맷**
+- 스프레드시트형 JSON: `"행:열"` 키 구조. 1행=헤더, 열1=키, 열2=EN (Common_Strings는 열3~12에 FR/DE/ES/PL/PT/JP/IT/RU/NL/CH)
+- 첫 줄에 날짜 헤더 (예: `28 July, (22:46)`) 있음 — 치환 시 JSON 본문만 다룰 것
+- UTF-8 한글 주입 성공 확인 (렌더링만 폰트 문제)
+
+**수정 파이프라인 (검증 완료)**
+- 추출·수정: UnityPy(Python) + `scripts/patch_textasset.py` (원본에서 한 번에 모든 치환 적용 — 재저장 시 데이터 유실 버그 있음)
+- 적용: `scripts/install-asset-test.sh` 패턴 (해시 검증 후 복사, 멱등) — Phase 4에서 정식 install 스크립트로 발전
+- 복원: `scripts/restore-original.sh`
+- UABEA(AssetsTools.NET)는 이 게임의 Unity 6 포맷 파싱 불가 — 사용하지 말 것
+
+**현재 게임 상태 및 재개 시 할 일**
+- 게임에 테스트 문자열 2건 적용된 상태 (메뉴·카드) — 재개 시 `restore-original.sh`로 원본 복원 후 시작
+- `patched/resources.assets`(테스트본)는 폐기하거나 Phase 2에서 재생성
+
+**미해결 이슈 / 다음 단계 결정 필요**
+1. `ㅁ` 현상 — Phase 3(SDF 폰트)에서 해결. 한글이 폰트까지 도달하므로 인코딩 이슈 아님
+2. Phase 2와 Phase 3 병행 여부 — 글자셋 확정은 번역 이후 가능하나, 폰트 도구 검증(`make_sdf.py` 동작 여부·폰트 에셋 구조 파악)은 독립이라 병행 가능. 사용자 결정 대기
+3. 기타 TextAsset(TS_Ingame 등)이 실제로 화면에 쓰이는지 — Phase 2 추출 시 병행 확인
+
+**산출물 위치**
+- 텍스트 덤프: `tools/dump/*.txt` (git 제외, 재생성: UnityPy로 TextAsset 추출)
+- 원본 백업: `original/` (무결성 검증됨, v1.4.11)
+- 기존 패치: `tools/legacy-patches/v1.0.1|v2.0.1/` (한글 번역 추출 대상)
 
 ## Phase 2 — 문자열 추출 & 번역 소스 구축 ⬜
 
@@ -177,4 +207,5 @@
 | 2026-08-04 | README 작성 | `aa02bf1` |
 | 2026-08-04 | 실험 A 준비: 테스트 Lua + 적용 스크립트 → **Phase 1 착수** | `844cf75` |
 | 2026-08-05 | 실험 A/C 실패 기록, UnityPy 도구 전환, 실험 B 적용 | `224e4fc` |
+| 2026-08-05 | 실험 B 실게임 성공 (두 소스 유효, ㅁ 확인) → **Phase 1 완료** | 이번 커밋 |
 | 2026-08-04 | 실험 A 준비: 테스트 Lua + 적용 스크립트 → **Phase 1 착수** | 이번 커밋 |
