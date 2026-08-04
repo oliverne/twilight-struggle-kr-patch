@@ -1,0 +1,19 @@
+# 원본 백업 (용량 큼, 로컬 전용)
+original/
+
+# 도구 바이너리 (UABEA, legacy 패치 등) — README는 관리
+tools/uabea/
+tools/legacy-patches/
+tools/asset-ripper/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# 폰트 생성 산출물 중 대형 아틀라스 (필요 시 git-lfs로 전환)
+fonts/**/*.png
+!fonts/.gitkeep
+
+# OS
+.DS_Store
