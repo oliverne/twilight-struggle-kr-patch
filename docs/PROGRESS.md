@@ -5,12 +5,12 @@
 
 ## 현재 상태
 
-**Phase 0 — 준비** (🚧 진행 중) · 최종 업데이트: 2026-08-04
-> 남은 항목: 기존 패치 확보 (수동 다운로드 필요)
+**Phase 0 — 준비** ✅ 완료 · 최종 업데이트: 2026-08-04
+> 다음: Phase 1 — 텍스트 위치 검증
 
 ---
 
-## Phase 0 — 준비 🚧
+## Phase 0 — 준비 ✅
 
 ### 체크리스트
 - [x] Git 저장소 초기화
@@ -21,7 +21,7 @@
 - [x] Python venv + numpy/scipy/Pillow 설치
 - [x] 원본 백업 → `original/` (resources.assets, level0~3, StreamingAssets, globalgamemanagers*) — 24MB
 - [x] `original/hashes.txt` (sha256) + `original/VERSION.txt` 기록
-- [ ] 기존 패치 다운로드 (블루칩 v1/v2, 한패) → `tools/legacy-patches/`
+- [x] 기존 패치 다운로드 (블루칩 v1/v2) → `tools/legacy-patches/` — 한패는 중개 사이트로 블루칩과 동일한 Drive 링크 + 네이버 카페 링크(로그인 필요, 보류)
 
 ### 검증 결과
 | 항목 | 방법 | 결과 |
@@ -32,12 +32,22 @@
 | dotnet 설치 | `dotnet --version` | ✅ 10.0.302 |
 | UABEA 기동 (macOS) | 프로세스 12초 생존 확인 | ✅ 성공 — 공식 macOS 빌드 없음 → ubuntu 빌드 + macOS 네이티브 dylib 3종 보강(SkiaSharp/HarfBuzzSharp/AvaloniaNative) + `DOTNET_ROLL_FORWARD=LatestMajor` 필요. 재현: `scripts/setup-uabea-mac.sh` |
 | Python venv | `import numpy, scipy, PIL` | ✅ numpy 2.0.2 / scipy 1.13.1 / Pillow 11.3.0 |
-| 원본 백업 무결성 | `shasum -a 256 -c hashes.txt` + 게임 원본 직접 대조 | ✅ 14개 파일 전부 일치 (직접 대조 시 초기 스크립트 grep 오탐 있었으나 실해시 동일 확인) |
+| 기존 패치 확보 | Google Drive 다운로드 + unzip 확인 | ✅ `bluechip-v1.0.1-v2.0.1.zip` (520MB) — 양 버전 resources.assets + Lua 추출 완료. Lua에 한글 번역 포함 확인 (UTF-8). 네이버 카페 백업(짜짜)은 로그인 필요로 보류 |
 
 ### 다음 Phase로 핸드오프
-> Phase 0 완료 시 작성: 도구 버전, 백업 위치/해시, 기존 패치에서 확인한 번역 파일 목록 등
-> (임시) UABEA 실행: `DOTNET_ROLL_FORWARD=LatestMajor dotnet tools/uabea/UABEAvalonia.dll` — GUI는 실사용 시 수동 실행 필요
-> (임시) 원본 백업: `original/` 24MB, 14파일, 무결성 검증 완료. 복원: `original/` → 게임 Data 폴더로 역복사
+**도구**
+- UABEA 실행: `DOTNET_ROLL_FORWARD=LatestMajor dotnet tools/uabea/UABEAvalonia.dll` (재현: `scripts/setup-uabea-mac.sh`)
+- Python: `.venv/bin/python` (numpy 2.0.2 / scipy 1.13.1 / Pillow 11.3.0)
+
+**원본 백업**
+- `original/` 24MB, 14파일, 무결성 검증 완료 (v1.4.11, build-guid `beff29feda834098ab218792d4d80249`)
+- 복원 방법: `original/` 내용을 게임 Data 폴더로 역복사
+
+**기존 패치 (번역 추출 대상)**
+- `tools/legacy-patches/v1.0.1/TwilightStruggle_Data/` — 100% 한글화 버전 (v1.1.3 대상, TTF 방식)
+- `tools/legacy-patches/v2.0.1/TwilightStruggle_Data/` — 멀티 유지 버전 (v1.4.2 대상)
+- 양쪽 모두 `resources.assets` + `StreamingAssets/Lua/` 추출 완료, Lua에 한글 번역 포함 (UTF-8, CRLF)
+- ⚠️ 기존 패치는 구버전(v1.1.3/v1.4.2) 대상 → 현재 게임(v1.4.11)과 문자열 대조 시 버전차 예상
 
 ## Phase 1 — 텍스트 위치 검증 ⬜
 
@@ -141,6 +151,8 @@
 | 2026-08-04 | 저장소 스켈레톤 + `.gitignore` | `0abad37` |
 | 2026-08-04 | 진행 상황 문서 추가 및 업데이트 규칙 명시 | `8f51f42` |
 | 2026-08-04 | Phase 반복 프로세스 명시 및 PROGRESS 구조 개편 | `79a029d` |
-| 2026-08-04 | 도구 설치 완료 (dotnet 10, UABEA v8, Python venv) | — |
+| 2026-08-04 | 도구 설치 완료 (dotnet 10, UABEA v8, Python venv) | `688838e` |
+| 2026-08-04 | 원본 백업 + 무결성 검증 | `71e7609` |
+| 2026-08-04 | 기존 패치 확보 (블루칩 v1/v2 zip, 한글 Lua 확인) → **Phase 0 완료** | 이번 커밋 |
 | 2026-08-04 | Phase 반복 프로세스(검증·핸드오프) 명시 | `79a029d` |
 | 2026-08-04 | 도구 설치: dotnet 10.0.302 · UABEA v8(macOS 보강) · Python venv | 이번 커밋 |
