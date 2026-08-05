@@ -19,14 +19,17 @@
 
 ### 텍스트 소재별 난이도
 
-| 소재 | 위치 | 난이도 |
+> Phase 1·2 검증 결과 반영. Lua는 죽은 잔재 파일로 확인(작업 대상 아님).
+
+| 소재 | 위치 | 상태 |
 | --- | --- | --- |
-| 카드/국가 텍스트 (Lua) | `StreamingAssets/Lua/*.lua` (평문, 약 6,500줄) | 🟢 쉬움 |
-| 카드 텍스트 (TextAsset) | `resources.assets` 내 `TS_Cards` 등 (구버전 방식, 잔존 여부 확인 필요) | 🟡 |
-| UI/튜토리얼/규칙 텍스트 | `resources.assets`, `level0~3` 씬 파일 (TMP 리치텍스트) | 🟡 중간 |
-| **다국어 문자열 테이블** | `resources.assets` 내 **Common_Strings** (번호 약 739, 키값 방식: `Key_PlayOffline` 등. 다국어 번역 포함돼 있으나 영어로만 출력된다는 제보 있음) | 🟢 **최우선 확인 대상** |
-| SDF 폰트 아틀라스 | `resources.assets` (CJK 글리프 없음 → 한글 네모 현상의 원인) | 🔴 핵심 장벽 |
-| 텍스처에 구워진 텍스트 | 보드맵 국가명 등 | 🔴 어려움 (기존 패치도 미번역) |
+| 다국어 문자열 테이블 | `resources.assets` 내 **Common_Strings** (키값 방식 `Key_XXX`, EN+11개 언어 열) | ✅ 실게임 반영 확인 (Phase 1) |
+| 카드/국가 텍스트 | `resources.assets` 내 `TS_Cards` 등 TextAsset (`"행:열":"값"` JSON) | ✅ 실게임 반영 확인 (Phase 1) |
+| **기존 번역 재사용 소스** | 블루칩 v1.0.1 `resources.assets` 내 **MonoBehaviour** string 필드 (432개 고유 한글 문자열) | ✅ 추출 가능 확인 (Phase 2) |
+| UI/튜토리얼/규칙 | `resources.assets` 내 `TS_Ingame`·`TS_Strings`·`TS_RulesTutorial`·`Common_Ingame` | 🟡 사용 여부 미검증 (Phase 2 확인 예정) |
+| 카드/국가 Lua | `StreamingAssets/Lua/*.lua` | ❌ 죽은 잔재 (Phase 1 확인). 블루칩 Lua에는 번역 없음 |
+| SDF 폰트 아틀라스 | `resources.assets` (CJK 글리프 없음 → 한글 네모 현상의 원인) | 🔴 핵심 장벽 (Phase 3) |
+| 텍스처에 구워진 텍스트 | 보드맵 국가명 등 | 🔴 어려움 (범위 제외) |
 
 ---
 
@@ -49,8 +52,9 @@
 
 ### 💡 핵심 기회
 
-- 기존 패치에 **95% 완성된 번역문**이 이미 있음 → 처음부터 번역할 필요 없음. 옛 패치 파일에서 번역 텍스트를 추출해 재사용
-- v1.4.6+의 `Common_Strings` 다국어 테이블에 한국어 슬롯이 이미 존재할 가능성 → 게임 코드(언어 설정)만 건드리면 되는 구조일 수 있음
+- 블루칩 v1.0.1(100% 한글화)의 번역은 `resources.assets` 내 **MonoBehaviour**의 string 필드에 직접 주입돼 있음. UnityPy 고수준 `read()`는 IL2CPP 타입트리 불완전으로 실패하나, `get_raw_data()`에서 raw 바이트를 받아 Unity string 표준 레이아웃(`int32 len + bytes + pad4`)을 수동 파싱하면 **432개 고유 한글 문자열을 깨끗하게 추출 가능** (카드 이름·본문·사건 텍스트·TMP 리치텍스트 태그 포함, Phase 2 확인)
+- 번역 재사용 전략: 블루칩 v1.0.1 MonoBehaviour 한글 432개 + 원본 `TS_Cards`·`Common_Strings` 영문 원문을 **원문 전체 비교**로 매칭하여 번역 소스 구축. 우드킹 패치는 보조/검증용(입수 안 해도 진행 가능)
+- `Common_Strings`의 한국어 슬롯은 **원본에 없음** (열 구조: `Key/EN/FR/DE/ES/PL/PT/JP/IT/RU/NL/CH`). 번역 주입 시 **EN 열 보존, 다른 언어 열을 한국어로 교체** (AGENTS.md 원칙 #8). 게임 언어 선택기 인식은 교체 대상 열/컬처 등록으로 해결 (Phase 4 검증)
 - 우리가 풀어야 할 **진짜 난제는 "CJK 포함 SDF 폰트 아틀라스 주입"** 한 가지로 수렴
 
 ---

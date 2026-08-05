@@ -40,19 +40,27 @@
 5. UTF-8 일관 사용. 인코딩 깨짐 의심 시 게임 로드 테스트로 확인.
 6. TMP 리치텍스트 태그(`<color>`, `<font="...">`, `<br>`, `<indent>`)는 보존한다.
 7. 텍스처에 구워진 문자(보드맵 국가명 등)는 현재 범위에서 제외.
+8. **EN 열은 보존하고 다른 언어 열을 한국어로 교체한다.** 원문(EN)을 덮어쓰지 않음 — 영문 폴백·원문 대조·번역 검수를 유지하고, 게임 언어 선택기가 한국어를 인식하도록 교체 대상 언어 열(또는 새 컬처)을 한글로 채운다.
 
 ## 텍스트 소스 (우선순위)
 
 | 소재 | 위치 | 난이도 |
 |---|---|---|
 | 다국어 문자열 테이블 | `resources.assets` 내 **Common_Strings** (키값 방식 `Key_XXX`) | 🟢 최우선 |
-| 카드/국가 텍스트 | `resources.assets` 내 `TS_Cards` 등 TextAsset | 🟢 실게임 반영 확인 |
+| 카드/국가 텍스트 | `resources.assets` 내 `TS_Cards` 등 TextAsset (`"행:열":"값"` JSON) | 🟢 실게임 반영 확인 |
+| 번역 재사용 소스 | 블루칩 v1.0.1 `resources.assets` 내 **MonoBehaviour** string 필드 (432개 고유 한글) | 🟢 raw 바이트 수동 파싱으로 추출 가능 |
 | 다국어 UI 문자열 | `resources.assets` 내 `Common_Strings` | 🟢 실게임 반영 확인 |
-| UI/튜토리얼 | `resources.assets`, `level0~3` 씬 | 🟡 일부 사용 여부 미검증 |
+| UI/튜토리얼 | `resources.assets` 내 `TS_Ingame`·`TS_Strings`·`TS_RulesTutorial`·`Common_Ingame` | 🟡 사용 여부 미검증 |
 | 카드/국가 Lua | `StreamingAssets/Lua/*.lua` | ❌ Phase 1에서 죽은 잔재로 확인, 작업 대상 아님 |
 | SDF 폰트 아틀라스 | `resources.assets` (CJK 없음) | 🔴 핵심 장벽 |
 
 ⚠️ **작업 착수 전 필수**: 아직 사용 여부가 확인되지 않은 소스는 수정 → 실게임 반영 테스트로 "살아있는 소스"를 먼저 검증한다. Phase 1 결과 `StreamingAssets/Lua`는 작업 대상에서 제외한다.
+
+### 번역 소스 재사용 전략 (Phase 2 확정)
+
+- 블루칩 v1.0.1(100% 한글화)의 번역은 MonoBehaviour string 필드에 직접 주입돼 있다. UnityPy `obj.read()`는 IL2CPP 타입트리 불완전으로 실패하나, `obj.get_raw_data()`에서 Unity string 표준 레이아웃(`int32 len + bytes + pad4`)을 수동 파싱하면 432개 고유 한글 문자열을 추출할 수 있다 (카드 이름·본문·사건·TMP 태그 포함).
+- 블루칩 v1.0.1 번역(Blueprint) + 원본 `TS_Cards`·`Common_Strings` 영문 원문을 **원문 전체 비교**로 매칭해 `translation/` 소스를 구축한다. 우드킹 패치는 보조/검증용(입수 안 해도 진행 가능).
+- 블루칩 Lua(`twilight_cards.lua`)에는 한글 10줄(카드 3개 능력 설명 일부)만 있어 사실상 무의미.
 
 ## 게임 경로
 

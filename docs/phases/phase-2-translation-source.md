@@ -2,8 +2,9 @@
 
 ## 상태
 
-- 상태: ⬜ 대기
+- 상태: 🚧 진행 중
 - 선행 Phase: Phase 1 완료
+- 착수일: 2026-08-05
 
 ## 목표
 
@@ -11,24 +12,36 @@
 
 ## 번역 소스 구조 원칙 (Phase 4 주입을 위한 선결 조건)
 
-Phase 4 검증 기준(재현성·안전성)을 만족하려면 번역 소스는 **raw 부분문자열 치환**에 의존하지 않고 **키/셀 단위**로 설계해야 한다. `patch_textasset.py`의 raw `str.replace`는 짧은 토큰(`US`, `The`, `in`) 측면 치환 위험이 있으므로, Phase 2 산출 구조가 이를 회계하는 것이다.
+Phase 4 검증 기준(재현성·안전성)을 만족하려면 번역 소스는 **raw 부분문자열 치환**에 의존하지 않고 **키/셀 단위**로 설계해야 한다. `patch_textasset.py`의 raw `str.replace`는 짧은 토큰(`US`, `The`, `in`) 측면 치환 위험이 있으므로, Phase 2 산출 구조가 이를 회피하는 것이다.
 
-- `Common_Strings`는 스프레드시트형 (행=키, 열=언어) → 추출 단위는 **(행 키, EN 열 값)**이며 번역은 같은 행의 KR 열 값으로 대응.
+- `Common_Strings`는 스프레드시트형 (행=키, 열=언어) → 추출 단위는 **(행 키, EN 열 값)**이며 번역은 같은 행의 **한글 교체 대상 열** 값으로 대응.
 - `TS_Cards` 동일하게 행 기반 구조면 (행 키, 필드) 단위로 추출.
 - 번역 JSON의 키는 에셋 내 **고유 식별자**(행 키/Path ID/셀 주소)로 지정하여, 주입 시 셀 단위 교체가 가능하도록 한다.
 - 임의 부분문자열 매칭은 번역 소스 구축 단계(매칭)에서만 허용하고, 주입 단계에서는 키 매칭을 사용한다.
 
+### 번역 주입 방식 결정 (2026-08-05)
+
+- **EN 열(열 2)은 보존하고, 다른 언어 열을 한국어로 교체한다.** 원문(EN)을 덮어쓰지 않는다.
+- 이유: 영문 폴백·원문 대조·번역 검수 유지, EN열 치환 시 발생 가능한 짧은 토큰 측면 치환 위험 회피.
+- 게임이 한국어를 언어 선택기에서 인식하려면 교체 대상 열에 해당하는 언어로 게임 언어를 전환하거나, 새 한국어 컬처를 `AvailableCultures`에 등록해야 한다.
+- 현재 `Common_Strings` 열 구조: `Key(1) EN(2) FR(3) DE(4) ES(5) PL(6) PT(7) JP(8) IT(9) RU(10) NL(11) CH(12) null(13~)`
+- 현재 `AvailableCultures` 등록 언어: `de, en, es, fr, ru` (SmartLocalization)
+- **구체적 교체 열과 컬처 등록 방식은 Phase 4에서 검증 결정** — SmartLocalization이 언어 코드 → 열 인덱스를 어떻게 매핑하는지 확인 후 확정.
+- Phase 2 번역 소스는 **EN 원문**(열 2)과 **번역값**(한글)을 분리해 저장하므로, 교체 열 선택과 무관하게 재사용 가능.
+
 ## 체크리스트
 
 - [ ] 영문 문자열 추출 → `translation/` JSON (키/셀 단위, IDs 포함)
-- [ ] 기존 패치에서 한글 번역 추출
+- [ ] 영문 문자열 추출 → `translation/` JSON (키/셀 단위, IDs 포함)
+- [ ] **블루칩 v1.0.1 MonoBehaviour에서 한글 432개 추출** (raw 바이트 수동 파싱, UnityPy `read()`는 IL2CPP로 실패)
 - [ ] 현재 문자열과 기존 번역 자동 매칭 (매칭은 원문 전체 비교, 부분 토큰 비교 금지)
 - [ ] 버전 차이 문장 수동 분류·번역
 - [ ] 용어 통일표 `translation/glossary.md` 작성
 - [ ] TMP 리치텍스트 태그 보존 규칙 수립
-- [ ] 기타 TextAsset 사용 여부 확인
+- [ ] 기타 TextAsset 사용 여부 확인 (`TS_Ingame`·`TS_Strings`·`TS_RulesTutorial`·`Common_Ingame`)
 - [ ] 번역 JSON 스키마 확정: 행 키/Path ID → 번역 값 매핑 (Phase 4 주입기 입력 규격)
 - [ ] (선택) `Common_Strings`의 타 언어 열을 참조용으로 활용해 매칭 교차 검증
+- [ ] (선택) 우드킹 패치 입수 시 보조/검증용으로 매칭 교차 검증
 
 ## 검증 기준
 
@@ -48,11 +61,12 @@ Phase 4 검증 기준(재현성·안전성)을 만족하려면 번역 소스는 
 
 ## 산출물 예정
 
-- `translation/strings.json` — `Common_Strings` 행 키 → 한글 매핑
+- `translation/strings.json` — `Common_Strings` 행 키 → 한글 매핑 (EN 원문은 보존용으로 함께 기록)
 - `translation/cards.json` — `TS_Cards` 행 키/Path ID → 한글 매핑
+- `translation/legacy-bluechip.json` — 블루칩 v1.0.1 MonoBehaviour에서 추출한 432개 고유 한글 문자열 (매칭 원본)
 - `translation/glossary.md` — 용어 통일표
 - `translation/schema.md` — 번역 JSON 스키마 명세 (Phase 4 주입기 입력 규격)
-- 문자열 추출·매칭 스크립트 (키/셀 단위)
+- 문자열 추출·매칭 스크립트 (키/셀 단위 + MonoBehaviour raw 파싱)
 
 ## 다음 Phase로 핸드오프
 
