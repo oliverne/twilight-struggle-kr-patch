@@ -11,6 +11,10 @@ tools/asset-ripper/
 __pycache__/
 *.pyc
 
+# .NET 빌드 산출물 (asset-tool)
+tools/asset-tool/bin/
+tools/asset-tool/obj/
+
 # 폰트 생성 산출물 중 대형 아틀라스 (필요 시 git-lfs로 전환)
 fonts/**/*.png
 !fonts/.gitkeep
