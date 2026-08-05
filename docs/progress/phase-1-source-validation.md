@@ -50,9 +50,10 @@ Unity 6로 변경된 현재 게임에서 실제로 화면에 반영되는 텍스
 
 문자열은 스프레드시트형 JSON이며, `행:열` 키 구조를 사용한다. 첫 줄에는 날짜 헤더가 있을 수 있으므로 치환 시 JSON 본문만 다룬다.
 
-## 검증된 수정 파이프라인
+## 검증된 파이프라인
 
-- 추출·수정: UnityPy + `scripts/patch_textasset.py`
+- 탐색·덤프(읽기 전용): `tools/asset-tool` (.NET, AssetsTools.NET) — 에셋 구조 파악·TextAsset 본문 추출
+- 주입(수정): UnityPy + `scripts/patch_textasset.py`
 - 적용: `scripts/install-asset-test.sh` 패턴 — 해시 검증 후 복사, 멱등 실행
 - 복원: `scripts/restore-original.sh`
 
@@ -60,8 +61,9 @@ Unity 6로 변경된 현재 게임에서 실제로 화면에 반영되는 텍스
 
 ## 산출물
 
-- 텍스트 덤프: `tools/dump/*.txt` (git 제외)
-- TextAsset 수정 도구: `scripts/patch_textasset.py`
+- 텍스트 덤프: `tools/dump/*.txt` (git 제외, 재생성 가능)
+- 에셋 탐색·덤프 도구: `tools/asset-tool/` (.NET, AssetsTools.NET 기반 — 읽기 전용. `tools/README.md` 참고)
+- TextAsset 수정 도구: `scripts/patch_textasset.py` (UnityPy 기반, 실제 주입용)
 - 테스트 적용 스크립트: `scripts/install-asset-test.sh`
 - 원본 백업: `original/`
 - 기존 패치: `tools/legacy-patches/v1.0.1/`, `tools/legacy-patches/v2.0.1/`
