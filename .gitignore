@@ -24,3 +24,5 @@ fonts/**/*.png
 
 # 게임 텍스트 덤프 (게임 파생물, 로컬 전용)
 tools/dump/
+tools/dump-legacy-v1.0.1/
+tools/dump-legacy-v2.0.1/

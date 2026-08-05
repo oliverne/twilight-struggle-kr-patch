@@ -1,0 +1,1623 @@
+{
+  "asset_name": "Common_Strings",
+  "header": "28 July, (22:46)",
+  "row_count": 323,
+  "rows_with_en": 323,
+  "rows": [
+    {
+      "row": 1,
+      "key": "Key",
+      "en": "EN"
+    },
+    {
+      "row": 2,
+      "key": "Key_PlayOffline",
+      "en": "Play Offline"
+    },
+    {
+      "row": 3,
+      "key": "Key_PlayOnline",
+      "en": "Play Online"
+    },
+    {
+      "row": 4,
+      "key": "Key_MainMenu",
+      "en": "Main Menu"
+    },
+    {
+      "row": 5,
+      "key": "Key_Menu",
+      "en": "Menu"
+    },
+    {
+      "row": 6,
+      "key": "Key_Options",
+      "en": "Options"
+    },
+    {
+      "row": 7,
+      "key": "Key_Settings",
+      "en": "Settings"
+    },
+    {
+      "row": 8,
+      "key": "Key_CardGallery",
+      "en": "Card Gallery"
+    },
+    {
+      "row": 9,
+      "key": "Key_Rulebook",
+      "en": "Rulebook"
+    },
+    {
+      "row": 10,
+      "key": "Key_Tutorial",
+      "en": "Tutorial"
+    },
+    {
+      "row": 11,
+      "key": "Key_Tutorials",
+      "en": "Tutorials"
+    },
+    {
+      "row": 12,
+      "key": "Key_Moregames",
+      "en": "More Games"
+    },
+    {
+      "row": 13,
+      "key": "Key_Credits",
+      "en": "Credits"
+    },
+    {
+      "row": 14,
+      "key": "Key_AppStore",
+      "en": "In-App Store"
+    },
+    {
+      "row": 15,
+      "key": "Key_Back",
+      "en": "Back"
+    },
+    {
+      "row": 16,
+      "key": "Key_DeleteGame",
+      "en": "Delete Game"
+    },
+    {
+      "row": 17,
+      "key": "Key_CreateGame",
+      "en": "Create Game"
+    },
+    {
+      "row": 18,
+      "key": "Key_Round",
+      "en": "Round"
+    },
+    {
+      "row": 19,
+      "key": "Key_AddComputerPlayer",
+      "en": "Add Computer Player"
+    },
+    {
+      "row": 20,
+      "key": "Key_AddHumanPlayer",
+      "en": "Add Human Player"
+    },
+    {
+      "row": 21,
+      "key": "Key_Playername",
+      "en": "Player Name"
+    },
+    {
+      "row": 22,
+      "key": "Key_DragToAdd",
+      "en": "Drag below to add"
+    },
+    {
+      "row": 23,
+      "key": "Key_EnterName",
+      "en": "Please enter a name"
+    },
+    {
+      "row": 24,
+      "key": "Key_RestorePurchases",
+      "en": "Restore Purchases"
+    },
+    {
+      "row": 25,
+      "key": "Key_ClearPurchases",
+      "en": "Clear Purchases"
+    },
+    {
+      "row": 26,
+      "key": "Key_Details",
+      "en": "Details"
+    },
+    {
+      "row": 27,
+      "key": "Key_Purchased",
+      "en": "Purchased"
+    },
+    {
+      "row": 28,
+      "key": "Key_Buy",
+      "en": "Buy"
+    },
+    {
+      "row": 29,
+      "key": "Key_Cancel",
+      "en": "Cancel"
+    },
+    {
+      "row": 30,
+      "key": "Key_StartGame",
+      "en": "Start Game"
+    },
+    {
+      "row": 31,
+      "key": "Key_JoinGame",
+      "en": "Join Game"
+    },
+    {
+      "row": 32,
+      "key": "Key_ViewGame",
+      "en": "View Game"
+    },
+    {
+      "row": 33,
+      "key": "Key_Player1",
+      "en": "Player 1"
+    },
+    {
+      "row": 34,
+      "key": "Key_Player2",
+      "en": "Player 2"
+    },
+    {
+      "row": 35,
+      "key": "Key_Player3",
+      "en": "Player 3"
+    },
+    {
+      "row": 36,
+      "key": "Key_Player4",
+      "en": "Player 4"
+    },
+    {
+      "row": 37,
+      "key": "Key_Player5",
+      "en": "Player 5"
+    },
+    {
+      "row": 38,
+      "key": "Key_Accept",
+      "en": "Accept"
+    },
+    {
+      "row": 39,
+      "key": "Key_Profile",
+      "en": "Profile"
+    },
+    {
+      "row": 40,
+      "key": "Key_Pause",
+      "en": "Pause"
+    },
+    {
+      "row": 41,
+      "key": "Key_Online",
+      "en": "Online"
+    },
+    {
+      "row": 42,
+      "key": "Key_Offline",
+      "en": "Offline"
+    },
+    {
+      "row": 43,
+      "key": "Key_FindGame",
+      "en": "Find Game"
+    },
+    {
+      "row": 44,
+      "key": "Key_TitleNew",
+      "en": "New"
+    },
+    {
+      "row": 45,
+      "key": "Key_TitleGame",
+      "en": "Game"
+    },
+    {
+      "row": 46,
+      "key": "Key_Connecting",
+      "en": "Connecting to Server"
+    },
+    {
+      "row": 47,
+      "key": "Key_ConnectFail",
+      "en": "Failed to Connect to Server"
+    },
+    {
+      "row": 48,
+      "key": "Key_ConnectLost",
+      "en": "Connection Lost"
+    },
+    {
+      "row": 49,
+      "key": "Key_NetworkUpdate",
+      "en": "An update is available.<br>Please download the latest<br>version to play online."
+    },
+    {
+      "row": 50,
+      "key": "Key_Disconnect",
+      "en": "You have been Disconnected<br> from the Server"
+    },
+    {
+      "row": 51,
+      "key": "Key_CreatingGame",
+      "en": "Creating Game . . ."
+    },
+    {
+      "row": 52,
+      "key": "Key_CreatedGameSuccess",
+      "en": "Successfully Created Game!"
+    },
+    {
+      "row": 53,
+      "key": "Key_CreateGameFail",
+      "en": "Unable to create."
+    },
+    {
+      "row": 54,
+      "key": "Key_CreateGameFailTooMany",
+      "en": "Unable to create.<br>Too many games created."
+    },
+    {
+      "row": 55,
+      "key": "Key_CreateGameFailUnknown",
+      "en": "Unable to create.<br>Unknown error"
+    },
+    {
+      "row": 56,
+      "key": "Key_Joining",
+      "en": "Joining Game . . ."
+    },
+    {
+      "row": 57,
+      "key": "Key_JoinSuccess",
+      "en": "Successfully Joined Game!"
+    },
+    {
+      "row": 58,
+      "key": "Key_JoinFailNotExist",
+      "en": "Unable to join.<br>Game no longer exists."
+    },
+    {
+      "row": 59,
+      "key": "Key_JoinFailFull",
+      "en": "Unable to join.<br>Game is full."
+    },
+    {
+      "row": 60,
+      "key": "Key_JoinFailConnect",
+      "en": "Unable to join.<br>Lost connection to server."
+    },
+    {
+      "row": 61,
+      "key": "Key_JoinFailUnknown",
+      "en": "Unable to join.<br>Unknown error."
+    },
+    {
+      "row": 62,
+      "key": "Key_OnlineFailGameCenter",
+      "en": "You must be logged<br>in to Game Center<br>to play online"
+    },
+    {
+      "row": 63,
+      "key": "Key_TutorialPrompt",
+      "en": "Would you like to play the Tutorial?"
+    },
+    {
+      "row": 64,
+      "key": "Key_SlotOpen",
+      "en": "(Open)"
+    },
+    {
+      "row": 65,
+      "key": "Key_SlotClosed",
+      "en": "(Closed)"
+    },
+    {
+      "row": 66,
+      "key": "Key_OnlineCreateGame",
+      "en": "Online Create Game"
+    },
+    {
+      "row": 67,
+      "key": "Key_GameListEmpty",
+      "en": "You have no active Games at this time."
+    },
+    {
+      "row": 68,
+      "key": "Key_FindGameSearching",
+      "en": "Searching for Games . . ."
+    },
+    {
+      "row": 69,
+      "key": "Key_CompletedGameList",
+      "en": "Completed Game List"
+    },
+    {
+      "row": 70,
+      "key": "Key_CompletedListEmpty",
+      "en": "You have no Completed Games at this time."
+    },
+    {
+      "row": 71,
+      "key": "Key_FindGameListEmpty",
+      "en": "There are no available games at this time.<br>Use the Create Game Menu to create a new game."
+    },
+    {
+      "row": 72,
+      "key": "Key_ProfileLoading",
+      "en": "Retrieving Profile . . ."
+    },
+    {
+      "row": 73,
+      "key": "Key_NameEntry",
+      "en": "Enter Name for Player"
+    },
+    {
+      "row": 74,
+      "key": "Key_FriendsList",
+      "en": "Friends List"
+    },
+    {
+      "row": 75,
+      "key": "Key_InviteFriend",
+      "en": "Invite Friend"
+    },
+    {
+      "row": 76,
+      "key": "Key_ClearInvite",
+      "en": "Clear Invite"
+    },
+    {
+      "row": 77,
+      "key": "Key_ReadyToStart",
+      "en": "Ready to Start"
+    },
+    {
+      "row": 78,
+      "key": "Key_Invited",
+      "en": "Invited"
+    },
+    {
+      "row": 79,
+      "key": "Key_WaitForStart",
+      "en": "Waiting for Start"
+    },
+    {
+      "row": 80,
+      "key": "Key_WaitForPlayers",
+      "en": "Waiting for Players"
+    },
+    {
+      "row": 81,
+      "key": "Key_WaitForPlayer",
+      "en": "Waiting for Player"
+    },
+    {
+      "row": 82,
+      "key": "Key_Waiting",
+      "en": "Waiting"
+    },
+    {
+      "row": 83,
+      "key": "Key_View",
+      "en": "View"
+    },
+    {
+      "row": 84,
+      "key": "Key_Withdraw",
+      "en": "Withdraw"
+    },
+    {
+      "row": 85,
+      "key": "Key_Reject",
+      "en": "Reject"
+    },
+    {
+      "row": 86,
+      "key": "Key_Delete",
+      "en": "Delete"
+    },
+    {
+      "row": 87,
+      "key": "Key_Forfeit",
+      "en": "Forfeit"
+    },
+    {
+      "row": 88,
+      "key": "Key_Finish",
+      "en": "Finish"
+    },
+    {
+      "row": 89,
+      "key": "Key_Locked",
+      "en": "Locked"
+    },
+    {
+      "row": 90,
+      "key": "Key_Invite",
+      "en": "Invite"
+    },
+    {
+      "row": 91,
+      "key": "Key_Start",
+      "en": "Start"
+    },
+    {
+      "row": 92,
+      "key": "Key_Completed",
+      "en": "Completed"
+    },
+    {
+      "row": 93,
+      "key": "Key_Join",
+      "en": "Join"
+    },
+    {
+      "row": 94,
+      "key": "Key_Empty",
+      "en": "Empty"
+    },
+    {
+      "row": 95,
+      "key": "Key_Minute",
+      "en": "Minute"
+    },
+    {
+      "row": 96,
+      "key": "Key_Minutes",
+      "en": "Minutes"
+    },
+    {
+      "row": 97,
+      "key": "Key_Hour",
+      "en": "Hour"
+    },
+    {
+      "row": 98,
+      "key": "Key_Hours",
+      "en": "Hours"
+    },
+    {
+      "row": 99,
+      "key": "Key_Day",
+      "en": "Day"
+    },
+    {
+      "row": 100,
+      "key": "Key_Days",
+      "en": "Days"
+    },
+    {
+      "row": 101,
+      "key": "Key_Second",
+      "en": "Second"
+    },
+    {
+      "row": 102,
+      "key": "Key_Seconds",
+      "en": "Seconds"
+    },
+    {
+      "row": 103,
+      "key": "Key_Abbr_Second",
+      "en": "Sec"
+    },
+    {
+      "row": 104,
+      "key": "Key_Abbr_Minute",
+      "en": "Min"
+    },
+    {
+      "row": 105,
+      "key": "Key_Abbr_Hour",
+      "en": "HR"
+    },
+    {
+      "row": 106,
+      "key": "Key_Abbr_Hours",
+      "en": "Hrs"
+    },
+    {
+      "row": 107,
+      "key": "Key_Online_Record",
+      "en": "Online Record"
+    },
+    {
+      "row": 108,
+      "key": "Key_Offline_Record",
+      "en": "Offline Record"
+    },
+    {
+      "row": 109,
+      "key": "Key_In_Progress",
+      "en": "In Progress"
+    },
+    {
+      "row": 110,
+      "key": "Key_2_Players",
+      "en": "2 Players:"
+    },
+    {
+      "row": 111,
+      "key": "Key_3_Players",
+      "en": "3 Players:"
+    },
+    {
+      "row": 112,
+      "key": "Key_4_Players",
+      "en": "4 Players:"
+    },
+    {
+      "row": 113,
+      "key": "Key_Forfeits",
+      "en": "Forfeits"
+    },
+    {
+      "row": 114,
+      "key": "Key_Sound_Volume",
+      "en": "Sound Volume"
+    },
+    {
+      "row": 115,
+      "key": "Key_Music_Volume",
+      "en": "Music Volume"
+    },
+    {
+      "row": 116,
+      "key": "Key_Game_Speed",
+      "en": "Game Speed"
+    },
+    {
+      "row": 117,
+      "key": "Key_Animation_Speed",
+      "en": "Animation Speed"
+    },
+    {
+      "row": 118,
+      "key": "Key_Slow",
+      "en": "Slow"
+    },
+    {
+      "row": 119,
+      "key": "Key_Medium",
+      "en": "Medium"
+    },
+    {
+      "row": 120,
+      "key": "Key_Fast",
+      "en": "Fast"
+    },
+    {
+      "row": 121,
+      "key": "Key_Pop_Ups",
+      "en": "Confirmation Pop-ups"
+    },
+    {
+      "row": 122,
+      "key": "Key_FriendRequest",
+      "en": "Friend Request"
+    },
+    {
+      "row": 123,
+      "key": "Key_Online_Game_List",
+      "en": "Online Game List"
+    },
+    {
+      "row": 124,
+      "key": "Key_AddFriend",
+      "en": "Add Friend"
+    },
+    {
+      "row": 125,
+      "key": "Key_DeleteFriend",
+      "en": "Delete Friend"
+    },
+    {
+      "row": 126,
+      "key": "Key_Offline_Game_List",
+      "en": "Offline Game List"
+    },
+    {
+      "row": 127,
+      "key": "Key_Delete_Game",
+      "en": "Delete Your Game"
+    },
+    {
+      "row": 128,
+      "key": "Key_Start_Menu",
+      "en": "Start Menu"
+    },
+    {
+      "row": 129,
+      "key": "Key_Rematch",
+      "en": "Rematch"
+    },
+    {
+      "row": 130,
+      "key": "Key_OfflineCreateGame",
+      "en": "Offline Create Game"
+    },
+    {
+      "row": 131,
+      "key": "Key_2Players",
+      "en": "2 Players"
+    },
+    {
+      "row": 132,
+      "key": "Key_3Players",
+      "en": "3 Players"
+    },
+    {
+      "row": 133,
+      "key": "Key_4Players",
+      "en": "4 Players"
+    },
+    {
+      "row": 134,
+      "key": "Key_Game_List",
+      "en": "Game List"
+    },
+    {
+      "row": 135,
+      "key": "Key_RemotePlayer",
+      "en": "Remote Player"
+    },
+    {
+      "row": 136,
+      "key": "Key_AIPlayer",
+      "en": "AI Player"
+    },
+    {
+      "row": 137,
+      "key": "Key_AIPlayer1",
+      "en": "AI Player 1"
+    },
+    {
+      "row": 138,
+      "key": "Key_AIPlayer2",
+      "en": "AI Player 2"
+    },
+    {
+      "row": 139,
+      "key": "Key_AIPlayer3",
+      "en": "AI Player 3"
+    },
+    {
+      "row": 140,
+      "key": "Key_AIPlayer4",
+      "en": "AI Player 4"
+    },
+    {
+      "row": 141,
+      "key": "Key_DoubleTapContinue",
+      "en": "Double Tap to Continue…"
+    },
+    {
+      "row": 142,
+      "key": "Key_SelectAvatar",
+      "en": "Select your avatar"
+    },
+    {
+      "row": 143,
+      "key": "Key_AvatarSelect",
+      "en": "Avatar Select"
+    },
+    {
+      "row": 144,
+      "key": "Key_OnTheWeb",
+      "en": "On the Web"
+    },
+    {
+      "row": 145,
+      "key": "Key_Email",
+      "en": "Email"
+    },
+    {
+      "row": 146,
+      "key": "Key_Username",
+      "en": "Username"
+    },
+    {
+      "row": 147,
+      "key": "Key_Password",
+      "en": "Password"
+    },
+    {
+      "row": 148,
+      "key": "Key_ConfirmPassword",
+      "en": "Confirm Password"
+    },
+    {
+      "row": 149,
+      "key": "Key_Remember",
+      "en": "Remember Password"
+    },
+    {
+      "row": 150,
+      "key": "Key_Forget",
+      "en": "Forgot Login?"
+    },
+    {
+      "row": 151,
+      "key": "Key_CreateAccount",
+      "en": "Create Account"
+    },
+    {
+      "row": 152,
+      "key": "Key_Login",
+      "en": "Login"
+    },
+    {
+      "row": 153,
+      "key": "Key_Verify",
+      "en": "Verify:"
+    },
+    {
+      "row": 154,
+      "key": "Key_User",
+      "en": "User Name:"
+    },
+    {
+      "row": 155,
+      "key": "Key_SendInfo",
+      "en": "Send Login Info"
+    },
+    {
+      "row": 156,
+      "key": "Key_EmailUser",
+      "en": "Enter your Email or User Name"
+    },
+    {
+      "row": 157,
+      "key": "Key_OnlineLogin",
+      "en": "Online Login"
+    },
+    {
+      "row": 158,
+      "key": "Key_CreateNewAccount",
+      "en": "Create New Account"
+    },
+    {
+      "row": 159,
+      "key": "Key_CheckYourEmail",
+      "en": "Please check your email for your account information"
+    },
+    {
+      "row": 160,
+      "key": "Key_InvalidUsername",
+      "en": "Username already in use."
+    },
+    {
+      "row": 161,
+      "key": "Key_InvalidPassword",
+      "en": "Invalid Password"
+    },
+    {
+      "row": 162,
+      "key": "Key_InvalidEmail",
+      "en": "Invalid Email"
+    },
+    {
+      "row": 163,
+      "key": "Key_CreatingNewAccount",
+      "en": "Creating Account..."
+    },
+    {
+      "row": 164,
+      "key": "Key_PasswordNotVerified",
+      "en": "Check your password again"
+    },
+    {
+      "row": 165,
+      "key": "Key_PasswordMismatch",
+      "en": "Passwords do not match"
+    },
+    {
+      "row": 166,
+      "key": "Key_InvalidCharacters",
+      "en": "Name contains invalid characters"
+    },
+    {
+      "row": 167,
+      "key": "Key_TermsAgreement",
+      "en": "Terms of Use Agreement"
+    },
+    {
+      "row": 168,
+      "key": "Key_EmailInUse",
+      "en": "An account with this e-mail address is already in use"
+    },
+    {
+      "row": 169,
+      "key": "Key_PasswordRequired",
+      "en": "You must provide a password"
+    },
+    {
+      "row": 170,
+      "key": "Key_LoginFailed",
+      "en": "Login failed"
+    },
+    {
+      "row": 171,
+      "key": "Key_MustAcceptTerms",
+      "en": "You must accept the Terms of Use Agreement before creating an account"
+    },
+    {
+      "row": 172,
+      "key": "Key_AccountCreateSuccess",
+      "en": "Account Created.<br>Enter your Password to Login."
+    },
+    {
+      "row": 173,
+      "key": "Key_OnlineChat",
+      "en": "Lobby Chat"
+    },
+    {
+      "row": 174,
+      "key": "Key_Agree",
+      "en": "I Agree"
+    },
+    {
+      "row": 175,
+      "key": "Key_AgreeTerms",
+      "en": "I agree to the Terms of Use."
+    },
+    {
+      "row": 176,
+      "key": "Key_Newsletter",
+      "en": "Playdek Newsletter"
+    },
+    {
+      "row": 177,
+      "key": "Key_NewsletterSignUp",
+      "en": "Newsletter Sign-Up"
+    },
+    {
+      "row": 178,
+      "key": "Key_PrivacyPolicy",
+      "en": "Privacy Policy"
+    },
+    {
+      "row": 179,
+      "key": "Key_AgreePP",
+      "en": "I agree to the Privacy Policy."
+    },
+    {
+      "row": 180,
+      "key": "Key_Confirm",
+      "en": "Confirm"
+    },
+    {
+      "row": 181,
+      "key": "Key_Achievements",
+      "en": "Achievements"
+    },
+    {
+      "row": 182,
+      "key": "Key_Languages",
+      "en": "Languages"
+    },
+    {
+      "row": 183,
+      "key": "Key_SelectLanguage",
+      "en": "Select Language"
+    },
+    {
+      "row": 184,
+      "key": "Key_AddFriendPrompt",
+      "en": "Would you like to add this player to your friend list?"
+    },
+    {
+      "row": 185,
+      "key": "Key_RemoveFriendPrompt",
+      "en": "Would you like to remove this player from your friend list?"
+    },
+    {
+      "row": 186,
+      "key": "Key_Exit",
+      "en": "Exit"
+    },
+    {
+      "row": 187,
+      "key": "Key_EndGame",
+      "en": "End Game"
+    },
+    {
+      "row": 188,
+      "key": "Key_FriendAdding",
+      "en": "Adding \"{0}\" as a friend."
+    },
+    {
+      "row": 189,
+      "key": "Key_FriendRemoving",
+      "en": "Removing \"{0}\" as a friend."
+    },
+    {
+      "row": 190,
+      "key": "Key_FriendAddSuccess",
+      "en": "Successfully added \"{0}\" as a friend."
+    },
+    {
+      "row": 191,
+      "key": "Key_FriendRmvSuccess",
+      "en": "Successfully removed friend."
+    },
+    {
+      "row": 192,
+      "key": "Key_FriendNotFound",
+      "en": "User \"{0}\" not found."
+    },
+    {
+      "row": 193,
+      "key": "Key_FriendAlready",
+      "en": "{0} is already your friend."
+    },
+    {
+      "row": 194,
+      "key": "Key_Resolution",
+      "en": "Resolution"
+    },
+    {
+      "row": 195,
+      "key": "Key_Resolutions",
+      "en": "Resolutions"
+    },
+    {
+      "row": 196,
+      "key": "Key_ResolutionChange",
+      "en": "Change resolution to {0}x{1}?"
+    },
+    {
+      "row": 197,
+      "key": "Key_ResolutionKeep",
+      "en": "Keep this resolution?"
+    },
+    {
+      "row": 198,
+      "key": "Key_ConfirmChange",
+      "en": "Confirm Change"
+    },
+    {
+      "row": 199,
+      "key": "Key_WindowedMode",
+      "en": "Windowed Mode"
+    },
+    {
+      "row": 200,
+      "key": "Key_Fullscreen",
+      "en": "Fullscreen"
+    },
+    {
+      "row": 201,
+      "key": "Key_DeleteGameConfirm",
+      "en": "Do you want to delete this game?"
+    },
+    {
+      "row": 202,
+      "key": "Key_ForfeitedOpponents",
+      "en": "All opponents have forfeited. You win!"
+    },
+    {
+      "row": 203,
+      "key": "Key_ForfeitPrompt",
+      "en": "Are you sure you want to forfeit this game?"
+    },
+    {
+      "row": 204,
+      "key": "Key_FailConnect",
+      "en": "Unable to connect to the server"
+    },
+    {
+      "row": 205,
+      "key": "Key_GameCompleted",
+      "en": "Game Completed"
+    },
+    {
+      "row": 206,
+      "key": "Key_AccountCreateFailed",
+      "en": "Account creation failed."
+    },
+    {
+      "row": 207,
+      "key": "Key_AccountError",
+      "en": "Account error."
+    },
+    {
+      "row": 208,
+      "key": "Key_AccountNotActivatedEmail",
+      "en": "Account is not yet activated. Please follow the account activation instructions that were sent to your e-mail."
+    },
+    {
+      "row": 209,
+      "key": "Key_EnterValidEmail",
+      "en": "Please enter a valid E-mail address"
+    },
+    {
+      "row": 210,
+      "key": "Key_EnterUsername",
+      "en": "Please enter a Username"
+    },
+    {
+      "row": 211,
+      "key": "Key_PasswordNoMatch",
+      "en": "The Password and Confirmation fields do not match"
+    },
+    {
+      "row": 212,
+      "key": "Key_EnterText",
+      "en": "Enter text..."
+    },
+    {
+      "row": 213,
+      "key": "Key_Sunday",
+      "en": "Sunday"
+    },
+    {
+      "row": 214,
+      "key": "Key_Sun",
+      "en": "Sun"
+    },
+    {
+      "row": 215,
+      "key": "Key_Monday",
+      "en": "Monday"
+    },
+    {
+      "row": 216,
+      "key": "Key_Mon",
+      "en": "Mon"
+    },
+    {
+      "row": 217,
+      "key": "Key_Tuesday",
+      "en": "Tuesday"
+    },
+    {
+      "row": 218,
+      "key": "Key_Tues",
+      "en": "Tues"
+    },
+    {
+      "row": 219,
+      "key": "Key_Wednesday",
+      "en": "Wednesday"
+    },
+    {
+      "row": 220,
+      "key": "Key_Wed",
+      "en": "Wed"
+    },
+    {
+      "row": 221,
+      "key": "Key_Thursday",
+      "en": "Thursday"
+    },
+    {
+      "row": 222,
+      "key": "Key_Thurs",
+      "en": "Thurs"
+    },
+    {
+      "row": 223,
+      "key": "Key_Friday",
+      "en": "Friday"
+    },
+    {
+      "row": 224,
+      "key": "Key_Fri",
+      "en": "Fri"
+    },
+    {
+      "row": 225,
+      "key": "Key_Saturday",
+      "en": "Saturday"
+    },
+    {
+      "row": 226,
+      "key": "Key_Sat",
+      "en": "Sat"
+    },
+    {
+      "row": 227,
+      "key": "Key_LoadingCards",
+      "en": "Loading Cards"
+    },
+    {
+      "row": 228,
+      "key": "Key_LoadingGame",
+      "en": "Loading"
+    },
+    {
+      "row": 229,
+      "key": "Key_EnterEmail",
+      "en": "Enter Email"
+    },
+    {
+      "row": 230,
+      "key": "Key_EnterPassword",
+      "en": "Enter Password"
+    },
+    {
+      "row": 231,
+      "key": "Key_EnterUsernameAlt",
+      "en": "Enter Username"
+    },
+    {
+      "row": 232,
+      "key": "Key_Notifications",
+      "en": "Notifications"
+    },
+    {
+      "row": 233,
+      "key": "Key_EmailNotifications",
+      "en": "Email Notifications"
+    },
+    {
+      "row": 234,
+      "key": "Key_iOSNotifications",
+      "en": "iOS Notifications"
+    },
+    {
+      "row": 235,
+      "key": "Key_AndroidNotifications",
+      "en": "Android Notifications"
+    },
+    {
+      "row": 236,
+      "key": "Key_Theme",
+      "en": "Theme Selection"
+    },
+    {
+      "row": 237,
+      "key": "Key_InApp",
+      "en": "In-App Store"
+    },
+    {
+      "row": 238,
+      "key": "Key_ViewCards",
+      "en": "View Cards"
+    },
+    {
+      "row": 239,
+      "key": "Key_Purchase",
+      "en": "Purchase"
+    },
+    {
+      "row": 240,
+      "key": "Key_Close",
+      "en": "Close"
+    },
+    {
+      "row": 241,
+      "key": "Key_Play",
+      "en": "Play"
+    },
+    {
+      "row": 242,
+      "key": "IAP_ComingSoon",
+      "en": "Coming Soon"
+    },
+    {
+      "row": 243,
+      "key": "IAP_Owned",
+      "en": "Owned"
+    },
+    {
+      "row": 244,
+      "key": "IAP_NowAvailable",
+      "en": "Now Available"
+    },
+    {
+      "row": 245,
+      "key": "Key_OnlineLobby",
+      "en": "Online Lobby"
+    },
+    {
+      "row": 246,
+      "key": "Key_OfflineLobby",
+      "en": "Offline Lobby"
+    },
+    {
+      "row": 247,
+      "key": "Key_ReturnToLobby",
+      "en": "Return to Lobby"
+    },
+    {
+      "row": 248,
+      "key": "Key_LogOut",
+      "en": "Log Out"
+    },
+    {
+      "row": 249,
+      "key": "Key_ConfirmJoin",
+      "en": "Are you sure you want to join this game?"
+    },
+    {
+      "row": 250,
+      "key": "Key_ConfirmExit",
+      "en": "Are you sure you want to exit the game?"
+    },
+    {
+      "row": 251,
+      "key": "Key_WithdrawConfirm",
+      "en": "Are you sure you want to withdraw from this game?"
+    },
+    {
+      "row": 252,
+      "key": "Key_QuickMatchDelete",
+      "en": "Are you sure you want to delete this Quick Match request?"
+    },
+    {
+      "row": 253,
+      "key": "Key_KeyBindings",
+      "en": "Key Bindings"
+    },
+    {
+      "row": 254,
+      "key": "Key_PressNewKey",
+      "en": "Press the new key for"
+    },
+    {
+      "row": 255,
+      "key": "Key_Announcements",
+      "en": "Announcements"
+    },
+    {
+      "row": 256,
+      "key": "Key_HelpEnabled",
+      "en": "Help Enabled"
+    },
+    {
+      "row": 257,
+      "key": "Key_AudioLevels",
+      "en": "Audio Levels"
+    },
+    {
+      "row": 258,
+      "key": "Key_None",
+      "en": "None"
+    },
+    {
+      "row": 259,
+      "key": "Key_AutoPlay",
+      "en": "Auto Play"
+    },
+    {
+      "row": 260,
+      "key": "Key_ConfirmationPause",
+      "en": "Confirmation Pause"
+    },
+    {
+      "row": 261,
+      "key": "Key_AmbientVolume",
+      "en": "Ambient Volume"
+    },
+    {
+      "row": 262,
+      "key": "Key_RestoreDefaults",
+      "en": "Restore Defaults"
+    },
+    {
+      "row": 263,
+      "key": "Key_GamePaused",
+      "en": "Game Paused"
+    },
+    {
+      "row": 264,
+      "key": "Key_GameChat",
+      "en": "Game Chat"
+    },
+    {
+      "row": 265,
+      "key": "Key_GameLog",
+      "en": "Game Log"
+    },
+    {
+      "row": 266,
+      "key": "Key_Continue",
+      "en": "Continue"
+    },
+    {
+      "row": 267,
+      "key": "Key_TapContinue",
+      "en": "Tap to Continue"
+    },
+    {
+      "row": 268,
+      "key": "Key_QuickMatch",
+      "en": "Quick Match"
+    },
+    {
+      "row": 269,
+      "key": "Key_Friends",
+      "en": "Friends"
+    },
+    {
+      "row": 270,
+      "key": "Key_AddProfile",
+      "en": "Add Profile"
+    },
+    {
+      "row": 271,
+      "key": "Key_RemoveProfile",
+      "en": "Remove Profile"
+    },
+    {
+      "row": 272,
+      "key": "Key_RenameProfile",
+      "en": "Rename Profile"
+    },
+    {
+      "row": 273,
+      "key": "Key_RemoveFriend",
+      "en": "Remove Friend"
+    },
+    {
+      "row": 274,
+      "key": "Key_Profiles",
+      "en": "Profiles"
+    },
+    {
+      "row": 275,
+      "key": "Key_DragProfiles",
+      "en": "Drag a profile tab to the player slot"
+    },
+    {
+      "row": 276,
+      "key": "Key_ConfirmProfileDelete",
+      "en": "Are you sure you want to delete this profile?"
+    },
+    {
+      "row": 277,
+      "key": "Key_DuplicateProfile",
+      "en": "A profile with this name already exists"
+    },
+    {
+      "row": 278,
+      "key": "Key_Human",
+      "en": "Human"
+    },
+    {
+      "row": 279,
+      "key": "Key_AIOpponent",
+      "en": "AI Opponent"
+    },
+    {
+      "row": 280,
+      "key": "Key_AIDifficulty",
+      "en": "AI Difficulty"
+    },
+    {
+      "row": 281,
+      "key": "Key_GameType",
+      "en": "Game Type"
+    },
+    {
+      "row": 282,
+      "key": "Key_Done",
+      "en": "Done"
+    },
+    {
+      "row": 283,
+      "key": "Key_OpponentStats",
+      "en": "Opponent Stats"
+    },
+    {
+      "row": 284,
+      "key": "Key_Rating",
+      "en": "Rating"
+    },
+    {
+      "row": 285,
+      "key": "Key_RatingDifference",
+      "en": "Rating Difference"
+    },
+    {
+      "row": 286,
+      "key": "Key_RatingValue",
+      "en": "Rating Value"
+    },
+    {
+      "row": 287,
+      "key": "Key_PlayerRatings",
+      "en": "Player Ratings"
+    },
+    {
+      "row": 288,
+      "key": "Key_PreviousRating",
+      "en": "Previous Rating"
+    },
+    {
+      "row": 289,
+      "key": "Key_Change",
+      "en": "Change"
+    },
+    {
+      "row": 290,
+      "key": "Key_NewRating",
+      "en": "New Rating"
+    },
+    {
+      "row": 291,
+      "key": "KeyHeadToHead",
+      "en": "Head to Head"
+    },
+    {
+      "row": 292,
+      "key": "Key_GameTimer",
+      "en": "Game Timer"
+    },
+    {
+      "row": 293,
+      "key": "Key_ExpireTimer",
+      "en": "Expire Timer"
+    },
+    {
+      "row": 294,
+      "key": "Key_RequestMatch",
+      "en": "Request Match"
+    },
+    {
+      "row": 295,
+      "key": "Key_ViewOpponentProfile",
+      "en": "Tap opponent  to view their profile"
+    },
+    {
+      "row": 296,
+      "key": "Key_ViewingPlayer",
+      "en": "Viewing Player"
+    },
+    {
+      "row": 297,
+      "key": "Key_NoCardSelected",
+      "en": "No Card Selected"
+    },
+    {
+      "row": 298,
+      "key": "Key_GameStats",
+      "en": "Game Stats"
+    },
+    {
+      "row": 299,
+      "key": "Key_WinsVS",
+      "en": "Wins Versus"
+    },
+    {
+      "row": 300,
+      "key": "Key_LossesVS",
+      "en": "Losses Versus"
+    },
+    {
+      "row": 301,
+      "key": "Key_NoPlayerData",
+      "en": "No Player Data"
+    },
+    {
+      "row": 302,
+      "key": "Credits_Programming",
+      "en": "Programming"
+    },
+    {
+      "row": 303,
+      "key": "Credits_ArtDirector",
+      "en": "Art Director"
+    },
+    {
+      "row": 304,
+      "key": "Credits_Production",
+      "en": "Production"
+    },
+    {
+      "row": 305,
+      "key": "Credits_MusicSound",
+      "en": "Music and Sound"
+    },
+    {
+      "row": 306,
+      "key": "Credits_MarketingCommunity",
+      "en": "Marketing and Community"
+    },
+    {
+      "row": 307,
+      "key": "Credits_QA",
+      "en": "QA Analysts "
+    },
+    {
+      "row": 308,
+      "key": "Key_Warning",
+      "en": "Warning"
+    },
+    {
+      "row": 309,
+      "key": "Key_DontShowWarning",
+      "en": "Don't show this warning again"
+    },
+    {
+      "row": 310,
+      "key": "Key_Resume",
+      "en": "Resume"
+    },
+    {
+      "row": 311,
+      "key": "Key_QuickMatchProcess",
+      "en": "Creating a Quick Match game..."
+    },
+    {
+      "row": 312,
+      "key": "Key_Error",
+      "en": "Error"
+    },
+    {
+      "row": 313,
+      "key": "Key_QuickMatchFailure",
+      "en": "Creating this Quick Match failed."
+    },
+    {
+      "row": 314,
+      "key": "Key_QuickMatchTooMany",
+      "en": "Creating this Quick Match failed.<br>Too many games open."
+    },
+    {
+      "row": 315,
+      "key": "Key_AnyRating",
+      "en": "Any Rating"
+    },
+    {
+      "row": 316,
+      "key": "Key_ResumeGame",
+      "en": "Resume Game"
+    },
+    {
+      "row": 317,
+      "key": "Key_QuickMatchRequest",
+      "en": "Quick Match Request"
+    },
+    {
+      "row": 318,
+      "key": "Key_DeleteMatchmaking",
+      "en": "Delete Matchmaking"
+    },
+    {
+      "row": 319,
+      "key": "Key_Turn",
+      "en": "Turn"
+    },
+    {
+      "row": 320,
+      "key": "Key_Setup",
+      "en": "Setup"
+    },
+    {
+      "row": 321,
+      "key": "Key_PleaseWait",
+      "en": "Please wait..."
+    },
+    {
+      "row": 322,
+      "key": "Key_AcceptInvite",
+      "en": "Accept Invite"
+    },
+    {
+      "row": 323,
+      "key": "Key_TimerAny",
+      "en": "Timer: Any"
+    }
+  ]
+}
