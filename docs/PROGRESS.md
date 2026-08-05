@@ -12,6 +12,7 @@
 - 다음 실행: Phase 1 핸드오프를 읽고 `Common_Strings`, `TS_Cards`의 영문 문자열 추출
 - 현재 차단 이슈: 없음
 - 주요 후속 이슈: 기존 SDF 폰트의 CJK 글리프 부재는 Phase 3에서 해결
+- 보류 이슈: 처리 보류한 경고·정보 이슈는 [`docs/ISSUES.md`](ISSUES.md) 참조
 
 ### 작업 재개 순서
 
