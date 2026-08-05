@@ -26,13 +26,6 @@
 
 ## 🔵 Info
 
-### #8 `.NET 8` vs `.NET 10` 문서 정합성
-- **위치**: `docs/PHASE-0-PLAN.md` Step 2 ("`.NET 8`"), Phase 0 완료 문서 (`.NET 10.0.302`), `asset-tool.csproj` (`net8.0`)
-- **문제**: 계획 문서는 .NET 8, 실제 설치는 10.0.302, csproj 타겟은 net8.0. 현재 `DOTNET_ROLL_FORWARD=LatestMajor`로 구동 중으로 보이나, 문서에 정합성·의존성 명시 부재.
-- **제안 수정**: `PHASE-0-PLAN.md`의 ".NET 8"을 실제 설치한 버전 기준으로 업데이트, 또는 roll-forward 정책을 setup 스크립트 설명에 명시.
-- **상태**: ⬜ 보류
-- **관련 Phase**: 언제든 (문서 정합성)
-
 ### #9 `asset-tool.csproj` HintPath 의존으로 clone 후 빌드 불가
 - **위치**: `tools/asset-tool/asset-tool.csproj` (`<HintPath>../uabea/AssetsTools.NET.dll</HintPath>`)
 - **문제**: `tools/uabea/`는 gitignored이므로, 신규 clone 환경에서 `dotnet build` 시 DLL 부재로 실패. 소스만 가지고는 재현 불가.

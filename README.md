@@ -156,7 +156,7 @@ Phase는 검증 실패나 미해결 이슈를 기록하기 전에는 다음 단�
 ├── docs/
 │   ├── PLAN.md               # 전체 계획
 │   ├── PROGRESS.md           # Phase별 진행·검증·핸드오프
-│   ├── PHASE-0-PLAN.md       # Phase 0 실행 계획
+│   ├── phases/               # Phase별 실행 기록·검증·핸드오프
 │   └── CLEANUP.md            # 설치 도구와 산출물 정리 방법
 ├── fonts/                    # 폰트 및 SDF 산출물
 ├── patched/                  # 최종 수정 파일
@@ -174,7 +174,7 @@ Phase는 검증 실패나 미해결 이슈를 기록하기 전에는 다음 단�
 
 - [전체 계획](docs/PLAN.md)
 - [현재 진행 상황](docs/PROGRESS.md)
-- [Phase 0 실행 계획](docs/PHASE-0-PLAN.md)
+- [Phase 0 실행 기록](docs/phases/phase-0-preparation.md)
 - [시스템 변경 및 정리 가이드](docs/CLEANUP.md)
 - [도구 안내](tools/README.md)
 

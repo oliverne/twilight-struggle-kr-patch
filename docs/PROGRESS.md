@@ -1,7 +1,7 @@
 # 진행 상황 (Progress)
 
 > 이 문서는 전체 진행 상태를 빠르게 파악하기 위한 인덱스다.
-> Phase별 검증 상세, 결정 사항, 산출물, 핸드오프의 원본은 [`docs/progress/`](progress/) 아래 문서에 기록한다.
+> Phase별 검증 상세, 결정 사항, 산출물, 핸드오프의 원본은 [`docs/phases/`](phases/) 아래 문서에 기록한다.
 > 상태 표기: ✅ 완료 · 🚧 진행 중 · ⬜ 대기 · ❌ 실패/보류
 
 ## 현재 상태
@@ -16,9 +16,9 @@
 
 ### 작업 재개 순서
 
-1. [Phase 1 상세 및 Phase 2 핸드오프](progress/phase-1-source-validation.md#다음-phase로-핸드오프)
+1. [Phase 1 상세 및 Phase 2 핸드오프](phases/phase-1-source-validation.md#다음-phase로-핸드오프)
 2. `scripts/restore-original.sh`로 테스트 상태 복원 여부 확인
-3. [Phase 2 상세 계획](progress/phase-2-translation-source.md)
+3. [Phase 2 상세 계획](phases/phase-2-translation-source.md)
 
 ## 핵심 확정 사항
 
@@ -32,17 +32,17 @@
 
 | Phase | 상태 | 요약 | 상세 기록 |
 |---|---|---|---|
-| Phase 0 — 준비 | ✅ | 도구 설치, 원본 백업, 기존 패치 확보 완료 | [상세](progress/phase-0-preparation.md) |
-| Phase 1 — 텍스트 위치 검증 | ✅ | `resources.assets`가 실제 텍스트 소스임을 확인 | [상세](progress/phase-1-source-validation.md) |
-| Phase 2 — 문자열 추출 & 번역 소스 구축 | ⬜ | 영문 추출 및 기존 번역 매칭 대기 | [상세](progress/phase-2-translation-source.md) |
-| Phase 3 — 한글 SDF 폰트 아틀라스 생성 | ⬜ | 사용 글자 기반 CJK SDF 생성 대기 | [상세](progress/phase-3-sdf-font.md) |
-| Phase 4 — 텍스트 주입 & 레이아웃 조정 | ⬜ | 번역 주입 및 UI 검증 대기 | [상세](progress/phase-4-injection-layout.md) |
-| Phase 5 — 플랫폼 적용 & 테스트 | ⬜ | macOS·Windows·멀티플레이 검증 대기 | [상세](progress/phase-5-platform-test.md) |
-| Phase 6 — 배포 | ⬜ | 사용자 안내 및 배포 대기 | [상세](progress/phase-6-release.md) |
+| Phase 0 — 준비 | ✅ | 도구 설치, 원본 백업, 기존 패치 확보 완료 | [상세](phases/phase-0-preparation.md) |
+| Phase 1 — 텍스트 위치 검증 | ✅ | `resources.assets`가 실제 텍스트 소스임을 확인 | [상세](phases/phase-1-source-validation.md) |
+| Phase 2 — 문자열 추출 & 번역 소스 구축 | ⬜ | 영문 추출 및 기존 번역 매칭 대기 | [상세](phases/phase-2-translation-source.md) |
+| Phase 3 — 한글 SDF 폰트 아틀라스 생성 | ⬜ | 사용 글자 기반 CJK SDF 생성 대기 | [상세](phases/phase-3-sdf-font.md) |
+| Phase 4 — 텍스트 주입 & 레이아웃 조정 | ⬜ | 번역 주입 및 UI 검증 대기 | [상세](phases/phase-4-injection-layout.md) |
+| Phase 5 — 플랫폼 적용 & 테스트 | ⬜ | macOS·Windows·멀티플레이 검증 대기 | [상세](phases/phase-5-platform-test.md) |
+| Phase 6 — 배포 | ⬜ | 사용자 안내 및 배포 대기 | [상세](phases/phase-6-release.md) |
 
 ## 현재 핸드오프 요약
 
-상세 내용의 기준 문서는 [Phase 1 문서의 핸드오프](progress/phase-1-source-validation.md#다음-phase로-핸드오프)다.
+상세 내용의 기준 문서는 [Phase 1 문서의 핸드오프](phases/phase-1-source-validation.md#다음-phase로-핸드오프)다.
 
 - 수신 Phase: Phase 2
 - 우선 대상: `Common_Strings`, `TS_Cards`
