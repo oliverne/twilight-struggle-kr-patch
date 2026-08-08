@@ -4,50 +4,76 @@
 
 ## 사전 준비물
 
-- **Windows PC** (또는 Parallels/VM)
-- **macOS 프로젝트 폴더** (`twilight-struggle-kr-patch/`) — 외장 드라이브나 네트워크 공유, 또는 파일 복사
-- 생성 완료된 SDF 파일:
+- **Windows PC** (또는 Parallels/VM) + **Windows용 Twilight Struggle 설치** (Steam)
+- macOS 프로젝트 폴더의 생성 완료된 SDF 파일:
   - `fonts/NotoSerifKR SDF.json` + `NotoSerifKR SDF Atlas.png` + `NotoSerifKR SDF Material.json`
   - `fonts/BlackHanSans-Regular SDF.json` + `BlackHanSans-Regular SDF Atlas.png` + `BlackHanSans-Regular SDF Material.json`
   - `fonts/chars.txt`
+
+### 파일 플랫폼 호환성
+
+| 파일 | 플랫폼 호환 | 설명 |
+|---|---|---|
+| `resources.assets` | ✅ **공용** | Unity 에셋은 플랫폼 무관 동일 바이너리. macOS→Windows 복사 가능 |
+| `sharedassets*.assets` | ✅ **공용** | 마찬가지로 플랫폼 무관 |
+| `global-metadata.dat` | ✅ **공용** | IL2CPP 메타데이터, 플랫폼 무관 |
+| `GameAssembly.dll` | ❌ **Windows 전용** | IL2CPP 바이너리. macOS의 Mach-O와 다름. **Windows Steam 설치본 필요** |
+
+> **핵심**: `resources.assets`는 그대로 써도 된다. 하지만 `Unity_Font_Replacer`가 Il2CppDumper를 실행할 때 `GameAssembly.dll`(Windows 바이너리)를 읽어야 하므로, **Windows Steam에 Twilight Struggle이 설치되어 있어야** 한다.
 
 ---
 
 ## Step 1: Windows로 파일 이동
 
-### 1-1. 게임 원본 파일 준비 (macOS)
+### 1-1. macOS에서 Windows로 보낼 파일 준비
 
 ```bash
-# Steam 게임 폴더에서 Data 디렉토리 전체를 Windows로 복사할 준비
-GAME_DATA="/Users/oliverne/Library/Application Support/Steam/steamapps/common/Twilight Struggle/TwilightStruggle.app/Contents/Resources/Data"
-
-# 임시 작업 폴더에 복사 (macOS)
-mkdir -p ~/ts-windows-transfer/TwilightStruggle_Data
-cp -R "$GAME_DATA"/* ~/ts-windows-transfer/TwilightStruggle_Data/
-# ※ resources.assets가 14MB, 전체 약 67MB. 외장 드라이브나 SMB/AirDrop으로 Windows에 전달
-```
-
-### 1-2. SDF 폰트 파일 + 도구 복사
-
-```bash
-# 프로젝트 폴더에서 Windows로 전달할 파일들
 cd ~/Projects/twilight-struggle-kr-patch
 
-# SDF 폰트 결과물
+# 임시 전송 폴더 (macOS)
+mkdir -p ~/ts-windows-transfer
+
+# SDF 폰트 결과물 → Windows로
 cp fonts/NotoSerifKR\ SDF* ~/ts-windows-transfer/
 cp fonts/BlackHanSans-Regular\ SDF* ~/ts-windows-transfer/
 cp fonts/chars.txt ~/ts-windows-transfer/
 
-# Unity_Font_Replacer 도구 (이미 다운로드 완료)
-cp -R tools/unity-font-replacer/src/*.py ~/ts-windows-transfer/   # Python 스크립트
-# 또는 미리 빌드된 exe가 있는 tools/unity-font-replacer/ 폴더 그대로
+# Unity_Font_Replacer 도구 (exe 포함 zip) → Windows로
 cp tools/unity-font-replacer/Unity_Font_Replacer_v1.2.8.zip ~/ts-windows-transfer/
 ```
 
-### 1-3. Windows에서 압축 해제
+### 1-2. Windows에서 압축 해제 및 게임 파일 경로 확인
 
 ```
-Windows 탐색기에서 ts-windows-transfer 폴더를 열고:
+Windows 탐색기에서 ts-windows-transfer 폴더 열기:
+  Unity_Font_Replacer_v1.2.8.zip → 압축 해제 → Unity_Font_Replacer 폴더 생성
+
+Windows Steam Twilight Struggle 설치 경로 확인:
+  기본값: C:\Program Files (x86)\Steam\steamapps\common\Twilight Struggle\
+  └── TwilightStruggle_Data\
+        ├── resources.assets       ← 이 파일을 수정할 것
+        ├── il2cpp_data\Metadata\global-metadata.dat
+        └── ...
+  └── GameAssembly.dll             ← Il2CppDumper가 필요로 함
+```
+
+### 1-3. 작업 폴더 구성
+
+```bat
+cd C:\Users\<사용자명>\Downloads\ts-windows-transfer
+
+:: SDF 파일들을 Unity_Font_Replacer\ASSETS\로 복사
+copy NotoSerifKR*.json Unity_Font_Replacer\ASSETS\
+copy NotoSerifKR*.png Unity_Font_Replacer\ASSETS\
+copy BlackHanSans-Regular*.json Unity_Font_Replacer\ASSETS\
+copy BlackHanSans-Regular*.png Unity_Font_Replacer\ASSETS\
+copy chars.txt Unity_Font_Replacer\
+
+:: 게임 원본 백업 (Windows Steam 설치본에서)
+mkdir BACKUP
+copy "C:\Program Files (x86)\Steam\steamapps\common\Twilight Struggle\TwilightStruggle_Data\resources.assets" BACKUP\
+copy "C:\Program Files (x86)\Steam\steamapps\common\Twilight Struggle\TwilightStruggle_Data\sharedassets*.assets" BACKUP\
+```
   Unity_Font_Replacer_v1.2.8.zip → 압축 해제 → Unity_Font_Replacer 폴더 생성됨
 ```
 
@@ -61,44 +87,25 @@ Windows 탐색기에서 ts-windows-transfer 폴더를 열고:
 Win+R → cmd 입력 → Enter
 ```
 
-### 2-2. SDF 폰트를 도구의 ASSETS 폴더로 복사
+### 2-2. 게임 폰트 parse (기존 폰트 목록 확인)
 
 ```bat
 cd C:\Users\<사용자명>\Downloads\ts-windows-transfer\Unity_Font_Replacer
 
-:: SDF 파일들을 ASSETS 폴더로 복사
-copy ..\NotoSerifKR*.json ASSETS\
-copy ..\NotoSerifKR*.png ASSETS\
-copy ..\BlackHanSans-Regular*.json ASSETS\
-copy ..\BlackHanSans-Regular*.png ASSETS\
-copy ..\chars.txt .
+:: 게임 경로를 Windows Steam 설치본으로 지정
+UnityFontReplacer_KO.exe parse --gamepath "C:\Program Files (x86)\Steam\steamapps\common\Twilight Struggle"
 ```
 
-### 2-3. 게임 폰트 parse (기존 폰트 목록 확인)
+→ `Twilight Struggle.json` 파일 생성됨. 열어서 폰트 목록 확인 가능.
 
-```bat
-UnityFontReplacer_KO.exe parse --gamepath "C:\Users\<사용자명>\Downloads\ts-windows-transfer"
-```
-
-→ `ts-windows-transfer.json` 파일 생성됨. 열어서 폰트 목록 확인 가능.
-
-### 2-4. 원본 백업
-
-```bat
-:: 게임 파일을 먼저 다른 곳에 백업
-mkdir C:\Users\<사용자명>\Downloads\ts-windows-transfer\BACKUP
-copy TwilightStruggle_Data\resources.assets BACKUP\
-copy TwilightStruggle_Data\sharedassets*.assets BACKUP\
-```
-
-### 2-5. oneshot으로 전체 폰트 교체
+### 2-3. oneshot으로 전체 폰트 교체
 
 > **주의**: `--oneshot`은 게임의 모든 TTF + SDF 폰트를 한 번에 지정한 TTF로 교체한다.
 
 ```bat
 :: NotoSerifKR로 모든 폰트 교체 (본문+UI)
 UnityFontReplacer_KO.exe oneshot ^
-  --gamepath "C:\Users\<사용자명>\Downloads\ts-windows-transfer" ^
+  --gamepath "C:\Program Files (x86)\Steam\steamapps\common\Twilight Struggle" ^
   --font "..\NotoSerifKR.ttf" ^
   --charset chars.txt
 ```
@@ -112,52 +119,56 @@ UnityFontReplacer_KO.exe oneshot ^
 :: 1) parse로 생성된 JSON에서 각 폰트의 Replace_to를 "NotoSerifKR SDF"로 수정
 :: 2) list 명령으로 적용
 
-notepad ts-windows-transfer.json
+notepad "Twilight Struggle.json"
 :: 각 폰트 항목의 "Replace_to" 필드를 "NotoSerifKR SDF.json" 으로 수정
 
 UnityFontReplacer_KO.exe list ^
-  --gamepath "C:\Users\<사용자명>\Downloads\ts-windows-transfer" ^
-  --file ts-windows-transfer.json
+  --gamepath "C:\Program Files (x86)\Steam\steamapps\common\Twilight Struggle" ^
+  --file "Twilight Struggle.json"
 ```
 
 ---
 
 ## Step 3: macOS로 결과물 복사
 
-### 3-1. 수정된 파일만 복사
+### 3-1. Windows에서 수정된 파일만 복사
 
-```bash
-# Windows → macOS (AirDrop, SMB, 또는 외장 드라이브)
-# 수정된 핵심 파일만 복사
-#   TwilightStruggle_Data/resources.assets   ← 가장 중요
-#   TwilightStruggle_Data/sharedassets*.assets
+```
+Windows Steam 폴더에서 수정된 파일을 macOS로 전송 (AirDrop, SMB, USB 등):
+
+  C:\Program Files (x86)\Steam\steamapps\common\Twilight Struggle\TwilightStruggle_Data\
+  ├── resources.assets      ← 폰트 아틀라스 교체됨 (14MB)
+  └── sharedassets*.assets  ← TTF 폰트 에셋 교체됨
 ```
 
-### 3-2. macOS에 적용
+### 3-2. macOS 프로젝트에 반영
 
 ```bash
 cd ~/Projects/twilight-struggle-kr-patch
 
-# 원본으로 복원 (혹시 이전 테스트 잔재가 있다면)
-scripts/restore-original.sh
-
 # 수정된 파일을 patched/로 복사
-cp ~/Downloads/ts-windows-transfer/TwilightStruggle_Data/resources.assets patched/
-cp ~/Downloads/ts-windows-transfer/TwilightStruggle_Data/sharedassets*.assets patched/ 2>/dev/null
+cp ~/Downloads/resources.assets patched/
+cp ~/Downloads/sharedassets*.assets patched/ 2>/dev/null
 
-# macOS 코드사인
-codesign --force --sign - "patched/TwilightStruggle.app" 2>/dev/null || \
-  echo "※ macOS .app 번들이 아니라면 개별 dylib/dll만 서명"
+# Steam 무결성 검사 대비: 원본 해시 기록
+shasum -a 256 patched/resources.assets > patched/hashes.txt
 ```
 
-### 3-3. 게임에 적용
+### 3-3. 게임에 적용 및 코드사인
 
 ```bash
-# install 스크립트로 patched → Steam 게임 폴더에 복사 (Phase 4에서 구현)
-# 또는 수동으로:
-GAME_DATA="/Users/oliverne/Library/Application Support/Steam/steamapps/common/Twilight Struggle/TwilightStruggle.app/Contents/Resources/Data"
+GAME_DATA="$HOME/Library/Application Support/Steam/steamapps/common/Twilight Struggle/TwilightStruggle.app/Contents/Resources/Data"
+
+# 원본 백업 (최초 1회)
+cp "$GAME_DATA/resources.assets" "$GAME_DATA/resources.assets.bak" 2>/dev/null
+
+# 수정본 복사
 cp patched/resources.assets "$GAME_DATA/"
-codesign --force --sign - "$GAME_DATA/../.."
+cp patched/sharedassets*.assets "$GAME_DATA/" 2>/dev/null
+
+# macOS 코드사인 (필수!)
+APP="$HOME/Library/Application Support/Steam/steamapps/common/Twilight Struggle/TwilightStruggle.app"
+codesign --force --sign - "$APP"
 ```
 
 ---
