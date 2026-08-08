@@ -4,11 +4,15 @@
 전략:
   - Common_Strings: RU(10열) → KO로 교체 (헤더 "RU"→"KO", 322행→한글)
   - TS_Cards: row-key 기반 col 2(EN) → 한국어 교체
+  - TS_Ingame: key 기반 EN→KO (런타임 TSV에서 117/157행 커버)
+  - Common_Ingame: key 기반 EN→KO (수동 번역 포함, 22행)
+  - TS_Strings: key 기반 EN→KO (런타임 TSV에서 38/50행 커버)
+  - TS_RulesTutorial: 건너뜀 (File/String 참조만 있고 표시 텍스트 아님)
   - AvailableCultures: ru → ko (한국어 선택 가능하게)
   - EN 열(2열)은 절대 수정하지 않음
 
 사용법:
-  python scripts/inject_translations.py
+  python scripts/inject_translations.py [--target original|patched]
 
 출력:
   patched/resources.assets (수정된 에셋)
@@ -54,6 +58,39 @@ def build_key_to_ko(translations: dict) -> dict:
         if k and ko and k != "Key":
             mapping[k] = ko
     return mapping
+
+
+def build_rt_index() -> dict:
+    """런타임 TSV에서 EN→KO 인덱스 구축"""
+    base = Path(__file__).resolve().parent.parent
+    rt = json.loads((base / "translation/runtime-20260315.json").read_text("utf-8"))
+    return {e["original"]: e["translation_ko"] for e in rt["entries"]}
+
+
+def inject_simple_table(text: str, key_to_ko: dict, rt_index: dict, manual: dict) -> tuple[str, int]:
+    """TS_Ingame, Common_Ingame, TS_Strings: key → EN 교체
+    
+    우선순위: key_to_ko > rt_index > manual
+    """
+    date_end = text.index("\n") + 1
+    date_line = text[:date_end]
+    data = json.loads(text[date_end:].strip())
+    cells = data.get("0", {})
+    changed = 0
+    
+    for cell_key, val in list(cells.items()):
+        if ":" not in cell_key:
+            continue
+        _, col = cell_key.split(":", 1)
+        if col != "2" or val in ("null", "", "EN", "ENTER PATH"):
+            continue
+        
+        ko = key_to_ko.get(val) or rt_index.get(val) or manual.get(val)
+        if ko:
+            cells[cell_key] = ko
+            changed += 1
+    
+    return date_line + json.dumps(data, ensure_ascii=False, separators=(",", ":")), changed
 
 
 def inject_common_strings(text: str, key_to_ko: dict) -> tuple[str, int]:
@@ -136,11 +173,39 @@ def main():
     # 번역 소스 로드
     strings = json.loads((base / "translation/strings.json").read_text("utf-8"))
     cards = json.loads((base / "translation/cards.json").read_text("utf-8"))
-    
     key_to_ko_cs = build_key_to_ko(strings)
     key_to_ko_cards = build_key_to_ko(cards)
+    rt_index = build_rt_index()
+    
+    # Common_Ingame 수동 번역 (런타임 TSV 커버 불가)
+    common_ingame_manual = {
+        "Are you sure you want to end your turn?": "턴을 종료하시겠습니까?",
+        "Your timer has expired! <br>You have forfeited this game.": "시간이 만료되었습니다!<br>게임에서 기권 처리되었습니다.",
+        "All opponents have forfeited.  You win!": "모든 상대가 기권했습니다. 승리!",
+        "Loading... %d%%": "로딩 중... %d%%",
+        "Play": "사용",
+        "Buy": "구매",
+        "Copy": "복사",
+        "Delete": "삭제",
+        "Reveal": "공개",
+        "Discard": "버리기",
+        "Target": "대상",
+        "Select": "선택",
+        "Defend": "방어",
+        "Use": "사용",
+        "Give": "주기",
+        "You May End Your Turn": "턴을 종료할 수 있습니다",
+        "You Must End Your Turn": "턴을 종료해야 합니다",
+        "OK": "확인",
+        "Undo": "실행 취소",
+        "Dismiss": "닫기",
+        "Commit": "확정",
+        "Not a valid target": "유효한 대상이 아닙니다",
+    }
+    
     print(f"Common_Strings keys: {len(key_to_ko_cs)}")
     print(f"TS_Cards keys: {len(key_to_ko_cards)}")
+    print(f"Runtime TSV entries: {len(rt_index)}")
     
     # 원본 로드
     src_path = base / "original/resources.assets"
@@ -164,6 +229,21 @@ def main():
             new_text, changed = inject_tscards(text, key_to_ko_cards)
             print(f"  TS_Cards: {changed}행 (EN→KO)")
             results["TS_Cards"] = changed
+        
+        elif name == "TS_Ingame":
+            new_text, changed = inject_simple_table(text, {}, rt_index, {})
+            print(f"  TS_Ingame: {changed}행 (EN→KO)")
+            results["TS_Ingame"] = changed
+        
+        elif name == "Common_Ingame":
+            new_text, changed = inject_simple_table(text, {}, rt_index, common_ingame_manual)
+            print(f"  Common_Ingame: {changed}행 (EN→KO)")
+            results["Common_Ingame"] = changed
+        
+        elif name == "TS_Strings":
+            new_text, changed = inject_simple_table(text, {}, rt_index, {})
+            print(f"  TS_Strings: {changed}행 (EN→KO)")
+            results["TS_Strings"] = changed
         
         elif name == "AvailableCultures":
             new_text = inject_available_cultures(text)
