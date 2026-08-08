@@ -28,7 +28,8 @@
 - UnityPy로 에셋을 수정한다. 항상 원본에서 한 번에 치환하고, UnityPy가 저장한 파일을 다시 입력으로 재저장하지 않는다.
 - 한글 입력과 인코딩은 정상이나 기존 SDF 폰트에 CJK 글리프가 없어 게임에서 `ㅁ`으로 표시된다.
 - **번역 주입 방식: EN 열은 보존하고 다른 언어 열을 한국어로 교체한다.** 원문(EN)을 덮어쓰지 않아 영문 폴백·검수가 가능하며, 게임 언어 선택기가 한국어를 인식하도록 교체 대상 열(또는 새 컬처)에 한글을 채운다. 교체할 구체적 열과 컬처 등록(`AvailableCultures`)은 Phase 4에서 검증 결정한다.
-- **번역 재사용 소스: 블루칩 v1.0.1 `resources.assets` 내 MonoBehaviour.** UnityPy `read()`는 IL2CPP로 실패하나 `get_raw_data()` + Unity string 표준 레이아웃 수동 파싱으로 432개 고유 한글 문자열 추출 가능. 원본 영문과 매칭해 `translation/` 구축. 우드킹 패치는 보조/검증용(입수 안 해도 진행 가능).
+- **번역 재사용 소스: 신규 런타임 패치 `runtime_exact.tsv` (2,253쌍).** 블루칩 v1.0.1의 MonoBehaviour 한글(432개)은 v1.0.1에 `Common_Strings`/`TS_Cards`가 없어 매칭 불가. 런타임 TSV + 수동 번역으로 666행 전체 커버.
+- **SDF 폰트 교체 도구: [Unity_Font_Replacer](https://github.com/snowyegret23/Unity_Font_Replacer) v1.2.8.** `make_sdf.py`로 TTF→SDF 생성, `unity_font_replacer_ko.py`로 게임 에셋 자동 교체. macOS 호환 Python 도구.
 
 ## Phase 요약
 
@@ -37,20 +38,20 @@
 | Phase 0 — 준비                         | ✅   | 도구 설치, 원본 백업, 기존 패치 확보 완료      | [상세](phases/phase-0-preparation.md)        |
 | Phase 1 — 텍스트 위치 검증             | ✅   | `resources.assets`가 실제 텍스트 소스임을 확인 | [상세](phases/phase-1-source-validation.md)  |
 | Phase 2 — 문자열 추출 & 번역 소스 구축 | ✅   | 666/666행 번역 완료. 런타임 TSV + 수동 번역     | [상세](phases/phase-2-translation-source.md) |
-| Phase 3 — 한글 SDF 폰트 아틀라스 생성  | ⬜   | 사용 글자 기반 CJK SDF 생성 대기               | [상세](phases/phase-3-sdf-font.md)           |
+| Phase 3 — 한글 SDF 폰트 아틀라스 생성  | ⬜   | Unity_Font_Replacer로 TTF→SDF→주입 자동화    | [상세](phases/phase-3-sdf-font.md)           |
 | Phase 4 — 텍스트 주입 & 레이아웃 조정  | ⬜   | 번역 주입 및 UI 검증 대기                      | [상세](phases/phase-4-injection-layout.md)   |
 | Phase 5 — 플랫폼 적용 & 테스트         | ⬜   | macOS·Windows·멀티플레이 검증 대기             | [상세](phases/phase-5-platform-test.md)      |
 | Phase 6 — 배포                         | ⬜   | 사용자 안내 및 배포 대기                       | [상세](phases/phase-6-release.md)            |
 
 ## 현재 핸드오프 요약
 
-Phase 3 착수 준비 완료. 상세는 [Phase 2 문서](phases/phase-2-translation-source.md#다음-phase로-핸드오프) 참조.
+Phase 3 착수 준비 완료. 상세는 [Phase 3 문서](phases/phase-3-sdf-font.md) 참조.
 
 - 수신 Phase: Phase 3
 - 선행 조건: `translation/strings.json` + `translation/cards.json` 666행 번역 완료
-- 우선 작업: 번역문에서 고유 한글 글자 추출 → SDF 폰트 아틀라스 생성
-- 사용 도구: Unity_Font_Replacer의 `make_sdf.py`
-- 주의: 4096² 아틀라스로 CJK 글리프 수용 가능한지 먼저 확인
+- 핵심 도구: [Unity_Font_Replacer](https://github.com/snowyegret23/Unity_Font_Replacer) v1.2.8
+- 우선 작업: 도구 다운로드 → 문자셋 추출 → TTF 준비 → `make_sdf.py`로 SDF 생성 → `unity_font_replacer_ko.py`로 주입
+- 주의: macOS에서는 교체 후 `codesign --force --sign -` 재서명 필요
 
 ## 로그
 
