@@ -26,3 +26,9 @@ fonts/**/*.png
 tools/dump/
 tools/dump-legacy-v1.0.1/
 tools/dump-legacy-v2.0.1/
+tools/unity-font-replacer/src/
+tools/unity-font-replacer/*.exe
+tools/unity-font-replacer/Il2CppDumper/
+tools/unity-font-replacer/KR_ASSETS/
+fonts/*.ttf
+*.zip

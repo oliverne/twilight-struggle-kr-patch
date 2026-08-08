@@ -6,11 +6,11 @@
 
 ## 현재 상태
 
-**다음 작업:** Phase 3 — 한글 SDF 폰트 아틀라스 생성 ⬜ 대기
+**다음 작업:** Phase 3 — 한글 SDF 폰트 아틀라스 생성 🚧 (macOS SDF 생성 완료, Windows 주입 대기)
 
 - 완료: Phase 0 — 준비, Phase 1 — 텍스트 위치 검증, Phase 2 — 문자열 추출 & 번역 소스 구축
-- 다음 실행: Phase 2 핸드오프를 읽고 사용 글자 추출 → SDF 폰트 아틀라스 생성
-- 현재 차단 이슈: 없음
+- 현재: `make_sdf.py`로 SDF 생성 완료 (2개 폰트, 4096²). `Unity_Font_Replacer_KO.exe`로 Windows에서 주입 필요 → [Runbook](runbooks/phase-3-windows-font-injection.md)
+- 현재 차단 이슈: Windows 머신 필요 (macOS 미지원)
 - 주요 후속 이슈: TS_Ingame 등 추가 TextAsset 사용 여부는 Phase 4에서 확인
 - 보류 이슈: 처리 보류한 경고·정보 이슈는 [`docs/ISSUES.md`](ISSUES.md) 참조
 
@@ -38,20 +38,20 @@
 | Phase 0 — 준비                         | ✅   | 도구 설치, 원본 백업, 기존 패치 확보 완료      | [상세](phases/phase-0-preparation.md)        |
 | Phase 1 — 텍스트 위치 검증             | ✅   | `resources.assets`가 실제 텍스트 소스임을 확인 | [상세](phases/phase-1-source-validation.md)  |
 | Phase 2 — 문자열 추출 & 번역 소스 구축 | ✅   | 666/666행 번역 완료. 런타임 TSV + 수동 번역     | [상세](phases/phase-2-translation-source.md) |
-| Phase 3 — 한글 SDF 폰트 아틀라스 생성  | ⬜   | Unity_Font_Replacer로 TTF→SDF→주입 자동화    | [상세](phases/phase-3-sdf-font.md)           |
+| Phase 3 — 한글 SDF 폰트 아틀라스 생성  | 🚧   | SDF 생성 완료, Windows 주입 대기          | [상세](phases/phase-3-sdf-font.md)           |
 | Phase 4 — 텍스트 주입 & 레이아웃 조정  | ⬜   | 번역 주입 및 UI 검증 대기                      | [상세](phases/phase-4-injection-layout.md)   |
 | Phase 5 — 플랫폼 적용 & 테스트         | ⬜   | macOS·Windows·멀티플레이 검증 대기             | [상세](phases/phase-5-platform-test.md)      |
 | Phase 6 — 배포                         | ⬜   | 사용자 안내 및 배포 대기                       | [상세](phases/phase-6-release.md)            |
 
 ## 현재 핸드오프 요약
 
-Phase 3 착수 준비 완료. 상세는 [Phase 3 문서](phases/phase-3-sdf-font.md) 참조.
+Phase 3 진행 중. SDF 생성까지 macOS에서 완료. 폰트 주입은 Windows에서 실행해야 함.
 
 - 수신 Phase: Phase 3
-- 선행 조건: `translation/strings.json` + `translation/cards.json` 666행 번역 완료
+- 완료: `make_sdf.py`로 SDF JSON + Atlas PNG 생성 (NotoSerifKR, BlackHanSans)
 - 핵심 도구: [Unity_Font_Replacer](https://github.com/snowyegret23/Unity_Font_Replacer) v1.2.8
-- 우선 작업: 도구 다운로드 → 문자셋 추출 → TTF 준비 → `make_sdf.py`로 SDF 생성 → `unity_font_replacer_ko.py`로 주입
-- 주의: macOS에서는 교체 후 `codesign --force --sign -` 재서명 필요
+- 다음 실행: Windows에서 `Unity_Font_Replacer_KO.exe oneshot` → [Runbook](docs/runbooks/phase-3-windows-font-injection.md)
+- 주의: macOS 교체 후 `codesign --force --sign -` 재서명 필요
 
 ## 로그
 
