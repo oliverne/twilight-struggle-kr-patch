@@ -2,7 +2,7 @@
 
 ## 상태
 
-- 상태: ⬜ 대기
+- 상태: 🚧 진행 중 (Common_Strings + TS_Cards + AvailableCultures 주입 완료)
 - 선행 Phase: Phase 2·3 완료
 
 ## 목표
@@ -19,16 +19,15 @@
 
 ## 체크리스트
 
-- [ ] 번역 JSON → TextAsset 주입 스크립트 작성 (셀/행 단위 키 매칭, raw 부분문자열 치환 금지)
-- [ ] **교체 대상 언어 열 확정** — SmartLocalization의 언어 코드 → 열 인덱스 매핑 방식 검증
-- [ ] **한국어 컬처 등록 검토** — `AvailableCultures`에 한국어 컬처 추가 vs 기존 언어 열 교체, 게임 언어 선택기에서 한국어 인식 확인
-- [ ] EN 열 보존 검증 (주입 후에도 EN 열이 원본과 동일한지 해시/비교)
+- [x] 번역 JSON → TextAsset 주입 스크립트 작성 (`scripts/inject_translations.py`)
+- [x] **Common_Strings 주입** — RU(10열) → KO, 322행 한글 주입, EN(2열) 보존
+- [x] **TS_Cards 주입** — 344행 EN→한글 교체
+- [x] **AvailableCultures 수정** — ru → ko (한국어 선택 가능)
+- [x] EN 열 보존 검증 (Common_Strings: col 2 EN 무결함)
+- [ ] 게임에서 한국어로 전환되는지 실게임 테스트
+- [ ] `TS_Ingame`, `TS_Strings`, `TS_RulesTutorial`, `Common_Ingame` 추가 주입
+- [ ] 설치 스크립트 `scripts/install-*.sh` 작성
 - [ ] 주입 전후 무결성 검증 추가
-- [ ] 줄바꿈·공백·리치텍스트 태그 조정
-- [ ] `<font="TIMESI SDF">` 참조 처리 확인
-- [ ] 카드·메뉴·툴팁 레이아웃 테스트
-- [ ] 튜토리얼·규칙 문서 번역
-- [ ] 텍스처에 구워진 문자는 범위 제외 여부 기록
 
 ## 검증 기준
 
@@ -43,7 +42,10 @@
 
 | 항목 | 방법 | 결과 |
 |---|---|---|
-| — | — | ⬜ 대기 |
+| Common_Strings 주입 | `inject_translations.py` — 셀 단위 키 매칭, RU(10)→KO, EN 무결성 검증 | ✅ 성공 — 322행 한글 주입, EN 보존 |
+| TS_Cards 주입 | `inject_translations.py` — row-key 기반 EN→KO | ✅ 성공 — 344행 교체, 카드명/설명 한글 확인 |
+| AvailableCultures | XML 텍스트 치환 ru→ko | ✅ 성공 — "ko" 문화 등록 |
+| 게임 테스트 | — | ⬜ 대기 (Phase 3 폰트 주입 선행 필요) |
 
 ## 다음 Phase로 핸드오프
 
