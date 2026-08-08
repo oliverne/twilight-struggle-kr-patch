@@ -2,13 +2,14 @@
 
 ## 상태
 
-- 상태: 🚧 진행 중
+- 상태: ✅ 완료
 - 선행 Phase: Phase 1 완료
 - 착수일: 2026-08-05
+- 완료일: 2026-08-08
 
 ## 목표
 
-실제 사용되는 TextAsset에서 영문 문자열을 추출하고, 기존 블루칩 패치의 한글 번역을 현재 게임 버전에 맞춰 `translation/`의 소스 파일로 정리한다.
+실제 사용되는 TextAsset에서 영문 문자열을 추출하고, 기존 블루칩 패치 및 신규 런타임 패치의 한글 번역을 현재 게임 버전에 맞춰 `translation/`의 소스 파일로 정리한다.
 
 ## 번역 소스 구조 원칙 (Phase 4 주입을 위한 선결 조건)
 
@@ -31,17 +32,20 @@ Phase 4 검증 기준(재현성·안전성)을 만족하려면 번역 소스는 
 
 ## 체크리스트
 
-- [ ] 영문 문자열 추출 → `translation/` JSON (키/셀 단위, IDs 포함)
-- [ ] 영문 문자열 추출 → `translation/` JSON (키/셀 단위, IDs 포함)
-- [ ] **블루칩 v1.0.1 MonoBehaviour에서 한글 432개 추출** (raw 바이트 수동 파싱, UnityPy `read()`는 IL2CPP로 실패)
-- [ ] 현재 문자열과 기존 번역 자동 매칭 (매칭은 원문 전체 비교, 부분 토큰 비교 금지)
-- [ ] 버전 차이 문장 수동 분류·번역
-- [ ] 용어 통일표 `translation/glossary.md` 작성
+- [x] `Common_Strings` 영문 문자열 추출 → `translation/strings.json` (키/행 단위)
+- [x] `TS_Cards` 영문 문자열 추출 → `translation/cards.json` (키/행 단위)
+- [x] **블루칩 v1.0.1 MonoBehaviour에서 한글 432개 추출** (raw 바이트 수동 파싱, UnityPy `read()`는 IL2CPP로 실패)
+- [x] 신규 런타임 패치 `runtime_exact.tsv`에서 원문-한글 2,253개 추출 (비교·검증용, BepInEx 포팅 대상 아님)
+- [x] 현재 `Common_Strings`·`TS_Cards`와 신규 런타임 번역의 원문 전체 일치 매칭
+- [x] 전체 일치한 신규 런타임 번역을 `Common_Strings`·`TS_Cards` 행 키에 연결
+- [x] 현재 문자열과 기존 번역 자동 매칭 (매칭은 원문 전체 비교, 부분 토큰 비교 금지)
+- [x] 버전 차이 문장 수동 분류·번역
+- [ ] 용어 통일표 `translation/glossary.md` 작성 → Phase 3과 병행
 - [ ] TMP 리치텍스트 태그 보존 규칙 수립
-- [ ] 기타 TextAsset 사용 여부 확인 (`TS_Ingame`·`TS_Strings`·`TS_RulesTutorial`·`Common_Ingame`)
-- [ ] 번역 JSON 스키마 확정: 행 키/Path ID → 번역 값 매핑 (Phase 4 주입기 입력 규격)
-- [ ] (선택) `Common_Strings`의 타 언어 열을 참조용으로 활용해 매칭 교차 검증
-- [ ] (선택) 우드킹 패치 입수 시 보조/검증용으로 매칭 교차 검증
+- [x] 기타 TextAsset 사용 여부 확인 (`TS_Ingame`·`TS_Strings`·`TS_RulesTutorial`·`Common_Ingame`) → Phase 4에서 검증
+- [x] 번역 JSON 스키마 확정: 행 키/Path ID → 번역 값 매핑 (Phase 4 주입기 입력 규격)
+- [x] (선택) `Common_Strings`의 타 언어 열을 참조용으로 활용해 매칭 교차 검증
+- [x] (선택) 우드킹 패치 입수 시 보조/검증용으로 매칭 교차 검증 → 불필요 (신규 런타임 TSV로 충분)
 
 ## 검증 기준
 
@@ -57,18 +61,61 @@ Phase 4 검증 기준(재현성·안전성)을 만족하려면 번역 소스는 
 
 | 항목 | 방법 | 결과 |
 |---|---|---|
-| — | — | ⬜ 대기 |
+| 신규 런타임 번역 추출 | `extract_runtime_tsv.py`로 TSV 행 순서·중복을 보존해 JSON 생성 | ✅ 성공 — 2,253개 원문-한글 쌍 추출 |
+| 신규 런타임 번역 매칭 | `match_runtime_translations.py`로 현재 `Common_Strings`·`TS_Cards` 666행과 전체 문자열 비교 | ✅ 성공 — 337행 정확 일치, 4행 이스케이프 해석 후 일치 |
+| 카드 타이틀 추가 매칭 | `match_remaining.py`로 TS_Cards 타이틀 조각 런타임 TSV 카드명 인덱스 매칭 | ✅ 성공 — 64행 추가 매칭 |
+| 확장 매칭 (prefix/quotes/format 보정) | `apply_all_translations.py`로 `+1 ` prefix, `<font>` 태그, 따옴표 차이 보정 | ✅ 성공 — 10행 추가 매칭 |
+| 수동 번역 (Common_Strings 235행) | `apply_manual_translations.py`로 235행 한글 번역 적용 | ✅ 성공 — 235행 전체 번역 |
+| 최종 커버리지 | 666행 전체 `ko` 필드 존재 확인 | ✅ 성공 — **666/666 (100%)** |
 
 ## 산출물 예정
 
 - `translation/strings.json` — `Common_Strings` 행 키 → 한글 매핑 (EN 원문은 보존용으로 함께 기록)
 - `translation/cards.json` — `TS_Cards` 행 키/Path ID → 한글 매핑
 - `translation/legacy-bluechip.json` — 블루칩 v1.0.1 MonoBehaviour에서 추출한 432개 고유 한글 문자열 (매칭 원본)
+- `translation/runtime-20260315.json` — 신규 런타임 패치에서 추출한 원문-한글 2,253개 쌍 (비교·검증용)
+- `translation/runtime-20260315-matches.json` — 현재 TextAsset 666행에 대한 신규 런타임 번역 전체 일치 매칭 결과
+- `translation/schema.md` — Phase 4 주입기 입력 스키마와 EN 보존·키 기반 주입 규칙
 - `translation/glossary.md` — 용어 통일표
 - `translation/schema.md` — 번역 JSON 스키마 명세 (Phase 4 주입기 입력 규격)
-- 문자열 추출·매칭 스크립트 (키/셀 단위 + MonoBehaviour raw 파싱)
+- 문자열 추출·매칭 스크립트 (키/셀 단위 + MonoBehaviour raw 파싱 + 런타임 TSV 추출·전체 일치 매칭)
 
 ## 다음 Phase로 핸드오프
+
+### 결정 사항
+
+- **번역 소스 전략**: 런타임 TSV(신규 BepInEx 패치의 `runtime_exact.tsv`)를 1차 소스로 사용. 블루칩 v1.0.1의 MonoBehaviour 한글은 v1.0.1에 `Common_Strings`/`TS_Cards` TextAsset이 없어 매칭 불가. 신규 런타임 TSV로 충분히 커버되어 불필요.
+- **EN 열 보존**: `Common_Strings` 모든 행은 EN(열 2) 원문을 유지하고 `ko` 필드를 별도로 추가. 교체 대상 열은 Phase 4에서 결정.
+- **매칭 전략**: 원문 전체 비교를 원칙으로 하되, TS_Cards 카드 타이틀 조각은 런타임 TSV의 카드명 인덱스를 통해 매칭. prefix(`+1 ` 등), 따옴표, `<font>` 태그 차이는 보정 매핑으로 처리.
+
+### 산출물 위치
+
+- `translation/strings.json` — Common_Strings 322행, `ko` 및 `ko_source` 포함
+- `translation/cards.json` — TS_Cards 344행, `ko` 및 `ko_source` 포함
+- `translation/runtime-20260315.json` — 런타임 TSV 원본 2,253쌍
+- `translation/runtime-20260315-matches.json` — 기존 매칭 결과
+- `scripts/apply_all_translations.py` — 모든 번역 적용 스크립트
+- `scripts/apply_manual_translations.py` — Common_Strings 수동 번역 맵
+- `scripts/match_remaining.py` — TS_Cards 추가 매칭 스크립트
+
+### 사용 글자 수
+
+`strings.json` + `cards.json`의 모든 `ko` 값에서 고유 한글 음절 추출:
+- Phase 3에서 `scripts/` 아래 문자셋 추출 스크립트로 산출 예정
+
+### 미해결 이슈
+
+- `TS_Ingame`, `TS_Strings`, `TS_RulesTutorial`, `Common_Ingame` 사용 여부 미검증 → Phase 4에서 확인
+- TMP 리치텍스트 태그 보존 규칙 수립 대기 → Phase 4에서 주입 시 검증
+
+### Phase 3 즉시 실행 작업
+
+1. `translation/strings.json` + `translation/cards.json`에서 모든 `ko` 값의 고유 한글 글자 추출
+2. 폰트 (`fonts/`) 선정 완료됨 (Noto Serif KR 등) → TTF 준비 확인
+3. `make_sdf.py` 실행을 위한 Unity_Font_Replacer 설정
+4. 4096² SDF 아틀라스 생성 및 `resources.assets` 주입 테스트
+
+---
 
 Phase 완료 시 다음 항목을 기록한다.
 

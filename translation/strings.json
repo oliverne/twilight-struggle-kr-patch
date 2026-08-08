@@ -12,1612 +12,2865 @@
     {
       "row": 2,
       "key": "Key_PlayOffline",
-      "en": "Play Offline"
+      "en": "Play Offline",
+      "ko": "오프라인 플레이",
+      "ko_source": "manual"
     },
     {
       "row": 3,
       "key": "Key_PlayOnline",
-      "en": "Play Online"
+      "en": "Play Online",
+      "ko": "온라인 플레이",
+      "ko_source": "manual"
     },
     {
       "row": 4,
       "key": "Key_MainMenu",
-      "en": "Main Menu"
+      "en": "Main Menu",
+      "ko": "메인 메뉴",
+      "ko_source": "manual"
     },
     {
       "row": 5,
       "key": "Key_Menu",
-      "en": "Menu"
+      "en": "Menu",
+      "ko": "메뉴",
+      "ko_source": "manual"
     },
     {
       "row": 6,
       "key": "Key_Options",
-      "en": "Options"
+      "en": "Options",
+      "ko": "설정",
+      "ko_source": "manual"
     },
     {
       "row": 7,
       "key": "Key_Settings",
-      "en": "Settings"
+      "en": "Settings",
+      "ko": "환경 설정",
+      "ko_source": "manual"
     },
     {
       "row": 8,
       "key": "Key_CardGallery",
-      "en": "Card Gallery"
+      "en": "Card Gallery",
+      "ko": "카드 갤러리",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1259
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 9,
       "key": "Key_Rulebook",
-      "en": "Rulebook"
+      "en": "Rulebook",
+      "ko": "규칙서",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1930
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 10,
       "key": "Key_Tutorial",
-      "en": "Tutorial"
+      "en": "Tutorial",
+      "ko": "튜토리얼",
+      "ko_source": "manual"
     },
     {
       "row": 11,
       "key": "Key_Tutorials",
-      "en": "Tutorials"
+      "en": "Tutorials",
+      "ko": "튜토리얼",
+      "ko_source": "manual"
     },
     {
       "row": 12,
       "key": "Key_Moregames",
-      "en": "More Games"
+      "en": "More Games",
+      "ko": "더 많은 게임",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1264
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 13,
       "key": "Key_Credits",
-      "en": "Credits"
+      "en": "Credits",
+      "ko": "크레딧",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1931
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 14,
       "key": "Key_AppStore",
-      "en": "In-App Store"
+      "en": "In-App Store",
+      "ko": "앱 내 상점",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1274
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 15,
       "key": "Key_Back",
-      "en": "Back"
+      "en": "Back",
+      "ko": "뒤로",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          235
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 16,
       "key": "Key_DeleteGame",
-      "en": "Delete Game"
+      "en": "Delete Game",
+      "ko": "게임 삭제",
+      "ko_source": "manual"
     },
     {
       "row": 17,
       "key": "Key_CreateGame",
-      "en": "Create Game"
+      "en": "Create Game",
+      "ko": "게임 생성",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1966
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 18,
       "key": "Key_Round",
-      "en": "Round"
+      "en": "Round",
+      "ko": "라운드",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1929
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 19,
       "key": "Key_AddComputerPlayer",
-      "en": "Add Computer Player"
+      "en": "Add Computer Player",
+      "ko": "컴퓨터 플레이어 추가",
+      "ko_source": "manual"
     },
     {
       "row": 20,
       "key": "Key_AddHumanPlayer",
-      "en": "Add Human Player"
+      "en": "Add Human Player",
+      "ko": "인간 플레이어 추가",
+      "ko_source": "manual"
     },
     {
       "row": 21,
       "key": "Key_Playername",
-      "en": "Player Name"
+      "en": "Player Name",
+      "ko": "플레이어 이름",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          478
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 22,
       "key": "Key_DragToAdd",
-      "en": "Drag below to add"
+      "en": "Drag below to add",
+      "ko": "아래로 드래그하여 추가",
+      "ko_source": "manual"
     },
     {
       "row": 23,
       "key": "Key_EnterName",
-      "en": "Please enter a name"
+      "en": "Please enter a name",
+      "ko": "이름을 입력하세요",
+      "ko_source": "manual"
     },
     {
       "row": 24,
       "key": "Key_RestorePurchases",
-      "en": "Restore Purchases"
+      "en": "Restore Purchases",
+      "ko": "구매 복원",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          999
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 25,
       "key": "Key_ClearPurchases",
-      "en": "Clear Purchases"
+      "en": "Clear Purchases",
+      "ko": "구매 내역 초기화",
+      "ko_source": "manual"
     },
     {
       "row": 26,
       "key": "Key_Details",
-      "en": "Details"
+      "en": "Details",
+      "ko": "상세",
+      "ko_source": "manual"
     },
     {
       "row": 27,
       "key": "Key_Purchased",
-      "en": "Purchased"
+      "en": "Purchased",
+      "ko": "구매함",
+      "ko_source": "manual"
     },
     {
       "row": 28,
       "key": "Key_Buy",
-      "en": "Buy"
+      "en": "Buy",
+      "ko": "구매",
+      "ko_source": "manual"
     },
     {
       "row": 29,
       "key": "Key_Cancel",
-      "en": "Cancel"
+      "en": "Cancel",
+      "ko": "취소",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1934
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 30,
       "key": "Key_StartGame",
-      "en": "Start Game"
+      "en": "Start Game",
+      "ko": "게임 시작",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1967
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 31,
       "key": "Key_JoinGame",
-      "en": "Join Game"
+      "en": "Join Game",
+      "ko": "게임 참가",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1268
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 32,
       "key": "Key_ViewGame",
-      "en": "View Game"
+      "en": "View Game",
+      "ko": "게임 보기",
+      "ko_source": "manual"
     },
     {
       "row": 33,
       "key": "Key_Player1",
-      "en": "Player 1"
+      "en": "Player 1",
+      "ko": "플레이어 1",
+      "ko_source": "manual"
     },
     {
       "row": 34,
       "key": "Key_Player2",
-      "en": "Player 2"
+      "en": "Player 2",
+      "ko": "플레이어 2",
+      "ko_source": "manual"
     },
     {
       "row": 35,
       "key": "Key_Player3",
-      "en": "Player 3"
+      "en": "Player 3",
+      "ko": "플레이어 3",
+      "ko_source": "manual"
     },
     {
       "row": 36,
       "key": "Key_Player4",
-      "en": "Player 4"
+      "en": "Player 4",
+      "ko": "플레이어 4",
+      "ko_source": "manual"
     },
     {
       "row": 37,
       "key": "Key_Player5",
-      "en": "Player 5"
+      "en": "Player 5",
+      "ko": "플레이어 5",
+      "ko_source": "manual"
     },
     {
       "row": 38,
       "key": "Key_Accept",
-      "en": "Accept"
+      "en": "Accept",
+      "ko": "확인",
+      "ko_source": "manual"
     },
     {
       "row": 39,
       "key": "Key_Profile",
-      "en": "Profile"
+      "en": "Profile",
+      "ko": "프로필",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1937
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 40,
       "key": "Key_Pause",
-      "en": "Pause"
+      "en": "Pause",
+      "ko": "일시정지",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1939
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 41,
       "key": "Key_Online",
-      "en": "Online"
+      "en": "Online",
+      "ko": "온라인",
+      "ko_source": "manual"
     },
     {
       "row": 42,
       "key": "Key_Offline",
-      "en": "Offline"
+      "en": "Offline",
+      "ko": "오프라인",
+      "ko_source": "manual"
     },
     {
       "row": 43,
       "key": "Key_FindGame",
-      "en": "Find Game"
+      "en": "Find Game",
+      "ko": "게임 찾기",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1263
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 44,
       "key": "Key_TitleNew",
-      "en": "New"
+      "en": "New",
+      "ko": "새로 만들기",
+      "ko_source": "manual"
     },
     {
       "row": 45,
       "key": "Key_TitleGame",
-      "en": "Game"
+      "en": "Game",
+      "ko": "게임",
+      "ko_source": "manual"
     },
     {
       "row": 46,
       "key": "Key_Connecting",
-      "en": "Connecting to Server"
+      "en": "Connecting to Server",
+      "ko": "서버에 연결 중",
+      "ko_source": "manual"
     },
     {
       "row": 47,
       "key": "Key_ConnectFail",
-      "en": "Failed to Connect to Server"
+      "en": "Failed to Connect to Server",
+      "ko": "서버 연결 실패",
+      "ko_source": "manual"
     },
     {
       "row": 48,
       "key": "Key_ConnectLost",
-      "en": "Connection Lost"
+      "en": "Connection Lost",
+      "ko": "연결 끊김",
+      "ko_source": "manual"
     },
     {
       "row": 49,
       "key": "Key_NetworkUpdate",
-      "en": "An update is available.<br>Please download the latest<br>version to play online."
+      "en": "An update is available.<br>Please download the latest<br>version to play online.",
+      "ko": "업데이트가 있습니다.<br>온라인 플레이를 위해<br>최신 버전을 다운로드하세요.",
+      "ko_source": "manual"
     },
     {
       "row": 50,
       "key": "Key_Disconnect",
-      "en": "You have been Disconnected<br> from the Server"
+      "en": "You have been Disconnected<br> from the Server",
+      "ko": "서버와의 연결이<br>끊어졌습니다",
+      "ko_source": "manual"
     },
     {
       "row": 51,
       "key": "Key_CreatingGame",
-      "en": "Creating Game . . ."
+      "en": "Creating Game . . .",
+      "ko": "게임 생성 중...",
+      "ko_source": "manual"
     },
     {
       "row": 52,
       "key": "Key_CreatedGameSuccess",
-      "en": "Successfully Created Game!"
+      "en": "Successfully Created Game!",
+      "ko": "게임 생성 완료!",
+      "ko_source": "manual"
     },
     {
       "row": 53,
       "key": "Key_CreateGameFail",
-      "en": "Unable to create."
+      "en": "Unable to create.",
+      "ko": "생성할 수 없습니다.",
+      "ko_source": "manual"
     },
     {
       "row": 54,
       "key": "Key_CreateGameFailTooMany",
-      "en": "Unable to create.<br>Too many games created."
+      "en": "Unable to create.<br>Too many games created.",
+      "ko": "생성할 수 없습니다.<br>너무 많은 게임이 생성되었습니다.",
+      "ko_source": "manual"
     },
     {
       "row": 55,
       "key": "Key_CreateGameFailUnknown",
-      "en": "Unable to create.<br>Unknown error"
+      "en": "Unable to create.<br>Unknown error",
+      "ko": "생성할 수 없습니다.<br>알 수 없는 오류",
+      "ko_source": "manual"
     },
     {
       "row": 56,
       "key": "Key_Joining",
-      "en": "Joining Game . . ."
+      "en": "Joining Game . . .",
+      "ko": "게임 참가 중...",
+      "ko_source": "manual"
     },
     {
       "row": 57,
       "key": "Key_JoinSuccess",
-      "en": "Successfully Joined Game!"
+      "en": "Successfully Joined Game!",
+      "ko": "게임 참가 완료!",
+      "ko_source": "manual"
     },
     {
       "row": 58,
       "key": "Key_JoinFailNotExist",
-      "en": "Unable to join.<br>Game no longer exists."
+      "en": "Unable to join.<br>Game no longer exists.",
+      "ko": "참가할 수 없습니다.<br>게임이 더 이상 존재하지 않습니다.",
+      "ko_source": "manual"
     },
     {
       "row": 59,
       "key": "Key_JoinFailFull",
-      "en": "Unable to join.<br>Game is full."
+      "en": "Unable to join.<br>Game is full.",
+      "ko": "참가할 수 없습니다.<br>게임이 가득 찼습니다.",
+      "ko_source": "manual"
     },
     {
       "row": 60,
       "key": "Key_JoinFailConnect",
-      "en": "Unable to join.<br>Lost connection to server."
+      "en": "Unable to join.<br>Lost connection to server.",
+      "ko": "참가할 수 없습니다.<br>서버 연결이 끊어졌습니다.",
+      "ko_source": "manual"
     },
     {
       "row": 61,
       "key": "Key_JoinFailUnknown",
-      "en": "Unable to join.<br>Unknown error."
+      "en": "Unable to join.<br>Unknown error.",
+      "ko": "참가할 수 없습니다.<br>알 수 없는 오류",
+      "ko_source": "manual"
     },
     {
       "row": 62,
       "key": "Key_OnlineFailGameCenter",
-      "en": "You must be logged<br>in to Game Center<br>to play online"
+      "en": "You must be logged<br>in to Game Center<br>to play online",
+      "ko": "온라인 플레이를 위해<br>Game Center에<br>로그인해야 합니다",
+      "ko_source": "manual"
     },
     {
       "row": 63,
       "key": "Key_TutorialPrompt",
-      "en": "Would you like to play the Tutorial?"
+      "en": "Would you like to play the Tutorial?",
+      "ko": "튜토리얼을 플레이하시겠습니까?",
+      "ko_source": "manual"
     },
     {
       "row": 64,
       "key": "Key_SlotOpen",
-      "en": "(Open)"
+      "en": "(Open)",
+      "ko": "(열림)",
+      "ko_source": "manual"
     },
     {
       "row": 65,
       "key": "Key_SlotClosed",
-      "en": "(Closed)"
+      "en": "(Closed)",
+      "ko": "(닫힘)",
+      "ko_source": "manual"
     },
     {
       "row": 66,
       "key": "Key_OnlineCreateGame",
-      "en": "Online Create Game"
+      "en": "Online Create Game",
+      "ko": "온라인 게임 만들기",
+      "ko_source": "manual"
     },
     {
       "row": 67,
       "key": "Key_GameListEmpty",
-      "en": "You have no active Games at this time."
+      "en": "You have no active Games at this time.",
+      "ko": "현재 활성 게임이 없습니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1049
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 68,
       "key": "Key_FindGameSearching",
-      "en": "Searching for Games . . ."
+      "en": "Searching for Games . . .",
+      "ko": "게임 검색 중...",
+      "ko_source": "manual"
     },
     {
       "row": 69,
       "key": "Key_CompletedGameList",
-      "en": "Completed Game List"
+      "en": "Completed Game List",
+      "ko": "완료된 게임 목록",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          900
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 70,
       "key": "Key_CompletedListEmpty",
-      "en": "You have no Completed Games at this time."
+      "en": "You have no Completed Games at this time.",
+      "ko": "현재 완료된 게임이 없습니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1048
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 71,
       "key": "Key_FindGameListEmpty",
-      "en": "There are no available games at this time.<br>Use the Create Game Menu to create a new game."
+      "en": "There are no available games at this time.<br>Use the Create Game Menu to create a new game.",
+      "ko": "현재 이용 가능한 게임이 없습니다.<br>게임 생성 메뉴를 사용하여 새 게임을 만드세요.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1571
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 72,
       "key": "Key_ProfileLoading",
-      "en": "Retrieving Profile . . ."
+      "en": "Retrieving Profile . . .",
+      "ko": "프로필 불러오는 중...",
+      "ko_source": "manual"
     },
     {
       "row": 73,
       "key": "Key_NameEntry",
-      "en": "Enter Name for Player"
+      "en": "Enter Name for Player",
+      "ko": "플레이어 이름 입력",
+      "ko_source": "manual"
     },
     {
       "row": 74,
       "key": "Key_FriendsList",
-      "en": "Friends List"
+      "en": "Friends List",
+      "ko": "친구 목록",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1265
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 75,
       "key": "Key_InviteFriend",
-      "en": "Invite Friend"
+      "en": "Invite Friend",
+      "ko": "친구 초대",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1267
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 76,
       "key": "Key_ClearInvite",
-      "en": "Clear Invite"
+      "en": "Clear Invite",
+      "ko": "초대 취소",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1333
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 77,
       "key": "Key_ReadyToStart",
-      "en": "Ready to Start"
+      "en": "Ready to Start",
+      "ko": "시작 준비 완료",
+      "ko_source": "manual"
     },
     {
       "row": 78,
       "key": "Key_Invited",
-      "en": "Invited"
+      "en": "Invited",
+      "ko": "초대됨",
+      "ko_source": "manual"
     },
     {
       "row": 79,
       "key": "Key_WaitForStart",
-      "en": "Waiting for Start"
+      "en": "Waiting for Start",
+      "ko": "시작 대기 중",
+      "ko_source": "manual"
     },
     {
       "row": 80,
       "key": "Key_WaitForPlayers",
-      "en": "Waiting for Players"
+      "en": "Waiting for Players",
+      "ko": "플레이어 대기 중",
+      "ko_source": "manual"
     },
     {
       "row": 81,
       "key": "Key_WaitForPlayer",
-      "en": "Waiting for Player"
+      "en": "Waiting for Player",
+      "ko": "플레이어 대기 중",
+      "ko_source": "manual"
     },
     {
       "row": 82,
       "key": "Key_Waiting",
-      "en": "Waiting"
+      "en": "Waiting",
+      "ko": "대기 중",
+      "ko_source": "manual"
     },
     {
       "row": 83,
       "key": "Key_View",
-      "en": "View"
+      "en": "View",
+      "ko": "보기",
+      "ko_source": "manual"
     },
     {
       "row": 84,
       "key": "Key_Withdraw",
-      "en": "Withdraw"
+      "en": "Withdraw",
+      "ko": "철회",
+      "ko_source": "manual"
     },
     {
       "row": 85,
       "key": "Key_Reject",
-      "en": "Reject"
+      "en": "Reject",
+      "ko": "거절",
+      "ko_source": "manual"
     },
     {
       "row": 86,
       "key": "Key_Delete",
-      "en": "Delete"
+      "en": "Delete",
+      "ko": "삭제",
+      "ko_source": "manual"
     },
     {
       "row": 87,
       "key": "Key_Forfeit",
-      "en": "Forfeit"
+      "en": "Forfeit",
+      "ko": "기권",
+      "ko_source": "manual"
     },
     {
       "row": 88,
       "key": "Key_Finish",
-      "en": "Finish"
+      "en": "Finish",
+      "ko": "종료",
+      "ko_source": "manual"
     },
     {
       "row": 89,
       "key": "Key_Locked",
-      "en": "Locked"
+      "en": "Locked",
+      "ko": "잠김",
+      "ko_source": "manual"
     },
     {
       "row": 90,
       "key": "Key_Invite",
-      "en": "Invite"
+      "en": "Invite",
+      "ko": "초대",
+      "ko_source": "manual"
     },
     {
       "row": 91,
       "key": "Key_Start",
-      "en": "Start"
+      "en": "Start",
+      "ko": "시작",
+      "ko_source": "manual"
     },
     {
       "row": 92,
       "key": "Key_Completed",
-      "en": "Completed"
+      "en": "Completed",
+      "ko": "완료",
+      "ko_source": "manual"
     },
     {
       "row": 93,
       "key": "Key_Join",
-      "en": "Join"
+      "en": "Join",
+      "ko": "참가",
+      "ko_source": "manual"
     },
     {
       "row": 94,
       "key": "Key_Empty",
-      "en": "Empty"
+      "en": "Empty",
+      "ko": "비어 있음",
+      "ko_source": "manual"
     },
     {
       "row": 95,
       "key": "Key_Minute",
-      "en": "Minute"
+      "en": "Minute",
+      "ko": "분",
+      "ko_source": "manual"
     },
     {
       "row": 96,
       "key": "Key_Minutes",
-      "en": "Minutes"
+      "en": "Minutes",
+      "ko": "분",
+      "ko_source": "manual"
     },
     {
       "row": 97,
       "key": "Key_Hour",
-      "en": "Hour"
+      "en": "Hour",
+      "ko": "시간",
+      "ko_source": "manual"
     },
     {
       "row": 98,
       "key": "Key_Hours",
-      "en": "Hours"
+      "en": "Hours",
+      "ko": "시간",
+      "ko_source": "manual"
     },
     {
       "row": 99,
       "key": "Key_Day",
-      "en": "Day"
+      "en": "Day",
+      "ko": "일",
+      "ko_source": "manual"
     },
     {
       "row": 100,
       "key": "Key_Days",
-      "en": "Days"
+      "en": "Days",
+      "ko": "일",
+      "ko_source": "manual"
     },
     {
       "row": 101,
       "key": "Key_Second",
-      "en": "Second"
+      "en": "Second",
+      "ko": "초",
+      "ko_source": "manual"
     },
     {
       "row": 102,
       "key": "Key_Seconds",
-      "en": "Seconds"
+      "en": "Seconds",
+      "ko": "초",
+      "ko_source": "manual"
     },
     {
       "row": 103,
       "key": "Key_Abbr_Second",
-      "en": "Sec"
+      "en": "Sec",
+      "ko": "초",
+      "ko_source": "manual"
     },
     {
       "row": 104,
       "key": "Key_Abbr_Minute",
-      "en": "Min"
+      "en": "Min",
+      "ko": "분",
+      "ko_source": "manual"
     },
     {
       "row": 105,
       "key": "Key_Abbr_Hour",
-      "en": "HR"
+      "en": "HR",
+      "ko": "시간",
+      "ko_source": "manual"
     },
     {
       "row": 106,
       "key": "Key_Abbr_Hours",
-      "en": "Hrs"
+      "en": "Hrs",
+      "ko": "시간",
+      "ko_source": "manual"
     },
     {
       "row": 107,
       "key": "Key_Online_Record",
-      "en": "Online Record"
+      "en": "Online Record",
+      "ko": "온라인 전적",
+      "ko_source": "manual"
     },
     {
       "row": 108,
       "key": "Key_Offline_Record",
-      "en": "Offline Record"
+      "en": "Offline Record",
+      "ko": "오프라인 전적",
+      "ko_source": "manual"
     },
     {
       "row": 109,
       "key": "Key_In_Progress",
-      "en": "In Progress"
+      "en": "In Progress",
+      "ko": "진행 중",
+      "ko_source": "manual"
     },
     {
       "row": 110,
       "key": "Key_2_Players",
-      "en": "2 Players:"
+      "en": "2 Players:",
+      "ko": "2인 플레이:",
+      "ko_source": "manual"
     },
     {
       "row": 111,
       "key": "Key_3_Players",
-      "en": "3 Players:"
+      "en": "3 Players:",
+      "ko": "3인 플레이:",
+      "ko_source": "manual"
     },
     {
       "row": 112,
       "key": "Key_4_Players",
-      "en": "4 Players:"
+      "en": "4 Players:",
+      "ko": "4인 플레이:",
+      "ko_source": "manual"
     },
     {
       "row": 113,
       "key": "Key_Forfeits",
-      "en": "Forfeits"
+      "en": "Forfeits",
+      "ko": "기권",
+      "ko_source": "manual"
     },
     {
       "row": 114,
       "key": "Key_Sound_Volume",
-      "en": "Sound Volume"
+      "en": "Sound Volume",
+      "ko": "효과음 볼륨",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1286
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 115,
       "key": "Key_Music_Volume",
-      "en": "Music Volume"
+      "en": "Music Volume",
+      "ko": "음악 볼륨",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1287
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 116,
       "key": "Key_Game_Speed",
-      "en": "Game Speed"
+      "en": "Game Speed",
+      "ko": "게임 속도",
+      "ko_source": "manual"
     },
     {
       "row": 117,
       "key": "Key_Animation_Speed",
-      "en": "Animation Speed"
+      "en": "Animation Speed",
+      "ko": "애니메이션 속도",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          215
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 118,
       "key": "Key_Slow",
-      "en": "Slow"
+      "en": "Slow",
+      "ko": "느리게",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1945
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 119,
       "key": "Key_Medium",
-      "en": "Medium"
+      "en": "Medium",
+      "ko": "보통",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1946
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 120,
       "key": "Key_Fast",
-      "en": "Fast"
+      "en": "Fast",
+      "ko": "빠르게",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1947
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 121,
       "key": "Key_Pop_Ups",
-      "en": "Confirmation Pop-ups"
+      "en": "Confirmation Pop-ups",
+      "ko": "확인 팝업",
+      "ko_source": "manual"
     },
     {
       "row": 122,
       "key": "Key_FriendRequest",
-      "en": "Friend Request"
+      "en": "Friend Request",
+      "ko": "친구 요청",
+      "ko_source": "manual"
     },
     {
       "row": 123,
       "key": "Key_Online_Game_List",
-      "en": "Online Game List"
+      "en": "Online Game List",
+      "ko": "온라인 게임 목록",
+      "ko_source": "manual"
     },
     {
       "row": 124,
       "key": "Key_AddFriend",
-      "en": "Add Friend"
+      "en": "Add Friend",
+      "ko": "친구 추가",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          179
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 125,
       "key": "Key_DeleteFriend",
-      "en": "Delete Friend"
+      "en": "Delete Friend",
+      "ko": "친구 삭제",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1330
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 126,
       "key": "Key_Offline_Game_List",
-      "en": "Offline Game List"
+      "en": "Offline Game List",
+      "ko": "오프라인 게임 목록",
+      "ko_source": "manual"
     },
     {
       "row": 127,
       "key": "Key_Delete_Game",
-      "en": "Delete Your Game"
+      "en": "Delete Your Game",
+      "ko": "게임 삭제",
+      "ko_source": "manual"
     },
     {
       "row": 128,
       "key": "Key_Start_Menu",
-      "en": "Start Menu"
+      "en": "Start Menu",
+      "ko": "시작 메뉴",
+      "ko_source": "manual"
     },
     {
       "row": 129,
       "key": "Key_Rematch",
-      "en": "Rematch"
+      "en": "Rematch",
+      "ko": "재대결",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1089
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 130,
       "key": "Key_OfflineCreateGame",
-      "en": "Offline Create Game"
+      "en": "Offline Create Game",
+      "ko": "오프라인 게임 만들기",
+      "ko_source": "manual"
     },
     {
       "row": 131,
       "key": "Key_2Players",
-      "en": "2 Players"
+      "en": "2 Players",
+      "ko": "2인 플레이",
+      "ko_source": "manual"
     },
     {
       "row": 132,
       "key": "Key_3Players",
-      "en": "3 Players"
+      "en": "3 Players",
+      "ko": "3인 플레이",
+      "ko_source": "manual"
     },
     {
       "row": 133,
       "key": "Key_4Players",
-      "en": "4 Players"
+      "en": "4 Players",
+      "ko": "4인 플레이",
+      "ko_source": "manual"
     },
     {
       "row": 134,
       "key": "Key_Game_List",
-      "en": "Game List"
+      "en": "Game List",
+      "ko": "게임 목록",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1074
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 135,
       "key": "Key_RemotePlayer",
-      "en": "Remote Player"
+      "en": "Remote Player",
+      "ko": "원격 플레이어",
+      "ko_source": "manual"
     },
     {
       "row": 136,
       "key": "Key_AIPlayer",
-      "en": "AI Player"
+      "en": "AI Player",
+      "ko": "AI 플레이어",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1203
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 137,
       "key": "Key_AIPlayer1",
-      "en": "AI Player 1"
+      "en": "AI Player 1",
+      "ko": "AI 플레이어 1",
+      "ko_source": "manual"
     },
     {
       "row": 138,
       "key": "Key_AIPlayer2",
-      "en": "AI Player 2"
+      "en": "AI Player 2",
+      "ko": "AI 플레이어 2",
+      "ko_source": "manual"
     },
     {
       "row": 139,
       "key": "Key_AIPlayer3",
-      "en": "AI Player 3"
+      "en": "AI Player 3",
+      "ko": "AI 플레이어 3",
+      "ko_source": "manual"
     },
     {
       "row": 140,
       "key": "Key_AIPlayer4",
-      "en": "AI Player 4"
+      "en": "AI Player 4",
+      "ko": "AI 플레이어 4",
+      "ko_source": "manual"
     },
     {
       "row": 141,
       "key": "Key_DoubleTapContinue",
-      "en": "Double Tap to Continue…"
+      "en": "Double Tap to Continue…",
+      "ko": "두 번 탭하여 계속…",
+      "ko_source": "manual"
     },
     {
       "row": 142,
       "key": "Key_SelectAvatar",
-      "en": "Select your avatar"
+      "en": "Select your avatar",
+      "ko": "아바타 선택",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          531
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 143,
       "key": "Key_AvatarSelect",
-      "en": "Avatar Select"
+      "en": "Avatar Select",
+      "ko": "아바타 선택",
+      "ko_source": "manual"
     },
     {
       "row": 144,
       "key": "Key_OnTheWeb",
-      "en": "On the Web"
+      "en": "On the Web",
+      "ko": "웹에서 보기",
+      "ko_source": "manual"
     },
     {
       "row": 145,
       "key": "Key_Email",
-      "en": "Email"
+      "en": "Email",
+      "ko": "이메일",
+      "ko_source": "manual"
     },
     {
       "row": 146,
       "key": "Key_Username",
-      "en": "Username"
+      "en": "Username",
+      "ko": "사용자 이름",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1278
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 147,
       "key": "Key_Password",
-      "en": "Password"
+      "en": "Password",
+      "ko": "비밀번호",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1279
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 148,
       "key": "Key_ConfirmPassword",
-      "en": "Confirm Password"
+      "en": "Confirm Password",
+      "ko": "비밀번호 확인",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          903
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 149,
       "key": "Key_Remember",
-      "en": "Remember Password"
+      "en": "Remember Password",
+      "ko": "비밀번호 기억",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          993
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 150,
       "key": "Key_Forget",
-      "en": "Forgot Login?"
+      "en": "Forgot Login?",
+      "ko": "로그인 정보를 잊으셨나요?",
+      "ko_source": "manual"
     },
     {
       "row": 151,
       "key": "Key_CreateAccount",
-      "en": "Create Account"
+      "en": "Create Account",
+      "ko": "계정 만들기",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1284
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 152,
       "key": "Key_Login",
-      "en": "Login"
+      "en": "Login",
+      "ko": "로그인",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1936
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 153,
       "key": "Key_Verify",
-      "en": "Verify:"
+      "en": "Verify:",
+      "ko": "인증:",
+      "ko_source": "manual"
     },
     {
       "row": 154,
       "key": "Key_User",
-      "en": "User Name:"
+      "en": "User Name:",
+      "ko": "사용자 이름:",
+      "ko_source": "manual"
     },
     {
       "row": 155,
       "key": "Key_SendInfo",
-      "en": "Send Login Info"
+      "en": "Send Login Info",
+      "ko": "로그인 정보 보내기",
+      "ko_source": "manual"
     },
     {
       "row": 156,
       "key": "Key_EmailUser",
-      "en": "Enter your Email or User Name"
+      "en": "Enter your Email or User Name",
+      "ko": "이메일 또는 사용자 이름 입력",
+      "ko_source": "manual"
     },
     {
       "row": 157,
       "key": "Key_OnlineLogin",
-      "en": "Online Login"
+      "en": "Online Login",
+      "ko": "온라인 로그인",
+      "ko_source": "manual"
     },
     {
       "row": 158,
       "key": "Key_CreateNewAccount",
-      "en": "Create New Account"
+      "en": "Create New Account",
+      "ko": "새 계정 만들기",
+      "ko_source": "manual"
     },
     {
       "row": 159,
       "key": "Key_CheckYourEmail",
-      "en": "Please check your email for your account information"
+      "en": "Please check your email for your account information",
+      "ko": "계정 정보를 위해 이메일을 확인하세요",
+      "ko_source": "manual"
     },
     {
       "row": 160,
       "key": "Key_InvalidUsername",
-      "en": "Username already in use."
+      "en": "Username already in use.",
+      "ko": "이미 사용 중인 사용자 이름입니다.",
+      "ko_source": "manual"
     },
     {
       "row": 161,
       "key": "Key_InvalidPassword",
-      "en": "Invalid Password"
+      "en": "Invalid Password",
+      "ko": "잘못된 비밀번호",
+      "ko_source": "manual"
     },
     {
       "row": 162,
       "key": "Key_InvalidEmail",
-      "en": "Invalid Email"
+      "en": "Invalid Email",
+      "ko": "잘못된 이메일",
+      "ko_source": "manual"
     },
     {
       "row": 163,
       "key": "Key_CreatingNewAccount",
-      "en": "Creating Account..."
+      "en": "Creating Account...",
+      "ko": "계정 생성 중...",
+      "ko_source": "manual"
     },
     {
       "row": 164,
       "key": "Key_PasswordNotVerified",
-      "en": "Check your password again"
+      "en": "Check your password again",
+      "ko": "비밀번호를 다시 확인하세요",
+      "ko_source": "manual"
     },
     {
       "row": 165,
       "key": "Key_PasswordMismatch",
-      "en": "Passwords do not match"
+      "en": "Passwords do not match",
+      "ko": "비밀번호가 일치하지 않습니다",
+      "ko_source": "manual"
     },
     {
       "row": 166,
       "key": "Key_InvalidCharacters",
-      "en": "Name contains invalid characters"
+      "en": "Name contains invalid characters",
+      "ko": "이름에 허용되지 않는 문자가 포함되어 있습니다",
+      "ko_source": "manual"
     },
     {
       "row": 167,
       "key": "Key_TermsAgreement",
-      "en": "Terms of Use Agreement"
+      "en": "Terms of Use Agreement",
+      "ko": "이용 약관 동의",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          564
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 168,
       "key": "Key_EmailInUse",
-      "en": "An account with this e-mail address is already in use"
+      "en": "An account with this e-mail address is already in use",
+      "ko": "이 이메일 주소는 이미 사용 중입니다",
+      "ko_source": "manual"
     },
     {
       "row": 169,
       "key": "Key_PasswordRequired",
-      "en": "You must provide a password"
+      "en": "You must provide a password",
+      "ko": "비밀번호를 입력해야 합니다",
+      "ko_source": "manual"
     },
     {
       "row": 170,
       "key": "Key_LoginFailed",
-      "en": "Login failed"
+      "en": "Login failed",
+      "ko": "로그인 실패",
+      "ko_source": "manual"
     },
     {
       "row": 171,
       "key": "Key_MustAcceptTerms",
-      "en": "You must accept the Terms of Use Agreement before creating an account"
+      "en": "You must accept the Terms of Use Agreement before creating an account",
+      "ko": "계정을 생성하기 전에 이용약관에 동의해야 합니다",
+      "ko_source": "manual"
     },
     {
       "row": 172,
       "key": "Key_AccountCreateSuccess",
-      "en": "Account Created.<br>Enter your Password to Login."
+      "en": "Account Created.<br>Enter your Password to Login.",
+      "ko": "계정이 생성되었습니다.<br>비밀번호를 입력하여 로그인하세요.",
+      "ko_source": "manual"
     },
     {
       "row": 173,
       "key": "Key_OnlineChat",
-      "en": "Lobby Chat"
+      "en": "Lobby Chat",
+      "ko": "로비 채팅",
+      "ko_source": "manual"
     },
     {
       "row": 174,
       "key": "Key_Agree",
-      "en": "I Agree"
+      "en": "I Agree",
+      "ko": "동의합니다",
+      "ko_source": "manual"
     },
     {
       "row": 175,
       "key": "Key_AgreeTerms",
-      "en": "I agree to the Terms of Use."
+      "en": "I agree to the Terms of Use.",
+      "ko": "이용 조건에 동의합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          359
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 176,
       "key": "Key_Newsletter",
-      "en": "Playdek Newsletter"
+      "en": "Playdek Newsletter",
+      "ko": "Playdek 뉴스레터",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          988
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 177,
       "key": "Key_NewsletterSignUp",
-      "en": "Newsletter Sign-Up"
+      "en": "Newsletter Sign-Up",
+      "ko": "뉴스레터 구독",
+      "ko_source": "manual"
     },
     {
       "row": 178,
       "key": "Key_PrivacyPolicy",
-      "en": "Privacy Policy"
+      "en": "Privacy Policy",
+      "ko": "개인정보 처리방침",
+      "ko_source": "manual"
     },
     {
       "row": 179,
       "key": "Key_AgreePP",
-      "en": "I agree to the Privacy Policy."
+      "en": "I agree to the Privacy Policy.",
+      "ko": "개인정보 처리방침에 동의합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          357
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 180,
       "key": "Key_Confirm",
-      "en": "Confirm"
+      "en": "Confirm",
+      "ko": "확인",
+      "ko_source": "manual"
     },
     {
       "row": 181,
       "key": "Key_Achievements",
-      "en": "Achievements"
+      "en": "Achievements",
+      "ko": "업적",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          151
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 182,
       "key": "Key_Languages",
-      "en": "Languages"
+      "en": "Languages",
+      "ko": "언어",
+      "ko_source": "manual"
     },
     {
       "row": 183,
       "key": "Key_SelectLanguage",
-      "en": "Select Language"
+      "en": "Select Language",
+      "ko": "언어 선택",
+      "ko_source": "manual"
     },
     {
       "row": 184,
       "key": "Key_AddFriendPrompt",
-      "en": "Would you like to add this player to your friend list?"
+      "en": "Would you like to add this player to your friend list?",
+      "ko": "이 플레이어를 친구 목록에 추가하시겠습니까?",
+      "ko_source": "manual"
     },
     {
       "row": 185,
       "key": "Key_RemoveFriendPrompt",
-      "en": "Would you like to remove this player from your friend list?"
+      "en": "Would you like to remove this player from your friend list?",
+      "ko": "이 플레이어를 친구 목록에서 삭제하시겠습니까?",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1046
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 186,
       "key": "Key_Exit",
-      "en": "Exit"
+      "en": "Exit",
+      "ko": "종료",
+      "ko_source": "manual"
     },
     {
       "row": 187,
       "key": "Key_EndGame",
-      "en": "End Game"
+      "en": "End Game",
+      "ko": "게임 종료",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1072
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 188,
       "key": "Key_FriendAdding",
-      "en": "Adding \"{0}\" as a friend."
+      "en": "Adding \"{0}\" as a friend.",
+      "ko": "\"{0}\" 님을 친구로 추가하는 중...",
+      "ko_source": "manual"
     },
     {
       "row": 189,
       "key": "Key_FriendRemoving",
-      "en": "Removing \"{0}\" as a friend."
+      "en": "Removing \"{0}\" as a friend.",
+      "ko": "\"{0}\" 님을 친구에서 삭제하는 중...",
+      "ko_source": "manual"
     },
     {
       "row": 190,
       "key": "Key_FriendAddSuccess",
-      "en": "Successfully added \"{0}\" as a friend."
+      "en": "Successfully added \"{0}\" as a friend.",
+      "ko": "\"{0}\" 님을 친구로 추가했습니다.",
+      "ko_source": "manual"
     },
     {
       "row": 191,
       "key": "Key_FriendRmvSuccess",
-      "en": "Successfully removed friend."
+      "en": "Successfully removed friend.",
+      "ko": "친구를 삭제했습니다.",
+      "ko_source": "manual"
     },
     {
       "row": 192,
       "key": "Key_FriendNotFound",
-      "en": "User \"{0}\" not found."
+      "en": "User \"{0}\" not found.",
+      "ko": "사용자 \"{0}\" 님을 찾을 수 없습니다.",
+      "ko_source": "manual"
     },
     {
       "row": 193,
       "key": "Key_FriendAlready",
-      "en": "{0} is already your friend."
+      "en": "{0} is already your friend.",
+      "ko": "{0} 님은 이미 친구입니다.",
+      "ko_source": "manual"
     },
     {
       "row": 194,
       "key": "Key_Resolution",
-      "en": "Resolution"
+      "en": "Resolution",
+      "ko": "해상도",
+      "ko_source": "manual"
     },
     {
       "row": 195,
       "key": "Key_Resolutions",
-      "en": "Resolutions"
+      "en": "Resolutions",
+      "ko": "해상도",
+      "ko_source": "manual"
     },
     {
       "row": 196,
       "key": "Key_ResolutionChange",
-      "en": "Change resolution to {0}x{1}?"
+      "en": "Change resolution to {0}x{1}?",
+      "ko": "해상도를 {0}x{1}(으)로 변경하시겠습니까?",
+      "ko_source": "manual"
     },
     {
       "row": 197,
       "key": "Key_ResolutionKeep",
-      "en": "Keep this resolution?"
+      "en": "Keep this resolution?",
+      "ko": "이 결의를 유지하시겠습니까?",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          401
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 198,
       "key": "Key_ConfirmChange",
-      "en": "Confirm Change"
+      "en": "Confirm Change",
+      "ko": "변경 확인",
+      "ko_source": "manual"
     },
     {
       "row": 199,
       "key": "Key_WindowedMode",
-      "en": "Windowed Mode"
+      "en": "Windowed Mode",
+      "ko": "창 모드",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1285
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 200,
       "key": "Key_Fullscreen",
-      "en": "Fullscreen"
+      "en": "Fullscreen",
+      "ko": "전체 화면",
+      "ko_source": "manual"
     },
     {
       "row": 201,
       "key": "Key_DeleteGameConfirm",
-      "en": "Do you want to delete this game?"
+      "en": "Do you want to delete this game?",
+      "ko": "이 게임을 삭제하시겠습니까?",
+      "ko_source": "manual"
     },
     {
       "row": 202,
       "key": "Key_ForfeitedOpponents",
-      "en": "All opponents have forfeited. You win!"
+      "en": "All opponents have forfeited. You win!",
+      "ko": "모든 상대가 기권했습니다. 승리!",
+      "ko_source": "manual"
     },
     {
       "row": 203,
       "key": "Key_ForfeitPrompt",
-      "en": "Are you sure you want to forfeit this game?"
+      "en": "Are you sure you want to forfeit this game?",
+      "ko": "이 게임을 기권하시겠습니까?",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          875
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 204,
       "key": "Key_FailConnect",
-      "en": "Unable to connect to the server"
+      "en": "Unable to connect to the server",
+      "ko": "서버에 연결할 수 없습니다",
+      "ko_source": "manual"
     },
     {
       "row": 205,
       "key": "Key_GameCompleted",
-      "en": "Game Completed"
+      "en": "Game Completed",
+      "ko": "게임 완료",
+      "ko_source": "manual"
     },
     {
       "row": 206,
       "key": "Key_AccountCreateFailed",
-      "en": "Account creation failed."
+      "en": "Account creation failed.",
+      "ko": "계정 생성 실패.",
+      "ko_source": "manual"
     },
     {
       "row": 207,
       "key": "Key_AccountError",
-      "en": "Account error."
+      "en": "Account error.",
+      "ko": "계정 오류.",
+      "ko_source": "manual"
     },
     {
       "row": 208,
       "key": "Key_AccountNotActivatedEmail",
-      "en": "Account is not yet activated. Please follow the account activation instructions that were sent to your e-mail."
+      "en": "Account is not yet activated. Please follow the account activation instructions that were sent to your e-mail.",
+      "ko": "계정이 아직 활성화되지 않았습니다. 이메일로 전송된 계정 활성화 안내를 따라주세요.",
+      "ko_source": "manual"
     },
     {
       "row": 209,
       "key": "Key_EnterValidEmail",
-      "en": "Please enter a valid E-mail address"
+      "en": "Please enter a valid E-mail address",
+      "ko": "유효한 이메일 주소를 입력하세요",
+      "ko_source": "manual"
     },
     {
       "row": 210,
       "key": "Key_EnterUsername",
-      "en": "Please enter a Username"
+      "en": "Please enter a Username",
+      "ko": "사용자 이름을 입력하세요",
+      "ko_source": "manual"
     },
     {
       "row": 211,
       "key": "Key_PasswordNoMatch",
-      "en": "The Password and Confirmation fields do not match"
+      "en": "The Password and Confirmation fields do not match",
+      "ko": "비밀번호와 확인 필드가 일치하지 않습니다",
+      "ko_source": "manual"
     },
     {
       "row": 212,
       "key": "Key_EnterText",
-      "en": "Enter text..."
+      "en": "Enter text...",
+      "ko": "텍스트 입력...",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          318
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 213,
       "key": "Key_Sunday",
-      "en": "Sunday"
+      "en": "Sunday",
+      "ko": "일요일",
+      "ko_source": "manual"
     },
     {
       "row": 214,
       "key": "Key_Sun",
-      "en": "Sun"
+      "en": "Sun",
+      "ko": "일",
+      "ko_source": "manual"
     },
     {
       "row": 215,
       "key": "Key_Monday",
-      "en": "Monday"
+      "en": "Monday",
+      "ko": "월요일",
+      "ko_source": "manual"
     },
     {
       "row": 216,
       "key": "Key_Mon",
-      "en": "Mon"
+      "en": "Mon",
+      "ko": "월",
+      "ko_source": "manual"
     },
     {
       "row": 217,
       "key": "Key_Tuesday",
-      "en": "Tuesday"
+      "en": "Tuesday",
+      "ko": "화요일",
+      "ko_source": "manual"
     },
     {
       "row": 218,
       "key": "Key_Tues",
-      "en": "Tues"
+      "en": "Tues",
+      "ko": "화",
+      "ko_source": "manual"
     },
     {
       "row": 219,
       "key": "Key_Wednesday",
-      "en": "Wednesday"
+      "en": "Wednesday",
+      "ko": "수요일",
+      "ko_source": "manual"
     },
     {
       "row": 220,
       "key": "Key_Wed",
-      "en": "Wed"
+      "en": "Wed",
+      "ko": "수",
+      "ko_source": "manual"
     },
     {
       "row": 221,
       "key": "Key_Thursday",
-      "en": "Thursday"
+      "en": "Thursday",
+      "ko": "목요일",
+      "ko_source": "manual"
     },
     {
       "row": 222,
       "key": "Key_Thurs",
-      "en": "Thurs"
+      "en": "Thurs",
+      "ko": "목",
+      "ko_source": "manual"
     },
     {
       "row": 223,
       "key": "Key_Friday",
-      "en": "Friday"
+      "en": "Friday",
+      "ko": "금요일",
+      "ko_source": "manual"
     },
     {
       "row": 224,
       "key": "Key_Fri",
-      "en": "Fri"
+      "en": "Fri",
+      "ko": "금",
+      "ko_source": "manual"
     },
     {
       "row": 225,
       "key": "Key_Saturday",
-      "en": "Saturday"
+      "en": "Saturday",
+      "ko": "토요일",
+      "ko_source": "manual"
     },
     {
       "row": 226,
       "key": "Key_Sat",
-      "en": "Sat"
+      "en": "Sat",
+      "ko": "토",
+      "ko_source": "manual"
     },
     {
       "row": 227,
       "key": "Key_LoadingCards",
-      "en": "Loading Cards"
+      "en": "Loading Cards",
+      "ko": "카드 로딩 중",
+      "ko_source": "manual"
     },
     {
       "row": 228,
       "key": "Key_LoadingGame",
-      "en": "Loading"
+      "en": "Loading",
+      "ko": "로딩 중",
+      "ko_source": "manual"
     },
     {
       "row": 229,
       "key": "Key_EnterEmail",
-      "en": "Enter Email"
+      "en": "Enter Email",
+      "ko": "이메일 입력",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1281
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 230,
       "key": "Key_EnterPassword",
-      "en": "Enter Password"
+      "en": "Enter Password",
+      "ko": "비밀번호 입력",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1282
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 231,
       "key": "Key_EnterUsernameAlt",
-      "en": "Enter Username"
+      "en": "Enter Username",
+      "ko": "사용자 이름을 입력하세요",
+      "ko_source": "manual"
     },
     {
       "row": 232,
       "key": "Key_Notifications",
-      "en": "Notifications"
+      "en": "Notifications",
+      "ko": "알림",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1275
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 233,
       "key": "Key_EmailNotifications",
-      "en": "Email Notifications"
+      "en": "Email Notifications",
+      "ko": "이메일 알림",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          915
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 234,
       "key": "Key_iOSNotifications",
-      "en": "iOS Notifications"
+      "en": "iOS Notifications",
+      "ko": "iOS 알림",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1276
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 235,
       "key": "Key_AndroidNotifications",
-      "en": "Android Notifications"
+      "en": "Android Notifications",
+      "ko": "안드로이드 알림",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          214
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 236,
       "key": "Key_Theme",
-      "en": "Theme Selection"
+      "en": "Theme Selection",
+      "ko": "테마 선택",
+      "ko_source": "manual"
     },
     {
       "row": 237,
       "key": "Key_InApp",
-      "en": "In-App Store"
+      "en": "In-App Store",
+      "ko": "앱 내 상점",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1274
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 238,
       "key": "Key_ViewCards",
-      "en": "View Cards"
+      "en": "View Cards",
+      "ko": "카드 보기",
+      "ko_source": "manual"
     },
     {
       "row": 239,
       "key": "Key_Purchase",
-      "en": "Purchase"
+      "en": "Purchase",
+      "ko": "구매",
+      "ko_source": "manual"
     },
     {
       "row": 240,
       "key": "Key_Close",
-      "en": "Close"
+      "en": "Close",
+      "ko": "닫기",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1933
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 241,
       "key": "Key_Play",
-      "en": "Play"
+      "en": "Play",
+      "ko": "플레이",
+      "ko_source": "manual"
     },
     {
       "row": 242,
       "key": "IAP_ComingSoon",
-      "en": "Coming Soon"
+      "en": "Coming Soon",
+      "ko": "출시 예정",
+      "ko_source": "manual"
     },
     {
       "row": 243,
       "key": "IAP_Owned",
-      "en": "Owned"
+      "en": "Owned",
+      "ko": "보유함",
+      "ko_source": "manual"
     },
     {
       "row": 244,
       "key": "IAP_NowAvailable",
-      "en": "Now Available"
+      "en": "Now Available",
+      "ko": "구매 가능",
+      "ko_source": "manual"
     },
     {
       "row": 245,
       "key": "Key_OnlineLobby",
-      "en": "Online Lobby"
+      "en": "Online Lobby",
+      "ko": "온라인 로비",
+      "ko_source": "manual"
     },
     {
       "row": 246,
       "key": "Key_OfflineLobby",
-      "en": "Offline Lobby"
+      "en": "Offline Lobby",
+      "ko": "오프라인 로비",
+      "ko_source": "manual"
     },
     {
       "row": 247,
       "key": "Key_ReturnToLobby",
-      "en": "Return to Lobby"
+      "en": "Return to Lobby",
+      "ko": "로비로 돌아가기",
+      "ko_source": "manual"
     },
     {
       "row": 248,
       "key": "Key_LogOut",
-      "en": "Log Out"
+      "en": "Log Out",
+      "ko": "로그아웃",
+      "ko_source": "manual"
     },
     {
       "row": 249,
       "key": "Key_ConfirmJoin",
-      "en": "Are you sure you want to join this game?"
+      "en": "Are you sure you want to join this game?",
+      "ko": "이 게임에 참가하시겠습니까?",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          221
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 250,
       "key": "Key_ConfirmExit",
-      "en": "Are you sure you want to exit the game?"
+      "en": "Are you sure you want to exit the game?",
+      "ko": "게임을 종료하시겠습니까?",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          220
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 251,
       "key": "Key_WithdrawConfirm",
-      "en": "Are you sure you want to withdraw from this game?"
+      "en": "Are you sure you want to withdraw from this game?",
+      "ko": "이 게임에서 탈퇴하시겠습니까?",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          877
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 252,
       "key": "Key_QuickMatchDelete",
-      "en": "Are you sure you want to delete this Quick Match request?"
+      "en": "Are you sure you want to delete this Quick Match request?",
+      "ko": "이 빠른 매칭 요청을 삭제하시겠습니까?",
+      "ko_source": "manual"
     },
     {
       "row": 253,
       "key": "Key_KeyBindings",
-      "en": "Key Bindings"
+      "en": "Key Bindings",
+      "ko": "키 설정",
+      "ko_source": "manual"
     },
     {
       "row": 254,
       "key": "Key_PressNewKey",
-      "en": "Press the new key for"
+      "en": "Press the new key for",
+      "ko": "새 키를 누르세요:",
+      "ko_source": "manual"
     },
     {
       "row": 255,
       "key": "Key_Announcements",
-      "en": "Announcements"
+      "en": "Announcements",
+      "ko": "공지사항",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          216
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 256,
       "key": "Key_HelpEnabled",
-      "en": "Help Enabled"
+      "en": "Help Enabled",
+      "ko": "도움말 활성화",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1304
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 257,
       "key": "Key_AudioLevels",
-      "en": "Audio Levels"
+      "en": "Audio Levels",
+      "ko": "오디오 레벨",
+      "ko_source": "manual"
     },
     {
       "row": 258,
       "key": "Key_None",
-      "en": "None"
+      "en": "None",
+      "ko": "없음",
+      "ko_source": "manual"
     },
     {
       "row": 259,
       "key": "Key_AutoPlay",
-      "en": "Auto Play"
+      "en": "Auto Play",
+      "ko": "자동 진행",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          232
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 260,
       "key": "Key_ConfirmationPause",
-      "en": "Confirmation Pause"
+      "en": "Confirmation Pause",
+      "ko": "확인 창 일시 정지",
+      "ko_source": "manual"
     },
     {
       "row": 261,
       "key": "Key_AmbientVolume",
-      "en": "Ambient Volume"
+      "en": "Ambient Volume",
+      "ko": "배경음 볼륨",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          211
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 262,
       "key": "Key_RestoreDefaults",
-      "en": "Restore Defaults"
+      "en": "Restore Defaults",
+      "ko": "기본값 복원",
+      "ko_source": "manual"
     },
     {
       "row": 263,
       "key": "Key_GamePaused",
-      "en": "Game Paused"
+      "en": "Game Paused",
+      "ko": "일시 정지",
+      "ko_source": "manual"
     },
     {
       "row": 264,
       "key": "Key_GameChat",
-      "en": "Game Chat"
+      "en": "Game Chat",
+      "ko": "게임 채팅",
+      "ko_source": "manual"
     },
     {
       "row": 265,
       "key": "Key_GameLog",
-      "en": "Game Log"
+      "en": "Game Log",
+      "ko": "게임 로그",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1240
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 266,
       "key": "Key_Continue",
-      "en": "Continue"
+      "en": "Continue",
+      "ko": "계속",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1935
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 267,
       "key": "Key_TapContinue",
-      "en": "Tap to Continue"
+      "en": "Tap to Continue",
+      "ko": "탭하여 계속",
+      "ko_source": "manual"
     },
     {
       "row": 268,
       "key": "Key_QuickMatch",
-      "en": "Quick Match"
+      "en": "Quick Match",
+      "ko": "빠른 매칭",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1269
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 269,
       "key": "Key_Friends",
-      "en": "Friends"
+      "en": "Friends",
+      "ko": "친구",
+      "ko_source": "manual"
     },
     {
       "row": 270,
       "key": "Key_AddProfile",
-      "en": "Add Profile"
+      "en": "Add Profile",
+      "ko": "프로필 추가",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1204
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 271,
       "key": "Key_RemoveProfile",
-      "en": "Remove Profile"
+      "en": "Remove Profile",
+      "ko": "프로필 삭제",
+      "ko_source": "manual"
     },
     {
       "row": 272,
       "key": "Key_RenameProfile",
-      "en": "Rename Profile"
+      "en": "Rename Profile",
+      "ko": "프로필 이름 변경",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1329
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 273,
       "key": "Key_RemoveFriend",
-      "en": "Remove Friend"
+      "en": "Remove Friend",
+      "ko": "친구 삭제",
+      "ko_source": "manual"
     },
     {
       "row": 274,
       "key": "Key_Profiles",
-      "en": "Profiles"
+      "en": "Profiles",
+      "ko": "프로필",
+      "ko_source": "manual"
     },
     {
       "row": 275,
       "key": "Key_DragProfiles",
-      "en": "Drag a profile tab to the player slot"
+      "en": "Drag a profile tab to the player slot",
+      "ko": "프로필 탭을 플레이어 슬롯으로 끌어오세요",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          306
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 276,
       "key": "Key_ConfirmProfileDelete",
-      "en": "Are you sure you want to delete this profile?"
+      "en": "Are you sure you want to delete this profile?",
+      "ko": "이 프로필을 삭제하시겠습니까?",
+      "ko_source": "manual"
     },
     {
       "row": 277,
       "key": "Key_DuplicateProfile",
-      "en": "A profile with this name already exists"
+      "en": "A profile with this name already exists",
+      "ko": "이 이름의 프로필이 이미 존재합니다",
+      "ko_source": "manual"
     },
     {
       "row": 278,
       "key": "Key_Human",
-      "en": "Human"
+      "en": "Human",
+      "ko": "인간",
+      "ko_source": "manual"
     },
     {
       "row": 279,
       "key": "Key_AIOpponent",
-      "en": "AI Opponent"
+      "en": "AI Opponent",
+      "ko": "AI 상대",
+      "ko_source": "manual"
     },
     {
       "row": 280,
       "key": "Key_AIDifficulty",
-      "en": "AI Difficulty"
+      "en": "AI Difficulty",
+      "ko": "AI 난이도",
+      "ko_source": "manual"
     },
     {
       "row": 281,
       "key": "Key_GameType",
-      "en": "Game Type"
+      "en": "Game Type",
+      "ko": "게임 유형",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1245
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 282,
       "key": "Key_Done",
-      "en": "Done"
+      "en": "Done",
+      "ko": "완료",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1932
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 283,
       "key": "Key_OpponentStats",
-      "en": "Opponent Stats"
+      "en": "Opponent Stats",
+      "ko": "상대 전적",
+      "ko_source": "manual"
     },
     {
       "row": 284,
       "key": "Key_Rating",
-      "en": "Rating"
+      "en": "Rating",
+      "ko": "레이팅",
+      "ko_source": "manual"
     },
     {
       "row": 285,
       "key": "Key_RatingDifference",
-      "en": "Rating Difference"
+      "en": "Rating Difference",
+      "ko": "레이팅 차이",
+      "ko_source": "manual"
     },
     {
       "row": 286,
       "key": "Key_RatingValue",
-      "en": "Rating Value"
+      "en": "Rating Value",
+      "ko": "등급 수치",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1271
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 287,
       "key": "Key_PlayerRatings",
-      "en": "Player Ratings"
+      "en": "Player Ratings",
+      "ko": "플레이어 등급",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1249
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 288,
       "key": "Key_PreviousRating",
-      "en": "Previous Rating"
+      "en": "Previous Rating",
+      "ko": "이전 레이팅",
+      "ko_source": "manual"
     },
     {
       "row": 289,
       "key": "Key_Change",
-      "en": "Change"
+      "en": "Change",
+      "ko": "변동",
+      "ko_source": "manual"
     },
     {
       "row": 290,
       "key": "Key_NewRating",
-      "en": "New Rating"
+      "en": "New Rating",
+      "ko": "새 레이팅",
+      "ko_source": "manual"
     },
     {
       "row": 291,
       "key": "KeyHeadToHead",
-      "en": "Head to Head"
+      "en": "Head to Head",
+      "ko": "맞대결",
+      "ko_source": "manual"
     },
     {
       "row": 292,
       "key": "Key_GameTimer",
-      "en": "Game Timer"
+      "en": "Game Timer",
+      "ko": "게임 타이머",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1244
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 293,
       "key": "Key_ExpireTimer",
-      "en": "Expire Timer"
+      "en": "Expire Timer",
+      "ko": "만료 타이머",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1320
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 294,
       "key": "Key_RequestMatch",
-      "en": "Request Match"
+      "en": "Request Match",
+      "ko": "매치 요청",
+      "ko_source": "manual"
     },
     {
       "row": 295,
       "key": "Key_ViewOpponentProfile",
-      "en": "Tap opponent  to view their profile"
+      "en": "Tap opponent  to view their profile",
+      "ko": "상대를 탭하여 프로필 보기",
+      "ko_source": "manual"
     },
     {
       "row": 296,
       "key": "Key_ViewingPlayer",
-      "en": "Viewing Player"
+      "en": "Viewing Player",
+      "ko": "플레이어 보기",
+      "ko_source": "manual"
     },
     {
       "row": 297,
       "key": "Key_NoCardSelected",
-      "en": "No Card Selected"
+      "en": "No Card Selected",
+      "ko": "선택된 카드 없음",
+      "ko_source": "manual"
     },
     {
       "row": 298,
       "key": "Key_GameStats",
-      "en": "Game Stats"
+      "en": "Game Stats",
+      "ko": "게임 통계",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1243
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 299,
       "key": "Key_WinsVS",
-      "en": "Wins Versus"
+      "en": "Wins Versus",
+      "ko": "상대 전적 승",
+      "ko_source": "manual"
     },
     {
       "row": 300,
       "key": "Key_LossesVS",
-      "en": "Losses Versus"
+      "en": "Losses Versus",
+      "ko": "상대 전적 패",
+      "ko_source": "manual"
     },
     {
       "row": 301,
       "key": "Key_NoPlayerData",
-      "en": "No Player Data"
+      "en": "No Player Data",
+      "ko": "플레이어 데이터 없음",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1307
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 302,
       "key": "Credits_Programming",
-      "en": "Programming"
+      "en": "Programming",
+      "ko": "프로그래밍",
+      "ko_source": "manual"
     },
     {
       "row": 303,
       "key": "Credits_ArtDirector",
-      "en": "Art Director"
+      "en": "Art Director",
+      "ko": "아트 디렉터",
+      "ko_source": "manual"
     },
     {
       "row": 304,
       "key": "Credits_Production",
-      "en": "Production"
+      "en": "Production",
+      "ko": "프로덕션",
+      "ko_source": "manual"
     },
     {
       "row": 305,
       "key": "Credits_MusicSound",
-      "en": "Music and Sound"
+      "en": "Music and Sound",
+      "ko": "음악 및 사운드",
+      "ko_source": "manual"
     },
     {
       "row": 306,
       "key": "Credits_MarketingCommunity",
-      "en": "Marketing and Community"
+      "en": "Marketing and Community",
+      "ko": "마케팅 및 커뮤니티",
+      "ko_source": "manual"
     },
     {
       "row": 307,
       "key": "Credits_QA",
-      "en": "QA Analysts "
+      "en": "QA Analysts ",
+      "ko": "QA 분석가",
+      "ko_source": "manual"
     },
     {
       "row": 308,
       "key": "Key_Warning",
-      "en": "Warning"
+      "en": "Warning",
+      "ko": "경고",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1109
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 309,
       "key": "Key_DontShowWarning",
-      "en": "Don't show this warning again"
+      "en": "Don't show this warning again",
+      "ko": "이 경고를 다시 표시하지 않음",
+      "ko_source": "manual"
     },
     {
       "row": 310,
       "key": "Key_Resume",
-      "en": "Resume"
+      "en": "Resume",
+      "ko": "계속하기",
+      "ko_source": "manual"
     },
     {
       "row": 311,
       "key": "Key_QuickMatchProcess",
-      "en": "Creating a Quick Match game..."
+      "en": "Creating a Quick Match game...",
+      "ko": "빠른 매칭 게임 생성 중...",
+      "ko_source": "manual"
     },
     {
       "row": 312,
       "key": "Key_Error",
-      "en": "Error"
+      "en": "Error",
+      "ko": "오류",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1318
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 313,
       "key": "Key_QuickMatchFailure",
-      "en": "Creating this Quick Match failed."
+      "en": "Creating this Quick Match failed.",
+      "ko": "빠른 대전 생성에 실패했습니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          283
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 314,
       "key": "Key_QuickMatchTooMany",
-      "en": "Creating this Quick Match failed.<br>Too many games open."
+      "en": "Creating this Quick Match failed.<br>Too many games open.",
+      "ko": "빠른 매칭 생성 실패.<br>열려 있는 게임이 너무 많습니다.",
+      "ko_source": "manual"
     },
     {
       "row": 315,
       "key": "Key_AnyRating",
-      "en": "Any Rating"
+      "en": "Any Rating",
+      "ko": "모든 레이팅",
+      "ko_source": "manual"
     },
     {
       "row": 316,
       "key": "Key_ResumeGame",
-      "en": "Resume Game"
+      "en": "Resume Game",
+      "ko": "게임 재개",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1293
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 317,
       "key": "Key_QuickMatchRequest",
-      "en": "Quick Match Request"
+      "en": "Quick Match Request",
+      "ko": "빠른 매칭 요청",
+      "ko_source": "manual"
     },
     {
       "row": 318,
       "key": "Key_DeleteMatchmaking",
-      "en": "Delete Matchmaking"
+      "en": "Delete Matchmaking",
+      "ko": "매치메이킹 삭제",
+      "ko_source": "manual"
     },
     {
       "row": 319,
       "key": "Key_Turn",
-      "en": "Turn"
+      "en": "Turn",
+      "ko": "턴",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          586
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 320,
       "key": "Key_Setup",
-      "en": "Setup"
+      "en": "Setup",
+      "ko": "셋업",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1928
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 321,
       "key": "Key_PleaseWait",
-      "en": "Please wait..."
+      "en": "Please wait...",
+      "ko": "잠시 기다려주세요...",
+      "ko_source": "manual"
     },
     {
       "row": 322,
       "key": "Key_AcceptInvite",
-      "en": "Accept Invite"
+      "en": "Accept Invite",
+      "ko": "초대 수락",
+      "ko_source": "manual"
     },
     {
       "row": 323,
       "key": "Key_TimerAny",
-      "en": "Timer: Any"
+      "en": "Timer: Any",
+      "ko": "타이머: 상관없음",
+      "ko_source": "manual"
     }
   ]
 }

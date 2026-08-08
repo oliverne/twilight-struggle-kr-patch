@@ -12,1722 +12,4188 @@
     {
       "row": 2,
       "key": "Card_EarlyWar",
-      "en": "Early War"
+      "en": "Early War",
+      "ko": "초기 전쟁",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1920
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 3,
       "key": "Card_MidWar",
-      "en": "Mid War"
+      "en": "Mid War",
+      "ko": "중기 전쟁",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1921
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 4,
       "key": "Card_LateWar",
-      "en": "Late War"
+      "en": "Late War",
+      "ko": "후기 전쟁",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1922
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 5,
       "key": "Card_MayNotBeHeld",
-      "en": "May not be held"
+      "en": "May not be held",
+      "ko": "보유할 수 없음",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          417
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 6,
       "key": "Card_BothSidesScore",
-      "en": "Both sides score"
+      "en": "Both sides score",
+      "ko": "양측 점수 계산",
+      "ko_source": "manual"
     },
     {
       "row": 7,
       "key": "Card_Presence",
-      "en": "Presence"
+      "en": "Presence",
+      "ko": "진출",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1924
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 8,
       "key": "Card_Domination",
-      "en": "Domination"
+      "en": "Domination",
+      "ko": "지배",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1923
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 9,
       "key": "Card_Control",
-      "en": "Control"
+      "en": "Control",
+      "ko": "지배",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1925
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 10,
       "key": "Card_AutoVictory",
-      "en": "Automatic Victory"
+      "en": "Automatic Victory",
+      "ko": "자동 승리",
+      "ko_source": "manual"
     },
     {
       "row": 11,
       "key": "Card_RemoveFromPlayScoring",
-      "en": "Remove from play after scoring."
+      "en": "Remove from play after scoring.",
+      "ko": "점수 계산 후 게임에서 제거한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          514
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 12,
       "key": "Card_Remove",
-      "en": "Remove from play if used as an event."
+      "en": "Remove from play if used as an event.",
+      "ko": "이벤트로 사용하면 게임에서 제거한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          515
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 13,
       "key": "Card_ControlledBattleground",
-      "en": "per controlled Battleground Country in Region"
+      "en": "per controlled Battleground Country in Region",
+      "ko": "지역 내 지배 중인 격전지 국가당 +1",
+      "ko_source": "extra_map"
     },
     {
       "row": 14,
       "key": "Card_ControlledAdjacent",
-      "en": "per Country controlled that is adjacent to enemy superpower"
+      "en": "per Country controlled that is adjacent to enemy superpower",
+      "ko": "적 강대국에 인접한 지배 국가당 1",
+      "ko_source": "extra_map"
     },
     {
       "row": 15,
       "key": "Card_Special",
-      "en": "Special"
+      "en": "Special",
+      "ko": "특수",
+      "ko_source": "extra_map"
     },
     {
       "row": 16,
       "key": "Card_DiscardCrisis",
-      "en": "Discard after playing this card on a Crisis"
+      "en": "Discard after playing this card on a Crisis",
+      "ko": "위기에 이 카드를 사용한 후 버립니다",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          912
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 17,
       "key": "Card_TakeCrisis",
-      "en": "Take back into hand after playing this on a Crisis"
+      "en": "Take back into hand after playing this on a Crisis",
+      "ko": "위기에 이 카드를 사용한 후 손으로 다시 가져옵니다",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1023
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 18,
       "key": "Card_Optional",
-      "en": "Optional"
+      "en": "Optional",
+      "ko": "선택 규칙",
+      "ko_source": "extra_map"
     },
     {
       "row": 19,
       "key": "Card_AsiaScoring",
-      "en": "Asia Scoring"
+      "en": "Asia Scoring",
+      "ko": "아시아 점수 계산",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          227
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 20,
       "key": "Card_EuropeScoring",
-      "en": "Europe Scoring"
+      "en": "Europe Scoring",
+      "ko": "유럽 점수 계산",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          321
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 21,
       "key": "Card_MEScoring",
-      "en": "Middle East Scoring"
+      "en": "Middle East Scoring",
+      "ko": "중동 점수 계산",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          419
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 22,
       "key": "Card_CAScoring",
-      "en": "Central America Scoring"
+      "en": "Central America Scoring",
+      "ko": "중앙아메리카 점수 계산",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          266
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 23,
       "key": "Card_SEAScoring",
-      "en": "Southeast Asia Scoring"
+      "en": "Southeast Asia Scoring",
+      "ko": "동남아시아 점수 계산",
+      "ko_source": "manual"
     },
     {
       "row": 24,
       "key": "Card_SEAScoringVPControl1",
-      "en": "VP each for Control of: Burma, Cambodia/Laos, Vietnam, Malaysia, Indonesia, the Philippines."
+      "en": "VP each for Control of: Burma, Cambodia/Laos, Vietnam, Malaysia, Indonesia, the Philippines.",
+      "ko": "버마·캄보디아/라오스·베트남·말레이시아·인도네시아·필리핀을 지배할 때마다 1 승점",
+      "ko_source": "extra_map"
     },
     {
       "row": 25,
       "key": "Card_SEAScoringVPControl2",
-      "en": "VPs for Control of Thailand"
+      "en": "VPs for Control of Thailand",
+      "ko": "태국 지배 시 2VP",
+      "ko_source": "extra_map"
     },
     {
       "row": 26,
       "key": "Card_AfricaScoring",
-      "en": "Africa Scoring"
+      "en": "Africa Scoring",
+      "ko": "아프리카 점수 계산",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          193
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 27,
       "key": "Card_SAScoring",
-      "en": "South America Scoring"
+      "en": "South America Scoring",
+      "ko": "남아메리카 점수 계산",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          538
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 28,
       "key": "Card_EuropeScoringAB",
-      "en": "Europe Scoring"
+      "en": "Europe Scoring",
+      "ko": "유럽 점수 계산",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          321
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 29,
       "key": "Card_AlliedBerlin",
-      "en": "Allied           Berlin"
+      "en": "Allied           Berlin",
+      "ko": "연합군 베를린",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          208
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 30,
       "key": "Card_004Title",
-      "en": "Duck and Cover"
+      "en": "Duck and Cover",
+      "ko": "덕 앤 커버",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          308
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 31,
       "key": "Card_004Text",
-      "en": "Degrade DEFCON one level.<br><br>Then US player earns VPs equal to<br>5 minus current DEFCON level."
+      "en": "Degrade DEFCON one level.<br><br>Then US player earns VPs equal to<br>5 minus current DEFCON level.",
+      "ko": "데프콘을 1단계 낮춘다.<br><br>그 후 미국 플레이어는 현재 데프콘 단계를 5에서 뺀 수만큼 승점을 얻는다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          302
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 32,
       "key": "Card_005Title",
-      "en": "Five-Year Plan"
+      "en": "Five-Year Plan",
+      "ko": "5개년 계획",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          710
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 33,
       "key": "Card_005Text",
-      "en": "USSR player must randomly discard one card. If the card is a US associated Event, the Event occurs immediately. If the card is a USSR associated Event or an Event applicable to both players, then the card must be discarded without triggering the Event."
+      "en": "USSR player must randomly discard one card. If the card is a US associated Event, the Event occurs immediately. If the card is a USSR associated Event or an Event applicable to both players, then the card must be discarded without triggering the Event.",
+      "ko": "소련 플레이어는 무작위로 카드 1장을 버려야 한다. 그 카드가 미국 관련 이벤트라면 즉시 발동한다. 소련 관련 이벤트이거나 양측 공통 이벤트라면 이벤트를 발동하지 않고 그냥 버린다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          628
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 34,
       "key": "Card_006Title",
-      "en": "The China Card"
+      "en": "The China Card",
+      "ko": "중국 카드",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          569
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 35,
       "key": "Card_006Text",
-      "en": "<i>Begins the game with the USSR player.</i><br><br>+1 Operations value when all points are used in Asia. Pass to opponent after play.<br><br>+1 VP for the player holding this card at the end of Turn 10.<br><br><i>Cancels effect of 'Formosan Resolution' if this card is played by the US player."
+      "en": "<i>Begins the game with the USSR player.</i><br><br>+1 Operations value when all points are used in Asia. Pass to opponent after play.<br><br>+1 VP for the player holding this card at the end of Turn 10.<br><br><i>Cancels effect of 'Formosan Resolution' if this card is played by the US player.",
+      "ko": "소련 플레이어가 이 카드를 가지고 게임을 시작한다.\n모든 작전치를 아시아에 사용할 때 작전치가 +1 된다. 플레이 후 상대에게 넘긴다.\n10턴 종료 시 이 카드를 보유한 플레이어는 +1 승점을 얻는다.\n미국 플레이어가 이 카드를 플레이하면 '포르모사 결의안'의 효과를 취소한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          92
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 36,
       "key": "Card_Facedown",
-      "en": "Facedown"
+      "en": "Facedown",
+      "ko": "뒤집기",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1953
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 37,
       "key": "Card_007Title",
-      "en": "Socialist Governments"
+      "en": "Socialist Governments",
+      "ko": "사회주의 정부들",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          763
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 38,
       "key": "Card_007Text",
-      "en": "<i>Unplayable as an event if 'The Iron Lady' is in effect.</i><br><br>Remove US Influence in Western Europe by a total of 3 Influence points, removing no more than 2 per country."
+      "en": "<i>Unplayable as an event if 'The Iron Lady' is in effect.</i><br><br>Remove US Influence in Western Europe by a total of 3 Influence points, removing no more than 2 per country.",
+      "ko": "<i>'철의 여인'이 발동 중이면 이벤트로 플레이할 수 없다.</i><br><br>서유럽의 미국 영향력 총 3을 제거한다. 한 국가당 최대 2까지만 제거할 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          96
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 39,
       "key": "Card_008Title",
-      "en": "Fidel"
+      "en": "Fidel",
+      "ko": "피델",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          2133
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 40,
       "key": "Card_008Text",
-      "en": "Remove all US Influence in Cuba. USSR gains sufficient Influence in Cuba for Control."
+      "en": "Remove all US Influence in Cuba. USSR gains sufficient Influence in Cuba for Control.",
+      "ko": "쿠바의 미국 영향력을 모두 제거한다. 소련은 쿠바를 지배하기에 충분한 영향력을 얻는다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          504
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 41,
       "key": "Card_009Title",
-      "en": "Vietnam Revolts"
+      "en": "Vietnam Revolts",
+      "ko": "베트남 반란",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          2134
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 42,
       "key": "Card_009Text",
-      "en": "Add 2 USSR Influence in Vietnam.<br><br>For the remainder of the turn, the Soviet player may add 1 Operations point to any card that uses all points in<br>Southeast Asia."
+      "en": "Add 2 USSR Influence in Vietnam.<br><br>For the remainder of the turn, the Soviet player may add 1 Operations point to any card that uses all points in<br>Southeast Asia.",
+      "ko": "베트남에 소련 영향력 2를 추가한다. 이번 턴 남은 동안 소련 플레이어는 동남아시아에 모든 작전치를 사용하는 카드의 작전치에 1을 더할 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          167
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 43,
       "key": "Card_010Title",
-      "en": "Blockade"
+      "en": "Blockade",
+      "ko": "봉쇄",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          2129
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 44,
       "key": "Card_010Text",
-      "en": "Unless US Player immediately discards<br>a '3' or more value Operations card, eliminate all US Influence in<br>West Germany."
+      "en": "Unless US Player immediately discards<br>a '3' or more value Operations card, eliminate all US Influence in<br>West Germany.",
+      "ko": "미국 플레이어가 즉시 작전치 3 이상 카드를 버리지 않으면, 서독의 미국 영향력을 모두 제거한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          635
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 45,
       "key": "Card_011Title",
-      "en": "Korean War"
+      "en": "Korean War",
+      "ko": "한국 전쟁*",
+      "ko_source": "card_title"
     },
     {
       "row": 46,
       "key": "Card_011Text",
-      "en": "North Korea invades South Korea. Roll one die and subtract 1 for every US Controlled country adjacent to South Korea. USSR Victory on modified die roll 4-6.<br>USSR adds 2 to Military Ops Track.<br><br><b>Effects of Victory:</b> USSR gains 2 VP and replaces all US Influence in South Korea with USSR Influence."
+      "en": "North Korea invades South Korea. Roll one die and subtract 1 for every US Controlled country adjacent to South Korea. USSR Victory on modified die roll 4-6.<br>USSR adds 2 to Military Ops Track.<br><br><b>Effects of Victory:</b> USSR gains 2 VP and replaces all US Influence in South Korea with USSR Influence.",
+      "ko": "북한이 남한을 침공합니다. 주사위를 한 번 굴리고 남한에 인접한 미국 지배 국가마다 1을 뺍니다. 수정된 주사위 굴림 4-6에서 소련이 승리합니다.<br>소련은 군사작전 트랙에 2를 추가합니다.<br><br><b>승리 효과:</b> 소련이 승점 2점을 획득하고 남한의 모든 미국 영향력을 소련 영향력으로 교체합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1762
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 47,
       "key": "Card_012Title",
-      "en": "Romanian Abdication"
+      "en": "Romanian Abdication",
+      "ko": "루마니아 퇴위",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          757
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 48,
       "key": "Card_012Text",
-      "en": "Remove all US Influence in Romania.<br><br>USSR gains sufficient Influence in Romania for Control."
+      "en": "Remove all US Influence in Romania.<br><br>USSR gains sufficient Influence in Romania for Control.",
+      "ko": "루마니아의 미국 영향력을 모두 제거한다. 소련은 루마니아를 지배하기에 충분한 영향력을 얻는다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          508
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 49,
       "key": "Card_013Title",
-      "en": "Arab-Israeli War"
+      "en": "Arab-Israeli War",
+      "ko": "아랍-이스라엘 전쟁",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          218
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 50,
       "key": "Card_013Text",
-      "en": "A Pan-Arab Coalition invades Israel. Roll one die and subtract 1 for US Control of Israel and every US-controlled country adjacent to Israel.  USSR Victory on modified die roll 4-6. USSR adds 2 Military to Ops Track.<br><b>Effects of Victory:</b> USSR gains 2 VP and replaces all US Influence in Israel with USSR Influence.<br><i>Unplayable as an event after the \"Camp David Accords\" event has been played.</i>"
+      "en": "A Pan-Arab Coalition invades Israel. Roll one die and subtract 1 for US Control of Israel and every US-controlled country adjacent to Israel.  USSR Victory on modified die roll 4-6. USSR adds 2 Military to Ops Track.<br><b>Effects of Victory:</b> USSR gains 2 VP and replaces all US Influence in Israel with USSR Influence.<br><i>Unplayable as an event after the \"Camp David Accords\" event has been played.</i>",
+      "ko": "범아랍 연합이 이스라엘을 침공합니다. 주사위 1개를 굴리고, 이스라엘의 미국 지배 및 이스라엘에 인접한 미국 지배 국가 각각에 대해 1씩 뺍니다. 수정된 주사위 결과 4~6이면 소련 승리. 소련은 작전 트랙에 군사 2를 추가합니다.<br><b>승리 효과:</b> 소련은 2 VP를 획득하고 이스라엘의 모든 미국 영향력을 소련 영향력으로 교체합니다.<br><i>\"캠프 데이비드 협정\" 이벤트가 사용된 이후에는 이벤트로 사용 불가.</i>",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1406
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 51,
       "key": "Card_014Title",
-      "en": "Comecon"
+      "en": "Comecon",
+      "ko": "코메콘*",
+      "ko_source": "card_title"
     },
     {
       "row": 52,
       "key": "Card_014SubTitle",
-      "en": "The Council for Mutual<br>Economic Assistance"
+      "en": "The Council for Mutual<br>Economic Assistance",
+      "ko": "상호경제원조회의<br>(코메콘)",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1542
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 53,
       "key": "Card_014Text",
-      "en": "Add 1 USSR Influence in each of four non-US Controlled countries in Eastern Europe."
+      "en": "Add 1 USSR Influence in each of four non-US Controlled countries in Eastern Europe.",
+      "ko": "동유럽의 비미국 지배 국가 4곳에 각각 소련 영향력 1을 추가한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          157
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 54,
       "key": "Card_015Title",
-      "en": "Nasser"
+      "en": "Nasser",
+      "ko": "나세르",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          2131
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 55,
       "key": "Card_015Text",
-      "en": "Add 2 USSR Influence in Egypt.<br><br>Remove half (rounded up) of the<br>US Influence in Egypt."
+      "en": "Add 2 USSR Influence in Egypt.<br><br>Remove half (rounded up) of the<br>US Influence in Egypt.",
+      "ko": "이집트에 소련 영향력 2를 추가한다. 이집트의 미국 영향력 절반을 제거한다(올림).",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          164
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 56,
       "key": "Card_016Title",
-      "en": "Warsaw Pact Formed"
+      "en": "Warsaw Pact Formed",
+      "ko": "바르샤바 조약 기구 결성*",
+      "ko_source": "card_title"
     },
     {
       "row": 57,
       "key": "Card_016Title1",
-      "en": "Warsaw Pact"
+      "en": "Warsaw Pact",
+      "ko": "바르샤바 조약",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1964
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 58,
       "key": "Card_016Title2",
-      "en": "Formed"
+      "en": "Formed",
+      "ko": "수립*",
+      "ko_source": "card_title"
     },
     {
       "row": 59,
       "key": "Card_016Text",
-      "en": "Remove all US Influence from four countries in Eastern Europe, or add 5 USSR Influence in Eastern Europe, adding no more than 2 per country.<br><br><i>Allows play of \"NATO\"</i>."
+      "en": "Remove all US Influence from four countries in Eastern Europe, or add 5 USSR Influence in Eastern Europe, adding no more than 2 per country.<br><br><i>Allows play of \"NATO\"</i>.",
+      "ko": "동유럽 4개국에서 미국 영향력을 모두 제거하거나, 동유럽에 소련 영향력을 5 추가합니다(국가당 최대 2 이하).<br><br><i>\"NATO\" 플레이 허용</i>.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1753
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 60,
       "key": "Card_017Title",
-      "en": "De Gaulle Leads France"
+      "en": "De Gaulle Leads France",
+      "ko": "드골의 프랑스 지도",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          2138
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 61,
       "key": "Card_017Title1",
-      "en": "De Gaulle"
+      "en": "De Gaulle",
+      "ko": "드골",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          2088
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 62,
       "key": "Card_017Title2",
-      "en": "Leads France"
+      "en": "Leads France",
+      "ko": "프랑스를 이끌다*",
+      "ko_source": "card_title"
     },
     {
       "row": 63,
       "key": "Card_017Text",
-      "en": "Remove 2 US Influence in France,<br>add 1 USSR Influence.<br>Cancels effects of <i>NATO </i>for France."
+      "en": "Remove 2 US Influence in France,<br>add 1 USSR Influence.<br>Cancels effects of <i>NATO </i>for France.",
+      "ko": "프랑스에서 미국 영향력 2를 제거하고 소련 영향력 1을 추가한다.<br>프랑스에 대한 <i>NATO</i> 효과를 취소한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          496
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 64,
       "key": "Card_017TextAlt",
-      "en": "Remove 2 US Influence in France,<br>add 1 USSR Influence.<br><br><i>Cancels effects of \"NATO\" for France.</i>."
+      "en": "Remove 2 US Influence in France,<br>add 1 USSR Influence.<br><br><i>Cancels effects of \"NATO\" for France.</i>.",
+      "ko": "프랑스에서 미국 영향력 2를 제거하고,<br>소련 영향력 1을 추가합니다.<br><br><i>프랑스에 대한 \"NATO\"의 효과를 취소합니다.</i>.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1760
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 65,
       "key": "Card_018Title",
-      "en": "Captured Nazi Scientist"
+      "en": "Captured Nazi Scientist",
+      "ko": "나치 과학자 포획*",
+      "ko_source": "card_title"
     },
     {
       "row": 66,
       "key": "Card_018Text",
-      "en": "Advance player's Space Race<br>marker one box."
+      "en": "Advance player's Space Race<br>marker one box.",
+      "ko": "플레이어의 우주 경쟁 마커를 한 칸 전진시킨다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          190
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 67,
       "key": "Card_019Title",
-      "en": "Truman Doctrine"
+      "en": "Truman Doctrine",
+      "ko": "트루먼 독트린",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          2130
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 68,
       "key": "Card_019Text",
-      "en": "Remove all USSR Influence<br>markers in one uncontrolled country<br>in Europe."
+      "en": "Remove all USSR Influence<br>markers in one uncontrolled country<br>in Europe.",
+      "ko": "유럽의 미지배 국가 하나에서 소련 영향력 마커를 모두 제거한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          513
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 69,
       "key": "Card_020Title",
-      "en": "Olympic Games"
+      "en": "Olympic Games",
+      "ko": "올림픽",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          743
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 70,
       "key": "Card_020Text",
-      "en": "Player sponsors Olympics. Opponent must participate or boycott.<br><br>If Opponent participates, each player rolls one die, with the sponsor adding 2 to their roll. High roll gains 2 VP. Reroll ties. <br><br>If Opponent boycotts, degrade DEFCON one level and the Sponsor may Conduct Operations as if they played a 4 Ops card."
+      "en": "Player sponsors Olympics. Opponent must participate or boycott.<br><br>If Opponent participates, each player rolls one die, with the sponsor adding 2 to their roll. High roll gains 2 VP. Reroll ties. <br><br>If Opponent boycotts, degrade DEFCON one level and the Sponsor may Conduct Operations as if they played a 4 Ops card.",
+      "ko": "플레이어가 올림픽을 후원한다. 상대는 참가하거나 보이콧해야 한다.<br><br>상대가 참가하면 양 플레이어가 주사위를 굴리고 후원자는 자신의 굴림에 2를 더한다. 높은 쪽이 2 승점을 얻는다. 동점이면 다시 굴린다.<br><br>상대가 보이콧하면 데프콘을 1단계 낮추고 후원자는 작전치 4 카드처럼 작전을 수행할 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          480
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 71,
       "key": "Card_021Title",
-      "en": "NATO"
+      "en": "NATO",
+      "ko": "나토",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          423
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 72,
       "key": "Card_021Text",
-      "en": "<i><cspace=-.03em>Play after 'Marshall Plan' or 'Warsaw Pact.'</cspace></i><br><br>USSR player may no longer make<br>Coup or Realignment rolls in any<br>US controlled countries in Europe. <br><br>US controlled countries in Europe<br>may not be attacked by play of the<br> <i>Brush War</i> event."
+      "en": "<i><cspace=-.03em>Play after 'Marshall Plan' or 'Warsaw Pact.'</cspace></i><br><br>USSR player may no longer make<br>Coup or Realignment rolls in any<br>US controlled countries in Europe. <br><br>US controlled countries in Europe<br>may not be attacked by play of the<br> <i>Brush War</i> event.",
+      "ko": "<i><cspace=-.03em>'마셜 계획' 또는 '바르샤바 조약' 이후 플레이.</cspace></i><br><br>소련 플레이어는 더 이상 유럽의 미국 지배 국가에서<br>쿠데타나 재편성 굴림을 할 수 없다. <br><br>유럽의 미국 지배 국가는<br><i>국지전</i> 이벤트로 공격받을 수 없다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          91
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 73,
       "key": "Card_021TextAlt",
-      "en": "USSR player may no longer make Coup or Realignment rolls in any US Controlled countries in Europe.<br><br>US controlled countries in Europe may<br>not be attacked by play of the<br><i>\"Brush War\"</i> event.<br><br><i>Play after \"Marshall Plan\" or<br>\"Warsaw Pact\".</i>"
+      "en": "USSR player may no longer make Coup or Realignment rolls in any US Controlled countries in Europe.<br><br>US controlled countries in Europe may<br>not be attacked by play of the<br><i>\"Brush War\"</i> event.<br><br><i>Play after \"Marshall Plan\" or<br>\"Warsaw Pact\".</i>",
+      "ko": "소련 플레이어는 더 이상 유럽의 미국 지배 국가에서 쿠데타 또는 재편성 굴림을 할 수 없습니다.<br><br>유럽의 미국 지배 국가는<br><i>\"국지전\"</i> 이벤트 플레이로<br>공격받을 수 없습니다.<br><br><i>\"마셜 플랜\" 또는<br>\"바르샤바 조약\" 이후에 플레이합니다.</i>",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1765
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 74,
       "key": "Card_022Title",
-      "en": "Independent Reds"
+      "en": "Independent Reds",
+      "ko": "독립 공산국",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          2137
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 75,
       "key": "Card_022Text",
-      "en": "Add sufficient US Influence in<br>either Yugoslavia, Romania,<br>Bulgaria, Hungary or<br>Czechoslovakia to equal USSR Influence."
+      "en": "Add sufficient US Influence in<br>either Yugoslavia, Romania,<br>Bulgaria, Hungary or<br>Czechoslovakia to equal USSR Influence.",
+      "ko": "유고슬라비아, 루마니아, 불가리아, 헝가리, 체코슬로바키아 중 하나에 미국 영향력을 소련 영향력과 동일해질 때까지 추가한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          184
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 76,
       "key": "Card_022TextAlt",
-      "en": "Add sufficient US Influence in either Yugoslavia, Romania, Bulgaria, Hungary<br>or Czechoslovakia to equal USSR Influence."
+      "en": "Add sufficient US Influence in either Yugoslavia, Romania, Bulgaria, Hungary<br>or Czechoslovakia to equal USSR Influence.",
+      "ko": "유고슬라비아, 루마니아, 불가리아, 헝가리, 체코슬로바키아 중 하나에 미국 영향력을 소련 영향력과 동일해질 때까지 추가한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          183
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 77,
       "key": "Card_023Title",
-      "en": "Marshall Plan"
+      "en": "Marshall Plan",
+      "ko": "마셜 플랜",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          2128
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 78,
       "key": "Card_023Title1",
-      "en": "Marshall"
+      "en": "Marshall",
+      "ko": "마셜",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          727
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 79,
       "key": "Card_023Title2",
-      "en": "Plan"
+      "en": "Plan",
+      "ko": "플랜*",
+      "ko_source": "card_title"
     },
     {
       "row": 80,
       "key": "Card_023Text",
-      "en": "Allows play of <i>NATO</i>.<br><br>Add one US Influence in each of<br>seven non-USSR Controlled<br>Western European Countries."
+      "en": "Allows play of <i>NATO</i>.<br><br>Add one US Influence in each of<br>seven non-USSR Controlled<br>Western European Countries.",
+      "ko": "<i>NATO</i>를 플레이할 수 있게 된다.<br><br>소련이 지배하지 않는 서유럽 7개 국가에 각각 미국 영향력 1을 추가한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          209
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 81,
       "key": "Card_023TextAlt",
-      "en": "Add one US Influence in each of seven<br>non-USSR Controlled Western<br>European Countries.<br><br><i>Allows play of \"NATO\"</i>."
+      "en": "Add one US Influence in each of seven<br>non-USSR Controlled Western<br>European Countries.<br><br><i>Allows play of \"NATO\"</i>.",
+      "ko": "소련이 지배하지 않는 서유럽<br>국가 7개 각각에 미국 영향력을 1씩<br>추가합니다.<br><br><i>\"NATO\" 플레이 허용</i>.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1750
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 82,
       "key": "Card_024Title",
-      "en": "<nobr>Indo-Pakistani</nobr> War"
+      "en": "<nobr>Indo-Pakistani</nobr> War",
+      "ko": "<nobr>인도-파키스탄</nobr> 전쟁",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          99
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 83,
       "key": "Card_024Text",
-      "en": "India or Pakistan invades the other (player's choice). Roll one die and subtract 1 for every opponent-controlled country adjacent to the target of the invasion. Player Victory on modified roll of 4-6. Player adds 2 to Military Ops Track.<br><br><b>Effects of Victory:</b> Player gains 2 VP and replaces all opponent's Influence in target country with his Influence."
+      "en": "India or Pakistan invades the other (player's choice). Roll one die and subtract 1 for every opponent-controlled country adjacent to the target of the invasion. Player Victory on modified roll of 4-6. Player adds 2 to Military Ops Track.<br><br><b>Effects of Victory:</b> Player gains 2 VP and replaces all opponent's Influence in target country with his Influence.",
+      "ko": "인도 또는 파키스탄이 상대국을 침공한다(플레이어 선택). 주사위를 굴리고 목표국에 인접한 상대 지배 국가마다 1을 뺀다. 수정값 4-6이면 승리. 플레이어는 군사 작전 트랙에 2를 추가한다.<br><br><b>승리 시 효과:</b> 플레이어는 2 승점을 얻고 목표국의 상대 영향력을 모두 자신의 영향력으로 교체한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          386
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 84,
       "key": "Card_025Title",
-      "en": "Containment"
+      "en": "Containment",
+      "ko": "봉쇄 정책",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          2132
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 85,
       "key": "Card_025Text",
-      "en": "All further Operations cards played<br>by US this turn add one to their<br>value (to a maximum of 4)."
+      "en": "All further Operations cards played<br>by US this turn add one to their<br>value (to a maximum of 4).",
+      "ko": "이번 턴 동안 미국이 이후에 플레이하는 모든 작전 카드는 작전치가 1 증가한다(최대 4).",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          204
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 86,
       "key": "Card_026Title",
-      "en": "CIA Created"
+      "en": "CIA Created",
+      "ko": "CIA 창설",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          2136
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 87,
       "key": "Card_026Text",
-      "en": "USSR reveals hand this turn.<br><br>Then the US may Conduct<br>Operations as if they played a<br>1 Op card."
+      "en": "USSR reveals hand this turn.<br><br>Then the US may Conduct<br>Operations as if they played a<br>1 Op card.",
+      "ko": "이번 턴 동안 소련은 손패를 공개한다.<br><br>그 후 미국은 작전치 1 카드처럼 작전을 수행할 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          632
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 88,
       "key": "Card_027Title",
-      "en": "US/Japan Mutual Defense Pact"
+      "en": "US/Japan Mutual Defense Pact",
+      "ko": "미일 상호 방위 조약*",
+      "ko_source": "card_title"
     },
     {
       "row": 89,
       "key": "Card_027Title1",
-      "en": "US/Japan Mutual"
+      "en": "US/Japan Mutual",
+      "ko": "미일 상호",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1038
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 90,
       "key": "Card_027Title2",
-      "en": "Defense Pact"
+      "en": "Defense Pact",
+      "ko": "방위 조약*",
+      "ko_source": "card_title"
     },
     {
       "row": 91,
       "key": "Card_027Text",
-      "en": "US gains sufficient Influence in Japan<br>for Control.<br><br>USSR may no longer make Coup or<br>Realignment rolls in Japan."
+      "en": "US gains sufficient Influence in Japan<br>for Control.<br><br>USSR may no longer make Coup or<br>Realignment rolls in Japan.",
+      "ko": "미국은 일본을 지배하기에 충분한 영향력을 얻는다.<br>소련은 더 이상 일본에서 쿠데타나 재편성을 할 수 없다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          600
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 92,
       "key": "Card_028Title",
-      "en": "Suez Crisis"
+      "en": "Suez Crisis",
+      "ko": "수에즈 위기",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          2135
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 93,
       "key": "Card_028Text",
-      "en": "Remove a total of 4 US Influence from France, the United Kingdom and Israel.<br><br>Remove no more than 2 Influence<br>per country."
+      "en": "Remove a total of 4 US Influence from France, the United Kingdom and Israel.<br><br>Remove no more than 2 Influence<br>per country.",
+      "ko": "프랑스",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          500
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 94,
       "key": "Card_029Title",
-      "en": "East European<br>Unrest"
+      "en": "East European<br>Unrest",
+      "ko": "동유럽<br>불안",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          2087
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 95,
       "key": "Card_029TitleAlt",
-      "en": "East European Unrest"
+      "en": "East European Unrest",
+      "ko": "동유럽 불안",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          708
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 96,
       "key": "Card_029Text",
-      "en": "<b>In Early or Mid War:</b> Remove 1 USSR Influence from three countries in Eastern Europe.<br><br><b>In Late War:</b> Remove 2 USSR Influence from three countries in Eastern Europe."
+      "en": "<b>In Early or Mid War:</b> Remove 1 USSR Influence from three countries in Eastern Europe.<br><br><b>In Late War:</b> Remove 2 USSR Influence from three countries in Eastern Europe.",
+      "ko": "<b>초기 또는 중기 전쟁:</b> 동유럽 세 국가에서 소련 영향력 1씩 제거한다.<br><br><b>후기 전쟁:</b> 동유럽 세 국가에서 소련 영향력 2씩 제거한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          84
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 97,
       "key": "Card_030Title",
-      "en": "Decolonization"
+      "en": "Decolonization",
+      "ko": "탈식민지화",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          688
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 98,
       "key": "Card_030Text",
-      "en": "Add one USSR Influence in each of any four African and/or SE Asian countries."
+      "en": "Add one USSR Influence in each of any four African and/or SE Asian countries.",
+      "ko": "아프리카 및/또는 동남아시아의 임의의 네 국가에 소련 영향력 1씩 추가합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          181
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 99,
       "key": "Card_031Title",
-      "en": "Red Scare/Purge"
+      "en": "Red Scare/Purge",
+      "ko": "적색 공포/숙청",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          753
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 100,
       "key": "Card_031Text",
-      "en": "All further Operations cards played by your opponent this turn are -1 to their value (to a minimum of 1 Op)."
+      "en": "All further Operations cards played by your opponent this turn are -1 to their value (to a minimum of 1 Op).",
+      "ko": "이번 턴 동안 상대가 이후에 플레이하는 모든 작전 카드는 작전치가 -1 됩니다(최소 작전치 1).",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          203
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 101,
       "key": "Card_032Title",
-      "en": "UN Intervention"
+      "en": "UN Intervention",
+      "ko": "유엔 개입",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1155
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 102,
       "key": "Card_032Text",
-      "en": "Play this card simultaneously with a card containing your opponent's associated Event. The Event is canceled, but you<br>may use its Operations value to Conduct Operations. Place the canceled Event<br>card in the discard pile.<br><br>May not be played during Headline Phase."
+      "en": "Play this card simultaneously with a card containing your opponent's associated Event. The Event is canceled, but you<br>may use its Operations value to Conduct Operations. Place the canceled Event<br>card in the discard pile.<br><br>May not be played during Headline Phase.",
+      "ko": "상대방과 연관된 이벤트가 있는 카드와 동시에 이 카드를 플레이합니다. 이벤트는 취소되지만, 해당 카드의<br>작전 값을 작전 수행에 사용할 수 있습니다. 취소된 이벤트<br>카드를 버린 더미에 놓습니다.<br><br>헤드라인 단계에서는 플레이할 수 없습니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1749
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 103,
       "key": "Card_033Title",
-      "en": "De-Stalinization"
+      "en": "De-Stalinization",
+      "ko": "탈스탈린화",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          2127
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 104,
       "key": "Card_033Text",
-      "en": "USSR may relocate up to 4 Influence points to non-US controlled countries.<br><br>No more than 2 influence may be placed in the same country."
+      "en": "USSR may relocate up to 4 Influence points to non-US controlled countries.<br><br>No more than 2 influence may be placed in the same country.",
+      "ko": "소련은 최대 4 영향력을 미국 비지배 국가들로 재배치할 수 있다.<br><br>한 국가에는 최대 2까지만 둘 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          627
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 105,
       "key": "Card_034Title",
-      "en": "Nuclear Test Ban"
+      "en": "Nuclear Test Ban",
+      "ko": "핵실험 금지",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          740
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 106,
       "key": "Card_034Text",
-      "en": "Player earns VPs equal to current DEFCON level minus 2, then improves DEFCON two levels."
+      "en": "Player earns VPs equal to current DEFCON level minus 2, then improves DEFCON two levels.",
+      "ko": "플레이어는 현재 데프콘 단계에서 2를 뺀 만큼 승점을 얻은 뒤 데프콘을 2단계 올린다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          479
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 107,
       "key": "Card_035Title",
-      "en": "Formosan Resolution"
+      "en": "Formosan Resolution",
+      "ko": "포르모사 결의*",
+      "ko_source": "card_title"
     },
     {
       "row": 108,
       "key": "Card_035Title1",
-      "en": "Formosan"
+      "en": "Formosan",
+      "ko": "대만",
+      "ko_source": "manual"
     },
     {
       "row": 109,
       "key": "Card_035Title2",
-      "en": "Resolution"
+      "en": "Resolution",
+      "ko": "결의*",
+      "ko_source": "card_title"
     },
     {
       "row": 110,
       "key": "Card_035Text",
-      "en": "Taiwan shall be treated as a Battle- ground country for scoring purposes, if the US controls Taiwan when the Asia Scoring Card is played or during Final Scoring at the end of Turn 10. Taiwan is not a Battleground country for any other game purpose. This card is discarded after US play of <i>The China Card</i>."
+      "en": "Taiwan shall be treated as a Battle- ground country for scoring purposes, if the US controls Taiwan when the Asia Scoring Card is played or during Final Scoring at the end of Turn 10. Taiwan is not a Battleground country for any other game purpose. This card is discarded after US play of <i>The China Card</i>.",
+      "ko": "아시아 점수 카드가 플레이될 때 또는 10턴 종료 시 최종 점수 계산에서 미국이 대만을 지배하고 있다면, 점수 계산 목적상 대만은 격전지로 취급된다. 다른 모든 목적에서는 대만은 격전지가 아니다. 이 카드는 미국이 <i>중국 카드</i>를 플레이한 뒤 버린다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          562
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 111,
       "key": "Card_035TextAlt",
-      "en": "Taiwan shall be treated as a Battleground country for scoring purposes, if the US controls Taiwan when the Asia Scoring Card is played or during Final Scoring at the end of Turn 10. Taiwan is not a Battleground country for any other game purpose.<br><br><font=\"TIMESI SDF\">This card's effect is cancelled after the US play of \"The China Card\"</font>."
+      "en": "Taiwan shall be treated as a Battleground country for scoring purposes, if the US controls Taiwan when the Asia Scoring Card is played or during Final Scoring at the end of Turn 10. Taiwan is not a Battleground country for any other game purpose.<br><br><font=\"TIMESI SDF\">This card's effect is cancelled after the US play of \"The China Card\"</font>.",
+      "ko": "아시아 점수 카드가 플레이될 때 또는 10턴 종료 시 최종 점수 계산 시 미국이 대만을 지배하고 있다면, 대만은 점수 계산 목적에서 격전지 국가로 취급됩니다. 대만은 그 밖의 다른 게임 목적에서는 격전지 국가가 아닙니다.<br><br><font=\"TIMESI SDF\">이 카드의 효과는 미국이 \"중국 카드\"를 플레이한 후 취소됩니다</font>.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1752
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 112,
       "key": "Card_036Title",
-      "en": "Brush War"
+      "en": "Brush War",
+      "ko": "국지전",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          678
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 113,
       "key": "Card_036Text",
-      "en": "Attack any country with a stability of 1 or 2. Roll a die and subtract 1 for every adjacent enemy controlled country. Success of 3-6. Player adds 3 to their Military Ops Track.<br><br><b>Effects of Victory:</b> Player gains 1 VP and replaces all opponent's Influence with their Influence."
+      "en": "Attack any country with a stability of 1 or 2. Roll a die and subtract 1 for every adjacent enemy controlled country. Success of 3-6. Player adds 3 to their Military Ops Track.<br><br><b>Effects of Victory:</b> Player gains 1 VP and replaces all opponent's Influence with their Influence.",
+      "ko": "안정도 1 또는 2의 국가 하나를 공격한다. 주사위를 굴리고 인접한 적 지배 국가마다 1을 뺀다. 수정값 3-6이면 성공. 플레이어는 군사 작전에 3을 추가한다.<br><br><b>성공 시 효과:</b> 플레이어는 1 승점을 얻고 상대 영향력을 모두 자신의 영향력으로 바꾼다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          231
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 114,
       "key": "Card_039Title",
-      "en": "Arms Race"
+      "en": "Arms Race",
+      "ko": "군비 경쟁",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          224
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 115,
       "key": "Card_039Text",
-      "en": "Compare each player's status on the Military Operations Tracks.<br><br>If Phasing Player has more Military Operations points, they score 1 VP.<br><br>If Phasing Player has more Military Operations points <i>and</i> has met the Required Military Operations amount, they score<br>3 VP instead."
+      "en": "Compare each player's status on the Military Operations Tracks.<br><br>If Phasing Player has more Military Operations points, they score 1 VP.<br><br>If Phasing Player has more Military Operations points <i>and</i> has met the Required Military Operations amount, they score<br>3 VP instead.",
+      "ko": "양 플레이어의 군사 작전 트랙 수치를 비교한다. 현재 차례인 플레이어의 군사 작전 수치가 더 높으면 1 승점을 얻는다.<br><br>현재 차례인 플레이어의 군사 작전 수치가 더 높고 <i>또한</i> 필요 군사 작전 수치를 충족했다면 대신 3 승점을 얻는다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          276
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 116,
       "key": "Card_040Title",
-      "en": "Cuban Missile Crisis"
+      "en": "Cuban Missile Crisis",
+      "ko": "쿠바 미사일 위기",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          2086
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 117,
       "key": "Card_040Text",
-      "en": "Set DEFCON to Level 2.<br>Any further Coup attempts by your opponent this turn, anywhere on the board, will result in Global Thermonuclear War. Your opponent will lose the game. This event may be canceled at any time if the USSR player removes two Influence from Cuba or the US player removes 2 Influence from either West Germany or Turkey."
+      "en": "Set DEFCON to Level 2.<br>Any further Coup attempts by your opponent this turn, anywhere on the board, will result in Global Thermonuclear War. Your opponent will lose the game. This event may be canceled at any time if the USSR player removes two Influence from Cuba or the US player removes 2 Influence from either West Germany or Turkey.",
+      "ko": "데프콘을 2단계로 설정한다.<br>이번 턴 남은 동안 상대가 보드 어디에서든 추가 쿠데타를 시도하면 전면 핵전쟁이 발생하며 상대는 게임에서 패배한다. 이 이벤트는 소련 플레이어가 쿠바에서 영향력 2를 제거하거나",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          534
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 118,
       "key": "Card_041Title",
-      "en": "Nuclear Subs"
+      "en": "Nuclear Subs",
+      "ko": "핵잠수함*",
+      "ko_source": "card_title"
     },
     {
       "row": 119,
       "key": "Card_041Text",
-      "en": "US Coup attempts in Battleground Countries do not affect the DEFCON track for the remainder of the turn (does not affect <i>Cuban Missle Crisis</i>)."
+      "en": "US Coup attempts in Battleground Countries do not affect the DEFCON track for the remainder of the turn (does not affect <i>Cuban Missle Crisis</i>).",
+      "ko": "미국의 격전지 대상 쿠데타 시도는 이번 턴 남은 동안 데프콘 트랙에 영향을 주지 않는다(<i>쿠바 미사일 위기</i>에는 적용되지 않음).",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          590
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 120,
       "key": "Card_042Title",
-      "en": "Quagmire"
+      "en": "Quagmire",
+      "ko": "수렁*",
+      "ko_source": "card_title"
     },
     {
       "row": 121,
       "key": "Card_042Text",
-      "en": "On next action round, US player must discard an Operations card worth 2 or more <i>and</i> roll 1-4 to cancel this event.<br><br>Repeat each US player Action round until successful or no appropiate cards remain. If out of appropiate cards, the US player may only play scoring cards until the next turn."
+      "en": "On next action round, US player must discard an Operations card worth 2 or more <i>and</i> roll 1-4 to cancel this event.<br><br>Repeat each US player Action round until successful or no appropiate cards remain. If out of appropiate cards, the US player may only play scoring cards until the next turn.",
+      "ko": "다음 행동 라운드부터 미국 플레이어는 작전치 2 이상 카드 1장을 버리고 1-4를 굴려야 이 이벤트를 취소할 수 있다. 성공하거나 적절한 카드가 없어질 때까지 미국의 각 행동 라운드마다 반복한다. 적절한 카드가 없으면 다음 턴까지 미국 플레이어는 점수 카드만 플레이할 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          437
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 122,
       "key": "Card_043Title",
-      "en": "SALT Negotiations"
+      "en": "SALT Negotiations",
+      "ko": "SALT 협상*",
+      "ko_source": "card_title"
     },
     {
       "row": 123,
       "key": "Card_043Text",
-      "en": "Improve DEFCON two levels.<br><br>Both players incur -1 die roll modifier on Coup attempts for the rest of the turn.<br><br>Player may sort through discard pile and reclaim one non-scoring card, after revealing it to their opponent."
+      "en": "Improve DEFCON two levels.<br><br>Both players incur -1 die roll modifier on Coup attempts for the rest of the turn.<br><br>Player may sort through discard pile and reclaim one non-scoring card, after revealing it to their opponent.",
+      "ko": "데프콘을 두 단계 향상시킵니다.<br><br>두 플레이어 모두 나머지 턴 동안 쿠데타 시도 시 주사위 굴림에 -1 수정자가 적용됩니다.<br><br>플레이어는 버린 더미를 살펴보고, 상대에게 공개한 후 비점수 카드 1장을 회수할 수 있습니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1757
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 124,
       "key": "Card_044Title",
-      "en": "Bear Trap"
+      "en": "Bear Trap",
+      "ko": "곰 덫",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          675
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 125,
       "key": "Card_044Text",
-      "en": "On next action round, USSR player must discard an Operations card worth 2 or more <i>and</i> roll 1-4 to cancel this event.<br><br>Repeat each USSR player Action Round until successful or no appropriate cards remain. If out of appropiate cards, the USSR player may only play scoring cards until the next turn."
+      "en": "On next action round, USSR player must discard an Operations card worth 2 or more <i>and</i> roll 1-4 to cancel this event.<br><br>Repeat each USSR player Action Round until successful or no appropriate cards remain. If out of appropiate cards, the USSR player may only play scoring cards until the next turn.",
+      "ko": "다음 행동 라운드부터 소련 플레이어는 작전치 2 이상 카드 1장을 버리고 1-4를 굴려야 이 이벤트를 취소할 수 있다.<br><br>성공하거나 적절한 카드가 없어질 때까지 소련의 각 행동 라운드마다 반복한다. 적절한 카드가 없으면 다음 턴까지 소련 플레이어는 점수 카드만 플레이할 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          438
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 126,
       "key": "Card_045Title",
-      "en": "Summit"
+      "en": "Summit",
+      "ko": "정상 회담",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          771
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 127,
       "key": "Card_045Text",
-      "en": "Both players roll a die. Each adds 1 for each Region they Dominate or Control. High roller gains 2 VP and may move DEFCON marker one level in either direction.<br><br>Do not reroll ties."
+      "en": "Both players roll a die. Each adds 1 for each Region they Dominate or Control. High roller gains 2 VP and may move DEFCON marker one level in either direction.<br><br>Do not reroll ties.",
+      "ko": "양 플레이어가 주사위를 굴린다. 각자 자신이 지배 또는 장악한 지역마다 1을 더한다. 높은 쪽이 2 승점을 얻고 데프콘 마커를 한 단계 올리거나 내릴 수 있다.<br>동점은 다시 굴리지 않는다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          244
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 128,
       "key": "Card_046Title",
-      "en": "How I Learned to Stop Worrying"
+      "en": "How I Learned to Stop Worrying",
+      "ko": "걱정을 멈추는 법을 배운 방법*",
+      "ko_source": "card_title"
     },
     {
       "row": 129,
       "key": "Card_046Text",
-      "en": "Set the DEFCON at any level you want (1-5). This event counts as a 5 Military Operations for the purpose of required Military Operations."
+      "en": "Set the DEFCON at any level you want (1-5). This event counts as a 5 Military Operations for the purpose of required Military Operations.",
+      "ko": "데프콘을 원하는 단계(1-5)로 설정한다. 이 이벤트는 필요 군사 작전 계산 시 군사 작전 5로 간주된다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          535
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 130,
       "key": "Card_047Title",
-      "en": "Junta"
+      "en": "Junta",
+      "ko": "훈타",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          715
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 131,
       "key": "Card_047Text",
-      "en": "Place 2 Influence in any one Central<br>or South American country.<br><br>Then you may make a free Coup attempt or Realignment roll in one of these regions (using this card's Operations Value)."
+      "en": "Place 2 Influence in any one Central<br>or South American country.<br><br>Then you may make a free Coup attempt or Realignment roll in one of these regions (using this card's Operations Value).",
+      "ko": "중앙아메리카 또는 남아메리카의 아무 한 국가에 영향력 2를 배치한다.<br><br>그 후 이 카드의 작전치으로 해당 지역 중 하나에서 무료 쿠데타 또는 재편성을 수행할 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          450
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 132,
       "key": "Card_048Title",
-      "en": "Kitchen Debates"
+      "en": "Kitchen Debates",
+      "ko": "부엌 논쟁*",
+      "ko_source": "card_title"
     },
     {
       "row": 133,
       "key": "Card_048Text",
-      "en": "If the US controls more Battleground countries than the USSR, poke opponent in chest and gain 2 VP!"
+      "en": "If the US controls more Battleground countries than the USSR, poke opponent in chest and gain 2 VP!",
+      "ko": "미국이 소련보다 더 많은 격전지를 지배하고 있다면, 상대 가슴을 콕 찌르고 2 승점을 얻으세요!",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          374
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 134,
       "key": "Card_049Title",
-      "en": "Missile Envy"
+      "en": "Missile Envy",
+      "ko": "미사일 선망",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          732
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 135,
       "key": "Card_049Text",
-      "en": "Exchange this card for your opponent's highest valued Operations card in their hand. If two or more cards are tied, opponent chooses.<br><br>If the exchanged card contains your Event, or an Event applicable to both players, it occurs immediately. If it contains opponent's Event, use Operations value without triggering Event. Opponent must use this card for Operations during their next action round."
+      "en": "Exchange this card for your opponent's highest valued Operations card in their hand. If two or more cards are tied, opponent chooses.<br><br>If the exchanged card contains your Event, or an Event applicable to both players, it occurs immediately. If it contains opponent's Event, use Operations value without triggering Event. Opponent must use this card for Operations during their next action round.",
+      "ko": "이 카드를 상대방 손에 있는 가장 높은 작전치 카드와 교환합니다. 두 장 이상이 동점이면 상대방이 선택합니다.<br><br>교환된 카드에 자신의 이벤트 또는 양측 모두에 해당하는 이벤트가 포함되어 있으면 즉시 발동됩니다. 상대방의 이벤트가 포함된 경우, 이벤트를 발동시키지 않고 작전치만 사용합니다. 상대방은 다음 행동 라운드에 이 카드를 작전치로 사용해야 합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1412
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 136,
       "key": "Card_050Title",
-      "en": "We Will Bury You"
+      "en": "We Will Bury You",
+      "ko": "우리가 당신들을 묻어버리겠다*",
+      "ko_source": "card_title"
     },
     {
       "row": 137,
       "key": "Card_050Text",
-      "en": "Unless <i>UN Intervention</i> is played as an Event on the US player's next round, USSR gains 3 VP prior to any US VP award.<br><br>Degrade DEFCON one level."
+      "en": "Unless <i>UN Intervention</i> is played as an Event on the US player's next round, USSR gains 3 VP prior to any US VP award.<br><br>Degrade DEFCON one level.",
+      "ko": "미국 플레이어의 다음 라운드에서 <i>UN Intervention</i>이 이벤트로 플레이되지 않는 한, 소련은 미국이 승점을 얻기 전에 3 승점을 먼저 얻는다.<br><br>데프콘을 1단계 낮춘다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          633
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 138,
       "key": "Card_051Title",
-      "en": "Brezhnev Doctrine"
+      "en": "Brezhnev Doctrine",
+      "ko": "브레즈네프 독트린*",
+      "ko_source": "card_title"
     },
     {
       "row": 139,
       "key": "Card_051Text",
-      "en": "All further Operations card played by the USSR this turn increase their Ops value by one (to a maximum of 4)."
+      "en": "All further Operations card played by the USSR this turn increase their Ops value by one (to a maximum of 4).",
+      "ko": "이번 턴 동안 소련이 이후에 플레이하는 모든 작전 카드는 작전치가 1 증가한다(최대 4).",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          200
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 140,
       "key": "Card_052Title",
-      "en": "Portuguese Empire Crumbles"
+      "en": "Portuguese Empire Crumbles",
+      "ko": "포르투갈 제국 붕괴*",
+      "ko_source": "card_title"
     },
     {
       "row": 141,
       "key": "Card_052Text",
-      "en": "Add 2 USSR Influence in both the SE African States and Angola."
+      "en": "Add 2 USSR Influence in both the SE African States and Angola.",
+      "ko": "동남아프리카 국가들과 앙골라에 각각 소련 영향력 2를 추가한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          170
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 142,
       "key": "Card_053Title",
-      "en": "South African Unrest"
+      "en": "South African Unrest",
+      "ko": "남아프리카 불안",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          764
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 143,
       "key": "Card_053Text",
-      "en": "USSR either adds 2 Influence in South Africa or adds 1 Influence in South Africa and 2 Influence in any countries adjacent to South Africa."
+      "en": "USSR either adds 2 Influence in South Africa or adds 1 Influence in South Africa and 2 Influence in any countries adjacent to South Africa.",
+      "ko": "소련은 남아프리카에 영향력 2를 추가하거나, 남아프리카에 영향력 1과 남아프리카에 인접한 국가들에 영향력 총 2를 추가합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          615
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 144,
       "key": "Card_054Title",
-      "en": "Allende"
+      "en": "Allende",
+      "ko": "아옌데*",
+      "ko_source": "card_title"
     },
     {
       "row": 145,
       "key": "Card_054Text",
-      "en": "USSR receives 2 Influence in Chile."
+      "en": "USSR receives 2 Influence in Chile.",
+      "ko": "칠레에 소련 영향력 2를 추가합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          631
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 146,
       "key": "Card_055Title",
-      "en": "Willy Brandt"
+      "en": "Willy Brandt",
+      "ko": "빌리 브란트*",
+      "ko_source": "card_title"
     },
     {
       "row": 147,
       "key": "Card_055Text",
-      "en": "USSR gains 1 VP.<br>USSR receives 1 Influence in West Germany.<br>Cancels NATO for West Germany.<br><i>This event is unplayable and/or canceled by 'Tear Down This Wall.'"
+      "en": "USSR gains 1 VP.<br>USSR receives 1 Influence in West Germany.<br>Cancels NATO for West Germany.<br><i>This event is unplayable and/or canceled by 'Tear Down This Wall.'",
+      "ko": "소련이 1 승점을 얻는다.<br>서독에 소련 영향력 1을 받는다.<br>서독에 대한 NATO를 취소한다.<br><i>이 이벤트는 '이 장벽을 허물어라'에 의해 사용할 수 없거나 취소된다.</i>",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          621
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 148,
       "key": "Card_055TextAlt",
-      "en": "USSR gains 1 VP.<br><br>USSR receives 1 Influence in West Germany.<br><br><i>Cancels \"NATO\" for West Germany.<br><br>This event is unplayable and/or canceled by \"Tear Down This Wall\".</i>"
+      "en": "USSR gains 1 VP.<br><br>USSR receives 1 Influence in West Germany.<br><br><i>Cancels \"NATO\" for West Germany.<br><br>This event is unplayable and/or canceled by \"Tear Down This Wall\".</i>",
+      "ko": "소련이 승점 1점을 획득합니다.<br><br>소련이 서독에 영향력 1을 받습니다.<br><br><i>서독에 대한 \"NATO\"를 취소합니다.<br><br>이 이벤트는 \"이 장벽을 허물어라\"에 의해 플레이 불가 및/또는 취소됩니다.</i>",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1759
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 149,
       "key": "Card_056Title",
-      "en": "Muslim Revolution"
+      "en": "Muslim Revolution",
+      "ko": "이슬람 혁명",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          734
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 150,
       "key": "Card_056Text",
-      "en": "Remove all US Influence in two of the following countries:<br><br>Sudan, Iran, Iraq, Egypt, Libya, Saudi Arabia, Syria, Jordan.<br><br><i>This event is unplayable after play of the optional card \"AWACS Sales to Saudis\".</i>"
+      "en": "Remove all US Influence in two of the following countries:<br><br>Sudan, Iran, Iraq, Egypt, Libya, Saudi Arabia, Syria, Jordan.<br><br><i>This event is unplayable after play of the optional card \"AWACS Sales to Saudis\".</i>",
+      "ko": "다음 국가 중 두 곳에서 미국 영향력을 모두 제거한다: 수단, 이란, 이라크, 이집트, 리비아, 사우디아라비아, 시리아, 요르단.<br><br><i>이 이벤트는 선택 카드 \"AWACS 사우디 판매\" 플레이 후 사용할 수 없다.</i>",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          510
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 151,
       "key": "Card_057Title",
-      "en": "ABM Treaty"
+      "en": "ABM Treaty",
+      "ko": "ABM 조약",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          130
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 152,
       "key": "Card_057Text",
-      "en": "Improve DEFCON one level.<br><br>Then player may Conduct Operations as if they played a 4 Ops card."
+      "en": "Improve DEFCON one level.<br><br>Then player may Conduct Operations as if they played a 4 Ops card.",
+      "ko": "데프콘을 1단계 올린다.<br><br>그 후 플레이어는 작전치 4 카드처럼 작전을 수행할 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          383
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 153,
       "key": "Card_058Title",
-      "en": "Cultural Revolution"
+      "en": "Cultural Revolution",
+      "ko": "문화 대혁명*",
+      "ko_source": "card_title"
     },
     {
       "row": 154,
       "key": "Card_058Text",
-      "en": "If the US has <i>The China Card</i>, claim it face up and available for play.<br><br>If the USSR already has it, <br>USSR gains 1 VP."
+      "en": "If the US has <i>The China Card</i>, claim it face up and available for play.<br><br>If the USSR already has it, <br>USSR gains 1 VP.",
+      "ko": "미국이 <i>중국 카드</i>를 가지고 있다면 이를 앞면으로 가져와 플레이 가능하게 한다.<br>이미 소련이 가지고 있다면 소련이 1 승점을 얻는다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          376
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 155,
       "key": "Card_059Title",
-      "en": "Flower Power"
+      "en": "Flower Power",
+      "ko": "플라워 파워*",
+      "ko_source": "card_title"
     },
     {
       "row": 156,
       "key": "Card_059Text",
-      "en": "USSR gains 2 VP for every subsequently US played \"war card\" (played as an event or Operations) unless played on the space race.<br><br>War Cards: <i>Arab-Israeli War, Korean War, Brush War, Indo-Pakistani War or Iran-Iraq War.<br><br>This event canceled by 'An Evil Empire'."
+      "en": "USSR gains 2 VP for every subsequently US played \"war card\" (played as an event or Operations) unless played on the space race.<br><br>War Cards: <i>Arab-Israeli War, Korean War, Brush War, Indo-Pakistani War or Iran-Iraq War.<br><br>This event canceled by 'An Evil Empire'.",
+      "ko": "이후 미국이 플레이하는 모든 \\\"전쟁 카드\\\"마다 소련은 2 승점을 얻는다(우주 경쟁에 사용한 경우 제외). 전쟁 카드: <i>아랍-이스라엘 전쟁, 한국 전쟁, 소규모 전쟁, 인도-파키스탄 전쟁, 이란-이라크 전쟁</i>.<br><br>이 이벤트는 '악의 제국'에 의해 취소된다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          623
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 157,
       "key": "Card_060Title",
-      "en": "U2 Incident"
+      "en": "U2 Incident",
+      "ko": "U-2 사건*",
+      "ko_source": "card_title"
     },
     {
       "row": 158,
       "key": "Card_060Text",
-      "en": "USSR gains 1 VP.<br><br>If <i>UN Intervention</i> played later this turn as an Event, either by US or USSR, gain an additional 1 VP."
+      "en": "USSR gains 1 VP.<br><br>If <i>UN Intervention</i> played later this turn as an Event, either by US or USSR, gain an additional 1 VP.",
+      "ko": "소련이 1 승점을 얻는다.<br><br>이 턴 후반에 미국 또는 소련이 <font=\"TIMESI SDF\">UN Intervention</font>을 이벤트로 플레이하면 추가로 1 승점을 얻는다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          619
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 159,
       "key": "Card_061Title",
-      "en": "OPEC"
+      "en": "OPEC",
+      "ko": "오펙",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          435
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 160,
       "key": "Card_061Text",
-      "en": "USSR gains 1 VP for each of the following countries they control:<br><br>Egypt, Iran, Libya, Saudi Arabia, Iraq, Gulf States, and Venezuela.<br><br><i>Unplayable as an event if 'North Sea Oil' is in effect."
+      "en": "USSR gains 1 VP for each of the following countries they control:<br><br>Egypt, Iran, Libya, Saudi Arabia, Iraq, Gulf States, and Venezuela.<br><br><i>Unplayable as an event if 'North Sea Oil' is in effect.",
+      "ko": "소련은 다음 국가 중 자신이 지배하는 국가마다 1 승점을 얻는다:<br><br>이집트, 이란, 리비아, 사우디아라비아, 이라크, 걸프 산유국, 베네수엘라.<br><br><font=\"TIMESI SDF\">'북해 석유'가 발동 중이면 이벤트로 플레이할 수 없다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          617
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 161,
       "key": "Card_062Title",
-      "en": "Lone Gunman"
+      "en": "Lone Gunman",
+      "ko": "고독한 총잡이*",
+      "ko_source": "card_title"
     },
     {
       "row": 162,
       "key": "Card_062Text",
-      "en": "US Player reveals their hand. Then the USSR may Conduct Operations as if they played a 1 Op card."
+      "en": "US Player reveals their hand. Then the USSR may Conduct Operations as if they played a 1 Op card.",
+      "ko": "미국 플레이어가 손패를 공개한다. 그 후 소련은 작전치 1 카드처럼 작전을 수행할 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          592
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 163,
       "key": "Card_063Title",
-      "en": "Colonial Rear Guards"
+      "en": "Colonial Rear Guards",
+      "ko": "식민지 후위대",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          684
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 164,
       "key": "Card_063Text",
-      "en": "Add 1 US Influence in each of four different African and/or Southeast Asian Countries."
+      "en": "Add 1 US Influence in each of four different African and/or Southeast Asian Countries.",
+      "ko": "서로 다른 네 개의 아프리카 및/또는 동남아시아 국가에 미국 영향력 1씩을 추가한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          155
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 165,
       "key": "Card_064Title",
-      "en": "Panama Canal Returned"
+      "en": "Panama Canal Returned",
+      "ko": "파나마 운하 반환*",
+      "ko_source": "card_title"
     },
     {
       "row": 166,
       "key": "Card_064Text",
-      "en": "Add 1 US Influence in Panama,<br>Costa Rica, and Venezuela."
+      "en": "Add 1 US Influence in Panama,<br>Costa Rica, and Venezuela.",
+      "ko": "파나마, 코스타리카, 베네수엘라에 미국 영향력 1씩을 추가한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          154
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 167,
       "key": "Card_065Title",
-      "en": "Camp David Accords"
+      "en": "Camp David Accords",
+      "ko": "캠프 데이비드 협정*",
+      "ko_source": "card_title"
     },
     {
       "row": 168,
       "key": "Card_065Title1",
-      "en": "Camp David"
+      "en": "Camp David",
+      "ko": "캠프 데이비드",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1965
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 169,
       "key": "Card_065Title2",
-      "en": "Accords"
+      "en": "Accords",
+      "ko": "협정*",
+      "ko_source": "card_title"
     },
     {
       "row": 170,
       "key": "Card_065Text",
-      "en": "US gains 1 VP.<br><br>US receives 1 Influence in Israel,   Jordan and Egypt.<br><br><i>'Arab-Israeli War' event no longer playable.</i>"
+      "en": "US gains 1 VP.<br><br>US receives 1 Influence in Israel,   Jordan and Egypt.<br><br><i>'Arab-Israeli War' event no longer playable.</i>",
+      "ko": "미국이 1 승점을 얻는다.<br><br>미국은 이스라엘, 요르단, 이집트에 영향력 1씩을 받는다.<br><br><i>'아랍-이스라엘 전쟁' 이벤트는 더 이상 플레이할 수 없다.</i>",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          596
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 171,
       "key": "Card_065TextAlt",
-      "en": "US gains 1 VP.<br><br>US receives 1 Influence in Israel, Jordan and Egypt.<br><br><i>'Arab-Israeli War' event no longer playable.</i>"
+      "en": "US gains 1 VP.<br><br>US receives 1 Influence in Israel, Jordan and Egypt.<br><br><i>'Arab-Israeli War' event no longer playable.</i>",
+      "ko": "미국이 1 승점을 얻는다.<br><br>미국은 이스라엘, 요르단, 이집트에 영향력 1씩을 받는다.<br><br><i>'아랍-이스라엘 전쟁' 이벤트는 더 이상 플레이할 수 없다.</i>",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          597
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 172,
       "key": "Card_066Title",
-      "en": "Puppet Governments"
+      "en": "Puppet Governments",
+      "ko": "괴뢰 정부*",
+      "ko_source": "card_title"
     },
     {
       "row": 173,
       "key": "Card_066Text",
-      "en": "US may add 1 Influence in three countries that currently contain no Influence from either power."
+      "en": "US may add 1 Influence in three countries that currently contain no Influence from either power.",
+      "ko": "미국은 현재 어느 강대국의 영향력도 없는 세 국가에 영향력 1씩을 추가할 수 있습니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          602
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 174,
       "key": "Card_067Title",
-      "en": "Grain Sales to Soviets"
+      "en": "Grain Sales to Soviets",
+      "ko": "소련에 곡물 판매",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          345
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 175,
       "key": "Card_067Text",
-      "en": "Randomly choose one card from<br>USSR hand. Play it or return it.<br>If Soviet player has no cards, or returned, use this card to conduct Operations normally."
+      "en": "Randomly choose one card from<br>USSR hand. Play it or return it.<br>If Soviet player has no cards, or returned, use this card to conduct Operations normally.",
+      "ko": "소련 손패에서 카드 1장을 무작위로 선택한다.<br>그 카드를 플레이하거나 돌려준다.<br>소련 플레이어의 손패가 없거나 카드를 돌려주었다면 이 카드는 평소처럼 작전용으로 사용한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          492
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 176,
       "key": "Card_068Title",
-      "en": "John Paul II Elected Pope"
+      "en": "John Paul II Elected Pope",
+      "ko": "요한 바오로 2세 교황 선출*",
+      "ko_source": "card_title"
     },
     {
       "row": 177,
       "key": "Card_068Title1",
-      "en": "John Paul II"
+      "en": "John Paul II",
+      "ko": "요한 바오로 2세",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          399
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 178,
       "key": "Card_068Title2",
-      "en": "Elected Pope"
+      "en": "Elected Pope",
+      "ko": "선출된 교황*",
+      "ko_source": "card_title"
     },
     {
       "row": 179,
       "key": "Card_068Text",
-      "en": "Remove 2 USSR Influence in Poland and then add 1 US Influence in Poland.<br><br><i>Allows play of 'Solidarity'</i>."
+      "en": "Remove 2 USSR Influence in Poland and then add 1 US Influence in Poland.<br><br><i>Allows play of 'Solidarity'</i>.",
+      "ko": "폴란드의 소련 영향력 2를 제거한 뒤 폴란드에 미국 영향력 1을 추가한다.<br><br><i>'연대'를 플레이할 수 있게 한다.</i>",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          497
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 180,
       "key": "Card_069Title",
-      "en": "Latin American Death Squads"
+      "en": "Latin American Death Squads",
+      "ko": "라틴아메리카 죽음의 분대",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          406
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 181,
       "key": "Card_069Text",
-      "en": "All of the player's Coup attempts in Central and South America are +1 for the remainder of the turn, while all opponent's Coup attempts are -1 for the remainder of the turn."
+      "en": "All of the player's Coup attempts in Central and South America are +1 for the remainder of the turn, while all opponent's Coup attempts are -1 for the remainder of the turn.",
+      "ko": "이번 턴 남은 동안 플레이어의 중앙아메리카와 남아메리카에서의 모든 쿠데타 시도는 +1을 받고, 상대의 모든 쿠데타 시도는 -1을 받습니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          205
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 182,
       "key": "Card_070Title",
-      "en": "OAS Founded"
+      "en": "OAS Founded",
+      "ko": "미주기구 창설*",
+      "ko_source": "card_title"
     },
     {
       "row": 183,
       "key": "Card_070Text",
-      "en": "Add 2 US Influence in Central America and/or South America."
+      "en": "Add 2 US Influence in Central America and/or South America.",
+      "ko": "중앙아메리카 및/또는 남아메리카에 미국 영향력 2를 추가합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          162
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 184,
       "key": "Card_071Title",
-      "en": "Nixon Plays the China Card"
+      "en": "Nixon Plays the China Card",
+      "ko": "닉슨의 중국 카드*",
+      "ko_source": "card_title"
     },
     {
       "row": 185,
       "key": "Card_071Text",
-      "en": "If US has <i>The China Card</i>, gain 2 VP.<br>Otherwise, US player receives the <i>The China Card</i> now, face down and unavailable for immediate play."
+      "en": "If US has <i>The China Card</i>, gain 2 VP.<br>Otherwise, US player receives the <i>The China Card</i> now, face down and unavailable for immediate play.",
+      "ko": "미국이 <i>중국 카드</i>를 가지고 있다면 2 승점을 얻는다. 그렇지 않다면 미국 플레이어가 지금 <br><i>중국 카드</i>를 받아 뒷면으로 보유하며 즉시 플레이할 수는 없다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          369
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 186,
       "key": "Card_072Title",
-      "en": "Sadat Expels Soviets"
+      "en": "Sadat Expels Soviets",
+      "ko": "사다트의 소련 축출*",
+      "ko_source": "card_title"
     },
     {
       "row": 187,
       "key": "Card_072Text",
-      "en": "Remove all USSR Influence in Egypt and add one US Influence."
+      "en": "Remove all USSR Influence in Egypt and add one US Influence.",
+      "ko": "이집트의 모든 소련 영향력을 제거하고 미국 영향력 1개를 추가합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          511
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 188,
       "key": "Card_073Title",
-      "en": "Shuttle Diplomacy"
+      "en": "Shuttle Diplomacy",
+      "ko": "셔틀 외교",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          762
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 189,
       "key": "Card_073Title1",
-      "en": "Shuttle"
+      "en": "Shuttle",
+      "ko": "셔틀",
+      "ko_source": "extra_map"
     },
     {
       "row": 190,
       "key": "Card_073Title2",
-      "en": "Diplomacy"
+      "en": "Diplomacy",
+      "ko": "외교",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1940
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 191,
       "key": "Card_073Text",
-      "en": "Play in front of US player. During the next scoring of the Middle East or Asia (whichever comes first), subtract one Battleground country from USSR total, then put this card in the discard pile.<br>Does not count for Final Scoring at the end of Turn 10."
+      "en": "Play in front of US player. During the next scoring of the Middle East or Asia (whichever comes first), subtract one Battleground country from USSR total, then put this card in the discard pile.<br>Does not count for Final Scoring at the end of Turn 10.",
+      "ko": "미국 플레이어 앞에 놓는다. 다음 중동 또는<br>아시아 점수 계산(먼저 오는 쪽) 때 소련의 격전지 수에서 1을 뺀다. 그 후 이 카드를 버린 카드 더미에 놓는다. 10턴 종료 시 최종 점수 계산에는 포함되지 않는다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          475
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 192,
       "key": "Card_074Title",
-      "en": "The Voice of America"
+      "en": "The Voice of America",
+      "ko": "미국의 소리",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          580
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 193,
       "key": "Card_074Text",
-      "en": "Remove 4 USSR Influence from<br>non-European countries. No more<br>than 2 may be removed from any<br>one country."
+      "en": "Remove 4 USSR Influence from<br>non-European countries. No more<br>than 2 may be removed from any<br>one country.",
+      "ko": "유럽 외 국가들에서 소련 영향력 4를 제거한다.<br>한 국가당 최대 2까지만 제거할 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          498
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 194,
       "key": "Card_075Title",
-      "en": "Liberation Theology"
+      "en": "Liberation Theology",
+      "ko": "해방 신학",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          722
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 195,
       "key": "Card_075Text",
-      "en": "Add 3 USSR Influence in Central America, no more than 2 per country."
+      "en": "Add 3 USSR Influence in Central America, no more than 2 per country.",
+      "ko": "중앙아메리카에 소련 영향력 3개를 추가합니다. 한 국가당 최대 2개까지입니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          173
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 196,
       "key": "Card_076Title",
-      "en": "Ussuri River Skirmish"
+      "en": "Ussuri River Skirmish",
+      "ko": "우수리강 충돌*",
+      "ko_source": "card_title"
     },
     {
       "row": 197,
       "key": "Card_076Text",
-      "en": "If the USSR has <i>The China Card</i>, claim it face up and available for play.<br>If the US already has <i>The China Card</i>, add 4 US Influence in Asia, no more than 2 per country."
+      "en": "If the USSR has <i>The China Card</i>, claim it face up and available for play.<br>If the US already has <i>The China Card</i>, add 4 US Influence in Asia, no more than 2 per country.",
+      "ko": "소련이 <i>중국 카드</i>를 가지고 있다면 이를 앞면으로 가져와 플레이 가능하게 한다. 미국이 이미 <i>중국 카드</i>를 가지고 있다면 아시아에 미국 영향력 4를 추가한다. 한 국가당 최대 2까지다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          381
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 198,
       "key": "Card_077Title",
-      "en": "Ask Not What Your Country Can Do For You..."
+      "en": "Ask Not What Your Country Can Do For You...",
+      "ko": "국가가 당신을 위해 무엇을 할 수 있는지 묻지 마십시오...",
+      "ko_source": "manual"
     },
     {
       "row": 199,
       "key": "Card_077Text",
-      "en": "US player may discard up to entire hand (including Scoring cards) and draw replacements from the deck.<br>The number of cards discarded must be decided prior to drawing any replacements."
+      "en": "US player may discard up to entire hand (including Scoring cards) and draw replacements from the deck.<br>The number of cards discarded must be decided prior to drawing any replacements.",
+      "ko": "미국 플레이어는 손패 전체(점수 카드 포함)까지 버리고 덱에서 새로 뽑을 수 있다.<br>버릴 카드 수는 새 카드를 뽑기 전에 미리 결정해야 한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          606
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 200,
       "key": "Card_078Title",
-      "en": "Alliance for Progress"
+      "en": "Alliance for Progress",
+      "ko": "진보를 위한 동맹*",
+      "ko_source": "card_title"
     },
     {
       "row": 201,
       "key": "Card_078Text",
-      "en": "US gains 1 VP for each US<br>controlled Battleground country<br>in Central America and<br>South America."
+      "en": "US gains 1 VP for each US<br>controlled Battleground country<br>in Central America and<br>South America.",
+      "ko": "미국은 중앙아메리카와 남아메리카에서 자신이 지배하는 격전지마다 1 승점을 얻는다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          594
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 202,
       "key": "Card_080Title",
-      "en": "One Small Step..."
+      "en": "One Small Step...",
+      "ko": "작은 한 걸음...",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          439
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 203,
       "key": "Card_080Text",
-      "en": "If you are behind on the Space Race track, play this card to move your marker two boxes forward on the Space Race Track, gaining the VP value of the second box only."
+      "en": "If you are behind on the Space Race track, play this card to move your marker two boxes forward on the Space Race Track, gaining the VP value of the second box only.",
+      "ko": "우주 경쟁 트랙에서 뒤져 있다면 이 카드를 플레이해 마커를 두 칸 전진시키고 두 번째 칸의 승점만 획득한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          382
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 204,
       "key": "Card_082Title",
-      "en": "Iranian Hostage Crisis*"
+      "en": "Iranian Hostage Crisis*",
+      "ko": "이란 인질 위기*",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          816
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 205,
       "key": "Card_082Title1",
-      "en": "Iranian"
+      "en": "Iranian",
+      "ko": "이란",
+      "ko_source": "manual"
     },
     {
       "row": 206,
       "key": "Card_082Title2",
-      "en": "Hostage Crisis*"
+      "en": "Hostage Crisis*",
+      "ko": "인질 위기*",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          812
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 207,
       "key": "Card_082Text",
-      "en": "Remove all US Influence in Iran.<br>Add 2 USSR Influence in Iran. <br><br>Doubles effect of <i>\"Terrorism\"</i><br>card against US."
+      "en": "Remove all US Influence in Iran.<br>Add 2 USSR Influence in Iran. <br><br>Doubles effect of <i>\"Terrorism\"</i><br>card against US.",
+      "ko": "이란의 미국 영향력을 모두 제거한다.<br>이란에 소련 영향력 2를 추가한다.<br><br>미국을 상대로 하는 <i>\\\"테러리즘\\\"</i><br>카드 효과를 두 배로 만든다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          505
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 208,
       "key": "Card_083Title",
-      "en": "The Iron Lady"
+      "en": "The Iron Lady",
+      "ko": "철의 여인",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          572
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 209,
       "key": "Card_083Text",
-      "en": "US gains 1 VP.<br>Add 1 USSR Influence in Argentina. Remove all USSR Influence from UK.<br><i> Socialist Governments</i> event no longer playable."
+      "en": "US gains 1 VP.<br>Add 1 USSR Influence in Argentina. Remove all USSR Influence from UK.<br><i> Socialist Governments</i> event no longer playable.",
+      "ko": "미국이 1 승점을 얻는다.<br>아르헨티나에 소련 영향력 1을 추가하고 영국의 소련 영향력을 모두 제거한다.<br><i>사회주의 정부</i> 이벤트는 더 이상 플레이할 수 없다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          599
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 210,
       "key": "Card_084Title",
-      "en": "Reagan Bombs Libya"
+      "en": "Reagan Bombs Libya",
+      "ko": "레이건의 리비아 폭격*",
+      "ko_source": "card_title"
     },
     {
       "row": 211,
       "key": "Card_084Text",
-      "en": "US gains 1 VP for every 2 USSR Influence in Libya."
+      "en": "US gains 1 VP for every 2 USSR Influence in Libya.",
+      "ko": "미국은 리비아의 소련 영향력 2개마다 1 승점을 얻습니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          595
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 212,
       "key": "Card_085Title",
-      "en": "Star Wars"
+      "en": "Star Wars",
+      "ko": "스타 워즈*",
+      "ko_source": "card_title"
     },
     {
       "row": 213,
       "key": "Card_085Text",
-      "en": "If the US is ahead on the Space Race track, play this card to search through the discard pile for a non-scoring card of your choice.<br><br>Event occurs immediately."
+      "en": "If the US is ahead on the Space Race track, play this card to search through the discard pile for a non-scoring card of your choice.<br><br>Event occurs immediately.",
+      "ko": "미국이 우주 경쟁 트랙에서 앞서 있다면 이 카드를 플레이하여 버린 카드 더미에서 원하는 비점수 카드 1장을 찾아 즉시 사용한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          378
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 214,
       "key": "Card_086Title",
-      "en": "North Sea Oil"
+      "en": "North Sea Oil",
+      "ko": "북해 원유*",
+      "ko_source": "card_title"
     },
     {
       "row": 215,
       "key": "Card_086Title1",
-      "en": "North Sea"
+      "en": "North Sea",
+      "ko": "북해",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1963
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 216,
       "key": "Card_086Title2",
-      "en": "Oil"
+      "en": "Oil",
+      "ko": "석유*",
+      "ko_source": "card_title"
     },
     {
       "row": 217,
       "key": "Card_086Text",
-      "en": "<i>OPEC</i> event is no longer playable.<br>US may play 8 cards this turn."
+      "en": "<i>OPEC</i> event is no longer playable.<br>US may play 8 cards this turn.",
+      "ko": "<i>오펙</i> 이벤트는 더 이상 플레이할 수 없다.<br>미국은 이번 턴에 카드 8장을 플레이할 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          93
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 218,
       "key": "Card_087Title",
-      "en": "The Reformer"
+      "en": "The Reformer",
+      "ko": "개혁가*",
+      "ko_source": "card_title"
     },
     {
       "row": 219,
       "key": "Card_087Title1",
-      "en": "The"
+      "en": "The",
+      "ko": "The",
+      "ko_source": "manual_keep_en"
     },
     {
       "row": 220,
       "key": "Card_087Title2",
-      "en": "Reformer"
+      "en": "Reformer",
+      "ko": "개혁가*",
+      "ko_source": "card_title"
     },
     {
       "row": 221,
       "key": "Card_087Text",
-      "en": "Add 4 Influence in Europe (no more than 2 per country). If USSR is ahead of US in VP, then 6 Influence may be added instead.<br>USSR may no longer conduct Coup attempts in Europe.<br><i>Improves effect of \"Glasnost\" event.</i>"
+      "en": "Add 4 Influence in Europe (no more than 2 per country). If USSR is ahead of US in VP, then 6 Influence may be added instead.<br>USSR may no longer conduct Coup attempts in Europe.<br><i>Improves effect of \"Glasnost\" event.</i>",
+      "ko": "유럽에 영향력 4를 추가한다(한 국가당 최대 2). 소련이 승점에서 미국보다 앞서 있다면 대신 영향력 6을 추가할 수 있다.<br>소련은 더 이상 유럽에서 쿠데타를 시도할 수 없다.<br><font=\"\"TIMESI SDF\"\">\"글라스노스트\" 이벤트의 효과를 강화한다.</font>",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          176
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 222,
       "key": "Card_088Title",
-      "en": "Marine Barracks Bombing"
+      "en": "Marine Barracks Bombing",
+      "ko": "해병대 막사 폭격*",
+      "ko_source": "card_title"
     },
     {
       "row": 223,
       "key": "Card_088Text",
-      "en": "Remove all US Influence in Lebanon plus remove 2 additional US Influence from anywhere in the Middle East."
+      "en": "Remove all US Influence in Lebanon plus remove 2 additional US Influence from anywhere in the Middle East.",
+      "ko": "레바논의 모든 미국 영향력을 제거하고, 추가로 중동 아무 곳에서나 미국 영향력 2개를 더 제거합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          506
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 224,
       "key": "Card_089Title",
-      "en": "Soviets Shoot Down KAL-007"
+      "en": "Soviets Shoot Down KAL-007",
+      "ko": "소련의 KAL-007 격추*",
+      "ko_source": "card_title"
     },
     {
       "row": 225,
       "key": "Card_089Text",
-      "en": "Degrade DEFCON one level.<br>US gains 2 VP.<br><br>If South Korea is US Controlled, then the US may place Influence or attempt Realignments as if they played a<br>4 Ops card."
+      "en": "Degrade DEFCON one level.<br>US gains 2 VP.<br><br>If South Korea is US Controlled, then the US may place Influence or attempt Realignments as if they played a<br>4 Ops card.",
+      "ko": "데프콘을 1단계 낮춘다.<br>미국이 2 승점을 얻는다.<br><br>남한이 미국 지배 상태라면 미국은 작전치 4 카드처럼 영향력 배치 또는 재편성을 수행할 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          304
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 226,
       "key": "Card_090Title",
-      "en": "Glasnost"
+      "en": "Glasnost",
+      "ko": "글라스노스트*",
+      "ko_source": "card_title"
     },
     {
       "row": 227,
       "key": "Card_090Text",
-      "en": "USSR gains 2 VP.<br>Improve DEFCON one level.<br>If <i>The Reformer</i> is in effect, then the USSR may place Influence or attempt Realignments as if they played a 4 Ops card."
+      "en": "USSR gains 2 VP.<br>Improve DEFCON one level.<br>If <i>The Reformer</i> is in effect, then the USSR may place Influence or attempt Realignments as if they played a 4 Ops card.",
+      "ko": "소련이 2 승점을 얻는다.<br>데프콘을 1단계 올린다.<br><font=\\\"TIMESI SDF\\\">개혁가</font>가 발동 중이라면 소련은 작전치 4 카드처럼 영향력 배치 또는 재편성을 수행할 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          625
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 228,
       "key": "Card_091Title",
-      "en": "Ortega Elected in Nicaragua"
+      "en": "Ortega Elected in Nicaragua",
+      "ko": "니카라과 오르테가 당선*",
+      "ko_source": "card_title"
     },
     {
       "row": 229,
       "key": "Card_091Text",
-      "en": "Remove all US Influence from Nicaragua.<br>Then USSR may make one free Coup attempt (with this card's Operations value) in a country adjacent to Nicaragua."
+      "en": "Remove all US Influence from Nicaragua.<br>Then USSR may make one free Coup attempt (with this card's Operations value) in a country adjacent to Nicaragua.",
+      "ko": "니카라과의 미국 영향력을 모두 제거한다. 그 후 소련은 니카라과에 인접한 국가 한 곳에서 이 카드의 작전치으로 무료 쿠데타를 한 번 시도할 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          502
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 230,
       "key": "Card_092Title",
-      "en": "Terrorism"
+      "en": "Terrorism",
+      "ko": "테러리즘",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          773
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 231,
       "key": "Card_092Text",
-      "en": "Opponent must randomly discard one card. If played by USSR and <i>Iranian Hostage Crisis</i> is in effect, the US player must randomly discard two cards.<br>(Events on discards do not occur.)"
+      "en": "Opponent must randomly discard one card. If played by USSR and <i>Iranian Hostage Crisis</i> is in effect, the US player must randomly discard two cards.<br>(Events on discards do not occur.)",
+      "ko": "상대는 무작위로 카드 1장을 버려야 한다. 소련이 플레이했고 <i>이란 인질 위기</i>가 발동 중이라면 미국 플레이어는 무작위로 카드 2장을 버려야 한다.<br>(버려진 카드의 이벤트는 발생하지 않는다.)",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          442
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 232,
       "key": "Card_093Title",
-      "en": "Iran-Contra Scandal"
+      "en": "Iran-Contra Scandal",
+      "ko": "이란-콘트라 스캔들*",
+      "ko_source": "card_title"
     },
     {
       "row": 233,
       "key": "Card_093Text",
-      "en": "All US Realignment rolls have a -1 die roll modifier for the remainder of the turn."
+      "en": "All US Realignment rolls have a -1 die roll modifier for the remainder of the turn.",
+      "ko": "이번 턴의 남은 동안 모든 미국 재편성 굴림은 주사위 굴림 수정치 -1을 받습니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          199
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 234,
       "key": "Card_094Title",
-      "en": "Chernobyl"
+      "en": "Chernobyl",
+      "ko": "체르노빌*",
+      "ko_source": "card_title"
     },
     {
       "row": 235,
       "key": "Card_094Text",
-      "en": "The US player may designate one Region. For the remainder of the turn the USSR may not add additional Influence to that Region by the play of Operations Points via placing Influence."
+      "en": "The US player may designate one Region. For the remainder of the turn the USSR may not add additional Influence to that Region by the play of Operations Points via placing Influence.",
+      "ko": "미국 플레이어는 지역 1개를 지정할 수 있습니다. 이번 턴의 남은 동안 소련은 영향력 배치를 위한 작전치 사용으로는 그 지역에 추가 영향력을 넣을 수 없습니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          579
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 236,
       "key": "Card_095Title",
-      "en": "Latin American Debt Crisis"
+      "en": "Latin American Debt Crisis",
+      "ko": "중남미 부채 위기",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          721
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 237,
       "key": "Card_095Text",
-      "en": "Unless the US Player immediately discards a '3' or greater Operations card, double USSR the Influence in two countries in South America."
+      "en": "Unless the US Player immediately discards a '3' or greater Operations card, double USSR the Influence in two countries in South America.",
+      "ko": "미국 플레이어가 즉시 작전치 3 이상 카드를 버리지 않으면, 남아메리카 두 국가의 소련 영향력을 두 배로 한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          636
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 238,
       "key": "Card_096Title",
-      "en": "Tear Down This Wall"
+      "en": "Tear Down This Wall",
+      "ko": "이 장벽을 허물어라*",
+      "ko_source": "card_title"
     },
     {
       "row": 239,
       "key": "Card_096Title1",
-      "en": "Tear Down"
+      "en": "Tear Down",
+      "ko": "허물어라",
+      "ko_source": "manual"
     },
     {
       "row": 240,
       "key": "Card_096Title2",
-      "en": "This Wall"
+      "en": "This Wall",
+      "ko": "이 장벽*",
+      "ko_source": "card_title"
     },
     {
       "row": 241,
       "key": "Card_096Text",
-      "en": "Cancels/Prevents <i>Willy Brandt.</i><br>Add 3 US Influence in East Germany.<br>Then US may make a free Coup attempt or Realignment rolls in Europe using this card's Ops Value."
+      "en": "Cancels/Prevents <i>Willy Brandt.</i><br>Add 3 US Influence in East Germany.<br>Then US may make a free Coup attempt or Realignment rolls in Europe using this card's Ops Value.",
+      "ko": "<i>빌리 브란트</i>를 취소/방지한다.<br>동독에 미국 영향력 3을 추가한다.<br>그 후 미국은 이 카드의 작전치으로 유럽에서 무료 쿠데타 또는 재편성을 수행할 수 있다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          265
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 242,
       "key": "Card_096TextAlt",
-      "en": "Add 3 US Influence in East Germany.<br>Then US may make a free Coup attempt or Realignment rolls in Europe using this card's Ops Value.<br><i>Cancels/Prevents \"Willy Brandt\".</i>"
+      "en": "Add 3 US Influence in East Germany.<br>Then US may make a free Coup attempt or Realignment rolls in Europe using this card's Ops Value.<br><i>Cancels/Prevents \"Willy Brandt\".</i>",
+      "ko": "동독에 미국 영향력 3을 추가합니다.<br>그런 다음 미국은 이 카드의 작전 값을 사용하여 유럽에서 무료 쿠데타 시도 또는 재편성 굴림을 수행할 수 있습니다.<br><i>\"빌리 브란트\" 취소/방지.</i>",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1754
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 243,
       "key": "Card_097Title",
-      "en": "An Evil Empire"
+      "en": "An Evil Empire",
+      "ko": "악의 제국*",
+      "ko_source": "card_title"
     },
     {
       "row": 244,
       "key": "Card_097Title1",
-      "en": "An Evil"
+      "en": "An Evil",
+      "ko": "악의",
+      "ko_source": "manual"
     },
     {
       "row": 245,
       "key": "Card_097Title2",
-      "en": "Empire"
+      "en": "Empire",
+      "ko": "제국",
+      "ko_source": "manual"
     },
     {
       "row": 246,
       "key": "Card_097Text",
-      "en": "Cancels/Prevents <i>Flower Power.</i>\nUS gains 1 VP."
+      "en": "Cancels/Prevents <i>Flower Power.</i>\nUS gains 1 VP.",
+      "ko": "<i>플라워 파워</i>를 취소/방지합니다.\n미국이 1 승점을 획득합니다.",
+      "ko_source": "manual"
     },
     {
       "row": 247,
       "key": "Card_097TextAlt",
-      "en": "US gains 1 VP.<br><br><i>Cancels/Prevents \"Flower Power\".</i>"
+      "en": "US gains 1 VP.<br><br><i>Cancels/Prevents \"Flower Power\".</i>",
+      "ko": "미국이 승점 1점을 획득합니다.<br><br><i>\"꽃의 힘\" 취소/방지.</i>",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1755
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 248,
       "key": "Card_098Title",
-      "en": "Aldrich Ames Remix"
+      "en": "Aldrich Ames Remix",
+      "ko": "앨드리치 에임스 리믹스",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          195
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 249,
       "key": "Card_098Text",
-      "en": "US player exposes his hand to USSR player for remainder of turn.<br><br>USSR then chooses one card from US hand; this card is discarded."
+      "en": "US player exposes his hand to USSR player for remainder of turn.<br><br>USSR then chooses one card from US hand; this card is discarded.",
+      "ko": "이번 턴 남은 동안 미국 플레이어는 손패를 소련 플레이어에게 공개한다. 이후 소련은 미국 손패에서 카드 1장을 선택하고, 그 카드는 버려진다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          605
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 250,
       "key": "Card_099Title",
-      "en": "Pershing II Deployed"
+      "en": "Pershing II Deployed",
+      "ko": "퍼싱 II 배치*",
+      "ko_source": "card_title"
     },
     {
       "row": 251,
       "key": "Card_099Text",
-      "en": "USSR gains 1 VP.<br>Remove 1 US Influence from up to three countries in Western Europe."
+      "en": "USSR gains 1 VP.<br>Remove 1 US Influence from up to three countries in Western Europe.",
+      "ko": "소련이 1 승점을 얻는다.<br>서유럽 최대 세 국가에서 미국 영향력 1씩 제거한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          620
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 252,
       "key": "Card_100Title",
-      "en": "Wargames"
+      "en": "Wargames",
+      "ko": "워게임즈*",
+      "ko_source": "card_title"
     },
     {
       "row": 253,
       "key": "Card_100Text",
-      "en": "If DEFCON Status 2, you may immediately end the game (without Final Scoring Phase) after giving opponent 6 VPs.<br><i>How about a nice game of chess?</i>"
+      "en": "If DEFCON Status 2, you may immediately end the game (without Final Scoring Phase) after giving opponent 6 VPs.<br><i>How about a nice game of chess?</i>",
+      "ko": "데프콘 단계가 2라면 상대에게 6 승점을 준 뒤 즉시 게임을 끝낼 수 있다(최종 점수 계산 단계 없이).\n멋지게 체스 한 판 두는 건 어떤가?",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          365
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 254,
       "key": "Card_101Title",
-      "en": "Solidarity"
+      "en": "Solidarity",
+      "ko": "연대*",
+      "ko_source": "card_title"
     },
     {
       "row": 255,
       "key": "Card_101Text",
-      "en": "<i>Playable as an event only if 'John Paul II Elected Pope' is in effect.</i><br><br>Add 3 Influence in Poland."
+      "en": "<i>Playable as an event only if 'John Paul II Elected Pope' is in effect.</i><br><br>Add 3 Influence in Poland.",
+      "ko": "<i>'요한 바오로 2세 선출'이 발동 중일 때만 이벤트로 플레이할 수 있다.</i><br><br>폴란드에 영향력 3을 추가한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          94
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 256,
       "key": "Card_101TextAlt",
-      "en": "Add 3 Influence in Poland.<br><br><i>Playable as an event only if \"John Paul II Elected Pope\" is in effect.</i>"
+      "en": "Add 3 Influence in Poland.<br><br><i>Playable as an event only if \"John Paul II Elected Pope\" is in effect.</i>",
+      "ko": "폴란드에 영향력 3을 추가합니다.<br><br><i>\"요한 바오로 2세 교황 선출\"이 효력 중일 때만 이벤트로 플레이 가능합니다.</i>",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1758
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 257,
       "key": "Card_102Title",
-      "en": "Iran-Iraq War"
+      "en": "Iran-Iraq War",
+      "ko": "이란-이라크 전쟁*",
+      "ko_source": "card_title"
     },
     {
       "row": 258,
       "key": "Card_102Text",
-      "en": "Iran or Iraq invades the other (player's choice). Roll one die and subtract 1 for every opponent-controlled country adjacent to target of invasion. Player Victory on modified roll of 4-6. Player adds 2 to Military Ops Track.<br><b> Effects of Victory: </b> Player gains 2 VP and replaces opponent's Influence in target country with their own."
+      "en": "Iran or Iraq invades the other (player's choice). Roll one die and subtract 1 for every opponent-controlled country adjacent to target of invasion. Player Victory on modified roll of 4-6. Player adds 2 to Military Ops Track.<br><b> Effects of Victory: </b> Player gains 2 VP and replaces opponent's Influence in target country with their own.",
+      "ko": "이란 또는 이라크가 상대국을 침공한다(플레이어 선택). 주사위를 굴리고 목표국에 인접한 상대 지배 국가마다 1을 뺀다. 수정값 4-6이면 승리. 플레이어는 군사 작전 트랙에 2를 추가한다.<br><b>승리 시 효과:</b> 플레이어는 2 승점을 얻고 목표국의 상대 영향력을 자신의 영향력으로 교체한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          395
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 259,
       "key": "Card_103Title",
-      "en": "Defectors"
+      "en": "Defectors",
+      "ko": "탈주자들",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          691
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 260,
       "key": "Card_103Text",
-      "en": "Play in Headline Phase to cancel USSR Headline event, including Scoring Card. Canceled card returns to Discard Pile.<br><br>If <i>Defectors</i> played by USSR during Soviet action round, US gains 1 VP (unless played on the Space Race)."
+      "en": "Play in Headline Phase to cancel USSR Headline event, including Scoring Card. Canceled card returns to Discard Pile.<br><br>If <i>Defectors</i> played by USSR during Soviet action round, US gains 1 VP (unless played on the Space Race).",
+      "ko": "헤드라인 단계에 플레이하여 점수 카드를 포함한 소련 헤드라인 이벤트를 취소한다. 취소된 카드는 버린 카드 더미로 돌아간다.<br><br>소련 행동 라운드 중 소련이 <i>망명자들</i>을 플레이했다면 미국은 1 승점을 얻는다(우주 경쟁에 사용한 경우 제외).",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          474
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 261,
       "key": "Card_103TextAlt",
-      "en": "Play in Headline Phase to cancel USSR Headline event, including Scoring Card.<br><br>Place the canceled Event card in the Discard Pile.<br><br>If <i>\"Defectors\"</i> played by USSR during Soviet action round, US gains 1 VP (unless played on the Space Race)."
+      "en": "Play in Headline Phase to cancel USSR Headline event, including Scoring Card.<br><br>Place the canceled Event card in the Discard Pile.<br><br>If <i>\"Defectors\"</i> played by USSR during Soviet action round, US gains 1 VP (unless played on the Space Race).",
+      "ko": "헤드라인 단계에서 플레이하여 점수 카드를 포함한 소련의 헤드라인 이벤트를 취소합니다.<br><br>취소된 이벤트 카드를 버린 더미에 놓습니다.<br><br>소련이 자신의 행동 라운드에 <i>\"망명자\"</i>를 플레이하면, 미국이 승점 1점을 획득합니다(우주경쟁에 사용한 경우 제외).",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1751
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 262,
       "key": "Card_104Title",
-      "en": "The Cambridge Five"
+      "en": "The Cambridge Five",
+      "ko": "케임브리지 파이브",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          774
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 263,
       "key": "Card_104Text",
-      "en": "The US player exposes all scoring cards in their hand. The USSR player may then add 1 Influence in any single region named on one of these scoring cards (USSR choice).<br><br><i>Cannot be played as an event in Late War.</i>"
+      "en": "The US player exposes all scoring cards in their hand. The USSR player may then add 1 Influence in any single region named on one of these scoring cards (USSR choice).<br><br><i>Cannot be played as an event in Late War.</i>",
+      "ko": "미국 플레이어는 손에 있는 모든 점수 카드를 공개한다. 그 후 소련 플레이어는 그 점수 카드들 중 하나에 적힌 지역 하나를 골라 그 지역에 영향력 1을 추가할 수 있다(소련 선택). 후기 전쟁에서는 이벤트로 플레이할 수 없다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          578
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 264,
       "key": "Card_105Title",
-      "en": "Special Relationship"
+      "en": "Special Relationship",
+      "ko": "특별한 관계",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          767
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 265,
       "key": "Card_105Text",
-      "en": "If UK is US controlled but NATO is not in effect, US adds 1 Influence to any country adjacent to the UK.<br><br>If UK is US controlled and NATO is<br>in effect, US adds 2 Influence to any Western European country<br>and gains 2 VPs."
+      "en": "If UK is US controlled but NATO is not in effect, US adds 1 Influence to any country adjacent to the UK.<br><br>If UK is US controlled and NATO is<br>in effect, US adds 2 Influence to any Western European country<br>and gains 2 VPs.",
+      "ko": "영국이 미국 지배 상태이지만 NATO가 발동 중이 아니면 미국은 영국에 인접한 아무 국가에 영향력 1을 추가한다.<br><br>영국이 미국 지배 상태이고 NATO가 발동 중이면 미국은 아무 서유럽 국가에 영향력 2를 추가하고 2 승점을 얻는다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          367
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 266,
       "key": "Card_106Title",
-      "en": "Norad"
+      "en": "Norad",
+      "ko": "노라드*",
+      "ko_source": "card_title"
     },
     {
       "row": 267,
       "key": "Card_106Text",
-      "en": "If the US controls Canada, the US<br>may add 1 Influence to any country<br>already containing US Influence at<br>the conclusion of any Action Round in which the DEFCON MARKER moves<br>to the '2' box. This event is canceled<br>by #42 <i>Quagmire.</i>"
+      "en": "If the US controls Canada, the US<br>may add 1 Influence to any country<br>already containing US Influence at<br>the conclusion of any Action Round in which the DEFCON MARKER moves<br>to the '2' box. This event is canceled<br>by #42 <i>Quagmire.</i>",
+      "ko": "미국이 캐나다를 지배하고 있다면, 데프콘 마커가 '2' 칸으로 이동한 행동 라운드 종료 시 미국 영향력이 이미 있는 모든 국가에 영향력 1을 추가할 수 있다. 이 이벤트는 #42 <font=\"TIMESI SDF\">수렁</font>에 의해 취소된다.",
+      "ko_source": "extra_map"
     },
     {
       "row": 268,
       "key": "Card_106TextAlt",
-      "en": "If the US controls Canada, the US may add 1 Influence to any country already containing US Influence at the conclusion of any Action Round in which the DEFCON MARKER moves to the '2' box.<br><br><i>This event is canceled by #42 Quagmire.</i>"
+      "en": "If the US controls Canada, the US may add 1 Influence to any country already containing US Influence at the conclusion of any Action Round in which the DEFCON MARKER moves to the '2' box.<br><br><i>This event is canceled by #42 Quagmire.</i>",
+      "ko": "미국이 캐나다를 지배하고 있다면, 데프콘 마커가 '2' 칸으로 이동한 행동 라운드 종료 시 미국 영향력이 이미 있는 모든 국가에 영향력 1을 추가할 수 있다. 이 이벤트는 #42 <font=\"TIMESI SDF\">수렁</font>에 의해 취소된다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          371
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 269,
       "key": "Card_107Title",
-      "en": "Che"
+      "en": "Che",
+      "ko": "체 게바라",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          679
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 270,
       "key": "Card_107Text",
-      "en": "USSR may immediately make a Coup attempt using this card's Operations value against a non-battleground country in Central America, South America, or Africa.<br>If the Coup removes any US Influence, USSR may make a second Coup attempt against a different target under the same restrictions."
+      "en": "USSR may immediately make a Coup attempt using this card's Operations value against a non-battleground country in Central America, South America, or Africa.<br>If the Coup removes any US Influence, USSR may make a second Coup attempt against a different target under the same restrictions.",
+      "ko": "소련은 즉시 이 카드의 작전치으로 중앙아메리카",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          626
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 271,
       "key": "Card_108Title",
-      "en": "Our Man in Tehran"
+      "en": "Our Man in Tehran",
+      "ko": "테헤란의 우리 요원*",
+      "ko_source": "card_title"
     },
     {
       "row": 272,
       "key": "Card_108Text",
-      "en": "If the US controls at least one Middle East country, the US player draws the top 5 cards from the draw pile.<br>They may reveal and then discard any or all of these drawn cards without triggering the Event. Any remaining drawn cards are returned to the draw deck, and it is reshuffled."
+      "en": "If the US controls at least one Middle East country, the US player draws the top 5 cards from the draw pile.<br>They may reveal and then discard any or all of these drawn cards without triggering the Event. Any remaining drawn cards are returned to the draw deck, and it is reshuffled.",
+      "ko": "미국이 중동 국가를 최소 하나 지배하고 있다면 미국 플레이어는 카드 더미 맨 위 5장을 뽑는다.<br>이 카드들은 이벤트를 발동하지 않고 공개 후 원하는 만큼 버릴 수 있다. 남은 카드는 다시 카드 더미로 돌아가고 덱을 다시 섞는다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          373
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 273,
       "key": "Card_109Title",
-      "en": "Yuri and Samantha"
+      "en": "Yuri and Samantha",
+      "ko": "유리와 사만다*",
+      "ko_source": "card_title"
     },
     {
       "row": 274,
       "key": "Card_109Text",
-      "en": "USSR receives 1 VP for each US coup attempt made for the remainder of the current turn."
+      "en": "USSR receives 1 VP for each US coup attempt made for the remainder of the current turn.",
+      "ko": "이번 턴의 남은 동안 미국이 쿠데타를 시도할 때마다 소련은 1 승점를 얻습니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          630
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 275,
       "key": "Card_110Title",
-      "en": "Awacs Sale to Saudis"
+      "en": "Awacs Sale to Saudis",
+      "ko": "사우디에 AWACS 판매*",
+      "ko_source": "card_title"
     },
     {
       "row": 276,
       "key": "Card_110Title1",
-      "en": "Awacs Sale"
+      "en": "Awacs Sale",
+      "ko": "AWACS 판매",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          234
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 277,
       "key": "Card_110Title2",
-      "en": "to Saudis"
+      "en": "to Saudis",
+      "ko": "사우디에*",
+      "ko_source": "card_title"
     },
     {
       "row": 278,
       "key": "Card_110Text",
-      "en": "US receives 2 Influence in Saudi Arabia. Muslim Revolution may no longer be played as an event."
+      "en": "US receives 2 Influence in Saudi Arabia. Muslim Revolution may no longer be played as an event.",
+      "ko": "미국이 사우디아라비아에 영향력 2를 얻습니다. \"이슬람 혁명\"은 더 이상 이벤트로 플레이할 수 없습니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          608
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 279,
       "key": "Card_110TextAlt",
-      "en": "US receives 2 Influence in Saudi Arabia.<br><br><i>\"Muslim Revolution\" may no longer be played as an event.</i>"
+      "en": "US receives 2 Influence in Saudi Arabia.<br><br><i>\"Muslim Revolution\" may no longer be played as an event.</i>",
+      "ko": "미국이 사우디아라비아에 영향력 2를 받습니다.<br><br><font=\"TIMESI SDF\">\"이슬람 혁명\"은 더 이상 이벤트로 플레이할 수 없습니다.</font>",
+      "ko_source": "extra_map"
     },
     {
       "row": 280,
       "key": "Card_P001Title",
-      "en": "Non-Aligned Movement"
+      "en": "Non-Aligned Movement",
+      "ko": "비동맹 운동",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          738
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 281,
       "key": "Card_P001Text",
-      "en": "Select India or a country in Africa, Southeast Asia, the Middle East, or South America with at least 2 US and 2 USSR Influence.<br>Remove all the Influence from that country, then take the next four cards from the top of the draw pile and put them in the discard pile (reshuffling if necessary)."
+      "en": "Select India or a country in Africa, Southeast Asia, the Middle East, or South America with at least 2 US and 2 USSR Influence.<br>Remove all the Influence from that country, then take the next four cards from the top of the draw pile and put them in the discard pile (reshuffling if necessary).",
+      "ko": "인도 또는 아프리카, 동남아시아, 중동, 남아메리카에서 미국 영향력 2와 소련 영향력 2 이상을 보유한 국가를 선택한다.<br>해당 국가의 영향력을 모두 제거한 후, 드로우 더미 맨 위에서 카드 4장을 버린 카드 더미에 놓는다(필요시 재셔플).",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1592
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 282,
       "key": "Card_P002Title",
-      "en": "Mobutu Sese Seko"
+      "en": "Mobutu Sese Seko",
+      "ko": "모부투 세세 세코*",
+      "ko_source": "card_title"
     },
     {
       "row": 283,
       "key": "Card_P002Text",
-      "en": "Zaire's stability number permanently becomes 3. Add 2 US Influence in Zaire."
+      "en": "Zaire's stability number permanently becomes 3. Add 2 US Influence in Zaire.",
+      "ko": "자이르의 안정도가 영구히 3이 됩니다. 자이르에 미국 영향력 2를 추가합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          658
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 284,
       "key": "Card_P003Title",
-      "en": "Berlin Wall"
+      "en": "Berlin Wall",
+      "ko": "베를린 장벽*",
+      "ko_source": "card_title"
     },
     {
       "row": 285,
       "key": "Card_P003Text",
-      "en": "Add 2 Influence in East Germany and, if you are behind or tied with the US in the Space Race, advance your Space Race marker by one box."
+      "en": "Add 2 Influence in East Germany and, if you are behind or tied with the US in the Space Race, advance your Space Race marker by one box.",
+      "ko": "동독에 영향력 2를 추가하고, 우주 경쟁에서 미국과 동점이거나 뒤처져 있다면 당신의 우주 경쟁 마커를 한 칸 전진시킵니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          161
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 286,
       "key": "Card_P004Title",
-      "en": "Stanislav Petrov"
+      "en": "Stanislav Petrov",
+      "ko": "스타니슬라프 페트로프*",
+      "ko_source": "card_title"
     },
     {
       "row": 287,
       "key": "Card_P004Text",
-      "en": "Play only if DEFCON is 2.<br><br>Set DEFCON to 4 or 5."
+      "en": "Play only if DEFCON is 2.<br><br>Set DEFCON to 4 or 5.",
+      "ko": "데프콘이 2일 때만 플레이 가능.<br><br>데프콘을 4 또는 5로 설정합니다.",
+      "ko_source": "manual"
     },
     {
       "row": 288,
       "key": "Card_P005Title",
-      "en": "Kremlin Flu"
+      "en": "Kremlin Flu",
+      "ko": "크렘린 독감",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          719
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 289,
       "key": "Card_P005Text",
-      "en": "US takes Operations as if this card were played as Operations. USSR must play a scoring card on its next Action Round if it holds one; if no scoring card is in the USSR hand, the USSR forfeits its next Action Round."
+      "en": "US takes Operations as if this card were played as Operations. USSR must play a scoring card on its next Action Round if it holds one; if no scoring card is in the USSR hand, the USSR forfeits its next Action Round.",
+      "ko": "미국은 이 카드가 작전치로 사용된 것처럼 작전치를 획득한다. 소련이 점수 카드를 보유하고 있으면 다음 행동 라운드에 반드시 사용해야 하며, 소련 패에 점수 카드가 없으면 소련은 다음 행동 라운드를 포기한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1590
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 290,
       "key": "Card_P006Title",
-      "en": "First Lightning"
+      "en": "First Lightning",
+      "ko": "최초의 번개*",
+      "ko_source": "card_title"
     },
     {
       "row": 291,
       "key": "Card_P006Text",
-      "en": "Play at the same time you play a card with a US-affiliated Event for its Operations.<br>Ignore the event text and place the card in the discard pile.<br>Reduce the DEFCON by 1 if this card is played for Operations or its Event."
+      "en": "Play at the same time you play a card with a US-affiliated Event for its Operations.<br>Ignore the event text and place the card in the discard pile.<br>Reduce the DEFCON by 1 if this card is played for Operations or its Event.",
+      "ko": "미국 연관 이벤트 카드를 작전치로 사용할 때 함께 사용한다.<br>이벤트 텍스트를 무시하고 해당 카드를 버린 카드 더미에 놓는다.<br>이 카드가 작전치 또는 이벤트로 사용되면 데프콘을 1 낮춘다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1589
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 292,
       "key": "Card_P007Title",
-      "en": "Who Lost China"
+      "en": "Who Lost China",
+      "ko": "누가 중국을 잃었나",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          783
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 293,
       "key": "Card_P007Text",
-      "en": "If the USSR holds the China Card, reset US Military Operations to zero.<br>If playing with the Chinese Civil War variant, this card cannot be played if Chinese Civil War is still in effect."
+      "en": "If the USSR holds the China Card, reset US Military Operations to zero.<br>If playing with the Chinese Civil War variant, this card cannot be played if Chinese Civil War is still in effect.",
+      "ko": "소련이 중국 카드를 보유하고 있으면 미국의 군사작전을 0으로 초기화한다.<br>중국 내전 변형 규칙을 사용 중이라면 중국 내전이 여전히 발동 중일 때 이 카드를 사용할 수 없다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1588
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 294,
       "key": "Card_P008Title",
-      "en": "Don't Wait for the Translation"
+      "en": "Don't Wait for the Translation",
+      "ko": "번역을 기다리지 마라",
+      "ko_source": "manual"
     },
     {
       "row": 295,
       "key": "Card_P008Text",
-      "en": "If the US is behind in Military Operations, the US scores 2 VP."
+      "en": "If the US is behind in Military Operations, the US scores 2 VP.",
+      "ko": "미국이 군사 작전에서 뒤처져 있다면, 미국이 승점 2를 획득합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          379
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 296,
       "key": "Card_P009Title",
-      "en": "Andropov"
+      "en": "Andropov",
+      "ko": "안드로포프",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          670
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 297,
       "key": "Card_P009Text",
-      "en": "Subtract 1 from the die roll total for the current Crisis."
+      "en": "Subtract 1 from the die roll total for the current Crisis.",
+      "ko": "현재 위기의 주사위 굴림 총합에서 1을 뺍니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          548
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 298,
       "key": "Card_P010Title",
-      "en": "Khrushchev"
+      "en": "Khrushchev",
+      "ko": "흐루쇼프",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          717
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 299,
       "key": "Card_P010Text",
-      "en": "Subtract 1 from the die roll total for the current Crisis."
+      "en": "Subtract 1 from the die roll total for the current Crisis.",
+      "ko": "현재 위기의 주사위 굴림 총합에서 1을 뺍니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          548
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 300,
       "key": "Card_P011Title",
-      "en": "Molotov"
+      "en": "Molotov",
+      "ko": "몰로토프",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          733
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 301,
       "key": "Card_P011Text",
-      "en": "Subtract 2 from the die roll total for the current Crisis."
+      "en": "Subtract 2 from the die roll total for the current Crisis.",
+      "ko": "현재 위기의 주사위 굴림 총합에서 2를 뺍니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          550
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 302,
       "key": "Card_P012Title",
-      "en": "Beria"
+      "en": "Beria",
+      "ko": "베리야",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          677
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 303,
       "key": "Card_P012Text",
-      "en": "Cancel effect of US card for the current Crisis."
+      "en": "Cancel effect of US card for the current Crisis.",
+      "ko": "현재 위기에 대한 미국 카드의 효과를 무효화합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          260
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 304,
       "key": "Card_P013Title",
-      "en": "Dummy Card"
+      "en": "Dummy Card",
+      "ko": "더미 카드",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1949
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 305,
       "key": "Card_P013Text",
-      "en": "No effect."
+      "en": "No effect.",
+      "ko": "효과 없음.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          430
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 306,
       "key": "Card_P014Title",
-      "en": "Kennan"
+      "en": "Kennan",
+      "ko": "케넌",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          716
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 307,
       "key": "Card_P014Text",
-      "en": "Add 1 to the die roll total for the current Crisis."
+      "en": "Add 1 to the die roll total for the current Crisis.",
+      "ko": "현재 위기의 주사위 굴림 총합에 1을 더합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          159
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 308,
       "key": "Card_P015Title",
-      "en": "Acheson"
+      "en": "Acheson",
+      "ko": "애치슨",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          148
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 309,
       "key": "Card_P015Text",
-      "en": "Add 1 to the die roll total for the current Crisis."
+      "en": "Add 1 to the die roll total for the current Crisis.",
+      "ko": "현재 위기의 주사위 굴림 총합에 1을 더합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          159
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 310,
       "key": "Card_P016Title",
-      "en": "Marshall"
+      "en": "Marshall",
+      "ko": "마셜",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          727
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 311,
       "key": "Card_P016Text",
-      "en": "Add 2 to the die roll total for the current Crisis."
+      "en": "Add 2 to the die roll total for the current Crisis.",
+      "ko": "현재 위기의 주사위 굴림 총합에 2를 더합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          171
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 312,
       "key": "Card_P017Title",
-      "en": "Dulles"
+      "en": "Dulles",
+      "ko": "덜레스",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          704
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 313,
       "key": "Card_P017Text",
-      "en": "Cancel effect of USSR card for the current Crisis."
+      "en": "Cancel effect of USSR card for the current Crisis.",
+      "ko": "현재 위기에 대한 소련 카드의 효과를 무효화합니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          262
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 314,
       "key": "Card_P020Title",
-      "en": "Nationalist China"
+      "en": "Nationalist China",
+      "ko": "중화민국",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          735
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 315,
       "key": "Card_P020Text",
-      "en": "US places 3 Influence in Asia, no more than 1 per country."
+      "en": "US places 3 Influence in Asia, no more than 1 per country.",
+      "ko": "미국은 아시아에 영향력 3을 배치합니다. 한 국가에는 최대 1만 놓을 수 있습니다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          603
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 316,
       "key": "Card_CCC01Title",
-      "en": "Chinese Civil War"
+      "en": "Chinese Civil War",
+      "ko": "중국 내전",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          897
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 317,
       "key": "Card_CCC01Text1",
-      "en": "Sino-Soviet relations remain cordial, even if strained on occasion. Remove Ussuri River Skirmish from the game."
+      "en": "Sino-Soviet relations remain cordial, even if strained on occasion. Remove Ussuri River Skirmish from the game.",
+      "ko": "중소 관계가 간혹 긴장되더라도 우호적으로 유지된다. 우수리강 분쟁 카드를 게임에서 제거한다.\\n",
+      "ko_source": "startswith"
     },
     {
       "row": 318,
       "key": "Card_CCC01Text23",
-      "en": "US aid slow to arrive; Huaihai campaign knocks out Nationalists. No effect."
+      "en": "US aid slow to arrive; Huaihai campaign knocks out Nationalists. No effect.",
+      "ko": "미국 지원이 늦게 도착하고 화이하이 전역이 국민당을 격파한다. 효과 없음.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1577
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 319,
       "key": "Card_CCC01Text45",
-      "en": "Nationalists prolong struggle with early US aid. The China Card begins face down.\r"
+      "en": "Nationalists prolong struggle with early US aid. The China Card begins face down.\r",
+      "ko": "미국의 초기 지원으로 국민당이 투쟁을 연장한다. 중국 카드는 뒤집어진 채로 시작한다.\r",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "runtime_escape_decoded",
+        "runtime_source_lines": [
+          1576
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 320,
       "key": "Card_CCC01Text6",
-      "en": "US rapidly reinforces Chiang; Nationalists retain a stronghold on the mainland. Apply the 4-5 result, and  Taiwan is now permanently a Battleground country. Add 3 US Influence in Taiwan during setup. Replace Formosan Resolution with the Nationalist China card."
+      "en": "US rapidly reinforces Chiang; Nationalists retain a stronghold on the mainland. Apply the 4-5 result, and  Taiwan is now permanently a Battleground country. Add 3 US Influence in Taiwan during setup. Replace Formosan Resolution with the Nationalist China card.",
+      "ko": "미국이 장제스를 신속히 지원하여 국민당이 본토 거점을 유지한다. 4~5 결과를 적용하며, 대만은 이제 영구적인 격전지 국가가 된다. 설정 시 대만에 미국 영향력 3을 추가한다. 포모사 결의를 국민당 중국 카드로 교체한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1575
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 321,
       "key": "Card_CCC02Title",
-      "en": "Yalta and Potsdam"
+      "en": "Yalta and Potsdam",
+      "ko": "얄타와 포츠담",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          785
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 322,
       "key": "Card_CCC02Text1",
-      "en": "FDR attends Potsdam in poor health; misreads Stalin's intentions. USSR receives 1 additional Influence anywhere in Europe during setup and may take one of Vietnam Revolts or Arab-Israeli War into hand before drawing cards (it still counts against hand limit)."
+      "en": "FDR attends Potsdam in poor health; misreads Stalin's intentions. USSR receives 1 additional Influence anywhere in Europe during setup and may take one of Vietnam Revolts or Arab-Israeli War into hand before drawing cards (it still counts against hand limit).",
+      "ko": "루즈벨트가 건강이 좋지 않은 상태로 포츠담에 참석하여 스탈린의 의도를 오판한다. 설정 시 소련이 유럽 어디에든 영향력 1을 추가로 받으며 카드 드로우 전에 베트남 봉기 또는 아랍-이스라엘 전쟁 중 하나를 패에 가져올 수 있다(핸드 제한에는 포함된다).",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1584
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 323,
       "key": "Card_CCC02Text23",
-      "en": "FDR attends Yalta but dies before Potsdam. No effect."
+      "en": "FDR attends Yalta but dies before Potsdam. No effect.",
+      "ko": "루스벨트가 얄타에 참석하지만 포츠담 이전에 사망. 효과 없음.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1216
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 324,
       "key": "Card_CCC02Text45",
-      "en": "FDR too ill to attend Yalta; Truman recognizes Soviet intentions in Eastern Europe. The US may take Marshall Plan into hand before drawing cards for turn 1 (it still counts against hand limit)."
+      "en": "FDR too ill to attend Yalta; Truman recognizes Soviet intentions in Eastern Europe. The US may take Marshall Plan into hand before drawing cards for turn 1 (it still counts against hand limit).",
+      "ko": "루즈벨트가 너무 병약하여 얄타에 참석하지 못하고 트루먼이 동유럽에서의 소련 의도를 간파한다. 미국은 1턴 카드 드로우 전에 마샬 플랜을 패에 가져올 수 있다(핸드 제한에는 포함된다).",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1583
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 325,
       "key": "Card_CCC02Text6",
-      "en": "FDR dies just before Yalta Conference; Truman takes hard line with Soviets. Apply the 4-5 result, and the US goes first in all Early War Turns."
+      "en": "FDR dies just before Yalta Conference; Truman takes hard line with Soviets. Apply the 4-5 result, and the US goes first in all Early War Turns.",
+      "ko": "얄타 회담 직전에 루즈벨트가 사망하고 트루먼이 소련에 강경 노선을 취한다. 4~5 결과를 적용하며, 초전 전체 턴에서 미국이 먼저 행동한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1582
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 326,
       "key": "Card_CCC03Title",
-      "en": "1945 UK Election"
+      "en": "1945 UK Election",
+      "ko": "1945년 영국 총선",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          32
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 327,
       "key": "Card_CCC03Text1",
-      "en": "Labour wins in a huge landside; Tories fail to reach 100 seats in the Commons. US shies from left-wing elements. US Influence in the UK is reduced by 2."
+      "en": "Labour wins in a huge landside; Tories fail to reach 100 seats in the Commons. US shies from left-wing elements. US Influence in the UK is reduced by 2.",
+      "ko": "노동당이 대승을 거두고 보수당은 하원 100석 확보에도 실패한다. 미국은 좌파 세력을 경계한다. 영국의 미국 영향력이 2 감소한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          403
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 328,
       "key": "Card_CCC03Text23",
-      "en": "Labour wins in a landside. No effect."
+      "en": "Labour wins in a landside. No effect.",
+      "ko": "노동당이 압승한다. 효과 없음.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          404
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 329,
       "key": "Card_CCC03Text45",
-      "en": "Coalition government. Socialist Governments event has no effect on turns 1 or 2."
+      "en": "Coalition government. Socialist Governments event has no effect on turns 1 or 2.",
+      "ko": "연립 정부. 1턴과 2턴에는 사회주의 정부 이벤트가 효과가 없다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          271
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 330,
       "key": "Card_CCC03Text6",
-      "en": "Tories returned to power; Churchill and Eden dominate. Move Socialist Governments to the Mid War deck; Suez Crisis event has no effect (permanently)."
+      "en": "Tories returned to power; Churchill and Eden dominate. Move Socialist Governments to the Mid War deck; Suez Crisis event has no effect (permanently).",
+      "ko": "보수당이 다시 집권하고 처칠과 이든이 정국을 장악한다. 사회주의 정부 카드를 중기 전쟁 덱으로 옮기고, 수에즈 위기 이벤트는 영구히 효과가 없어진다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          584
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 331,
       "key": "Card_CCC04Title",
-      "en": "Israel"
+      "en": "Israel",
+      "ko": "이스라엘",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1878
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 332,
       "key": "Card_CCC04Text1",
-      "en": "Ben-Gurion coalition shaky. Apply the 2-3 result; USSR receives 2 Influence anywhere in the Middle East during setup (no more than 1 per country)."
+      "en": "Ben-Gurion coalition shaky. Apply the 2-3 result; USSR receives 2 Influence anywhere in the Middle East during setup (no more than 1 per country).",
+      "ko": "벤구리온 연립정부가 불안정하다. 2~3 결과를 적용하며, 설정 시 소련이 중동 어디에든 영향력 2를 받는다(국가당 최대 1).\\n",
+      "ko_source": "startswith"
     },
     {
       "row": 333,
       "key": "Card_CCC04Text23",
-      "en": "Soviets fund anti-Israel forces. USSR receives 1 Influence in Syria during setup."
+      "en": "Soviets fund anti-Israel forces. USSR receives 1 Influence in Syria during setup.",
+      "ko": "소련이 반이스라엘 세력에 자금을 지원한다. 설정 시 소련이 시리아에 영향력 1을 받는다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1580
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 334,
       "key": "Card_CCC04Text45",
-      "en": "Both superpowers moderately distracted. No effect.\r"
+      "en": "Both superpowers moderately distracted. No effect.\r",
+      "ko": "양 강대국 모두 약간 산만함. 효과 없음.\r",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "runtime_escape_decoded",
+        "runtime_source_lines": [
+          885
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 335,
       "key": "Card_CCC04Text6",
-      "en": "Irgun disarms; Palestinians follow suit. US receives an additional 1 Influence in each of Israel, Lebanon, and Jordan during setup."
+      "en": "Irgun disarms; Palestinians follow suit. US receives an additional 1 Influence in each of Israel, Lebanon, and Jordan during setup.",
+      "ko": "이르군이 무장 해제하고 팔레스타인도 이에 따른다. 설정 시 미국이 이스라엘, 레바논, 요르단 각각에 추가로 영향력 1을 받는다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1579
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 336,
       "key": "Card_CCC05Title",
-      "en": "VE Day"
+      "en": "VE Day",
+      "ko": "유럽 전승 기념일",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1157
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 337,
       "key": "Card_CCC05Text1",
-      "en": "Soviets advance past Elbe. Apply the 2-3 result, and USSR receives 1 Influence in West Germany and 1 in Austria during setup."
+      "en": "Soviets advance past Elbe. Apply the 2-3 result, and USSR receives 1 Influence in West Germany and 1 in Austria during setup.",
+      "ko": "소련이 엘베강을 넘어 진격한다. 2~3 결과를 적용하며, 설정 시 소련이 서독에 영향력 1, 오스트리아에 영향력 1을 받는다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1587
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 338,
       "key": "Card_CCC05Text23",
-      "en": "Wehrmacht collapses; Soviets overrun Eastern Europe before Christmas. USSR receives 2 additional Eastern European Influence during setup."
+      "en": "Wehrmacht collapses; Soviets overrun Eastern Europe before Christmas. USSR receives 2 additional Eastern European Influence during setup.",
+      "ko": "국방군이 붕괴하고 소련이 크리스마스 전에 동유럽을 석권한다. 설정 시 소련이 동유럽 영향력 2를 추가로 받는다.\\n",
+      "ko_source": "startswith"
     },
     {
       "row": 339,
       "key": "Card_CCC05Text45",
-      "en": "Soviets reach Berlin first. No effect.\r"
+      "en": "Soviets reach Berlin first. No effect.\r",
+      "ko": "소련이 베를린에 먼저 도달하다. 효과 없음.\r",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "runtime_escape_decoded",
+        "runtime_source_lines": [
+          1013
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 340,
       "key": "Card_CCC05Text6",
-      "en": "A bridge just far enough: Western Allies reach Berlin first. Both players receive 2 Influence in East Germany (for the USSR this is in lieu of that specifically placed in East Germany, but their general Eastern European Influence may be placed there normally). Replace the Europe Scoring card with the Allied Berlin version. Blockade event has no effect."
+      "en": "A bridge just far enough: Western Allies reach Berlin first. Both players receive 2 Influence in East Germany (for the USSR this is in lieu of that specifically placed in East Germany, but their general Eastern European Influence may be placed there normally). Replace the Europe Scoring card with the Allied Berlin version. Blockade event has no effect.",
+      "ko": "아슬아슬하게 다리를 확보하여 서방 연합군이 베를린에 먼저 도달한다. 양 플레이어가 동독에 영향력 2를 받는다(소련의 경우 동독에 별도로 배치되는 영향력 대신이며, 일반 동유럽 영향력은 정상적으로 배치 가능). 유럽 점수 카드를 연합군 베를린 버전으로 교체한다. 봉쇄 이벤트는 효과가 없다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1585
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 341,
       "key": "Card_CCC06Title",
-      "en": "VJ Day"
+      "en": "VJ Day",
+      "ko": "태평양 전승 기념일",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          1158
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 342,
       "key": "Card_CCC06Text1",
-      "en": "Soviets invade Manchuria and Korea in early 1945. Apply the 2-3 result. Then, move the US/Japan Mutual Defense Pact card to the Mid War deck and add 1 USSR Influence in each of Japan and South Korea during setup."
+      "en": "Soviets invade Manchuria and Korea in early 1945. Apply the 2-3 result. Then, move the US/Japan Mutual Defense Pact card to the Mid War deck and add 1 USSR Influence in each of Japan and South Korea during setup.",
+      "ko": "소련이 1945년 초 만주와 한반도를 침공한다. 2-3 결과를 적용한다. 그런 다음 미일 상호방위조약 카드를 중기 전쟁 덱으로 옮기고, 준비 단계에서 일본과 남한에 소련 영향력 1씩을 추가한다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          542
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 343,
       "key": "Card_CCC06Text23",
-      "en": "“Committees” penetrate southern Korea. Soviets receive 1 Influence in South Korea during setup.\r"
+      "en": "“Committees” penetrate southern Korea. Soviets receive 1 Influence in South Korea during setup.\r",
+      "ko": "\"위원회\"가 남한에 침투합니다. 준비 단계에서 소련은 남한에 영향력을 1만큼 배치합니다.",
+      "ko_source": "manual_smartquotes"
     },
     {
       "row": 344,
       "key": "Card_CCC06Text45",
-      "en": "Soviets declare war on Japan in August 1945. No effect.\r"
+      "en": "Soviets declare war on Japan in August 1945. No effect.\r",
+      "ko": "소련이 1945년 8월 일본에 선전포고하다. 효과 없음.\r",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "runtime_escape_decoded",
+        "runtime_source_lines": [
+          1012
+        ]
+      },
+      "ko_source": "runtime_exact"
     },
     {
       "row": 345,
       "key": "Card_CCC06Text6",
-      "en": "Japan surrenders after Hiroshima bomb; Stalin reins in surrogates. Remove the Korean War card from the game. On turn 1, US ignores DEFCON restrictions and DEFCON cannot go below 2."
+      "en": "Japan surrenders after Hiroshima bomb; Stalin reins in surrogates. Remove the Korean War card from the game. On turn 1, US ignores DEFCON restrictions and DEFCON cannot go below 2.",
+      "ko": "히로시마 원폭 이후 일본이 항복하고, 스탈린은 대리 세력을 억제한다. 한국 전쟁 카드를 게임에서 제거한다. 1턴에는 미국이 데프콘 제한을 무시하며 데프콘은 2 아래로 내려갈 수 없다.",
+      "translation_source": {
+        "source": "runtime-20260315",
+        "match_mode": "exact",
+        "runtime_source_lines": [
+          398
+        ]
+      },
+      "ko_source": "runtime_exact"
     }
   ]
 }
