@@ -12,16 +12,33 @@
   - EN 열(2열)은 절대 수정하지 않음
 
 사용법:
-  python scripts/inject_translations.py [--target original|patched]
+  python scripts/inject_translations.py [--gamepath <게임루트>] [--src <원본assets>] [--out <출력>]
+
+  --gamepath: 게임 루트 경로 (IL2CPP 바이너리/메타데이터 탐색용).
+              생략 시 original/resources.assets 기준으로 시도하되
+              UnityPy 포크의 typetree_generator 없이 저장하면 참조가 깨지므로
+              게임 경로 지정을 권장한다.
 
 출력:
   patched/resources.assets (수정된 에셋)
+
+저장 방식:
+  UnityPy 포크(snowyegret23) + TypeTreeGeneratorAPI 기반 typetree_generator를
+  env에 설정한 뒤 save()한다. 이렇게 하면 MonoBehaviour의 m_Script 참조와
+  수정하지 않은 객체의 raw 데이터가 그대로 보존된다.
+  (공식 UnityPy의 env.file.save()는 IL2CPP 게임에서 m_Script를 재매핑해
+  TMP 폰트 등을 파괴하므로 사용 금지)
 """
 
 import json
 import struct
 import sys
 from pathlib import Path
+
+# Windows 콘솔(cp949)에서 UTF-8 출력 보장
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 
 def pad4(n: int) -> int:
@@ -65,6 +82,62 @@ def build_rt_index() -> dict:
     base = Path(__file__).resolve().parent.parent
     rt = json.loads((base / "translation/runtime-20260315.json").read_text("utf-8"))
     return {e["original"]: e["translation_ko"] for e in rt["entries"]}
+
+
+def find_il2cpp_binary(game_path: Path) -> Path | None:
+    """게임 루트에서 IL2CPP 바이너리(GameAssembly) 탐색 (Windows .dll / macOS .dylib)"""
+    candidates = [
+        game_path / "GameAssembly.dll",
+        game_path / "GameAssembly.dylib",
+        game_path / "Contents" / "Resources" / "GameAssembly.dylib",
+        game_path / "Contents" / "Resources" / "GameAssembly.so",
+        game_path / "TwilightStruggle_Data" / "GameAssembly.dll",
+    ]
+    for c in candidates:
+        if c.exists():
+            return c
+    return None
+
+
+def find_global_metadata(game_path: Path) -> Path | None:
+    """global-metadata.dat 탐색 (Data/il2cpp_data/Metadata 아래)"""
+    for p in game_path.rglob("global-metadata.dat"):
+        return p
+    return None
+
+
+def create_typetree_generator(env, game_path: Path) -> None:
+    """UnityPy 포크 env에 typetree_generator를 설정한다.
+
+    IL2CPP 덤프(GameAssembly + global-metadata.dat)로 타입 트리를 생성해
+    env.typetree_generator에 주입한다. 이 설정이 있어야 save() 시
+    MonoBehaviour m_Script 참조가 보존된다.
+    """
+    from TypeTreeGeneratorAPI import TypeTreeGenerator
+
+    unity_version = getattr(env.file, "unity_version", None)
+    if not unity_version:
+        for loaded in (env.files or {}).values():
+            uv = getattr(loaded, "unity_version", None)
+            if uv:
+                unity_version = uv
+                break
+    if not unity_version:
+        raise RuntimeError("resources.assets에서 Unity 버전을 읽을 수 없습니다.")
+
+    il2cpp = find_il2cpp_binary(game_path)
+    metadata = find_global_metadata(game_path)
+    if il2cpp is None or metadata is None:
+        raise FileNotFoundError(
+            f"IL2CPP 바이너리/메타데이터를 찾을 수 없습니다. --gamepath를 확인하세요:\n"
+            f"  GameAssembly: {il2cpp or '(없음)'}\n"
+            f"  global-metadata.dat: {metadata or '(없음)'}"
+        )
+
+    gen = TypeTreeGenerator(str(unity_version))
+    gen.load_il2cpp(il2cpp.read_bytes(), metadata.read_bytes())
+    env.typetree_generator = gen
+    print(f"  typetree_generator 설정 완료 (Unity {unity_version})")
 
 
 def inject_simple_table(text: str, key_to_ko: dict, rt_index: dict, manual: dict) -> tuple[str, int]:
@@ -166,10 +239,30 @@ def inject_available_cultures(text: str) -> str:
 
 
 def main():
-    base = Path(__file__).resolve().parent.parent
-    
+    import argparse
+
     import UnityPy
-    
+
+    parser = argparse.ArgumentParser(description="번역 주입 (무손상 저장)")
+    parser.add_argument("--gamepath", default=None, help="게임 루트 경로 (IL2CPP 탐색용)")
+    parser.add_argument("--src", default=None, help="원본 assets 경로 (기본: original/resources.assets)")
+    parser.add_argument("--out", default=None, help="출력 경로 (기본: patched/resources.assets)")
+    args = parser.parse_args()
+
+    base = Path(__file__).resolve().parent.parent
+
+    # 원본 로드
+    src_path = Path(args.src) if args.src else base / "original/resources.assets"
+    if not src_path.exists():
+        raise FileNotFoundError(f"원본이 없습니다: {src_path} (--src로 지정하세요)")
+    env = UnityPy.load(str(src_path))
+
+    # typetree_generator 설정 (m_Script 보존 필수)
+    if args.gamepath:
+        create_typetree_generator(env, Path(args.gamepath))
+    else:
+        print("  ⚠️  --gamepath 미지정: typetree_generator 없이 저장하면 참조가 깨질 수 있습니다.")
+
     # 번역 소스 로드
     strings = json.loads((base / "translation/strings.json").read_text("utf-8"))
     cards = json.loads((base / "translation/cards.json").read_text("utf-8"))
@@ -207,10 +300,7 @@ def main():
     print(f"TS_Cards keys: {len(key_to_ko_cards)}")
     print(f"Runtime TSV entries: {len(rt_index)}")
     
-    # 원본 로드
-    src_path = base / "original/resources.assets"
-    env = UnityPy.load(str(src_path))
-    
+    # 원본 로드 (위에서 args.src 처리됨 — 여기서 재할당 금지!)
     results = {}
     
     for obj in env.objects:
@@ -257,13 +347,13 @@ def main():
     # 저장
     out_dir = base / "patched"
     out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / "resources.assets"
+    out_path = Path(args.out) if args.out else out_dir / "resources.assets"
     with open(out_path, "wb") as f:
         f.write(env.file.save(packer="original"))
-    
+
     print(f"\n→ {out_path}")
-    
-    # EN 보존 검증
+
+    # EN 보존 검증 (Common_Strings)
     print("\n=== EN 열 보존 검증 ===")
     env2 = UnityPy.load(str(out_path))
     for obj2 in env2.objects:
@@ -284,7 +374,28 @@ def main():
                     print(f"  ❌ Row {r}: EN == KO ({en_val})")
             if en_ok:
                 print(f"  ✅ Common_Strings EN 열 무결함")
-    
+
+    # m_Script 무손상 검증 (MonoBehaviour 참조가 원본과 동일한지)
+    print("\n=== m_Script 무손상 검증 ===")
+    mism = 0
+    orig_env = UnityPy.load(str(src_path))
+    for o1, o2 in zip(orig_env.objects, env2.objects):
+        if o1.type.name != "MonoBehaviour" or o2.type.name != "MonoBehaviour":
+            continue
+        r1, r2 = o1.get_raw_data(), o2.get_raw_data()
+        if len(r1) >= 28 and len(r2) >= 28:
+            s1 = (struct.unpack_from("<I", r1, 16)[0], struct.unpack_from("<Q", r1, 20)[0])
+            s2 = (struct.unpack_from("<I", r2, 16)[0], struct.unpack_from("<Q", r2, 20)[0])
+            if s1 != s2:
+                mism += 1
+                if mism <= 5:
+                    print(f"  ❌ PathID={o1.path_id}: m_Script {s1} → {s2}")
+    if mism == 0:
+        print("  ✅ MonoBehaviour m_Script 전부 보존됨")
+    else:
+        print(f"  ❌ m_Script 불일치 {mism}건 — 저장이 안전하지 않습니다!")
+        return 1
+
     return 0
 
 

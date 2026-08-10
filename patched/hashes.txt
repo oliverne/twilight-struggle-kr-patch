@@ -1,0 +1,2 @@
+d80c263160f0bf63f9219b495056d5557e1e3b038a7c0493329d7ff3a5ccb874 *patched/resources.assets
+5e9bab843bce3257a88c7cfca37928888fa4788bdc363c67ee3da454292c2e07 *patched/sharedassets0.assets

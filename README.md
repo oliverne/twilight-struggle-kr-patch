@@ -13,11 +13,11 @@ Steam판 **Twilight Struggle**(App ID `406290`)의 최신 버전용 한글 패�
 | Unity/플랫폼 | Unity 6 `6000.0.58f2`, IL2CPP |
 | Phase 0: 준비 | ✅ 완료 |
 | Phase 1: 텍스트 위치 검증 | ✅ 완료 — `Common_Strings`·`TS_Cards`가 살아있는 소스임을 확인 |
-| Phase 2: 문자열 추출 및 번역 소스 구축 | ⬜ 다음 작업 |
+| Phase 2: 문자열 추출 및 번역 소스 구축 | ✅ 완료 — 666/666행 |
 | 기존 번역 확보 | ✅ 블루칩 v1.0.1/v2.0.1 Lua에서 한글 번역 확인 |
-| 한글 SDF 폰트 | ⬜ 미착수 |
-| 패치 설치 스크립트 | ⬜ 미착수 — 현재는 백업/복원 스크립트만 제공 |
-| Windows 테스트 | ⬜ 미착수 |
+| 한글 SDF 폰트 | ✅ 2048² SDF 2종 + 24개 폰트 주입 완료 |
+| 패치 설치 스크립트 | ✅ `scripts/install.sh` (macOS) |
+| Windows 테스트 | ⬜ 미착수 (macOS 테스트 선행) |
 
 상세 진행 상황은 [`docs/PROGRESS.md`](docs/PROGRESS.md)를 참조하세요.
 

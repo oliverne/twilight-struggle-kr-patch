@@ -71,7 +71,7 @@
 ## 주요 도구
 
 - **UABEA** (에셋 추출/수정, 크로스플랫폼) — 문제 시 UABEANext/AssetRipper 대안
-- **Unity_Font_Replacer**: `make_sdf.py`로 Unity 없이 TTF → TMP SDF 생성 (우선 시도)
+- **Unity_Font_Replacer** v1.2.8: `make_sdf.py`로 Unity 없이 TTF → TMP SDF 생성, Windows에서 `unity_font_replacer_ko.exe --parse/--list`로 에셋 주입 (⚠️ `oneshot`은 없음, `Managed` 폴더 제거 필요 — Runbook 참조)
 - 폰트: Noto Serif KR(본문), Black Han Sans(제목), Gugi, 나눔손글씨 — 모두 재배포 허용 라이선스만 사용
 - IL2CPP 바이너리 패치는 **최후의 수단**
 

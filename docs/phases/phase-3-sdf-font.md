@@ -2,7 +2,7 @@
 
 ## 상태
 
-- 상태: 🚧 진행 중 (macOS에서 SDF 생성 완료, Windows에서 주입 대기)
+- 상태: ✅ 완료 (Windows 폰트 주입 완료)
 - 선행 Phase: Phase 2 완료
 - **Runbook**: [docs/runbooks/phase-3-windows-font-injection.md](runbooks/phase-3-windows-font-injection.md)
 
@@ -21,11 +21,12 @@
 - [x] 도구 다운로드 및 설치 (`tools/unity-font-replacer/`에 배치)
 - [x] 번역문에서 사용 글자 문자셋 산출 → `fonts/chars.txt` (596자, 한글 508자)
 - [x] 폰트 TTF 다운로드 및 라이선스 확인 (Noto Serif KR, Black Han Sans) → `fonts/`
-- [x] `make_sdf.py`로 TTF → SDF JSON + Atlas PNG + Material JSON 생성 (2개 폰트, 4096²)
-- [x] 게임 폰트 목록 수동 파악 (23개 TMP FontAsset PathID 목록 확보)
-- [ ] **Windows에서 `Unity_Font_Replacer_KO.exe`로 폰트 교체** → [Runbook](runbooks/phase-3-windows-font-injection.md)
-- [ ] 수정된 `resources.assets` macOS로 복사
-- [ ] macOS 재서명 (`codesign --force --sign -`)
+- [x] `make_sdf.py`로 TTF → SDF JSON + Atlas PNG + Material JSON 생성
+      - ~~4096² (point-size 162/192)~~ → **2048² (point-size 74/87, auto)로 최적화** — 24개 폰트 주입 시 397MB → 103MB
+- [x] 게임 폰트 목록 파악 (24개 TMP FontAsset: resources.assets 23 + sharedassets0 atwriter SDF)
+- [x] Windows에서 폰트 교체 → [Runbook](runbooks/phase-3-windows-font-injection.md)
+- [x] 수정된 `resources.assets` macOS 전송 준비 (patched/ 반영)
+- [ ] macOS 재서명 (`codesign --force --sign -`) — install.sh가 처리
 - [ ] 게임 내 한글 출력 확인 (메뉴·카드·툴팁)
 - [ ] 잔존 `□`/`ㅁ` 글자 확인 및 누락 문자 추가
 
@@ -44,27 +45,40 @@
 | 항목 | 방법 | 결과 |
 |---|---|---|
 | 문자셋 추출 | `scripts/extract_charset.py` | ✅ 성공 — 596자 (한글 508자 + 기타 88자) |
-| SDF 생성 | `make_sdf.py` — NotoSerifKR (point-size 162), BlackHanSans (point-size 192) | ✅ 성공 — 4096² Atlas, 595 glyphs, SDF JSON/Material 정상 |
-| 게임 폰트 파악 | UnityPy raw 바이트 파싱 | ✅ 성공 — 23개 TMP FontAsset 확인 |
-| 폰트 주입 | Windows `Unity_Font_Replacer_KO.exe` | ⬜ 대기 — [Runbook](runbooks/phase-3-windows-font-injection.md) |
-| 게임 테스트 | — | ⬜ 대기 |
+| SDF 생성 | `make_sdf.py` — NotoSerifKR (point-size 74), BlackHanSans (point-size 87), 2048² | ✅ 성공 — 595 glyphs, SDF JSON/Material 정상 |
+| 게임 폰트 파악 | UnityPy raw 바이트 파싱 | ✅ 성공 — 24개 TMP FontAsset 확인 |
+| 폰트 주입 | Windows `unity_font_replacer_ko.exe --list` | ✅ 성공 — 24개 폰트 교체 (NotoSerifKR 13 + BlackHanSans 11), Sprite Asset 3개 제외 |
+| 무손상 검증 | `scripts/verify_assets.py` | ✅ 성공 — m_Script 0건/예상외 raw 0건 |
+| 게임 테스트 | — | ⬜ 대기 (macOS) |
+
+## 폰트 매핑 (결정 사항)
+
+| 교체 폰트 | 대상 |
+|---|---|
+| **NotoSerifKR SDF** | 본문/세리프 계열 13개: TIMES, TIMESI, LiberationSans(+Fallback), FRAMD 계열, GOTHIC 계열, Unity |
+| **BlackHanSans SDF** | 디스플레이/제목 계열 11개: Anton, Bangers, Electronic Highway Sign, Oswald, Roboto-Bold, Gunplay, IMPACT 계열, atwriter(+outline) |
+| 교체 제외 | Sprite Asset 3개 (Default Sprite Asset, DropCap Numbers, EmojiOne) |
+
+매핑은 `tools/unity-font-replacer/Twilight Struggle.json`의 `Replace_to`로 관리 (작업 폴더, git 제외).
+게임 테스트 후 폰트별 표시 확인이 필요하면 매핑을 조정한다.
 
 ## 리스크 (업데이트)
 
 | 리스크 | 대응 |
 |---|---|
-| ~~`make_sdf.py` 4096² 초과~~ | ✅ 596자로 충분히 수용 (point-size 162) |
+| ~~`make_sdf.py` 4096² 초과~~ | ✅ 596자로 충분히 수용 (point-size 74/87 @2048²) |
 | `Unity_Font_Replacer` macOS 미지원 | Windows에서 `.exe` 실행 — [Runbook](runbooks/phase-3-windows-font-injection.md) |
 | `Il2CppDumper.exe` 실행 실패 | Windows 환경에 .NET 8.0 Runtime 설치 필요 |
-| `resources.assets` 크기 증가 | AssetsTools.NET 기반으로 안전하게 처리 |
+| `resources.assets` 크기 증가 | 2048² 아틀라스로 최적화 — 103MB (4096² 시 397MB) |
+| ~~UnityPy save로 m_Script 손상~~ | ✅ 포크 UnityPy + typetree_generator로 재구축 (Phase 4 문서 참조) |
+| **게임 폴더의 `Managed` 존재로 Mono 오판** | 가상 작업 폴더에서 `Managed` 제거 → IL2CPP 인식 (Runbook 참조) |
 
 ## 다음 Phase로 핸드오프
 
-Phase 완료 시 다음 항목을 기록한다.
-
-- Windows 주입 성공 여부 및 사용한 명령어
-- 생성된 SDF 아틀라스 크기 및 문자셋 수
-- 게임 내 폰트 구성 (교체된 폰트 목록)
-- Material 보정값 (필요 시)
-- 잔존 `□` 글자 및 누락 문자 목록
-- macOS 코드사인 필요 여부
+- Windows 주입 성공: `unity_font_replacer_ko.exe --parse` + `--list` (oneshot 아님) 사용
+- 생성된 SDF 아틀라스: 2048² × 2 (NotoSerifKR point-size 74, BlackHanSans 87), 595 glyphs
+- 교체된 폰트: 24개 TMP FontAsset (NotoSerifKR 13 + BlackHanSans 11), Sprite Asset 3개 제외
+- Material: 도구 기본 보정 사용 (게임 원본 스타일 유지 + atlas/padding 자동 보정)
+- 잔존 `□` 글자: macOS 게임 테스트 후 확인 → `chars.txt`에 추가 → SDF 재생성 → 재주입
+- macOS 코드사인: `codesign --force --sign -` 필수 (install.sh가 자동 처리)
+- **Phase 5: `patched/resources.assets` + `patched/sharedassets0.assets`를 macOS로 전송 후 테스트**

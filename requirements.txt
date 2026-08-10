@@ -1,1 +1,10 @@
-UnityPy==1.25.3
+# Phase 4 번역 주입용 (inject_translations.py)
+# 주의: m_Script 보존을 위해 공식 UnityPy가 아닌 snowyegret23 포크를 사용한다.
+#   pip install --upgrade "git+https://github.com/snowyegret23/UnityPy.git"
+#   pip install TypeTreeGeneratorAPI
+# 공식 UnityPy(1.25.3)로 저장하면 IL2CPP 게임에서 MonoBehaviour m_Script 참조가
+# 재매핑되어 TMP 폰트 에셋이 파괴된다. (Phase 3/4 재구축 기록 참조)
+TypeTreeGeneratorAPI>=0.0.10
+numpy
+scipy
+Pillow
