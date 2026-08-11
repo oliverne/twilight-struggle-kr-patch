@@ -1,7 +1,7 @@
 #!/bin/bash
 # Twilight Struggle 한글 패치 — macOS 설치 스크립트
 #
-# 용도: patched/ → Steam 게임 폴더로 파일 복사 + 코드사인
+# 용도: patched/ → Steam 게임 폴더로 파일 복사 + 코드사인 + 게임 언어 KO 설정
 # 멱등성: 이미 패치된 파일을 다시 덮어써도 안전. restore.sh로 복원 가능.
 #
 # 사용법:
@@ -93,17 +93,39 @@ if [ -d "$GAME_APP" ]; then
         echo -e "${YELLOW}  ⚠️  서명 실패 (관리자 권한 필요 가능성)${NC}"
 fi
 
-# 개별 dylib/dll 파일도 서명
-for f in "$GAME_DATA"/*.dylib "$GAME_DATA"/*.bundle 2>/dev/null; do
+# 개별 dylib/bundle 파일도 서명 (패턴 미매칭 시 [ -f ] 검사가 무시)
+for f in "$GAME_DATA"/*.dylib "$GAME_DATA"/*.bundle; do
     [ -f "$f" ] && codesign --force --sign - "$f" 2>/dev/null
 done
+
+# ── 게임 언어 KO 설정 (PlayerPrefs plist) ──
+echo ""
+echo -e "${YELLOW}[언어 설정] 한국어(KO)로 변경 중...${NC}"
+
+# Unity macOS 규약: ~/Library/Preferences/unity.<Company>.<Product>.plist
+PLIST="$HOME/Library/Preferences/unity.Playdek.TwilightStruggle.plist"
+if [ ! -f "$PLIST" ]; then
+    # 실제 파일명이 다를 수 있으므로 glob으로 검색 (게임을 1회 이상 실행한 경우)
+    PLIST=$(ls "$HOME/Library/Preferences"/unity.*TwilightStruggle*.plist 2>/dev/null | head -1)
+fi
+if [ -z "$PLIST" ]; then
+    # plist가 없으면 표준 경로에 새로 생성 (Unity가 최초 실행 시 읽음)
+    PLIST="$HOME/Library/Preferences/unity.Playdek.TwilightStruggle.plist"
+    defaults write "$PLIST" localization_h2525087814 -string "KO"
+    echo -e "${YELLOW}  ⚠️  PlayerPrefs plist가 없어 새로 생성했습니다: $(basename "$PLIST")${NC}"
+    echo -e "${YELLOW}  ⚠️  게임을 1회 실행한 뒤 언어가 KO인지 확인하세요.${NC}"
+else
+    OLD=$(defaults read "$PLIST" localization_h2525087814 2>/dev/null || echo "(없음)")
+    defaults write "$PLIST" localization_h2525087814 -string "KO"
+    echo -e "${GREEN}  ✅ $(basename "$PLIST") — localization_h2525087814 = ${OLD} → KO${NC}"
+fi
 
 # ── 완료 ──
 echo ""
 echo -e "${GREEN}=== 설치 완료! ===${NC}"
 echo ""
 echo "  Steam에서 Twilight Struggle을 실행하세요."
-echo "  게임 내 언어 설정에서 '한국어'를 선택하면 한글이 적용됩니다."
+echo "  (게임 언어는 KO로 자동 설정됨 — 메뉴가 즉시 한글 표시)"
 echo ""
 echo "  ※ 복원하려면: scripts/restore-original.sh"
 echo "  ※ Steam 무결성 검사 후에는 다시 설치해야 합니다."

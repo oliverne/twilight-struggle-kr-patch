@@ -58,7 +58,7 @@
 - 번역 재사용 전략: 런타임 패치(2026-03-15)의 `runtime_exact.tsv` 2,253쌍 + 수동 번역으로 TextAsset 666행·씬 2,548개 문자열 커버 (Phase 2·4·5). 블루칩 432개는 구버전 소스라 직접 매칭 불가 → 참고용
 - `Common_Strings`의 한국어 슬롯은 **원본에 없음** (열 구조: `Key/EN/FR/DE/ES/PL/PT/JP/IT/RU/NL/CH`). 번역 주입 시 **EN 열 보존, RU(10열)을 한국어로 교체** (AGENTS.md 원칙 #8). 게임 언어 선택기 인식은 `AvailableCultures`에 ko 등록으로 해결 (Phase 4 검증)
 - **언어=KO에서 카드/스코어링까지 한글이 되려면 모든 언어 테이블에 KO 열 추가 필수** — SmartLocalization이 언어별 열 헤더로 해석하며 KO 열이 없으면 `${Key}` 노출 (2차 테스트 확인). `scripts/add_ko_columns.py`로 TS_Cards·TS_Ingame·TS_Strings·Common_Ingame·TS_RulesTutorial에 KO 열 추가 (Common_Strings는 이미 10열)
-- **게임 언어 설정은 별도 PlayerPrefs**(레지스트리 `localization_h2525087814`)로 관리됨 — KO로 설정해야 KO 열 로드 (Phase 5 확인)
+- **게임 언어 설정은 별도 PlayerPrefs**(레지스트리 `localization_h2525087814`, macOS plist)로 관리됨 — KO로 설정해야 KO 열 로드 (Phase 5 확인). **설치 스크립트(`install-windows.ps1`/`install.sh`)가 자동으로 KO 설정**
 - ~~"진짜 난제는 CJK 포함 SDF 폰트 아틀라스 주입"~~ → ✅ 해결 (Unity_Font_Replacer + 2048² SDF 2종, Phase 3~4)
 - **남은 진짜 난제: IL2CPP 코드 문자열(턴 히스토리 로그)** — 모든 패치(블루칩·런타임 포함)가 미커버한 영역. BepInEx 런타임 훅으로만 가능
 
@@ -168,7 +168,7 @@
 | 텍스처 구워진 영문 | 일부 영문 잔존 | 기존 패치들도 미해결. 1차 범위 제외, 이미지 리터칭은 후속 과제로 |
 | IL2CPP 내 하드코딩 문자열 (턴 히스토리 등) | 일부 UI 영어 잔존 — **현실화됨** | 파일 패치는 길이 제약으로 불가. BepInEx 런타임 훅이 현실적 (기존 런타임 패치도 미커버 확인, 보류) |
 | **UnityPy 저장 시 같은 경로 금지** | 저장 파일 손상 (EOFError) | 로드 파일과 저장 파일 분리 (`.work` → 별도 출력) — `patch_scenes.py` 참조 |
-| 게임 언어가 EN으로 고정됨 | 메뉴 영어 표시 | 레지스트리 `localization_*` = KO 또는 게임 설정에서 언어 변경 |
+| 게임 언어가 EN으로 고정됨 | 메뉴 영어 표시 | 설치 스크립트가 자동 설정 (레지스트리/plist `localization_*` = KO) 또는 게임 설정에서 언어 변경 |
 
 ---
 

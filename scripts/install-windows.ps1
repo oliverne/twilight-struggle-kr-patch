@@ -1,6 +1,6 @@
 ﻿# Twilight Struggle 한글 패치 — Windows 설치 스크립트
 #
-# 용도: patched/ → Steam 게임 폴더로 파일 복사 (백업 + 해시 검증)
+# 용도: patched/ → Steam 게임 폴더로 파일 복사 (백업 + 해시 검증) + 게임 언어 KO 설정
 # 멱등성: 이미 적용된 파일은 해시 확인 후 건너뜀. 재실행 안전.
 #
 # 사용법 (PowerShell 5.1+):
@@ -14,7 +14,8 @@
 #   - 게임이 실행 중이면 파일이 잠겨 실패하므로 종료 후 실행
 #   - 복원: 백업 폴더(backup-<날짜>)에서 파일을 되돌리거나
 #     Steam "파일 무결성 확인" 실행
-#   - macOS용: scripts/install.sh (코드사인 자동)
+#   - 게임 언어를 KO로 자동 설정 (PlayerPrefs 레지스트리)
+#   - macOS용: scripts/install.sh (코드사인 자동 + plist 언어 설정)
 
 param(
     [string]$GameData = "$env:ProgramFiles(x86)\Steam\steamapps\common\Twilight Struggle\TwilightStruggle_Data",
@@ -102,6 +103,24 @@ foreach ($f in $Files) {
     }
 }
 
+# ── 게임 언어 KO 설정 (PlayerPrefs 레지스트리) ──
+Write-Step "게임 언어 설정 (KO)"
+$regPath = "HKCU:\Software\Playdek\TwilightStruggle"
+$regName = "localization_h2525087814"
+if (-not (Test-Path $regPath)) {
+    New-Item -Path $regPath -Force | Out-Null
+}
+$oldLang = (Get-ItemProperty -Path $regPath -Name $regName -ErrorAction SilentlyContinue).$regName
+Set-ItemProperty -Path $regPath -Name $regName -Value "KO"
+$newLang = (Get-ItemProperty -Path $regPath -Name $regName).$regName
+if ($newLang -eq "KO") {
+    if ($oldLang) { Write-OK "localization_h2525087814 = $oldLang -> KO" }
+    else          { Write-OK "localization_h2525087814 = (없음) -> KO" }
+} else {
+    Write-Host "  [실패] 게임 언어 설정 실패: $newLang" -ForegroundColor Red
+    exit 1
+}
+
 # ── 결과 ──
 Write-Host ""
 if ($failed -gt 0) {
@@ -111,9 +130,7 @@ if ($failed -gt 0) {
 Write-Host "=== 설치 완료! (복사 $copied건 / 스킵 $skipped건) ===" -ForegroundColor Green
 Write-Host ""
 Write-Host "  Steam에서 Twilight Struggle을 실행하세요."
-Write-Host "  설정 → Languages에서 '한국어' 선택 (또는 레지스트리"
-Write-Host "  HKCU\Software\Playdek\TwilightStruggle 의"
-Write-Host "  localization_h2525087814 를 KO로 변경)"
+Write-Host "  (게임 언어는 KO로 자동 설정됨 — 메뉴가 즉시 한글 표시)"
 Write-Host ""
 Write-Host "  ※ 복원: 백업 .bak 파일을 되돌리거나 Steam 무결성 확인"
 Write-Host "  ※ Steam 업데이트 후에는 다시 실행하세요."

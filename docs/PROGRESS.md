@@ -46,7 +46,7 @@
   1. TextAsset 키 참조 (`${Key_XXX}`) — 언어=ko에서 KO 열 사용 → 번역 주입 + 언어 설정으로 해결
   2. 씬 하드코딩 문자열 (level1-3 MonoBehaviour) — **씬 패치(`patch_scenes.py`)로 해결**
   3. IL2CPP 코드 문자열 (global-metadata.dat, 턴 히스토리 템플릿) — BepInEx 런타임 훅 필요, 보류
-- **게임 언어 저장 위치: `HKCU\Software\Playdek\TwilightStruggle` 레지스트리 `localization_h2525087814`** (PlayerPrefs) — KO로 변경 완료
+- **게임 언어 저장 위치: `HKCU\Software\Playdek\TwilightStruggle` 레지스트리 `localization_h2525087814`** (PlayerPrefs) — KO로 변경 완료. **설치 스크립트가 파일 복사와 함께 자동으로 KO 설정** (Windows: 레지스트리 / macOS: `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist` plist)
 - **SDF 폰트 교체 도구: [Unity_Font_Replacer](https://github.com/snowyegret23/Unity_Font_Replacer) v1.2.8.** `make_sdf.py`로 TTF→SDF 생성, `unity_font_replacer_ko.exe`로 게임 에셋 자동 교체.
 - **⚠️ UnityPy(공식) `env.file.save()`는 IL2CPP 게임에서 MonoBehaviour m_Script 참조를 재매핑해 TMP 폰트를 파괴한다** (Phase 4 기존 patched가 m_Script 11,890건 손상). → 포크 UnityPy + TypeTreeGeneratorAPI(typetree_generator) 방식으로 재구축 완료.
 - **⚠️ UnityPy 저장 시 로드 파일과 저장 파일은 분리해야 한다** — 같은 경로 저장 시 지연 스트리밍(Replacer)이 깨져 EOFError 발생 (씬 패치에서 확인).
@@ -61,7 +61,7 @@
 | Phase 2 — 문자열 추출 & 번역 소스 구축 | ✅   | 666/666행 번역 완료. 런타임 TSV + 수동 번역     | [상세](phases/phase-2-translation-source.md) |
 | Phase 3 — 한글 SDF 폰트 아틀라스 생성  | ✅   | 2048² SDF 2종 + Windows 주입 완료 (24개 폰트) | [상세](phases/phase-3-sdf-font.md)           |
 | Phase 4 — 텍스트 주입 & 레이아웃 조정  | ✅   | 무손상 주입 재구축 + 잔존 키 53개 재주입    | [상세](phases/phase-4-injection-layout.md)   |
-| Phase 5 — 플랫폼 적용 & 테스트         | 🚧   | Windows 1차 테스트·씬 패치 완료, 재실행 대기  | [상세](phases/phase-5-platform-test.md)      |
+| Phase 5 — 플랫폼 적용 & 테스트         | 🚧   | Windows 1차 테스트·씬 패치 완료, 재실행 대기. 설치 스크립트 언어 자동 설정 추가 | [상세](phases/phase-5-platform-test.md)      |
 | Phase 6 — 배포                         | ⬜   | 사용자 안내 및 배포 대기                       | [상세](phases/phase-6-release.md)            |
 | Phase 7 — 도움말/규칙 번역 (후순위)   | ⬜   | 배포 후 맨 마지막 수행 — 규칙 6.4만 자 수동   | [상세](phases/phase-7-help-translation.md)   |
 
@@ -109,6 +109,6 @@
 | 2026-08-12                                        | 3차 테스트 후속: KO 열 원본 범위 내 배치(8/9/10열) 재주입      | `438fe63` |
 | 2026-08-12                                        | 4차 테스트 성공 — 대부분 UI·카드 한글화 확인, 문서 최신화      | `2ce6216` |
 | 2026-08-12                                        | 폴더 정리(scripts/tools/translation) + README·스킬 갱신       | `a0cdff4` |
-| 2026-08-12                                        | TextAsset 미번역 전수 조사(0건) + Windows 설치 스크립트        | (이번 커밋) |
-| 2026-08-12                                        | 4차 테스트 성공 — 대부분 UI·카드 한글화 확인 + 문서 갱신     | (예정)    |
+| 2026-08-12                                        | TextAsset 미번역 전수 조사(0건) + Windows 설치 스크립트        | `5f208a7` |
+| 2026-08-12                                        | 설치 스크립트 언어 KO 자동 설정 (레지스트리/plist) + 문서 반영 | (이번 커밋) |
 | 2026-08-12                                        | 폰트 교체(Paperlogy/D2Coding) + 크기 축소 + 크기 조절 스킬 신설 | `405b17a` |

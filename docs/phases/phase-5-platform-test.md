@@ -142,6 +142,7 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 - [x] **4차 테스트 — 대부분의 UI·카드 한글화 확인 (2026-08-12)**
 - [x] **TextAsset 미번역 전수 조사 (2026-08-12)** — TS_Ingame 157·TS_Strings 50·Common_Ingame 22·Common_Strings(KO열) 322·TS_Cards 343행 전부 번역 확인. `Card_087Title1 'The'` 1건만 의도적 유지(manual_keep_en). TS_RulesTutorial 313행은 Phase 7 대상
 - [x] **Windows 설치 스크립트 작성 + 실동작 검증 (2026-08-12)** — `scripts/install-windows.ps1` 백업→복사→SHA256 검증, 멱등 확인 (이미 적용된 5개 파일 스킵)
+- [x] **설치 스크립트 게임 언어 KO 자동 설정** (2026-08-12) — install-windows.ps1: 레지스트리 `localization_h2525087814`=KO / install.sh: macOS plist `unity.Playdek.TwilightStruggle.plist`
 - [ ] 미번역 텍스트 전체 확인 — **실게임 화면 단위** (TextAsset 전수 조사는 완료, 화면에서 영어 잔존 발견 시 전달)
 - [ ] macOS 설치 스크립트 검증 (`scripts/install.sh`)
 - [x] Windows 설치 스크립트 (`scripts/install-windows.ps1`) 작성 + 실동작 검증 (2026-08-12)
@@ -182,11 +183,14 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 2. **잔존 `□` 확인** — `fonts/chars.txt`에 글자 추가 → make_sdf.py 재생성 → 폰트 재주입 (Runbook 참조)
 3. **macOS 적용** — `patched/` 전송 (resources.assets 108MB + sharedassets0.assets + level1~3) → `scripts/install.sh`
    - macOS 코드사인은 install.sh가 자동 처리 (`codesign --force --sign -`)
-4. **Windows 설치 스크립트 작성** — `scripts/install-windows.ps1` (백업 → 복사 → 해시 검증) — 체크리스트 잔여 항목
+4. **Windows 설치 스크립트 작성** — `scripts/install-windows.ps1` (백업 → 복사 → 해시 검증) — ✅ 완료 (2026-08-12, 실동작 검증 완료)
 5. **멀티플레이 테스트** — 패치 후 온라인 기능 정상 동작 확인 (미실시)
 6. **Steam 무결성 확인 후 재설치 테스트** — 복구 절차 검증
 
 ### 결정 사항 요약
+
+- **설치 스크립트가 게임 언어 KO 설정을 자동 수행** — `install-windows.ps1`은 레지스트리 `HKCU\Software\Playdek\TwilightStruggle`의 `localization_h2525087814`=KO, `install.sh`는 macOS plist `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist`에 KO 기록. Windows 스크립트는 게임 실행 중 감지·중단, macOS는 안내 문구만
+- 설치 스크립트는 파일 복사 + 언어 설정을 한 번에 수행하므로 Steam 업데이트 후 재설치만 하면 언어도 자동 복원
 
 - 게임 언어는 레지스트리 PlayerPrefs로 관리 — 패치에 언어 설정이 포함되지 않으므로 설치 안내에 명시 필요
 - 씬 패치는 `patch_scenes.py`로 재현 가능 (번역 소스만 추가하면 재실행)
