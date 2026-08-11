@@ -6,19 +6,23 @@
 
 ## 현재 상태
 
-**다음 작업:** Phase 5 — macOS에서 게임 테스트 (폰트 주입 완료)
+**다음 작업:** 게임 재실행 테스트 — 메뉴 한글화 확인 (Windows 1차 패치 완료)
 
 - 완료: Phase 0 — 준비, Phase 1 — 텍스트 위치 검증, Phase 2 — 번역 소스 구축
 - 완료: Phase 3 SDF 생성 (2048² 최적화) + Windows 폰트 주입 (24개 TMP 폰트)
-- 완료: Phase 4 텍스트 주입 재구축 (m_Script 무손상) — `patched/` 갱신 완료
-- **Phase 5 잔여: macOS에서 `scripts/install.sh` → Steam 실행 → 한글 확인**
+- 완료: Phase 4 텍스트 주입 재구축 (m_Script 무손상) + **잔존 키 53개 수동 번역 재주입**
+- 완료: **Windows 실게임 1차 테스트 + 진단** — 메뉴 영어 원인 3계층 규명
+- 완료: **씬 패치 (level1-3)** — 하드코딩 문자열 2,548개 한글화 (m_Script 0건 불일치)
+- 완료: **게임 언어 KO 전환** (레지스트리 `localization_*` — Step 1)
+- **Phase 5 잔여: 게임 재실행 → 메뉴 한글화 확인 → macOS 적용 → 멀티플레이**
 
 ### 작업 재개 순서
 
-1. macOS로 전송: `patched/resources.assets`(108MB) + `patched/sharedassets0.assets` + `fonts/`(2048² SDF)
-2. macOS에서 `scripts/install.sh` 실행 → 게임 테스트
-3. 게임 내 언어 설정에서 한국어 선택 → 한글 렌더링 확인
-4. 잔존 `□`/`ㅁ` 확인 → 누락 문자 `chars.txt`에 추가 후 재주입
+1. **게임 재실행** → 메인 메뉴/설정 한글화 확인 (언어=KO 적용됨)
+2. Player.log에서 `Load Language Header: KO` 확인
+3. 잔존 `□`/영어 UI 확인 → 미번역 키는 `translation/manual-*.json`에 추가 후 재주입
+4. macOS로 `patched/` 전체(level 포함) 전송 → `scripts/install.sh` → 테스트
+5. Windows 설치 스크립트(`install-windows.ps1`) 작성 → 멀티플레이 테스트
 
 ## 핵심 확정 사항
 
@@ -28,8 +32,14 @@
 - 한글 입력과 인코딩은 정상이나 기존 SDF 폰트에 CJK 글리프가 없어 게임에서 `ㅁ`으로 표시된다.
 - **번역 주입 방식: Common_Strings는 RU(10열)→KO 교체 + AvailableCultures에 ko 등록.** SmartLocalization이 컬럼 헤더("KO")를 문화 코드("ko")와 매칭. TS_Cards 등 나머지는 EN→KO 직접 교체. 모든 EN 원문은 `translation/` JSON에 보존.
 - **번역 재사용 소스: 신규 런타임 패치 `runtime_exact.tsv` (2,253쌍).** 블루칩 v1.0.1의 MonoBehaviour 한글(432개)은 v1.0.1에 `Common_Strings`/`TS_Cards`가 없어 매칭 불가. 런타임 TSV + 수동 번역으로 666행 전체 커버.
+- **게임 텍스트 3계층 구조** (Phase 5 확정):
+  1. TextAsset 키 참조 (`${Key_XXX}`) — 언어=ko에서 KO 열 사용 → 번역 주입 + 언어 설정으로 해결
+  2. 씬 하드코딩 문자열 (level1-3 MonoBehaviour) — **씬 패치(`patch_scenes.py`)로 해결**
+  3. IL2CPP 코드 문자열 (global-metadata.dat, 턴 히스토리 템플릿) — BepInEx 런타임 훅 필요, 보류
+- **게임 언어 저장 위치: `HKCU\Software\Playdek\TwilightStruggle` 레지스트리 `localization_h2525087814`** (PlayerPrefs) — KO로 변경 완료
 - **SDF 폰트 교체 도구: [Unity_Font_Replacer](https://github.com/snowyegret23/Unity_Font_Replacer) v1.2.8.** `make_sdf.py`로 TTF→SDF 생성, `unity_font_replacer_ko.exe`로 게임 에셋 자동 교체.
 - **⚠️ UnityPy(공식) `env.file.save()`는 IL2CPP 게임에서 MonoBehaviour m_Script 참조를 재매핑해 TMP 폰트를 파괴한다** (Phase 4 기존 patched가 m_Script 11,890건 손상). → 포크 UnityPy + TypeTreeGeneratorAPI(typetree_generator) 방식으로 재구축 완료.
+- **⚠️ UnityPy 저장 시 로드 파일과 저장 파일은 분리해야 한다** — 같은 경로 저장 시 지연 스트리밍(Replacer)이 깨져 EOFError 발생 (씬 패치에서 확인).
 - **폰트 주입 검증: m_Script 0건/raw 0건 불일치.** `scripts/verify_assets.py`로 재검증 가능.
 
 ## Phase 요약
@@ -40,16 +50,17 @@
 | Phase 1 — 텍스트 위치 검증             | ✅   | `resources.assets`가 실제 텍스트 소스임을 확인 | [상세](phases/phase-1-source-validation.md)  |
 | Phase 2 — 문자열 추출 & 번역 소스 구축 | ✅   | 666/666행 번역 완료. 런타임 TSV + 수동 번역     | [상세](phases/phase-2-translation-source.md) |
 | Phase 3 — 한글 SDF 폰트 아틀라스 생성  | ✅   | 2048² SDF 2종 + Windows 주입 완료 (24개 폰트) | [상세](phases/phase-3-sdf-font.md)           |
-| Phase 4 — 텍스트 주입 & 레이아웃 조정  | ✅   | 무손상 주입 재구축 완료 (m_Script 보존)    | [상세](phases/phase-4-injection-layout.md)   |
-| Phase 5 — 플랫폼 적용 & 테스트         | 🚧   | macOS·Windows·멀티플레이 검증 대기             | [상세](phases/phase-5-platform-test.md)      |
+| Phase 4 — 텍스트 주입 & 레이아웃 조정  | ✅   | 무손상 주입 재구축 + 잔존 키 53개 재주입    | [상세](phases/phase-4-injection-layout.md)   |
+| Phase 5 — 플랫폼 적용 & 테스트         | 🚧   | Windows 1차 테스트·씬 패치 완료, 재실행 대기  | [상세](phases/phase-5-platform-test.md)      |
 | Phase 6 — 배포                         | ⬜   | 사용자 안내 및 배포 대기                       | [상세](phases/phase-6-release.md)            |
 
 ## 현재 핸드오프 요약
 
-- 수신: macOS 머신
-- Phase 5: `patched/resources.assets` + `patched/sharedassets0.assets`를 macOS로 전송 → `scripts/install.sh` → Steam 실행 → 언어 선택기에서 한국어 선택 → 한글 확인
+- 수신: Windows 게임 머신 (현재)
+- Phase 5: 게임 재실행 → 메뉴 한글화 확인 → macOS로 `patched/` 전송(level1-3 포함) → `scripts/install.sh`
 - 주의: macOS `codesign --force --sign -` 필수 (install.sh가 자동 처리)
-- 주의: `patched/*.assets`는 GitHub 100MB 제한 초과로 gitignore — 재생성 방법은 Phase 문서 참조
+- 주의: `patched/*.assets`·`level*`는 GitHub 100MB 제한 초과로 gitignore — 재생성 방법은 Phase 문서 참조
+- 주의: 턴 히스토리(IL2CPP 코드 문자열)는 현 패치 범위 밖 — BepInEx 런타임 훅 프로젝트로 보류
 
 ## 로그
 
@@ -76,3 +87,4 @@
 | 2026-08-08                                        | Phase 4 텍스트 주입 — 6종 TextAsset + install.sh                  | `0ba38c4` |
 | 2026-08-08                                        | Phase 3·4 현황 반영 (PROGRESS)                                    | `12bdace` |
 | 2026-08-11                                        | Windows 폰트 주입 완료 + m_Script 손상 발견·재구축 (예정)        | -         |
+| 2026-08-11                                        | Windows 1차 테스트 진단 + 잔존 키 재주입 + 씬 패치 + 언어 KO     | (예정)    |

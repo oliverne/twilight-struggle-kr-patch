@@ -53,6 +53,10 @@ python scripts/verify_assets.py --orig <원본> --patched patched/resources.asse
 - [x] **AvailableCultures 수정** — ru → ko (한국어 선택 가능)
 - [x] EN 열 보존 검증 (Common_Strings: col 2 EN 무결함)
 - [x] `TS_Ingame`(117행)·`TS_Strings`(38행)·`Common_Ingame`(22행) 주입 — 런타임 TSV 커버
+- [x] **잔존 영어 키 수동 번역 재주입 (2026-08-11)** — `translation/manual-extra.json` 53키 (TS_Ingame 41 + TS_Strings 12)
+      - TS_Ingame: 'Current Turn'→'현재 턴', 'Bid For Sides'→'진영 입찰', 'No Presence'→'진출 없음', 'Defcon Level'→'데프콘 단계', 'Game Results'→'게임 결과' 등
+      - TS_Strings: 'Flavor_Castro', 'Key_USSR'→'소련', 'Key_MapTypeClassic' 등
+      - `inject_simple_table`이 key 기준 manual도 지원하도록 확장 (값 기준 우선)
 - [x] 설치 스크립트 `scripts/install.sh` 작성 (macOS)
 - [x] 무결성 검증 스크립트 `scripts/verify_assets.py` (m_Script/raw 비교)
 - [ ] 게임에서 한국어로 전환되는지 실게임 테스트 (Phase 5)
@@ -78,6 +82,8 @@ python scripts/verify_assets.py --orig <원본> --patched patched/resources.asse
 | m_Script 무손상 | `verify_assets.py` — 원본 vs patched 전체 비교 | ✅ 성공 — 불일치 0건 |
 | raw 무손상 | `verify_assets.py` — TextAsset/폰트 외 raw 바이트 | ✅ 성공 — 예상외 변경 0건 |
 | 게임 테스트 | — | ⬜ 대기 (Phase 5, 폰트 주입 완료됨) |
+| 잔존 키 재주입 | `inject_translations.py` 재실행 (2026-08-11) | ✅ 성공 — TS_Ingame 40행 + TS_Strings 12행, m_Script 0건 |
+| 재주입 후 영어 잔존 | TextAsset 스캔 | ✅ 성공 — TS_Ingame/TS_Strings 0개 |
 
 ## 산출물
 

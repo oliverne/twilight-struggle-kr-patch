@@ -37,8 +37,7 @@
 ### #10 `README.md` "Windows 경로 예상" 미검증 표기가 Phase 5까지 방치 위험
 - **위치**: `PLAN.md` §1 (Windows 경로 "예상 — 설치 후 확인 필요")
 - **문제**: Phase 5 "Windows 테스트 ⬜"로 아직 미검증. Windows 경로 마지막 컴포넌트가 `Twilight Struggle_Data`인지 `Data`인지 Phase 5 착수 전까지 검증 필요.
-- **제안 수정**: Phase 5 체크리스트에 "Windows 데이터 경로 실측"을 1순위로 추가해 검증 기준에 명시.
-- **상태**: ⬜ 보류
+- **상태**: ✅ 해결 — 실측 완료: `steamapps/common/Twilight Struggle/TwilightStruggle_Data/` (2026-08-11 Windows 게임 설치본 확인)
 - **관련 Phase**: Phase 5
 
 ---

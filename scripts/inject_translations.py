@@ -154,11 +154,18 @@ def inject_simple_table(text: str, key_to_ko: dict, rt_index: dict, manual: dict
     for cell_key, val in list(cells.items()):
         if ":" not in cell_key:
             continue
-        _, col = cell_key.split(":", 1)
+        row_s, col = cell_key.split(":", 1)
         if col != "2" or val in ("null", "", "EN", "ENTER PATH"):
             continue
-        
-        ko = key_to_ko.get(val) or rt_index.get(val) or manual.get(val)
+
+        # 우선순위: EN 값 기준(rt_index/manual) > key 기준(manual)
+        row_key = cells.get(f"{row_s}:1", "")
+        ko = (
+            key_to_ko.get(val)
+            or rt_index.get(val)
+            or manual.get(val)
+            or manual.get(row_key)
+        )
         if ko:
             cells[cell_key] = ko
             changed += 1
@@ -269,7 +276,13 @@ def main():
     key_to_ko_cs = build_key_to_ko(strings)
     key_to_ko_cards = build_key_to_ko(cards)
     rt_index = build_rt_index()
-    
+
+    # 수동 번역 확장 (translation/manual-extra.json — 잔존 UI 키)
+    manual_extra = {}
+    manual_extra_path = base / "translation/manual-extra.json"
+    if manual_extra_path.exists():
+        manual_extra = json.loads(manual_extra_path.read_text("utf-8"))
+
     # Common_Ingame 수동 번역 (런타임 TSV 커버 불가)
     common_ingame_manual = {
         "Are you sure you want to end your turn?": "턴을 종료하시겠습니까?",
@@ -321,17 +334,23 @@ def main():
             results["TS_Cards"] = changed
         
         elif name == "TS_Ingame":
-            new_text, changed = inject_simple_table(text, {}, rt_index, {})
+            new_text, changed = inject_simple_table(
+                text, {}, rt_index, manual_extra.get("TS_Ingame", {})
+            )
             print(f"  TS_Ingame: {changed}행 (EN→KO)")
             results["TS_Ingame"] = changed
         
         elif name == "Common_Ingame":
-            new_text, changed = inject_simple_table(text, {}, rt_index, common_ingame_manual)
+            manual = dict(common_ingame_manual)
+            manual.update(manual_extra.get("Common_Ingame", {}))
+            new_text, changed = inject_simple_table(text, {}, rt_index, manual)
             print(f"  Common_Ingame: {changed}행 (EN→KO)")
             results["Common_Ingame"] = changed
         
         elif name == "TS_Strings":
-            new_text, changed = inject_simple_table(text, {}, rt_index, {})
+            new_text, changed = inject_simple_table(
+                text, {}, rt_index, manual_extra.get("TS_Strings", {})
+            )
             print(f"  TS_Strings: {changed}행 (EN→KO)")
             results["TS_Strings"] = changed
         
