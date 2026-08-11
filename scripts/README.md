@@ -34,6 +34,7 @@ PYTHONIOENCODING=utf-8 .venv/bin/python scripts/<스크립트>.py ...           
 | `backup-original.sh` | 게임 원본 → `original/` 백업 (멱등) | 업데이트/실험 전 |
 | `restore-original.sh` | `original/` → 게임 폴더 복원 (멱등) | 복구 절차 검증 시 |
 | `install.sh` | **macOS 설치**: patched/ → Steam + 코드사인 자동 (멱등) | macOS 적용 시 |
+| `install-windows.ps1` | **Windows 설치**: patched/ → Steam (백업 → 복사 → SHA256 검증, 멱등) | Windows 적용 시 |
 
 ## 3️⃣ 일회성 도구 (Phase 2 번역 소스 구축 — 완료, `archive/`에 보관)
 

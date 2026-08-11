@@ -73,7 +73,7 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 - ✅ **카드 텍스트 한글화** (KO 열 9열 배치 효과)
 - ✅ **대부분의 UI 한글화** — 스코어링 PANEL 키, 우주 경쟁, DEFCON, HELP 도움말
 - ✅ 메인 메뉴/설정 깨지던 글자 해결, 게임판 국가명 정상
-- ⬜ 미번역 텍스트 전체 확인은 아직 미완료 (남은 영어/□ 수집 필요)
+- ⬜ 미번역 텍스트 **화면 단위** 확인은 사용자 실게임에서 진행 (TextAsset 전수 조사는 2026-08-12 완료 — 미번역 0건, RulesTutorial 제외)
 
 **결론**: KO 열을 "원본 존재 열 범위 내 빈 열"(8/9/10열)에 배치한 것이 정답이었음.
 게임 파서는 원본에 없는 열 번호(27열)의 셀을 무시한다.
@@ -125,9 +125,9 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 - [x] 게임 언어 설정 KO 전환 (레지스트리)
 - [x] TS_Ingame/TS_Strings 잔존 키 수동 번역 + 재주입 (53키)
 - [x] 씬 패치 (level1-3) — 하드코딩 문자열 2,548개 한글화
-- [ ] **게임 재실행 테스트** — 메뉴 한글화 확인, 잔존 `□`/영어 확인
+- [x] **게임 재실행 테스트** — 4차 테스트에서 카드/메뉴/인게임 UI 한글화 확인 (2026-08-12)
 - [ ] macOS 설치 스크립트 검증 (`scripts/install.sh`)
-- [ ] Windows 설치 스크립트 (`scripts/install-windows.ps1`) 작성
+- [x] Windows 설치 스크립트 (`scripts/install-windows.ps1`) 작성 + 실동작 검증 (2026-08-12)
 - [ ] 멀티플레이 동작 테스트
 - [ ] Steam 무결성 확인 후 재설치 테스트
 
@@ -140,9 +140,11 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 - [x] 2차 테스트 후속 조치 — KO 열 추가(5테이블) + SDF 문자셋 확장 재주입 (2026-08-12)
 - [x] 3차 테스트 후속 — KO 열 원본 범위 내 배치(8/9/10열) 재주입 (2026-08-12)
 - [x] **4차 테스트 — 대부분의 UI·카드 한글화 확인 (2026-08-12)**
-- [ ] 미번역 텍스트 전체 확인 — 인게임 전 화면/팝업 영어 잔존 수집 → manual-*.json 재주입
+- [x] **TextAsset 미번역 전수 조사 (2026-08-12)** — TS_Ingame 157·TS_Strings 50·Common_Ingame 22·Common_Strings(KO열) 322·TS_Cards 343행 전부 번역 확인. `Card_087Title1 'The'` 1건만 의도적 유지(manual_keep_en). TS_RulesTutorial 313행은 Phase 7 대상
+- [x] **Windows 설치 스크립트 작성 + 실동작 검증 (2026-08-12)** — `scripts/install-windows.ps1` 백업→복사→SHA256 검증, 멱등 확인 (이미 적용된 5개 파일 스킵)
+- [ ] 미번역 텍스트 전체 확인 — **실게임 화면 단위** (TextAsset 전수 조사는 완료, 화면에서 영어 잔존 발견 시 전달)
 - [ ] macOS 설치 스크립트 검증 (`scripts/install.sh`)
-- [ ] Windows 설치 스크립트 (`scripts/install-windows.ps1`) 작성
+- [x] Windows 설치 스크립트 (`scripts/install-windows.ps1`) 작성 + 실동작 검증 (2026-08-12)
 - [ ] 멀티플레이 동작 테스트
 - [ ] Steam 무결성 확인 후 재설치 테스트
 
