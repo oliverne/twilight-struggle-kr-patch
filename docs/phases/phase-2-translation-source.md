@@ -94,9 +94,9 @@ Phase 4 검증 기준(재현성·안전성)을 만족하려면 번역 소스는 
 - `translation/cards.json` — TS_Cards 344행, `ko` 및 `ko_source` 포함
 - `translation/runtime-20260315.json` — 런타임 TSV 원본 2,253쌍
 - `translation/runtime-20260315-matches.json` — 기존 매칭 결과
-- `scripts/apply_all_translations.py` — 모든 번역 적용 스크립트
-- `scripts/apply_manual_translations.py` — Common_Strings 수동 번역 맵
-- `scripts/match_remaining.py` — TS_Cards 추가 매칭 스크립트
+- `scripts/archive/apply_all_translations.py` — 모든 번역 적용 스크립트 (Phase 2 일회성, 2026-08-12 archive/로 이동)
+- `scripts/archive/apply_manual_translations.py` — Common_Strings 수동 번역 맵
+- `scripts/archive/match_remaining.py` — TS_Cards 추가 매칭 스크립트
 
 ### 사용 글자 수
 

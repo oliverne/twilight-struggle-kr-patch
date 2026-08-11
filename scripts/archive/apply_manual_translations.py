@@ -4,7 +4,7 @@
 import json
 from pathlib import Path
 
-BASE = Path(__file__).resolve().parent.parent
+BASE = Path(__file__).resolve().parent.parent.parent
 
 # ── 번역 맵 ──
 TRANSLATIONS: dict[str, str] = {

@@ -35,36 +35,31 @@ PYTHONIOENCODING=utf-8 .venv/bin/python scripts/<스크립트>.py ...           
 | `restore-original.sh` | `original/` → 게임 폴더 복원 (멱등) | 복구 절차 검증 시 |
 | `install.sh` | **macOS 설치**: patched/ → Steam + 코드사인 자동 (멱등) | macOS 적용 시 |
 
-## 3️⃣ 일회성 도구 (Phase 2 번역 소스 구축 — 완료, 보관)
+## 3️⃣ 일회성 도구 (Phase 2 번역 소스 구축 — 완료, `archive/`에 보관)
 
-> 재사용 가능성: 게임 업데이트로 원본 EN이 바뀌면 일부 재사용. 삭제해도 파이프라인에는 영향 없음.
+> 재사용 가능성: 게임 업데이트로 원본 EN이 바뀌면 일부 재사용 (경로: `scripts/archive/`).
+> 파이프라인에는 영향 없음. 이동 시 상대 경로 참조(`parent.parent`)는 수정돼 있음.
 
 | 스크립트 | 용도 | Phase |
 |---|---|---|
-| `extract_original_en.py` | 원본 TextAsset에서 (행 키, EN 원문) 추출 | 2 |
-| `extract_bluechip_kr.py` | 블루칩 v1.0.1 MonoBehaviour에서 한글 432개 추출 | 2 |
-| `extract_bluechip_lua.py` | 블루칩 twilight_cards.lua 카드 정의 추출 | 2 |
-| `extract_runtime_tsv.py` | 신규 런타임 패치 TSV → 비교용 JSON | 2 |
-| `match_runtime_translations.py` | TextAsset EN 행 ↔ 런타임 번역 전체 문자열 매칭 | 2 |
-| `match_remaining.py` | 미일치 행을 런타임 TSV/블루칩과 매칭 (제목·설명) | 2 |
-| `apply_runtime_matches.py` | 검증된 매칭을 strings.json/cards.json에 반영 | 2 |
-| `apply_manual_translations.py` | Common_Strings 235행 수동 번역 적용 | 2 |
-| `apply_all_translations.py` | Phase 2 최종 — 모든 번역을 strings.json/cards.json에 반영 | 2 |
+| `archive/extract_original_en.py` | 원본 TextAsset에서 (행 키, EN 원문) 추출 | 2 |
+| `archive/extract_bluechip_kr.py` | 블루칩 v1.0.1 MonoBehaviour에서 한글 432개 추출 | 2 |
+| `archive/extract_bluechip_lua.py` | 블루칩 twilight_cards.lua 카드 정의 추출 | 2 |
+| `archive/extract_runtime_tsv.py` | 신규 런타임 패치 TSV → 비교용 JSON | 2 |
+| `archive/match_runtime_translations.py` | TextAsset EN 행 ↔ 런타임 번역 전체 문자열 매칭 | 2 |
+| `archive/match_remaining.py` | 미일치 행을 런타임 TSV/블루칩과 매칭 (제목·설명) | 2 |
+| `archive/apply_runtime_matches.py` | 검증된 매칭을 strings.json/cards.json에 반영 | 2 |
+| `archive/apply_manual_translations.py` | Common_Strings 235행 수동 번역 적용 | 2 |
+| `archive/apply_all_translations.py` | Phase 2 최종 — 모든 번역을 strings.json/cards.json에 반영 | 2 |
 
-## 4️⃣ 미사용 (대체됨/죽은 실험 — 삭제 후보)
+## 4️⃣ 삭제됨 (2026-08-12 정리)
 
-| 스크립트 | 상태 | 사유 |
-|---|---|---|
-| `patch_textasset.py` | ❌ 대체됨 | raw `str.replace` 기반 구식 치환 도구 → `inject_translations.py`(키/셀 단위)가 완전 대체. 짧은 토큰 측면 치환 위험도 있음 |
-| `install-lua-test.sh` | ❌ 죽은 실험 | Lua 대상. Phase 1에서 `StreamingAssets/Lua`가 죽은 잔재로 확인되어 작업 대상 제외 |
-| `install-asset-test.sh` | ❌ 실험용 | Phase 1의 단일 에셋 적용 테스트. 현재는 install.sh(전체 복사)가 표준 |
-
-## 5️⃣ 기타
-
-| 파일 | 상태 |
+| 스크립트 | 삭제 사유 |
 |---|---|
-| `.gitkeep` | 스크립트가 전부 git 추적되므로 불필요 (삭제 가능) |
-| `__pycache__/` | gitignore 처리됨, 무시 |
+| `patch_textasset.py` | raw `str.replace` 기반 구식 치환 도구 → `inject_translations.py`(키/셀 단위)가 완전 대체. 짧은 토큰 측면 치환 위험도 있음 |
+| `install-lua-test.sh` | Lua 대상 실험. Phase 1에서 `StreamingAssets/Lua`가 죽은 잔재로 확인되어 작업 대상 제외 |
+| `install-asset-test.sh` | Phase 1 단일 에셋 적용 실험. `install.sh`(전체 복사)가 표준 |
+| `.gitkeep` | 스크립트가 전부 git 추적되므로 불필요 |
 
 ---
 

@@ -49,7 +49,7 @@ def get_translation(entry):
 
 
 def main():
-    base = Path(__file__).resolve().parent.parent
+    base = Path(__file__).resolve().parent.parent.parent
 
     # ── 로드 ──
     rt_entries = json.loads(

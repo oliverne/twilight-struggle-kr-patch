@@ -53,8 +53,8 @@ Unity 6로 변경된 현재 게임에서 실제로 화면에 반영되는 텍스
 ## 검증된 파이프라인
 
 - 탐색·덤프(읽기 전용): `tools/asset-tool` (.NET, AssetsTools.NET) — 에셋 구조 파악·TextAsset 본문 추출
-- 주입(수정): UnityPy + `scripts/patch_textasset.py`
-- 적용: `scripts/install-asset-test.sh` 패턴 — 해시 검증 후 복사, 멱등 실행
+- 주입(수정): UnityPy + `scripts/patch_textasset.py` (2026-08-12 정리로 삭제됨 — 현재는 `scripts/inject_translations.py` 사용)
+- 적용: `scripts/install-asset-test.sh` 패턴 — 해시 검증 후 복사, 멱등 실행 (2026-08-12 삭제됨 — 현재는 `scripts/install.sh`)
 - 복원: `scripts/restore-original.sh`
 
 ⚠️ UnityPy가 저장한 파일을 다시 읽어 재저장하면 데이터가 유실될 수 있다. 항상 원본에서 한 번에 모든 치환을 적용한다.
@@ -63,8 +63,8 @@ Unity 6로 변경된 현재 게임에서 실제로 화면에 반영되는 텍스
 
 - 텍스트 덤프: `tools/dump/*.txt` (git 제외, 재생성 가능)
 - 에셋 탐색·덤프 도구: `tools/asset-tool/` (.NET, AssetsTools.NET 기반 — 읽기 전용. `tools/README.md` 참고)
-- TextAsset 수정 도구: `scripts/patch_textasset.py` (UnityPy 기반, 실제 주입용)
-- 테스트 적용 스크립트: `scripts/install-asset-test.sh`
+- TextAsset 수정 도구: ~~`scripts/patch_textasset.py`~~ → 삭제됨 (2026-08-12, `inject_translations.py`로 대체)
+- 테스트 적용 스크립트: ~~`scripts/install-asset-test.sh`~~ → 삭제됨 (2026-08-12)
 - 원본 백업: `original/`
 - 기존 패치: `tools/legacy-patches/v1.0.1/`, `tools/legacy-patches/v2.0.1/`
 
@@ -90,7 +90,7 @@ Unity 6로 변경된 현재 게임에서 실제로 화면에 반영되는 텍스
 
 ### 사용해야 하는 도구와 주의점
 
-- UnityPy와 `scripts/patch_textasset.py`를 사용한다.
+- UnityPy와 `scripts/patch_textasset.py`를 사용한다. (2026-08-12 삭제됨 — 현재는 `scripts/inject_translations.py` + `scripts/add_ko_columns.py`)
 - 테스트용 `patched/resources.assets`는 원본에서 재생성하거나 폐기한다.
 - `tools/dump/*.txt`는 git 제외 산출물이므로 필요하면 UnityPy로 재생성한다.
 
