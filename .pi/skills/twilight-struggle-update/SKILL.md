@@ -46,8 +46,9 @@ PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe scripts/add_ko_columns.py \
   --gamepath "<게임루트>" --src <중간본1> --out <중간본2>
 
 # 3-3. 씬 패치 (level1-3 하드코딩 문자열)
+#      씬 구조가 바뀌었으면 먼저 analyze_scene_texts.py로 재매칭 확인
 PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe scripts/patch_scenes.py \
-  --gamepath "<게임루트>" --src <중간본2>   # patched/level1-3 생성
+  --gamepath "<게임루트>"   # patched/level1-3 생성 (--src 인자 없음)
 
 # 3-4. 폰트 주입 — 스킬 twilight-struggle-font-swap 4~6단계와 동일
 #      (가상 폴더의 resources.assets를 <중간본2>로 교체 후 --parse → 매핑 → --list)
@@ -63,7 +64,7 @@ PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe scripts/verify_assets.py \
 |---|---|---|
 | 씬 MonoBehaviour 헤드 오프셋 (m_text @ head+56 TMP / +112 Text) | `patch_scenes.py` 실행 로그 — 변경 객체 수 0이면 의심 | 헤드 레이아웃 재실측 |
 | KO 열 파서 (원본 존재 열 범위 내 배치, 27열 이상 금지) | `add_ko_columns.py` 검증 자동 실패 | 빈 열 번호 확인 후 재배치 |
-| TextAsset 시트 구조 (행:열 JSON) | `scripts/extract_textassets.py --list` | 시트 키/열 구조 재파악 |
+| TextAsset 시트 구조 (행:열 JSON) | `scripts/extract_textassets.py <assets> --list` | 시트 키/열 구조 재파악 |
 | 폰트 매핑 (24개 TMP → SDF 2종) | `--parse` 결과 JSON | `apply_font_mapping.py` 재실행 |
 | 새 텍스트 키 | 미번역 `${Key}` UI 확인 | `translation/manual-*.json` 추가 → 3-1~3-2 재실행 |
 

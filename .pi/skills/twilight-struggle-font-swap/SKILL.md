@@ -73,11 +73,11 @@ echo "" | ./unity_font_replacer_ko.exe --gamepath "C:/.../tools/font-inject-work
 # 5-2. 매핑 재설정 (parse가 JSON을 초기화하므로 반드시 재실행)
 PYTHONIOENCODING=utf-8 ../../.venv/Scripts/python.exe ../../scripts/apply_font_mapping.py
 
-# 5-3. 주입
+# 5-3. 주입 (출력 폴더명은 새로 지정 — 기존 산출물 font-output-new2는 덮어쓰지 말 것)
 echo "" | ./unity_font_replacer_ko.exe \
   --gamepath "C:/.../tools/font-inject-work/Twilight Struggle" \
   --list "Twilight Struggle.json" \
-  --output-only "C:/.../tools/font-inject-work/font-output"
+  --output-only "C:/.../tools/font-inject-work/font-output-<날짜>"
 ```
 
 ### 6. 검증

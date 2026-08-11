@@ -68,14 +68,19 @@ Steam판 **Twilight Struggle**(App ID `406290`)용 한글 패치 프로젝트입
 ```bash
 # 1. 번역 주입 (TextAsset) — 포크 UnityPy + typetree_generator 필수
 python scripts/inject_translations.py --gamepath <게임루트> \
-    --src <원본 resources.assets> --out <중간본>
+    --src <원본 resources.assets> --out <중간본1>
 
-# 2. 폰트 주입 — Windows에서 Unity_Font_Replacer (Runbook 참조)
+# 2. 언어 테이블 KO 열 추가 (TS_Cards 9열 / 그 외 8·10열 — 멱등)
+python scripts/add_ko_columns.py --gamepath <게임루트> \
+    --src <중간본1> --out <중간본2>
 
-# 3. 씬 패치 (level1-3)
+# 3. 폰트 주입 — Windows에서 Unity_Font_Replacer (Runbook 참조)
+#    가상 폴더의 resources.assets를 <중간본2>로 교체 후 --parse → 매핑 → --list
+
+# 4. 씬 패치 (level1-3)
 python scripts/patch_scenes.py --gamepath <게임루트>
 
-# 4. 검증
+# 5. 검증
 python scripts/verify_assets.py --orig <원본> --patched <패치본>
 ```
 
@@ -85,10 +90,19 @@ python scripts/verify_assets.py --orig <원본> --patched <패치본>
 |---|---|
 | `translation/runtime-20260315.json` | 런타임 패치 TSV 2,253쌍 (기존 한글화 재사용) |
 | `translation/strings.json`, `cards.json` | Common_Strings·TS_Cards 키 매핑 |
-| `translation/manual-extra.json` | TS_Ingame/TS_Strings 잔존 키 수동 번역 53개 |
+| `translation/manual-extra.json` | TS_Ingame/TS_Strings 잔존 키 수동 번역 52개 |
 | `translation/manual-scenes.json` | 씬 하드코딩 문자열 수동 번역 206개 |
 
-새 문자열 추가 시 해당 JSON에 키-값을 추가한 뒤 1·3단계 재실행.
+새 문자열 추가 시 해당 JSON에 키-값을 추가한 뒤 1·2·4단계 재실행. 상세: [translation/README.md](translation/README.md)
+
+## 폴더별 인벤토리
+
+| 폴더 | 설명 |
+|---|---|
+| [scripts/](scripts/README.md) | 주입·검증 스크립트 (핵심 5종 + 보조 + archive 보관) |
+| [tools/](tools/README.md) | 폰트 주입 도구·에셋 탐색 (Unity_Font_Replacer 등) |
+| [translation/](translation/README.md) | 번역 소스 (활성 5종 + 참고 산출물) |
+| [docs/](docs/PROGRESS.md) | 진행 현황·Phase 문서·Runbook |
 
 ## 라이선스
 
