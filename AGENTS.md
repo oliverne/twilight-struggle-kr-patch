@@ -104,7 +104,9 @@
 
 ```
 patched/      # 수정 파일 (git 관리) — resources.assets, sharedassets0.assets, level1~3
+              # ⚠️ *.assets는 100MB 초과로 gitignore — 배포는 package-release.sh의 dist/ zip으로
 original/     # 원본 백업 (git 제외)
+dist/         # 배포 zip 산출물 (git 제외, scripts/package-release.sh가 생성)
 translation/  # 번역 소스 JSON/CSV — runtime-20260315.json, manual-extra.json, manual-scenes.json (+ 용어표는 Phase 7 착수 시 신설 예정)
 fonts/        # TTF 원본 + 생성된 SDF 산출물
 scripts/      # install/verify/inject/patch 스크립트
