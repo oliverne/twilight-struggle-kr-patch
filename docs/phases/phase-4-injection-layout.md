@@ -95,8 +95,9 @@ python scripts/verify_assets.py --orig <원본> --patched patched/resources.asse
 
 ## 다음 Phase로 핸드오프
 
-- 수정 파일: `patched/resources.assets` + `patched/sharedassets0.assets`
-- 레이아웃 이슈: 미확인 (게임 테스트 후 기록)
+- 수정 파일: `patched/resources.assets` + `patched/sharedassets0.assets` (2026-08-11 재주입으로 갱신 — 잔존 키 53개 포함)
+- 추가 산출물: `translation/manual-extra.json` (수동 번역 53키), `patched/level1~3` (씬 패치는 Phase 5에서 처리)
+- 레이아웃 이슈: 미확인 (게임 테스트 후 기록), 폰트 크기 불일치 이슈 #12로 등록
 - 제외한 텍스트 영역: `TS_RulesTutorial`(표시 텍스트 없음), 보드맵 국가명(텍스처 구움)
 - 플랫폼별 주의사항: macOS 코드사인 필수, `patched/*.assets`는 gitignore(GitHub 100MB 제한)
-- 주입 재실행: 위 "재구축 기록"의 재현 방법 참조
+- 주입 재실행: 위 "재구축 기록"의 재현 방법 참조 — `inject_translations.py`는 번역 소스(manual-extra 포함)만 갱신하면 멱등적으로 재실행 가능

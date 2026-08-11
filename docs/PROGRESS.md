@@ -56,11 +56,15 @@
 
 ## 현재 핸드오프 요약
 
-- 수신: Windows 게임 머신 (현재)
-- Phase 5: 게임 재실행 → 메뉴 한글화 확인 → macOS로 `patched/` 전송(level1-3 포함) → `scripts/install.sh`
-- 주의: macOS `codesign --force --sign -` 필수 (install.sh가 자동 처리)
-- 주의: `patched/*.assets`·`level*`는 GitHub 100MB 제한 초과로 gitignore — 재생성 방법은 Phase 문서 참조
-- 주의: 턴 히스토리(IL2CPP 코드 문자열)는 현 패치 범위 밖 — BepInEx 런타임 훅 프로젝트로 보류
+- 수신: Windows 게임 머신 (2026-08-11 현재 작업 위치)
+- **즉시 실행**: 게임 재실행 → 메뉴 한글화 확인 (언어=KO 적용됨) → Player.log에 `Load Language Header: KO` 확인
+- 잔존 영어/`□` 확인 → `translation/manual-*.json`에 키 추가 후 재주입 (inject_translations.py / patch_scenes.py)
+- macOS 적용: `patched/` 전체 전송(resources.assets, sharedassets0.assets, level1~3) → `scripts/install.sh`
+- Windows 설치 스크립트(`install-windows.ps1`) 미작성 — Phase 5 체크리스트 항목
+- 멀티플레이 테스트 미실시 — 필수
+- **보류**: 턴 히스토리(IL2CPP 코드 문자열) — BepInEx 런타임 훅 프로젝트로만 해결 가능
+- **보류**: 폰트 크기 불일치 — `--use-game-line-metrics` 재주입 또는 m_FaceInfo 배율 조정
+- 주의: `patched/*.assets`는 GitHub 100MB 제한 초과로 gitignore — 재생성 방법은 Phase 문서 참조 (level1~3은 git 관리)
 
 ## 로그
 
@@ -87,4 +91,5 @@
 | 2026-08-08                                        | Phase 4 텍스트 주입 — 6종 TextAsset + install.sh                  | `0ba38c4` |
 | 2026-08-08                                        | Phase 3·4 현황 반영 (PROGRESS)                                    | `12bdace` |
 | 2026-08-11                                        | Windows 폰트 주입 완료 + m_Script 손상 발견·재구축 (예정)        | -         |
-| 2026-08-11                                        | Windows 1차 테스트 진단 + 잔존 키 재주입 + 씬 패치 + 언어 KO     | (예정)    |
+| 2026-08-11                                        | Windows 1차 테스트 진단 + 잔존 키 재주입 + 씬 패치 + 언어 KO     | `35c6cd3` |
+| 2026-08-11                                        | 문서 일괄 갱신 (AGENTS/PLAN/README/ISSUES/CLEANUP + 핸드오프)   | (예정)    |

@@ -102,7 +102,36 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 
 ## 다음 Phase로 핸드오프
 
-- **테스트 대기**: 게임 재실행 → 메뉴 한글화 + 잔존 이슈 확인 (Player.log의 `Load Language Header` 값도 확인)
-- **알려진 잔존 영어**: 턴 히스토리(IL2CPP 코드 문자열) — BepInEx 런타임 훅으로만 해결 가능, 별도 판단
-- **Windows 설치 스크립트 미작성**: `scripts/install-windows.ps1` 필요 (backup → 복사 → 검증)
-- **배포 포함 파일**: `patched/resources.assets`, `patched/sharedassets0.assets`, `patched/level1~3`, `fonts/`, 설치 스크립트
+### 즉시 실행할 작업 (순서대로)
+
+1. **게임 재실행 테스트** (Windows) — 메뉴/설정/로비 한글화 확인
+   - 언어=KO가 이미 레지스트리에 적용됨 (`localization_h2525087814`)
+   - Player.log에 `Load Language Header: KO`가 찍히는지 확인 (LocalLow\Playdek\TwilightStruggle\Player.log)
+2. **잔존 이슈 수집** — 영어 잔존 UI / `□` 누락 글자 확인
+   - 영어 잔존 → `translation/manual-scenes.json`(씬)·`manual-extra.json`(TextAsset)에 키 추가
+   - `□` → `fonts/chars.txt`에 글자 추가 → make_sdf.py 재생성 → 폰트 재주입 (Runbook 참조)
+3. **macOS 적용** — `patched/` 전송 (resources.assets 108MB + sharedassets0.assets + level1~3) → `scripts/install.sh`
+   - macOS 코드사인은 install.sh가 자동 처리 (`codesign --force --sign -`)
+4. **Windows 설치 스크립트 작성** — `scripts/install-windows.ps1` (백업 → 복사 → 해시 검증) — 체크리스트 잔여 항목
+5. **멀티플레이 테스트** — 패치 후 온라인 기능 정상 동작 확인 (미실시)
+6. **Steam 무결성 확인 후 재설치 테스트** — 복구 절차 검증
+
+### 결정 사항 요약
+
+- 게임 언어는 레지스트리 PlayerPrefs로 관리 — 패치에 언어 설정이 포함되지 않으므로 설치 안내에 명시 필요
+- 씬 패치는 `patch_scenes.py`로 재현 가능 (번역 소스만 추가하면 재실행)
+- 폰트 재주입은 Windows에서만 가능 (Unity_Font_Replacer exe) — macOS는 SDF 생성만 가능
+
+### 미해결 이슈 (보류)
+
+- **턴 히스토리 로그** — IL2CPP 코드 문자열(global-metadata.dat)로 파일 패치 불가. BepInEx 런타임 훅 프로젝트로만 해결 가능 (블루칩·런타임 패치 포함 모든 기존 패치가 미커버)
+- **폰트 크기 불일치** — 24개 원본 폰트 → 한글 2종 통일로 크기/줄 간격 차이. `--use-game-line-metrics` 재주입 또는 m_FaceInfo(m_PointSize/m_Scale/m_LineHeight) 배율 조정으로 보정 가능 (미적용)
+- **규칙북/튜토리얼 긴 문단** — 씬 하드코딩 167개 미번역 (번역량 대비 우선순위 낮음, TS_RulesTutorial 제외 결정과 일관)
+- **더미 텍스트** — 'PlayerName12345', 'Text goes here' 등 개발용 더미는 번역 제외 (무해)
+
+### 산출물 위치
+
+- `patched/` — resources.assets, sharedassets0.assets, level1~3, hashes.txt
+- `translation/manual-extra.json`, `translation/manual-scenes.json` — 수동 번역 소스
+- `scripts/patch_scenes.py`, `scripts/analyze_scene_texts.py` — 씬 패치 도구
+- Steam 설치본 백업: `TwilightStruggle_Data/backup-20260811/`

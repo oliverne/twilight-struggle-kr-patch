@@ -1,9 +1,11 @@
 # 시스템 변경 사항 & 정리(Cleanup) 가이드
 
 > 설치한 도구로 인한 시스템 변경과, 나중에 전부 되돌리는 방법을 기록한다.
-> 최종 업데이트: 2026-08-04
+> 최종 업데이트: 2026-08-11 (Windows 작업 전환 반영)
 
 ## 설치/변경된 항목
+
+### macOS (초기 작업)
 
 | 항목 | 위치 | 설치 방법 | 시스템 영향 |
 |---|---|---|---|
@@ -12,19 +14,39 @@
 | Python venv | `.venv/` (프로젝트 내부) | `python3 -m venv .venv` | 없음 (프로젝트 로컬, gitignore) |
 | 원본 백업 | `original/` (약 24MB) | `scripts/backup-original.sh` | 없음 (프로젝트 로컬, gitignore) |
 | 기존 패치 | `tools/legacy-patches/` (약 930MB) | Google Drive 수동 다운로드 | 없음 (프로젝트 로컬, gitignore) |
-| 임시 파일 | `/tmp/hanpe*.html`, `/tmp/bluechip*.html`, `/tmp/uabea.log`, `/tmp/{skiasharp,harfbuzz,avalonia}-*` | 분석 중 생성 | 재부팅 시 자동 삭제 |
 
-**게임 파일은 아직 수정하지 않음** (Phase 1부터 변경 시작).
+### Windows (2026-08-11 이후 작업 위치)
+
+| 항목 | 위치 | 비고 |
+|---|---|---|
+| Python venv (포크 UnityPy + TypeTreeGeneratorAPI) | 프로젝트 `.venv/` | 게임 에셋 편집용 |
+| Unity_Font_Replacer v1.2.8 | `tools/unity-font-replacer/` | exe + KR_ASSETS + Il2CppDumper |
+| 폰트 주입 작업 폴더 | `tools/font-inject-work/` | 가상 게임 폴더 + font-output |
+| fontTools | `.venv/` | TTF 메트릭 분석용 |
+
+### 게임 파일 변경 (Steam 설치본, 2026-08-11)
+
+| 파일 | 변경 내용 | 백업 위치 |
+|---|---|---|
+| `TwilightStruggle_Data/resources.assets` | 번역 주입(666+53행) + 한글 SDF 폰트 24개 주입 | `backup-20260811/resources.assets.prev-patch` |
+| `TwilightStruggle_Data/sharedassets0.assets` | atwriter SDF 폰트 주입 | `backup-20260811/sharedassets0.assets.prev-patch` |
+| `TwilightStruggle_Data/level1` | 씬 하드코딩 문자열 883개 한글화 | `backup-20260811/level1.pre-scene-patch` |
+| `TwilightStruggle_Data/level2` | 씬 하드코딩 문자열 1,391개 한글화 | `backup-20260811/level2.pre-scene-patch` |
+| `TwilightStruggle_Data/level3` | 씬 하드코딩 문자열 274개 한글화 | `backup-20260811/level3.pre-scene-patch` |
+| 레지스트리 `HKCU\Software\Playdek\TwilightStruggle` | `localization_h2525087814` = `KO` (게임 언어) | 변경 전 값: `EN` |
+
+> 백업 폴더 위치: `D:\Games\steamapps\common\Twilight Struggle\TwilightStruggle_Data\backup-20260811\`
 
 ## 전체 정리 (완전 되돌리기)
 
 ```bash
+# 1. 게임 파일을 원본으로 복원 (백업에서)
 cd ~/Projects/twilight-struggle-kr-patch
+./scripts/restore-original.sh          # macOS용 (원본 백업 기준)
+# Windows: backup-20260811/의 파일 5개를 TwilightStruggle_Data/로 복사
+# 레지스트리: localization_h2525087814 = EN으로 변경
 
-# 1. 게임 파일을 원본으로 복원 (실험/패치 적용했던 경우에만)
-./scripts/restore-original.sh
-
-# 2. Homebrew dotnet 제거
+# 2. Homebrew dotnet 제거 (macOS)
 brew uninstall dotnet
 
 # 3. 프로젝트 로컬 산출물 제거 (git 관리 대상 파일은 남음)
@@ -39,10 +61,12 @@ rm -rf /tmp/hanpe*.html /tmp/bluechip*.html /tmp/uabea.log \
 ## 부분 정리
 
 - **UABEA만 재설치**: `rm -rf tools/uabea && ./scripts/setup-uabea-mac.sh`
-- **패치만 되돌리기**: `./scripts/restore-original.sh` (Steam "파일 무결성 확인"도 대안)
+- **패치만 되돌리기**: Steam "파일 무결성 확인" 또는 `backup-20260811/`에서 복원 (Windows)
+- **언어만 되돌리기**: 레지스트리 `localization_h2525087814` = `EN`
 - **디스크 확보**: `tools/legacy-patches/bluechip-v1.0.1-v2.0.1.zip` (520MB) 삭제 가능 — Drive에서 재다운 가능
 
 ## 주의
 
-- `brew uninstall dotnet` 후에도 UABEA는 동작 불가 (런타임 의존) — Phase 1~4 작업 중에는 제거하지 말 것
-- 게임 업데이트 후에는 `original/` 해시가 무효화됨 → `backup-original.sh` 재실행 필요
+- `brew uninstall dotnet` 후에도 UABEA는 동작 불가 (런타임 의존) — 작업 중에는 제거하지 말 것
+- 게임 업데이트 후에는 백업 해시가 무효화됨 → `backup-original.sh` 재실행 필요
+- Steam 무결성 확인 시 패치가 원복되므로, 재적용은 `install.sh`(macOS) / 수동 복사(Windows)로

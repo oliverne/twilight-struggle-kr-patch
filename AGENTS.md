@@ -28,8 +28,17 @@
 ## 프로젝트 개요
 
 - Steam Twilight Struggle(App ID 406290, Unity 6 / 6000.0.58f2, IL2CPP) 한글 패치 복원
-- 핵심 난제: **CJK 글리프를 포함한 TMP SDF 폰트 아틀라스 주입** — 한글 네모(□)의 원인
+- 핵심 난제: **CJK 글리프를 포함한 TMP SDF 폰트 아틀라스 주입** — 한글 네모(□)의 원인 → ✅ 해결 (Phase 3~4, 24개 폰트 주입)
+- **남은 난제: IL2CPP 코드 문자열(global-metadata.dat)의 턴 히스토리 로그** — 파일 패치 불가, BepInEx 런타임 훅만 가능 (보류)
 - 기존 패치(블루칩 v1/v2, 우드킹)의 **번역문을 재사용**하며, 처음부터 번역하지 않음
+
+## 게임 텍스트 3계층 구조 (Phase 5 확정)
+
+| 계층 | 위치 | 상태 | 해결 수단 |
+|---|---|---|---|
+| 1. TextAsset 키 참조 | `resources.assets` — Common_Strings/TS_Ingame 등 (`${Key_XXX}`) | ✅ 한글화 | 번역 주입 + **게임 언어=ko** (아래) |
+| 2. 씬 하드코딩 문자열 | level1(메인 메뉴)·level2(인게임)·level3(보드) MonoBehaviour | ✅ 한글화 (2,548개) | `patch_scenes.py` |
+| 3. IL2CPP 코드 문자열 | global-metadata.dat (턴 히스토리 템플릿 등) | ❌ 영어 잔존 | BepInEx 런타임 훅 (보류) |
 
 ## 불변 원칙
 
@@ -46,13 +55,14 @@
 
 | 소재 | 위치 | 난이도 |
 |---|---|---|
-| 다국어 문자열 테이블 | `resources.assets` 내 **Common_Strings** (키값 방식 `Key_XXX`) | 🟢 최우선 |
-| 카드/국가 텍스트 | `resources.assets` 내 `TS_Cards` 등 TextAsset (`"행:열":"값"` JSON) | 🟢 실게임 반영 확인 |
-| 번역 재사용 소스 | 블루칩 v1.0.1 `resources.assets` 내 **MonoBehaviour** string 필드 (432개 고유 한글) | 🟢 raw 바이트 수동 파싱으로 추출 가능 |
-| 다국어 UI 문자열 | `resources.assets` 내 `Common_Strings` | 🟢 실게임 반영 확인 |
-| UI/튜토리얼 | `resources.assets` 내 `TS_Ingame`·`TS_Strings`·`TS_RulesTutorial`·`Common_Ingame` | 🟡 사용 여부 미검증 |
+| 다국어 문자열 테이블 | `resources.assets` 내 **Common_Strings** (키값 방식 `Key_XXX`) | 🟢 최우선 — ✅ 주입 완료 |
+| 카드/국가 텍스트 | `resources.assets` 내 `TS_Cards` 등 TextAsset (`"행:열":"값"` JSON) | 🟢 실게임 반영 확인 — ✅ 주입 완료 |
+| 인게임/도움말 키 | `TS_Ingame`·`TS_Strings`·`Common_Ingame` | 🟢 실게임 반영 확인 — ✅ 주입 완료 (잔존 53키 수동 번역 포함) |
+| **씬 하드코딩 문자열** | level1~3 MonoBehaviour (TextMeshProUGUI.m_text, Text.m_Text) | 🟢 패치 완료 — `patch_scenes.py` |
+| 번역 재사용 소스 | 블루칩 v1.0.1 MonoBehaviour string 필드 (432개 고유 한글) | 🟢 raw 바이트 수동 파싱으로 추출 가능 (Phase 2) |
+| **IL2CPP 코드 문자열** | global-metadata.dat (턴 히스토리 로그 템플릿) | 🔴 파일 패치 불가 — BepInEx 런타임 훅 필요 (보류) |
 | 카드/국가 Lua | `StreamingAssets/Lua/*.lua` | ❌ Phase 1에서 죽은 잔재로 확인, 작업 대상 아님 |
-| SDF 폰트 아틀라스 | `resources.assets` (CJK 없음) | 🔴 핵심 장벽 |
+| SDF 폰트 아틀라스 | `resources.assets` (CJK 없음) | ✅ 해결 — 24개 폰트 주입 (Phase 3~4) |
 
 ⚠️ **작업 착수 전 필수**: 아직 사용 여부가 확인되지 않은 소스는 수정 → 실게임 반영 테스트로 "살아있는 소스"를 먼저 검증한다. Phase 1 결과 `StreamingAssets/Lua`는 작업 대상에서 제외한다.
 
@@ -65,30 +75,37 @@
 ## 게임 경로
 
 - macOS: `~/Library/Application Support/Steam/steamapps/common/Twilight Struggle/TwilightStruggle.app/Contents/Resources/Data/`
-- Windows: `steamapps/common/Twilight Struggle/Twilight Struggle_Data/`
-- 에셋 파일은 플랫폼 공용(동일 빌드) → 맥에서 수정한 파일은 Windows에도 그대로 복사 가능
+- Windows: `steamapps/common/Twilight Struggle/TwilightStruggle_Data/` (⚠️ **공백 없음** — 실측, 2026-08-11)
+- 에셋 파일은 플랫폼 공용(동일 빌드) → 한쪽에서 수정한 파일은 다른 플랫폼에도 그대로 복사 가능
+- **게임 언어 설정(PlayerPrefs)**: `HKCU\Software\Playdek\TwilightStruggle` 레지스트리 키 `localization_h2525087814` — `KO`로 설정해야 TextAsset KO 열이 로드됨 (`EN`이면 영어). 게임 내 설정 → Languages에서도 선택 가능
 
 ## 주요 도구
 
 - **UABEA** (에셋 추출/수정, 크로스플랫폼) — 문제 시 UABEANext/AssetRipper 대안
 - **Unity_Font_Replacer** v1.2.8: `make_sdf.py`로 Unity 없이 TTF → TMP SDF 생성, Windows에서 `unity_font_replacer_ko.exe --parse/--list`로 에셋 주입 (⚠️ `oneshot`은 없음, `Managed` 폴더 제거 필요 — Runbook 참조)
+- **번역 주입**: `scripts/inject_translations.py` (TextAsset) — 포크 UnityPy + typetree_generator 필수 (공식 UnityPy 저장 금지)
+- **씬 패치**: `scripts/patch_scenes.py` (level1-3 하드코딩 문자열) — Unity 6 헤드 레이아웃 실측 기반 (m_text @ head_end+56 / +112)
+- **번역 소스**: `translation/runtime-20260315.json`(런타임 TSV) + `manual-extra.json`(TextAsset 잔존키) + `manual-scenes.json`(씬 문자열)
 - 폰트: Noto Serif KR(본문), Black Han Sans(제목), Gugi, 나눔손글씨 — 모두 재배포 허용 라이선스만 사용
-- IL2CPP 바이너리 패치는 **최후의 수단**
+- IL2CPP 바이너리 패치는 **최후의 수단** (턴 히스토리는 길이 제약으로 사실상 불가 → BepInEx 훅)
 
 ## 리스크 체크리스트
 
 - Steam 무결성 확인/업데이트로 파일 원복 가능 → 스크립트 재적용 + 버전 해시 검증
 - Unity 6 직렬화 포맷 변경 → 도구 파싱 실패 시 대안 도구로 전환
-- SDF 아틀라스 용량 → 사용 글자만 추출한 문자셋 + 4096² 기준, 필요 시 분할
+- SDF 아틀라스 용량 → 사용 글자만 추출한 문자셋 + 2048² 기준, 필요 시 분할
 - 멀티플레이 버전 체크 → 에셋 교체 후 멀티 동작 반드시 테스트
+- **UnityPy 저장 시 로드 파일 ≠ 저장 파일 필수** — 같은 경로 저장 시 지연 스트리밍(Replacer)이 깨져 EOFError
+- **턴 히스토리(IL2CPP 코드 문자열)** — 파일 패치 불가, 기존 런타임 패치도 미커버 → BepInEx 훅 필요시 별도 프로젝트
+- **폰트 크기 불일치** — 24개 원본 폰트 → 한글 2종 통일로 크기/줄 간격 차이. `--use-game-line-metrics` 재주입 또는 m_FaceInfo 배율 조정으로 보정 가능 (미적용)
 
 ## 저장소 구조
 
 ```
-patched/      # 수정 파일 (git 관리)
+patched/      # 수정 파일 (git 관리) — resources.assets, sharedassets0.assets, level1~3
 original/     # 원본 백업 (git 제외)
-translation/  # 번역 소스 JSON/CSV + 용어표
+translation/  # 번역 소스 JSON/CSV — runtime-20260315.json, manual-extra.json, manual-scenes.json
 fonts/        # TTF 원본 + 생성된 SDF 산출물
-scripts/      # install/uninstall/verify 스크립트
+scripts/      # install/verify/inject/patch 스크립트
 docs/         # PLAN.md 등
 ```

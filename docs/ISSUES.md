@@ -42,6 +42,37 @@
 
 ---
 
+## 🟢 처리된 이슈 추가 (2026-08-11)
+
+- ✅ #10 Windows 데이터 경로 실측 — `TwilightStruggle_Data` (공백 없음)
+
+---
+
+## 🔴 Blocked / 🟡 Warning (2026-08-11 추가)
+
+### #11 턴 히스토리(게임 하단 로그) 한글화 불가 — IL2CPP 코드 문자열
+- **위치**: `il2cpp_data/Metadata/global-metadata.dat` — 'to attempt a Coup in', 'gets a Coup Strength of' 등 C# 리터럴
+- **문제**: 턴 히스토리 메시지가 씬/TextAsset이 아닌 코드 문자열 템플릿 + 카드명 조합으로 생성됨. IL2CPP 메타데이터 문자열 패치는 길이 제약(한글 3바이트)으로 사실상 불가. 기존 런타임 패치(2026-03-15) TSV에도 format string 없음 → 모든 기존 패치가 미커버한 영역
+- **제안**: BepInEx 플러그인 런타임 훅 (문자열 포맷 후킹) — 별도 프로젝트로 판단
+- **상태**: ⬜ 보류 (Phase 5 핸드오프에 기록)
+
+### #12 폰트 크기/줄 간격 불일치 — 원본 24종 → 한글 2종 통일
+- **위치**: `resources.assets` TMP_FontAsset 23개 + sharedassets0 atwriter (m_FaceInfo)
+- **문제**: 원본 폰트(Anton·Bangers 등 제목용, TIMES 본문용)의 개별 메트릭이 사라지고 NotoSerifKR(lineHeight 108/EM)·BlackHanSans(88/EM)로 통일되어 동일 fontSize 대비 표시 크기·줄 간격 차이 발생 (실게임 확인)
+- **제안**: ① Unity_Font_Replacer `--use-game-line-metrics` 재주입 (원본 줄 간격 유지) ② m_FaceInfo 배율 직접 조정 (UnityPy) ③ 원본 폰트 특성별 SDF 변형 세분화 (본문/제목/소형)
+- **상태**: ⬜ 보류 (게임 테스트 후 우선순위 결정)
+
+### #13 Windows 설치 스크립트 미작성
+- **위치**: `scripts/` — macOS `install.sh`만 존재
+- **문제**: 배포를 위해 Windows용 설치/복구 스크립트(`install-windows.ps1`) 필요 (백업 → 복사 → 해시 검증)
+- **상태**: ⬜ 보류 (Phase 5 체크리스트 잔여)
+
+### #14 규칙북/튜토리얼 긴 문단 미번역 (씬 하드코딩 167개)
+- **위치**: level1·level2 MonoBehaviour — 'Twilight Struggle is a two-player game...' 등
+- **문제**: 런타임 TSV·수동 번역으로 커버 안 되는 규칙 본문이 씬에 하드코딩되어 있음 (TS_RulesTutorial 제외 결정과 별개로 씬에도 존재)
+- **제안**: 번역량 대비 우선순위 낮음 — 게임 테스트 후 필요 시 `manual-scenes.json`에 추가
+- **상태**: ⬜ 보류
+
 ## 처리된 이슈 (참고용)
 
 > Phase 0·1 완료 시점의 코드 리뷰에서 이미 처리된 항목. 커밋 `fbb70bc`, `50feea1`, `69e71a8` 참조.
@@ -51,3 +82,4 @@
 - ✅ #2 Phase 1 산출물·파이프라인에 도구 역할 분리 (Critical)
 - ✅ #2 Phase 2 번역 소스 키/셀 구조 설계 (Warning #3, #4 근본 해결)
 - ✅ #5 `requirements.txt` UnityPy 버전 pin (Warning)
+- ✅ #10 Windows 데이터 경로 실측 — `TwilightStruggle_Data` (공백 없음, 2026-08-11)

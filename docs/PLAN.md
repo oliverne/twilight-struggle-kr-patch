@@ -12,23 +12,25 @@
 | 항목 | 내용 |
 | --- | --- |
 | 설치 위치 (macOS) | `~/Library/Application Support/Steam/steamapps/common/Twilight Struggle/TwilightStruggle.app/Contents/Resources/Data/` |
-| 설치 위치 (Windows) | `steamapps/common/Twilight Struggle/Twilight Struggle_Data/` (예상 — 설치 후 확인 필요) |
-| 엔진 | Unity **6000.0.58f2** (IL2CPP, `GameAssembly.dylib` 82MB) |
-| 텍스트 렌더링 | TextMeshPro SDF (`TIMESI SDF`=Times New Roman, Anton, Bangers, atwriter 등) |
-| 전체 크기 | 약 416MB (패치 대상 에셋만 추출하면 수십 MB 수준) |
+| 설치 위치 (Windows) | `steamapps/common/Twilight Struggle/TwilightStruggle_Data/` ✅ 실측 (2026-08-11, 공백 없음) |
+| 엔진 | Unity **6000.0.58f2** (IL2CPP, `GameAssembly.dll` 35MB / dylib) |
+| 텍스트 렌더링 | TextMeshPro SDF (TIMES, Anton, Bangers, atwriter 등 24개 폰트 → 한글 2종으로 교체 완료) |
+| 전체 크기 | 약 416MB (패치 대상: resources.assets 108MB + level1~3 ~8.5MB) |
 
 ### 텍스트 소재별 난이도
 
-> Phase 1·2 검증 결과 반영. Lua는 죽은 잔재 파일로 확인(작업 대상 아님).
+> Phase 1·2·4·5 검증 결과 반영. Lua는 죽은 잔재 파일로 확인(작업 대상 아님).
 
 | 소재 | 위치 | 상태 |
 | --- | --- | --- |
-| 다국어 문자열 테이블 | `resources.assets` 내 **Common_Strings** (키값 방식 `Key_XXX`, EN+11개 언어 열) | ✅ 실게임 반영 확인 (Phase 1) |
-| 카드/국가 텍스트 | `resources.assets` 내 `TS_Cards` 등 TextAsset (`"행:열":"값"` JSON) | ✅ 실게임 반영 확인 (Phase 1) |
-| **기존 번역 재사용 소스** | 블루칩 v1.0.1 `resources.assets` 내 **MonoBehaviour** string 필드 (432개 고유 한글 문자열) | ✅ 추출 가능 확인 (Phase 2) |
-| UI/튜토리얼/규칙 | `resources.assets` 내 `TS_Ingame`·`TS_Strings`·`TS_RulesTutorial`·`Common_Ingame` | 🟡 사용 여부 미검증 (Phase 2 확인 예정) |
+| 다국어 문자열 테이블 | `resources.assets` 내 **Common_Strings** (키값 방식 `Key_XXX`, EN+11개 언어 열) | ✅ 실게임 반영 확인 + KO 열 주입 완료 (Phase 1·4) |
+| 카드/국가 텍스트 | `resources.assets` 내 `TS_Cards` 등 TextAsset (`"행:열":"값"` JSON) | ✅ 실게임 반영 확인 + 주입 완료 (Phase 1·4) |
+| 인게임/도움말 키 | `TS_Ingame`·`TS_Strings`·`Common_Ingame` | ✅ 실게임 반영 확인 + 주입 완료 (잔존 53키 수동 번역 포함) |
+| **씬 하드코딩 문자열** | level1(메인 메뉴)·level2(인게임)·level3(보드) MonoBehaviour | ✅ 2,548개 한글화 (Phase 5 — `patch_scenes.py`) |
+| 기존 번역 재사용 소스 | 블루칩 v1.0.1 `resources.assets` 내 **MonoBehaviour** string 필드 (432개 고유 한글 문자열) | ✅ 추출 가능 확인 (Phase 2) |
+| **IL2CPP 코드 문자열** | `global-metadata.dat` (턴 히스토리 로그 템플릿: 'to attempt a Coup in' 등) | 🔴 파일 패치 불가 — BepInEx 런타임 훅 필요 (보류) |
 | 카드/국가 Lua | `StreamingAssets/Lua/*.lua` | ❌ 죽은 잔재 (Phase 1 확인). 블루칩 Lua에는 번역 없음 |
-| SDF 폰트 아틀라스 | `resources.assets` (CJK 글리프 없음 → 한글 네모 현상의 원인) | 🔴 핵심 장벽 (Phase 3) |
+| SDF 폰트 아틀라스 | `resources.assets` (CJK 글리프 없음 → 한글 네모 현상의 원인) | ✅ 해결 — 24개 폰트 한글 SDF로 교체 (Phase 3~4) |
 | 텍스처에 구워진 텍스트 | 보드맵 국가명 등 | 🔴 어려움 (범위 제외) |
 
 ---
@@ -50,12 +52,14 @@
 3. v1.4.6부터는 텍스트가 **번역 키 방식**으로 바뀜: `resources.assets`의 `Common_Strings` 파일에 `Key_XXX` 항목이 언어별로 존재. 그러나 게임에 언어 선택 기능이 없고 한글 폰트가 없어서 영어만 출력
 4. 그 이후 게임이 **Unity 6로 리빌드**됨 (현재 우리 설치본) → 기존 패치 완전 무력화
 
-### 💡 핵심 기회
+### 💡 핵심 기회 (달성됨)
 
-- 블루칩 v1.0.1(100% 한글화)의 번역은 `resources.assets` 내 **MonoBehaviour**의 string 필드에 직접 주입돼 있음. UnityPy 고수준 `read()`는 IL2CPP 타입트리 불완전으로 실패하나, `get_raw_data()`에서 raw 바이트를 받아 Unity string 표준 레이아웃(`int32 len + bytes + pad4`)을 수동 파싱하면 **432개 고유 한글 문자열을 깨끗하게 추출 가능** (카드 이름·본문·사건 텍스트·TMP 리치텍스트 태그 포함, Phase 2 확인)
-- 번역 재사용 전략: 블루칩 v1.0.1 MonoBehaviour 한글 432개 + 원본 `TS_Cards`·`Common_Strings` 영문 원문을 **원문 전체 비교**로 매칭하여 번역 소스 구축. 우드킹 패치는 보조/검증용(입수 안 해도 진행 가능)
-- `Common_Strings`의 한국어 슬롯은 **원본에 없음** (열 구조: `Key/EN/FR/DE/ES/PL/PT/JP/IT/RU/NL/CH`). 번역 주입 시 **EN 열 보존, 다른 언어 열을 한국어로 교체** (AGENTS.md 원칙 #8). 게임 언어 선택기 인식은 교체 대상 열/컬처 등록으로 해결 (Phase 4 검증)
-- 우리가 풀어야 할 **진짜 난제는 "CJK 포함 SDF 폰트 아틀라스 주입"** 한 가지로 수렴
+- 블루칩 v1.0.1(100% 한글화)의 번역은 `resources.assets` 내 **MonoBehaviour**의 string 필드에 직접 주입돼 있음. UnityPy 고수준 `read()`는 IL2CPP 타입트리 불완전으로 실패하나, `get_raw_data()`에서 raw 바이트를 받아 Unity string 표준 레이아웃(`int32 len + bytes + pad4`)을 수동 파싱하면 **432개 고유 한글 문자열을 깨끗하게 추출 가능** (Phase 2 확인)
+- 번역 재사용 전략: 런타임 패치(2026-03-15)의 `runtime_exact.tsv` 2,253쌍 + 수동 번역으로 TextAsset 666행·씬 2,548개 문자열 커버 (Phase 2·4·5). 블루칩 432개는 구버전 소스라 직접 매칭 불가 → 참고용
+- `Common_Strings`의 한국어 슬롯은 **원본에 없음** (열 구조: `Key/EN/FR/DE/ES/PL/PT/JP/IT/RU/NL/CH`). 번역 주입 시 **EN 열 보존, RU(10열)을 한국어로 교체** (AGENTS.md 원칙 #8). 게임 언어 선택기 인식은 `AvailableCultures`에 ko 등록으로 해결 (Phase 4 검증)
+- **게임 언어 설정은 별도 PlayerPrefs**(레지스트리 `localization_h2525087814`)로 관리됨 — KO로 설정해야 KO 열 로드 (Phase 5 확인)
+- ~~"진짜 난제는 CJK 포함 SDF 폰트 아틀라스 주입"~~ → ✅ 해결 (Unity_Font_Replacer + 2048² SDF 2종, Phase 3~4)
+- **남은 진짜 난제: IL2CPP 코드 문자열(턴 히스토리 로그)** — 모든 패치(블루칩·런타임 포함)가 미커버한 영역. BepInEx 런타임 훅으로만 가능
 
 ---
 
@@ -79,20 +83,24 @@
 ├── README.md                  # 사용자용 설치 안내
 ├── original/                  # 원본 파일 백업 (패치 대상 파일만 복사, .gitignore + 별도 보관)
 ├── patched/                   # 수정된 파일 (git 관리 대상)
-│   ├── StreamingAssets/Lua/*.lua
-│   ├── resources.assets
-│   └── ...
+│   ├── resources.assets       # 번역+폰트 주입본 (108MB, gitignore)
+│   ├── sharedassets0.assets   # atwriter SDF 주입본 (gitignore)
+│   ├── level1~3               # 씬 패치본 (git 관리)
+│   └── hashes.txt             # SHA-256 기록
 ├── translation/               # 번역 소스 (JSON/CSV) — 실제 "소스코드"
 │   ├── strings.json           # 키 → 한글 매핑
 │   ├── cards.json
-│   └── glossary.md            # 용어 통일표
+│   ├── runtime-20260315.json  # 런타임 패치 TSV (2,253쌍)
+│   ├── manual-extra.json      # TextAsset 잔존 키 수동 번역
+│   ├── manual-scenes.json     # 씬 하드코딩 문자열 수동 번역
+│   └── schema.md              # 용어 통일표
 ├── fonts/                     # TTF 원본 + 생성된 SDF json/atlas
 ├── scripts/
-│   ├── install-mac.sh         # 백업 → 복사 → codesign 재서명
-│   ├── install-windows.ps1
-│   ├── uninstall-mac.sh
-│   ├── uninstall-windows.ps1
-│   └── verify.sh              # 게임 버전/파일 해시 확인 (버전 불일치 시 경고)
+│   ├── install.sh             # macOS 설치 (백업 → 복사 → codesign)
+│   ├── inject_translations.py # TextAsset 번역 주입
+│   ├── patch_scenes.py        # level1-3 씬 문자열 패치
+│   ├── verify_assets.py       # m_Script/raw 무결성 검증
+│   └── ...
 └── tools/                     # UABEA 등 보조 도구 링크/메모
 ```
 
@@ -156,8 +164,9 @@
 | OFL Reserved Font Name | 라이선스 위반 가능성 | 폰트 파일 자체를 수정·개명 재배포 시 Reserved Name 회피. 단순 번들·사용은 문제없음. 라이선스 전문 동봉 |
 | 멀티플레이 버전 체크 | 온라인 불가 | v1.4.2 시절 v2.0 패치가 멀티를 유지한 전례 있음. 에셋만 교체 시 유지될 가능성 높으나 반드시 테스트 |
 | 텍스처 구워진 영문 | 일부 영문 잔존 | 기존 패치들도 미해결. 1차 범위 제외, 이미지 리터칭은 후속 과제로 |
-| IL2CPP 내 하드코딩 문자열 (언어 기본값 등) | 일부 UI 영어 잔존 | 필요 시 Cpp2IL/Il2CppDumper로 분석 후 바이너리 문자열 패치 — 최후의 수단 |
-| 번역 인코딩 | Lua/에셋에서 한글 깨짐 | UTF-8 일관 사용, 게임 로드 확인 테스트 |
+| IL2CPP 내 하드코딩 문자열 (턴 히스토리 등) | 일부 UI 영어 잔존 — **현실화됨** | 파일 패치는 길이 제약으로 불가. BepInEx 런타임 훅이 현실적 (기존 런타임 패치도 미커버 확인, 보류) |
+| **UnityPy 저장 시 같은 경로 금지** | 저장 파일 손상 (EOFError) | 로드 파일과 저장 파일 분리 (`.work` → 별도 출력) — `patch_scenes.py` 참조 |
+| 게임 언어가 EN으로 고정됨 | 메뉴 영어 표시 | 레지스트리 `localization_*` = KO 또는 게임 설정에서 언어 변경 |
 
 ---
 

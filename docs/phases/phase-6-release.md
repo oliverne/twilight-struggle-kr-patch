@@ -11,12 +11,20 @@
 
 ## 체크리스트
 
-- [ ] README 사용자 설치·복구 안내 작성
-- [ ] 라이선스와 크레딧 정리
+- [ ] README 사용자 설치·복구 안내 작성 (⚠️ README는 갱신됨 — 최종 확인 필요)
+- [ ] Windows 설치 스크립트(`install-windows.ps1`) 작성 — **Phase 5에서 이월**
+- [ ] 라이선스와 크레딧 정리 (폰트 OFL + 기존 패치 번역 크레딧)
 - [ ] 배포물에 원본 게임 파일이 포함되지 않았는지 확인
-- [ ] GitHub Releases 또는 zip 배포
+- [ ] GitHub Releases 또는 zip 배포 (대용량 파일: patched/*.assets → Releases 첨부 또는 LFS 검토)
 - [ ] 기존 패치 제작자 크레딧·연락
-- [ ] 알려진 이슈와 지원 게임 버전 명시
+- [ ] 알려진 이슈와 지원 게임 버전 명시 (턴 히스토리 미번역 등)
+
+## 배포 포함 예정 파일
+
+- `patched/resources.assets`, `patched/sharedassets0.assets`, `patched/level1~3`
+- `translation/` 전체 (번역 소스 — 재현용)
+- `scripts/` (install.sh, install-windows.ps1, verify)
+- `fonts/` (라이선스 포함)
 
 ## 검증 기준
 
