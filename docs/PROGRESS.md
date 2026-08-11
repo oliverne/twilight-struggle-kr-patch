@@ -35,7 +35,9 @@
   SmartLocalization이 언어별 열 헤더("EN"/"KO")로 해석하므로, 언어=KO에서도 한글이 표시되려면
   **모든 테이블(TS_Cards·TS_Ingame·TS_Strings·Common_Ingame·TS_RulesTutorial)에 KO 열이 필요**
   (Common_Strings만 KO 열이면 메뉴만 한글, 카드/스코어링은 ${Key} 노출 — 2차 테스트에서 확인).
-  `scripts/add_ko_columns.py`가 헤더 빈 열에 KO 라벨 + EN 열 값 복사. 모든 EN 원문은 `translation/` JSON에 보존.
+  `scripts/add_ko_columns.py`가 KO 열을 추가·유지한다.
+  ⚠️ **KO 열은 반드시 원본에 존재하는 열 번호 범위 내의 빈 열에 배치** (TS_Cards 9, 나머지 8~10).
+  원본에 없는 열 번호(27열 등)에 셀을 추가하면 게임 파서가 무시한다 (3차 테스트 확인).
 - **번역 재사용 소스: 신규 런타임 패치 `runtime_exact.tsv` (2,253쌍).** 블루칩 v1.0.1의 MonoBehaviour 한글(432개)은 v1.0.1에 `Common_Strings`/`TS_Cards`가 없어 매칭 불가. 런타임 TSV + 수동 번역으로 666행 전체 커버.
 - **게임 텍스트 3계층 구조** (Phase 5 확정):
   1. TextAsset 키 참조 (`${Key_XXX}`) — 언어=ko에서 KO 열 사용 → 번역 주입 + 언어 설정으로 해결
@@ -98,4 +100,5 @@
 | 2026-08-11                                        | Windows 폰트 주입 완료 + m_Script 손상 발견·재구축 (예정)        | -         |
 | 2026-08-11                                        | Windows 1차 테스트 진단 + 잔존 키 재주입 + 씬 패치 + 언어 KO     | `35c6cd3` |
 | 2026-08-11                                        | 문서 일괄 갱신 (AGENTS/PLAN/README/ISSUES/CLEANUP + 핸드오프)   | `eba470a` |
-| 2026-08-12                                        | 2차 테스트 후속: 5테이블 KO 열 추가 + SDF 문자셋 739자 재주입  | (예정)    |
+| 2026-08-12                                        | 2차 테스트 후속: 5테이블 KO 열 추가 + SDF 문자셋 739자 재주입  | `91d0fbc` |
+| 2026-08-12                                        | 3차 테스트 후속: KO 열 원본 범위 내 배치(8/9/10열) 재주입      | (예정)    |

@@ -12,9 +12,13 @@
   각 시트 헤더의 빈 열에 'KO' 라벨을 추가하고, EN 열(이미 한글 주입됨)
   값을 KO 열에 복사한다. 언어가 EN이든 KO든 한글이 표시된다.
   - EN 열 위치: 헤더 행(1행)에서 'EN' 라벨로 탐색
-  - KO 열 위치: 헤더에서 비어있는(null) 첫 열
+  - KO 열 위치: **헤더 행에 이미 존재하는 열 중 값이 null인 최소 번호**
+    (⚠️ 2026-08-12 3차 테스트: 원본에 없던 열 번호(27열 등)에 셀을 추가하면
+    게임 파서가 무시함 — 원본이 26열까지 셀을 보유하므로 8/9/10열에 배치)
   - Common_Strings: 이미 KO 열 있음 → 스킵 (검증만)
   - 시트 0(스프레드시트 설명)은 언어 열이 없어 스킵
+
+기존에 잘못 추가된 KO 열(원본 범위 밖)이 있으면 제거 후 재배치한다.
 
 사용법:
   python scripts/add_ko_columns.py --gamepath <게임루트> --src <assets> --out <출력>
@@ -56,7 +60,11 @@ def encode_textasset(name: str, script: bytes) -> bytes:
 
 
 def add_ko_column(text: str) -> tuple[str, dict]:
-    """시트별 EN 열 값 → KO 열 복사. (변경된 시트 통계 반환)"""
+    """시트별 EN 열 값 → KO 열 복사. (변경된 시트 통계 반환)
+
+    KO 열 위치: 헤더 행에 이미 존재하는 열 중 값이 null/''인 최소 번호.
+    기존에 잘못 배치된 KO 열(원본 범위 밖)은 제거 후 재배치.
+    """
     date_end = text.index("\n") + 1
     date_line = text[:date_end]
     data = json.loads(text[date_end:].strip())
@@ -82,15 +90,24 @@ def add_ko_column(text: str) -> tuple[str, dict]:
         if en_col is None:
             continue  # 언어 열 없는 시트 (설명 시트 등)
 
-        # 이미 KO 열이 있으면 스킵
-        if any(v == "KO" for v in header_cols.values()):
-            stats[top_key] = {"skipped": "KO already exists"}
-            continue
+        # 기존 KO 열 제거 (잘못된 위치 포함) 후 null로 복원
+        old_ko = next((c for c, v in header_cols.items() if v == "KO"), None)
+        if old_ko is not None:
+            for cell_key in [k for k in cells if k.endswith(f":{old_ko}")]:
+                cells[cell_key] = "null"
+            stats[top_key] = {"removed_old_ko": old_ko}
 
-        used = set(header_cols.keys())
-        ko_col = next((c for c in range(1, 64) if c not in used), None)
+        # KO 열 위치: 헤더 행에 이미 존재하는 열 중 값이 null/''인 최소 번호
+        # (⚠️ 원본에 없는 열 번호를 추가하면 게임 파서가 무시함)
+        # (⚠️ 1열은 키 열이므로 제외)
+        ko_col = next(
+            (c for c, v in sorted(header_cols.items()) if c != 1 and v in ("null", "", None)),
+            None,
+        )
         if ko_col is None:
-            stats[top_key] = {"skipped": "no free column"}
+            stats[top_key]["skipped"] = "no free column" if top_key in stats else ""
+            if top_key not in stats:
+                stats[top_key] = {"skipped": "no free column"}
             continue
 
         cells[f"1:{ko_col}"] = "KO"
@@ -100,7 +117,8 @@ def add_ko_column(text: str) -> tuple[str, dict]:
             if en_val not in ("null", ""):
                 cells[f"{r}:{ko_col}"] = en_val
                 added += 1
-        stats[top_key] = {"en_col": en_col, "ko_col": ko_col, "rows": added}
+        st = stats.setdefault(top_key, {})
+        st.update({"en_col": en_col, "ko_col": ko_col, "rows": added})
 
     return date_line + json.dumps(data, ensure_ascii=False, separators=(",", ":")), stats
 

@@ -84,17 +84,21 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 
 - 씬의 UI 텍스트는 `${Card_*}`, `${Panel_*}`, `${Help_*}`, `${Key_*}` 키 문자열로 저장되고 **런타임에 SmartLocalization이 해석**
 - `Common_Strings`만 KO 열(10열) 주입 → 메뉴 한글화 성공. 나머지 테이블은 EN 열(2~3열)에 한글을 넣었을 뿐 KO 열이 없어 **KO 언어에서 키가 그대로 노출**
-- 해결: `scripts/add_ko_columns.py` — 각 테이블 헤더 빈 열에 `KO` 라벨 추가 + EN 열(이미 한글) 값 복사 (언어가 EN이든 KO든 한글)
+- 2차 시도: 26/27열(원본 범위 밖)에 KO 열 추가 → **게임 파서가 무시** (3차 테스트에서 키 노출 지속 확인)
+- 3차 시도(최종): **원본 존재 열 범위 내 빈 열에 배치** — TS_Cards 9열, TS_Ingame/TS_Strings/Common_Ingame 8열, TS_RulesTutorial 10열 → 재주입 완료 (2026-08-12)
+- 해결 도구: `scripts/add_ko_columns.py` (기존 잘못된 KO 열 자동 제거 후 재배치, 1열 키 열 제외)
 
 | 테이블 | 시트 | KO 열 | 복사 행 |
 |---|---|---|---|
-| TS_Cards | 1631793870 | 26 | 344 |
-| TS_Ingame | 0 | 27 | 157 |
-| TS_Strings | 0 | 27 | 50 |
-| Common_Ingame | 0 | 27 | 22 |
-| TS_RulesTutorial | 1631793870 / 1022388242 | 27 | 313 / 0 |
+| TS_Cards | 1631793870 | **9** (처음 26 → 무시됨) | 344 |
+| TS_Ingame | 0 | **8** (처음 27 → 무시됨) | 157 |
+| TS_Strings | 0 | **8** (처음 27 → 무시됨) | 50 |
+| Common_Ingame | 0 | **8** (처음 27 → 무시됨) | 22 |
+| TS_RulesTutorial | 1631793870 / 1022388242 | **10** (처음 27 → 무시됨) | 313 / 0 |
 
 ⚠️ TS_Ingame 등은 시트 키가 `"0"`이므로 설명 시트로 오판하면 안 됨 (EN 열 유무로 판별)
+⚠️ **KO 열은 "헤더 행에 이미 존재하는 열" 중 빈(null) 열에 배치해야 함** — 원본에 없는 열 번호(27열)에 셀을 추가하면 게임 파서가 무시함 (2026-08-12 3차 테스트에서 확인). 모든 테이블은 원본부터 26열까지 셀을 보유.
+⚠️ **1열은 키 열 — KO 후보에서 제외 필수** (TS_Cards·TS_Strings는 1행 1열이 null이라 자동 선택되면 키가 파괴됨)
 
 ### SDF 재생성 (문자셋 739자)
 
@@ -123,7 +127,8 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 - [x] TS_Ingame/TS_Strings 잔존 키 수동 번역 + 재주입 (53키)
 - [x] 씬 패치 (level1-3) — 하드코딩 문자열 2,548개 한글화
 - [x] 2차 테스트 후속 조치 — KO 열 추가(5테이블) + SDF 문자셋 확장 재주입 (2026-08-12)
-- [ ] **게임 재실행 테스트 (3차)** — 카드/스코어링/국가명 확인
+- [x] 3차 테스트 후속 — KO 열 원본 범위 내 배치(8/9/10열) 재주입 (2026-08-12)
+- [ ] **게임 재실행 테스트 (4차)** — 카드/스코어링/HELP/우주 경쟁/DEFCON 확인
 - [ ] macOS 설치 스크립트 검증 (`scripts/install.sh`)
 - [ ] Windows 설치 스크립트 (`scripts/install-windows.ps1`) 작성
 - [ ] 멀티플레이 동작 테스트
@@ -148,8 +153,8 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 | 폰트 재주입 | Unity_Font_Replacer `--list` | ✅ 성공 — TextAsset 2개만 변경 |
 | 씬 패치 | `patch_scenes.py` + raw 비교 | ✅ 성공 — m_Script 0건, 비텍스트 변경 0건 |
 | 언어 설정 | 레지스트리 `localization_*` | ✅ KO 설정 완료 |
-| 게임 재실행 | — | ⬜ 대기 |
-| 카드/스코어링 키 노출 | KO 열 존재 확인 (add_ko_columns.py 검증) | ✅ 성공 — 5테이블 KO 열, m_Script 0건 |
+| 게임 재실행 | — | ⬜ 대기 (3차 — KO 열 위치 수정 재주입 완료) |
+| 카드/스코어링 키 노출 | KO 열 존재 확인 (add_ko_columns.py 검증) | ⚠️ 27열 추가 실패 → ✅ 8/9/10열 재배치 완료, m_Script 0건 |
 | 국가명 □ | chars.txt 확장 + SDF 재생성 | ✅ 성공 — 739자, point-size 70/83 |
 
 ## 다음 Phase로 핸드오프
