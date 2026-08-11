@@ -6,21 +6,22 @@
 
 ## 현재 상태
 
-**다음 작업:** 게임 재실행 테스트 — 메뉴 한글화 확인 (Windows 1차 패치 완료)
+**다음 작업:** 게임 재실행 테스트 (3차) — 카드/스코어링/국가명 확인 (KO 열 + 문자셋 재주입 완료)
 
 - 완료: Phase 0 — 준비, Phase 1 — 텍스트 위치 검증, Phase 2 — 번역 소스 구축
 - 완료: Phase 3 SDF 생성 (2048² 최적화) + Windows 폰트 주입 (24개 TMP 폰트)
 - 완료: Phase 4 텍스트 주입 재구축 (m_Script 무손상) + **잔존 키 53개 수동 번역 재주입**
 - 완료: **Windows 실게임 1차 테스트 + 진단** — 메뉴 영어 원인 3계층 규명
-- 완료: **씬 패치 (level1-3)** — 하드코딩 문자열 2,548개 한글화 (m_Script 0건 불일치)
-- 완료: **게임 언어 KO 전환** (레지스트리 `localization_*` — Step 1)
-- **Phase 5 잔여: 게임 재실행 → 메뉴 한글화 확인 → macOS 적용 → 멀티플레이**
+- 완료: **씬 패치 (level1-3)** — 하드코딩 문자열 2,548개 한글화
+- 완료: **게임 언어 KO 전환** (레지스트리) + 2차 테스트
+- 완료: **2차 테스트 후속 — 5개 언어 테이블 KO 열 추가 + SDF 문자셋 확장 (739자) 재주입** (2026-08-12)
+- **Phase 5 잔여: 3차 테스트 → macOS 적용 → 멀티플레이 → 설치 스크립트**
 
 ### 작업 재개 순서
 
-1. **게임 재실행** → 메인 메뉴/설정 한글화 확인 (언어=KO 적용됨)
+1. **게임 재실행 (3차)** → 카드 텍스트/스코어링 UI/국가명 확인 (KO 열 + 문자셋 재주입 완료)
 2. Player.log에서 `Load Language Header: KO` 확인
-3. 잔존 `□`/영어 UI 확인 → 미번역 키는 `translation/manual-*.json`에 추가 후 재주입
+3. 잔존 `□`/영어 UI 확인 → `translation/manual-*.json`에 키 추가 후 재주입
 4. macOS로 `patched/` 전체(level 포함) 전송 → `scripts/install.sh` → 테스트
 5. Windows 설치 스크립트(`install-windows.ps1`) 작성 → 멀티플레이 테스트
 
@@ -30,7 +31,11 @@
 - `Common_Strings`와 `TS_Cards`는 실게임 반영이 확인됐다.
 - `StreamingAssets/Lua`는 죽은 잔재 파일이므로 작업 대상에서 제외한다.
 - 한글 입력과 인코딩은 정상이나 기존 SDF 폰트에 CJK 글리프가 없어 게임에서 `ㅁ`으로 표시된다.
-- **번역 주입 방식: Common_Strings는 RU(10열)→KO 교체 + AvailableCultures에 ko 등록.** SmartLocalization이 컬럼 헤더("KO")를 문화 코드("ko")와 매칭. TS_Cards 등 나머지는 EN→KO 직접 교체. 모든 EN 원문은 `translation/` JSON에 보존.
+- **번역 주입 방식: EN 열 보존 + RU(10열)→KO 교체 + AvailableCultures에 ko 등록 + 모든 언어 테이블에 KO 열 추가.**
+  SmartLocalization이 언어별 열 헤더("EN"/"KO")로 해석하므로, 언어=KO에서도 한글이 표시되려면
+  **모든 테이블(TS_Cards·TS_Ingame·TS_Strings·Common_Ingame·TS_RulesTutorial)에 KO 열이 필요**
+  (Common_Strings만 KO 열이면 메뉴만 한글, 카드/스코어링은 ${Key} 노출 — 2차 테스트에서 확인).
+  `scripts/add_ko_columns.py`가 헤더 빈 열에 KO 라벨 + EN 열 값 복사. 모든 EN 원문은 `translation/` JSON에 보존.
 - **번역 재사용 소스: 신규 런타임 패치 `runtime_exact.tsv` (2,253쌍).** 블루칩 v1.0.1의 MonoBehaviour 한글(432개)은 v1.0.1에 `Common_Strings`/`TS_Cards`가 없어 매칭 불가. 런타임 TSV + 수동 번역으로 666행 전체 커버.
 - **게임 텍스트 3계층 구조** (Phase 5 확정):
   1. TextAsset 키 참조 (`${Key_XXX}`) — 언어=ko에서 KO 열 사용 → 번역 주입 + 언어 설정으로 해결
@@ -92,4 +97,5 @@
 | 2026-08-08                                        | Phase 3·4 현황 반영 (PROGRESS)                                    | `12bdace` |
 | 2026-08-11                                        | Windows 폰트 주입 완료 + m_Script 손상 발견·재구축 (예정)        | -         |
 | 2026-08-11                                        | Windows 1차 테스트 진단 + 잔존 키 재주입 + 씬 패치 + 언어 KO     | `35c6cd3` |
-| 2026-08-11                                        | 문서 일괄 갱신 (AGENTS/PLAN/README/ISSUES/CLEANUP + 핸드오프)   | (예정)    |
+| 2026-08-11                                        | 문서 일괄 갱신 (AGENTS/PLAN/README/ISSUES/CLEANUP + 핸드오프)   | `eba470a` |
+| 2026-08-12                                        | 2차 테스트 후속: 5테이블 KO 열 추가 + SDF 문자셋 739자 재주입  | (예정)    |

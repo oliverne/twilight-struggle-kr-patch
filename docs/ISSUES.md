@@ -73,6 +73,19 @@
 - **제안**: 번역량 대비 우선순위 낮음 — 게임 테스트 후 필요 시 `manual-scenes.json`에 추가
 - **상태**: ⬜ 보류
 
+### #15 모든 언어 테이블 KO 열 부재 — 언어=KO에서 ${Key} 노출 (2026-08-12 해결)
+- **위치**: TS_Cards·TS_Ingame·TS_Strings·Common_Ingame·TS_RulesTutorial (Common_Strings는 KO 열 있음)
+- **문제**: 씬 UI 텍스트는 `${Card_*}/${Panel_*}/${Help_*}` 키 문자열이고 SmartLocalization이 언어별 열로 해석. EN 열(2~3열)에 한글을 넣었지만 KO 열이 없어 KO 언어에서 키가 그대로 노출 (카드 전체 + Scoring UI). 이전 테스트에서 카드가 한글이었던 건 언어=EN이었기 때문
+- **해결**: ✅ `scripts/add_ko_columns.py` — 각 시트 헤더 빈 열에 KO 라벨 + EN 열 값(한글) 복사 (TS_Cards 344행/TS_Ingame 157/TS_Strings 50/Common_Ingame 22/TS_RulesTutorial 313). m_Script 0건, TextAsset 변경 0건 검증 통과
+- **관련 Phase**: Phase 5
+
+### #16 SDF 문자셋 누락 104자 — 국가명 □ (2026-08-12 해결)
+- **위치**: fonts/chars.txt (596자) — 튀/콰/콜/롬/냐/룬 등
+- **문제**: 문자셋이 번역 소스 기준이라 씬 문자열(국가명 등) 글자가 누락 → SDF 아틀라스에 글리프 없음
+- **해결**: ✅ chars.txt 596→739자 (패치 후 표시 문자열 전체에서 재추출) + SDF 재생성 + 재주입
+- **비고**: point-size가 74→70(NotoSerifKR), 87→83(BlackHanSans)로 축소 (2048² 한계, padding 7→4). 화면 표시 크기는 faceInfo 기반이라 동일
+- **관련 Phase**: Phase 5
+
 ## 처리된 이슈 (참고용)
 
 > Phase 0·1 완료 시점의 코드 리뷰에서 이미 처리된 항목. 커밋 `fbb70bc`, `50feea1`, `69e71a8` 참조.

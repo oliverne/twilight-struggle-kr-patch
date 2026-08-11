@@ -57,6 +57,7 @@
 - 블루칩 v1.0.1(100% 한글화)의 번역은 `resources.assets` 내 **MonoBehaviour**의 string 필드에 직접 주입돼 있음. UnityPy 고수준 `read()`는 IL2CPP 타입트리 불완전으로 실패하나, `get_raw_data()`에서 raw 바이트를 받아 Unity string 표준 레이아웃(`int32 len + bytes + pad4`)을 수동 파싱하면 **432개 고유 한글 문자열을 깨끗하게 추출 가능** (Phase 2 확인)
 - 번역 재사용 전략: 런타임 패치(2026-03-15)의 `runtime_exact.tsv` 2,253쌍 + 수동 번역으로 TextAsset 666행·씬 2,548개 문자열 커버 (Phase 2·4·5). 블루칩 432개는 구버전 소스라 직접 매칭 불가 → 참고용
 - `Common_Strings`의 한국어 슬롯은 **원본에 없음** (열 구조: `Key/EN/FR/DE/ES/PL/PT/JP/IT/RU/NL/CH`). 번역 주입 시 **EN 열 보존, RU(10열)을 한국어로 교체** (AGENTS.md 원칙 #8). 게임 언어 선택기 인식은 `AvailableCultures`에 ko 등록으로 해결 (Phase 4 검증)
+- **언어=KO에서 카드/스코어링까지 한글이 되려면 모든 언어 테이블에 KO 열 추가 필수** — SmartLocalization이 언어별 열 헤더로 해석하며 KO 열이 없으면 `${Key}` 노출 (2차 테스트 확인). `scripts/add_ko_columns.py`로 TS_Cards·TS_Ingame·TS_Strings·Common_Ingame·TS_RulesTutorial에 KO 열 추가 (Common_Strings는 이미 10열)
 - **게임 언어 설정은 별도 PlayerPrefs**(레지스트리 `localization_h2525087814`)로 관리됨 — KO로 설정해야 KO 열 로드 (Phase 5 확인)
 - ~~"진짜 난제는 CJK 포함 SDF 폰트 아틀라스 주입"~~ → ✅ 해결 (Unity_Font_Replacer + 2048² SDF 2종, Phase 3~4)
 - **남은 진짜 난제: IL2CPP 코드 문자열(턴 히스토리 로그)** — 모든 패치(블루칩·런타임 포함)가 미커버한 영역. BepInEx 런타임 훅으로만 가능

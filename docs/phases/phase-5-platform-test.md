@@ -67,13 +67,63 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 - 게임 설정 → Languages 에서도 선택 가능 (AvailableCultures에 ko 등록됨)
 - **검증**: 게임 실행 후 Player.log에 `Load Language Header: KO`가 찍히는지 확인
 
-## 체크리스트
+## 게임 재실행 테스트 (2차, 2026-08-12) — 문제 3건 발견·해결
+
+사용자 테스트 결과 (언어=KO):
+- ✅ 메인 메뉴/설정 한글화 확인 (Common_Strings KO 열 정상)
+- ✅ 인게임 UI(플레이어패/버리기/제거됨/다음 프로젝트) 한글화
+- ✅ 게임판 국가명 대부분 한글
+
+| 문제 | 원인 | 해결 | 상태 |
+|---|---|---|---|
+| 1. 국가명 일부 □ (튀니지→ㅁ니지, 케냐→케ㅁ, 콜롬비아→ㅁㅁ비아 등) | SDF chars.txt에 누락 한글 104자 (튀/콰/콜/롬/냐/룬 등) | chars.txt 확장 (596→739자) + SDF 재생성 | ✅ 재주입 완료 |
+| 2. Scoring UI에 ${Panel:ScoringB/...} 키 노출 | 언어=KO에서 SmartLocalization이 각 테이블의 **KO 헤더 열**을 찾는데 TS_Ingame 등에 KO 열 없음 | **모든 언어 테이블에 KO 열 추가** (아래) | ✅ 재주입 완료 |
+| 3. **카드 텍스트 전부 ${XXXXX} 키 노출** | 동일 — 카드 키(Card_*)는 TS_Cards(EN=2열)에만 있고 KO 열 없음. EN 상태에서는 EN 열(한글 교체분)을 읽어 한글이었음 | TS_Cards에 KO 열 추가 | ✅ 재주입 완료 |
+
+### 근본 원인 (조사 확정)
+
+- 씬의 UI 텍스트는 `${Card_*}`, `${Panel_*}`, `${Help_*}`, `${Key_*}` 키 문자열로 저장되고 **런타임에 SmartLocalization이 해석**
+- `Common_Strings`만 KO 열(10열) 주입 → 메뉴 한글화 성공. 나머지 테이블은 EN 열(2~3열)에 한글을 넣었을 뿐 KO 열이 없어 **KO 언어에서 키가 그대로 노출**
+- 해결: `scripts/add_ko_columns.py` — 각 테이블 헤더 빈 열에 `KO` 라벨 추가 + EN 열(이미 한글) 값 복사 (언어가 EN이든 KO든 한글)
+
+| 테이블 | 시트 | KO 열 | 복사 행 |
+|---|---|---|---|
+| TS_Cards | 1631793870 | 26 | 344 |
+| TS_Ingame | 0 | 27 | 157 |
+| TS_Strings | 0 | 27 | 50 |
+| Common_Ingame | 0 | 27 | 22 |
+| TS_RulesTutorial | 1631793870 / 1022388242 | 27 | 313 / 0 |
+
+⚠️ TS_Ingame 등은 시트 키가 `"0"`이므로 설명 시트로 오판하면 안 됨 (EN 열 유무로 판별)
+
+### SDF 재생성 (문자셋 739자)
+
+- `fonts/chars.txt`: 596→739자 (누락 한글 104자 + ASCII/특수 보강)
+- 문자셋 출처: 패치 후 표시 문자열 전체 (TextAsset 전 테이블 + level1~3 씬 문자열)
+- NotoSerifKR: point-size 74→**70** (atlas 2048² 한계, padding 7→4) — 화면 표시 크기는 faceInfo 기반이라 동일, 아틀라스 해상도만 소폭 감소
+- BlackHanSans-Regular: 87→**83** (동일 이유)
+- 폰트 재주입: Unity_Font_Replacer 재실행 (47항목 매핑 재설정 — parse가 JSON 초기화하므로 주의)
+- 검증: m_Script 0건 불일치, TextAsset 변경 0건 (KO 열 유지), 폰트/텍스처 69건 변경
+- Steam 설치 완료 (백업: backup-20260811/resources.assets.20260812-pre-ko)
 
 - [x] Windows 실게임 테스트 (1차) — 한글 출력 확인, 문제 진단
 - [x] 게임 언어 설정 KO 전환 (레지스트리)
 - [x] TS_Ingame/TS_Strings 잔존 키 수동 번역 + 재주입 (53키)
 - [x] 씬 패치 (level1-3) — 하드코딩 문자열 2,548개 한글화
 - [ ] **게임 재실행 테스트** — 메뉴 한글화 확인, 잔존 `□`/영어 확인
+- [ ] macOS 설치 스크립트 검증 (`scripts/install.sh`)
+- [ ] Windows 설치 스크립트 (`scripts/install-windows.ps1`) 작성
+- [ ] 멀티플레이 동작 테스트
+- [ ] Steam 무결성 확인 후 재설치 테스트
+
+## 체크리스트
+
+- [x] Windows 실게임 테스트 (1차) — 한글 출력 확인, 문제 진단
+- [x] 게임 언어 설정 KO 전환 (레지스트리)
+- [x] TS_Ingame/TS_Strings 잔존 키 수동 번역 + 재주입 (53키)
+- [x] 씬 패치 (level1-3) — 하드코딩 문자열 2,548개 한글화
+- [x] 2차 테스트 후속 조치 — KO 열 추가(5테이블) + SDF 문자셋 확장 재주입 (2026-08-12)
+- [ ] **게임 재실행 테스트 (3차)** — 카드/스코어링/국가명 확인
 - [ ] macOS 설치 스크립트 검증 (`scripts/install.sh`)
 - [ ] Windows 설치 스크립트 (`scripts/install-windows.ps1`) 작성
 - [ ] 멀티플레이 동작 테스트
@@ -99,6 +149,8 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 | 씬 패치 | `patch_scenes.py` + raw 비교 | ✅ 성공 — m_Script 0건, 비텍스트 변경 0건 |
 | 언어 설정 | 레지스트리 `localization_*` | ✅ KO 설정 완료 |
 | 게임 재실행 | — | ⬜ 대기 |
+| 카드/스코어링 키 노출 | KO 열 존재 확인 (add_ko_columns.py 검증) | ✅ 성공 — 5테이블 KO 열, m_Script 0건 |
+| 국가명 □ | chars.txt 확장 + SDF 재생성 | ✅ 성공 — 739자, point-size 70/83 |
 
 ## 다음 Phase로 핸드오프
 
