@@ -95,6 +95,7 @@ def add_ko_column(text: str) -> tuple[str, dict]:
         if old_ko is not None:
             for cell_key in [k for k in cells if k.endswith(f":{old_ko}")]:
                 cells[cell_key] = "null"
+            header_cols[old_ko] = "null"  # ⚠️ 헤더 dict도 갱신해야 재선택 가능 (멱등성)
             stats[top_key] = {"removed_old_ko": old_ko}
 
         # KO 열 위치: 헤더 행에 이미 존재하는 열 중 값이 null/''인 최소 번호
@@ -191,6 +192,16 @@ def main():
     # 검증: KO 열 존재 + 값 확인
     print("\n=== 검증 ===")
     env2 = UnityPy.load(args.out)
+    # 원본(src) 테이블 캐시 — 키 열 보존·KO 열 범위 검증용
+    src_tables = {}
+    src_env = UnityPy.load(args.src)
+    for obj in src_env.objects:
+        if obj.type.name != "TextAsset":
+            continue
+        nm, sc = parse_raw_textasset(obj.get_raw_data())
+        src_tables[nm] = sc
+
+    all_ok = True
     for obj in env2.objects:
         if obj.type.name != "TextAsset":
             continue
@@ -200,6 +211,10 @@ def main():
         text = script.decode("utf-8")
         date_end = text.index("\n") + 1
         data = json.loads(text[date_end:].strip())
+        src_data = {}
+        if name in src_tables:
+            st = src_tables[name].decode("utf-8")
+            src_data = json.loads(st[st.index("\n") + 1 :].strip())
         for top_key, cells in data.items():
             if top_key == "0" or not isinstance(cells, dict):
                 continue
@@ -209,8 +224,31 @@ def main():
                 en_col = next((c for c, v in header.items() if v == "EN"), None)
                 ko_rows = [c for c in cells if c.endswith(f":{ko_col}") and not c.startswith("1:")]
                 print(f"  ✅ {name}/시트{top_key}: KO 열={ko_col} (EN={en_col}), {len(ko_rows)}행")
+
+                # 재발 방지 1: KO 열이 원본에 존재하는 열 범위 내인지 (추가 열이면 파서가 무시)
+                src_cells = src_data.get(top_key, {}) if isinstance(src_data, dict) else {}
+                src_hdr_cols = {int(c.split(":")[1]) for c in src_cells if c.startswith("1:")}
+                if ko_col in src_hdr_cols:
+                    print(f"    ✅ KO 열 {ko_col} — 원본 존재 열 범위 내 (파서 인식 가능)")
+                else:
+                    print(f"    ❌ KO 열 {ko_col} — 원본에 없는 추가 열! 게임 파서가 무시함 (재발!)")
+                    all_ok = False
+
+                # 재발 방지 2: 키 열(1열) 보존 (EN 값으로 덮어쓰지 않았는지)
+                for r in sorted({int(c.split(":")[0]) for c in cells if c.startswith("2:") or c.startswith("3:")})[:3]:
+                    src_key = src_cells.get(f"{r}:1")
+                    out_key = cells.get(f"{r}:1")
+                    if src_key != out_key:
+                        print(f"    ❌ 키 열 파괴! {name}/시트{top_key} 행{r}: {src_key!r} → {out_key!r}")
+                        all_ok = False
+                else:
+                    pass
             else:
                 print(f"  ❌ {name}/시트{top_key}: KO 열 없음!")
+                all_ok = False
+    if not all_ok:
+        print("\n❌ 검증 실패 — 문제를 해결한 뒤 재실행하세요.")
+        return 1
 
     # m_Script 무손상 검증
     print("\n=== m_Script 무손상 검증 ===")
