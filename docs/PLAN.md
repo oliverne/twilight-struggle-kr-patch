@@ -124,6 +124,7 @@
 | Phase 4 — 텍스트 주입 & 레이아웃 조정 | 재현 가능한 번역 주입과 UI 검증 | 1~2주 | [Phase 4](phases/phase-4-injection-layout.md) |
 | Phase 5 — 플랫폼 적용 & 테스트 | macOS·Windows·멀티플레이 및 복구 검증 | 2~3일 | [Phase 5](phases/phase-5-platform-test.md) |
 | Phase 6 — 배포 | 설치 안내·라이선스·배포물 정리 | — | [Phase 6](phases/phase-6-release.md) |
+| Phase 7 — 도움말/규칙 번역 (후순위) | TS_RulesTutorial 313행(6.4만 자) + 씬 규칙 문단 167개. **배포 후 맨 마지막에 수행** | 1~2일 | [Phase 7](phases/phase-7-help-translation.md) |
 
 ---
 

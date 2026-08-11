@@ -196,7 +196,7 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 
 - **턴 히스토리 로그** — IL2CPP 코드 문자열(global-metadata.dat)로 파일 패치 불가. BepInEx 런타임 훅 프로젝트로만 해결 가능 (블루칩·런타임 패치 포함 모든 기존 패치가 미커버)
 - **폰트 크기 불일치** — 24개 원본 폰트 → 한글 2종 통일로 크기/줄 간격 차이. `--use-game-line-metrics` 재주입 또는 m_FaceInfo(m_PointSize/m_Scale/m_LineHeight) 배율 조정으로 보정 가능 (미적용)
-- **규칙북/튜토리얼 긴 문단** — 씬 하드코딩 167개 미번역 (번역량 대비 우선순위 낮음, TS_RulesTutorial 제외 결정과 일관)
+- **규칙북/튜토리얼 긴 문단** — 씬 하드코딩 167개 미번역 + TS_RulesTutorial 313행(6.4만 자) 전량 수동. **Phase 7(후순위, 배포 후)로 이관** — [phase-7-help-translation.md](phase-7-help-translation.md) 참조
 - **더미 텍스트** — 'PlayerName12345', 'Text goes here' 등 개발용 더미는 번역 제외 (무해)
 
 ### 산출물 위치

@@ -61,6 +61,7 @@
 | Phase 4 — 텍스트 주입 & 레이아웃 조정  | ✅   | 무손상 주입 재구축 + 잔존 키 53개 재주입    | [상세](phases/phase-4-injection-layout.md)   |
 | Phase 5 — 플랫폼 적용 & 테스트         | 🚧   | Windows 1차 테스트·씬 패치 완료, 재실행 대기  | [상세](phases/phase-5-platform-test.md)      |
 | Phase 6 — 배포                         | ⬜   | 사용자 안내 및 배포 대기                       | [상세](phases/phase-6-release.md)            |
+| Phase 7 — 도움말/규칙 번역 (후순위)   | ⬜   | 배포 후 맨 마지막 수행 — 규칙 6.4만 자 수동   | [상세](phases/phase-7-help-translation.md)   |
 
 ## 현재 핸드오프 요약
 
