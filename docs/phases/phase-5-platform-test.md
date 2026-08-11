@@ -67,6 +67,17 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 - 게임 설정 → Languages 에서도 선택 가능 (AvailableCultures에 ko 등록됨)
 - **검증**: 게임 실행 후 Player.log에 `Load Language Header: KO`가 찍히는지 확인
 
+## 게임 재실행 테스트 (4차, 2026-08-12) — ✅ 대부분 한글화 확인
+
+사용자 테스트 결과:
+- ✅ **카드 텍스트 한글화** (KO 열 9열 배치 효과)
+- ✅ **대부분의 UI 한글화** — 스코어링 PANEL 키, 우주 경쟁, DEFCON, HELP 도움말
+- ✅ 메인 메뉴/설정 깨지던 글자 해결, 게임판 국가명 정상
+- ⬜ 미번역 텍스트 전체 확인은 아직 미완료 (남은 영어/□ 수집 필요)
+
+**결론**: KO 열을 "원본 존재 열 범위 내 빈 열"(8/9/10열)에 배치한 것이 정답이었음.
+게임 파서는 원본에 없는 열 번호(27열)의 셀을 무시한다.
+
 ## 게임 재실행 테스트 (2차, 2026-08-12) — 문제 3건 발견·해결
 
 사용자 테스트 결과 (언어=KO):
@@ -128,7 +139,8 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 - [x] 씬 패치 (level1-3) — 하드코딩 문자열 2,548개 한글화
 - [x] 2차 테스트 후속 조치 — KO 열 추가(5테이블) + SDF 문자셋 확장 재주입 (2026-08-12)
 - [x] 3차 테스트 후속 — KO 열 원본 범위 내 배치(8/9/10열) 재주입 (2026-08-12)
-- [ ] **게임 재실행 테스트 (4차)** — 카드/스코어링/HELP/우주 경쟁/DEFCON 확인
+- [x] **4차 테스트 — 대부분의 UI·카드 한글화 확인 (2026-08-12)**
+- [ ] 미번역 텍스트 전체 확인 — 인게임 전 화면/팝업 영어 잔존 수집 → manual-*.json 재주입
 - [ ] macOS 설치 스크립트 검증 (`scripts/install.sh`)
 - [ ] Windows 설치 스크립트 (`scripts/install-windows.ps1`) 작성
 - [ ] 멀티플레이 동작 테스트
@@ -153,7 +165,7 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 | 폰트 재주입 | Unity_Font_Replacer `--list` | ✅ 성공 — TextAsset 2개만 변경 |
 | 씬 패치 | `patch_scenes.py` + raw 비교 | ✅ 성공 — m_Script 0건, 비텍스트 변경 0건 |
 | 언어 설정 | 레지스트리 `localization_*` | ✅ KO 설정 완료 |
-| 게임 재실행 | — | ⬜ 대기 (3차 — KO 열 위치 수정 재주입 완료) |
+| 게임 재실행 | — | ✅ 4차 테스트 — 대부분 UI·카드 한글화 확인 (2026-08-12) |
 | 카드/스코어링 키 노출 | KO 열 존재 확인 (add_ko_columns.py 검증) | ⚠️ 27열 추가 실패 → ✅ 8/9/10열 재배치 완료, m_Script 0건 |
 | 국가명 □ | chars.txt 확장 + SDF 재생성 | ✅ 성공 — 739자, point-size 70/83 |
 
@@ -161,12 +173,11 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 
 ### 즉시 실행할 작업 (순서대로)
 
-1. **게임 재실행 테스트** (Windows) — 메뉴/설정/로비 한글화 확인
-   - 언어=KO가 이미 레지스트리에 적용됨 (`localization_h2525087814`)
-   - Player.log에 `Load Language Header: KO`가 찍히는지 확인 (LocalLow\Playdek\TwilightStruggle\Player.log)
-2. **잔존 이슈 수집** — 영어 잔존 UI / `□` 누락 글자 확인
-   - 영어 잔존 → `translation/manual-scenes.json`(씬)·`manual-extra.json`(TextAsset)에 키 추가
-   - `□` → `fonts/chars.txt`에 글자 추가 → make_sdf.py 재생성 → 폰트 재주입 (Runbook 참조)
+1. **미번역 텍스트 전체 확인** — 인게임 전 화면/팝업(카드 목록, 이벤트 선택, 승점 계산, 규칙 도움말 등)을 돌며 영어 잔존 수집
+   - 영어 잔존(TextAsset 키) → `translation/manual-extra.json`에 EN→KO 추가
+   - 영어 잔존(씬 하드코딩) → `translation/manual-scenes.json`에 추가
+   - 재주입: `inject_translations.py` → `add_ko_columns.py` → (문자 변경 시) 폰트 재주입
+2. **잔존 `□` 확인** — `fonts/chars.txt`에 글자 추가 → make_sdf.py 재생성 → 폰트 재주입 (Runbook 참조)
 3. **macOS 적용** — `patched/` 전송 (resources.assets 108MB + sharedassets0.assets + level1~3) → `scripts/install.sh`
    - macOS 코드사인은 install.sh가 자동 처리 (`codesign --force --sign -`)
 4. **Windows 설치 스크립트 작성** — `scripts/install-windows.ps1` (백업 → 복사 → 해시 검증) — 체크리스트 잔여 항목
@@ -178,6 +189,8 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 - 게임 언어는 레지스트리 PlayerPrefs로 관리 — 패치에 언어 설정이 포함되지 않으므로 설치 안내에 명시 필요
 - 씬 패치는 `patch_scenes.py`로 재현 가능 (번역 소스만 추가하면 재실행)
 - 폰트 재주입은 Windows에서만 가능 (Unity_Font_Replacer exe) — macOS는 SDF 생성만 가능
+- **번역 소스 추가 시 재주입 순서**: `inject_translations.py`(TextAsset EN 열) → `add_ko_columns.py`(KO 열 동기화) → 필요시 폰트 재주입 → `verify_assets.py` 검증
+- **알려진 미번역 잔존**: TS_Ingame의 일부 키 ('Start'=Panel_SpaceRaceStd01Title, 'In' 등) — 다음 라운드에서 manual-extra에 추가
 
 ### 미해결 이슈 (보류)
 

@@ -2,8 +2,8 @@
 
 Steam판 **Twilight Struggle**(App ID `406290`)용 한글 패치 프로젝트입니다.
 
-> **현재 개발 중 (Phase 5).** Windows 실게임에서 카드/인게임/메뉴 한글화를 확인했으며,
-> macOS 적용·멀티플레이 검증이 남아 있습니다. 배포 전까지는 직접 적용 후 테스트해 주세요.
+> **현재 개발 중 (Phase 5).** Windows 실게임에서 **카드/메뉴/인게임 UI 대부분 한글화 확인** (2026-08-12).
+> 미번역 잔존 확인·macOS 적용·멀티플레이 검증이 남아 있습니다.
 
 ## 현재 상태
 
@@ -11,11 +11,12 @@ Steam판 **Twilight Struggle**(App ID `406290`)용 한글 패치 프로젝트입
 |---|---|
 | 대상 게임 | Steam Twilight Struggle (Unity 6 `6000.0.58f2`, IL2CPP) |
 | 번역 주입 (TextAsset) | ✅ 666행 + 잔존 키 53개 — `Common_Strings`(KO 열), `TS_Cards`, `TS_Ingame`, `TS_Strings`, `Common_Ingame` |
+| 언어 테이블 KO 열 | ✅ 5개 테이블에 KO 열 추가 (언어=KO에서 카드/PANEL/HELP 키 해석) |
 | 씬 하드코딩 문자열 | ✅ 2,548개 — level1(메인 메뉴)·level2(인게임)·level3(보드) |
-| 한글 SDF 폰트 | ✅ 2048² SDF 2종(Noto Serif KR, Black Han Sans) → 24개 TMP 폰트 주입 |
+| 한글 SDF 폰트 | ✅ 2048² SDF 2종(Noto Serif KR, Black Han Sans, 739자) → 24개 TMP 폰트 주입 |
 | 게임 언어 설정 | ✅ KO 전환 (레지스트리 PlayerPrefs) |
-| Windows 실게임 테스트 | ✅ 1차 완료 — 카드/인게임 한글 출력 확인 |
-| 메뉴 한글화 재확인 | ⬜ 게임 재실행 대기 |
+| Windows 실게임 테스트 | ✅ 4차 완료 — **카드·메뉴·인게임 UI 대부분 한글화 확인** |
+| 미번역 텍스트 전체 확인 | ⬜ 영어 잔존 수집 중 |
 | macOS 적용 | ⬜ `patched/` 전송 + `scripts/install.sh` |
 | 멀티플레이 | ⬜ 미검증 |
 
