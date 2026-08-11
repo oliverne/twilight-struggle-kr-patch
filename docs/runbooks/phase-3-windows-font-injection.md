@@ -98,12 +98,28 @@ unity_font_replacer_ko.exe --gamepath "…\font-inject-work\Twilight Struggle" ^
 - `--list`는 `Replace_to`가 빈 항목은 건너뛴다.
 - 출력: `font-output/resources.assets`, `font-output/sharedassets0.assets` 등
 
-### 폰트 매핑 (2026-08-11 확정)
+### 폰트 매핑 (2026-08-12 갱신)
 
 | 교체 폰트 | 대상 (24개) |
 |---|---|
-| **NotoSerifKR SDF** | TIMES, TIMESI, LiberationSans(+Fallback), FRAMD 계열, GOTHIC 계열, Unity (13개) |
-| **BlackHanSans SDF** | Anton, Bangers, Electronic Highway Sign, Oswald, Roboto-Bold, Gunplay, IMPACT 계열, atwriter(+outline) (11개) |
+| **NotoSerifKR SDF** → D2Coding Regular | TIMES, TIMESI, LiberationSans(+Fallback), FRAMD 계열, GOTHIC 계열, Unity (13개) |
+| **BlackHanSans SDF** → Paperlogy 5 Medium | Anton, Bangers, Electronic Highway Sign, Oswald, Roboto-Bold, Gunplay, IMPACT 계열, atwriter(+outline) (11개) |
+
+> 파일명(KR_ASSETS의 `NotoSerifKR SDF` / `BlackHanSans-Regular SDF`)은 유지한 채
+> SDF JSON 내용만 교체한다. 매핑 JSON 재설정 불필요.
+
+---
+
+## Step 2.5: 폰트 크기 조절 (SDF 재생성 불필요)
+
+> 상세 절차: `.pi/skills/twilight-struggle-font-size/SKILL.md`
+
+- **m_Scale은 도구가 게임 원본 값으로 강제 덮어씀** (`_NEW_LINE_METRIC_KEYS`) — JSON 수정 무의미
+- **m_PointSize는 보존됨** — TMP `fontScale = fontSize / pointSize × scale` 공식에 따라
+  pointSize를 키우면 글자가 작아진다 (반비례)
+- 수식: 새 PointSize = 현재 PointSize ÷ (1 − 축소율). 도구가 int 정수화 → 70→77 ≈ 9% 축소
+- line metrics가 pointSize 비율로 자동 보정되어 **글자만 축소, 줄 간격은 유지**
+- 적용: `fonts/*.json` m_PointSize 수정 → KR_ASSETS 복사 → parse → apply_font_mapping → 주입 → 검증
 
 ---
 
@@ -115,6 +131,7 @@ python scripts/verify_assets.py --orig <번역주입본 resources.assets> --patc
 ```
 
 - 성공 기준: `m_Script 불일치 0건`, `예상외 raw 변경 0건`
+- 크기 조절 주입 시 폰트/텍스처 변경이 **0건이면 m_PointSize가 반영되지 않은 것** (20여 건 잡혀야 정상)
 - `font-output/resources.assets` → `patched/`, `font-output/sharedassets0.assets` → `patched/` 복사
 - `sha256sum patched/*.assets > patched/hashes.txt`
 
