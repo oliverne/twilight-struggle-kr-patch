@@ -356,7 +356,7 @@
     {
       "key": "Help_LateWar_Markers",
       "original": "Markers",
-      "translation_ko": "<color=white>영향력 마커</color>는 한 번에 하나씩 놓으며, 차례 플레이어의 <color=white>행동 라운드</color> 시작 시점에 이미 놓여 있던 자기 마커와 함께 있거나 인접한 곳에 배치해야 한다. 자기 지배 국가나 미지배 국가에 영향력 마커를 놓는 데는 작전치 1이 든다. 적 지배 국가에 <color=white>영향력 마커</color>를 놓으려면 작전치 2가 든다. 영향력 배치 도중 국가의 지배 상태가 바뀌면, 그 <color=white>행동 라운드</color>의 이후 배치 비용도 그에 맞게 조정된다."
+      "translation_ko": "표시자"
     },
     {
       "key": "Help_LateWar_MarkersInfo",
@@ -416,7 +416,7 @@
     {
       "key": "Help_LateWar_USSRControl",
       "original": "Soviet Control",
-      "translation_ko": "(1986) 체르노빌 사고는 핵 발전 역사상 최악의 재앙이었습니다. 방사성 잔해는 서유럽 전역으로 퍼진 거대한 구름 형태로 확산되었으며, 결국 미국 동해안에까지 도달했습니다. 소련이 통제하던 우크라이나와 벨라루스의 심각하게 오염된 지역에서 20만 명이 이주해야 했습니다. 최대 4,000명이 그날 받은 치명적인 방사선 노출로 사망할 것으로 추정됩니다. 체르노빌은 냉전 말기 소련 관료적 의사 결정의 단면을 보여주는 충격적인 무능함을 드러냈습니다."
+      "translation_ko": "소련 지배"
     },
     {
       "key": "Help_LateWar_USSRControlInfoA",
@@ -466,7 +466,7 @@
     {
       "key": "Help_LateWar_Cards",
       "original": "Cards",
-      "translation_ko": "10. 이제 카드를 배분한다. 10단계에서 추가된 카드는 실제로 배분된 카드로 간주되며 시작 손패 장수에 포함된다."
+      "translation_ko": "카드"
     },
     {
       "key": "Help_LateWar_CardsInfo",
@@ -516,7 +516,7 @@
     {
       "key": "Help_Example",
       "original": "Example",
-      "translation_ko": "<color=white>후기 전쟁</color> 시기는 1975년, 대략 <color=fffff>사이공 함락</color> 무렵부터 시작된다. 이 시점을 기준으로 <color=white>후기 전쟁 시나리오</color>의 시작 영향력과 이벤트가 설정되어 있다. 후기 전쟁 시나리오를 사용하면 플레이어는 그 시대의 사건을 반영한 카드들로 바로 게임을 시작할 수 있다.<br><bR>베트남 전쟁 이후 미국은 게임상 상당히 강한 위치에서 출발하는 것으로 보인다. 도미노가 실제로 무너졌는지와 관계없이, 예를 들어 미국은 여전히 아시아를 지배하고 있다. 이 시나리오를 플레이해 보면 미국의 자동 승리가 충분히 가능한 수준이므로, 이 시나리오에서 소련 플레이어는 사회주의 실험의 몰락을 조금이라도 더 품위 있게 만드는 것만으로도 승리한 셈이다."
+      "translation_ko": "예시"
     },
     {
       "key": "Help_Realignment_Example",
@@ -526,7 +526,7 @@
     {
       "key": "Help_Scoring",
       "original": "Scoring",
-      "translation_ko": "<color=white>> F. 중국 카드 뒤집기 :</color> 턴 동안 <color=white><i>중국 카드</i></color>가 뒷면으로 넘어갔다면 사용 가능하도록 앞면으로 뒤집는다.<br><br><color=white>> G. 턴 안내 :</color> 게임은 다음 턴으로의 진행을 알리며 주요 라운드 정보를 표시한다.<br><br><color=white>> H. 최종 점수 계산 :</color> 10턴 종료 시 게임은 최종 점수 계산을 수행한다."
+      "translation_ko": "점수 계산"
     },
     {
       "key": "Help_Scoring_Scoring01",
@@ -656,7 +656,7 @@
     {
       "key": "Help_SpecialAbilities",
       "original": "Special Abilities",
-      "translation_ko": "<color=white>우주 경쟁</color> 트랙에는 각 초강대국의 마커가 하나씩 있다. 플레이어는 <color=white>작전치</color>를 사용해 자신의 마커를 다음 칸으로 전진시키려 시도할 수 있다. 특별한 예외가 없는 한 플레이어는 턴마다 카드 1장을 버려 <color=white>우주 경쟁</color> 전진을 시도할 수 있다. 버리는 카드의 <color=white>작전치</color>은 전진하려는 칸에 표시된 수치 이상이어야 한다. 게임은 주사위를 굴리고, 결과가 목표 칸에 표시된 범위 안에 들어가면 마커를 그 칸으로 이동시킨다.<br><br><color=white>우주 경쟁</color> 트랙을 전진하면 <color=white>승점</color>, 특수 능력, 또는 둘 다를 얻는다. 특정 <color=white>우주 경쟁</color> 칸에 먼저 도달한 플레이어는 왼쪽 수의 <color=white>승점</color>을 받고, 두 번째로 도달한 플레이어는 오른쪽 수의 <color=white>승점</color>을 받는다. 특수 능력은 특정 우주 경쟁 칸에 먼저 도달한 플레이어에게 부여되며, 두 번째 플레이어가 그 칸에 도달하는 즉시 사라진다."
+      "translation_ko": "특수 능력"
     },
     {
       "key": "RB_OpsPointValue",
@@ -1176,7 +1176,7 @@
     {
       "key": "Help_War_WarEvents",
       "original": "War Events",
-      "translation_ko": "각 턴이 끝날 때 플레이어는 일정 수치 이상의 <color=white>군사 작전</color>을 보유해야 한다. 이를 충족하지 못하면 <color=white>승점</color> 페널티를 받는다. 매 턴 필요한 <color=white>군사 작전</color> 수치는 현재 데프콘 단계와 같다. <color=white>쿠데타</color>와 전쟁 이벤트는 <color=white>군사 작전</color>으로 간주되며"
+      "translation_ko": "전쟁 이벤트"
     },
     {
       "key": "Help_War_WarEventsInfo",
@@ -1561,7 +1561,7 @@
     {
       "key": "Help_Help",
       "original": "Help",
-      "translation_ko": "(1961 – 1973) 중남미에서 커져가는 쿠바의 영향력에 대응하기 위해 케네디 대통령이 시작한 진보를 위한 동맹은 북미와 라틴 아메리카의 경제를 통합하는 것을 목표로 했습니다. 이 프로그램의 중점 사항에는 토지 개혁, 민주주의 개혁, 세제 개혁이 포함되었습니다. 1960년대 후반이 되자 미국은 베트남과 남아시아에 완전히 얽매이게 되어 라틴 아메리카에 대한 지원이 약해졌습니다. 더구나 라틴 아메리카 국가들 중 필요한 개혁을 기꺼이 단행하려는 나라가 거의 없었습니다. 결과적으로 미주기구는 1973년 \"상설\" 진보를 위한 동맹 위원회를 해산했습니다."
+      "translation_ko": "도움말"
     },
     {
       "key": "RB_IntroductionBody",
