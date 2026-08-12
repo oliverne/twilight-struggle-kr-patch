@@ -124,3 +124,4 @@
 | 2026-08-12                                        | **macOS 전체 파이프라인 재현** — Windows 전송 불필요 (GameAssembly.dll+metadata 2개만). venv 패치 2건·Il2CppDumper 스킵·metadata 플랫폼별 확인 + install.sh level1~3 버그 수정 | `4b53d1a`, `effbe84` |
 | 2026-08-12                                        | **macOS 실게임 확인** — 크래시 원인(Windows 씬 패치본 비호환) 발견·해결, macOS 원본 기준 재패치. 언어 키 플랫폼별 확인 (macOS: localization) | `cb2dba0` |
 | 2026-08-12                                        | **uninstall 스크립트 2종 + 설치 시 이전 언어 기록** — 제거 시 영문 복귀 지원 (게임 삭제·재설치/무결성 후 언어 잔존 시나리오 포함), 게임 내 언어 선택 UI 없음 실측 반영 | `b16ea22` |
+| 2026-08-12                                        | **Phase 5 완료 처리** — Steam 무결성 복구·uninstall 검증 반영, Phase 6 핸드오프 작성 | `8a95a59` |
