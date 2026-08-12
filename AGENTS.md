@@ -79,7 +79,7 @@
 - macOS: `~/Library/Application Support/Steam/steamapps/common/Twilight Struggle/TwilightStruggle.app/Contents/Resources/Data/`
 - Windows: `steamapps/common/Twilight Struggle/TwilightStruggle_Data/` (⚠️ **공백 없음** — 실측, 2026-08-11)
 - 에셋 파일은 플랫폼 공용(동일 빌드) → 한쪽에서 수정한 파일은 다른 플랫폼에도 그대로 복사 가능
-- **게임 언어 설정(PlayerPrefs)**: `HKCU\Software\Playdek\TwilightStruggle` 레지스트리 키 `localization_h2525087814` — `KO`로 설정해야 TextAsset KO 열이 로드됨 (`EN`이면 영어). 게임 내 설정 → Languages에서도 선택 가능. **설치 스크립트(`install-windows.ps1`/`install.sh`)가 파일 복사와 함께 자동으로 KO 설정** (Windows: 레지스트리, macOS: `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist` plist)
+- **게임 언어 설정(PlayerPrefs)**: `HKCU\Software\Playdek\TwilightStruggle` 레지스트리 키 `localization_h2525087814` — `KO`로 설정해야 TextAsset KO 열이 로드됨 (`EN`이면 영어). ⚠️ **게임 내 언어 선택 UI는 없음 (2026-08-12 실측)** — PlayerPrefs 값 변경으로만 설정 가능. **설치 스크립트(`install-windows.ps1`/`install.sh`)가 파일 복사와 함께 자동으로 KO 설정** (Windows: 레지스트리, macOS: `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist` plist)
 
 ## 주요 도구
 

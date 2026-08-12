@@ -70,7 +70,8 @@ mkdir -p "$USER_ROOT/patched" "$USER_ROOT/scripts"
 cp patched/resources.assets patched/sharedassets0.assets \
    patched/level1 patched/level2 patched/level3 patched/hashes.txt \
    "$USER_ROOT/patched/"
-cp scripts/install.sh scripts/install-windows.ps1 scripts/restore-original.sh \
+cp scripts/install.sh scripts/install-windows.ps1 scripts/uninstall.sh scripts/uninstall-windows.ps1 \
+   scripts/restore-original.sh \
    "$USER_ROOT/scripts/"
 cp README.md "$USER_ROOT/"
 
@@ -99,7 +100,8 @@ rm -rf "$SRC_ROOT"/fonts/backup-* "$SRC_ROOT/fonts/.gitkeep"
 # 패치/검증 파이프라인 스크립트 (설치 스크립트 포함 — 재현·복구용)
 for s in inject_translations.py add_ko_columns.py patch_scenes.py verify_assets.py \
          extract_textassets.py extract_charset.py apply_font_mapping.py \
-         analyze_scene_texts.py install.sh install-windows.ps1 restore-original.sh; do
+         analyze_scene_texts.py install.sh install-windows.ps1 uninstall.sh uninstall-windows.ps1 \
+         restore-original.sh; do
     [ -f "scripts/$s" ] && cp "scripts/$s" "$SRC_ROOT/scripts/"
 done
 

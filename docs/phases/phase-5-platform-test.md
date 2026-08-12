@@ -64,7 +64,7 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 
 - Unity PlayerPrefs 위치: `HKCU\Software\Playdek\TwilightStruggle`
 - 키: `localization_h2525087814` — `EN` → `KO`로 변경 완료 (2026-08-11)
-- 게임 설정 → Languages 에서도 선택 가능 (AvailableCultures에 ko 등록됨)
+- ⚠️ **게임 내 언어 선택 UI는 없음 (2026-08-12 실측)** — PlayerPrefs 값 변경으로만 설정 가능 (AvailableCultures에 ko 등록됨)
 - **검증**: 게임 실행 후 Player.log에 `Load Language Header: KO`가 찍히는지 확인
 
 ## 게임 재실행 테스트 (4차, 2026-08-12) — ✅ 대부분 한글화 확인
@@ -200,6 +200,7 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 ### 미해결 이슈 (보류)
 
 - **턴 히스토리 로그** — IL2CPP 코드 문자열(global-metadata.dat)로 파일 패치 불가. BepInEx 런타임 훅 프로젝트로만 해결 가능 (블루칩·런타임 패치 포함 모든 기존 패치가 미커버)
+  - **보류 범위 확정 실측 (2026-08-12)**: 인게임 대기 메시지 "플레이어의 결정을 기다리는 중..."(원문 `Waiting for Player to decide...`)이 한글 표시되는 것을 계기로 전수 확인 — 원문이 global-metadata.dat 0건 / resources.assets 0건, patched/level2(인게임 씬)에 한글 2건·EN 0건 → **계층 2(씬 하드코딩, patch_scenes.py)로 해결된 문자열**임을 실측 확정. IL2CPP 코드 문자열 잔존은 **턴 히스토리 로그 템플릿뿐**으로 범위가 좁혀짐
 - **폰트 크기 불일치** — 24개 원본 폰트 → 한글 2종 통일로 크기/줄 간격 차이. `--use-game-line-metrics` 재주입 또는 m_FaceInfo(m_PointSize/m_Scale/m_LineHeight) 배율 조정으로 보정 가능 (미적용)
 - **규칙북/튜토리얼 긴 문단** — 씬 하드코딩 167개 미번역 + TS_RulesTutorial 313행(6.4만 자) 전량 수동. **Phase 7(후순위, 배포 후)로 이관** — [phase-7-help-translation.md](phase-7-help-translation.md) 참조
 - **더미 텍스트** — 'PlayerName12345', 'Text goes here' 등 개발용 더미는 번역 제외 (무해)

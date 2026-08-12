@@ -36,22 +36,51 @@ Steam판 **Twilight Struggle**(App ID `406290`)용 한글 패치 프로젝트입
 
 ## 설치 방법
 
+배포 zip을 압축 해제한 뒤 운영체제별 설치 스크립트를 실행합니다 (백업 → 복사 → 언어 KO 설정 자동 처리).
+
 ### Windows
 
-1. 게임 종료 상태에서 `TwilightStruggle_Data/` 폴더의 다음 파일을 백업:
-   `resources.assets`, `sharedassets0.assets`, `level1`, `level2`, `level3`
-2. `patched/` 폴더의 같은 이름 파일 5개를 `TwilightStruggle_Data/`에 복사
-3. 게임 실행 → 설정 → Languages에서 **한국어** 선택
-   (또는 레지스트리 `HKCU\Software\Playdek\TwilightStruggle`의 `localization_h2525087814`를 `KO`로 변경)
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\install-windows.ps1
+```
 
 ### macOS
 
-1. `patched/`의 파일 5개를 `TwilightStruggle.app/Contents/Resources/Data/`에 복사
-2. `scripts/install.sh` 실행 (백업 → 복사 → `codesign --force --sign -` 자동 처리)
+```bash
+./scripts/install.sh
+```
 
-### 복구
+수동으로 하면 아래와 같습니다 (스크립트가 이 과정을 자동 수행):
 
-- 백업해둔 파일을 되돌리거나 Steam "파일 무결성 확인" 실행
+1. 게임 종료 상태에서 `TwilightStruggle_Data/` 폴더의 다음 파일을 백업:
+   `resources.assets`, `sharedassets0.assets`, `level1`, `level2`, `level3`
+2. `patched/` 폴더의 같은 이름 파일을 게임 Data 폴더에 복사
+3. 게임 언어를 KO로 설정 (Windows: 레지스트리 `HKCU\Software\Playdek\TwilightStruggle`의 `localization_h2525087814` / macOS: `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist`의 `localization`)
+4. macOS는 추가로 `codesign --force --sign -` 재서명 필요
+
+### 제거 (영문/원래 언어 복귀)
+
+설치 스크립트가 적용한 것을 모두 원상 복구합니다.
+
+- Windows: `powershell -ExecutionPolicy Bypass -File scripts\uninstall-windows.ps1`
+- macOS: `./scripts/uninstall.sh`
+
+원본 파일을 `.bak`에서 복원하고, 게임 언어를 **설치 전 값**으로 되돌립니다 (설치 시 `krpatch-install-info.txt`에 기록).
+
+⚠️ **패치 파일만 지우면 안 됩니다.** Steam 무결성 확인만 하면 파일은 원복되지만 언어가 KO로 남아 메뉴·카드가 `${Key}`로 표시됩니다. `.bak`이 없을 때(Steam 업데이트 등)는 Steam 무결성 확인을 먼저 실행한 뒤 위 스크립트를 다시 실행하세요.
+
+⚠️ **게임 삭제·재설치를 해도 언어 설정은 남습니다.** macOS plist(`~/Library/Preferences/`)와 Windows 레지스트리는 게임 폴더 밖에 있어 Steam이 지우지 않습니다. 재설치 후 언어가 KO로 남아 있으면 `${Key}`가 표시되므로 아래를 실행하세요 (이 게임에는 언어 선택 UI가 없어 PlayerPrefs 값 변경으로만 바뀝니다):
+
+```bash
+# macOS
+defaults write ~/Library/Preferences/unity.Playdek.TwilightStruggle.plist localization -string "EN"
+defaults write ~/Library/Preferences/unity.Playdek.TwilightStruggle.plist localization_h2525087814 -string "EN"
+```
+
+```powershell
+# Windows
+Set-ItemProperty -Path "HKCU:\Software\Playdek\TwilightStruggle" -Name "localization_h2525087814" -Value "EN"
+```
 
 ## 안전 원칙
 

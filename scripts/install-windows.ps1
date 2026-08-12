@@ -111,6 +111,16 @@ if (-not (Test-Path $regPath)) {
     New-Item -Path $regPath -Force | Out-Null
 }
 $oldLang = (Get-ItemProperty -Path $regPath -Name $regName -ErrorAction SilentlyContinue).$regName
+
+# 이전 언어 값 기록 (uninstall 시 복원용) — 기존 기록 파일이 있으면 보존 (첫 설치 시점 값)
+$infoFile = Join-Path $GameData "krpatch-install-info.txt"
+if (Test-Path $infoFile) {
+    Write-OK "기존 설치 정보 유지: $infoFile (첫 설치 시점 값 보존)"
+} else {
+    @("# Twilight Struggle 한글 패치 설치 정보 (uninstall-windows.ps1에서 사용)", "platform=windows", "previous_localization_h2525087814=$oldLang") | Set-Content -Path $infoFile -Encoding UTF8
+    Write-OK "이전 언어 값 기록: $infoFile (uninstall 시 복원)"
+}
+
 Set-ItemProperty -Path $regPath -Name $regName -Value "KO"
 $newLang = (Get-ItemProperty -Path $regPath -Name $regName).$regName
 if ($newLang -eq "KO") {
@@ -132,5 +142,5 @@ Write-Host ""
 Write-Host "  Steam에서 Twilight Struggle을 실행하세요."
 Write-Host "  (게임 언어는 KO로 자동 설정됨 — 메뉴가 즉시 한글 표시)"
 Write-Host ""
-Write-Host "  ※ 복원: 백업 .bak 파일을 되돌리거나 Steam 무결성 확인"
-Write-Host "  ※ Steam 업데이트 후에는 다시 실행하세요."
+Write-Host "  ※ 영문(원래 언어) 복귀: scripts\uninstall-windows.ps1 (원본 .bak 복원 + 언어 복원)"
+Write-Host "  ※ Steam 무결성 검사 후에는 다시 실행하세요."

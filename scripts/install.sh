@@ -108,7 +108,22 @@ if [ ! -f "$PLIST" ]; then
     # 실제 파일명이 다를 수 있으므로 glob으로 검색 (게임을 1회 이상 실행한 경우)
     PLIST=$(ls "$HOME/Library/Preferences"/unity.*TwilightStruggle*.plist 2>/dev/null | head -1)
 fi
-if [ -z "$PLIST" ]; then
+
+# 이전 언어 값 기록 (uninstall 시 복원용) — plist 존재 여부와 무관하게 저장
+# ⚠️ 기존 기록 파일이 있으면 덮어쓰지 않는다 (첫 설치 시점 값 보존).
+#    Steam 무결성 재설치 후 재실행 시 언어가 KO로 남아 있어도 첫 설치 때의 원래 값을 유지해야
+#    uninstall이 올바른 언어(보통 EN)로 복원한다.
+if [ -f "$GAME_DATA/krpatch-install-info.txt" ]; then
+    echo "  [기록] 기존 설치 정보 유지: $GAME_DATA/krpatch-install-info.txt (첫 설치 시점 값 보존)"
+else
+    PREV_LOCALIZATION=$(defaults read "$PLIST" localization 2>/dev/null || true)
+    PREV_LOCALIZATION_H=$(defaults read "$PLIST" localization_h2525087814 2>/dev/null || true)
+    printf '# Twilight Struggle 한글 패치 설치 정보 (uninstall.sh에서 사용)\nplatform=macos\nprevious_localization=%s\nprevious_localization_h2525087814=%s\n' \
+        "${PREV_LOCALIZATION:-}" "${PREV_LOCALIZATION_H:-}" > "$GAME_DATA/krpatch-install-info.txt"
+    echo "  [기록] 이전 언어 값 → $GAME_DATA/krpatch-install-info.txt (uninstall 시 복원)"
+fi
+
+if [ -z "$PLIST" ] || [ ! -f "$PLIST" ]; then
     # plist가 없으면 표준 경로에 새로 생성 (Unity가 최초 실행 시 읽음)
     PLIST="$HOME/Library/Preferences/unity.Playdek.TwilightStruggle.plist"
     defaults write "$PLIST" localization -string "KO"
@@ -118,7 +133,7 @@ if [ -z "$PLIST" ]; then
 else
     # macOS는 'localization' 키를 읽는다 (2026-08-12 실측: localization_h2525087814=KO인데도
     # Load Language Header: EN — Windows와 키가 다름)
-    OLD=$(defaults read "$PLIST" localization 2>/dev/null || echo "(없음)")
+    OLD=$(defaults read "$PLIST" localization 2>/dev/null || echo "없음")
     defaults write "$PLIST" localization -string "KO"
     defaults write "$PLIST" localization_h2525087814 -string "KO"
     echo -e "${GREEN}  ✅ $(basename "$PLIST") — localization = ${OLD} → KO${NC}"
@@ -131,5 +146,5 @@ echo ""
 echo "  Steam에서 Twilight Struggle을 실행하세요."
 echo "  (게임 언어는 KO로 자동 설정됨 — 메뉴가 즉시 한글 표시)"
 echo ""
-echo "  ※ 복원하려면: scripts/restore-original.sh"
+echo "  ※ 영문(원래 언어) 복귀: scripts/uninstall.sh (원본 .bak 복원 + 언어 복원)"
 echo "  ※ Steam 무결성 검사 후에는 다시 설치해야 합니다."
