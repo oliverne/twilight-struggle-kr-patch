@@ -38,7 +38,7 @@ def main():
         diff.append(f"- {old_ko[:200]}")
         diff.append(f"+ {new_ko[:200]}")
     if applied:
-        RUNTIME.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        RUNTIME.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     dist = ROOT / "dist"
     dist.mkdir(exist_ok=True)
     (dist / "polish-2.diff").write_text("\n".join(diff), encoding="utf-8")

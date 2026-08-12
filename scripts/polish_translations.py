@@ -218,7 +218,7 @@ def main():
                     if not DRY_RUN:
                         replace_in_tree(data, text, new_text)
         if not DRY_RUN:
-            path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(f"변경된 문자열: {total}개")
     print("규칙별 적용 수:")
     for name, cnt in sorted(applied_total.items(), key=lambda kv: -kv[1]):

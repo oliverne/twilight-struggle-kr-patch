@@ -51,6 +51,7 @@
 7. 텍스처에 구워진 문자(보드맵 국가명 등)는 현재 범위에서 제외.
 8. **EN 열은 보존하고 다른 언어 열을 한국어로 교체한다.** 원문(EN)을 덮어쓰지 않음 — 영문 폴백·원문 대조·번역 검수를 유지하고, 게임 언어 선택기가 한국어를 인식하도록 교체 대상 언어 열(또는 새 컬처)을 한글로 채운다.
 9. **언어=KO에서 모든 텍스트가 한글이 되려면 모든 언어 테이블에 KO 열이 필요하다.** SmartLocalization은 언어별 열 헤더("EN"/"KO")로 해석한다. Common_Strings만 KO 열을 만들면 메뉴만 한글화되고, 카드/스코어링(TS_Cards·TS_Ingame 등)은 `${Key}`가 노출된다 (2026-08-12 2차 테스트 확인). `scripts/add_ko_columns.py`가 KO 열을 추가·유지한다. ⚠️ **KO 열은 원본에 존재하는 열 번호 범위 내 빈 열에 배치** (TS_Cards 9열, 나머지 8~10열) — 원본 밖 열 번호에 셀을 추가하면 파서가 무시한다 (3차 테스트 확인).
+10. **JSON 저장 시 LF 강제 (CRLF 방지)** — Windows Python의 `write_text()`/`open('w')`는 `\n`을 `os.linesep`(`\r\n`)으로 변환해 저장한다 (2026-08-12 실측). `translation/*.json`을 저장하는 스크립트는 반드시 **LF 강제**: `open(path, 'w', encoding='utf-8', newline='\n')` 또는 `Path.write_text(text, encoding='utf-8', newline='\n')`을 사용한다. CRLF로 저장되면 (a) git status에 내용이 같아도 M 노이즈, (b) 커밋 시 CRLF/LF 혼재 위험. 판정 기준: `git diff --no-index --ignore-cr-at-eol <HEAD버전> <현재파일>`이 비어있으면 내용 동일(무해) — 단, **git이 autocrlf(input)로 정규화하므로 CRLF 저장 후에도 내용 손실은 없다.**
 
 ## 텍스트 소스 (우선순위)
 
