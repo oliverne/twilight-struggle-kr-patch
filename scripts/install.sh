@@ -57,7 +57,7 @@ if [ ! -f "$HASH_FILE" ]; then
 fi
 
 # ── 백업 (최초 1회만) ──
-for asset in resources.assets sharedassets0.assets sharedassets1.assets sharedassets2.assets sharedassets3.assets; do
+for asset in resources.assets sharedassets0.assets sharedassets1.assets sharedassets2.assets sharedassets3.assets level1 level2 level3; do
     if [ -f "$GAME_DATA/$asset" ] && [ ! -f "$GAME_DATA/${asset}.bak" ]; then
         cp "$GAME_DATA/$asset" "$GAME_DATA/${asset}.bak"
         echo -e "${GREEN}[백업]${NC} $asset → ${asset}.bak"
@@ -69,7 +69,7 @@ echo ""
 echo -e "${YELLOW}[설치] 패치 파일 복사 중...${NC}"
 
 COPIED=0
-for asset in resources.assets sharedassets0.assets sharedassets1.assets sharedassets2.assets sharedassets3.assets; do
+for asset in resources.assets sharedassets0.assets sharedassets1.assets sharedassets2.assets sharedassets3.assets level1 level2 level3; do
     if [ -f "$PATCHED_DIR/$asset" ]; then
         cp "$PATCHED_DIR/$asset" "$GAME_DATA/$asset"
         echo "  $asset"

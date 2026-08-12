@@ -45,3 +45,7 @@ fonts/*.ttf
 *.zip
 황혼의투쟁_한국어패치_20260315/
 fonts/backup-*/
+
+# macOS 폰트 주입 가상 작업 폴더 (재생성 가능)
+tools/font-inject-work-mac/
+

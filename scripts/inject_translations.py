@@ -90,6 +90,7 @@ def find_il2cpp_binary(game_path: Path) -> Path | None:
         game_path / "GameAssembly.dll",
         game_path / "GameAssembly.dylib",
         game_path / "Contents" / "Resources" / "GameAssembly.dylib",
+        game_path / "Contents" / "Frameworks" / "GameAssembly.dylib",
         game_path / "Contents" / "Resources" / "GameAssembly.so",
         game_path / "TwilightStruggle_Data" / "GameAssembly.dll",
     ]

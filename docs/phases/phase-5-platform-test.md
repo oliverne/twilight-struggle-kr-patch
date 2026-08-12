@@ -126,7 +126,7 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 - [x] TS_Ingame/TS_Strings 잔존 키 수동 번역 + 재주입 (53키)
 - [x] 씬 패치 (level1-3) — 하드코딩 문자열 2,548개 한글화
 - [x] **게임 재실행 테스트** — 4차 테스트에서 카드/메뉴/인게임 UI 한글화 확인 (2026-08-12)
-- [ ] macOS 설치 스크립트 검증 (`scripts/install.sh`)
+- [x] macOS 설치 스크립트 검증 (`scripts/install.sh`) — 2026-08-12 macOS 적용으로 검증 완료 (level1~3 복사 누락 버그 발견·수정 포함)
 - [x] Windows 설치 스크립트 (`scripts/install-windows.ps1`) 작성 + 실동작 검증 (2026-08-12)
 - [ ] 멀티플레이 동작 테스트
 - [ ] Steam 무결성 확인 후 재설치 테스트
@@ -144,7 +144,7 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 - [x] **Windows 설치 스크립트 작성 + 실동작 검증 (2026-08-12)** — `scripts/install-windows.ps1` 백업→복사→SHA256 검증, 멱등 확인 (이미 적용된 5개 파일 스킵)
 - [x] **설치 스크립트 게임 언어 KO 자동 설정** (2026-08-12) — install-windows.ps1: 레지스트리 `localization_h2525087814`=KO / install.sh: macOS plist `unity.Playdek.TwilightStruggle.plist`
 - [x] 미번역 텍스트 전체 확인 — **실게임 화면 단위** (2026-08-12) — 사용자 확인으로 대부분 한글, 영어 잔존 미발견. 전수 조사는 미실시 (잔존 발견 시 manual-*.json 추가 후 재주입)
-- [ ] macOS 설치 스크립트 검증 (`scripts/install.sh`)
+- [x] macOS 설치 스크립트 검증 (`scripts/install.sh`) — 2026-08-12 macOS 적용으로 검증 완료 (level1~3 복사 누락 버그 발견·수정 포함)
 - [x] Windows 설치 스크립트 (`scripts/install-windows.ps1`) 작성 + 실동작 검증 (2026-08-12)
 - [ ] 멀티플레이 동작 테스트
 - [ ] Steam 무결성 확인 후 재설치 테스트
@@ -181,8 +181,7 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
    - 이후 화면에서 영어 잔존 발견 시: 영어 잔존(TextAsset 키) → `translation/manual-extra.json`, 영어 잔존(씬 하드코딩) → `translation/manual-scenes.json`에 추가
    - 재주입: `inject_translations.py` → `add_ko_columns.py` → (문자 변경 시) 폰트 재주입
 2. **잔존 `□` 확인** — `fonts/chars.txt`에 글자 추가 → make_sdf.py 재생성 → 폰트 재주입 (Runbook 참조)
-3. **macOS 적용** — `patched/` 전송 (resources.assets 108MB + sharedassets0.assets + level1~3) → `scripts/install.sh`
-   - macOS 코드사인은 install.sh가 자동 처리 (`codesign --force --sign -`)
+3. ~~macOS 적용~~ — ✅ 완료 (2026-08-12): macOS에서 직접 전체 파이프라인 재현 → `scripts/install.sh` 적용 (level1~3 포함 5개 파일, 백업·재서명·언어 KO 자동)
 4. **Windows 설치 스크립트 작성** — `scripts/install-windows.ps1` (백업 → 복사 → 해시 검증) — ✅ 완료 (2026-08-12, 실동작 검증 완료)
 5. **멀티플레이 테스트** — 패치 후 온라인 기능 정상 동작 확인 (미실시)
 6. **Steam 무결성 확인 후 재설치 테스트** — 복구 절차 검증
@@ -194,7 +193,7 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 
 - 게임 언어는 레지스트리 PlayerPrefs로 관리 — 패치에 언어 설정이 포함되지 않으므로 설치 안내에 명시 필요
 - 씬 패치는 `patch_scenes.py`로 재현 가능 (번역 소스만 추가하면 재실행)
-- 폰트 재주입은 Windows에서만 가능 (Unity_Font_Replacer exe) — macOS는 SDF 생성만 가능
+- 폰트 재주입은 **macOS에서도 가능** (2026-08-12 검증) — Windows 빌드 GameAssembly.dll + global-metadata.dat 필요, 절차는 [Runbook Step 5](runbooks/phase-3-windows-font-injection.md) 참조
 - **번역 소스 추가 시 재주입 순서**: `inject_translations.py`(TextAsset EN 열) → `add_ko_columns.py`(KO 열 동기화) → 필요시 폰트 재주입 → `verify_assets.py` 검증
 - **알려진 미번역 잔존**: TS_Ingame의 일부 키 ('Start'=Panel_SpaceRaceStd01Title, 'In' 등) — 다음 라운드에서 manual-extra에 추가
 

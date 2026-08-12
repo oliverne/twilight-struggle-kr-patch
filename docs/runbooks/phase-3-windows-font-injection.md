@@ -179,3 +179,100 @@ pip install --upgrade "git+https://github.com/snowyegret23/UnityPy.git"
 
 - `unity_font_replacer_core.py`의 `scan_fonts(game_path, lang='en', isolate_files=False)`로 스캔 재현
 - `_create_generator()` → `TypeTreeGeneratorAPI.TypeTreeGenerator` — `get_nodes()`로 클래스별 타입 트리 생성 확인
+
+---
+
+## Step 5: macOS에서 전체 파이프라인 직접 실행 (2026-08-12 검증)
+
+> Windows 전송 없이 macOS에서 번역 주입 → KO 열 → 폰트 주입 → 설치까지 전부 가능.
+> 필요한 것은 Windows 빌드의 `GameAssembly.dll`(PE) + `global-metadata.dat` 2개뿐 (original/에 보관).
+
+### ⚠️ global-metadata.dat는 플랫폼별이다 (Runbook 초기 기록 정정)
+
+- macOS metadata(`3665f553…`) ≠ Windows metadata(`e18d1b04…`) — 해시 다름 (2026-08-12 실측)
+- **Windows dll + Windows metadata 조합이어야 타입 트리 생성 성공**
+  (macOS metadata로는 `Type "TMP_FontAsset" was not found in the IL2CPP metadata` 발생)
+- macOS dylib(슬라이스) + macOS metadata 조합도 실패 → **PE dll + Windows metadata만 사용**
+
+### 사전 준비 (original/에 보관)
+
+```
+original/GameAssembly.dll      # Windows Steam 설치본 (PE32+, ~34MB)
+original/global-metadata.dat   # Windows Steam 설치본 (TwilightStruggle_Data/il2cpp_data/Metadata/, ~7.9MB)
+```
+
+### venv 패치 (필수 2건 — 로컬 수정, 재설치 시 재적용)
+
+1. **UnityPy `get_nodes_up`의 `.dll` 붙임 제거** (공식 UnityPy 1.25.2 기준):
+   `UnityPy/helpers/TypeTreeGenerator.py`에서 아래 2줄 삭제
+   ```python
+   if not assembly.endswith(".dll"):
+       assembly = f"{assembly}.dll"
+   ```
+   (C++ 라이브러리가 `.dll` 없는 이름만 인식 — 안 지우면 모든 타입 검색 실패 → SDF 0개)
+
+2. **Il2CppDumper 분기 스킵** (`unity_font_replacer_core.py` ~8281행):
+   `if not os.path.exists(dumper_path):` → `if sys.platform != "win32" or not os.path.exists(dumper_path):`
+   (소스 실행 시 get_script_dir()=src/에 Il2CppDumper.exe가 있어도 macOS에서 실행 불가 — 비Windows는 무조건 스킵)
+
+### 가상 작업 폴더 구성
+
+```
+tools/font-inject-work-mac/Twilight Struggle/
+├── GameAssembly.dll                          ← original/GameAssembly.dll (PE!)
+└── TwilightStruggle_Data/
+    ├── resources.assets                      ← 번역+KO 주입본 (patched)
+    ├── sharedassets0~3.assets (+ .resS)
+    ├── globalgamemanagers (+ .assets, .resS)
+    └── il2cpp_data/Metadata/global-metadata.dat  ← original/global-metadata.dat (Windows!)
+```
+
+### 실행 순서
+
+```bash
+# 1) 번역 주입 (macOS: --gamepath는 GameAssembly.dll 있는 임시 폴더 + metadata 복사본)
+cp original/GameAssembly.dll /tmp/ts-ga/ && cp original/global-metadata.dat /tmp/ts-ga/
+.venv/bin/python scripts/inject_translations.py --gamepath /tmp/ts-ga \
+    --src original/resources.assets --out patched/resources.assets
+.venv/bin/python scripts/add_ko_columns.py --gamepath /tmp/ts-ga \
+    --src patched/resources.assets --out patched/resources.assets.ko && mv patched/resources.assets.ko patched/resources.assets
+
+# 2) SDF 재생성 (2048², m_PointSize 77 유지 — 4096²면 결과가 397MB가 됨)
+cd fonts
+.venv/bin/python ../tools/unity-font-replacer/src/make_sdf.py --ttf "D2Coding-Ver1.3.3-20260725.ttf" \
+    --atlas-size 2048,2048 --point-size 77 --padding 4 --charset chars.txt
+.venv/bin/python ../tools/unity-font-replacer/src/make_sdf.py --ttf "Paperlogy-5Medium.ttf" \
+    --atlas-size 2048,2048 --point-size 77 --padding 4 --charset chars.txt
+# ※ make_sdf가 73으로 자동 보정 → JSON m_FaceInfo.m_PointSize를 77로 재수정 후 주입
+
+# 3) KR_ASSETS 배치 (script_dir=src/KR_ASSETS 기준! 루트 KR_ASSETS에도 동일 복사)
+cp "fonts/D2Coding-Ver1.3.3-20260725 SDF.json"        src/KR_ASSETS/NotoSerifKR SDF.json
+cp "fonts/D2Coding-Ver1.3.3-20260725 SDF Atlas.png"   src/KR_ASSETS/NotoSerifKR SDF Atlas.png
+cp "fonts/Paperlogy-5Medium SDF.json"                 src/KR_ASSETS/BlackHanSans-Regular SDF.json
+cp "fonts/Paperlogy-5Medium SDF Atlas.png"            src/KR_ASSETS/BlackHanSans-Regular SDF Atlas.png
+
+# 4) 폰트 주입 (SDF 27개 인식 확인 후)
+.venv/bin/python tools/unity-font-replacer/src/unity_font_replacer_ko.py \
+    --gamepath "tools/font-inject-work-mac/Twilight Struggle" --parse
+# → "Twilight Struggle.json"의 SDF 항목에 Replace_to 지정
+#   (본문 13개: NotoSerifKR SDF / 제목 11개: BlackHanSans-Regular SDF / Sprite 3개: 빈 값)
+.venv/bin/python tools/unity-font-replacer/src/unity_font_replacer_ko.py \
+    --gamepath "tools/font-inject-work-mac/Twilight Struggle" \
+    --list "tools/unity-font-replacer/src/Twilight Struggle.json" \
+    --output-only "tools/font-inject-work-mac/font-output"
+
+# 5) 검증 + 설치 (verify는 "입력(번역+KO 주입본) vs 출력(폰트 주입본)" 비교!)
+.venv/bin/python scripts/verify_assets.py \
+    --orig "tools/font-inject-work-mac/Twilight Struggle/TwilightStruggle_Data/resources.assets" \
+    --patched tools/font-inject-work-mac/font-output/resources.assets
+cp tools/font-inject-work-mac/font-output/resources.assets tools/font-inject-work-mac/font-output/sharedassets0.assets patched/
+./scripts/install.sh   # 백업 → 복사(resources/sharedassets0/level1~3) → 재서명 → 언어 KO
+```
+
+### macOS 실행 시 유의점
+
+- `--parse`에서 "SDF 0개 / TTF 20개"면 venv 패치(1번) 누락 — 타입 트리 생성 실패
+- `--list`에서 "Il2CppDumper 실행 중 예외"면 venv 패치(2번) 누락
+- `resources.assets` 397MB면 SDF Atlas가 4096² — 2048²로 재생성 필요
+- font-output의 `globalgamemanagers` 등 다른 파일은 복사 불필요 (resources/sharedassets0/level1~3만 patched/)
+- install.sh는 level1~3도 복사한다 (2026-08-12 버그 수정: 원래 level1~3 누락)

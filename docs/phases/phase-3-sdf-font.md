@@ -14,7 +14,7 @@
 
 게임은 TextMeshPro(TMP)로 텍스트를 렌더링한다. TMP는 TTF를 직접 쓰지 않고 SDF(Signed Distance Field) 폰트 아틀라스라는 특수 텍스처를 사용한다. 현재 게임의 SDF 아틀라스는 라틴 문자만 포함하고 있어, 한글을 출력하면 빈 네모(`□`)가 표시된다. (Phase 1에서 확인)
 
-**macOS 한계**: [Unity_Font_Replacer](https://github.com/snowyegret23/Unity_Font_Replacer)의 `make_sdf.py`(SDF 생성)는 macOS에서 정상 작동하나, `unity_font_replacer_ko.py`(에셋 주입)는 Il2CppDumper.exe + Managed 폴더 생성에 Windows 전용 API(subprocess.STARTUPINFO, psutil.io_counters)를 사용해 macOS에서 실행 불가. **→ SDF 생성은 macOS, 주입은 Windows에서 실행.**
+**macOS 직접 실행 (2026-08-12 검증)**: 원래 Windows 전용으로 기록됐으나, Python 소스 실행 + Windows 빌드 `GameAssembly.dll`/`global-metadata.dat` 준비로 **macOS에서 전체 주입 파이프라인 재현 가능** — [Runbook Step 5](runbooks/phase-3-windows-font-injection.md) 참조 (venv 패치 2건 필수)
 
 ## 체크리스트
 
