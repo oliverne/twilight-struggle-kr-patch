@@ -210,3 +210,31 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 - `translation/manual-extra.json`, `translation/manual-scenes.json` — 수동 번역 소스
 - `scripts/patch_scenes.py`, `scripts/analyze_scene_texts.py` — 씬 패치 도구
 - Steam 설치본 백업: `TwilightStruggle_Data/backup-20260811/`
+
+## macOS 실게임 테스트 (2026-08-12) — ✅ 메뉴·카드 한글화 확인
+
+macOS에서 전체 파이프라인(macOS 원본 기준)으로 패치 후 실게임 확인:
+
+- ✅ 메인 메뉴/카드/인게임 UI 한글 + 폰트 정상 (D2Coding/Paperlogy 2048²)
+- ✅ 크래시 없음 — 아래 크래시 원인 해결 후
+- ⏸️ 턴 히스토리 로그 영어 ("Remove Influence in # More Countries" 등) — **Windows와 동일한 보류 항목** (IL2CPP 코드 문자열, global-metadata.dat 양 플랫폼 모두 존재 확인)
+
+### 크래시 원인과 해결 (중요)
+
+| 증상 | 원인 | 해결 |
+|---|---|---|
+| 로딩 중 크래시 (Loading.PreloadManager EXC_BREAKPOINT) | **Windows 원본 기준 씬 패치본(level1~3)을 macOS에 적용** — 에셋도 플랫폼별 (metadata처럼 level 파일도 다름) | **macOS 원본 기준으로 patch_scenes.py 재실행** → 동일 매칭 결과 (883/1391/274) 확인 |
+| 메뉴 영어 (Load Language Header: EN) | macOS는 plist의 **`localization`** 키를 읽음 — `localization_h2525087814`=KO만 설정하면 무효 | plist `localization` = "KO" 설정 + install.sh 반영 |
+
+### macOS 언어 키 (플랫폼별)
+
+| 플랫폼 | 키 위치 | 키 이름 |
+|---|---|---|
+| Windows | 레지스트리 `HKCU\Software\Playdek\TwilightStruggle` | `localization_h2525087814` |
+| macOS | `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist` | **`localization`** (+ `localization_h2525087814`도 설정) |
+
+### patched/는 플랫폼별
+
+- `patched/resources.assets`, `sharedassets0.assets`, `level1~3` — **macOS 원본 기준** (현재 저장소 상태)
+- Windows용은 Windows 원본 기준으로 별도 보관 — 배포 시 플랫폼별 zip 분리 필요 (Phase 6)
+- macOS 씬 패치: `patch_scenes.py --gamepath tools/font-inject-work-mac/Twilight Struggle --outdir patched-mac/` (가상 폴더에 macOS 원본 level1~3 복사 후 실행)

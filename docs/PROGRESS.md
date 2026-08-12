@@ -22,14 +22,15 @@
 - ✅ **번역 다듬기 — humanizer 스캔(556건) → 일괄 교정 52개 + 런타임 장문 10개, grammar-checker 조사 오류 11건 교정 (2026-08-12)** — 상세: [translation-polish-review.md](docs/translation-polish-review.md)
 - ✅ **미번역 텍스트 화면 단위 확인 (2026-08-12)** — 사용자 실게임으로 대부분 한글 확인, 영어 잔존 미발견 (전수 조사는 미실시)
 - ✅ **macOS 전체 파이프라인 재현 + 적용 완료 (2026-08-12)** — Windows 전송 없이 macOS에서 번역 주입→KO 열→폰트 주입→설치까지 전부 성공 (Windows 빌드 GameAssembly.dll + global-metadata.dat만 original/에 보관)
-- **Phase 5 잔여: 멀티플레이 (스킵) → Steam 무결성 재설치 테스트 (추후) → Phase 6 배포**
+- ✅ **macOS 실게임 확인 (2026-08-12)** — 메뉴·카드 한글, 폰트 정상. 크래시 원인 해결: **Windows 원본 기준 씬 패치본(level1~3)이 macOS 빌드와 비호환** → macOS 원본 기준으로 재패치해 해결 (에셋도 플랫폼별 확인). 언어 키도 플랫폼별: macOS는 `localization`(plist), Windows는 `localization_h2525087814`(레지스트리)
+- **Phase 5 잔여: Steam 무결성 재설치 테스트 (추후) → Phase 6 배포**
 
 ### 작업 재개 순서
 
-1. ~~macOS 적용~~ — ✅ 완료 (2026-08-12, install.sh로 설치 + 게임 실행 테스트 대기)
-2. **게임 실행 확인** — macOS에서 한글 표시 확인 (install.sh가 언어 KO 자동 설정)
+1. ~~macOS 적용~~ — ✅ 완료 (2026-08-12): macOS 파이프라인 재현 + 실게임 확인 (메뉴/카드 한글, 턴 히스토리 영어는 보류 — Windows와 동일)
+2. ~~게임 실행 확인~~ — ✅ 메뉴·카드 한글 + 폰트 정상 (2026-08-12)
 3. **Steam 무결성 확인 후 재설치 테스트** — 복구 절차 검증 (설치 스크립트 멱등성 포함)
-4. Phase 6 배포 (package-release.sh 사용)
+4. Phase 6 배포 (package-release.sh 사용) — ⚠️ patched는 플랫폼별이므로 macOS용/Windows용 분리 필요
 
 ## 핵심 확정 사항
 
@@ -65,7 +66,7 @@
 | Phase 2 — 문자열 추출 & 번역 소스 구축 | ✅   | 666/666행 번역 완료. 런타임 TSV + 수동 번역     | [상세](phases/phase-2-translation-source.md) |
 | Phase 3 — 한글 SDF 폰트 아틀라스 생성  | ✅   | 2048² SDF 2종 + Windows 주입 완료 (24개 폰트) | [상세](phases/phase-3-sdf-font.md)           |
 | Phase 4 — 텍스트 주입 & 레이아웃 조정  | ✅   | 무손상 주입 재구축 + 잔존 키 53개 재주입    | [상세](phases/phase-4-injection-layout.md)   |
-| Phase 5 — 플랫폼 적용 & 테스트         | 🚧   | Windows 실게임·씬 패치·언어 KO·설치 스크립트 완료. **macOS 적용 완료 (2026-08-12, macOS에서 전체 파이프라인 재현)**. 잔여: Steam 무결성 재설치 테스트 | [상세](phases/phase-5-platform-test.md)      |
+| Phase 5 — 플랫폼 적용 & 테스트         | 🚧   | **macOS 적용 완료 (2026-08-12)** — 파이프라인 재현 + 실게임 확인. 크래시 원인(Windows 씬 패치본 비호환) 해결, 언어 키 플랫폼별 확인. 잔여: Steam 무결성 재설치 테스트 | [상세](phases/phase-5-platform-test.md)      |
 | Phase 6 — 배포                         | ⬜   | 사용자 안내 및 배포 대기                       | [상세](phases/phase-6-release.md)            |
 | Phase 7 — 도움말/규칙 번역 (후순위)   | ⬜   | 배포 후 맨 마지막 수행 — 규칙 6.4만 자 수동   | [상세](phases/phase-7-help-translation.md)   |
 
@@ -119,4 +120,5 @@
 | 2026-08-12                                        | 폰트 교체(Paperlogy/D2Coding) + 크기 축소 + 크기 조절 스킬 신설 | `405b17a` |
 | 2026-08-12                                        | 번역 다듬기 스킬 신설 + CRLF 정규화 (내용 무변화)             | `02497c2`, `986246f` |
 | 2026-08-12                                        | 미번역 텍스트 화면 단위 확인 완료 (사용자 실게임, 전수 조사 미실시) | `5c5492a`, `5181950` |
-| 2026-08-12                                        | **macOS 전체 파이프라인 재현** — Windows 전송 불필요 (GameAssembly.dll+metadata 2개만). venv 패치 2건·Il2CppDumper 스킵·metadata 플랫폼별 확인 + install.sh level1~3 버그 수정 | `4b53d1a` |
+| 2026-08-12                                        | **macOS 전체 파이프라인 재현** — Windows 전송 불필요 (GameAssembly.dll+metadata 2개만). venv 패치 2건·Il2CppDumper 스킵·metadata 플랫폼별 확인 + install.sh level1~3 버그 수정 | `4b53d1a`, `effbe84` |
+| 2026-08-12                                        | **macOS 실게임 확인** — 크래시 원인(Windows 씬 패치본 비호환) 발견·해결, macOS 원본 기준 재패치. 언어 키 플랫폼별 확인 (macOS: localization) | (이번 커밋) |

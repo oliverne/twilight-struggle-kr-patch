@@ -111,13 +111,17 @@ fi
 if [ -z "$PLIST" ]; then
     # plist가 없으면 표준 경로에 새로 생성 (Unity가 최초 실행 시 읽음)
     PLIST="$HOME/Library/Preferences/unity.Playdek.TwilightStruggle.plist"
+    defaults write "$PLIST" localization -string "KO"
     defaults write "$PLIST" localization_h2525087814 -string "KO"
     echo -e "${YELLOW}  ⚠️  PlayerPrefs plist가 없어 새로 생성했습니다: $(basename "$PLIST")${NC}"
     echo -e "${YELLOW}  ⚠️  게임을 1회 실행한 뒤 언어가 KO인지 확인하세요.${NC}"
 else
-    OLD=$(defaults read "$PLIST" localization_h2525087814 2>/dev/null || echo "(없음)")
+    # macOS는 'localization' 키를 읽는다 (2026-08-12 실측: localization_h2525087814=KO인데도
+    # Load Language Header: EN — Windows와 키가 다름)
+    OLD=$(defaults read "$PLIST" localization 2>/dev/null || echo "(없음)")
+    defaults write "$PLIST" localization -string "KO"
     defaults write "$PLIST" localization_h2525087814 -string "KO"
-    echo -e "${GREEN}  ✅ $(basename "$PLIST") — localization_h2525087814 = ${OLD} → KO${NC}"
+    echo -e "${GREEN}  ✅ $(basename "$PLIST") — localization = ${OLD} → KO${NC}"
 fi
 
 # ── 완료 ──
