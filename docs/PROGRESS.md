@@ -6,7 +6,7 @@
 
 ## 현재 상태
 
-**다음 작업:** 멀티플레이 테스트 (스킵됨) → Steam 무결성 재설치 테스트 (추후) → Phase 6 배포
+**다음 작업:** Phase 6 배포 (package-release.sh) — ⚠️ patched는 플랫폼별이므로 macOS용/Windows용 분리 필요
 
 - 완료: Phase 0 — 준비, Phase 1 — 텍스트 위치 검증, Phase 2 — 번역 소스 구축
 - 완료: Phase 3 SDF 생성 (2048² 최적화) + Windows 폰트 주입 (24개 TMP 폰트)
@@ -23,13 +23,14 @@
 - ✅ **미번역 텍스트 화면 단위 확인 (2026-08-12)** — 사용자 실게임으로 대부분 한글 확인, 영어 잔존 미발견 (전수 조사는 미실시)
 - ✅ **macOS 전체 파이프라인 재현 + 적용 완료 (2026-08-12)** — Windows 전송 없이 macOS에서 번역 주입→KO 열→폰트 주입→설치까지 전부 성공 (Windows 빌드 GameAssembly.dll + global-metadata.dat만 original/에 보관)
 - ✅ **macOS 실게임 확인 (2026-08-12)** — 메뉴·카드 한글, 폰트 정상. 크래시 원인 해결: **Windows 원본 기준 씬 패치본(level1~3)이 macOS 빌드와 비호환** → macOS 원본 기준으로 재패치해 해결 (에셋도 플랫폼별 확인). 언어 키도 플랫폼별: macOS는 `localization`(plist), Windows는 `localization_h2525087814`(레지스트리)
-- **Phase 5 잔여: Steam 무결성 재설치 테스트 (추후) → Phase 6 배포**
+- ✅ **Steam 무결성 재설치 테스트 (2026-08-12)** — 무결성 후 ${Key} 노출(원본 에셋+언어 KO) 확인 → uninstall.sh 정상 동작 → 언어 EN 복귀 → install.sh 재설치 확인. 배포 유저의 제거·복구 경로 확보 (uninstall 2종, `b16ea22`)
+- **Phase 5 완료 — 다음: Phase 6 배포**
 
 ### 작업 재개 순서
 
 1. ~~macOS 적용~~ — ✅ 완료 (2026-08-12): macOS 파이프라인 재현 + 실게임 확인 (메뉴/카드 한글, 턴 히스토리 영어는 보류 — Windows와 동일)
 2. ~~게임 실행 확인~~ — ✅ 메뉴·카드 한글 + 폰트 정상 (2026-08-12)
-3. **Steam 무결성 확인 후 재설치 테스트** — 복구 절차 검증 (설치 스크립트 멱등성 포함)
+3. ~~Steam 무결성 확인 후 재설치 테스트~~ — ✅ 완료 (2026-08-12): ${Key} 노출 → uninstall.sh → EN 복귀 → 재설치 확인
 4. Phase 6 배포 (package-release.sh 사용) — ⚠️ patched는 플랫폼별이므로 macOS용/Windows용 분리 필요
 
 ## 핵심 확정 사항
@@ -50,7 +51,7 @@
   1. TextAsset 키 참조 (`${Key_XXX}`) — 언어=ko에서 KO 열 사용 → 번역 주입 + 언어 설정으로 해결
   2. 씬 하드코딩 문자열 (level1-3 MonoBehaviour) — **씬 패치(`patch_scenes.py`)로 해결**
   3. IL2CPP 코드 문자열 (global-metadata.dat, 턴 히스토리 템플릿) — BepInEx 런타임 훅 필요, 보류
-- **게임 언어 저장 위치: `HKCU\Software\Playdek\TwilightStruggle` 레지스트리 `localization_h2525087814`** (PlayerPrefs) — KO로 변경 완료. **설치 스크립트가 파일 복사와 함께 자동으로 KO 설정** (Windows: 레지스트리 / macOS: `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist` plist)
+- **게임 언어 저장 위치: `HKCU\Software\Playdek\TwilightStruggle` 레지스트리 `localization_h2525087814`** (PlayerPrefs) — KO로 변경 완료. ⚠️ **게임 내 언어 선택 UI는 없음 (2026-08-12 실측)** — PlayerPrefs 값 변경으로만 설정 가능. **설치 스크립트가 파일 복사와 함께 자동으로 KO 설정** (Windows: 레지스트리 / macOS: `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist` plist). **제거 시 uninstall 스크립트가 이전 언어로 복원** (설치 시 `krpatch-install-info.txt`에 기록, 첫 설치 값 보존)
 - **배포물은 `scripts/package-release.sh`가 생성하는 zip 2종** (사용자용 ~9MB / 재현용 ~3MB, SHA256SUMS 포함). `patched/*.assets`는 100MB 제한으로 gitignore지만 **압축 시 104MB→~8MB**라 GitHub Releases 첨부(파일당 2GB)로 충분 — gitignore는 Releases 업로드와 무관
 - **SDF 폰트 교체 도구: [Unity_Font_Replacer](https://github.com/snowyegret23/Unity_Font_Replacer) v1.2.8.** `make_sdf.py`로 TTF→SDF 생성, `unity_font_replacer_ko.exe`로 게임 에셋 자동 교체.
 - **⚠️ UnityPy(공식) `env.file.save()`는 IL2CPP 게임에서 MonoBehaviour m_Script 참조를 재매핑해 TMP 폰트를 파괴한다** (Phase 4 기존 patched가 m_Script 11,890건 손상). → 포크 UnityPy + TypeTreeGeneratorAPI(typetree_generator) 방식으로 재구축 완료.
@@ -66,7 +67,7 @@
 | Phase 2 — 문자열 추출 & 번역 소스 구축 | ✅   | 666/666행 번역 완료. 런타임 TSV + 수동 번역     | [상세](phases/phase-2-translation-source.md) |
 | Phase 3 — 한글 SDF 폰트 아틀라스 생성  | ✅   | 2048² SDF 2종 + Windows 주입 완료 (24개 폰트) | [상세](phases/phase-3-sdf-font.md)           |
 | Phase 4 — 텍스트 주입 & 레이아웃 조정  | ✅   | 무손상 주입 재구축 + 잔존 키 53개 재주입    | [상세](phases/phase-4-injection-layout.md)   |
-| Phase 5 — 플랫폼 적용 & 테스트         | 🚧   | **macOS 적용 완료 (2026-08-12)** — 파이프라인 재현 + 실게임 확인. 크래시 원인(Windows 씬 패치본 비호환) 해결, 언어 키 플랫폼별 확인. 잔여: Steam 무결성 재설치 테스트 | [상세](phases/phase-5-platform-test.md)      |
+| Phase 5 — 플랫폼 적용 & 테스트         | ✅   | **전부 완료 (2026-08-12)** — Windows 4차 테스트·macOS 실게임·Steam 무결성 복구·uninstall 검증. 잔여: 멀티플레이(스킵) | [상세](phases/phase-5-platform-test.md)      |
 | Phase 6 — 배포                         | ⬜   | 사용자 안내 및 배포 대기                       | [상세](phases/phase-6-release.md)            |
 | Phase 7 — 도움말/규칙 번역 (후순위)   | ⬜   | 배포 후 맨 마지막 수행 — 규칙 6.4만 자 수동   | [상세](phases/phase-7-help-translation.md)   |
 
@@ -122,3 +123,4 @@
 | 2026-08-12                                        | 미번역 텍스트 화면 단위 확인 완료 (사용자 실게임, 전수 조사 미실시) | `5c5492a`, `5181950` |
 | 2026-08-12                                        | **macOS 전체 파이프라인 재현** — Windows 전송 불필요 (GameAssembly.dll+metadata 2개만). venv 패치 2건·Il2CppDumper 스킵·metadata 플랫폼별 확인 + install.sh level1~3 버그 수정 | `4b53d1a`, `effbe84` |
 | 2026-08-12                                        | **macOS 실게임 확인** — 크래시 원인(Windows 씬 패치본 비호환) 발견·해결, macOS 원본 기준 재패치. 언어 키 플랫폼별 확인 (macOS: localization) | `cb2dba0` |
+| 2026-08-12                                        | **uninstall 스크립트 2종 + 설치 시 이전 언어 기록** — 제거 시 영문 복귀 지원 (게임 삭제·재설치/무결성 후 언어 잔존 시나리오 포함), 게임 내 언어 선택 UI 없음 실측 반영 | `b16ea22` |

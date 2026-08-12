@@ -2,7 +2,7 @@
 
 ## 상태
 
-- 상태: 🚧 진행 중 (Windows 테스트 1차 완료, 씬 패치 적용 완료)
+- 상태: ✅ 완료 (2026-08-12) — Windows 4차 테스트·macOS 실게임·Steam 무결성 복구·uninstall 검증까지 전부 완료
 - 선행 Phase: Phase 4 완료
 
 ## Windows 실게임 테스트 (2026-08-11) — 결과 기록
@@ -239,3 +239,33 @@ macOS에서 전체 파이프라인(macOS 원본 기준)으로 패치 후 실게�
 - `patched/resources.assets`, `sharedassets0.assets`, `level1~3` — **macOS 원본 기준** (현재 저장소 상태)
 - Windows용은 Windows 원본 기준으로 별도 보관 — 배포 시 플랫폼별 zip 분리 필요 (Phase 6)
 - macOS 씬 패치: `patch_scenes.py --gamepath tools/font-inject-work-mac/Twilight Struggle --outdir patched-mac/` (가상 폴더에 macOS 원본 level1~3 복사 후 실행)
+
+## 다음 Phase로 핸드오프 (→ Phase 6 배포)
+
+### 산출물 위치
+
+- `patched/` — macOS 원본 기준 (resources.assets, sharedassets0.assets, level1~3, hashes.txt)
+- `scripts/install.sh` / `install-windows.ps1` — 설치 (백업 → 복사 → 언어 KO, 멱등, 이전 언어 기록)
+- `scripts/uninstall.sh` / `uninstall-windows.ps1` — 제거 (원본 복원 + 언어 복원, 첫 설치 값 기준)
+- `scripts/package-release.sh` — 사용자용/재현용 zip 2종 + SHA256SUMS
+- Windows용 patched는 Windows 머신에서 파이프라인 재실행하여 별도 확보 필요 (저장소에는 macOS 기준만 있음)
+
+### Phase 6이 알아야 할 결정 사항
+
+1. **patched/는 플랫폼별** — macOS용과 Windows용 zip을 분리해야 함 (Windows용 확보가 배포의 선행 조건)
+2. **게임 내 언어 선택 UI 없음** (2026-08-12 실측) — 언어는 PlayerPrefs 값 변경으로만 설정. 설치 안내 문구에 반영됨 (README/스크립트)
+3. **제거 시 언어 잔존 함정** — 무결성 확인·게임 재설치 후에도 언어 KO가 남아 `${Key}` 노출. uninstall 스크립트·README 경고로 처리됨
+4. **라이선스/크레딧 미정리** — 배포 전 `LICENSE.txt`/`CREDITS.md` 필요 (package-release.sh가 경고 출력)
+5. **턴 히스토리 로그(IL2CPP)는 보류 유지** — 범위가 템플릿 문자열뿐임을 실측 확정 (아래)
+
+### 즉시 실행할 작업
+
+1. Windows용 patched 확보 (Windows 파이프라인 재실행) → 플랫폼별 zip 2쌍 생성
+2. LICENSE.txt / CREDITS.md 작성 (폰트 OFL, 블루칩 번역 크레딧)
+3. `gh release create`로 배포 + README 안내 확인
+
+### 미해결 이슈 (Phase 6에 전달)
+
+- **턴 히스토리 로그 영어** — IL2CPP 코드 문자열, 파일 패치 불가, BepInEx 훅 필요 (보류 유지, `b16ea22` 실측으로 범위 확정)
+- **멀티플레이** — 미검증 (스킵됨, 에셋 교체가 온라인 버전 체크에 영향 없음을 배포 전 한 번 확인 권장)
+- **규칙북/튜토리얼 장문** — Phase 7 후순위 (배포 후)
