@@ -69,4 +69,4 @@ PYTHONIOENCODING=utf-8 .venv/bin/python scripts/<스크립트>.py ...           
 - **절대 Steam 설치 폴더를 직접 수정하지 않는다** — patched/ 또는 가상 폴더(`tools/font-inject-work/`)에서 작업 후 설치 스크립트로 적용
 - venv python 필수: 시스템 python은 UnityPy 포크/typetree_generator 없음
 - 셸 스크립트는 macOS 경로 기준 (`GAME_DIR` 환경변수로 재정의 가능)
-- 최신 절차는 `.pi/skills/twilight-struggle-update/`·`twilight-struggle-font-swap/` 스킬 참조
+- 최신 절차는 `.agents/skills/twilight-struggle-update/`·`twilight-struggle-font-swap/` 스킬 참조

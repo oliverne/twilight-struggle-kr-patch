@@ -54,7 +54,7 @@ Unity 6로 변경된 현재 게임에서 실제로 화면에 반영되는 텍스
 
 - 탐색·덤프(읽기 전용): `tools/asset-tool` (.NET, AssetsTools.NET) — 에셋 구조 파악·TextAsset 본문 추출
 - 주입(수정): UnityPy + `scripts/patch_textasset.py` (2026-08-12 정리로 삭제됨 — 현재는 `scripts/inject_translations.py` 사용)
-- 적용: `scripts/install-asset-test.sh` 패턴 — 해시 검증 후 복사, 멱등 실행 (2026-08-12 삭제됨 — 현재는 `scripts/install.sh`)
+- 적용: `scripts/install-asset-test.sh` 패턴 — 해시 검증 후 복사, 멱등 실행 (2026-08-12 삭제됨 — 현재는 `scripts/install.sh`·`install-windows.ps1` 사용)
 - 복원: `scripts/restore-original.sh`
 
 ⚠️ UnityPy가 저장한 파일을 다시 읽어 재저장하면 데이터가 유실될 수 있다. 항상 원본에서 한 번에 모든 치환을 적용한다.

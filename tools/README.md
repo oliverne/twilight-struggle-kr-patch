@@ -31,7 +31,7 @@
 | `unity_font_replacer_ko.exe` | 폰트 주입 실행 파일 (--parse/--list/--output-only) |
 | `export_fonts_ko.exe` | 폰트 내보내기 보조 exe |
 | `Twilight Struggle.json` | 매핑 JSON — Replace_to 47개 (⚠️ parse가 초기화 → `scripts/apply_font_mapping.py` 재실행 필수) |
-| `KR_ASSETS/` | 한글 SDF 자산 (NotoSerifKR·BlackHanSans SDF json/png/material + 원본 폰트) |
+| `KR_ASSETS/` | 한글 SDF 자산 (파일명 `NotoSerifKR`·`BlackHanSans-Regular` 유지, **내용은 D2Coding·Paperlogy** — 2026-08-12 교체 + 도구 기본 폰트 Mulmaru/NanumGothic) |
 | `Il2CppDumper/` | IL2CPP 메타데이터 덤퍼 (폰트 스캔 보조) |
 | `Unity_Font_Replacer_v1.2.8.zip` | 도구 원본 아카이브 (143MB, 백업용) |
 | `CharList_3911.txt` | 기본 문자 목록 (chars.txt가 실제 사용) |
@@ -56,6 +56,6 @@
 
 ## 관련 문서
 
-- 폰트 주입 절차: `.pi/skills/twilight-struggle-font-swap/SKILL.md`, `docs/runbooks/phase-3-windows-font-injection.md`
-- 게임 업데이트 대응: `.pi/skills/twilight-struggle-update/SKILL.md`
+- 폰트 주입 절차: `.agents/skills/twilight-struggle-font-swap/SKILL.md`, `docs/runbooks/phase-3-windows-font-injection.md`
+- 게임 업데이트 대응: `.agents/skills/twilight-struggle-update/SKILL.md`
 - 파이프라인 스크립트: `scripts/README.md`

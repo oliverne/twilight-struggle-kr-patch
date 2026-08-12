@@ -20,7 +20,8 @@
 |---|---|---|
 | `resources.assets` | ✅ **공용** | Unity 에셋은 플랫폼 무관 동일 바이너리 |
 | `sharedassets*.assets` | ✅ **공용** | 마찬가지로 플랫폼 무관 |
-| `global-metadata.dat` | ✅ **공용** | IL2CPP 메타데이터, 플랫폼 무관 |
+| `global-metadata.dat` | ❌ **플랫폼별** | IL2CPP 메타데이터 — macOS/Windows 해시 다름 (2026-08-12 실측). **Windows dll + Windows metadata 조합 필수** |
+| `level1~3` (씬) | ❌ **플랫폼별** | Unity 씬 직렬화 파일 — Windows 씬 패치본을 macOS에 적용 시 크래시 (2026-08-12 실측). 각 플랫폼 원본 기준으로 `patch_scenes.py` 재실행 |
 | `GameAssembly.dll` | ❌ **Windows 전용** | IL2CPP 바이너리. **Windows Steam 설치본 필요** |
 
 > **핵심**: `resources.assets`는 그대로 써도 된다. 하지만 도구가 Il2CppDumper를 실행할 때
@@ -112,7 +113,7 @@ unity_font_replacer_ko.exe --gamepath "…\font-inject-work\Twilight Struggle" ^
 
 ## Step 2.5: 폰트 크기 조절 (SDF 재생성 불필요)
 
-> 상세 절차: `.pi/skills/twilight-struggle-font-size/SKILL.md`
+> 상세 절차: `.agents/skills/twilight-struggle-font-size/SKILL.md`
 
 - **m_Scale은 도구가 게임 원본 값으로 강제 덮어씀** (`_NEW_LINE_METRIC_KEYS`) — JSON 수정 무의미
 - **m_PointSize는 보존됨** — TMP `fontScale = fontSize / pointSize × scale` 공식에 따라
@@ -151,7 +152,7 @@ macOS에서:
 ./scripts/install.sh   # 백업 → 복사 → codesign 자동 처리
 ```
 
-Steam 실행 → 게임 언어 설정에서 한국어 선택 → 한글 확인.
+Steam 실행 → 한글 확인. ⚠️ 게임 내 언어 선택 UI는 없음 (2026-08-12 실측) — 언어는 `install.sh`가 KO로 자동 설정 (macOS plist `localization`).
 
 ---
 
@@ -193,6 +194,7 @@ pip install --upgrade "git+https://github.com/snowyegret23/UnityPy.git"
 - **Windows dll + Windows metadata 조합이어야 타입 트리 생성 성공**
   (macOS metadata로는 `Type "TMP_FontAsset" was not found in the IL2CPP metadata` 발생)
 - macOS dylib(슬라이스) + macOS metadata 조합도 실패 → **PE dll + Windows metadata만 사용**
+- ⚠️ **level1~3(씬)도 플랫폼별** — Windows 씬 패치본을 macOS에 복사하지 말 것 (크래시, 2026-08-12 실측)
 
 ### 사전 준비 (original/에 보관)
 

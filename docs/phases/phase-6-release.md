@@ -11,7 +11,7 @@
 
 ## 체크리스트
 
-- [ ] README 사용자 설치·복구 안내 작성 (⚠️ README는 갱신됨 — 최종 확인 필요)
+- [x] README 사용자 설치·복구 안내 작성 — 설치/제거/언어 KO 자동 설정 반영으로 갱신됨 (2026-08-12, 최종 확인 필요)
 - [x] Windows 설치 스크립트(`install-windows.ps1`) 작성 — **Phase 5에서 완료** (언어 KO 자동 설정 포함)
 - [x] **배포 패키징 스크립트(`scripts/package-release.sh`) 작성 (2026-08-12)** — 사용자용/재현용 zip 2종 + SHA256SUMS 생성, 실동작 검증 완료 (104MB → 8.9MB)
 - [ ] 라이선스와 크레딧 정리 (폰트 OFL + 기존 패치 번역 크레딧) — **package-release.sh가 LICENSE.txt/CREDITS.md 부재 시 경고 출력**
@@ -25,12 +25,12 @@
 ```
 dist/twilight-struggle-kr-patch-<버전>.zip          # 사용자용 (~9MB)
   patched/{resources.assets, sharedassets0.assets, level1~3, hashes.txt}
-  scripts/{install.sh, install-windows.ps1, restore-original.sh}
+  scripts/{install.sh, install-windows.ps1, uninstall.sh, uninstall-windows.ps1, restore-original.sh}
   README.md (+ LICENSE.txt, CREDITS.md — 존재 시)
   SHA256SUMS
 
 dist/twilight-struggle-kr-patch-<버전>-src.zip      # 재현용 (~3MB)
-  translation/  fonts/  scripts/(파이프라인 전체)  docs/{PLAN,PROGRESS}.md  SHA256SUMS
+  translation/  fonts/  scripts/(파이프라인 전체 + 설치·제거)  docs/{PLAN,PROGRESS}.md  SHA256SUMS
 ```
 
 - `patched/*.assets`는 GitHub 100MB 제한으로 gitignore — **zip 압축 시 104MB → ~8MB**라 Releases 첨부로 충분 (LFS 불필요)
@@ -51,7 +51,7 @@ dist/twilight-struggle-kr-patch-<버전>-src.zip      # 재현용 (~3MB)
 | 항목 | 방법 | 결과 |
 |---|---|---|
 | 패키징 스크립트 | `./scripts/package-release.sh v0.1.0-test` 실행 | ✅ 성공 — 사용자용 8.9MB / 재현용 3.4MB 생성, zip 내용·SHA256SUMS 확인 (2026-08-12) |
-| zip 내용 | python zipfile 목록 비교 | ✅ 사용자용 11개(patched 6 + scripts 3 + README + SHA256SUMS), 재현용 35개 (fonts backup 제외) |
+| zip 내용 | python zipfile 목록 비교 | ✅ 사용자용(patched 6 + scripts 5 + README + SHA256SUMS), 재현용 35개 (fonts backup 제외) — uninstall 2종 포함 확인 (2026-08-12) |
 | — | — | ⬜ 배포 대기 |
 
 ## 완료 기록

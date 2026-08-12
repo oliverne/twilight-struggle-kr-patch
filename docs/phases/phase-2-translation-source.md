@@ -76,8 +76,7 @@ Phase 4 검증 기준(재현성·안전성)을 만족하려면 번역 소스는 
 - `translation/runtime-20260315.json` — 신규 런타임 패치에서 추출한 원문-한글 2,253개 쌍 (비교·검증용)
 - `translation/runtime-20260315-matches.json` — 현재 TextAsset 666행에 대한 신규 런타임 번역 전체 일치 매칭 결과
 - `translation/schema.md` — Phase 4 주입기 입력 스키마와 EN 보존·키 기반 주입 규칙
-- `translation/glossary.md` — 용어 통일표
-- `translation/schema.md` — 번역 JSON 스키마 명세 (Phase 4 주입기 입력 규격)
+- `translation/glossary.md` — 용어 통일표 (⚠️ 아직 미작성 — Phase 7 착수 시 신설 예정)
 - 문자열 추출·매칭 스크립트 (키/셀 단위 + MonoBehaviour raw 파싱 + 런타임 TSV 추출·전체 일치 매칭)
 
 ## 다음 Phase로 핸드오프
@@ -111,7 +110,7 @@ Phase 4 검증 기준(재현성·안전성)을 만족하려면 번역 소스는 
 ### Phase 3 즉시 실행 작업
 
 1. `translation/strings.json` + `translation/cards.json`에서 모든 `ko` 값의 고유 한글 글자 추출
-2. 폰트 (`fonts/`) 선정 완료됨 (Noto Serif KR 등) → TTF 준비 확인
+2. 폰트 (`fonts/`) 선정 완료됨 (Noto Serif KR 등 — 이후 2026-08-12 D2Coding/Paperlogy로 교체) → TTF 준비 확인
 3. `make_sdf.py` 실행을 위한 Unity_Font_Replacer 설정
 4. 4096² SDF 아틀라스 생성 및 `resources.assets` 주입 테스트
 

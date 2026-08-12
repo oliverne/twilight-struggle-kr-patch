@@ -25,7 +25,7 @@
 | --- | --- | --- |
 | 다국어 문자열 테이블 | `resources.assets` 내 **Common_Strings** (키값 방식 `Key_XXX`, EN+11개 언어 열) | ✅ 실게임 반영 확인 + KO 열 주입 완료 (Phase 1·4) |
 | 카드/국가 텍스트 | `resources.assets` 내 `TS_Cards` 등 TextAsset (`"행:열":"값"` JSON) | ✅ 실게임 반영 확인 + 주입 완료 (Phase 1·4) |
-| 인게임/도움말 키 | `TS_Ingame`·`TS_Strings`·`Common_Ingame` | ✅ 실게임 반영 확인 + 주입 완료 (잔존 53키 수동 번역 포함) |
+| 인게임/도움말 키 | `TS_Ingame`·`TS_Strings`·`Common_Ingame` | ✅ 실게임 반영 확인 + 주입 완료 (잔존 52키 수동 번역 포함) |
 | **씬 하드코딩 문자열** | level1(메인 메뉴)·level2(인게임)·level3(보드) MonoBehaviour | ✅ 2,548개 한글화 (Phase 5 — `patch_scenes.py`) |
 | 기존 번역 재사용 소스 | 블루칩 v1.0.1 `resources.assets` 내 **MonoBehaviour** string 필드 (432개 고유 한글 문자열) | ✅ 추출 가능 확인 (Phase 2) |
 | **IL2CPP 코드 문자열** | `global-metadata.dat` (턴 히스토리 로그 템플릿: 'to attempt a Coup in' 등) | 🔴 파일 패치 불가 — BepInEx 런타임 훅 필요 (보류) |
@@ -50,7 +50,7 @@
 1. **v1.4.x**: SDF 아틀라스 기반 폰트는 CJK 출력 불가 → TTF 폰트 부분만 번역 가능했음
 2. **v1.4.6.154** (당시 최신): 모든 텍스트가 SDF 아틀라스로 전환되어 한글 출력 자체가 불가
 3. v1.4.6부터는 텍스트가 **번역 키 방식**으로 바뀜: `resources.assets`의 `Common_Strings` 파일에 `Key_XXX` 항목이 언어별로 존재. 그러나 게임에 언어 선택 기능이 없고 한글 폰트가 없어서 영어만 출력
-4. 그 이후 게임이 **Unity 6로 리빌드**됨 (현재 우리 설치본) → 기존 패치 완전 무력화
+4. 그 이후 게임이 **Unity 6로 재빌드(rebuild)**됨 (현재 우리 설치본) → 기존 패치 완전 무력화
 
 ### 💡 핵심 기회 (달성됨)
 
@@ -106,7 +106,7 @@
 ```
 
 - `original/`은 부피가 크므로 git에 넣지 않고 로컬에만 보관 (`.gitignore`), 또는 Git LFS
-- `patched/resources.assets`도 크므로(14MB) git에 넣되, `.resS`(74MB) 파일은 수정 불필요할 가능성이 높음 — 건드릴 경우에만 LFS
+- `patched/*.assets`도 108MB로 GitHub 100MB 제한을 초과하므로 gitignore — **배포는 `scripts/package-release.sh`의 dist/ zip으로** (압축 시 ~8MB, Releases 첨부 가능). `patched/level1~3`은 git 관리
 - 설치 스크립트는 **멱등성** 있게: 재실행해도 안전, 업데이트 후 재적용 한 줄로 해결
 
 ---
@@ -143,7 +143,7 @@
 
 | 작업 | 방법 |
 | --- | --- |
-| 데이터 경로 | `steamapps/common/Twilight Struggle/Twilight Struggle_Data/` (설치 후 확인) |
+| 데이터 경로 | `steamapps/common/Twilight Struggle/TwilightStruggle_Data/` ✅ 실측 (2026-08-11, 공백 없음) |
 | 코드 서명 | 불필요 |
 | 도구 | 모든 Windows exe 그대로 사용 가능 |
 
@@ -161,14 +161,14 @@
 | Steam 무결성 확인/자동 업데이트로 파일 원복 | 패치 소멸 | 설치 스크립트로 즉시 재적용. `boot.config`의 build-guid 또는 파일 해시로 버전 감지, 불일치 시 경고 |
 | Lua 파일이 실제로 안 쓰임 (잔재 파일) | 작업 무효 | Phase 1에서 반드시 실게임 반영 테스트 후 착수 |
 | Unity 6 직렬화 포맷 변경으로 도구 파싱 실패 | 에셋 편집 불가 | UABEANext / AssetRipper 대안. 최후 수단: Unity Editor로 프로젝트 재구성 후 AssetBundle 주입 (XUnity.AutoTranslator 방식) |
-| SDF 아틀라스 용량 부족 | 글자 누락(□) | 사용 글자 기반 문자셋 + 4096², 필요 시 아틀라스 2개로 분할. 폰트 에셋의 fallback 체인 활용 |
+| SDF 아틀라스 용량 부족 | 글자 누락(□) | 사용 글자 기반 문자셋(739자) + **2048²** (실측: 596→739자 기준 충분, 4096² 시 397MB), 필요 시 아틀라스 2개로 분할. 폰트 에셋의 fallback 체인 활용 |
 | 폰트 교체 후 아웃라인/그림자 스타일 깨짐 | 시각 품질 | Material 파라미터(`_OutlineWidth`, `_GradientScale`)를 원본 padding 기준으로 보정 (Unity_Font_Replacer가 자동 보정 기능 보유) |
 | OFL Reserved Font Name | 라이선스 위반 가능성 | 폰트 파일 자체를 수정·개명 재배포 시 Reserved Name 회피. 단순 번들·사용은 문제없음. 라이선스 전문 동봉 |
 | 멀티플레이 버전 체크 | 온라인 불가 | v1.4.2 시절 v2.0 패치가 멀티를 유지한 전례 있음. 에셋만 교체 시 유지될 가능성 높으나 반드시 테스트 |
 | 텍스처 구워진 영문 | 일부 영문 잔존 | 기존 패치들도 미해결. 1차 범위 제외, 이미지 리터칭은 후속 과제로 |
 | IL2CPP 내 하드코딩 문자열 (턴 히스토리 등) | 일부 UI 영어 잔존 — **현실화됨** | 파일 패치는 길이 제약으로 불가. BepInEx 런타임 훅이 현실적 (기존 런타임 패치도 미커버 확인, 보류) |
 | **UnityPy 저장 시 같은 경로 금지** | 저장 파일 손상 (EOFError) | 로드 파일과 저장 파일 분리 (`.work` → 별도 출력) — `patch_scenes.py` 참조 |
-| 게임 언어가 EN으로 고정됨 | 메뉴 영어 표시 | 설치 스크립트가 자동 설정 (레지스트리/plist `localization_*` = KO) 또는 게임 설정에서 언어 변경 |
+| 게임 언어가 EN으로 고정됨 | 메뉴 영어 표시 | 설치 스크립트가 자동 설정 (레지스트리/plist `localization_*` = KO). ⚠️ **게임 내 언어 선택 UI는 없음** (2026-08-12 실측) — PlayerPrefs 값 변경으로만 설정 가능. 제거 시 uninstall 스크립트가 이전 언어로 복원 |
 
 ---
 
@@ -184,12 +184,11 @@
 | Cpp2IL / Il2CppDumper | IL2CPP 바이너리 분석 (필요 시에만) | |
 | Unity Editor 6000.0.58f2 | Font Asset Creator (선택지 B) | Unity Hub |
 
-### 폰트 (모두 재배포 허용 라이선스)
+### 폰트 (모두 재배포 허용 라이선스 — 2026-08-12 확정)
 
-- Noto Serif KR (SIL OFL) — 본문/TIMESI 대체
-- Black Han Sans (SIL OFL) — 제목/Anton 대체 (라틴 미포함 주의)
-- Gugi (SIL OFL) — Bangers 대체
-- 나눔손글씨/나눔바른펜 (네이버, OFL 기반) — atwriter 대체
+- **D2Coding Regular** (SIL OFL 1.1) — 본문/TIMES 계열 대체 (기존: Noto Serif KR)
+- **Paperlogy 5 Medium** (SIL OFL 1.1) — 제목/Anton 계열 대체 (기존: Black Han Sans)
+- SDF 생성·크기 조절: `make_sdf.py` + m_PointSize 수정 (폰트 교체/크기 조절은 스킬 참조)
 
 ---
 

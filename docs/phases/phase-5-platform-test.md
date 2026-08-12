@@ -18,7 +18,7 @@
 |---|---|---|
 | 메인 메뉴/설정이 영어 | **게임 언어 설정이 EN** — PlayerPrefs `localization_h2525087814 = 'EN'` (Player.log: `Load Language Header: EN`) | 레지스트리에서 KO로 변경 완료 |
 | 메뉴 일부 하드코딩 영어 | level1/level2의 TextMeshProUGUI.m_text / Text.m_Text — MonoBehaviour 직렬화 문자열 | **씬 패치 완료** (아래) |
-| 인게임 잔존 영어 (Current Turn 등) | TS_Ingame/TS_Strings 미번역 키 53개 | **수동 번역 + 재주입 완료** (Phase 4 갱신) |
+| 인게임 잔존 영어 (Current Turn 등) | TS_Ingame/TS_Strings 미번역 키 52개 | **수동 번역 + 재주입 완료** (Phase 4 갱신) |
 | 턴 히스토리(하단) 영어 | IL2CPP 코드 문자열 템플릿 (global-metadata.dat) — 'to attempt a Coup in' 등. 기존 런타임 패치도 미커버 | 🔴 별도 프로젝트 (BepInEx 런타임 훅) 필요 — 보류 |
 
 ### 게임 텍스트 3계층 구조 (확정)
@@ -121,21 +121,13 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 - 검증: m_Script 0건 불일치, TextAsset 변경 0건 (KO 열 유지), 폰트/텍스처 69건 변경
 - Steam 설치 완료 (백업: backup-20260811/resources.assets.20260812-pre-ko)
 
-- [x] Windows 실게임 테스트 (1차) — 한글 출력 확인, 문제 진단
-- [x] 게임 언어 설정 KO 전환 (레지스트리)
-- [x] TS_Ingame/TS_Strings 잔존 키 수동 번역 + 재주입 (53키)
-- [x] 씬 패치 (level1-3) — 하드코딩 문자열 2,548개 한글화
-- [x] **게임 재실행 테스트** — 4차 테스트에서 카드/메뉴/인게임 UI 한글화 확인 (2026-08-12)
-- [x] macOS 설치 스크립트 검증 (`scripts/install.sh`) — 2026-08-12 macOS 적용으로 검증 완료 (level1~3 복사 누락 버그 발견·수정 포함)
-- [x] Windows 설치 스크립트 (`scripts/install-windows.ps1`) 작성 + 실동작 검증 (2026-08-12)
-- [ ] 멀티플레이 동작 테스트
-- [ ] Steam 무결성 확인 후 재설치 테스트
+> 이후 2026-08-12 폰트 교체(D2Coding/Paperlogy) 시 m_PointSize 77로 통일 재생성 — `fonts/README-fonts.md` 참조
 
 ## 체크리스트
 
 - [x] Windows 실게임 테스트 (1차) — 한글 출력 확인, 문제 진단
 - [x] 게임 언어 설정 KO 전환 (레지스트리)
-- [x] TS_Ingame/TS_Strings 잔존 키 수동 번역 + 재주입 (53키)
+- [x] TS_Ingame/TS_Strings 잔존 키 수동 번역 + 재주입 (52키)
 - [x] 씬 패치 (level1-3) — 하드코딩 문자열 2,548개 한글화
 - [x] 2차 테스트 후속 조치 — KO 열 추가(5테이블) + SDF 문자셋 확장 재주입 (2026-08-12)
 - [x] 3차 테스트 후속 — KO 열 원본 범위 내 배치(8/9/10열) 재주입 (2026-08-12)
@@ -173,7 +165,7 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 | 카드/스코어링 키 노출 | KO 열 존재 확인 (add_ko_columns.py 검증) | ⚠️ 27열 추가 실패 → ✅ 8/9/10열 재배치 완료, m_Script 0건 |
 | 국가명 □ | chars.txt 확장 + SDF 재생성 | ✅ 성공 — 739자, point-size 70/83 |
 
-## 다음 Phase로 핸드오프
+## 다음 Phase로 핸드오프 (진행 중 기록 — 최종 핸드오프는 문서 하단 "→ Phase 6 배포" 참조)
 
 ### 즉시 실행할 작업 (순서대로)
 
@@ -193,15 +185,15 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 
 - 게임 언어는 레지스트리 PlayerPrefs로 관리 — 패치에 언어 설정이 포함되지 않으므로 설치 안내에 명시 필요
 - 씬 패치는 `patch_scenes.py`로 재현 가능 (번역 소스만 추가하면 재실행)
-- 폰트 재주입은 **macOS에서도 가능** (2026-08-12 검증) — Windows 빌드 GameAssembly.dll + global-metadata.dat 필요, 절차는 [Runbook Step 5](runbooks/phase-3-windows-font-injection.md) 참조
+- 폰트 재주입은 **macOS에서도 가능** (2026-08-12 검증) — Windows 빌드 GameAssembly.dll + global-metadata.dat 필요, 절차는 [Runbook Step 5](../runbooks/phase-3-windows-font-injection.md) 참조
 - **번역 소스 추가 시 재주입 순서**: `inject_translations.py`(TextAsset EN 열) → `add_ko_columns.py`(KO 열 동기화) → 필요시 폰트 재주입 → `verify_assets.py` 검증
-- **알려진 미번역 잔존**: TS_Ingame의 일부 키 ('Start'=Panel_SpaceRaceStd01Title, 'In' 등) — 다음 라운드에서 manual-extra에 추가
+- ~~**알려진 미번역 잔존**~~ → **해결 (2026-08-12)**: TS_Ingame의 일부 키('Start'=Panel_SpaceRaceStd01Title → '출발', 'In' 등)는 전수 조사에서 manual-extra에 추가 완료 (52키) — TextAsset 정적 전수 조사로 미번역 0건 확인
 
 ### 미해결 이슈 (보류)
 
 - **턴 히스토리 로그** — IL2CPP 코드 문자열(global-metadata.dat)로 파일 패치 불가. BepInEx 런타임 훅 프로젝트로만 해결 가능 (블루칩·런타임 패치 포함 모든 기존 패치가 미커버)
   - **보류 범위 확정 실측 (2026-08-12)**: 인게임 대기 메시지 "플레이어의 결정을 기다리는 중..."(원문 `Waiting for Player to decide...`)이 한글 표시되는 것을 계기로 전수 확인 — 원문이 global-metadata.dat 0건 / resources.assets 0건, patched/level2(인게임 씬)에 한글 2건·EN 0건 → **계층 2(씬 하드코딩, patch_scenes.py)로 해결된 문자열**임을 실측 확정. IL2CPP 코드 문자열 잔존은 **턴 히스토리 로그 템플릿뿐**으로 범위가 좁혀짐
-- **폰트 크기 불일치** — 24개 원본 폰트 → 한글 2종 통일로 크기/줄 간격 차이. `--use-game-line-metrics` 재주입 또는 m_FaceInfo(m_PointSize/m_Scale/m_LineHeight) 배율 조정으로 보정 가능 (미적용)
+- ~~**폰트 크기 불일치**~~ → **해결 (2026-08-12)**: m_PointSize 70→77로 ~9% 축소, 줄 간격 유지 (글자만 축소). 절차는 `.agents/skills/twilight-struggle-font-size` 참조. 잔여 보조 보정(`--use-game-line-metrics` 재주입 등)은 미적용
 - **규칙북/튜토리얼 긴 문단** — 씬 하드코딩 167개 미번역 + TS_RulesTutorial 313행(6.4만 자) 전량 수동. **Phase 7(후순위, 배포 후)로 이관** — [phase-7-help-translation.md](phase-7-help-translation.md) 참조
 - **더미 텍스트** — 'PlayerName12345', 'Text goes here' 등 개발용 더미는 번역 제외 (무해)
 

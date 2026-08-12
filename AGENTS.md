@@ -30,7 +30,7 @@
 - Steam Twilight Struggle(App ID 406290, Unity 6 / 6000.0.58f2, IL2CPP) 한글 패치 복원
 - 핵심 난제: **CJK 글리프를 포함한 TMP SDF 폰트 아틀라스 주입** — 한글 네모(□)의 원인 → ✅ 해결 (Phase 3~4, 24개 폰트 주입)
 - **남은 난제: IL2CPP 코드 문자열(global-metadata.dat)의 턴 히스토리 로그** — 파일 패치 불가, BepInEx 런타임 훅만 가능 (보류)
-- 기존 패치(블루칩 v1/v2, 우드킹)의 **번역문을 재사용**하며, 처음부터 번역하지 않음
+- 기존 한글화의 **번역문을 재사용**하며, 처음부터 번역하지 않음 (Phase 2 확정: 신규 런타임 패치 2026-03-15의 TSV 2,253쌍이 1차 소스, 블루칩 v1.0.1의 432개는 구버전이라 참고용)
 
 ## 게임 텍스트 3계층 구조 (Phase 5 확정)
 
@@ -49,7 +49,7 @@
 5. UTF-8 일관 사용. 인코딩 깨짐 의심 시 게임 로드 테스트로 확인.
 6. TMP 리치텍스트 태그(`<color>`, `<font="...">`, `<br>`, `<indent>`)는 보존한다.
 7. 텍스처에 구워진 문자(보드맵 국가명 등)는 현재 범위에서 제외.
-8. **EN 열은 보존하고 다른 언어 열을 한국어로 교체한다.** 원문(EN)을 덮어쓰지 않음 — 영문 폴백·원문 대조·번역 검수를 유지하고, 게임 언어 선택기가 한국어를 인식하도록 교체 대상 언어 열(또는 새 컬처)을 한글로 채운다.
+8. **EN 원문은 번역 소스(`translation/*.json`)에 보존하고, 에셋 주입 시 원문(EN)을 덮어쓰지 않는다.** 단, 언어=KO에서 한글을 표시하려면 각 테이블의 EN 열(2열)에 한글을 주입하고(TS_Cards·TS_Ingame 등), `Common_Strings`는 RU(10열)를 KO로 교체해 EN 열을 보존한다. `add_ko_columns.py`가 KO 열에 EN 값(한글)을 복사한다.
 9. **언어=KO에서 모든 텍스트가 한글이 되려면 모든 언어 테이블에 KO 열이 필요하다.** SmartLocalization은 언어별 열 헤더("EN"/"KO")로 해석한다. Common_Strings만 KO 열을 만들면 메뉴만 한글화되고, 카드/스코어링(TS_Cards·TS_Ingame 등)은 `${Key}`가 노출된다 (2026-08-12 2차 테스트 확인). `scripts/add_ko_columns.py`가 KO 열을 추가·유지한다. ⚠️ **KO 열은 원본에 존재하는 열 번호 범위 내 빈 열에 배치** (TS_Cards 9열, 나머지 8~10열) — 원본 밖 열 번호에 셀을 추가하면 파서가 무시한다 (3차 테스트 확인).
 10. **JSON 저장 시 LF 강제 (CRLF 방지)** — Windows Python의 `write_text()`/`open('w')`는 `\n`을 `os.linesep`(`\r\n`)으로 변환해 저장한다 (2026-08-12 실측). `translation/*.json`을 저장하는 스크립트는 반드시 **LF 강제**: `open(path, 'w', encoding='utf-8', newline='\n')` 또는 `Path.write_text(text, encoding='utf-8', newline='\n')`을 사용한다. CRLF로 저장되면 (a) git status에 내용이 같아도 M 노이즈, (b) 커밋 시 CRLF/LF 혼재 위험. 판정 기준: `git diff --no-index --ignore-cr-at-eol <HEAD버전> <현재파일>`이 비어있으면 내용 동일(무해) — 단, **git이 autocrlf(input)로 정규화하므로 CRLF 저장 후에도 내용 손실은 없다.**
 
@@ -59,7 +59,7 @@
 |---|---|---|
 | 다국어 문자열 테이블 | `resources.assets` 내 **Common_Strings** (키값 방식 `Key_XXX`) | 🟢 최우선 — ✅ 주입 완료 |
 | 카드/국가 텍스트 | `resources.assets` 내 `TS_Cards` 등 TextAsset (`"행:열":"값"` JSON) | 🟢 실게임 반영 확인 — ✅ 주입 완료 |
-| 인게임/도움말 키 | `TS_Ingame`·`TS_Strings`·`Common_Ingame` | 🟢 실게임 반영 확인 — ✅ 주입 완료 (잔존 53키 수동 번역 포함) |
+| 인게임/도움말 키 | `TS_Ingame`·`TS_Strings`·`Common_Ingame` | 🟢 실게임 반영 확인 — ✅ 주입 완료 (잔존 52키 수동 번역 포함) |
 | **씬 하드코딩 문자열** | level1~3 MonoBehaviour (TextMeshProUGUI.m_text, Text.m_Text) | 🟢 패치 완료 — `patch_scenes.py` |
 | 번역 재사용 소스 | 블루칩 v1.0.1 MonoBehaviour string 필드 (432개 고유 한글) | 🟢 raw 바이트 수동 파싱으로 추출 가능 (Phase 2) |
 | **IL2CPP 코드 문자열** | global-metadata.dat (턴 히스토리 로그 템플릿) | 🔴 파일 패치 불가 — BepInEx 런타임 훅 필요 (보류) |
@@ -78,17 +78,17 @@
 
 - macOS: `~/Library/Application Support/Steam/steamapps/common/Twilight Struggle/TwilightStruggle.app/Contents/Resources/Data/`
 - Windows: `steamapps/common/Twilight Struggle/TwilightStruggle_Data/` (⚠️ **공백 없음** — 실측, 2026-08-11)
-- 에셋 파일은 플랫폼 공용(동일 빌드) → 한쪽에서 수정한 파일은 다른 플랫폼에도 그대로 복사 가능
+- 에셋 파일은 플랫폼 공용(동일 빌드) → 한쪽에서 수정한 파일은 다른 플랫폼에도 그대로 복사 가능 ⚠️ **단, level1~3(씬)은 플랫폼별** (2026-08-12 실측 — Windows 씬 패치본을 macOS에 적용 시 크래시) — 각 플랫폼 원본 기준으로 `patch_scenes.py` 재실행
 - **게임 언어 설정(PlayerPrefs)**: `HKCU\Software\Playdek\TwilightStruggle` 레지스트리 키 `localization_h2525087814` — `KO`로 설정해야 TextAsset KO 열이 로드됨 (`EN`이면 영어). ⚠️ **게임 내 언어 선택 UI는 없음 (2026-08-12 실측)** — PlayerPrefs 값 변경으로만 설정 가능. **설치 스크립트(`install-windows.ps1`/`install.sh`)가 파일 복사와 함께 자동으로 KO 설정** (Windows: 레지스트리, macOS: `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist` plist)
 
 ## 주요 도구
 
 - **UABEA** (에셋 추출/수정, 크로스플랫폼) — 문제 시 UABEANext/AssetRipper 대안
-- **Unity_Font_Replacer** v1.2.8: `make_sdf.py`로 Unity 없이 TTF → TMP SDF 생성, Windows에서 `unity_font_replacer_ko.exe --parse/--list`로 에셋 주입 (⚠️ `oneshot`은 없음, `Managed` 폴더 제거 필요 — Runbook 참조)
+- **Unity_Font_Replacer** v1.2.8: `make_sdf.py`로 Unity 없이 TTF → TMP SDF 생성, `unity_font_replacer_ko.exe --parse/--list`로 에셋 주입 (⚠️ `oneshot`은 없음, `Managed` 폴더 제거 필요 — Runbook 참조). Windows exe 외에 **macOS 소스 실행도 가능** (Windows 빌드 `GameAssembly.dll`+`global-metadata.dat` 필요, venv 패치 2건 — Runbook Step 5)
 - **번역 주입**: `scripts/inject_translations.py` (TextAsset) — 포크 UnityPy + typetree_generator 필수 (공식 UnityPy 저장 금지)
 - **씬 패치**: `scripts/patch_scenes.py` (level1-3 하드코딩 문자열) — Unity 6 헤드 레이아웃 실측 기반 (m_text @ head_end+56 / +112)
 - **번역 소스**: `translation/runtime-20260315.json`(런타임 TSV) + `manual-extra.json`(TextAsset 잔존키) + `manual-scenes.json`(씬 문자열)
-- 폰트: Noto Serif KR(본문), Black Han Sans(제목), Gugi, 나눔손글씨 — 모두 재배포 허용 라이선스만 사용
+- 폰트: **D2Coding**(본문), **Paperlogy 5 Medium**(제목) — 모두 재배포 허용 라이선스(SIL OFL 1.1)만 사용
 - IL2CPP 바이너리 패치는 **최후의 수단** (턴 히스토리는 길이 제약으로 사실상 불가 → BepInEx 훅)
 
 ## 리스크 체크리스트
@@ -104,8 +104,8 @@
 ## 저장소 구조
 
 ```
-patched/      # 수정 파일 (git 관리) — resources.assets, sharedassets0.assets, level1~3
-              # ⚠️ *.assets는 100MB 초과로 gitignore — 배포는 package-release.sh의 dist/ zip으로
+patched/      # 수정 파일 — level1~3은 git 관리, *.assets는 100MB 초과로 gitignore
+              # ⚠️ 배포는 package-release.sh의 dist/ zip으로 (플랫폼별 zip 분리 필요)
 original/     # 원본 백업 (git 제외)
 dist/         # 배포 zip 산출물 (git 제외, scripts/package-release.sh가 생성)
 translation/  # 번역 소스 JSON/CSV — runtime-20260315.json, manual-extra.json, manual-scenes.json (+ 용어표는 Phase 7 착수 시 신설 예정)

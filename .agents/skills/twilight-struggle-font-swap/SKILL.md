@@ -14,8 +14,8 @@ description: Twilight Struggle 한글 패치 프로젝트에서 TMP SDF 폰트(�
 
 ## 사전 준비
 
-- Windows 게임 설치본 (GameAssembly.dll 필요 — 가상 폴더 구성용)
-- `PYTHONIOENCODING=utf-8` + venv python: `.venv/Scripts/python.exe`
+- Windows 게임 설치본 (GameAssembly.dll 필요 — 가상 폴더 구성용). macOS에서도 소스 실행으로 가능 (Windows 빌드 `GameAssembly.dll`+`global-metadata.dat` 2개만 있으면 됨 — [Runbook Step 5](../../../docs/runbooks/phase-3-windows-font-injection.md))
+- `PYTHONIOENCODING=utf-8` + venv python: `.venv/Scripts/python.exe` (Windows) / `.venv/bin/python` (macOS)
 - **라이선스 확인**: 재배포 허용 폰트만 (SIL OFL 등). `fonts/`에 라이선스 동봉 필수
 
 ## 절차

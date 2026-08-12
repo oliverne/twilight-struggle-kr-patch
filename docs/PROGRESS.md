@@ -10,7 +10,7 @@
 
 - 완료: Phase 0 — 준비, Phase 1 — 텍스트 위치 검증, Phase 2 — 번역 소스 구축
 - 완료: Phase 3 SDF 생성 (2048² 최적화) + Windows 폰트 주입 (24개 TMP 폰트)
-- 완료: Phase 4 텍스트 주입 재구축 (m_Script 무손상) + **잔존 키 53개 수동 번역 재주입**
+- 완료: Phase 4 텍스트 주입 재구축 (m_Script 무손상) + **잔존 키 52개 수동 번역 재주입**
 - 완료: **Windows 실게임 1차 테스트 + 진단** — 메뉴 영어 원인 3계층 규명
 - 완료: **씬 패치 (level1-3)** — 하드코딩 문자열 2,548개 한글화
 - 완료: **게임 언어 KO 전환** (레지스트리) + 2차 테스트 (카드 키 노출 발견)
@@ -19,7 +19,7 @@
 - ✅ **4차 테스트 — 대부분의 UI·카드 한글화 확인 (2026-08-12)**
 - ✅ **폰트 교체 — 제목 Paperlogy 5 Medium, 본문 D2Coding Regular (2026-08-12)**
 - ✅ **폰트 크기 조절 — m_PointSize 70→77 (~9% 축소), 줄 간격 유지 (2026-08-12)**
-- ✅ **번역 다듬기 — humanizer 스캔(556건) → 일괄 교정 52개 + 런타임 장문 10개, grammar-checker 조사 오류 11건 교정 (2026-08-12)** — 상세: [translation-polish-review.md](docs/translation-polish-review.md)
+- ✅ **번역 다듬기 — humanizer 스캔(556건) → 일괄 교정 52개 + 런타임 장문 10개, grammar-checker 조사 오류 11건 교정 (2026-08-12)** — 상세: [translation-polish-review.md](translation-polish-review.md)
 - ✅ **미번역 텍스트 화면 단위 확인 (2026-08-12)** — 사용자 실게임으로 대부분 한글 확인, 영어 잔존 미발견 (전수 조사는 미실시)
 - ✅ **macOS 전체 파이프라인 재현 + 적용 완료 (2026-08-12)** — Windows 전송 없이 macOS에서 번역 주입→KO 열→폰트 주입→설치까지 전부 성공 (Windows 빌드 GameAssembly.dll + global-metadata.dat만 original/에 보관)
 - ✅ **macOS 실게임 확인 (2026-08-12)** — 메뉴·카드 한글, 폰트 정상. 크래시 원인 해결: **Windows 원본 기준 씬 패치본(level1~3)이 macOS 빌드와 비호환** → macOS 원본 기준으로 재패치해 해결 (에셋도 플랫폼별 확인). 언어 키도 플랫폼별: macOS는 `localization`(plist), Windows는 `localization_h2525087814`(레지스트리)
@@ -66,22 +66,21 @@
 | Phase 1 — 텍스트 위치 검증             | ✅   | `resources.assets`가 실제 텍스트 소스임을 확인 | [상세](phases/phase-1-source-validation.md)  |
 | Phase 2 — 문자열 추출 & 번역 소스 구축 | ✅   | 666/666행 번역 완료. 런타임 TSV + 수동 번역     | [상세](phases/phase-2-translation-source.md) |
 | Phase 3 — 한글 SDF 폰트 아틀라스 생성  | ✅   | 2048² SDF 2종 + Windows 주입 완료 (24개 폰트) | [상세](phases/phase-3-sdf-font.md)           |
-| Phase 4 — 텍스트 주입 & 레이아웃 조정  | ✅   | 무손상 주입 재구축 + 잔존 키 53개 재주입    | [상세](phases/phase-4-injection-layout.md)   |
+| Phase 4 — 텍스트 주입 & 레이아웃 조정  | ✅   | 무손상 주입 재구축 + 잔존 키 52개 재주입    | [상세](phases/phase-4-injection-layout.md)   |
 | Phase 5 — 플랫폼 적용 & 테스트         | ✅   | **전부 완료 (2026-08-12)** — Windows 4차 테스트·macOS 실게임·Steam 무결성 복구·uninstall 검증. 잔여: 멀티플레이(스킵) | [상세](phases/phase-5-platform-test.md)      |
 | Phase 6 — 배포                         | ⬜   | 사용자 안내 및 배포 대기                       | [상세](phases/phase-6-release.md)            |
 | Phase 7 — 도움말/규칙 번역 (후순위)   | ⬜   | 배포 후 맨 마지막 수행 — 규칙 6.4만 자 수동   | [상세](phases/phase-7-help-translation.md)   |
 
-## 현재 핸드오프 요약
+## 현재 핸드오프 요약 (→ Phase 6 배포)
 
-- 수신: Windows 게임 머신 (2026-08-11 현재 작업 위치)
-- **즉시 실행**: 게임 재실행 → 메뉴 한글화 확인 (언어=KO 적용됨) → Player.log에 `Load Language Header: KO` 확인
-- 잔존 영어/`□` 확인 → `translation/manual-*.json`에 키 추가 후 재주입 (inject_translations.py / patch_scenes.py)
-- macOS 적용: `patched/` 전체 전송(resources.assets, sharedassets0.assets, level1~3) → `scripts/install.sh`
-- Windows 설치 스크립트(`install-windows.ps1`) 미작성 — Phase 5 체크리스트 항목
-- 멀티플레이 테스트 미실시 — 필수
-- **보류**: 턴 히스토리(IL2CPP 코드 문자열) — BepInEx 런타임 훅 프로젝트로만 해결 가능
+- 수신: Windows·macOS 모두 패치 적용 + 실게임 확인 완료 (2026-08-12). 현재 작업 위치는 macOS
+- **즉시 실행 (Phase 6)**: ① Windows용 patched 확보(Windows 파이프라인 재실행, 저장소 patched/는 macOS 기준) → 플랫폼별 zip 분리 ② LICENSE.txt/CREDITS.md 작성 ③ `gh release create` 배포
+- 잔존 영어/`□` 발견 시 → `translation/manual-*.json`에 키 추가 → 재주입 (inject → add_ko → 필요시 폰트 → verify)
+- macOS 재적용: `scripts/install.sh` / 제거: `scripts/uninstall.sh` (Windows: `install-windows.ps1`/`uninstall-windows.ps1`)
+- 멀티플레이 테스트 미실시 — 배포 전 1회 확인 권장 (스킵됨)
+- **보류**: 턴 히스토리(IL2CPP 코드 문자열) — BepInEx 런타임 훅 프로젝트로만 해결 가능 (2026-08-12 실측으로 범위가 템플릿 문자열뿐으로 좁혀짐)
 - ~~보류: 폰트 크기 불일치~~ → **해결 (2026-08-12)**: m_PointSize 70→77로 ~9% 축소.
-  m_Scale은 도구가 게임 값으로 덮어쓰므로 변경 불가 — 절차는 `.pi/skills/twilight-struggle-font-size`
+  m_Scale은 도구가 게임 값으로 덮어쓰므로 변경 불가 — 절차는 `.agents/skills/twilight-struggle-font-size`
 - 주의: `patched/*.assets`는 GitHub 100MB 제한 초과로 gitignore — 재생성 방법은 Phase 문서 참조 (level1~3은 git 관리)
 
 ## 로그
@@ -100,15 +99,15 @@
 | 2026-08-05                                        | 실험 B용 TextAsset 치환 도구 및 적용 스크립트 추가               | `224e4fc` |
 | 2026-08-05                                        | 실험 A/C 실패 및 실험 B 준비 상황 기록                           | `acf3e19` |
 | 2026-08-05                                        | 실험 B 실게임 성공 — 두 소스 유효, `ㅁ` 현상 확인 → Phase 1 완료 | `d135d1b` |
-| 2026-08-05                                        | .NET 빌드 산출물 추적 제거, UnityPy 버전 pin, .gitignore 보강    | `chore`   |
+| 2026-08-05                                        | .NET 빌드 산출물 추적 제거, UnityPy 버전 pin, .gitignore 보강    | `fbb70bc` |
 | 2026-08-05                                        | asset-tool 문서화, Phase 2 번역 소스 키/셀 구조 설계             | `50feea1` |
-| 2026-08-05                                        | 번역 소스 재사용 전략 및 EN 열 보존 원칙 문서 반영               | `4cad12e` |
+| 2026-08-05                                        | 번역 소스 재사용 전략 및 EN 열 보존 원칙 문서 반영               | `3779ea7` |
 | 2026-08-05                                        | Phase 2 완료 — 666/666행 번역 적용                                | `9538590` |
 | 2026-08-08                                        | Phase 3 SDF 생성 완료 + Windows Runbook 작성                      | `63fa852` |
-| 2026-08-08                                        | 런타임 패치 바이너리 235개 gitignore 처리                          | `909820f` |
+| 2026-08-08                                        | 런타임 패치 바이너리 248개 gitignore 처리                          | `909820f` |
 | 2026-08-08                                        | Phase 4 텍스트 주입 — 6종 TextAsset + install.sh                  | `0ba38c4` |
 | 2026-08-08                                        | Phase 3·4 현황 반영 (PROGRESS)                                    | `12bdace` |
-| 2026-08-11                                        | Windows 폰트 주입 완료 + m_Script 손상 발견·재구축 (예정)        | -         |
+| 2026-08-11                                        | Windows 폰트 주입 완료 + m_Script 손상 발견·재구축 (예정)        | `fa8b241` |
 | 2026-08-11                                        | Windows 1차 테스트 진단 + 잔존 키 재주입 + 씬 패치 + 언어 KO     | `35c6cd3` |
 | 2026-08-11                                        | 문서 일괄 갱신 (AGENTS/PLAN/README/ISSUES/CLEANUP + 핸드오프)   | `eba470a` |
 | 2026-08-12                                        | 2차 테스트 후속: 5테이블 KO 열 추가 + SDF 문자셋 739자 재주입  | `91d0fbc` |
@@ -117,7 +116,7 @@
 | 2026-08-12                                        | 폴더 정리(scripts/tools/translation) + README·스킬 갱신       | `a0cdff4` |
 | 2026-08-12                                        | TextAsset 미번역 전수 조사(0건) + Windows 설치 스크립트        | `5f208a7` |
 | 2026-08-12                                        | 설치 스크립트 언어 KO 자동 설정 (레지스트리/plist) + 문서 반영 | `e579de8` |
-| 2026-08-12                                        | 배포 패키징 스크립트 작성 (zip 2종 + SHA256SUMS) + Phase 6 문서 반영 | `4b53d1a` |
+| 2026-08-12                                        | 배포 패키징 스크립트 작성 (zip 2종 + SHA256SUMS) + Phase 6 문서 반영 | `d01141e` |
 | 2026-08-12                                        | 폰트 교체(Paperlogy/D2Coding) + 크기 축소 + 크기 조절 스킬 신설 | `405b17a` |
 | 2026-08-12                                        | 번역 다듬기 스킬 신설 + CRLF 정규화 (내용 무변화)             | `02497c2`, `986246f` |
 | 2026-08-12                                        | 미번역 텍스트 화면 단위 확인 완료 (사용자 실게임, 전수 조사 미실시) | `5c5492a`, `5181950` |

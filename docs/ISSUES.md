@@ -54,24 +54,26 @@
 - **위치**: `il2cpp_data/Metadata/global-metadata.dat` — 'to attempt a Coup in', 'gets a Coup Strength of' 등 C# 리터럴
 - **문제**: 턴 히스토리 메시지가 씬/TextAsset이 아닌 코드 문자열 템플릿 + 카드명 조합으로 생성됨. IL2CPP 메타데이터 문자열 패치는 길이 제약(한글 3바이트)으로 사실상 불가. 기존 런타임 패치(2026-03-15) TSV에도 format string 없음 → 모든 기존 패치가 미커버한 영역
 - **제안**: BepInEx 플러그인 런타임 훅 (문자열 포맷 후킹) — 별도 프로젝트로 판단
-- **상태**: ⬜ 보류 (Phase 5 핸드오프에 기록)
+- **보류 범위 확정 (2026-08-12 실측)**: 인게임 대기 메시지 등은 씬 패치로 이미 해결됐고, IL2CPP 코드 문자열 잔존은 **턴 히스토리 로그 템플릿뿐**으로 범위가 좁혀짐 (phase-5 문서 참조)
+- **상태**: ⬜ 보류 유지 (Phase 6 핸드오프에 전달)
 
-### #12 폰트 크기/줄 간격 불일치 — 원본 24종 → 한글 2종 통일
+### #12 폰트 크기/줄 간격 불일치 — 원본 24종 → 한글 2종 통일 (2026-08-12 해결)
 - **위치**: `resources.assets` TMP_FontAsset 23개 + sharedassets0 atwriter (m_FaceInfo)
-- **문제**: 원본 폰트(Anton·Bangers 등 제목용, TIMES 본문용)의 개별 메트릭이 사라지고 NotoSerifKR(lineHeight 108/EM)·BlackHanSans(88/EM)로 통일되어 동일 fontSize 대비 표시 크기·줄 간격 차이 발생 (실게임 확인)
-- **제안**: ① Unity_Font_Replacer `--use-game-line-metrics` 재주입 (원본 줄 간격 유지) ② m_FaceInfo 배율 직접 조정 (UnityPy) ③ 원본 폰트 특성별 SDF 변형 세분화 (본문/제목/소형)
-- **상태**: ⬜ 보류 (게임 테스트 후 우선순위 결정)
+- **문제**: 원본 폰트(Anton·Bangers 등 제목용, TIMES 본문용)의 개별 메트릭이 사라지고 한글 2종으로 통일되어 동일 fontSize 대비 표시 크기·줄 간격 차이 발생 (실게임 확인)
+- **해결**: ✅ `m_PointSize` 70→77 조정으로 ~9% 축소 (2026-08-12). TMP `fontScale = fontSize / pointSize × scale` 반비례 공식 활용 — 도구가 m_Scale을 게임 값으로 덮어쓰므로 m_PointSize만 보존됨. 절차는 `.agents/skills/twilight-struggle-font-size` 참조. 줄 간격 보정이 추가로 필요하면 `--use-game-line-metrics` 재주입 또는 m_FaceInfo 배율 조정 (미적용)
+- **상태**: ✅ 해결 (보조 보정은 미적용)
 
-### #13 Windows 설치 스크립트 미작성
+### #13 Windows 설치 스크립트 미작성 (2026-08-12 해결)
 - **위치**: `scripts/` — macOS `install.sh`만 존재
 - **문제**: 배포를 위해 Windows용 설치/복구 스크립트(`install-windows.ps1`) 필요 (백업 → 복사 → 해시 검증)
-- **상태**: ⬜ 보류 (Phase 5 체크리스트 잔여)
+- **해결**: ✅ `scripts/install-windows.ps1` 작성 + 실동작 검증 (2026-08-12, `5f208a7`·`e579de8`). 언어 KO 자동 설정(레지스트리)·멱등(이미 적용된 파일 스킵)·이전 언어 기록(`krpatch-install-info.txt`) 포함. 제거용 `uninstall-windows.ps1`도 작성 (`b16ea22`)
+- **상태**: ✅ 해결
 
 ### #14 규칙북/튜토리얼 긴 문단 미번역 (씬 하드코딩 167개)
 - **위치**: level1·level2 MonoBehaviour — 'Twilight Struggle is a two-player game...' 등
 - **문제**: 런타임 TSV·수동 번역으로 커버 안 되는 규칙 본문이 씬에 하드코딩되어 있음 (TS_RulesTutorial 제외 결정과 별개로 씬에도 존재)
-- **제안**: 번역량 대비 우선순위 낮음 — 게임 테스트 후 필요 시 `manual-scenes.json`에 추가
-- **상태**: ⬜ 보류
+- **제안**: 번역량 대비 우선순위 낮음 — Phase 7(배포 후)에서 `manual-scenes.json`에 추가해 번역
+- **상태**: ⬜ 보류 → **Phase 7로 이관** (2026-08-12, [phase-7-help-translation.md](phases/phase-7-help-translation.md))
 
 ### #15 모든 언어 테이블 KO 열 부재 — 언어=KO에서 ${Key} 노출 (2026-08-12 해결)
 - **위치**: TS_Cards·TS_Ingame·TS_Strings·Common_Ingame·TS_RulesTutorial (Common_Strings는 KO 열 있음)
@@ -86,7 +88,7 @@
 - **위치**: fonts/chars.txt (596자) — 튀/콰/콜/롬/냐/룬 등
 - **문제**: 문자셋이 번역 소스 기준이라 씬 문자열(국가명 등) 글자가 누락 → SDF 아틀라스에 글리프 없음
 - **해결**: ✅ chars.txt 596→739자 (패치 후 표시 문자열 전체에서 재추출) + SDF 재생성 + 재주입
-- **비고**: point-size가 74→70(NotoSerifKR), 87→83(BlackHanSans)로 축소 (2048² 한계, padding 7→4). 화면 표시 크기는 faceInfo 기반이라 동일
+- **비고**: point-size가 74→70(NotoSerifKR), 87→83(BlackHanSans)로 축소 (2048² 한계, padding 7→4). 화면 표시 크기는 faceInfo 기반이라 동일. 이후 폰트 교체(2026-08-12)로 D2Coding/Paperlogy 기준 m_PointSize 77로 재생성됨
 - **관련 Phase**: Phase 5
 
 ## 처리된 이슈 (참고용)

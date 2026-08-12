@@ -2,22 +2,22 @@
 
 Steam판 **Twilight Struggle**(App ID `406290`)용 한글 패치 프로젝트입니다.
 
-> **현재 개발 중 (Phase 5).** Windows 실게임에서 **카드/메뉴/인게임 UI 대부분 한글화 확인** (2026-08-12).
-> 미번역 잔존 확인·macOS 적용·멀티플레이 검증이 남아 있습니다.
+> **현재 개발 중 (Phase 6 — 배포 준비).** Windows·macOS 실게임에서 **카드/메뉴/인게임 UI 대부분 한글화 확인** (2026-08-12).
+> 멀티플레이 검증과 배포가 남아 있습니다.
 
 ## 현재 상태
 
 | 항목 | 상태 |
 |---|---|
 | 대상 게임 | Steam Twilight Struggle (Unity 6 `6000.0.58f2`, IL2CPP) |
-| 번역 주입 (TextAsset) | ✅ 666행 + 잔존 키 53개 — `Common_Strings`(KO 열), `TS_Cards`, `TS_Ingame`, `TS_Strings`, `Common_Ingame` |
+| 번역 주입 (TextAsset) | ✅ 666행 + 잔존 키 52개 — `Common_Strings`(KO 열), `TS_Cards`, `TS_Ingame`, `TS_Strings`, `Common_Ingame` |
 | 언어 테이블 KO 열 | ✅ 5개 테이블에 KO 열 추가 (언어=KO에서 카드/PANEL/HELP 키 해석) |
 | 씬 하드코딩 문자열 | ✅ 2,548개 — level1(메인 메뉴)·level2(인게임)·level3(보드) |
-| 한글 SDF 폰트 | ✅ 2048² SDF 2종(Noto Serif KR, Black Han Sans, 739자) → 24개 TMP 폰트 주입 |
-| 게임 언어 설정 | ✅ KO 전환 (레지스트리 PlayerPrefs) |
+| 한글 SDF 폰트 | ✅ 2048² SDF 2종(D2Coding 본문, Paperlogy 제목, 739자) → 24개 TMP 폰트 주입 |
+| 게임 언어 설정 | ✅ KO 전환 (레지스트리/plist PlayerPrefs) |
 | Windows 실게임 테스트 | ✅ 4차 완료 — **카드·메뉴·인게임 UI 대부분 한글화 확인** |
-| 미번역 텍스트 전체 확인 | ⬜ 영어 잔존 수집 중 |
-| macOS 적용 | ⬜ `patched/` 전송 + `scripts/install.sh` |
+| macOS 실게임 테스트 | ✅ 완료 — macOS 원본 기준 파이프라인 재현 + 설치 확인 (2026-08-12) |
+| 미번역 텍스트 확인 | ✅ 화면 단위 확인 (2026-08-12, 전수 조사는 미실시) |
 | 멀티플레이 | ⬜ 미검증 |
 
 상세 진행 상황은 [`docs/PROGRESS.md`](docs/PROGRESS.md)를 참조하세요.
@@ -103,7 +103,7 @@ python scripts/inject_translations.py --gamepath <게임루트> \
 python scripts/add_ko_columns.py --gamepath <게임루트> \
     --src <중간본1> --out <중간본2>
 
-# 3. 폰트 주입 — Windows에서 Unity_Font_Replacer (Runbook 참조)
+# 3. 폰트 주입 — Unity_Font_Replacer (Windows exe 또는 macOS 소스 실행, Runbook 참조)
 #    가상 폴더의 resources.assets를 <중간본2>로 교체 후 --parse → 매핑 → --list
 
 # 4. 씬 패치 (level1-3)
@@ -135,5 +135,5 @@ python scripts/verify_assets.py --orig <원본> --patched <패치본>
 
 ## 라이선스
 
-- 폰트: Noto Serif KR, Black Han Sans (SIL OFL 1.1) — `fonts/`에 라이선스 동봉
+- 폰트: D2Coding, Paperlogy 5 Medium (SIL OFL 1.1) — `fonts/`에 라이선스 동봉
 - 번역문: 기존 한글 패치(블루칩 등)의 번역을 참고·재사용 — 배포 전 크레딧 정리 필요 (Phase 6)

@@ -44,6 +44,9 @@ python scripts/verify_assets.py --orig <원본> --patched patched/resources.asse
 - 현재 `Common_Strings` 열 구조: `Key(1) EN(2) FR(3) DE(4) ES(5) PL(6) PT(7) JP(8) IT(9) RU(10) NL(11) CH(12) null(13~)`
 - 현재 `AvailableCultures` 등록 언어: `de, en, es, fr, ru` (SmartLocalization)
 - Phase 2 번역 소스는 **EN 원문**(열 2)과 **번역값**(한글)을 분리 저장했으므로, 교체 열 선택과 무관하게 재사용 가능.
+- **최종 갱신 (2026-08-12)**: 언어=KO에서 `${Key}`가 노출되는 문제로 인해 실제 구현은
+  `Common_Strings`만 RU(10열)→KO로 교체하고, **나머지 테이블은 EN 열(2열)에 한글을 주입**한 뒤
+  `add_ko_columns.py`가 KO 열에 EN 값(한글)을 복사한다. 원문(EN)은 `translation/*.json`의 `en` 필드에 보존된다.
 
 ## 체크리스트
 
@@ -53,14 +56,14 @@ python scripts/verify_assets.py --orig <원본> --patched patched/resources.asse
 - [x] **AvailableCultures 수정** — ru → ko (한국어 선택 가능)
 - [x] EN 열 보존 검증 (Common_Strings: col 2 EN 무결함)
 - [x] `TS_Ingame`(117행)·`TS_Strings`(38행)·`Common_Ingame`(22행) 주입 — 런타임 TSV 커버
-- [x] **잔존 영어 키 수동 번역 재주입 (2026-08-11)** — `translation/manual-extra.json` 53키 (TS_Ingame 41 + TS_Strings 12)
+- [x] **잔존 영어 키 수동 번역 재주입 (2026-08-11)** — `translation/manual-extra.json` 52키 (TS_Ingame 40 + TS_Strings 12)
       - TS_Ingame: 'Current Turn'→'현재 턴', 'Bid For Sides'→'진영 입찰', 'No Presence'→'진출 없음', 'Defcon Level'→'데프콘 단계', 'Game Results'→'게임 결과' 등
       - TS_Strings: 'Flavor_Castro', 'Key_USSR'→'소련', 'Key_MapTypeClassic' 등
       - `inject_simple_table`이 key 기준 manual도 지원하도록 확장 (값 기준 우선)
 - [x] 설치 스크립트 `scripts/install.sh` 작성 (macOS)
 - [x] 무결성 검증 스크립트 `scripts/verify_assets.py` (m_Script/raw 비교)
-- [ ] 게임에서 한국어로 전환되는지 실게임 테스트 (Phase 5)
-- [ ] `TS_RulesTutorial` — File/String 참조만 있고 표시 텍스트 없음 → 제외 (기존 결정 유지)
+- [x] 게임에서 한국어로 전환되는지 실게임 테스트 (Phase 5 — 2026-08-12 4차 테스트로 확인)
+- [x] `TS_RulesTutorial` — File/String 참조만 있고 표시 텍스트 없음 → 제외 (기존 결정 유지)
 
 ## 검증 기준
 
@@ -81,7 +84,7 @@ python scripts/verify_assets.py --orig <원본> --patched patched/resources.asse
 | 부가 주입 | TS_Ingame 117행, TS_Strings 38행, Common_Ingame 22행 (런타임 TSV) | ✅ 성공 |
 | m_Script 무손상 | `verify_assets.py` — 원본 vs patched 전체 비교 | ✅ 성공 — 불일치 0건 |
 | raw 무손상 | `verify_assets.py` — TextAsset/폰트 외 raw 바이트 | ✅ 성공 — 예상외 변경 0건 |
-| 게임 테스트 | — | ⬜ 대기 (Phase 5, 폰트 주입 완료됨) |
+| 게임 테스트 | Windows 실게임 (Phase 5) | ✅ 성공 — 4차 테스트에서 카드·메뉴·인게임 UI 대부분 한글화 확인 (2026-08-12) |
 | 잔존 키 재주입 | `inject_translations.py` 재실행 (2026-08-11) | ✅ 성공 — TS_Ingame 40행 + TS_Strings 12행, m_Script 0건 |
 | 재주입 후 영어 잔존 | TextAsset 스캔 | ✅ 성공 — TS_Ingame/TS_Strings 0개 |
 
@@ -95,8 +98,8 @@ python scripts/verify_assets.py --orig <원본> --patched patched/resources.asse
 
 ## 다음 Phase로 핸드오프
 
-- 수정 파일: `patched/resources.assets` + `patched/sharedassets0.assets` (2026-08-11 재주입으로 갱신 — 잔존 키 53개 포함)
-- 추가 산출물: `translation/manual-extra.json` (수동 번역 53키), `patched/level1~3` (씬 패치는 Phase 5에서 처리)
+- 수정 파일: `patched/resources.assets` + `patched/sharedassets0.assets` (2026-08-11 재주입으로 갱신 — 잔존 키 52개 포함)
+- 추가 산출물: `translation/manual-extra.json` (수동 번역 52키), `patched/level1~3` (씬 패치는 Phase 5에서 처리)
 - 레이아웃 이슈: 미확인 (게임 테스트 후 기록), 폰트 크기 불일치 이슈 #12로 등록
 - 제외한 텍스트 영역: `TS_RulesTutorial`(표시 텍스트 없음), 보드맵 국가명(텍스처 구움)
 - 플랫폼별 주의사항: macOS 코드사인 필수, `patched/*.assets`는 gitignore(GitHub 100MB 제한)

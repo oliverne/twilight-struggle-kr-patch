@@ -23,7 +23,8 @@ description: Twilight Struggle 한글 패치의 TMP SDF 폰트(본문 D2Coding /
 ## 사전 준비
 
 - Windows 게임 설치본 + 가상 폴더(`tools/font-inject-work/Twilight Struggle/TwilightStruggle_Data/`)
-- `PYTHONIOENCODING=utf-8` + venv python: `.venv/Scripts/python.exe`
+  (macOS에서도 소스 실행으로 가능 — Windows 빌드 `GameAssembly.dll`+`global-metadata.dat` 필요, [Runbook Step 5](../../../docs/runbooks/phase-3-windows-font-injection.md))
+- `PYTHONIOENCODING=utf-8` + venv python: `.venv/Scripts/python.exe` (Windows) / `.venv/bin/python` (macOS)
 - 주입 전 `patched/resources.assets`가 가상 폴더와 동일한지 확인:
   `sha256sum patched/resources.assets "tools/font-inject-work/Twilight Struggle/TwilightStruggle_Data/resources.assets"`
 

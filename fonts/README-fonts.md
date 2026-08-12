@@ -25,6 +25,6 @@
 
 - SDF 아틀라스(JSON/PNG)는 위 TTF에서 생성된 파생물이며 OFL 조건을 따릅니다.
 - 크기 조절은 SDF JSON의 `m_PointSize` 수정 + 재주입으로 수행 — 절차는
-  `.pi/skills/twilight-struggle-font-size/SKILL.md` 참조.
+  `.agents/skills/twilight-struggle-font-size/SKILL.md` 참조.
 - 이전 폰트(Noto Serif KR, Black Han Sans, D2Coding Bold)와 구 SDF 산출물은
-  `backup-20260812/`에 보관 (원복 시 사용).
+  로컬 백업 폴더(`fonts/backup-*/`, gitignore)와 Windows 게임 폴더의 `backup-20260812/`에 보관 (원복 시 사용).
