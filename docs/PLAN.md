@@ -123,8 +123,11 @@
 | Phase 3 — 한글 SDF 폰트 아틀라스 생성 | CJK 글리프를 포함한 TMP 폰트 생성·주입 | 3~5일 | [Phase 3](phases/phase-3-sdf-font.md) |
 | Phase 4 — 텍스트 주입 & 레이아웃 조정 | 재현 가능한 번역 주입과 UI 검증 | 1~2주 | [Phase 4](phases/phase-4-injection-layout.md) |
 | Phase 5 — 플랫폼 적용 & 테스트 | macOS·Windows·멀티플레이 및 복구 검증 | 2~3일 | [Phase 5](phases/phase-5-platform-test.md) |
-| Phase 6 — 배포 | 설치 안내·라이선스·배포물 정리 (zip 2종 패키징 스크립트 완료) | — | [Phase 6](phases/phase-6-release.md) |
-| Phase 7 — 도움말/규칙 번역 (후순위) | TS_RulesTutorial 313행(6.4만 자) + 씬 규칙 문단 167개. **배포 후 맨 마지막에 수행** | 1~2일 | [Phase 7](phases/phase-7-help-translation.md) |
+| Phase 6 — 배포 | 사용자 안내·라이선스·배포물 정리 (zip 2종 패키징 스크립트 완료). **최종 배포는 Phase 7 완료 후** | — | [Phase 6](phases/phase-6-release.md) |
+| Phase 7 — 도움말/규칙 번역 | TS_RulesTutorial 313행(6.4만 자) + 씬 규칙 문단 167개. **배포 전에 수행 (2026-08-13 결정 — 사용자가 배포 전 완료로 변경)** | 3~5일 | [Phase 7](phases/phase-7-help-translation.md) |
+
+> ⚠️ **순서 변경 (2026-08-13)**: Phase 7(규칙/도움말 번역)을 **배포(Phase 6) 전에** 수행한다.
+> Phase 6 배포 패키징 산출물(README·zip 스크립트)은 유지하되, 최종 배포는 Phase 7 완료 후 진행한다.
 
 ---
 

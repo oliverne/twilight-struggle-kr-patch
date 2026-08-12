@@ -1,9 +1,11 @@
-# Phase 7 — 도움말/규칙 번역 (후순위)
+# Phase 7 — 도움말/규칙 번역
 
 ## 상태
 
-- 상태: ⬜ 대기 (배포 이후 맨 마지막에 수행 — 사용자 결정 2026-08-12)
-- 선행 Phase: Phase 6 (배포) 완료 후
+- 상태: 🚧 진행 중 (착수일: 2026-08-13)
+- ⚠️ **순서 변경 (2026-08-13 사용자 결정)**: 기존 "배포 후 맨 마지막에 수행" → **배포 전에 수행**.
+  최종 배포(Phase 6)는 Phase 7 완료 후 진행한다.
+- 선행 Phase: Phase 5 완료
 
 ## 목표
 
@@ -19,14 +21,38 @@
 
 ## 체크리스트
 
-- [ ] 용어표 확장 — 규칙 용어(작전점/쿠데타/데프콘/재편성/승점 등) 검토, `translation/` 용어표 갱신
-- [ ] TS_RulesTutorial EN 313행 추출 → 번역 (수동 또는 AI 보조 후 검수)
-- [ ] `translation/manual-rules.json` 작성 (key → KO)
-- [ ] 주입: `inject_translations.py`에 rules 테이블 처리 추가 (또는 별도 스크립트) → EN 열 교체
+### 0. 선행 검증 (착수 전 필수 — AGENTS.md "살아있는 소스" 원칙)
+
+- [x] TS_RulesTutorial 구조 실측 (2026-08-13) — 시트 1631793870: 313행 (RB_ 97 + Help_ 214 + Key_ 2), EN 63,997자, **KO 열(10열) 존재 확인**
+- [ ] 게임에서 규칙북(RB)/도움말(HELP) 진입 경로 확인 (메뉴·게임 내 버튼) — 실게임 필요
+- [ ] TS_RulesTutorial이 실제 화면 표시에 사용되는지 실게임 확인 — Phase 4의 "표시 텍스트 없음" 기록과 대조
+- [ ] 표시 경로가 확인되면 표시되는 키(RB_/Help_)와 테이블 매핑 기록
+
+### 1. 용어표(용어집) 신설
+
+- [x] 기존 번역(cards.json·strings.json·runtime TSV·manual-*.json)에서 게임 용어 추출
+      (진출/지배/격전지/데프콘/우주 경쟁/입찰/쿠데타/재편성/승점 등 — 2026-08-13 조사 완료)
+- [x] `translation/glossary.md` 작성 — EN 용어 → 통일 한글 + 근거(기존 사용처) (2026-08-13)
+- [ ] 번역 작업 전 용어표 확정 (검토 후 승인) — ⬜ 사용자 검토 필요
+
+### 2. TS_RulesTutorial 번역
+
+- [x] TS_RulesTutorial EN 313행 추출 → `translation/manual-rules.json` 생성 (key → original → translation_ko, 2026-08-13)
+- [ ] 용어표 기준으로 번역 (AI 보조 → humanizer/grammar-checker 검수 — translation-polish 워크플로우)
+- [ ] 번역 품질 검수 (용어 일관성, TMP 태그 보존, 문단 구조)
+
+### 3. 주입
+
+- [ ] `inject_translations.py`에 rules 테이블 처리 추가 (현재 건너뜀) → EN 열 교체
 - [ ] `add_ko_columns.py` 재실행 (KO 열 동기화)
 - [ ] 씬 규칙 문단 167개 — `translation/manual-scenes.json`에 추가 후 `patch_scenes.py` 재실행
 - [ ] 번역 후 글리프 확인 — 새 글자 발생 시 `fonts/chars.txt` 확장 → SDF 재생성 → 폰트 재주입
-- [ ] 검증 (verify_assets.py) + 실게임 확인 (규칙북/도움말 팝업)
+
+### 4. 검증
+
+- [ ] `verify_assets.py` 검증 (m_Script 0건, 의도 밖 변경 0건)
+- [ ] 실게임 확인 (규칙북/도움말 팝업 — 스크롤·줄바꿈·레이아웃)
+- [ ] 잔존 영문/`□` 0건 확인
 
 ## 검증 기준
 
@@ -36,16 +62,30 @@
 | 도움말 팝업 | Help_ 전 항목 한글 표시 (쿠데타/영향력/우주 경쟁/데프콘 등) |
 | 레이아웃 | 긴 문단에서 텍스트 잘림 없음 (스크롤/폰트 크기 확인) |
 | 문자셋 | `□` 누락 0건 |
+| 용어 일관성 | 카드/UI 번역과 용어표가 일치 (번역 검수로 확인) |
 
 ## 검증 결과
 
 | 항목 | 방법 | 결과 |
 |---|---|---|
-| — | — | ⬜ 대기 |
+| TS_RulesTutorial 구조 실측 | extract_textassets.py 추출 (2026-08-13) | ✅ 시트 1631793870, 313행 (RB_ 97 + Help_ 214 + Key_ 2), EN 63,997자, KO 열(10열) 존재 |
+| 용어 조사 | 런타임 TSV 빈도 조사 (2026-08-13) | ✅ 핵심 용어 40여 개 통일안 도출 (승점/점수 카드/작전치/진출·지배·장악 등) |
+| 용어표 | glossary.md 작성 (2026-08-13) | ✅ 초안 완료 — 사용자 검토 대기 |
+| manual-rules.json | 313행 EN 추출 (2026-08-13) | ✅ 생성 완료 — translation_ko 미입력 (번역 대기) |
+| 선행 검증 (실표시 경로) | 실게임 확인 | ⬜ 대기 |
+| 규칙북/도움말 번역 | — | ⬜ 대기 |
+| 주입·검증 | — | ⬜ 대기 |
+
+## 산출물 (예정)
+
+- ✅ `translation/glossary.md` — 용어 통일표 (2026-08-13 초안)
+- ✅ `translation/manual-rules.json` — TS_RulesTutorial 313행 EN 추출 (2026-08-13, 번역 대기)
+- ⬜ `scripts/inject_translations.py` 확장 (rules 테이블 처리)
+- ⬜ 갱신된 `translation/manual-scenes.json` (씬 규칙 문단 167개)
 
 ## 다음 Phase로 핸드오프
 
-(Phase 7 완료 시 작성 — 배포 후 수행 예정)
+(Phase 7 완료 시 작성 — 최종 배포(Phase 6)로 이관)
 
 ## 참고
 

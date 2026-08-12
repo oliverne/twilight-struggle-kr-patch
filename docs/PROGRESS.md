@@ -6,7 +6,7 @@
 
 ## 현재 상태
 
-**다음 작업:** Phase 6 배포 (package-release.sh) — ⚠️ patched는 플랫폼별이므로 macOS용/Windows용 분리 필요
+**다음 작업:** Phase 7 (도움말/규칙 번역) 착수 — **배포 전 수행으로 변경 (2026-08-13 사용자 결정)**. 용어표 신설 → TS_RulesTutorial 313행 + 씬 규칙 167개 번역 → 주입 → 검증 → 최종 배포(Phase 6)
 
 - 완료: Phase 0 — 준비, Phase 1 — 텍스트 위치 검증, Phase 2 — 번역 소스 구축
 - 완료: Phase 3 SDF 생성 (2048² 최적화) + Windows 폰트 주입 (24개 TMP 폰트)
@@ -68,13 +68,13 @@
 | Phase 3 — 한글 SDF 폰트 아틀라스 생성  | ✅   | 2048² SDF 2종 + Windows 주입 완료 (24개 폰트) | [상세](phases/phase-3-sdf-font.md)           |
 | Phase 4 — 텍스트 주입 & 레이아웃 조정  | ✅   | 무손상 주입 재구축 + 잔존 키 52개 재주입    | [상세](phases/phase-4-injection-layout.md)   |
 | Phase 5 — 플랫폼 적용 & 테스트         | ✅   | **전부 완료 (2026-08-12)** — Windows 4차 테스트·macOS 실게임·Steam 무결성 복구·uninstall 검증. 잔여: 멀티플레이(스킵) | [상세](phases/phase-5-platform-test.md)      |
-| Phase 6 — 배포                         | ⬜   | 사용자 안내 및 배포 대기                       | [상세](phases/phase-6-release.md)            |
-| Phase 7 — 도움말/규칙 번역 (후순위)   | ⬜   | 배포 후 맨 마지막 수행 — 규칙 6.4만 자 수동   | [상세](phases/phase-7-help-translation.md)   |
+| Phase 6 — 배포                         | ⬜   | 배포 준비 완료 (패키징 스크립트) — **최종 배포는 Phase 7 완료 후** | [상세](phases/phase-6-release.md)            |
+| Phase 7 — 도움말/규칙 번역             | 🚧   | **배포 전 수행으로 변경 (2026-08-13)** — 용어표·규칙 6.4만 자 수동 | [상세](phases/phase-7-help-translation.md)   |
 
-## 현재 핸드오프 요약 (→ Phase 6 배포)
+## 현재 핸드오프 요약 (→ Phase 7 도움말/규칙 번역)
 
-- 수신: Windows·macOS 모두 패치 적용 + 실게임 확인 완료 (2026-08-12). 현재 작업 위치는 macOS
-- **즉시 실행 (Phase 6)**: ① Windows용 patched 확보(Windows 파이프라인 재실행, 저장소 patched/는 macOS 기준) → 플랫폼별 zip 분리 ② LICENSE.txt/CREDITS.md 작성 ③ `gh release create` 배포
+- **순서 변경 (2026-08-13)**: Phase 7을 배포 전에 수행 — 최종 배포(Phase 6)는 Phase 7 완료 후
+- **즉시 실행 (Phase 7)**: ① 선행 검증 — 게임에서 규칙북/도움말(HELP) 진입 경로와 TS_RulesTutorial 실표시 확인 ② 용어표 신설(`translation/glossary.md`) — 기존 번역 용어 일관성 확보 ③ TS_RulesTutorial 313행 EN 추출 → 번역(manual-rules.json) ④ `inject_translations.py`에 rules 처리 추가 → KO 열 동기화 ⑤ 씬 규칙 문단 167개 → `manual-scenes.json` → `patch_scenes.py` ⑥ 필요 시 폰트 문자셋 확장 ⑦ 검증 + 실게임
 - 잔존 영어/`□` 발견 시 → `translation/manual-*.json`에 키 추가 → 재주입 (inject → add_ko → 필요시 폰트 → verify)
 - macOS 재적용: `scripts/install.sh` / 제거: `scripts/uninstall.sh` (Windows: `install-windows.ps1`/`uninstall-windows.ps1`)
 - 멀티플레이 테스트 미실시 — 배포 전 1회 확인 권장 (스킵됨)

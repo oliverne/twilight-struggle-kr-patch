@@ -194,7 +194,7 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 - **턴 히스토리 로그** — IL2CPP 코드 문자열(global-metadata.dat)로 파일 패치 불가. BepInEx 런타임 훅 프로젝트로만 해결 가능 (블루칩·런타임 패치 포함 모든 기존 패치가 미커버)
   - **보류 범위 확정 실측 (2026-08-12)**: 인게임 대기 메시지 "플레이어의 결정을 기다리는 중..."(원문 `Waiting for Player to decide...`)이 한글 표시되는 것을 계기로 전수 확인 — 원문이 global-metadata.dat 0건 / resources.assets 0건, patched/level2(인게임 씬)에 한글 2건·EN 0건 → **계층 2(씬 하드코딩, patch_scenes.py)로 해결된 문자열**임을 실측 확정. IL2CPP 코드 문자열 잔존은 **턴 히스토리 로그 템플릿뿐**으로 범위가 좁혀짐
 - ~~**폰트 크기 불일치**~~ → **해결 (2026-08-12)**: m_PointSize 70→77로 ~9% 축소, 줄 간격 유지 (글자만 축소). 절차는 `.agents/skills/twilight-struggle-font-size` 참조. 잔여 보조 보정(`--use-game-line-metrics` 재주입 등)은 미적용
-- **규칙북/튜토리얼 긴 문단** — 씬 하드코딩 167개 미번역 + TS_RulesTutorial 313행(6.4만 자) 전량 수동. **Phase 7(후순위, 배포 후)로 이관** — [phase-7-help-translation.md](phase-7-help-translation.md) 참조
+- **규칙북/튜토리얼 긴 문단** — 씬 하드코딩 167개 미번역 + TS_RulesTutorial 313행(6.4만 자) 전량 수동. **Phase 7에서 처리 (배포 전, 2026-08-13 결정)** — [phase-7-help-translation.md](phase-7-help-translation.md) 참조
 - **더미 텍스트** — 'PlayerName12345', 'Text goes here' 등 개발용 더미는 번역 제외 (무해)
 
 ### 산출물 위치
@@ -260,4 +260,4 @@ macOS에서 전체 파이프라인(macOS 원본 기준)으로 패치 후 실게�
 
 - **턴 히스토리 로그 영어** — IL2CPP 코드 문자열, 파일 패치 불가, BepInEx 훅 필요 (보류 유지, `b16ea22` 실측으로 범위 확정)
 - **멀티플레이** — 미검증 (스킵됨, 에셋 교체가 온라인 버전 체크에 영향 없음을 배포 전 한 번 확인 권장)
-- **규칙북/튜토리얼 장문** — Phase 7 후순위 (배포 후)
+- **규칙북/튜토리얼 장문** — Phase 7에서 처리 중 (배포 전, 2026-08-13 결정)

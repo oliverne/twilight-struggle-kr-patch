@@ -36,9 +36,8 @@ EN 원문은 절대 덮어쓰지 않고 `ko` 필드로만 관리한다. 스키�
 ⚠️ **우선순위**: `key_to_ko(strings/cards) > runtime TSV(EN 값 매칭) > manual` — 기존 번역이 먼저 적용되고
 수동 번역이 덮어쓴다. EN 열은 항상 보존된다.
 
-⚠️ **용어 일관성**: 별도 용어표 파일은 아직 없음 (AGENTS.md의 저장소 구조 계획 항목).
-수동 번역 추가 시 기존 번역(러시아·쿠데타·격전지·영향력·데프콘 등)과 용어를 맞출 것.
-Phase 7(도움말/규칙 번역) 착수 시 용어표 신설 예정 — [docs/phases/phase-7-help-translation.md](../docs/phases/phase-7-help-translation.md)
+⚠️ **용어 일관성**: 용어표 `translation/glossary.md` 기준으로 번역한다 (Phase 7에서 신설, 2026-08-13).
+수동 번역 추가 시 기존 번역(러시아·쿠데타·격전지·영향력·데프콘 등)과 용어를 맞출 것 — [docs/phases/phase-7-help-translation.md](../docs/phases/phase-7-help-translation.md)
 
 ## 구성 규칙
 
