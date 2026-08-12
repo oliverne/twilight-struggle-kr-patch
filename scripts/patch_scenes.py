@@ -42,7 +42,7 @@ def parse_string_at(raw: bytes, off: int):
     if off + 4 > len(raw):
         return None
     ln = struct.unpack_from("<i", raw, off)[0]
-    if ln < 0 or ln > 500 or off + 4 + ln > len(raw):
+    if ln < 0 or ln > 20000 or off + 4 + ln > len(raw):  # 500자 제한 완화 — 긴 규칙 문단 대응 (Phase 7)
         return None
     try:
         return raw[off + 4 : off + 4 + ln].decode("utf-8")
