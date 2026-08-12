@@ -115,8 +115,8 @@
 | 2026-08-12                                        | 폴더 정리(scripts/tools/translation) + README·스킬 갱신       | `a0cdff4` |
 | 2026-08-12                                        | TextAsset 미번역 전수 조사(0건) + Windows 설치 스크립트        | `5f208a7` |
 | 2026-08-12                                        | 설치 스크립트 언어 KO 자동 설정 (레지스트리/plist) + 문서 반영 | `e579de8` |
-| 2026-08-12                                        | 배포 패키징 스크립트 작성 (zip 2종 + SHA256SUMS) + Phase 6 문서 반영 | (이번 커밋) |
+| 2026-08-12                                        | 배포 패키징 스크립트 작성 (zip 2종 + SHA256SUMS) + Phase 6 문서 반영 | `4b53d1a` |
 | 2026-08-12                                        | 폰트 교체(Paperlogy/D2Coding) + 크기 축소 + 크기 조절 스킬 신설 | `405b17a` |
 | 2026-08-12                                        | 번역 다듬기 스킬 신설 + CRLF 정규화 (내용 무변화)             | `02497c2`, `986246f` |
 | 2026-08-12                                        | 미번역 텍스트 화면 단위 확인 완료 (사용자 실게임, 전수 조사 미실시) | `5c5492a`, `5181950` |
-| 2026-08-12                                        | **macOS 전체 파이프라인 재현** — Windows 전송 불필요 (GameAssembly.dll+metadata 2개만). venv 패치 2건·Il2CppDumper 스킵·metadata 플랫폼별 확인 + install.sh level1~3 버그 수정 | (이번 커밋) |
+| 2026-08-12                                        | **macOS 전체 파이프라인 재현** — Windows 전송 불필요 (GameAssembly.dll+metadata 2개만). venv 패치 2건·Il2CppDumper 스킵·metadata 플랫폼별 확인 + install.sh level1~3 버그 수정 | `4b53d1a` |
