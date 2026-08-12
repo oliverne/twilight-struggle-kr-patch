@@ -7,7 +7,7 @@
   - TS_Ingame: key 기반 EN→KO (런타임 TSV에서 117/157행 커버)
   - Common_Ingame: key 기반 EN→KO (수동 번역 포함, 22행)
   - TS_Strings: key 기반 EN→KO (런타임 TSV에서 38/50행 커버)
-  - TS_RulesTutorial: 건너뜀 (File/String 참조만 있고 표시 텍스트 아님)
+  - TS_RulesTutorial: EN 열(3열) → KO 번역 주입 (Phase 7, manual-rules.json) — 시트 1631793870 (1열=키, 2열=US, 3열=EN, 10열=KO)
   - AvailableCultures: ru → ko (한국어 선택 가능하게)
   - EN 열(2열)은 절대 수정하지 않음
 
@@ -232,6 +232,43 @@ def inject_tscards(text: str, key_to_ko: dict) -> tuple[str, int]:
     return date_line + json.dumps(data, ensure_ascii=False, separators=(",", ":")), changed
 
 
+def inject_rules_tutorial(text: str, rules_entries: list) -> tuple[str, int]:
+    """TS_RulesTutorial: 시트 1631793870의 EN 열(3열) → KO 번역 주입 (Phase 7)
+
+    구조: 1열=키(String), 2열=US, 3열=EN, 4~8=FR/IT/DE/ES/NL, 9=Notes, 10=KO.
+    시트 0(File/String 참조 목록)은 건드리지 않는다.
+    key(1열) 기준으로 translation/manual-rules.json의 번역을 찾아 EN 열에 쓴다.
+    (EN 열에 주입하면 add_ko_columns.py가 KO 열로 복사해 동기화된다)
+    """
+    date_end = text.index("\n") + 1
+    date_line = text[:date_end]
+    data = json.loads(text[date_end:].strip())
+
+    key_to_ko = {}
+    for e in rules_entries:
+        ko = e.get("translation_ko", "")
+        if ko:
+            key_to_ko[e["key"]] = ko
+
+    changed = 0
+    for top_key, cells in data.items():
+        if top_key == "0" or not isinstance(cells, dict):
+            continue
+        for cell_key, val in list(cells.items()):
+            if ":" not in cell_key:
+                continue
+            r, c = cell_key.split(":", 1)
+            if c != "3":  # EN 열만 교체
+                continue
+            row_key = cells.get(f"{r}:1", "")
+            ko = key_to_ko.get(row_key)
+            if ko and val != ko:
+                cells[cell_key] = ko
+                changed += 1
+
+    return date_line + json.dumps(data, ensure_ascii=False, separators=(",", ":")), changed
+
+
 def inject_available_cultures(text: str) -> str:
     """AvailableCultures XML: ru → ko"""
     text = text.replace(
@@ -283,6 +320,13 @@ def main():
     manual_extra_path = base / "translation/manual-extra.json"
     if manual_extra_path.exists():
         manual_extra = json.loads(manual_extra_path.read_text("utf-8"))
+
+    # TS_RulesTutorial 번역 (translation/manual-rules.json — Phase 7)
+    manual_rules = {"entries": []}
+    manual_rules_path = base / "translation/manual-rules.json"
+    if manual_rules_path.exists():
+        manual_rules = json.loads(manual_rules_path.read_text("utf-8"))
+        print(f"TS_RulesTutorial 번역 소스: {len(manual_rules.get('entries', []))}행")
 
     # Common_Ingame 수동 번역 (런타임 TSV 커버 불가)
     common_ingame_manual = {
@@ -354,6 +398,11 @@ def main():
             )
             print(f"  TS_Strings: {changed}행 (EN→KO)")
             results["TS_Strings"] = changed
+        
+        elif name == "TS_RulesTutorial":
+            new_text, changed = inject_rules_tutorial(text, manual_rules.get("entries", []))
+            print(f"  TS_RulesTutorial: {changed}행 (EN 열 3 → KO, Phase 7)")
+            results["TS_RulesTutorial"] = changed
         
         elif name == "AvailableCultures":
             new_text = inject_available_cultures(text)
