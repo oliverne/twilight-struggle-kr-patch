@@ -19,6 +19,7 @@
 - ✅ **4차 테스트 — 대부분의 UI·카드 한글화 확인 (2026-08-12)**
 - ✅ **폰트 교체 — 제목 Paperlogy 5 Medium, 본문 D2Coding Regular (2026-08-12)**
 - ✅ **폰트 크기 조절 — m_PointSize 70→77 (~9% 축소), 줄 간격 유지 (2026-08-12)**
+- ✅ **번역 다듬기 — humanizer 스캔(556건) → 일괄 교정 52개 + 런타임 장문 10개, grammar-checker 조사 오류 11건 교정 (2026-08-12)** — 상세: [translation-polish-review.md](docs/translation-polish-review.md)
 - **Phase 5 잔여: 미번역 텍스트 전체 확인 → macOS 적용 → 멀티플레이 → 설치 스크립트**
 
 ### 작업 재개 순서

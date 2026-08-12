@@ -1317,7 +1317,7 @@
     {
       "source_line": 264,
       "original": "Cancels effect of 'Formosan Resolution' if this card is played by the US player.",
-      "translation_ko": "이 카드가 미국 플레이어에 의해 플레이되면 '포르모사 결의안'의 효과를 취소한다."
+      "translation_ko": "이 카드를 미국 플레이어가 플레이하면 '포르모사 결의안'의 효과를 취소한다."
     },
     {
       "source_line": 265,
@@ -1837,12 +1837,12 @@
     {
       "source_line": 368,
       "original": "If US has <i>The China Card</i>, gain 2 VP. Otherwise, US player receives the<br><i>The China Card</i> now, face down and unavailable for immediate play.",
-      "translation_ko": "미국이 <i>중국 카드</i>를 가지고 있다면 2 승점을 얻는다. 그렇지 않다면 미국 플레이어가 지금 <br><i>중국 카드</i>를 받아 뒷면으로 보유하며 즉시 플레이할 수는 없다."
+      "translation_ko": "미국이 <i>중국 카드</i>를 보유 중이면 2 승점을 얻는다. 그렇지 않다면 미국 플레이어가 지금 <br><i>중국 카드</i>를 받아 뒷면으로 보유하며 즉시 플레이할 수는 없다."
     },
     {
       "source_line": 369,
       "original": "If US has <i>The China Card</i>, gain 2 VP.<br>Otherwise, US player receives the <i>The China Card</i> now, face down and unavailable for immediate play.",
-      "translation_ko": "미국이 <i>중국 카드</i>를 가지고 있다면 2 승점을 얻는다. 그렇지 않다면 미국 플레이어가 지금 <br><i>중국 카드</i>를 받아 뒷면으로 보유하며 즉시 플레이할 수는 없다."
+      "translation_ko": "미국이 <i>중국 카드</i>를 보유 중이면 2 승점을 얻는다. 그렇지 않다면 미국 플레이어가 지금 <br><i>중국 카드</i>를 받아 뒷면으로 보유하며 즉시 플레이할 수는 없다."
     },
     {
       "source_line": 370,
@@ -1872,17 +1872,17 @@
     {
       "source_line": 375,
       "original": "If the US has <i>The China Card</i>, claim it face up and available for play. If the USSR already has it, USSR gains 1 VP.",
-      "translation_ko": "미국이 <i>중국 카드</i>를 가지고 있다면 이를 앞면으로 가져와 플레이 가능하게 한다.<br>이미 소련이 가지고 있다면 소련이 1 승점을 얻는다."
+      "translation_ko": "미국이 <i>중국 카드</i>를 보유 중이면 이를 앞면으로 가져와 플레이 가능하게 한다.<br>이미 소련이 보유 중이면 소련이 1 승점을 얻는다."
     },
     {
       "source_line": 376,
       "original": "If the US has <i>The China Card</i>, claim it face up and available for play.<br><br>If the USSR already has it, <br>USSR gains 1 VP.",
-      "translation_ko": "미국이 <i>중국 카드</i>를 가지고 있다면 이를 앞면으로 가져와 플레이 가능하게 한다.<br>이미 소련이 가지고 있다면 소련이 1 승점을 얻는다."
+      "translation_ko": "미국이 <i>중국 카드</i>를 보유 중이면 이를 앞면으로 가져와 플레이 가능하게 한다.<br>이미 소련이 보유 중이면 소련이 1 승점을 얻는다."
     },
     {
       "source_line": 377,
       "original": "If the US has <i>The China Card</i>, claim it face up and available for play.<br>If the USSR already has it, USSR gains 1 VP.",
-      "translation_ko": "미국이 <i>중국 카드</i>를 가지고 있다면 이를 앞면으로 가져와 플레이 가능하게 한다.<br>이미 소련이 가지고 있다면 소련이 1 승점을 얻는다."
+      "translation_ko": "미국이 <i>중국 카드</i>를 보유 중이면 이를 앞면으로 가져와 플레이 가능하게 한다.<br>이미 소련이 보유 중이면 소련이 1 승점을 얻는다."
     },
     {
       "source_line": 378,
@@ -1897,12 +1897,12 @@
     {
       "source_line": 380,
       "original": "If the USSR has <i>The China Card</i>, claim it face up and available for play. If the US already has <i>The China Card</i>, add 4 US Influence in Asia, no more than 2 per country.",
-      "translation_ko": "소련이 <i>중국 카드</i>를 가지고 있다면 이를 앞면으로 가져와 플레이 가능하게 한다. 미국이 이미 <i>중국 카드</i>를 가지고 있다면 아시아에 미국 영향력 4를 추가한다. 한 국가당 최대 2까지다."
+      "translation_ko": "소련이 <i>중국 카드</i>를 보유 중이면 이를 앞면으로 가져와 플레이 가능하게 한다. 미국이 이미 <i>중국 카드</i>를 보유 중이면 아시아에 미국 영향력 4를 추가한다. 한 국가당 최대 2까지다."
     },
     {
       "source_line": 381,
       "original": "If the USSR has <i>The China Card</i>, claim it face up and available for play.<br>If the US already has <i>The China Card</i>, add 4 US Influence in Asia, no more than 2 per country.",
-      "translation_ko": "소련이 <i>중국 카드</i>를 가지고 있다면 이를 앞면으로 가져와 플레이 가능하게 한다. 미국이 이미 <i>중국 카드</i>를 가지고 있다면 아시아에 미국 영향력 4를 추가한다. 한 국가당 최대 2까지다."
+      "translation_ko": "소련이 <i>중국 카드</i>를 보유 중이면 이를 앞면으로 가져와 플레이 가능하게 한다. 미국이 이미 <i>중국 카드</i>를 보유 중이면 아시아에 미국 영향력 4를 추가한다. 한 국가당 최대 2까지다."
     },
     {
       "source_line": 382,
@@ -2832,7 +2832,7 @@
     {
       "source_line": 567,
       "original": "The <color=white>Space Race</color> track contains a marker for each Superpower. <color=white>Operations</color> points may be spent by a player to attempt to move their marker to the next box on the track. A player may discard one card per turn in an attempt to advance the <color=white>Space Race</color>, unless a special exception allows additional attempts. The discarded card's <color=white>Operations</color> value must be equal to or greater than the number shown on the track into which you are attempting to advance. The game will roll the die, and if the number is within the range listed in the target box on the <color=white>Space Race</color> track, will move your marker to the new box.<br><br>Advancing the <color=white>Space Race</color> track will result in an award of <color=white>Victory Points</color>, a special ability, or both. The first player to reach a given <color=white>Space Race</color> box receives the left number of <color=white>Victory Points</color>, and the second player receives the right number of <color=white>Victory Points</color>. Special abilities are granted to the first player to reach certain Space Race boxes. The special effect is immediately cancelled when the second player reaches that box.",
-      "translation_ko": "<color=white>우주 경쟁</color> 트랙에는 각 초강대국의 마커가 하나씩 있다. 플레이어는 <color=white>작전치</color>을 사용해 자신의 마커를 다음 칸으로 전진시키려 시도할 수 있다. 특별한 예외가 없는 한 플레이어는 턴마다 카드 1장을 버려 <color=white>우주 경쟁</color> 전진을 시도할 수 있다. 버리는 카드의 <color=white>작전치</color>은 전진하려는 칸에 표시된 수치 이상이어야 한다. 게임은 주사위를 굴리고, 결과가 목표 칸에 표시된 범위 안에 들어가면 마커를 그 칸으로 이동시킨다.<br><br><color=white>우주 경쟁</color> 트랙을 전진하면 <color=white>승점</color>, 특수 능력, 또는 둘 다를 얻는다. 특정 <color=white>우주 경쟁</color> 칸에 먼저 도달한 플레이어는 왼쪽 수의 <color=white>승점</color>을 받고, 두 번째로 도달한 플레이어는 오른쪽 수의 <color=white>승점</color>을 받는다. 특수 능력은 특정 우주 경쟁 칸에 먼저 도달한 플레이어에게 부여되며, 두 번째 플레이어가 그 칸에 도달하는 즉시 사라진다."
+      "translation_ko": "<color=white>우주 경쟁</color> 트랙에는 각 초강대국의 마커가 하나씩 있다. 플레이어는 <color=white>작전치</color>를 사용해 자신의 마커를 다음 칸으로 전진시키려 시도할 수 있다. 특별한 예외가 없는 한 플레이어는 턴마다 카드 1장을 버려 <color=white>우주 경쟁</color> 전진을 시도할 수 있다. 버리는 카드의 <color=white>작전치</color>은 전진하려는 칸에 표시된 수치 이상이어야 한다. 게임은 주사위를 굴리고, 결과가 목표 칸에 표시된 범위 안에 들어가면 마커를 그 칸으로 이동시킨다.<br><br><color=white>우주 경쟁</color> 트랙을 전진하면 <color=white>승점</color>, 특수 능력, 또는 둘 다를 얻는다. 특정 <color=white>우주 경쟁</color> 칸에 먼저 도달한 플레이어는 왼쪽 수의 <color=white>승점</color>을 받고, 두 번째로 도달한 플레이어는 오른쪽 수의 <color=white>승점</color>을 받는다. 특수 능력은 특정 우주 경쟁 칸에 먼저 도달한 플레이어에게 부여되며, 두 번째 플레이어가 그 칸에 도달하는 즉시 사라진다."
     },
     {
       "source_line": 568,
@@ -2907,7 +2907,8 @@
     {
       "source_line": 582,
       "original": "The object of the game is to score <color=white>Victory Points</color> through geographic influence over the six Regions. Each Region has its own \"Scoring Card\". Playing a Scoring Card causes <color=white>Victory Points</color> to be scored on how much influence each superpower has in that region at the time the card is played. The <color=white>Victory Points</color> are totaled for both players, and the net difference is marked on the <color=white>Victory Point Track</color>. A player may not hold a Scoring Card in their hand at the end of theirturn, as doing so results in automatically losing the game. A player may not be forced to hold a <color=white>Scoring Card</color> through the effects of a game event.<br><br>Scoring Card have the following scoring criteria:<br><br><color=white>> Presence:</color> A superpower has <color=white>Presence</color> in a Region if it Controls at least one (1) country in that Region.<br><br><color=white>> Domination:</color> A superpower has <color=white>Domination</color> in a Region if it <color=white>Controls</color> more countries than an opponent and it <color=white>Controls</color> more <color=white>Battleground</color> countries in that Region. A superpower must <color=white>Control</color> at least one (1) <color=white>non-Battleground</color> and one (1) <color=white>Battleground</color> country in that Region to achieve domination.<br><br><color=white>> Control:</color> A superpower has <color=white>Control</color> of a Region if it <color=white>Controls</color> more countries in that Region than its opponent, and <color=white>Controls</color> all of the <color=white>Battleground</color> countries in that Region.<br><br><color=white>> Additional Scoring:</color> A +1 VP is granted per country that is under Control and adjacent to the enemy superpower.<br><br><color=white>> Additional Scoring:</color> A +1 VP is granted per <color=white>Battleground</color> Country that is under a player's <color=white>Control</color> in the scoring region.",
-      "translation_ko": "게임의 목적은 여섯 지역에 대한 지정학적 영향력을 통해 <color=white>승점</color>을 얻는 것이다. 각 지역에는 고유한 \"점수 카드\"가 있다. 점수 카드를 플레이하면 그 시점에 각 초강대국이 그 지역에 얼마나 영향력을 가지고 있는지에 따라 <color=white>승점</color>을 계산한다. 양 플레이어의 <color=white>승점</color>을 합산하고, 순차이를 <color=white>승점 트랙</color>에 표시한다. 플레이어는 턴 종료 시 손에 점수 카드를 들고 있어서는 안 되며, 그렇게 하면 자동 패배한다. 게임 이벤트 효과로 인해 <color=white>점수 카드</color>를 강제로 보유하게 될 수도 없다.<br><br>점수 카드는 다음 기준으로 점수 계산한다:<br><br><color=white>> 진출:</color> 초강대국이 해당 지역의 국가를 하나 이상 지배하면 그 지역에 <color=white>진출</color>한 것이다.<br><br><color=white>> 지배:</color> 초강대국이 상대보다 더 많은 국가를 <color=white>지배</color>하고, 그 지역에서 상대보다 더 많은 <color=white>격전지</color>을 <color=white>지배</color>하면 그 지역을 <color=white>지배</color>한 것이다. 지배를 달성하려면 그 지역에서 최소 하나의 <color=white>비격전지</color>과 하나의 <color=white>격전지</color>을 지배해야 한다.<br><br><color=white>> 장악:</color> 초강대국이 상대보다 더 많은 국가를 <color=white>지배</color>하고, 그 지역의 모든 <color=white>격전지</color>을 지배하면 그 지역을 <color=white>장악</color>한 것이다.<br><br><color=white>> 추가 점수:</color> 적 초강대국에 인접한 지배 국가마다 +1 승점을 얻는다.<br><br><color=white>> 추가 점수:</color> 점수 계산 지역에서 플레이어가 <color=white>지배</color>하는 <color=white>격전지</color>마다 +1 승점을 얻는다."
+      "translation_ko": "게임의 목적은 여섯 지역에 대한 지정학적 영향력으로 <color=white>승점</color>을 얻는 것이다. 각 지역에는 고유한 \"점수 카드\"가 있다. 점수 카드를 플레이하면 그 시점에 각 초강대국이 그 지역에 얼마나 영향력을 보유하고 있는지에 따라 <color=white>승점</color>을 계산한다. 양 플레이어의 <color=white>승점</color>을 합산하고, 순차이를 <color=white>승점 트랙</color>에 표시한다. 플레이어는 턴 종료 시 손에 점수 카드를 들고 있어서는 안 되며, 그렇게 하면 자동 패배한다. 게임 이벤트 효과로 <color=white>점수 카드</color>를 강제로 보유하게 할 수 없다.<br><br>점수 카드는 다음 기준으로 점수 계산한다:<br><br><color=white>> 진출:</color> 초강대국이 해당 지역의 국가를 하나 이상 지배하면 그 지역에 <color=white>진출</color>한 것으로 본다.<br><br><color=white>> 지배:</color> 초강대국이 상대보다 더 많은 국가를 <color=white>지배</color>하고, 그 지역에서 상대보다 더 많은 <color=white>격전지</color>를 <color=white>지배</color>하면 그 지역을 <color=white>지배</color>한 것으로 본다. 지배를 달성하려면 그 지역에서 최소 하나의 <color=white>비격전지</color>와 하나의 <color=white>격전지</color>를 지배해야 한다.<br><br><color=white>> 장악:</color> 초강대국이 상대보다 더 많은 국가를 <color=white>지배</color>하고, 그 지역의 모든 <color=white>격전지</color>를 지배하면 그 지역을 <color=white>장악</color>한 것으로 본다.<br><br><color=white>> 추가 점수:</color> 적 초강대국에 인접한 지배 국가마다 +1 승점을 얻는다.<br><br><color=white>> 추가 점수:</color> 점수 계산 지역에서 플레이어가 <color=white>지배</color>하는 <color=white>격전지</color>마다 +1 승점을 얻는다.",
+      "polished_at": "2026-08-12"
     },
     {
       "source_line": 583,
@@ -3102,17 +3103,17 @@
     {
       "source_line": 621,
       "original": "USSR gains 1 VP.<br>USSR receives 1 Influence in West Germany.<br>Cancels NATO for West Germany.<br><i>This event is unplayable and/or canceled by 'Tear Down This Wall.'",
-      "translation_ko": "소련이 1 승점을 얻는다.<br>서독에 소련 영향력 1을 받는다.<br>서독에 대한 NATO를 취소한다.<br><i>이 이벤트는 '이 장벽을 허물어라'에 의해 사용할 수 없거나 취소된다.</i>"
+      "translation_ko": "소련이 1 승점을 얻는다.<br>서독에 소련 영향력 1을 받는다.<br>서독에 대한 NATO를 취소한다.<br><i>이 이벤트는 '이 장벽을 허물어라'로 사용할 수 없거나 취소된다.</i>"
     },
     {
       "source_line": 622,
       "original": "USSR gains 2 VP for every subsequently US played \"war card\" (played as an event or Operations) unless played on the space race. War Cards: <i>Arab-Israeli War, Korean War, Brush War, Indo-Pakistani War or Iran-Iraq War.<br><br>This event canceled by 'An Evil Empire'.",
-      "translation_ko": "이후 미국이 플레이하는 모든 \\\\\"전쟁 카드\\\\\"마다 소련은 2 승점을 얻는다(우주 경쟁에 사용한 경우 제외). 전쟁 카드: <i>아랍-이스라엘 전쟁, 한국 전쟁, 소규모 전쟁, 인도-파키스탄 전쟁, 이란-이라크 전쟁</i>.<br><br>이 이벤트는 '악의 제국'에 의해 취소된다."
+      "translation_ko": "이후 미국이 플레이하는 모든 \\\\\"전쟁 카드\\\\\"마다 소련은 2 승점을 얻는다(우주 경쟁에 사용한 경우 제외). 전쟁 카드: <i>아랍-이스라엘 전쟁, 한국 전쟁, 소규모 전쟁, 인도-파키스탄 전쟁, 이란-이라크 전쟁</i>.<br><br>이 이벤트는 '악의 제국'으로 취소된다."
     },
     {
       "source_line": 623,
       "original": "USSR gains 2 VP for every subsequently US played \"war card\" (played as an event or Operations) unless played on the space race.<br><br>War Cards: <i>Arab-Israeli War, Korean War, Brush War, Indo-Pakistani War or Iran-Iraq War.<br><br>This event canceled by 'An Evil Empire'.",
-      "translation_ko": "이후 미국이 플레이하는 모든 \\\\\"전쟁 카드\\\\\"마다 소련은 2 승점을 얻는다(우주 경쟁에 사용한 경우 제외). 전쟁 카드: <i>아랍-이스라엘 전쟁, 한국 전쟁, 소규모 전쟁, 인도-파키스탄 전쟁, 이란-이라크 전쟁</i>.<br><br>이 이벤트는 '악의 제국'에 의해 취소된다."
+      "translation_ko": "이후 미국이 플레이하는 모든 \\\\\"전쟁 카드\\\\\"마다 소련은 2 승점을 얻는다(우주 경쟁에 사용한 경우 제외). 전쟁 카드: <i>아랍-이스라엘 전쟁, 한국 전쟁, 소규모 전쟁, 인도-파키스탄 전쟁, 이란-이라크 전쟁</i>.<br><br>이 이벤트는 '악의 제국'으로 취소된다."
     },
     {
       "source_line": 624,
@@ -3147,7 +3148,7 @@
     {
       "source_line": 630,
       "original": "USSR receives 1 VP for each US coup attempt made for the remainder of the current turn.",
-      "translation_ko": "이번 턴의 남은 동안 미국이 쿠데타를 시도할 때마다 소련은 1 승점를 얻습니다."
+      "translation_ko": "이번 턴의 남은 동안 미국이 쿠데타를 시도할 때마다 소련은 1 승점을 얻습니다."
     },
     {
       "source_line": 631,
@@ -3262,7 +3263,8 @@
     {
       "source_line": 653,
       "original": "While Europe may have been object of the Cold War, Asia was the battleground. From the Chinese Civil War, to the Korean War to Vietnam and Afghanistan, Asia was the place where the Cold War came closest to growing hot. For this reason, Asia is the second most significant region for scoring.",
-      "translation_ko": "유럽이 냉전의 중심 대상이었다면, 아시아는 그 전장이었다. 중국 내전에서 한국 전쟁, 베트남, 아프가니스탄에 이르기까지 아시아는 냉전이 가장 뜨겁게 달아오른 곳이었다. 그런 이유로 아시아는 점수 계산에서 두 번째로 중요한 지역이다."
+      "translation_ko": "유럽이 냉전의 중심이었다면, 아시아는 그 전장이었다. 중국 내전에서 한국 전쟁, 베트남, 아프가니스탄에 이르기까지 아시아는 냉전이 가장 뜨겁게 달아오른 곳이었다. 그런 이유로 아시아는 점수 계산에서 두 번째로 비중이 큰 지역이다.",
+      "polished_at": "2026-08-12"
     },
     {
       "source_line": 654,
@@ -6727,7 +6729,8 @@
     {
       "source_line": 1346,
       "original": "(1945 – 1989) Preceeding the start of the Cold War, citizens of the Eastern bloc, fled or defected to the West. Defectors came in two primary archetypes. Spies and Double agents who had been discovered or needed to “come in from the cold” would frequently flee to their masters and elude capture. Examples of this type of defector include KGB Deputy Chief Yuri Nosenko and KGB London Bureau Chief Oleg Gordievsky. Perhaps more embarassingly, and certainly more publicly, many talentend Soviet artists defected while on tour in the United States or Europe. While the West also suffered occasional defections, particularly from westerners involved in espionage, it never reached the same proportion or the same level of public spectacle.",
-      "translation_ko": "(1945 – 1989) 냉전이 시작되기 전부터 동구권 시민들은 서방으로 탈출하거나 망명했습니다. 망명자들은 크게 두 가지 유형으로 나뉩니다. 신분이 발각되었거나 \"냉혹한 현실에서 벗어나야\" 했던 스파이와 이중 첩자들은 자신의 공작 주체에게 도망쳐 체포를 피하곤 했습니다. 이런 유형의 망명자로는 KGB 부국장 유리 노센코와 KGB 런던 지부장 올레크 고르디옙스키가 있습니다. 더욱 당혹스럽고 분명히 더 세간의 이목을 끈 사례로는, 재능 있는 소련 예술가들이 미국이나 유럽 순회공연 중에 망명한 경우가 많았습니다. 서방도 간간이 망명자가 발생했지만, 특히 첩보 활동에 관여한 서방인들에 한정되었으며, 동구권과 같은 규모나 수준의 공개적 파장에는 이르지 못했습니다."
+      "translation_ko": "(1945 – 1989) 냉전이 시작되기 전부터 동구권 시민들은 서방으로 탈출하거나 망명했습니다. 망명자들은 크게 두 가지 유형으로 나뉩니다. 신분이 발각되었거나 \"냉혹한 현실에서 벗어나야\" 했던 스파이와 이중 첩자들은 자신의 공작 주체에게 도망쳐 체포를 피하곤 했습니다. 이런 유형의 망명자로는 KGB 부국장 유리 노센코와 KGB 런던 지부장 올레크 고르디옙스키가 있습니다. 더욱 당혹스럽고 분명히 더 세간의 이목을 끈 사례는, 재능 있는 소련 예술가들이 미국이나 유럽 순회공연 중에 망명한 일이었습니다. 서방에서도 간간이 망명자가 나왔지만 주로 첩보 활동에 관여한 인물들에 한정됐으며, 동구권과 같은 규모나 수준의 공개적 파장에는 이르지 못했습니다.",
+      "polished_at": "2026-08-12"
     },
     {
       "source_line": 1347,
@@ -6802,7 +6805,8 @@
     {
       "source_line": 1361,
       "original": "(1954-1970) One of the giants in the Pan-Arab movement, Gamal Abdel Nasser rose to power through military coup. Attempting to steer an independent course during the Cold War, he provoked western governments by accepting Soviet aid, and nationalizing commercial property – the Suez Canal being the most prominent example. Egypt, under his leadership, was viewed as a Soviet client, and would serve as a Russian proxy during repeated wars with Israel. He died in office after 18 years of service, having frustrated the attempts of a variety of domestic and international enemies.",
-      "translation_ko": "(1954-1970) 범아랍 운동의 거인 중 하나인 가말 압델 나세르는 군사 쿠데타를 통해 권력을 장악했습니다. 냉전 중 독자 노선을 추구하면서, 그는 소련의 원조를 받아들이고 상업 재산을 국유화함으로써 서방 정부들을 자극했으며, 가장 두드러진 예가 수에즈 운하였습니다. 그의 지도 아래 이집트는 소련의 피후견국으로 간주되었으며, 이스라엘과의 거듭된 전쟁에서 소련의 대리인 역할을 했습니다. 그는 18년간 재직하며 국내외 수많은 적들의 시도를 좌절시키고 임기 중에 사망했습니다."
+      "translation_ko": "(1954-1970) 범아랍 운동의 거인 중 하나인 가말 압델 나세르는 군사 쿠데타로 권력을 장악했습니다. 냉전 중 독자 노선을 추구한 그는 소련의 원조를 받아들이고 상업 재산을 국유화해 서방 정부들을 자극했으며, 가장 두드러진 예가 수에즈 운하였습니다. 그의 지도 아래 이집트는 소련의 피후견국으로 여겨졌으며, 이스라엘과의 거듭된 전쟁에서 소련의 대리인으로 활동했습니다. 그는 18년간 재직하며 국내외 수많은 적들의 시도를 좌절시키고 임기 중에 사망했습니다.",
+      "polished_at": "2026-08-12"
     },
     {
       "source_line": 1362,
@@ -6832,7 +6836,8 @@
     {
       "source_line": 1367,
       "original": "(1958-1969) Founder of France’s Fifth Republic, De Gaulle’s role during the Cold War is generally viewed through the lens of second presidency. While still a western ally, De Gaulle attempted to establish France as an independent voice within the confines of the Western campl. He developed an independent nuclear deterrent, withdrew from NATO’s unified command structure, and criticized US policy in Vietnam. He also pursued increased trade and cultural relations with the Soviet Bloc. He sought in all things to restore France to her former place of greatness in world affairs.",
-      "translation_ko": "(1958-1969) 프랑스 제5공화국의 창설자인 드골의 냉전 역할은 일반적으로 그의 두 번째 대통령 임기라는 렌즈를 통해 평가됩니다. 여전히 서방 동맹국이면서도, 드골은 서방 진영의 울타리 안에서 프랑스를 독자적인 목소리로 세우려 했습니다. 그는 독립적인 핵 억지력을 개발하고, NATO의 통합 지휘 체계에서 탈퇴했으며, 베트남에서의 미국 정책을 비판했습니다. 또한 소련 블록과의 무역 및 문화 관계 확대를 추구했습니다. 그는 모든 면에서 세계 무대에서 프랑스의 과거 위대함을 회복하려 했습니다."
+      "translation_ko": "(1958-1969) 프랑스 제5공화국의 창설자인 드골의 냉전 역할은 흔히 그의 두 번째 대통령 임기의 관점에서 평가됩니다. 서방 동맹국이면서도 드골은 서방 진영의 울타리 안에서 프랑스가 독자적인 목소리를 내게 하려 했습니다. 그는 독립적인 핵 억지력을 개발하고 NATO의 통합 지휘 체계에서 탈퇴했으며, 베트남에서의 미국 정책을 비판했습니다. 소련 블록과의 무역·문화 관계 확대에도 힘썼습니다. 그는 모든 면에서 프랑스가 세계 무대에서 누리던 과거의 위대함을 되찾으려 했습니다.",
+      "polished_at": "2026-08-12"
     },
     {
       "source_line": 1368,
@@ -6852,7 +6857,8 @@
     {
       "source_line": 1371,
       "original": "(1979 – 1990) In many ways presaging the “Reagan revolution” in the United States, Margaret Thatcher led a rejuvenation of the conservative movement in the United Kingdom. An ardent anti-communist, Thatcher received the moniker “Iron Lady” from the Soviet newspaper, “The Red Star.” Thatcher provided the perfect partner for Ronald Reagan, and together, they renewed the “special relationship” that formed the lynchpin of the post-war Atlantic Alliance. Thatcher’s finest moment may have been her vigorous defense of Britain’s colonial outpost in the Falkland Islands. The military junta ruling Argentina launched an invasion of what they referred to as the Malvinas Islands. In a sharp, short military action, the UK expelled the Argentinian forces, and restored some small luster to Britain’s former imperial pretensions. Thatcher reigned through the close of the Cold War, and is Britain’s longest serving prime minister.",
-      "translation_ko": "(1979 – 1990) 여러 면에서 미국의 \"레이건 혁명\"을 예고한 마거릿 대처는 영국 보수 운동의 부활을 이끌었습니다. 열렬한 반공주의자인 대처는 소련 신문 \"붉은 별\"로부터 \"철의 여인\"이라는 별명을 얻었습니다. 대처는 로널드 레이건의 완벽한 파트너가 되었으며, 함께 전후 대서양 동맹의 핵심축을 이루는 \"특별한 관계\"를 새롭게 했습니다. 대처의 가장 빛나는 순간은 영국의 식민지 전초기지인 포클랜드 제도를 강력히 수호한 것일 것입니다. 아르헨티나를 지배하던 군사 정권이 그들이 말비나스 제도라고 부르는 곳을 침공했습니다. 짧고 신속한 군사 행동으로 영국은 아르헨티나 군대를 몰아내고 영국의 옛 제국적 위상에 작지만 빛나는 광채를 되살렸습니다. 대처는 냉전이 끝날 때까지 집권하며 영국 최장수 총리가 되었습니다."
+      "translation_ko": "(1979 – 1990) 여러 면에서 미국의 \"레이건 혁명\"을 예고한 마거릿 대처는 영국 보수 운동의 부활을 이끌었습니다. 열렬한 반공주의자인 대처는 소련 신문 \"붉은 별\"로부터 \"철의 여인\"이라는 별명을 얻었습니다. 대처는 로널드 레이건의 이상적인 파트너가 되었으며, 함께 전후 대서양 동맹의 초석인 \"특별한 관계\"를 새롭게 다졌습니다. 대처의 가장 빛나는 순간은 영국의 식민지 전초기지인 포클랜드 제도를 강력히 수호한 때였습니다. 아르헨티나를 지배하던 군사 정권이 그들이 말비나스 제도라고 부르는 곳을 침공했습니다. 짧고 신속한 군사 행동으로 영국은 아르헨티나 군대를 몰아내고 영국의 옛 제국적 위상에 작지만 빛나는 광채를 되살렸습니다. 대처는 냉전이 끝날 때까지 집권하며 영국 최장수 총리가 되었습니다.",
+      "polished_at": "2026-08-12"
     },
     {
       "source_line": 1372,
@@ -6867,7 +6873,7 @@
     {
       "source_line": 1374,
       "original": "(1983 – ?) More properly known as the Strategic Defense Initiative, President Reagan announced this radical departure from the Cold War doctrine of “mutually assured destruction” in a live television speech to the American public. The initial concept for the “space shield” was developed at Lawrence Livermore National Laboratory by Dr. Peter Hagelstein. Notionally, it would create a series of space based satellites powered by nuclear reactors that would create an impenetrable field to block Soviet ICBM’s. While scientifically sound on paper, the concept was never successfully engineered. Later iterations involved “smart pebbles” and missile based interceptors. SDI is frequently credited as one of the factors that convinced Gorbachev that the Soviet Union could not keep up the Cold War.",
-      "translation_ko": "(1983 – ?) 정식 명칭은 전략방위구상(SDI)으로, 레이건 대통령은 생방송 텔레비전 연설을 통해 미국 국민에게 냉전의 \"상호확증파괴\" 독트린으로부터의 급진적인 이탈을 선언했습니다. \"우주 방패\"의 초기 개념은 로렌스 리버모어 국립연구소의 피터 헤이겔스타인 박사가 개발했습니다. 개념상으로는 핵반응로로 구동되는 일련의 우주 기반 위성들을 만들어 소련 대륙간탄도미사일을 차단하는 난공불락의 방어막을 형성하는 것이었습니다. 이론상으로는 과학적으로 타당했지만, 실제로 공학화에 성공하지는 못했습니다. 이후 버전에서는 \"스마트 페블\"과 미사일 기반 요격체가 등장했습니다. SDI는 고르바초프가 소련이 냉전을 지속할 수 없다는 것을 납득하게 만든 요인 중 하나로 자주 거론됩니다."
+      "translation_ko": "(1983 – ?) 정식 명칭은 전략방위구상(SDI)으로, 레이건 대통령은 생방송 텔레비전 연설로 미국 국민에게 냉전의 \"상호확증파괴\" 독트린으로부터의 급진적인 이탈을 선언했습니다. \"우주 방패\"의 초기 개념은 로렌스 리버모어 국립연구소의 피터 헤이겔스타인 박사가 개발했습니다. 개념상으로는 핵반응로로 구동되는 일련의 우주 기반 위성들을 만들어 소련 대륙간탄도미사일을 차단하는 난공불락의 방어막을 형성하는 것이었습니다. 이론상으로는 과학적으로 타당했지만, 실제로 공학화에 성공하지는 못했습니다. 이후 버전에서는 \"스마트 페블\"과 미사일 기반 요격체가 등장했습니다. SDI는 고르바초프가 소련이 냉전을 지속할 수 없다는 것을 납득하게 만든 요인 중 하나로 자주 거론됩니다."
     },
     {
       "source_line": 1375,
@@ -6967,7 +6973,7 @@
     {
       "source_line": 1394,
       "original": "<indent=1em>Influence </indent>markers are placed one at a time. However, all markers must be placed with, or adjacent to, friendly markers that were in place at the start of the phasing player's Action Round.<br><br><i>Exception: markers placed when required by an Event are not subject to this restriction, unless specifically stated otherwise on the card.</i><br><br>If the amount of influence is sufficent to gain control of the country, the Marker switches to either red for U.S.S.R. or blue for the U.S.A..<br><br>",
-      "translation_ko": "<indent=1em>영향력 </indent>마커는 한 번에 하나씩 배치됩니다. 그러나 모든 마커는 진행 중인 플레이어의 행동 라운드 시작 시 이미 배치되어 있던 아군 마커와 함께 또는 인접하여 배치해야 합니다.<br><br><i>예외: 이벤트에 의해 배치가 요구되는 마커는, 카드에 별도로 명시되지 않는 한, 이 제한을 받지 않습니다.</i><br><br>영향력이 해당 국가를 지배하기에 충분한 경우, 마커는 소련을 나타내는 빨간색 또는 미국을 나타내는 파란색으로 전환됩니다.<br><br>"
+      "translation_ko": "<indent=1em>영향력 </indent>마커는 한 번에 하나씩 배치됩니다. 그러나 모든 마커는 진행 중인 플레이어의 행동 라운드 시작 시 이미 배치되어 있던 아군 마커와 함께 또는 인접하여 배치해야 합니다.<br><br><i>예외: 이벤트가 배치를 요구하는 마커는, 카드에 별도로 명시되지 않는 한, 이 제한을 받지 않습니다.</i><br><br>영향력이 해당 국가를 지배하기에 충분한 경우, 마커는 소련을 나타내는 빨간색 또는 미국을 나타내는 파란색으로 전환됩니다.<br><br>"
     },
     {
       "source_line": 1395,
@@ -6982,7 +6988,7 @@
     {
       "source_line": 1397,
       "original": "<indent=1em>The</indent> object of the game is to score Victory Points (VPs). Regional Victory Points are scored through geographic Influence over the six Regions. VPs can also be received through the play of certain Events. Each region has its own 'scoring card'. Playing a scoring card causes Victory Points to be scored, based on how much influence each superpower has in that region at the time the card is played.",
-      "translation_ko": "<indent=1em>게임의</indent> 목표는 승점(VP)을 획득하는 것입니다. 지역 승점은 6개 지역에 대한 지리적 영향력을 통해 획득됩니다. 특정 이벤트 카드를 통해서도 VP를 받을 수 있습니다. 각 지역에는 고유한 '점수 카드'가 있습니다. 점수 카드를 사용하면, 카드가 사용된 시점에 각 초강대국이 해당 지역에 얼마나 많은 영향력을 가지고 있는지에 따라 승점이 계산됩니다."
+      "translation_ko": "<indent=1em>게임의</indent> 목표는 승점(VP)을 획득하는 것입니다. 지역 승점은 6개 지역에 대한 지리적 영향력으로 획득됩니다. 특정 이벤트 카드로도 VP를 받을 수 있습니다. 각 지역에는 고유한 '점수 카드'가 있습니다. 점수 카드를 사용하면, 카드가 사용된 시점에 각 초강대국이 해당 지역에 얼마나 많은 영향력을 보유하고 있는지에 따라 승점이 계산됩니다."
     },
     {
       "source_line": 1398,
@@ -7027,7 +7033,7 @@
     {
       "source_line": 1406,
       "original": "A Pan-Arab Coalition invades Israel. Roll one die and subtract 1 for US Control of Israel and every US-controlled country adjacent to Israel.  USSR Victory on modified die roll 4-6. USSR adds 2 Military to Ops Track.<br><b>Effects of Victory:</b> USSR gains 2 VP and replaces all US Influence in Israel with USSR Influence.<br><i>Unplayable as an event after the \"Camp David Accords\" event has been played.</i>",
-      "translation_ko": "범아랍 연합이 이스라엘을 침공합니다. 주사위 1개를 굴리고, 이스라엘의 미국 지배 및 이스라엘에 인접한 미국 지배 국가 각각에 대해 1씩 뺍니다. 수정된 주사위 결과 4~6이면 소련 승리. 소련은 작전 트랙에 군사 2를 추가합니다.<br><b>승리 효과:</b> 소련은 2 VP를 획득하고 이스라엘의 모든 미국 영향력을 소련 영향력으로 교체합니다.<br><i>\"캠프 데이비드 협정\" 이벤트가 사용된 이후에는 이벤트로 사용 불가.</i>"
+      "translation_ko": "범아랍 연합이 이스라엘을 침공합니다. 주사위 1개를 굴리고, 이스라엘의 미국 지배 및 이스라엘에 인접한 미국 지배 국가 각각 1씩 뺍니다. 수정된 주사위 결과 4~6이면 소련 승리. 소련은 작전 트랙에 군사 2를 추가합니다.<br><b>승리 효과:</b> 소련은 2 VP를 획득하고 이스라엘의 모든 미국 영향력을 소련 영향력으로 교체합니다.<br><i>\"캠프 데이비드 협정\" 이벤트가 사용된 이후에는 이벤트로 사용 불가.</i>"
     },
     {
       "source_line": 1407,
@@ -7042,12 +7048,12 @@
     {
       "source_line": 1409,
       "original": "Countries that do not share a border, but are considered connected, are shown via lines on the map. A country is considered to be Adjacent to all other countries to which it is connected. Each country on the map is considered either to be <color=white>Controlled</color> by one of the player's, or it is Uncontrolled. A country is considered <color=white>Controlled</color> by a player if the player has Influence Points in the country greater than or equal to the country's <color=white>Stability Number</color>, and if the player's Influence in the country exceeds their opponent's Influence in that country by at least the country's <color=white>Stability Number</color>.\\r",
-      "translation_ko": "국경을 공유하지 않지만 연결된 것으로 간주되는 국가들은 지도에서 선으로 표시됩니다. 국가는 연결된 모든 다른 국가들과 인접한 것으로 간주됩니다. 지도의 각 국가는 한 플레이어에 의해 <color=white>지배</color>되거나 지배되지 않은 상태로 간주됩니다. 플레이어가 해당 국가에 국가의 <color=white>안정 수치</color> 이상의 영향력을 보유하고 있으며, 그 국가에서 플레이어의 영향력이 상대방의 영향력을 국가의 <color=white>안정 수치</color> 이상 초과하는 경우, 해당 국가는 그 플레이어에 의해 <color=white>지배</color>되는 것으로 간주됩니다.\\r"
+      "translation_ko": "국경을 공유하지 않지만 연결된 것으로 간주되는 국가들은 지도에서 선으로 표시됩니다. 국가는 연결된 모든 다른 국가들과 인접한 것으로 간주됩니다. 지도의 각 국가는 한 플레이어가 <color=white>지배</color>하거나 지배되지 않은 상태로 간주됩니다. 플레이어가 해당 국가에 국가의 <color=white>안정 수치</color> 이상의 영향력을 보유하고 있으며, 그 국가에서 플레이어의 영향력이 상대방의 영향력을 국가의 <color=white>안정 수치</color> 이상 초과하는 경우, 해당 국가는 그 플레이어에 의해 <color=white>지배</color>되는 것으로 간주됩니다.\\r"
     },
     {
       "source_line": 1410,
       "original": "Countries that do not share a border, but are considered connected, are shown via lines on the map. A country is considered to be Adjacent to all other countries to which it is connected. Each country on the map is considered either to be <color=white>Controlled</color> by one of the player's, or it is Uncontrolled. A country is considered <color=white>Controlled</color> by a player if the player has Influence Points in the country greater than or equal to the country's <color=white>Stability Number</color>, and if the player's Influence in the country exceeds their opponent's Influence in that country by at least the country's <color=white>Stability Number</color>.\\r\\n",
-      "translation_ko": "국경을 공유하지 않지만 연결된 것으로 간주되는 국가들은 지도에서 선으로 표시됩니다. 국가는 연결된 모든 다른 국가들과 인접한 것으로 간주됩니다. 지도의 각 국가는 한 플레이어에 의해 <color=white>지배</color>되거나 지배되지 않은 상태로 간주됩니다. 플레이어가 해당 국가에 국가의 <color=white>안정 수치</color> 이상의 영향력을 보유하고 있으며, 그 국가에서 플레이어의 영향력이 상대방의 영향력을 국가의 <color=white>안정 수치</color> 이상 초과하는 경우, 해당 국가는 그 플레이어에 의해 <color=white>지배</color>되는 것으로 간주됩니다.\\r\\n"
+      "translation_ko": "국경을 공유하지 않지만 연결된 것으로 간주되는 국가들은 지도에서 선으로 표시됩니다. 국가는 연결된 모든 다른 국가들과 인접한 것으로 간주됩니다. 지도의 각 국가는 한 플레이어가 <color=white>지배</color>하거나 지배되지 않은 상태로 간주됩니다. 플레이어가 해당 국가에 국가의 <color=white>안정 수치</color> 이상의 영향력을 보유하고 있으며, 그 국가에서 플레이어의 영향력이 상대방의 영향력을 국가의 <color=white>안정 수치</color> 이상 초과하는 경우, 해당 국가는 그 플레이어에 의해 <color=white>지배</color>되는 것으로 간주됩니다.\\r\\n"
     },
     {
       "source_line": 1411,
@@ -7067,7 +7073,7 @@
     {
       "source_line": 1414,
       "original": "In 1949, Mao's armies forced Chiang Kai-shek and the Nationalist government to flee from mainland China to Taiwan. Due to America's long missionary involvement in China during the 19th and early 20th centuries, as well as its commercial and quasi-imperial experiences, Americans had a somewhat paternalistic view of the country. The declaration of the \"People's Republic\" meant that a long-standing ally was transformed into a bitter enemy. So, despite the warnings of Joe Stilwell and others, the debate raged in Washington about who to blame for the loss of China to communist forces. At the time, most of the blame fell on the Truman Administration and imagined \"fifth column\" communist sympathizers that had allegedly infiltrated the American government.",
-      "translation_ko": "1949년, 마오쩌둥의 군대는 장제스와 국민당 정부를 중국 본토에서 대만으로 몰아냈습니다. 19세기와 20세기 초 미국의 오랜 선교 활동과 상업적·준제국주의적 경험으로 인해, 미국인들은 중국에 대해 다소 온정주의적인 시각을 가지고 있었습니다. \"인민공화국\" 선포는 오랜 동맹국이 숙적으로 변했음을 의미했습니다. 그래서 조 스틸웰 등의 경고에도 불구하고, 중국이 공산 세력에 넘어간 것을 누구의 책임으로 돌릴 것인지에 대한 논쟁이 워싱턴에서 격렬하게 벌어졌습니다. 당시 대부분의 비난은 트루먼 행정부와, 미국 정부에 침투했다고 주장되는 '5열' 공산주의 동조자들에게 쏟아졌습니다."
+      "translation_ko": "1949년, 마오쩌둥의 군대는 장제스와 국민당 정부를 중국 본토에서 대만으로 몰아냈습니다. 19세기와 20세기 초 미국의 오랜 선교 활동과 상업적·준제국주의적 경험으로 인해, 미국인들은 중국에 대해 다소 온정주의적인 시각을 지니고 있었습니다. \"인민공화국\" 선포는 오랜 동맹국이 숙적으로 변했음을 의미했습니다. 그래서 조 스틸웰 등의 경고에도 불구하고, 중국이 공산 세력에 넘어간 것을 누구의 책임으로 돌릴 것인지에 대한 논쟁이 워싱턴에서 격렬하게 벌어졌습니다. 당시 대부분의 비난은 트루먼 행정부와, 미국 정부에 침투했다고 주장되는 '5열' 공산주의 동조자들에게 쏟아졌습니다."
     },
     {
       "source_line": 1415,
@@ -7082,7 +7088,8 @@
     {
       "source_line": 1417,
       "original": "The Cambridge Five (Kim Philby, Guy Burgess, Anthony Blunt, John Cairncross, and Donald Maclean) were British civil servants who, unbeknownst to the British government, had become Communists while at university, and recruited as Soviet agents shortly thereafter. The spy ring was one of the most effective Soviet intelligence efforts of the Cold War, as all five rose to positions of great responsibility and trust in the civil service. Maclean, in particular, was privy to a large number of nuclear secrets; the information regarding the size and readiness of the Western nuclear arsenal played a key role in Stalin's decisions to blockade Berlin and to arm the North Koreans for their invasion of South Korea. The spy ring fell apart when the U.S. VENONA project exposed Maclean; he and Burgess defected in 1951. Philby was able to elude exposure until 1963, passing secrets all the while; he too managed to defect. Blunt was unmasked around the same time, but secretly gave a confession, exposing other agents (including Cairncross).",
-      "translation_ko": "케임브리지 파이브(킴 필비, 가이 버지스, 앤서니 블런트, 존 케언크로스, 도널드 매클린)는 영국 공무원들로, 영국 정부가 알지 못한 채 대학 재학 중 공산주의자가 되어 이후 소련 요원으로 포섭되었습니다. 다섯 명 모두 공직에서 막중한 책임과 신뢰를 지닌 자리에 올랐기 때문에, 이 스파이 조직은 냉전 시기 가장 효과적인 소련 정보 활동 중 하나였습니다. 특히 매클린은 수많은 핵 기밀에 접근할 수 있었으며, 서방 핵 전력의 규모와 태세에 관한 정보는 스탈린의 베를린 봉쇄 결정과 북한의 한국 침공을 위한 무장 지원 결정에 핵심적인 역할을 했습니다. 미국의 베노나 프로젝트가 매클린을 폭로하면서 스파이 조직은 와해되었고, 매클린과 버지스는 1951년 망명했습니다. 필비는 1963년까지 발각을 피하며 계속 기밀을 넘겼고, 결국 그도 망명에 성공했습니다. 블런트도 비슷한 시기에 정체가 드러났지만 비밀리에 자백하여 다른 요원들(케언크로스 포함)을 폭로했습니다."
+      "translation_ko": "케임브리지 파이브(킴 필비, 가이 버지스, 앤서니 블런트, 존 케언크로스, 도널드 매클린)는 영국 공무원들로, 영국 정부가 알지 못한 채 대학 재학 중 공산주의자가 되어 이후 소련 요원으로 포섭되었습니다. 다섯 명 모두 공직에서 막중한 책임과 신뢰를 지닌 자리에 올랐기 때문에, 이 스파이 조직은 냉전 시기 가장 성공적인 소련 정보 활동 중 하나였습니다. 특히 매클린은 수많은 핵 기밀에 접근할 수 있었으며, 서방 핵 전력의 규모와 태세에 관한 정보는 스탈린의 베를린 봉쇄 결정과 북한의 한국 침공 지원 결정에 결정적 역할을 했습니다. 미국의 베노나 프로젝트가 매클린을 폭로하면서 스파이 조직은 와해되었고, 매클린과 버지스는 1951년 망명했습니다. 필비는 1963년까지 발각을 피하며 계속 기밀을 넘겼고, 결국 그도 망명에 성공했습니다. 블런트도 비슷한 시기에 정체가 드러났지만 비밀리에 자백하여 다른 요원들(케언크로스 포함)을 폭로했습니다.",
+      "polished_at": "2026-08-12"
     },
     {
       "source_line": 1418,
@@ -7092,7 +7099,7 @@
     {
       "source_line": 1419,
       "original": "The U.S. enjoyed a nuclear monopoly during the first days of the Cold War. It came to an end much sooner than the Americans had hoped. With the help of espionage, unyielding scientific effort, and brutal political pressure, the Soviet Union conducted a 22 kiloton nuclear test in Kazakhstan. In doing so, it altered the strategic balance of the Cold War. Until the test, the United States was able to rely on nuclear weapons to counter the Soviet Union's domination of conventional forces in Europe. After the test, the asymmetric nature of the conflict would change, and both nations would engage in an all-out contest with both strategic and conventional weapons systems.",
-      "translation_ko": "냉전 초기에 미국은 핵 독점을 누렸습니다. 그러나 미국인들이 바랐던 것보다 훨씬 일찍 그 독점은 끝났습니다. 스파이 활동, 끈질긴 과학적 노력, 그리고 가혹한 정치적 압박의 도움으로 소련은 카자흐스탄에서 22킬로톤 핵실험을 실시했습니다. 이를 통해 소련은 냉전의 전략적 균형을 바꾸었습니다. 핵실험 이전까지 미국은 유럽에서 소련의 재래식 전력 우위를 상쇄하기 위해 핵무기에 의존할 수 있었습니다. 핵실험 이후 분쟁의 비대칭적 성격이 바뀌었고, 양국은 전략 무기와 재래식 무기 체계 모두에서 전면적인 경쟁을 벌이게 되었습니다."
+      "translation_ko": "냉전 초기에 미국은 핵 독점을 누렸습니다. 그러나 미국인들이 바랐던 것보다 훨씬 일찍 그 독점은 끝났습니다. 스파이 활동, 끈질긴 과학적 노력, 그리고 가혹한 정치적 압박의 도움으로 소련은 카자흐스탄에서 22킬로톤 핵실험을 실시했습니다. 이로써 소련은 냉전의 전략적 균형을 바꾸었습니다. 핵실험 이전까지 미국은 유럽에서 소련의 재래식 전력 우위를 상쇄하기 위해 핵무기에 의존할 수 있었습니다. 핵실험 이후 분쟁의 비대칭적 성격이 바뀌었고, 양국은 전략 무기와 재래식 무기 체계 모두에서 전면적인 경쟁을 벌이게 되었습니다."
     },
     {
       "source_line": 1420,
@@ -7107,7 +7114,7 @@
     {
       "source_line": 1422,
       "original": "The object of the game is to score <color=white>Victory Points</color> through geographic influence over the six Regions. Each Region has its own \"Scoring Card\". Playing a Scoring Card causes <color=white>Victory Points</color> to be scored on how much influence each superpower has in that region at the time the card is played. The <color=white>Victory Points</color> are totaled for both players, and the net difference is marked on the <color=white>Victory Point Track</color>. A player may not hold a Scoring Card in their hand at the end of theirturn, as doing so results in automatically losing the game. A player may not be forced to hold a <color=white>Scoring Card</color> through the effects of a game event.<br><br>Scoring Card have the following scoring criteria:<br><br><color=white>> Presence:</color> A superpower has <color=white>Presence</color> in a Region if it Controls at least one (1) country in that Region.<br><br><color=white>> Domination:</color> A superpower has <color=white>Domination</color> in a Region if it <color=white>Controls</color> more countries than an opponent and it <color=white>Controls</color> more <color=white>Battleground</color> countries in that Region. A superpower must <color=white>Control</color> at least one (1) <color=white>non-Battleground</color> and one (1) <color=white>Battleground</color> country in that Region to achieve domination.<br><br><color=white>> Control:</color> A superpower has <color=white>Control</color> of a Region if it <color=white>Controls</color> more countries in that Region than its opponent, and <color=white>Controls</color> all of the <color=white>Battleground</color> countries in that Region.<br><br><color=white>> Additional Scoring:</color> A +1 VP is granted per country that is under Control and adjacent to the enemy superpower.<br><br><color=white>> Additional Scoring:</color> A +1 VP is granted per <color=white>Battleground</color> Country that is under a player's <color=white>Control</color> in the scoring region.\\n",
-      "translation_ko": "게임의 목표는 6개 지역에 대한 지리적 영향력을 통해 <color=white>승점</color>을 획득하는 것입니다. 각 지역에는 고유한 \"점수 카드\"가 있습니다. 점수 카드를 사용하면 카드가 사용된 시점에 각 초강대국이 해당 지역에 얼마나 많은 영향력을 가지고 있는지에 따라 <color=white>승점</color>이 계산됩니다. <color=white>승점</color>은 두 플레이어 모두 합산되며, 순 차이가 <color=white>승점 트랙</color>에 표시됩니다. 플레이어는 턴 종료 시 점수 카드를 손에 보유할 수 없으며, 이를 어길 경우 자동으로 게임에서 패배합니다. 플레이어는 게임 이벤트의 효과로 인해 <color=white>점수 카드</color>를 강제로 보유하게 되는 일이 없습니다.<br><br>점수 카드의 점수 기준은 다음과 같습니다:<br><br><color=white>> 진출:</color> 초강대국이 해당 지역에서 최소 1개 국가를 지배하면 그 지역에 <color=white>진출</color>한 것입니다.<br><br><color=white>> 지배:</color> 초강대국이 상대방보다 더 많은 국가를 지배하고 해당 지역에서 더 많은 <color=white>격전지</color> 국가를 지배하면 그 지역을 <color=white>지배</color>한 것입니다. 지배를 달성하려면 초강대국은 해당 지역에서 최소 1개의 <color=white>비격전지</color> 국가와 1개의 <color=white>격전지</color> 국가를 지배해야 합니다.<br><br><color=white>> 장악:</color> 초강대국이 해당 지역에서 상대방보다 더 많은 국가를 지배하고 해당 지역의 모든 <color=white>격전지</color> 국가를 지배하면 그 지역을 <color=white>장악</color>한 것입니다.<br><br><color=white>> 추가 점수:</color> 적 초강대국과 인접하여 지배하는 국가 1개당 +1 VP가 부여됩니다.<br><br><color=white>> 추가 점수:</color> 점수 계산 지역에서 플레이어가 <color=white>지배</color>하는 <color=white>격전지</color> 국가 1개당 +1 VP가 부여됩니다.\\n"
+      "translation_ko": "게임의 목표는 6개 지역에 대한 지리적 영향력으로 <color=white>승점</color>을 획득하는 것입니다. 각 지역에는 고유한 \"점수 카드\"가 있습니다. 점수 카드를 사용하면 카드가 사용된 시점에 각 초강대국이 해당 지역에 얼마나 많은 영향력을 보유하고 있는지에 따라 <color=white>승점</color>이 계산됩니다. <color=white>승점</color>은 두 플레이어 모두 합산되며, 순 차이가 <color=white>승점 트랙</color>에 표시됩니다. 플레이어는 턴 종료 시 점수 카드를 손에 보유할 수 없으며, 이를 어길 경우 자동으로 게임에서 패배합니다. 플레이어는 게임 이벤트의 효과로 인해 <color=white>점수 카드</color>를 강제로 보유하게 되는 일이 없습니다.<br><br>점수 카드의 점수 기준은 다음과 같습니다:<br><br><color=white>> 진출:</color> 초강대국이 해당 지역에서 최소 1개 국가를 지배하면 그 지역에 <color=white>진출</color>한 것입니다.<br><br><color=white>> 지배:</color> 초강대국이 상대방보다 더 많은 국가를 지배하고 해당 지역에서 더 많은 <color=white>격전지</color> 국가를 지배하면 그 지역을 <color=white>지배</color>한 것입니다. 지배를 달성하려면 초강대국은 해당 지역에서 최소 1개의 <color=white>비격전지</color> 국가와 1개의 <color=white>격전지</color> 국가를 지배해야 합니다.<br><br><color=white>> 장악:</color> 초강대국이 해당 지역에서 상대방보다 더 많은 국가를 지배하고 해당 지역의 모든 <color=white>격전지</color> 국가를 지배하면 그 지역을 <color=white>장악</color>한 것입니다.<br><br><color=white>> 추가 점수:</color> 적 초강대국과 인접하여 지배하는 국가 1개당 +1 VP가 부여됩니다.<br><br><color=white>> 추가 점수:</color> 점수 계산 지역에서 플레이어가 <color=white>지배</color>하는 <color=white>격전지</color> 국가 1개당 +1 VP가 부여됩니다.\\n"
     },
     {
       "source_line": 1423,
@@ -7197,7 +7204,8 @@
     {
       "source_line": 1440,
       "original": "The object of the game is to score <color=white>Victory Points</color> through geographic influence over the six Regions. Each Region has its own “Scoring Card”. Playing a Scoring Card causes <color=white>Victory Points</color> to be scored on how much influence each superpower has in that region at the time the card is played. The <color=white>Victory Points</color> are totaled for both players, and the net difference is marked on the <color=white>Victory Point Track</color>. A player may not hold a Scoring Card in their hand at the end of theirturn, as doing so results in automatically losing the game. A player may not be forced to hold a <color=white>Scoring Card</color> through the effects of a game event.<br><br>Scoring Card have the following scoring criteria:<br><br><color=white>> Presence:</color> A superpower has <color=white>Presence</color> in a Region if it Controls at least one (1) country in that Region.<br><br><color=white>> Domination:</color> A superpower has <color=white>Domination</color> in a Region if it <color=white>Controls</color> more countries than an opponent and it <color=white>Controls</color> more <color=white>Battleground</color> countries in that Region. A superpower must <color=white>Control</color> at least one (1) <color=white>non-Battleground</color> and one (1) <color=white>Battleground</color> country in that Region to achieve domination.<br><br><color=white>> Control:</color> A superpower has <color=white>Control</color> of a Region if it <color=white>Controls</color> more countries in that Region than its opponent, and <color=white>Controls</color> all of the <color=white>Battleground</color> countries in that Region.<br><br><color=white>> Additional Scoring:</color> A +1 VP is granted per country that is under Control and adjacent to the enemy superpower.<br><br><color=white>> Additional Scoring:</color> A +1 VP is granted per <color=white>Battleground</color> Country that is under a player's <color=white>Control</color> in the scoring region.",
-      "translation_ko": "게임의 목적은 여섯 지역에 대한 지정학적 영향력을 통해 <color=white>승점</color>을 얻는 것이다. 각 지역에는 고유한 \"점수 카드\"가 있다. 점수 카드를 플레이하면 그 시점에 각 초강대국이 그 지역에 얼마나 영향력을 가지고 있는지에 따라 <color=white>승점</color>을 계산한다. 양 플레이어의 <color=white>승점</color>을 합산하고, 순차이를 <color=white>승점 트랙</color>에 표시한다. 플레이어는 턴 종료 시 손에 점수 카드를 들고 있어서는 안 되며, 그렇게 하면 자동 패배한다. 게임 이벤트 효과로 인해 <color=white>점수 카드</color>를 강제로 보유하게 될 수도 없다.<br><br>점수 카드는 다음 기준으로 점수 계산한다:<br><br><color=white>> 진출:</color> 초강대국이 해당 지역의 국가를 하나 이상 지배하면 그 지역에 <color=white>진출</color>한 것이다.<br><br><color=white>> 지배:</color> 초강대국이 상대보다 더 많은 국가를 <color=white>지배</color>하고, 그 지역에서 상대보다 더 많은 <color=white>격전지</color>을 <color=white>지배</color>하면 그 지역을 <color=white>지배</color>한 것이다. 지배를 달성하려면 그 지역에서 최소 하나의 <color=white>비격전지</color>과 하나의 <color=white>격전지</color>을 지배해야 한다.<br><br><color=white>> 장악:</color> 초강대국이 상대보다 더 많은 국가를 <color=white>지배</color>하고, 그 지역의 모든 <color=white>격전지</color>을 지배하면 그 지역을 <color=white>장악</color>한 것이다.<br><br><color=white>> 추가 점수:</color> 적 초강대국에 인접한 지배 국가마다 +1 승점을 얻는다.<br><br><color=white>> 추가 점수:</color> 점수 계산 지역에서 플레이어가 <color=white>지배</color>하는 <color=white>격전지</color>마다 +1 승점을 얻는다."
+      "translation_ko": "게임의 목적은 여섯 지역에 대한 지정학적 영향력으로 <color=white>승점</color>을 얻는 것이다. 각 지역에는 고유한 \"점수 카드\"가 있다. 점수 카드를 플레이하면 그 시점에 각 초강대국이 그 지역에 얼마나 영향력을 보유하고 있는지에 따라 <color=white>승점</color>을 계산한다. 양 플레이어의 <color=white>승점</color>을 합산하고, 순차이를 <color=white>승점 트랙</color>에 표시한다. 플레이어는 턴 종료 시 손에 점수 카드를 들고 있어서는 안 되며, 그렇게 하면 자동 패배한다. 게임 이벤트 효과로 <color=white>점수 카드</color>를 강제로 보유하게 할 수 없다.<br><br>점수 카드는 다음 기준으로 점수 계산한다:<br><br><color=white>> 진출:</color> 초강대국이 해당 지역의 국가를 하나 이상 지배하면 그 지역에 <color=white>진출</color>한 것으로 본다.<br><br><color=white>> 지배:</color> 초강대국이 상대보다 더 많은 국가를 <color=white>지배</color>하고, 그 지역에서 상대보다 더 많은 <color=white>격전지</color>를 <color=white>지배</color>하면 그 지역을 <color=white>지배</color>한 것으로 본다. 지배를 달성하려면 그 지역에서 최소 하나의 <color=white>비격전지</color>와 하나의 <color=white>격전지</color>를 지배해야 한다.<br><br><color=white>> 장악:</color> 초강대국이 상대보다 더 많은 국가를 <color=white>지배</color>하고, 그 지역의 모든 <color=white>격전지</color>를 지배하면 그 지역을 <color=white>장악</color>한 것으로 본다.<br><br><color=white>> 추가 점수:</color> 적 초강대국에 인접한 지배 국가마다 +1 승점을 얻는다.<br><br><color=white>> 추가 점수:</color> 점수 계산 지역에서 플레이어가 <color=white>지배</color>하는 <color=white>격전지</color>마다 +1 승점을 얻는다.",
+      "polished_at": "2026-08-12"
     },
     {
       "source_line": 1441,
@@ -7212,12 +7220,12 @@
     {
       "source_line": 1443,
       "original": "USSR gains 2 VP for every subsequently US played “war card” (played as an event or Operations) unless played on the space race. War Cards: <i>Arab-Israeli War, Korean War, Brush War, Indo-Pakistani War or Iran-Iraq War.<br><br>This event canceled by 'An Evil Empire'.",
-      "translation_ko": "이후 미국이 플레이하는 모든 \\\\\"전쟁 카드\\\\\"마다 소련은 2 승점을 얻는다(우주 경쟁에 사용한 경우 제외). 전쟁 카드: <i>아랍-이스라엘 전쟁, 한국 전쟁, 소규모 전쟁, 인도-파키스탄 전쟁, 이란-이라크 전쟁</i>.<br><br>이 이벤트는 '악의 제국'에 의해 취소된다."
+      "translation_ko": "이후 미국이 플레이하는 모든 \\\\\"전쟁 카드\\\\\"마다 소련은 2 승점을 얻는다(우주 경쟁에 사용한 경우 제외). 전쟁 카드: <i>아랍-이스라엘 전쟁, 한국 전쟁, 소규모 전쟁, 인도-파키스탄 전쟁, 이란-이라크 전쟁</i>.<br><br>이 이벤트는 '악의 제국'으로 취소된다."
     },
     {
       "source_line": 1444,
       "original": "USSR gains 2 VP for every subsequently US played “war card” (played as an event or Operations) unless played on the space race.<br><br>War Cards: <i>Arab-Israeli War, Korean War, Brush War, Indo-Pakistani War or Iran-Iraq War.<br><br>This event canceled by 'An Evil Empire'.",
-      "translation_ko": "이후 미국이 플레이하는 모든 \\\\\"전쟁 카드\\\\\"마다 소련은 2 승점을 얻는다(우주 경쟁에 사용한 경우 제외). 전쟁 카드: <i>아랍-이스라엘 전쟁, 한국 전쟁, 소규모 전쟁, 인도-파키스탄 전쟁, 이란-이라크 전쟁</i>.<br><br>이 이벤트는 '악의 제국'에 의해 취소된다."
+      "translation_ko": "이후 미국이 플레이하는 모든 \\\\\"전쟁 카드\\\\\"마다 소련은 2 승점을 얻는다(우주 경쟁에 사용한 경우 제외). 전쟁 카드: <i>아랍-이스라엘 전쟁, 한국 전쟁, 소규모 전쟁, 인도-파키스탄 전쟁, 이란-이라크 전쟁</i>.<br><br>이 이벤트는 '악의 제국'으로 취소된다."
     },
     {
       "source_line": 1445,
@@ -7307,7 +7315,8 @@
     {
       "source_line": 1462,
       "original": "(1945 – 1989) Preceeding the start of the Cold War, citizens of the Eastern bloc, fled or defected to the West. Defectors came in two primary archetypes. Spies and Double agents who had been discovered or needed to “come in from the cold” would frequently flee to their masters and elude capture. Examples of this type of defector include KGB Deputy Chief Yuri Nosenko and KGB London Bureau Chief Oleg Gordievsky. Perhaps more embarassingly, and certainly more publicly, many talentend Soviet artists defected while on tour in the United States or Europe. While the West also suffered occasional defections, particularly from westerners involved in espionage, it never reached the same proportion or the same level of public spectacle.",
-      "translation_ko": "(1945 – 1989) 냉전이 시작되기 전부터 동구권 시민들은 서방으로 탈출하거나 망명했습니다. 망명자들은 크게 두 가지 유형으로 나뉩니다. 신분이 발각되었거나 \"냉혹한 현실에서 벗어나야\" 했던 스파이와 이중 첩자들은 자신의 공작 주체에게 도망쳐 체포를 피하곤 했습니다. 이런 유형의 망명자로는 KGB 부국장 유리 노센코와 KGB 런던 지부장 올레크 고르디옙스키가 있습니다. 더욱 당혹스럽고 분명히 더 세간의 이목을 끈 사례로는, 재능 있는 소련 예술가들이 미국이나 유럽 순회공연 중에 망명한 경우가 많았습니다. 서방도 간간이 망명자가 발생했지만, 특히 첩보 활동에 관여한 서방인들에 한정되었으며, 동구권과 같은 규모나 수준의 공개적 파장에는 이르지 못했습니다."
+      "translation_ko": "(1945 – 1989) 냉전이 시작되기 전부터 동구권 시민들은 서방으로 탈출하거나 망명했습니다. 망명자들은 크게 두 가지 유형으로 나뉩니다. 신분이 발각되었거나 \"냉혹한 현실에서 벗어나야\" 했던 스파이와 이중 첩자들은 자신의 공작 주체에게 도망쳐 체포를 피하곤 했습니다. 이런 유형의 망명자로는 KGB 부국장 유리 노센코와 KGB 런던 지부장 올레크 고르디옙스키가 있습니다. 더욱 당혹스럽고 분명히 더 세간의 이목을 끈 사례는, 재능 있는 소련 예술가들이 미국이나 유럽 순회공연 중에 망명한 일이었습니다. 서방에서도 간간이 망명자가 나왔지만 주로 첩보 활동에 관여한 인물들에 한정됐으며, 동구권과 같은 규모나 수준의 공개적 파장에는 이르지 못했습니다.",
+      "polished_at": "2026-08-12"
     },
     {
       "source_line": 1463,
@@ -7367,7 +7376,7 @@
     {
       "source_line": 1474,
       "original": "(1983 – ?) More properly known as the Strategic Defense Initiative, President Reagan announced this radical departure from the Cold War doctrine of “mutually assured destruction” in a live television speech to the American public. The initial concept for the “space shield” was developed at Lawrence Livermore National Laboratory by Dr. Peter Hagelstein. Notionally, it would create a series of space based satellites powered by nuclear reactors that would create an impenetrable field to block Soviet ICBM’s. While scientifically sound on paper, the concept was never successfully engineered. Later iterations involved “smart pebbles” and missile based interceptors. SDI is frequently credited as one of the factors that convinced Gorbachev that the Soviet Union could not keep up the Cold War.",
-      "translation_ko": "(1983 – ?) 정식 명칭은 전략방위구상(SDI)으로, 레이건 대통령은 생방송 텔레비전 연설을 통해 미국 국민에게 냉전의 \"상호확증파괴\" 독트린으로부터의 급진적인 이탈을 선언했습니다. \"우주 방패\"의 초기 개념은 로렌스 리버모어 국립연구소의 피터 헤이겔스타인 박사가 개발했습니다. 개념상으로는 핵반응로로 구동되는 일련의 우주 기반 위성들을 만들어 소련 대륙간탄도미사일을 차단하는 난공불락의 방어막을 형성하는 것이었습니다. 이론상으로는 과학적으로 타당했지만, 실제로 공학화에 성공하지는 못했습니다. 이후 버전에서는 \"스마트 페블\"과 미사일 기반 요격체가 등장했습니다. SDI는 고르바초프가 소련이 냉전을 지속할 수 없다는 것을 납득하게 만든 요인 중 하나로 자주 거론됩니다."
+      "translation_ko": "(1983 – ?) 정식 명칭은 전략방위구상(SDI)으로, 레이건 대통령은 생방송 텔레비전 연설로 미국 국민에게 냉전의 \"상호확증파괴\" 독트린으로부터의 급진적인 이탈을 선언했습니다. \"우주 방패\"의 초기 개념은 로렌스 리버모어 국립연구소의 피터 헤이겔스타인 박사가 개발했습니다. 개념상으로는 핵반응로로 구동되는 일련의 우주 기반 위성들을 만들어 소련 대륙간탄도미사일을 차단하는 난공불락의 방어막을 형성하는 것이었습니다. 이론상으로는 과학적으로 타당했지만, 실제로 공학화에 성공하지는 못했습니다. 이후 버전에서는 \"스마트 페블\"과 미사일 기반 요격체가 등장했습니다. SDI는 고르바초프가 소련이 냉전을 지속할 수 없다는 것을 납득하게 만든 요인 중 하나로 자주 거론됩니다."
     },
     {
       "source_line": 1475,
@@ -7397,7 +7406,7 @@
     {
       "source_line": 1480,
       "original": "A Pan-Arab Coalition invades Israel. Roll one die and subtract 1 for US Control of Israel and every US-controlled country adjacent to Israel.  USSR Victory on modified die roll 4-6. USSR adds 2 Military to Ops Track.<br><b>Effects of Victory:</b> USSR gains 2 VP and replaces all US Influence in Israel with USSR Influence.<br><i>Unplayable as an event after the “Camp David Accords” event has been played.</i>",
-      "translation_ko": "범아랍 연합이 이스라엘을 침공합니다. 주사위 1개를 굴리고, 이스라엘의 미국 지배 및 이스라엘에 인접한 미국 지배 국가 각각에 대해 1씩 뺍니다. 수정된 주사위 결과 4~6이면 소련 승리. 소련은 작전 트랙에 군사 2를 추가합니다.<br><b>승리 효과:</b> 소련은 2 VP를 획득하고 이스라엘의 모든 미국 영향력을 소련 영향력으로 교체합니다.<br><i>\"캠프 데이비드 협정\" 이벤트가 사용된 이후에는 이벤트로 사용 불가.</i>"
+      "translation_ko": "범아랍 연합이 이스라엘을 침공합니다. 주사위 1개를 굴리고, 이스라엘의 미국 지배 및 이스라엘에 인접한 미국 지배 국가 각각 1씩 뺍니다. 수정된 주사위 결과 4~6이면 소련 승리. 소련은 작전 트랙에 군사 2를 추가합니다.<br><b>승리 효과:</b> 소련은 2 VP를 획득하고 이스라엘의 모든 미국 영향력을 소련 영향력으로 교체합니다.<br><i>\"캠프 데이비드 협정\" 이벤트가 사용된 이후에는 이벤트로 사용 불가.</i>"
     },
     {
       "source_line": 1481,
@@ -7407,7 +7416,7 @@
     {
       "source_line": 1482,
       "original": "In 1949, Mao's armies forced Chiang Kai-shek and the Nationalist government to flee from mainland China to Taiwan. Due to America's long missionary involvement in China during the 19th and early 20th centuries, as well as its commercial and quasi-imperial experiences, Americans had a somewhat paternalistic view of the country. The declaration of the “People's Republic” meant that a long-standing ally was transformed into a bitter enemy. So, despite the warnings of Joe Stilwell and others, the debate raged in Washington about who to blame for the loss of China to communist forces. At the time, most of the blame fell on the Truman Administration and imagined “fifth column” communist sympathizers that had allegedly infiltrated the American government.",
-      "translation_ko": "1949년, 마오쩌둥의 군대는 장제스와 국민당 정부를 중국 본토에서 대만으로 몰아냈습니다. 19세기와 20세기 초 미국의 오랜 선교 활동과 상업적·준제국주의적 경험으로 인해, 미국인들은 중국에 대해 다소 온정주의적인 시각을 가지고 있었습니다. \"인민공화국\" 선포는 오랜 동맹국이 숙적으로 변했음을 의미했습니다. 그래서 조 스틸웰 등의 경고에도 불구하고, 중국이 공산 세력에 넘어간 것을 누구의 책임으로 돌릴 것인지에 대한 논쟁이 워싱턴에서 격렬하게 벌어졌습니다. 당시 대부분의 비난은 트루먼 행정부와, 미국 정부에 침투했다고 주장되는 '5열' 공산주의 동조자들에게 쏟아졌습니다."
+      "translation_ko": "1949년, 마오쩌둥의 군대는 장제스와 국민당 정부를 중국 본토에서 대만으로 몰아냈습니다. 19세기와 20세기 초 미국의 오랜 선교 활동과 상업적·준제국주의적 경험으로 인해, 미국인들은 중국에 대해 다소 온정주의적인 시각을 지니고 있었습니다. \"인민공화국\" 선포는 오랜 동맹국이 숙적으로 변했음을 의미했습니다. 그래서 조 스틸웰 등의 경고에도 불구하고, 중국이 공산 세력에 넘어간 것을 누구의 책임으로 돌릴 것인지에 대한 논쟁이 워싱턴에서 격렬하게 벌어졌습니다. 당시 대부분의 비난은 트루먼 행정부와, 미국 정부에 침투했다고 주장되는 '5열' 공산주의 동조자들에게 쏟아졌습니다."
     },
     {
       "source_line": 1483,
@@ -7422,7 +7431,7 @@
     {
       "source_line": 1485,
       "original": "The object of the game is to score <color=white>Victory Points</color> through geographic influence over the six Regions. Each Region has its own “Scoring Card”. Playing a Scoring Card causes <color=white>Victory Points</color> to be scored on how much influence each superpower has in that region at the time the card is played. The <color=white>Victory Points</color> are totaled for both players, and the net difference is marked on the <color=white>Victory Point Track</color>. A player may not hold a Scoring Card in their hand at the end of theirturn, as doing so results in automatically losing the game. A player may not be forced to hold a <color=white>Scoring Card</color> through the effects of a game event.<br><br>Scoring Card have the following scoring criteria:<br><br><color=white>> Presence:</color> A superpower has <color=white>Presence</color> in a Region if it Controls at least one (1) country in that Region.<br><br><color=white>> Domination:</color> A superpower has <color=white>Domination</color> in a Region if it <color=white>Controls</color> more countries than an opponent and it <color=white>Controls</color> more <color=white>Battleground</color> countries in that Region. A superpower must <color=white>Control</color> at least one (1) <color=white>non-Battleground</color> and one (1) <color=white>Battleground</color> country in that Region to achieve domination.<br><br><color=white>> Control:</color> A superpower has <color=white>Control</color> of a Region if it <color=white>Controls</color> more countries in that Region than its opponent, and <color=white>Controls</color> all of the <color=white>Battleground</color> countries in that Region.<br><br><color=white>> Additional Scoring:</color> A +1 VP is granted per country that is under Control and adjacent to the enemy superpower.<br><br><color=white>> Additional Scoring:</color> A +1 VP is granted per <color=white>Battleground</color> Country that is under a player's <color=white>Control</color> in the scoring region.\\n",
-      "translation_ko": "게임의 목표는 6개 지역에 대한 지리적 영향력을 통해 <color=white>승점</color>을 획득하는 것입니다. 각 지역에는 고유한 \"점수 카드\"가 있습니다. 점수 카드를 사용하면 카드가 사용된 시점에 각 초강대국이 해당 지역에 얼마나 많은 영향력을 가지고 있는지에 따라 <color=white>승점</color>이 계산됩니다. <color=white>승점</color>은 두 플레이어 모두 합산되며, 순 차이가 <color=white>승점 트랙</color>에 표시됩니다. 플레이어는 턴 종료 시 점수 카드를 손에 보유할 수 없으며, 이를 어길 경우 자동으로 게임에서 패배합니다. 플레이어는 게임 이벤트의 효과로 인해 <color=white>점수 카드</color>를 강제로 보유하게 되는 일이 없습니다.<br><br>점수 카드의 점수 기준은 다음과 같습니다:<br><br><color=white>> 진출:</color> 초강대국이 해당 지역에서 최소 1개 국가를 지배하면 그 지역에 <color=white>진출</color>한 것입니다.<br><br><color=white>> 지배:</color> 초강대국이 상대방보다 더 많은 국가를 지배하고 해당 지역에서 더 많은 <color=white>격전지</color> 국가를 지배하면 그 지역을 <color=white>지배</color>한 것입니다. 지배를 달성하려면 초강대국은 해당 지역에서 최소 1개의 <color=white>비격전지</color> 국가와 1개의 <color=white>격전지</color> 국가를 지배해야 합니다.<br><br><color=white>> 장악:</color> 초강대국이 해당 지역에서 상대방보다 더 많은 국가를 지배하고 해당 지역의 모든 <color=white>격전지</color> 국가를 지배하면 그 지역을 <color=white>장악</color>한 것입니다.<br><br><color=white>> 추가 점수:</color> 적 초강대국과 인접하여 지배하는 국가 1개당 +1 VP가 부여됩니다.<br><br><color=white>> 추가 점수:</color> 점수 계산 지역에서 플레이어가 <color=white>지배</color>하는 <color=white>격전지</color> 국가 1개당 +1 VP가 부여됩니다.\\n"
+      "translation_ko": "게임의 목표는 6개 지역에 대한 지리적 영향력으로 <color=white>승점</color>을 획득하는 것입니다. 각 지역에는 고유한 \"점수 카드\"가 있습니다. 점수 카드를 사용하면 카드가 사용된 시점에 각 초강대국이 해당 지역에 얼마나 많은 영향력을 보유하고 있는지에 따라 <color=white>승점</color>이 계산됩니다. <color=white>승점</color>은 두 플레이어 모두 합산되며, 순 차이가 <color=white>승점 트랙</color>에 표시됩니다. 플레이어는 턴 종료 시 점수 카드를 손에 보유할 수 없으며, 이를 어길 경우 자동으로 게임에서 패배합니다. 플레이어는 게임 이벤트의 효과로 인해 <color=white>점수 카드</color>를 강제로 보유하게 되는 일이 없습니다.<br><br>점수 카드의 점수 기준은 다음과 같습니다:<br><br><color=white>> 진출:</color> 초강대국이 해당 지역에서 최소 1개 국가를 지배하면 그 지역에 <color=white>진출</color>한 것입니다.<br><br><color=white>> 지배:</color> 초강대국이 상대방보다 더 많은 국가를 지배하고 해당 지역에서 더 많은 <color=white>격전지</color> 국가를 지배하면 그 지역을 <color=white>지배</color>한 것입니다. 지배를 달성하려면 초강대국은 해당 지역에서 최소 1개의 <color=white>비격전지</color> 국가와 1개의 <color=white>격전지</color> 국가를 지배해야 합니다.<br><br><color=white>> 장악:</color> 초강대국이 해당 지역에서 상대방보다 더 많은 국가를 지배하고 해당 지역의 모든 <color=white>격전지</color> 국가를 지배하면 그 지역을 <color=white>장악</color>한 것입니다.<br><br><color=white>> 추가 점수:</color> 적 초강대국과 인접하여 지배하는 국가 1개당 +1 VP가 부여됩니다.<br><br><color=white>> 추가 점수:</color> 점수 계산 지역에서 플레이어가 <color=white>지배</color>하는 <color=white>격전지</color> 국가 1개당 +1 VP가 부여됩니다.\\n"
     },
     {
       "source_line": 1486,
@@ -7442,7 +7451,7 @@
     {
       "source_line": 1489,
       "original": "Countries that do not share a border, but are considered connected, are shown via lines on the map. A country is considered to be Adjacent to all other countries to which it is connected. Each country on the map is considered either to be <color=white>Controlled</color> by one of the player's, or it is Uncontrolled. A country is considered <color=white>Controlled</color> by a player if the player has Influence Points in the country greater than or equal to the country’s <color=white>Stability Number</color>, and if the player’s Influence in the country exceeds their opponent’s Influence in that country by at least the country’s <color=white>Stability Number</color>.\\r\\n",
-      "translation_ko": "국경을 공유하지 않지만 연결된 것으로 간주되는 국가들은 지도에서 선으로 표시됩니다. 국가는 연결된 모든 다른 국가들과 인접한 것으로 간주됩니다. 지도의 각 국가는 한 플레이어에 의해 <color=white>지배</color>되거나 지배되지 않은 상태로 간주됩니다. 플레이어가 해당 국가에 국가의 <color=white>안정 수치</color> 이상의 영향력을 보유하고 있으며, 그 국가에서 플레이어의 영향력이 상대방의 영향력을 국가의 <color=white>안정 수치</color> 이상 초과하는 경우, 해당 국가는 그 플레이어에 의해 <color=white>지배</color>되는 것으로 간주됩니다.\\r\\n"
+      "translation_ko": "국경을 공유하지 않지만 연결된 것으로 간주되는 국가들은 지도에서 선으로 표시됩니다. 국가는 연결된 모든 다른 국가들과 인접한 것으로 간주됩니다. 지도의 각 국가는 한 플레이어가 <color=white>지배</color>하거나 지배되지 않은 상태로 간주됩니다. 플레이어가 해당 국가에 국가의 <color=white>안정 수치</color> 이상의 영향력을 보유하고 있으며, 그 국가에서 플레이어의 영향력이 상대방의 영향력을 국가의 <color=white>안정 수치</color> 이상 초과하는 경우, 해당 국가는 그 플레이어에 의해 <color=white>지배</color>되는 것으로 간주됩니다.\\r\\n"
     },
     {
       "source_line": 1490,
@@ -7457,7 +7466,7 @@
     {
       "source_line": 1492,
       "original": "<indent=1em>Influence </indent>markers are placed one at a time. However, all markers must be placed with, or adjacent to, friendly markers that were in place at the start of the phasing player’s Action Round.<br><br><i>Exception: markers placed when required by an Event are not subject to this restriction, unless specifically stated otherwise on the card.</i><br><br>If the amount of influence is sufficent to gain control of the country, the Marker switches to either red for U.S.S.R. or blue for the U.S.A..<br><br>",
-      "translation_ko": "<indent=1em>영향력 </indent>마커는 한 번에 하나씩 배치됩니다. 그러나 모든 마커는 진행 중인 플레이어의 행동 라운드 시작 시 이미 배치되어 있던 아군 마커와 함께 또는 인접하여 배치해야 합니다.<br><br><i>예외: 이벤트에 의해 배치가 요구되는 마커는, 카드에 별도로 명시되지 않는 한, 이 제한을 받지 않습니다.</i><br><br>영향력이 해당 국가를 지배하기에 충분한 경우, 마커는 소련을 나타내는 빨간색 또는 미국을 나타내는 파란색으로 전환됩니다.<br><br>"
+      "translation_ko": "<indent=1em>영향력 </indent>마커는 한 번에 하나씩 배치됩니다. 그러나 모든 마커는 진행 중인 플레이어의 행동 라운드 시작 시 이미 배치되어 있던 아군 마커와 함께 또는 인접하여 배치해야 합니다.<br><br><i>예외: 이벤트가 배치를 요구하는 마커는, 카드에 별도로 명시되지 않는 한, 이 제한을 받지 않습니다.</i><br><br>영향력이 해당 국가를 지배하기에 충분한 경우, 마커는 소련을 나타내는 빨간색 또는 미국을 나타내는 파란색으로 전환됩니다.<br><br>"
     },
     {
       "source_line": 1493,
@@ -7502,7 +7511,7 @@
     {
       "source_line": 1501,
       "original": "<indent=1em>The</indent> object of the game is to score Victory Points (VPs). Regional Victory Points are scored through geographic Influence over the six Regions. VPs can also be received through the play of certain Events. Each region has its own ‘scoring card’. Playing a scoring card causes Victory Points to be scored, based on how much influence each superpower has in that region at the time the card is played.",
-      "translation_ko": "<indent=1em>게임의</indent> 목표는 승점(VP)을 획득하는 것입니다. 지역 승점은 6개 지역에 대한 지리적 영향력을 통해 획득됩니다. 특정 이벤트 카드를 통해서도 VP를 받을 수 있습니다. 각 지역에는 고유한 '점수 카드'가 있습니다. 점수 카드를 사용하면, 카드가 사용된 시점에 각 초강대국이 해당 지역에 얼마나 많은 영향력을 가지고 있는지에 따라 승점이 계산됩니다."
+      "translation_ko": "<indent=1em>게임의</indent> 목표는 승점(VP)을 획득하는 것입니다. 지역 승점은 6개 지역에 대한 지리적 영향력으로 획득됩니다. 특정 이벤트 카드로도 VP를 받을 수 있습니다. 각 지역에는 고유한 '점수 카드'가 있습니다. 점수 카드를 사용하면, 카드가 사용된 시점에 각 초강대국이 해당 지역에 얼마나 많은 영향력을 보유하고 있는지에 따라 승점이 계산됩니다."
     },
     {
       "source_line": 1502,
@@ -7522,7 +7531,7 @@
     {
       "source_line": 1505,
       "original": "Countries that do not share a border, but are considered connected, are shown via lines on the map. A country is considered to be Adjacent to all other countries to which it is connected. Each country on the map is considered either to be <color=white>Controlled</color> by one of the player's, or it is Uncontrolled. A country is considered <color=white>Controlled</color> by a player if the player has Influence Points in the country greater than or equal to the country’s <color=white>Stability Number</color>, and if the player’s Influence in the country exceeds their opponent’s Influence in that country by at least the country’s <color=white>Stability Number</color>.\\r",
-      "translation_ko": "국경을 공유하지 않지만 연결된 것으로 간주되는 국가들은 지도에서 선으로 표시됩니다. 국가는 연결된 모든 다른 국가들과 인접한 것으로 간주됩니다. 지도의 각 국가는 한 플레이어에 의해 <color=white>지배</color>되거나 지배되지 않은 상태로 간주됩니다. 플레이어가 해당 국가에 국가의 <color=white>안정 수치</color> 이상의 영향력을 보유하고 있으며, 그 국가에서 플레이어의 영향력이 상대방의 영향력을 국가의 <color=white>안정 수치</color> 이상 초과하는 경우, 해당 국가는 그 플레이어에 의해 <color=white>지배</color>되는 것으로 간주됩니다.\\r"
+      "translation_ko": "국경을 공유하지 않지만 연결된 것으로 간주되는 국가들은 지도에서 선으로 표시됩니다. 국가는 연결된 모든 다른 국가들과 인접한 것으로 간주됩니다. 지도의 각 국가는 한 플레이어가 <color=white>지배</color>하거나 지배되지 않은 상태로 간주됩니다. 플레이어가 해당 국가에 국가의 <color=white>안정 수치</color> 이상의 영향력을 보유하고 있으며, 그 국가에서 플레이어의 영향력이 상대방의 영향력을 국가의 <color=white>안정 수치</color> 이상 초과하는 경우, 해당 국가는 그 플레이어에 의해 <color=white>지배</color>되는 것으로 간주됩니다.\\r"
     },
     {
       "source_line": 1506,
@@ -7572,7 +7581,7 @@
     {
       "source_line": 1515,
       "original": "(1983 – ?) More properly known as the Strategic Defense Initiative, President Reagan announced this radical departure from the Cold War doctrine of “mutually assured destruction” in a live television speech to the American public. The initial concept for the “space shield” was developed at Lawrence Livermore National Laboratory by Dr. Peter Hagelstein. Notionally, it would create a series of space based satellites powered by nuclear reactors that would create an impenetrable field to block Soviet ICBM’s. While scientifically sound on paper, the concept was never successfully engineered. Later iterations involved “smart pebbles” and missile based interceptors. SDI is frequently credited as one of the factors that convinced Gorbachev that the Soviet Union could not keep up the Cold War.",
-      "translation_ko": "(1983 – ?) 정식 명칭은 전략방위구상(SDI)으로, 레이건 대통령은 생방송 텔레비전 연설을 통해 미국 국민에게 냉전의 \"상호확증파괴\" 독트린으로부터의 급진적인 이탈을 선언했습니다. \"우주 방패\"의 초기 개념은 로렌스 리버모어 국립연구소의 피터 헤이겔스타인 박사가 개발했습니다. 개념상으로는 핵반응로로 구동되는 일련의 우주 기반 위성들을 만들어 소련 대륙간탄도미사일을 차단하는 난공불락의 방어막을 형성하는 것이었습니다. 이론상으로는 과학적으로 타당했지만, 실제로 공학화에 성공하지는 못했습니다. 이후 버전에서는 \"스마트 페블\"과 미사일 기반 요격체가 등장했습니다. SDI는 고르바초프가 소련이 냉전을 지속할 수 없다는 것을 납득하게 만든 요인 중 하나로 자주 거론됩니다."
+      "translation_ko": "(1983 – ?) 정식 명칭은 전략방위구상(SDI)으로, 레이건 대통령은 생방송 텔레비전 연설로 미국 국민에게 냉전의 \"상호확증파괴\" 독트린으로부터의 급진적인 이탈을 선언했습니다. \"우주 방패\"의 초기 개념은 로렌스 리버모어 국립연구소의 피터 헤이겔스타인 박사가 개발했습니다. 개념상으로는 핵반응로로 구동되는 일련의 우주 기반 위성들을 만들어 소련 대륙간탄도미사일을 차단하는 난공불락의 방어막을 형성하는 것이었습니다. 이론상으로는 과학적으로 타당했지만, 실제로 공학화에 성공하지는 못했습니다. 이후 버전에서는 \"스마트 페블\"과 미사일 기반 요격체가 등장했습니다. SDI는 고르바초프가 소련이 냉전을 지속할 수 없다는 것을 납득하게 만든 요인 중 하나로 자주 거론됩니다."
     },
     {
       "source_line": 1516,
@@ -7602,7 +7611,8 @@
     {
       "source_line": 1521,
       "original": "(1947-?) The United Nations remained generally unable to influence the struggle between the superpowers due to Security Council veto power throughout the Cold War. However, it occasionally stood as a gauge for world opinion, and could mediate in stalled conflicts throughout the Third World. It was also the backdrop for a number of quintessential moments of the conflict, including the Soviet Korean War walkout, the “We Will Bury You” speech, and of course, the Cuban Missile Crisis – don’t wait for the translation Mr. Zorin!",
-      "translation_ko": "(1947-?) 유엔은 냉전 내내 안전보장이사회의 거부권으로 인해 강대국 간의 대립에 영향력을 행사하지 못했습니다. 그러나 간간이 세계 여론의 척도 역할을 하거나 제3세계의 교착된 분쟁을 중재하기도 했습니다. 또한 소련의 한국전쟁 퇴장, \"우리는 당신들을 매장할 것이다\" 연설, 그리고 물론 쿠바 미사일 위기 등 냉전의 정수와 같은 순간들의 배경이 되기도 했습니다 – 조린 씨, 번역을 기다리지 마십시오!"
+      "translation_ko": "(1947-?) 유엔은 냉전 내내 안전보장이사회의 거부권으로 인해 강대국 간의 대립에 영향력을 행사하지 못했습니다. 그러나 간간이 세계 여론의 척도 역할을 하거나 제3세계의 교착된 분쟁을 중재하기도 했습니다. 또한 소련의 한국전쟁 퇴장, \"우리는 당신들을 매장할 것이다\" 연설, 그리고 물론 쿠바 미사일 위기 같은 냉전의 대표적 순간들의 배경이 되기도 했습니다. 조린 씨, 번역을 기다리지 마십시오!",
+      "polished_at": "2026-08-12"
     },
     {
       "source_line": 1522,
@@ -7627,7 +7637,7 @@
     {
       "source_line": 1526,
       "original": "(1958-1969) Founder of France’s Fifth Republic, De Gaulle’s role during the Cold War is generally viewed through the lens of second presidency. While still a western ally, De Gaulle attempted to establish France as an independent voice within the confines of the Western campl. He developed an independent nuclear deterrent, withdrew from NATO’s unified command structure, and criticized US policy in Vietnam. He also pursued increased trade and cultural relations with the Soviet Bloc. He sought in all things to restore France to her former place of greatness in world affairs.",
-      "translation_ko": "(1958-1969) 프랑스 제5공화국의 창설자인 드골의 냉전 역할은 일반적으로 그의 두 번째 대통령 임기라는 렌즈를 통해 평가됩니다. 여전히 서방 동맹국이면서도, 드골은 서방 진영의 울타리 안에서 프랑스를 독자적인 목소리로 세우려 했습니다. 그는 독립적인 핵 억지력을 개발하고, NATO의 통합 지휘 체계에서 탈퇴했으며, 베트남에서의 미국 정책을 비판했습니다. 또한 소련 블록과의 무역 및 문화 관계 확대를 추구했습니다. 그는 모든 면에서 세계 무대에서 프랑스의 과거 위대함을 회복하려 했습니다."
+      "translation_ko": "(1958-1969) 프랑스 제5공화국의 창설자인 드골의 냉전 역할은 일반적으로 그의 두 번째 대통령 임기라는 렌즈로 평가됩니다. 여전히 서방 동맹국이면서도, 드골은 서방 진영의 울타리 안에서 프랑스를 독자적인 목소리로 세우려 했습니다. 그는 독립적인 핵 억지력을 개발하고, NATO의 통합 지휘 체계에서 탈퇴했으며, 베트남에서의 미국 정책을 비판했습니다. 또한 소련 블록과의 무역 및 문화 관계 확대를 추구했습니다. 그는 모든 면에서 세계 무대에서 프랑스의 과거 위대함을 회복하려 했습니다."
     },
     {
       "source_line": 1527,
@@ -8792,7 +8802,7 @@
     {
       "source_line": 1759,
       "original": "USSR gains 1 VP.<br><br>USSR receives 1 Influence in West Germany.<br><br><i>Cancels \"NATO\" for West Germany.<br><br>This event is unplayable and/or canceled by \"Tear Down This Wall\".</i>",
-      "translation_ko": "소련이 승점 1점을 획득합니다.<br><br>소련이 서독에 영향력 1을 받습니다.<br><br><i>서독에 대한 \"NATO\"를 취소합니다.<br><br>이 이벤트는 \"이 장벽을 허물어라\"에 의해 플레이 불가 및/또는 취소됩니다.</i>"
+      "translation_ko": "소련이 승점 1점을 획득합니다.<br><br>소련이 서독에 영향력 1을 받습니다.<br><br><i>서독에 대한 \"NATO\"를 취소합니다.<br><br>이 이벤트는 \"이 장벽을 허물어라\"로 플레이 불가 및/또는 취소됩니다.</i>"
     },
     {
       "source_line": 1760,
@@ -9942,7 +9952,7 @@
     {
       "source_line": 1989,
       "original": "(1948, 1967) Founded with the specific aim of promoting democracy in the western hemisphere, the OAS has been an occasionally useful body for the promotion of US interests within the hemisphere. It provided international legitimacy for US actions during both the Cuban Missile Crisis and the US invasion of Grenada. Trade promotion and economic development were added to the OAS charter in Buenos Aires in 1967. The revision of the charter also established the existence of permanent OAS diplomatic venues with the creation of a General Assembly in Washington, DC.",
-      "translation_ko": "(1948, 1967) 서반구의 민주주의 증진을 구체적인 목표로 창설된 미주기구(OAS)는 서반구 내 미국의 이익 증진에 간헐적으로 유용한 기구였다. OAS는 쿠바 미사일 위기와 미국의 그레나다 침공 시 미국의 행동에 국제적 정당성을 부여하였다. 1967년 부에노스아이레스에서 OAS 헌장에 무역 증진과 경제 개발 조항이 추가되었다. 헌장 개정을 통해 워싱턴 D.C.에 총회가 창설됨으로써 OAS의 상설 외교 기구가 마련되었다."
+      "translation_ko": "(1948, 1967) 서반구의 민주주의 증진을 구체적인 목표로 창설된 미주기구(OAS)는 서반구 내 미국의 이익 증진에 간헐적으로 유용한 기구였다. OAS는 쿠바 미사일 위기와 미국의 그레나다 침공 시 미국의 행동에 국제적 정당성을 부여하였다. 1967년 부에노스아이레스에서 OAS 헌장에 무역 증진과 경제 개발 조항이 추가되었다. 헌장 개정으로 워싱턴 D.C.에 총회가 창설됨으로써 OAS의 상설 외교 기구가 마련되었다."
     },
     {
       "source_line": 1990,
@@ -10012,7 +10022,7 @@
     {
       "source_line": 2003,
       "original": "(1961) The seminal line of perhaps the most powerful inaugural address ever given by a US president, President Kennedy ushered in an era of American confidence and resolve during the Cold War. Popular with American youth, Kennedy inspired a renewed dedication for public service both with ambitious goals for government sponsored science and youth oriented public service like the Peace Corps. His call for selfless dedication to the needs of the nation reflected the passion of a restless generation of young Americans eager to make their mark upon the world.",
-      "translation_ko": "(1961) 미국 대통령이 행한 취임 연설 중 가장 강렬한 것으로 손꼽히는 이 연설의 핵심 구절과 함께, 케네디 대통령은 냉전 시대 미국의 자신감과 결의의 시대를 열었다. 케네디는 미국 젊은이들 사이에서 큰 인기를 끌었으며, 정부 지원 과학에 대한 야심찬 목표와 평화봉사단 같은 청년 지향적인 공공 봉사 활동을 통해 공익에 대한 새로운 헌신을 불러일으켰다. 국가의 필요를 위한 사심 없는 헌신을 촉구한 그의 호소는 세상에 자신들의 발자국을 남기고자 열망하는 불안한 젊은 미국인 세대의 열정을 반영했다."
+      "translation_ko": "(1961) 미국 대통령이 행한 취임 연설 중 가장 강렬한 것으로 손꼽히는 이 연설의 핵심 구절과 함께, 케네디 대통령은 냉전 시대 미국의 자신감과 결의의 시대를 열었다. 케네디는 미국 젊은이들 사이에서 큰 인기를 끌었으며, 정부 지원 과학에 대한 야심찬 목표와 평화봉사단 같은 청년 지향적인 공공 봉사 활동으로 공익에 대한 새로운 헌신을 불러일으켰다. 국가의 필요를 위한 사심 없는 헌신을 촉구한 그의 호소는 세상에 자신들의 발자국을 남기고자 열망하는 불안한 젊은 미국인 세대의 열정을 반영했다."
     },
     {
       "source_line": 2004,
@@ -10047,7 +10057,7 @@
     {
       "source_line": 2010,
       "original": "(1966 – 1977) While primarily representative of an internal power struggle within the People’s Republic of China, the Cultural Revolution had profound international implications. As Mao Zedong felt increasingly marginalized by moderates within the Chinese Communist party, he lashed out to restore ideological purity and train the next generation of revolutionaries. The resulting turmoil of purges, denunciations, and creation of the Red Guard brought China to the brink of civil war. It also made more pronounced, the rupture between China and the Soviet Union. However, the anarchy and isolationism that reigned made rapprochement between the United States and the PRC impossible. As the Nixon administration took office, the gulf between the two nations appeared wider than ever.",
-      "translation_ko": "(1966 – 1977) 문화대혁명은 기본적으로 중화인민공화국 내부의 권력 투쟁을 상징하지만, 국제적으로도 심대한 영향을 미쳤다. 마오쩌둥은 중국 공산당 내 온건파에 의해 점점 소외된다고 느끼자 이념적 순수성을 회복하고 다음 세대의 혁명가를 양성하기 위해 강경하게 맞섰다. 그로 인한 숙청과 고발, 홍위병 창설의 혼란은 중국을 내전 직전까지 몰아갔다. 이는 또한 중국과 소련 사이의 균열을 더욱 심화시켰다. 그러나 이 시기를 지배한 무정부 상태와 고립주의로 인해 미국과 중화인민공화국의 화해는 불가능했다. 닉슨 행정부가 출범할 당시 두 나라 사이의 간극은 그 어느 때보다 벌어진 것처럼 보였다."
+      "translation_ko": "(1966 – 1977) 문화대혁명은 기본적으로 중화인민공화국 내부의 권력 투쟁을 상징하지만, 국제적으로도 심대한 영향을 미쳤다. 마오쩌둥은 중국 공산당 내 온건파가 자신을 점점 소외시킨다고 느끼자 이념적 순수성을 회복하고 다음 세대의 혁명가를 양성하기 위해 강경하게 맞섰다. 그로 인한 숙청과 고발, 홍위병 창설의 혼란은 중국을 내전 직전까지 몰아갔다. 이는 또한 중국과 소련 사이의 균열을 더욱 심화시켰다. 그러나 이 시기를 지배한 무정부 상태와 고립주의로 인해 미국과 중화인민공화국의 화해는 불가능했다. 닉슨 행정부가 출범할 당시 두 나라 사이의 간극은 그 어느 때보다 벌어진 것처럼 보였다."
     },
     {
       "source_line": 2011,
@@ -10072,7 +10082,7 @@
     {
       "source_line": 2015,
       "original": "(1969, 1972) Initiated during the Johnson Administration, and completed by President Nixon and Secretary Brezhnev, the first Strategic Arms Limitations Talks (SALT) treaty essentially sought to limit the number of nuclear platforms, and restrict defensive system that threatened the system of mutual deterrence. The success of this treaty led to the initiation of a second round of negotiations or SALT II. The diplomatic wrangling over this treaty began under President Nixon, and was completed in 1979 by President Carter and Secretary Brezhnev. SALT II provided broad limits on new strategic weapons platforms and banned mobile ICBM’s. Owing to the Soviet invasion of Afghanistan, the treaty as never ratified. President Reagan asserted that the Soviets were not complying with the terms of SALT II in 1986 and withdrew from the treaty.",
-      "translation_ko": "(1969, 1972) 존슨 행정부에서 시작되어 닉슨 대통령과 브레즈네프 서기장에 의해 완성된 제1차 전략무기제한협정(SALT)은 기본적으로 핵 플랫폼의 수를 제한하고 상호억제 체계를 위협하는 방어 시스템을 규제하고자 했다. 이 협정의 성공은 제2차 협상, 즉 SALT II의 개시로 이어졌다. 이 협정에 관한 외교적 논의는 닉슨 대통령 시절 시작되어 1979년 카터 대통령과 브레즈네프 서기장에 의해 완성되었다. SALT II는 새로운 전략 무기 플랫폼에 대한 광범위한 제한을 규정하고 이동식 대륙간탄도미사일(ICBM)을 금지했다. 소련의 아프가니스탄 침공으로 인해 조약은 끝내 비준되지 못했다. 레이건 대통령은 1986년 소련이 SALT II 조항을 준수하지 않고 있다고 주장하며 조약에서 탈퇴했다."
+      "translation_ko": "(1969, 1972) 존슨 행정부에서 시작되어 닉슨 대통령과 브레즈네프 서기장이 완성한 제1차 전략무기제한협정(SALT)은 기본적으로 핵 플랫폼의 수를 제한하고 상호억제 체계를 위협하는 방어 시스템을 규제하고자 했다. 이 협정의 성공은 제2차 협상, 즉 SALT II의 개시로 이어졌다. 이 협정에 관한 외교적 논의는 닉슨 대통령 시절 시작되어 1979년 카터 대통령과 브레즈네프 서기장이 완성했다. SALT II는 새로운 전략 무기 플랫폼에 대한 광범위한 제한을 규정하고 이동식 대륙간탄도미사일(ICBM)을 금지했다. 소련의 아프가니스탄 침공으로 인해 조약은 끝내 비준되지 못했다. 레이건 대통령은 1986년 소련이 SALT II 조항을 준수하지 않고 있다고 주장하며 조약에서 탈퇴했다."
     },
     {
       "source_line": 2016,
@@ -10117,7 +10127,7 @@
     {
       "source_line": 2024,
       "original": "(1978) Following a lull in the Middle East peace process caused by the 1976 presidential elections, President Carter entered office with a burst of new energy on the subject. Through direct personal appeal, Carter was able to bring ultimate resolution to the Yom Kippur War and completely change the dynamic of the Middle Eastern question. Israel and Egypt normalized relations and a framework for Middle East peace was agreed to. Years later, this would allow for the Oslo accord, and the Jordanian–Israeli Peace Agreement. Additionally, Carter also secured the complete realignment of Egypt. Once a Nasser led hotbed of anti-Western feeling, Egypt was to become one of America’s foremost allies in the region. Sadat would pay dearly for the leadership he showed during the talks. He was assassinated by Islamic radicals in 1981.",
-      "translation_ko": "(1978) 1976년 대통령 선거로 인해 중동 평화 프로세스에 잠시 공백이 생긴 후, 카터 대통령은 이 문제에 새로운 활력을 불어넣으며 취임했다. 직접적인 개인 설득을 통해 카터는 욤 키푸르 전쟁의 최종 해결을 이끌어내고 중동 문제의 역학 구도를 완전히 바꾸어 놓았다. 이스라엘과 이집트는 관계를 정상화했고, 중동 평화를 위한 기본 틀이 합의되었다. 수년 뒤 이는 오슬로 협정과 요르단-이스라엘 평화협정의 길을 열어주었다. 아울러 카터는 이집트의 완전한 노선 전환도 이끌어냈다. 한때 나세르가 이끌던 반서방 감정의 온상이었던 이집트는 미국의 이 지역 핵심 동맹국 중 하나가 되었다. 사다트는 회담에서 보여준 지도력에 대해 혹독한 대가를 치렀다. 그는 1981년 이슬람 과격파에 의해 암살되었다."
+      "translation_ko": "(1978) 1976년 대통령 선거로 인해 중동 평화 프로세스에 잠시 공백이 생긴 후, 카터 대통령은 이 문제에 새로운 활력을 불어넣으며 취임했다. 직접적인 개인 설득으로 카터는 욤 키푸르 전쟁의 최종 해결을 이끌어내고 중동 문제의 역학 구도를 완전히 바꾸어 놓았다. 이스라엘과 이집트는 관계를 정상화했고, 중동 평화를 위한 기본 틀이 합의되었다. 수년 뒤 이는 오슬로 협정과 요르단-이스라엘 평화협정의 길을 열어주었다. 아울러 카터는 이집트의 완전한 노선 전환도 이끌어냈다. 한때 나세르가 이끌던 반서방 감정의 온상이었던 이집트는 미국의 이 지역 핵심 동맹국 중 하나가 되었다. 사다트는 회담에서 보여준 지도력에 대해 혹독한 대가를 치렀다. 그는 1981년 이슬람 과격파에게 암살되었다."
     },
     {
       "source_line": 2025,
@@ -10127,7 +10137,7 @@
     {
       "source_line": 2026,
       "original": "(1979) As secular Arab and Muslim states throughout the Middle East displayed corruption, repression and incompetence, more radical forms of Islam began to come to the fore. The Muslim Brotherhood, founded in Egypt, sought to topple the secular regime there and in Syria. This led to further cycles of repression and authoritarian rule within these countries. A similar cycle took place in Iran under Mohammad Reza Shah Pahlavi. A long standing regional ally of the United States, and the West generally, the Shah was deposed by a popular revolution led by the anti-western Ayatollah Khomeini. This ushered in the world’s first contemporary theocracy. Iran’s Mullahs would spend the rest of the 20th Century in efforts to export their revolution to other Shia Muslim communities.",
-      "translation_ko": "(1979) 중동 전역의 세속적 아랍·이슬람 국가들이 부패, 억압, 무능을 드러내면서 보다 급진적인 형태의 이슬람이 부상하기 시작했다. 이집트에서 창설된 무슬림 형제단은 이집트와 시리아의 세속 정권을 타도하려 했다. 이는 해당 국가들 내에서 억압과 권위주의적 통치의 악순환을 심화시켰다. 이란에서도 모하마드 레자 샤 팔라비 치하에서 유사한 악순환이 반복되었다. 미국과 서방 전반의 오랜 지역 동맹국이었던 샤는 반서방 성향의 아야톨라 호메이니가 이끈 민중 혁명에 의해 축출되었다. 이는 세계 최초의 현대적 신정 국가의 탄생을 알렸다. 이란의 물라들은 20세기의 나머지 기간을 시아파 무슬림 공동체에 혁명을 수출하려는 노력에 쏟아부었다."
+      "translation_ko": "(1979) 중동 전역의 세속적 아랍·이슬람 국가들이 부패, 억압, 무능을 드러내면서 보다 급진적인 형태의 이슬람이 부상하기 시작했다. 이집트에서 창설된 무슬림 형제단은 이집트와 시리아의 세속 정권을 타도하려 했다. 이는 해당 국가들 내에서 억압과 권위주의적 통치의 악순환을 심화시켰다. 이란에서도 모하마드 레자 샤 팔라비 치하에서 유사한 악순환이 반복되었다. 미국과 서방 전반의 오랜 지역 동맹국이었던 샤는 반서방 성향의 아야톨라 호메이니가 이끈 민중 혁명으로 축출되었다. 이는 세계 최초의 현대적 신정 국가의 탄생을 알렸다. 이란의 물라들은 20세기의 나머지 기간을 시아파 무슬림 공동체에 혁명을 수출하려는 노력에 쏟아부었다."
     },
     {
       "source_line": 2027,
@@ -10162,7 +10172,7 @@
     {
       "source_line": 2033,
       "original": "(1984) A term coined by Dr. Helen Caldicott, it reflects the general feminist critique that the Cold War was driven by male ego with very Freudian undercurrents. When one examines the terminology of “deep penetration” and “multiple reentry” one wonders if she had a point. Caldicott went on to found Physicians for Social Responsibility, and her book became a rallying point within the anti-nuclear movement.",
-      "translation_ko": "(1984) 헬렌 칼디콧 박사가 만들어낸 이 용어는 냉전이 매우 프로이트적인 무의식을 품은 남성적 자아에 의해 추동되었다는 일반적인 페미니즘적 비판을 담고 있다. \"심층 침투(deep penetration)\"와 \"다중 재진입(multiple reentry)\" 같은 용어를 살펴보면 그녀의 지적이 일리가 있다는 생각이 든다. 칼디콧은 이후 사회적 책임을 위한 의사회를 창설했으며, 그녀의 저서는 반핵 운동의 결집 지점이 되었다."
+      "translation_ko": "(1984) 헬렌 칼디콧 박사가 만들어낸 이 용어는 냉전이 매우 프로이트적인 무의식을 품은 남성적 자아가 추동했다는 일반적인 페미니즘적 비판을 담고 있다. \"심층 침투(deep penetration)\"와 \"다중 재진입(multiple reentry)\" 같은 용어를 살펴보면 그녀의 지적이 일리가 있다는 생각이 든다. 칼디콧은 이후 사회적 책임을 위한 의사회를 창설했으며, 그녀의 저서는 반핵 운동의 결집 지점이 되었다."
     },
     {
       "source_line": 2034,
@@ -10572,7 +10582,7 @@
     {
       "source_line": 2115,
       "original": "Strength in a Region is primarily driven by Battleground countries.",
-      "translation_ko": "지역에서의 강세는 주로 격전지에 의해 결정됩니다."
+      "translation_ko": "지역에서의 강세는 주로 격전지가 결정합니다."
     },
     {
       "source_line": 2116,

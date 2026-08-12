@@ -615,7 +615,7 @@
       "row": 50,
       "key": "Card_013Text",
       "en": "A Pan-Arab Coalition invades Israel. Roll one die and subtract 1 for US Control of Israel and every US-controlled country adjacent to Israel.  USSR Victory on modified die roll 4-6. USSR adds 2 Military to Ops Track.<br><b>Effects of Victory:</b> USSR gains 2 VP and replaces all US Influence in Israel with USSR Influence.<br><i>Unplayable as an event after the \"Camp David Accords\" event has been played.</i>",
-      "ko": "범아랍 연합이 이스라엘을 침공합니다. 주사위 1개를 굴리고, 이스라엘의 미국 지배 및 이스라엘에 인접한 미국 지배 국가 각각에 대해 1씩 뺍니다. 수정된 주사위 결과 4~6이면 소련 승리. 소련은 작전 트랙에 군사 2를 추가합니다.<br><b>승리 효과:</b> 소련은 2 VP를 획득하고 이스라엘의 모든 미국 영향력을 소련 영향력으로 교체합니다.<br><i>\"캠프 데이비드 협정\" 이벤트가 사용된 이후에는 이벤트로 사용 불가.</i>",
+      "ko": "범아랍 연합이 이스라엘을 침공합니다. 주사위 1개를 굴리고, 이스라엘의 미국 지배 및 이스라엘에 인접한 미국 지배 국가 각각 1씩 뺍니다. 수정된 주사위 결과 4~6이면 소련 승리. 소련은 작전 트랙에 군사 2를 추가합니다.<br><b>승리 효과:</b> 소련은 2 VP를 획득하고 이스라엘의 모든 미국 영향력을 소련 영향력으로 교체합니다.<br><i>\"캠프 데이비드 협정\" 이벤트가 사용된 이후에는 이벤트로 사용 불가.</i>",
       "translation_source": {
         "source": "runtime-20260315",
         "match_mode": "exact",
@@ -1826,7 +1826,7 @@
       "row": 147,
       "key": "Card_055Text",
       "en": "USSR gains 1 VP.<br>USSR receives 1 Influence in West Germany.<br>Cancels NATO for West Germany.<br><i>This event is unplayable and/or canceled by 'Tear Down This Wall.'",
-      "ko": "소련이 1 승점을 얻는다.<br>서독에 소련 영향력 1을 받는다.<br>서독에 대한 NATO를 취소한다.<br><i>이 이벤트는 '이 장벽을 허물어라'에 의해 사용할 수 없거나 취소된다.</i>",
+      "ko": "소련이 1 승점을 얻는다.<br>서독에 소련 영향력 1을 받는다.<br>서독에 대한 NATO를 취소한다.<br><i>이 이벤트는 '이 장벽을 허물어라'로 사용할 수 없거나 취소된다.</i>",
       "translation_source": {
         "source": "runtime-20260315",
         "match_mode": "exact",
@@ -1840,7 +1840,7 @@
       "row": 148,
       "key": "Card_055TextAlt",
       "en": "USSR gains 1 VP.<br><br>USSR receives 1 Influence in West Germany.<br><br><i>Cancels \"NATO\" for West Germany.<br><br>This event is unplayable and/or canceled by \"Tear Down This Wall\".</i>",
-      "ko": "소련이 승점 1점을 획득합니다.<br><br>소련이 서독에 영향력 1을 받습니다.<br><br><i>서독에 대한 \"NATO\"를 취소합니다.<br><br>이 이벤트는 \"이 장벽을 허물어라\"에 의해 플레이 불가 및/또는 취소됩니다.</i>",
+      "ko": "소련이 승점 1점을 획득합니다.<br><br>소련이 서독에 영향력 1을 받습니다.<br><br><i>서독에 대한 \"NATO\"를 취소합니다.<br><br>이 이벤트는 \"이 장벽을 허물어라\"로 플레이 불가 및/또는 취소됩니다.</i>",
       "translation_source": {
         "source": "runtime-20260315",
         "match_mode": "exact",
@@ -1917,7 +1917,7 @@
       "row": 154,
       "key": "Card_058Text",
       "en": "If the US has <i>The China Card</i>, claim it face up and available for play.<br><br>If the USSR already has it, <br>USSR gains 1 VP.",
-      "ko": "미국이 <i>중국 카드</i>를 가지고 있다면 이를 앞면으로 가져와 플레이 가능하게 한다.<br>이미 소련이 가지고 있다면 소련이 1 승점을 얻는다.",
+      "ko": "미국이 <i>중국 카드</i>를 보유 중이면 이를 앞면으로 가져와 플레이 가능하게 한다.<br>이미 소련이 보유 중이면 소련이 1 승점을 얻는다.",
       "translation_source": {
         "source": "runtime-20260315",
         "match_mode": "exact",
@@ -1938,7 +1938,7 @@
       "row": 156,
       "key": "Card_059Text",
       "en": "USSR gains 2 VP for every subsequently US played \"war card\" (played as an event or Operations) unless played on the space race.<br><br>War Cards: <i>Arab-Israeli War, Korean War, Brush War, Indo-Pakistani War or Iran-Iraq War.<br><br>This event canceled by 'An Evil Empire'.",
-      "ko": "이후 미국이 플레이하는 모든 \\\"전쟁 카드\\\"마다 소련은 2 승점을 얻는다(우주 경쟁에 사용한 경우 제외). 전쟁 카드: <i>아랍-이스라엘 전쟁, 한국 전쟁, 소규모 전쟁, 인도-파키스탄 전쟁, 이란-이라크 전쟁</i>.<br><br>이 이벤트는 '악의 제국'에 의해 취소된다.",
+      "ko": "이후 미국이 플레이하는 모든 \\\"전쟁 카드\\\"마다 소련은 2 승점을 얻는다(우주 경쟁에 사용한 경우 제외). 전쟁 카드: <i>아랍-이스라엘 전쟁, 한국 전쟁, 소규모 전쟁, 인도-파키스탄 전쟁, 이란-이라크 전쟁</i>.<br><br>이 이벤트는 '악의 제국'으로 취소된다.",
       "translation_source": {
         "source": "runtime-20260315",
         "match_mode": "exact",
@@ -2274,7 +2274,7 @@
       "row": 185,
       "key": "Card_071Text",
       "en": "If US has <i>The China Card</i>, gain 2 VP.<br>Otherwise, US player receives the <i>The China Card</i> now, face down and unavailable for immediate play.",
-      "ko": "미국이 <i>중국 카드</i>를 가지고 있다면 2 승점을 얻는다. 그렇지 않다면 미국 플레이어가 지금 <br><i>중국 카드</i>를 받아 뒷면으로 보유하며 즉시 플레이할 수는 없다.",
+      "ko": "미국이 <i>중국 카드</i>를 보유 중이면 2 승점을 얻는다. 그렇지 않다면 미국 플레이어가 지금 <br><i>중국 카드</i>를 받아 뒷면으로 보유하며 즉시 플레이할 수는 없다.",
       "translation_source": {
         "source": "runtime-20260315",
         "match_mode": "exact",
@@ -2421,7 +2421,7 @@
       "row": 197,
       "key": "Card_076Text",
       "en": "If the USSR has <i>The China Card</i>, claim it face up and available for play.<br>If the US already has <i>The China Card</i>, add 4 US Influence in Asia, no more than 2 per country.",
-      "ko": "소련이 <i>중국 카드</i>를 가지고 있다면 이를 앞면으로 가져와 플레이 가능하게 한다. 미국이 이미 <i>중국 카드</i>를 가지고 있다면 아시아에 미국 영향력 4를 추가한다. 한 국가당 최대 2까지다.",
+      "ko": "소련이 <i>중국 카드</i>를 보유 중이면 이를 앞면으로 가져와 플레이 가능하게 한다. 미국이 이미 <i>중국 카드</i>를 보유 중이면 아시아에 미국 영향력 4를 추가한다. 한 국가당 최대 2까지다.",
       "translation_source": {
         "source": "runtime-20260315",
         "match_mode": "exact",
@@ -3282,7 +3282,7 @@
       "row": 274,
       "key": "Card_109Text",
       "en": "USSR receives 1 VP for each US coup attempt made for the remainder of the current turn.",
-      "ko": "이번 턴의 남은 동안 미국이 쿠데타를 시도할 때마다 소련은 1 승점를 얻습니다.",
+      "ko": "이번 턴의 남은 동안 미국이 쿠데타를 시도할 때마다 소련은 1 승점을 얻습니다.",
       "translation_source": {
         "source": "runtime-20260315",
         "match_mode": "exact",
