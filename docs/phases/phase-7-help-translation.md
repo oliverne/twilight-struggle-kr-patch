@@ -2,9 +2,8 @@
 
 ## 상태
 
-- 상태: 🚧 진행 중 (착수일: 2026-08-13)
-- ⚠️ **순서 변경 (2026-08-13 사용자 결정)**: 기존 "배포 후 맨 마지막에 수행" → **배포 전에 수행**.
-  최종 배포(Phase 6)는 Phase 7 완료 후 진행한다.
+- 상태: ✅ 완료 (2026-08-13)
+- ⚠️ **순서 변경 (2026-08-13 사용자 결정)**: 기존 "배포 후 맨 마지막에 수행" → **배포 전에 수행**. 최종 배포(Phase 6)는 Phase 7 완료 후 진행 예정이었으나, **배포는 보류 결정 (2026-08-13) — 한글화는 여기까지로 마무리**
 - 선행 Phase: Phase 5 완료
 
 ## 목표
@@ -56,9 +55,8 @@
 ### 4. 검증
 
 - [x] `verify_assets.py` 검증 — m_Script 0건 불일치, TextAsset 변경 0건 (번역/KO 열 유지), 폰트/텍스처 46건 (2026-08-13)
-- [ ] 실게임 확인 (설정→규칙·튜토리얼·인게임 HELP — 스크롤·줄바꿈·레이아웃)
-- [ ] 잔존 영문/`□` 0건 확인
-- ⚠️ **튜토리얼 단계별 안내(가이드 팝업)는 계층 3 (IL2CPP 코드 문자열)** — 파일 패치 불가, BepInEx 런타임 훅 필요 (2026-08-13 실측, ISSUES #17). 규칙북/HELP 팝업은 해결됨
+- [x] 실게임 확인 (2026-08-13 사용자) — ✅ 규칙북(설정→규칙)·HELP 팝업 정상, 씬 규칙 문단 한글 확인
+- [x] 잔존 영문/`□` — 파일 패치 범위 내 0건. ⚠️ **튜토리얼 단계별 안내는 계층 3 (IL2CPP 코드 문자열) — 파일 패치 불가, BepInEx 런타임 훅 필요 (2026-08-13 실측, ISSUES #17)**
 
 ## 검증 기준
 
@@ -85,18 +83,39 @@
 | 폰트 문자셋 | chars.txt 확장 → SDF 재생성 → 재주입 (2026-08-13) | ✅ **새 글자 57개 추가** (735→794자), glyphs 794, m_PointSize 77 유지, 폰트/텍스처 46건 변경 |
 | verify_assets.py | 원본 vs 패치본 (2026-08-13) | ✅ m_Script 0건, TextAsset 변경 0건 (번역 유지), 의도된 변경만 존재 |
 | 씬 규칙 문단 167개 | manual-scenes.json 추가 → patch_scenes.py (2026-08-13) | ✅ **500자 제한 버그 발견·수정** — level1 902(+17)·level2 1,563(+12) 객체 변경, 긴 문단(턴 구조 2277자 등)까지 한글화 |
-| 실게임 확인 | — | ✅ 1차 확인 (2026-08-13 사용자): HELP 팝업 제목·규칙북 정상. ⬜ 튜토리얼 안내는 **계층 3 (IL2CPP 코드 문자열) — 파일 패치 불가, BepInEx 훅으로 보류** (ISSUES #17) |
+| 실게임 확인 | 실게임 (2026-08-13 사용자) | ✅ 규칙북·HELP 팝업 정상. 튜토리얼 안내는 계층 3 — BepInEx 훅으로 보류 (ISSUES #17) |
+| 씬 규칙 문단 | manual-scenes.json + patch_scenes.py (2026-08-13) | ✅ **500자 제한 버그 발견·수정** — level1 902(+17)·level2 1,563(+12), 긴 문단(턴 구조 2277자)까지 한글화 |
 
-## 산출물 (예정)
+## 산출물
 
-- ✅ `translation/glossary.md` — 용어 통일표 (2026-08-13 초안)
-- ✅ `translation/manual-rules.json` — TS_RulesTutorial 313행 EN 추출 (2026-08-13, 번역 대기)
-- ⬜ `scripts/inject_translations.py` 확장 (rules 테이블 처리)
-- ⬜ 갱신된 `translation/manual-scenes.json` (씬 규칙 문단 167개)
+- ✅ `translation/glossary.md` — 용어 통일표 (2026-08-13)
+- ✅ `translation/manual-rules.json` — TS_RulesTutorial 313행 번역 (33,311자)
+- ✅ `translation/manual-scenes.json` — 씬 규칙 문단 포함 367개로 확장
+- ✅ `scripts/inject_translations.py` 확장 (TS_RulesTutorial EN 열 3열 주입)
+- ✅ `scripts/patch_scenes.py` — parse_string_at 500자→20000자 제한 완화
+- ✅ `patched/resources.assets·sharedassets0.assets·level1~3` 갱신 (설치 완료)
 
-## 다음 Phase로 핸드오프
+## 다음 Phase로 핸드오프 (→ Phase 6 배포 — 보류)
 
-(Phase 7 완료 시 작성 — 최종 배포(Phase 6)로 이관)
+### 반드시 알아야 할 사실
+
+1. **한글화는 파일 패치 가능 범위 내에서 완료** — 계층 1(TextAsset)·계층 2(씬) 100%. 남은 영어는 전부 계층 3(IL2CPP 코드 문자열)
+2. **한글화 한계 (문서화 완료)**:
+   - 턴 히스토리 로그 (ISSUES #11) — global-metadata.dat, BepInEx 훅 필요
+   - **튜토리얼 단계별 안내 (ISSUES #17)** — TutorialStep.tutorialText가 코드 문자열. 2026-08-13 실측
+   - 보드맵 텍스처 국가명 — 이미지 리터칭 필요 (범위 제외)
+3. **배포는 보류 (2026-08-13 사용자 결정)** — 한글화는 여기까지로 마무리, 배포 진행은 추후 재검토
+4. **알려진 잔여 개선 포인트** (기능 정상, 선택 사항): 폰트 줄 간격 보조 보정(`--use-game-line-metrics`), 멀티플레이 검증(미실시), 씬 미매칭 잔존(더미/크레딧/UI 라벨 — 무해)
+
+### 산출물 위치
+
+- `translation/manual-rules.json`·`glossary.md`·`manual-scenes.json` (367개) — 번역 소스
+- `patched/` — macOS 기준 최종본 (resources.assets·sharedassets0.assets·level1~3·hashes.txt)
+- 설치/제거: `scripts/install.sh`·`install-windows.ps1`·`uninstall.sh`·`uninstall-windows.ps1`
+
+### 미해결 이슈 (BepInEx 프로젝트로 이관)
+
+- 턴 히스토리 로그 (ISSUES #11) + 튜토리얼 안내 (ISSUES #17) — 하나의 BepInEx 플러그인으로 통합 가능
 
 ## 참고
 

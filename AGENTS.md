@@ -28,17 +28,18 @@
 ## 프로젝트 개요
 
 - Steam Twilight Struggle(App ID 406290, Unity 6 / 6000.0.58f2, IL2CPP) 한글 패치 복원
-- 핵심 난제: **CJK 글리프를 포함한 TMP SDF 폰트 아틀라스 주입** — 한글 네모(□)의 원인 → ✅ 해결 (Phase 3~4, 24개 폰트 주입)
-- **남은 난제: IL2CPP 코드 문자열(global-metadata.dat)의 턴 히스토리 로그** — 파일 패치 불가, BepInEx 런타임 훅만 가능 (보류)
-- 기존 한글화의 **번역문을 재사용**하며, 처음부터 번역하지 않음 (Phase 2 확정: 신규 런타임 패치 2026-03-15의 TSV 2,253쌍이 1차 소스, 블루칩 v1.0.1의 432개는 구버전이라 참고용)
+- **한글화 완료 (2026-08-13)**: 파일 패치 가능 범위 100% — 계층 1(TextAsset)+계층 2(씬) 전부 한글, 규칙북/도움말(Phase 7) 포함
+- 핵심 난제였던 **CJK SDF 폰트 아틀라스 주입** → ✅ 해결 (Phase 3~4, 24개 폰트)
+- **남은 난제: IL2CPP 코드 문자열(global-metadata.dat)** — 턴 히스토리 로그 + 튜토리얼 단계별 안내 → 파일 패치 불가, BepInEx 런타임 훅만 가능 (보류, ISSUES #11·#17)
+- 기존 한글화(런타임 패치 2026-03-15, 블루칩 v1.0.1)의 **번역문을 재사용**하며, 처음부터 번역하지 않음 (Phase 2 확정: 런타임 TSV 2,253쌍이 1차 소스, 블루칩 432개는 구버전이라 참고용)
 
 ## 게임 텍스트 3계층 구조 (Phase 5 확정)
 
 | 계층 | 위치 | 상태 | 해결 수단 |
 |---|---|---|---|
 | 1. TextAsset 키 참조 | `resources.assets` — Common_Strings/TS_Ingame 등 (`${Key_XXX}`) | ✅ 한글화 | 번역 주입 + **게임 언어=ko** (아래) |
-| 2. 씬 하드코딩 문자열 | level1(메인 메뉴)·level2(인게임)·level3(보드) MonoBehaviour | ✅ 한글화 (2,548개) | `patch_scenes.py` |
-| 3. IL2CPP 코드 문자열 | global-metadata.dat (턴 히스토리 템플릿 등) | ❌ 영어 잔존 | BepInEx 런타임 훅 (보류) |
+| 2. 씬 하드코딩 문자열 | level1(메인 메뉴)·level2(인게임)·level3(보드) MonoBehaviour | ✅ 한글화 (2,548개 + 규칙 문단) | `patch_scenes.py` |
+| 3. IL2CPP 코드 문자열 | global-metadata.dat (턴 히스토리 템플릿·**튜토리얼 안내**) | ❌ 영어 잔존 | BepInEx 런타임 훅 (보류) |
 
 ## 불변 원칙
 
@@ -62,7 +63,7 @@
 | 인게임/도움말 키 | `TS_Ingame`·`TS_Strings`·`Common_Ingame` | 🟢 실게임 반영 확인 — ✅ 주입 완료 (잔존 52키 수동 번역 포함) |
 | **씬 하드코딩 문자열** | level1~3 MonoBehaviour (TextMeshProUGUI.m_text, Text.m_Text) | 🟢 패치 완료 — `patch_scenes.py` |
 | 번역 재사용 소스 | 블루칩 v1.0.1 MonoBehaviour string 필드 (432개 고유 한글) | 🟢 raw 바이트 수동 파싱으로 추출 가능 (Phase 2) |
-| **IL2CPP 코드 문자열** | global-metadata.dat (턴 히스토리 로그 템플릿) | 🔴 파일 패치 불가 — BepInEx 런타임 훅 필요 (보류) |
+| **IL2CPP 코드 문자열** | global-metadata.dat (턴 히스토리 템플릿 + **튜토리얼 안내**) | 🔴 파일 패치 불가 — BepInEx 런타임 훅 필요 (보류, ISSUES #11·#17) |
 | 카드/국가 Lua | `StreamingAssets/Lua/*.lua` | ❌ Phase 1에서 죽은 잔재로 확인, 작업 대상 아님 |
 | SDF 폰트 아틀라스 | `resources.assets` (CJK 없음) | ✅ 해결 — 24개 폰트 주입 (Phase 3~4) |
 
@@ -108,7 +109,7 @@ patched/      # 수정 파일 — level1~3은 git 관리, *.assets는 100MB 초�
               # ⚠️ 배포는 package-release.sh의 dist/ zip으로 (플랫폼별 zip 분리 필요)
 original/     # 원본 백업 (git 제외)
 dist/         # 배포 zip 산출물 (git 제외, scripts/package-release.sh가 생성)
-translation/  # 번역 소스 JSON/CSV — runtime-20260315.json, manual-extra.json, manual-scenes.json, glossary.md(용어표, Phase 7에서 신설)
+translation/  # 번역 소스 JSON/CSV — runtime-20260315.json, manual-extra.json, manual-scenes.json, manual-rules.json, glossary.md(용어표)
 fonts/        # TTF 원본 + 생성된 SDF 산출물
 scripts/      # install/verify/inject/patch 스크립트
 docs/         # PLAN.md 등

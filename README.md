@@ -2,8 +2,8 @@
 
 Steam판 **Twilight Struggle**(App ID `406290`)용 한글 패치 프로젝트입니다.
 
-> **현재 개발 중 (Phase 6 — 배포 준비).** Windows·macOS 실게임에서 **카드/메뉴/인게임 UI 대부분 한글화 확인** (2026-08-12).
-> 멀티플레이 검증과 배포가 남아 있습니다.
+> **한글화 완료 (2026-08-13).** 카드/메뉴/인게임 UI/규칙북/도움말/씬 텍스트 **파일 패치 범위 100% 한글화**.
+> 배포는 보류 — 남은 영어는 IL2CPP 코드 문자열(턴 히스토리·튜토리얼 안내)로 BepInEx 훅이 필요합니다.
 
 ## 현재 상태
 
@@ -12,7 +12,8 @@ Steam판 **Twilight Struggle**(App ID `406290`)용 한글 패치 프로젝트입
 | 대상 게임 | Steam Twilight Struggle (Unity 6 `6000.0.58f2`, IL2CPP) |
 | 번역 주입 (TextAsset) | ✅ 666행 + 잔존 키 52개 — `Common_Strings`(KO 열), `TS_Cards`, `TS_Ingame`, `TS_Strings`, `Common_Ingame` |
 | 언어 테이블 KO 열 | ✅ 5개 테이블에 KO 열 추가 (언어=KO에서 카드/PANEL/HELP 키 해석) |
-| 씬 하드코딩 문자열 | ✅ 2,548개 — level1(메인 메뉴)·level2(인게임)·level3(보드) |
+| 씬 하드코딩 문자열 | ✅ 2,548개 + 규칙 문단 — level1(메인 메뉴)·level2(인게임)·level3(보드) |
+| 규칙북/도움말 (Phase 7) | ✅ TS_RulesTutorial 313행 + 씬 규칙 문단 — 용어표·검수 완료 (2026-08-13) |
 | 한글 SDF 폰트 | ✅ 2048² SDF 2종(D2Coding 본문, Paperlogy 제목, 739자) → 24개 TMP 폰트 주입 |
 | 게임 언어 설정 | ✅ KO 전환 (레지스트리/plist PlayerPrefs) |
 | Windows 실게임 테스트 | ✅ 4차 완료 — **카드·메뉴·인게임 UI 대부분 한글화 확인** |
@@ -29,10 +30,10 @@ Steam판 **Twilight Struggle**(App ID `406290`)용 한글 패치 프로젝트입
 - 메인 메뉴, 설정, 로비/친구/계정 UI (Common_Strings + 씬 패치)
 - 인게임 HUD — 턴 트랙, 데프콘, 우주 경쟁, 득점, 입찰, 쿠데타/재편성 배너 등 (TS_Ingame + 씬 패치)
 
-**한글화 제외 (알려진 한계)**
-- 턴 히스토리 로그(게임 하단) — IL2CPP 코드 문자열이라 파일 패치 불가 (BepInEx 런타임 훅 필요)
-- 보드맵에 텍스처로 구워진 국가명
-- 규칙북/도움말 본문 (TS_RulesTutorial 313행 + 씬 규칙 문단 167개) — 🚧 **Phase 7에서 번역 중 (배포 전, 2026-08-13 결정)**
+**한글화 제외 (알려진 한계 — 파일 패치 불가, BepInEx 런타임 훅 필요)**
+- 턴 히스토리 로그(게임 하단) — IL2CPP 코드 문자열 (global-metadata.dat)
+- 튜토리얼 단계별 안내 가이드 — IL2CPP 코드 문자열 (2026-08-13 실측, ISSUES #17)
+- 보드맵에 텍스처로 구워진 국가명 (이미지 리터칭 필요, 범위 제외)
 
 ## 설치 방법
 

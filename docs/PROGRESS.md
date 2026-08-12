@@ -6,7 +6,8 @@
 
 ## 현재 상태
 
-**다음 작업:** Phase 7 (도움말/규칙 번역) 착수 — **배포 전 수행으로 변경 (2026-08-13 사용자 결정)**. 용어표 신설 → TS_RulesTutorial 313행 + 씬 규칙 167개 번역 → 주입 → 검증 → 최종 배포(Phase 6)
+**한글화 완료 (2026-08-13)** — 파일 패치 가능 범위 100% (계층 1 TextAsset + 계층 2 씬).
+배포(Phase 6)는 **보류 결정** — 남은 영어는 전부 계층 3(IL2CPP 코드 문자열: 턴 히스토리·튜토리얼 안내)로 BepInEx 런타임 훅 필요.
 
 - 완료: Phase 0 — 준비, Phase 1 — 텍스트 위치 검증, Phase 2 — 번역 소스 구축
 - 완료: Phase 3 SDF 생성 (2048² 최적화) + Windows 폰트 주입 (24개 TMP 폰트)
@@ -24,7 +25,8 @@
 - ✅ **macOS 전체 파이프라인 재현 + 적용 완료 (2026-08-12)** — Windows 전송 없이 macOS에서 번역 주입→KO 열→폰트 주입→설치까지 전부 성공 (Windows 빌드 GameAssembly.dll + global-metadata.dat만 original/에 보관)
 - ✅ **macOS 실게임 확인 (2026-08-12)** — 메뉴·카드 한글, 폰트 정상. 크래시 원인 해결: **Windows 원본 기준 씬 패치본(level1~3)이 macOS 빌드와 비호환** → macOS 원본 기준으로 재패치해 해결 (에셋도 플랫폼별 확인). 언어 키도 플랫폼별: macOS는 `localization`(plist), Windows는 `localization_h2525087814`(레지스트리)
 - ✅ **Steam 무결성 재설치 테스트 (2026-08-12)** — 무결성 후 ${Key} 노출(원본 에셋+언어 KO) 확인 → uninstall.sh 정상 동작 → 언어 EN 복귀 → install.sh 재설치 확인. 배포 유저의 제거·복구 경로 확보 (uninstall 2종, `b16ea22`)
-- **Phase 5 완료 — 다음: Phase 6 배포**
+- ✅ **Phase 7 완료 (2026-08-13)** — 규칙북 313행 + 씬 규칙 문단 번역·주입·설치 완료. 튜토리얼 안내는 계층 3(IL2CPP)으로 보류
+- ✅ **배포 보류 결정 (2026-08-13)** — 한글화는 여기까지로 마무리, 배포는 추후 재검토
 
 ### 작업 재개 순서
 
@@ -68,19 +70,17 @@
 | Phase 3 — 한글 SDF 폰트 아틀라스 생성  | ✅   | 2048² SDF 2종 + Windows 주입 완료 (24개 폰트) | [상세](phases/phase-3-sdf-font.md)           |
 | Phase 4 — 텍스트 주입 & 레이아웃 조정  | ✅   | 무손상 주입 재구축 + 잔존 키 52개 재주입    | [상세](phases/phase-4-injection-layout.md)   |
 | Phase 5 — 플랫폼 적용 & 테스트         | ✅   | **전부 완료 (2026-08-12)** — Windows 4차 테스트·macOS 실게임·Steam 무결성 복구·uninstall 검증. 잔여: 멀티플레이(스킵) | [상세](phases/phase-5-platform-test.md)      |
-| Phase 6 — 배포                         | ⬜   | 배포 준비 완료 (패키징 스크립트) — **최종 배포는 Phase 7 완료 후** | [상세](phases/phase-6-release.md)            |
-| Phase 7 — 도움말/규칙 번역             | 🚧   | **배포 전 수행으로 변경 (2026-08-13)** — 용어표·규칙 6.4만 자 수동 | [상세](phases/phase-7-help-translation.md)   |
+| Phase 6 — 배포                         | ⬜   | **보류 (2026-08-13)** — 한글화 마무리로 배포 일단 보류, 추후 재검토 | [상세](phases/phase-6-release.md)            |
+| Phase 7 — 도움말/규칙 번역             | ✅   | **완료 (2026-08-13)** — 용어표·규칙 313행·씬 문단·500자 제한 수정 | [상세](phases/phase-7-help-translation.md)   |
 
-## 현재 핸드오프 요약 (→ Phase 7 도움말/규칙 번역)
+## 현재 핸드오프 요약 (한글화 완료 — 배포 보류)
 
-- **순서 변경 (2026-08-13)**: Phase 7을 배포 전에 수행 — 최종 배포(Phase 6)는 Phase 7 완료 후
-- **즉시 실행 (Phase 7)**: ① 선행 검증 — 게임에서 규칙북/도움말(HELP) 진입 경로와 TS_RulesTutorial 실표시 확인 ② 용어표 신설(`translation/glossary.md`) — 기존 번역 용어 일관성 확보 ③ TS_RulesTutorial 313행 EN 추출 → 번역(manual-rules.json) ④ `inject_translations.py`에 rules 처리 추가 → KO 열 동기화 ⑤ 씬 규칙 문단 167개 → `manual-scenes.json` → `patch_scenes.py` ⑥ 필요 시 폰트 문자셋 확장 ⑦ 검증 + 실게임
-- 잔존 영어/`□` 발견 시 → `translation/manual-*.json`에 키 추가 → 재주입 (inject → add_ko → 필요시 폰트 → verify)
-- macOS 재적용: `scripts/install.sh` / 제거: `scripts/uninstall.sh` (Windows: `install-windows.ps1`/`uninstall-windows.ps1`)
-- 멀티플레이 테스트 미실시 — 배포 전 1회 확인 권장 (스킵됨)
-- **보류**: 턴 히스토리(IL2CPP 코드 문자열) — BepInEx 런타임 훅 프로젝트로만 해결 가능 (2026-08-12 실측으로 범위가 템플릿 문자열뿐으로 좁혀짐)
-- ~~보류: 폰트 크기 불일치~~ → **해결 (2026-08-12)**: m_PointSize 70→77로 ~9% 축소.
-  m_Scale은 도구가 게임 값으로 덮어쓰므로 변경 불가 — 절차는 `.agents/skills/twilight-struggle-font-size`
+- **한글화 완료 (2026-08-13)**: 계층 1(TextAsset)·계층 2(씬) 100% — 카드/메뉴/인게임 UI/규칙북/HELP/씬 규칙 문단 전부 한글
+- **배포 보류 (2026-08-13 사용자 결정)** — 배포(Phase 6)는 추후 재검토, 한글화 한계는 문서화 완료
+- **남은 영어 (전부 계층 3, 파일 패치 불가)**: ① 턴 히스토리 로그 (ISSUES #11) ② **튜토리얼 단계별 안내 (ISSUES #17)** ③ 보드맵 텍스처 국가명(범위 제외) — BepInEx 런타임 훅 프로젝트로만 해결 가능 (보류)
+- 재적용: `scripts/install.sh` / 제거: `scripts/uninstall.sh` (Windows: `install-windows.ps1`/`uninstall-windows.ps1`)
+- 잔존 영어/`□` 발견 시 → `translation/manual-*.json`에 추가 → 재주입 (inject → add_ko → 필요시 폰트 → verify)
+- **알려진 잔여 개선 포인트**: 멀티플레이 검증(미실시), 폰트 줄 간격 보조 보정(`--use-game-line-metrics`, 미적용), 씬 미매칭 잔존(더미/크레딧/UI 라벨 — 무해)
 - 주의: `patched/*.assets`는 GitHub 100MB 제한 초과로 gitignore — 재생성 방법은 Phase 문서 참조 (level1~3은 git 관리)
 
 ## 로그
@@ -124,3 +124,12 @@
 | 2026-08-12                                        | **macOS 실게임 확인** — 크래시 원인(Windows 씬 패치본 비호환) 발견·해결, macOS 원본 기준 재패치. 언어 키 플랫폼별 확인 (macOS: localization) | `cb2dba0` |
 | 2026-08-12                                        | **uninstall 스크립트 2종 + 설치 시 이전 언어 기록** — 제거 시 영문 복귀 지원 (게임 삭제·재설치/무결성 후 언어 잔존 시나리오 포함), 게임 내 언어 선택 UI 없음 실측 반영 | `b16ea22` |
 | 2026-08-12                                        | **Phase 5 완료 처리** — Steam 무결성 복구·uninstall 검증 반영, Phase 6 핸드오프 작성 | `8a95a59` |
+| 2026-08-13                                        | Phase 7 배포 전 수행으로 변경 + 착수 — 용어표·규칙 소스 추출 | `616b5b8` |
+| 2026-08-13                                        | 용어표 전수 확정 (Control=장악 등, 검색+기존 번역 대조) | `b8122bd`, `8702616` |
+| 2026-08-13                                        | TS_RulesTutorial 313행 전량 번역 (런타임 매칭 83% 재사용) | `9c31bb6` |
+| 2026-08-13                                        | 주입 파이프라인 확장 + 폰트 문자셋 794자 재생성 | `2a0d7d9` |
+| 2026-08-13                                        | 유사 매칭 오염 8건 교정 (Help_Help 팝업 제목 등) | `bcf2e18` |
+| 2026-08-13                                        | 씬 규칙 문단 번역 — level2 +160개 객체 한글화 | `89bbe9b` |
+| 2026-08-13                                        | parse_string_at 500자 제한 완화 — 긴 규칙 문단 번역 (level1 +17, level2 +12) | `02be348` |
+| 2026-08-13                                        | 튜토리얼 안내 IL2CPP 코드 문자열 실측 — 계층 3 보류 (ISSUES #17) | `86aaa08` |
+| 2026-08-13                                        | **Phase 7 완료 + 배포 보류 결정** — 한글화 마무리, 한계 문서화 | 본 커밋 |
