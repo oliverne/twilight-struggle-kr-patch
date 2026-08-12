@@ -65,7 +65,7 @@
 | 번역 재사용 소스 | 블루칩 v1.0.1 MonoBehaviour string 필드 (432개 고유 한글) | 🟢 raw 바이트 수동 파싱으로 추출 가능 (Phase 2) |
 | **IL2CPP 코드 문자열** | global-metadata.dat (턴 히스토리 템플릿 + **튜토리얼 안내**) | 🔴 파일 패치 불가 — BepInEx 런타임 훅 필요 (보류, ISSUES #11·#17) |
 | 카드/국가 Lua | `StreamingAssets/Lua/*.lua` | ❌ Phase 1에서 죽은 잔재로 확인, 작업 대상 아님 |
-| SDF 폰트 아틀라스 | `resources.assets` (CJK 없음) | ✅ 해결 — 24개 폰트 주입 (Phase 3~4) |
+| SDF 폰트 아틀라스 | `resources.assets` (CJK 없음) | ✅ 해결 — 24개 폰트 주입 (Phase 3~4). 본문·IMPACT 계열=D2Coding, 제목=Paperlogy |
 
 ⚠️ **작업 착수 전 필수**: 아직 사용 여부가 확인되지 않은 소스는 수정 → 실게임 반영 테스트로 "살아있는 소스"를 먼저 검증한다. Phase 1 결과 `StreamingAssets/Lua`는 작업 대상에서 제외한다.
 
