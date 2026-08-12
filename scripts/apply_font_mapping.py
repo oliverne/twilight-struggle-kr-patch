@@ -17,17 +17,18 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 # 본문 계열 → NotoSerifKR, 제목 계열 → BlackHanSans
+# ⚠️ 2026-08-13: IMPACT 3종(트랙 라벨 H가 칸을 벗어나는 문제) → NotoSerifKR(D2Coding 모노스페이스)로 이동
 MAPPING = {
     "NotoSerifKR SDF.json": [
         "Unity SDF", "FRADMCN SDF", "FRAMD SDF Outline", "FRAMD SDF",
         "FRAMDCN SDF", "FRAMDIT SDF", "GOTHIC SDF", "GOTHICB Outline SDF",
         "GOTHICB SDF", "LiberationSans SDF - Fallback", "LiberationSans SDF",
         "TIMES SDF", "TIMESI SDF",
+        "IMPACT NUM Outline SDF", "IMPACT SDF", "IMPACT Shadow SDF",
     ],
     "BlackHanSans-Regular SDF.json": [
         "Anton SDF", "Bangers SDF", "Electronic Highway Sign SDF",
         "Oswald Bold SDF", "Roboto-Bold SDF", "Gunplay SDF",
-        "IMPACT NUM Outline SDF", "IMPACT SDF", "IMPACT Shadow SDF",
         "atwriter_outline SDF", "atwriter SDF",
     ],
 }
