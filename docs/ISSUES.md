@@ -91,6 +91,14 @@
 - **비고**: point-size가 74→70(NotoSerifKR), 87→83(BlackHanSans)로 축소 (2048² 한계, padding 7→4). 화면 표시 크기는 faceInfo 기반이라 동일. 이후 폰트 교체(2026-08-12)로 D2Coding/Paperlogy 기준 m_PointSize 77로 재생성됨
 - **관련 Phase**: Phase 5
 
+### #17 튜토리얼 단계별 안내 — IL2CPP 코드 문자열 (2026-08-13 실측)
+- **위치**: `il2cpp_data/Metadata/global-metadata.dat` — TutorialStep.tutorialText에 하드코딩
+- **문제**: 'Play <color=#98f066ff><b>Marshall Plan</b></color> as your Headline Event. To play it, click and drag...' 등 **튜토리얼 가이드 안내 전체가 코드 문자열**. 씬/TextAsset이 아니므로 patch_scenes/inject로 해결 불가 (global-metadata 문자열 풀은 길이 변경 시 오프셋 붕괴 — 한글 3바이트)
+- **범위 실측 (2026-08-13)**: 'Click and Drag <카드명>' 패턴 다수 + 단계 안내(4번째 행동 라운드·헤드라인 선택·승점 조건 등) 약 수십 개. 턴 히스토리(#11)와 동일한 계층 3
+- **제안**: BepInEx 플러그인 런타임 훅 (문자열 치환) — 턴 히스토리 훅 프로젝트와 통합 가능
+- **상태**: ⬜ 보류 (계층 3 — 파일 패치 불가, 별도 BepInEx 프로젝트 필요)
+- **관련 Phase**: Phase 7 완료 후 후속
+
 ## 처리된 이슈 (참고용)
 
 > Phase 0·1 완료 시점의 코드 리뷰에서 이미 처리된 항목. 커밋 `fbb70bc`, `50feea1`, `69e71a8` 참조.
