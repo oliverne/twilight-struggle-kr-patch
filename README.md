@@ -35,6 +35,19 @@ Steam판 **Twilight Struggle**(App ID `406290`)용 한글 패치 프로젝트입
 - 튜토리얼 단계별 안내 가이드 — IL2CPP 코드 문자열 (2026-08-13 실측, ISSUES #17)
 - 보드맵에 텍스처로 구워진 국가명 (이미지 리터칭 필요, 범위 제외)
 
+## 지원 플랫폼
+
+| 플랫폼 | 지원 | 비고 |
+|---|---|---|
+| Windows 10/11 | ✅ 공식 지원 | 설치: `install-windows.ps1` |
+| macOS 10.13+ | ✅ 공식 지원 | 설치: `install.sh` (애드혹 재서명 자동) |
+| 스팀덱 | ✅ 지원 (Proton) | Windows 배포본 파일 사용 — Linux 네이티브 빌드 없음 |
+| Linux (일반) | ✅ 지원 (Proton) | Steam에서 Proton 강제 설정 후 Windows 배포본 적용 |
+| Android / iOS | ❌ 지원 불가 | Playdek의 **별도 모바일 앱**(별도 빌드·구매) — 데스크톱 에셋 적용 불가. Steam Link 스트리밍으로 한글화 화면 감상만 가능 |
+
+> 스팀덱/리눅스는 게임 실행 방식이 Proton(Windows 빌드)이므로 **Windows 배포본 파일을 그대로 복사**하면 됩니다.
+> 게임 언어 KO 설정(레지스트리)은 Wine prefix에 주입합니다 (`protontricks` 활용, 스크립트는 배포 재개 시 작성 예정).
+
 ## 설치 방법
 
 배포 zip을 압축 해제한 뒤 운영체제별 설치 스크립트를 실행합니다 (백업 → 복사 → 언어 KO 설정 자동 처리).
