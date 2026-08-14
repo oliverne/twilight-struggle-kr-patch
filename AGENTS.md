@@ -73,7 +73,7 @@
 ### 번역 소스 재사용 전략 (Phase 2 확정)
 
 - 블루칩 v1.0.1(100% 한글화)의 번역은 MonoBehaviour string 필드에 직접 주입돼 있다. UnityPy `obj.read()`는 IL2CPP 타입트리 불완전으로 실패하나, `obj.get_raw_data()`에서 Unity string 표준 레이아웃(`int32 len + bytes + pad4`)을 수동 파싱하면 432개 고유 한글 문자열을 추출할 수 있다 (카드 이름·본문·사건·TMP 태그 포함).
-- 블루칩 v1.0.1 번역(Blueprint) + 원본 `TS_Cards`·`Common_Strings` 영문 원문을 **원문 전체 비교**로 매칭해 `translation/` 소스를 구축한다. 우드킹 패치는 보조/검증용(입수 안 해도 진행 가능).
+- 블루칩 v1.0.1 번역(Blueprint) + 원본 `TS_Cards`·`Common_Strings` 영문 원문을 **원문 전체 비교**로 매칭해 `translation/` 소스를 구축한다. 우드킹님 패치는 보조/검증용(입수 안 해도 진행 가능).
 - 블루칩 Lua(`twilight_cards.lua`)에는 한글 10줄(카드 3개 능력 설명 일부)만 있어 사실상 무의미.
 
 ## 게임 경로
@@ -109,7 +109,7 @@
 
 ```
 patched/windows/  # Windows 설치본 — level1~3은 git 관리, *.assets는 100MB 초과로 gitignore
-patched/macos/    # macOS 설치본 (macOS 원본 기준 재생성 — ⚠️ 2026-08-14 현재 비어 있음, 재생성 예정)
+patched/macos/    # macOS 설치본 (macOS 원본 기준 재생성 완료 — 2026-08-14, v0.1.1 포함)
                   # ⚠️ level1~3은 플랫폼별 (교차 복사 시 크래시 — 2026-08-12 실측)
                   # ⚠️ 배포는 package-release.sh의 dist/ zip 3종 (windows/macos/src)
 original/     # 원본 백업 (git 제외)

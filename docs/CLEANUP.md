@@ -60,7 +60,7 @@
 ```bash
 # 1. 게임 파일을 원본으로 복원 (백업에서)
 cd ~/Projects/twilight-struggle-kr-patch
-./scripts/uninstall.sh                          # macOS — 원본(.bak) 복원 + 언어 복원 + 재서명 자동
+./scripts/uninstall.sh                          # macOS — 원본(.bak) 복원 + 재서명 자동 (언어 설정 무조작 — EN 로케일 덮어쓰기 방식)
 # Windows: powershell -ExecutionPolicy Bypass -File scripts\uninstall-windows.ps1
 #  (백업이 없으면 Steam "파일 무결성 확인" 후 uninstall 스크립트 재실행)
 
@@ -79,8 +79,8 @@ rm -rf /tmp/hanpe*.html /tmp/bluechip*.html /tmp/uabea.log \
 ## 부분 정리
 
 - **UABEA만 재설치**: `rm -rf tools/uabea && ./scripts/setup-uabea-mac.sh`
-- **패치만 되돌리기**: Steam "파일 무결성 확인" 또는 uninstall 스크립트(백업 복원 + 언어 복원)
-- **언어만 되돌리기**: uninstall 스크립트가 자동 처리 (설치 전 값 복원). 수동: 레지스트리/plist `localization*` = `EN`
+- **패치만 되돌리기**: Steam "파일 무결성 확인" 또는 uninstall 스크립트(백업 복원)
+- **언어만 되돌리기**: 불필요 — 설치/제거 스크립트가 언어 설정을 건드리지 않으며 (2026-08-14 개정), EN 로케일 덮어쓰기 방식이라 원본 복원만 하면 영어로 돌아감
 - **디스크 확보**: `tools/legacy-patches/bluechip-v1.0.1-v2.0.1.zip` (520MB) 삭제 가능 — Drive에서 재다운 가능
 
 ## 주의

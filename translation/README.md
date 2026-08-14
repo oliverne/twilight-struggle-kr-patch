@@ -11,8 +11,8 @@ EN 원문은 절대 덮어쓰지 않고 `ko` 필드로만 관리한다. 스키�
 | `cards.json` | TS_Cards (카드 344행) | 344행 | `inject_translations.py` | 위와 동일 |
 | `runtime-20260315.json` | 신규 런타임 패치 원문↔번역 (영문 원문 기준) | 2,253쌍 | `inject_translations.py`·`patch_scenes.py`·`analyze_scene_texts.py` | `scripts/archive/extract_runtime_tsv.py` |
 | `manual-extra.json` | 잔존 UI 키 수동 번역 (TS_Ingame 40 + TS_Strings 12) | 52개 | `inject_translations.py`·`patch_scenes.py` | **수동 추가** — 미번역 키 발견 시 여기에 EN→KO 추가 |
-| `manual-scenes.json` | 씬(level1~3) 하드코딩 문자열 수동 번역 | 206개 | `patch_scenes.py` | **수동 추가** — 씬 영어 잔존 발견 시 `manual`에 추가 |
-| `manual-rules.json` | **TS_RulesTutorial(규칙북/도움말) 번역 (Phase 7)** | 313행 (33,311자) | `inject_translations.py`(확장 예정) | **용어표 기준** — glossary.md 참조, 런타임 TSV 원문 매칭 재사용 |
+| `manual-scenes.json` | 씬(level1~3) 하드코딩 문자열 수동 번역 (씬 규칙 문단 포함, Phase 7 확장) | 367개 | `patch_scenes.py` | **수동 추가** — 씬 영어 잔존 발견 시 `manual`에 추가 |
+| `manual-rules.json` | **TS_RulesTutorial(규칙북/도움말) 번역 (Phase 7)** | 313행 (33,311자) | `inject_translations.py`(확장 완료, Phase 7) | **용어표 기준** — glossary.md 참조, 런타임 TSV 원문 매칭 재사용 |
 | `glossary.md` | **용어 통일표 (Phase 7 신설, 2026-08-13)** | 40여 개 용어 | — | 신규 용어 발견 시 추가 |
 | `schema.md` | 소스 스키마 문서 | — | — | — |
 

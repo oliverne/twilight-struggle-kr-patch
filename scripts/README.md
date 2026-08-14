@@ -16,7 +16,7 @@ PYTHONIOENCODING=utf-8 .venv/bin/python scripts/<스크립트>.py ...           
 
 | 스크립트 | 용도 | 비고 |
 |---|---|---|
-| `inject_translations.py` | `translation/` 소스를 resources.assets TextAsset에 주입 (Common_Strings KO 열 교체, TS_Cards/TS_Ingame 등 EN 열 한글화, AvailableCultures ko 등록) | --gamepath는 게임 **루트**(GameAssembly.dll 위치) |
+| `inject_translations.py` | `translation/` 소스를 resources.assets TextAsset에 주입 (**모든 테이블 EN 열 한글 주입** + Common_Strings RU→KO(구형 호환) + AvailableCultures ko 등록) | --gamepath는 게임 **루트**(GameAssembly.dll 위치) |
 | `add_ko_columns.py` | 5개 언어 테이블에 KO 열 추가 (TS_Cards 9열 / TS_Ingame·TS_Strings·Common_Ingame 8열 / TS_RulesTutorial 10열). **멱등** — 잘못된 KO 열 자동 제거 후 재배치, 키 열(1열) 보존 검증 | 3차 테스트 교훈: 원본 범위 밖 열은 파서가 무시 |
 | `patch_scenes.py` | level1~3 씬 하드코딩 텍스트 패치 (m_text @ head+56 TMP / +112 Text) | 번역 소스: 런타임 TSV + manual-scenes.json |
 | `verify_assets.py` | 원본 vs 패치본 무결성 검증 (m_Script 불일치 0건, 의도 밖 변경 감지) | 패치 후 반드시 실행 |

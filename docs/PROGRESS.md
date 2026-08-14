@@ -138,12 +138,12 @@
 | 2026-08-13                                        | parse_string_at 500자 제한 완화 — 긴 규칙 문단 번역 (level1 +17, level2 +12) | `02be348` |
 | 2026-08-13                                        | 튜토리얼 안내 IL2CPP 코드 문자열 실측 — 계층 3 보류 (ISSUES #17) | `86aaa08` |
 | 2026-08-13                                        | **Phase 7 완료 + 배포 보류 결정** — 한글화 마무리, 한계 문서화 | 본 커밋 |
-| 2026-08-14                                        | Runbook 삭제 — 폰트 주입 절차를 twilight-struggle-font-injection 스킬로 이관 (참조 일괄 교체) | 본 커밋 |
 | 2026-08-13                                        | **IMPACT SDF 3종 → D2Coding** — 트랙 첫 칸 H 넘침 해결 (원인: Paperlogy H 폭이 숫자보다 20% 넓음), 실게임 확인 완료 | `7ecf94e` |
+| 2026-08-14                                        | Runbook 삭제 — 폰트 주입 절차를 twilight-struggle-font-injection 스킬로 이관 (참조 일괄 교체) | 본 커밋 |
 | 2026-08-14                                        | **EN 로케일 덮어쓰기 전환 (언어 설정 무조작)** — Common_Strings EN 열(2열)에도 한글 주입, 설치/제거 스크립트에서 레지스트리·plist 조작·기록·복원 전부 제거. 유저는 기본 EN 사용 → 설치=한글, 제거=영어. KO 열은 구형 KO 설정 호환으로 유지 | 본 커밋 |
 | 2026-08-14                                        | **EN 로케일 실게임 검증 완료 (Windows)** — 레지스트리 EN 설정에서 메뉴/카드 한글 확인. Steam 위치 자동 탐색 추가 (레지스트리+VDF, D 드라이브 검증) | `64a512f`, `e9cf6dd` |
 | 2026-08-14                                        | **patched 플랫폼별 분리** — `patched/windows/`(Windows 원본 기준)·`patched/macos/`(macOS 재생성 예정), install 스크립트 경로 갱신, inject/patch_scenes에 `--platform` 인자, package-release.sh zip 3종(windows/macos/src) 개편 | 본 커밋 |
-| 2026-08-14                                        | **배포 라이선스 정리** — README '감사의 말' 섹션 추가(한식구·블루칩), package-release.sh가 LICENSE를 LICENSE.txt로 자동 포함(사용자·src zip), 스킬/Phase 6 문서의 CREDITS.md·경고 설명 불일치 정리 | 본 커밋 |
+| 2026-08-14                                        | **배포 라이선스 정리** — README '감사의 말' 섹션 추가(한식구·블루칩님), package-release.sh가 LICENSE를 LICENSE.txt로 자동 포함(사용자·src zip), 스킬/Phase 6 문서의 CREDITS.md·경고 설명 불일치 정리 | 본 커밋 |
 | 2026-08-14                                        | **Windows 배포 (v0.1.0)** — 패키징·SHA256SUMS 검증·gh release 생성 완료. [릴리스](https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.0) (windows 9.3MB + src 3.6MB). macOS는 패치본 미생성으로 제외, 추후 릴리스 예정 | 본 커밋 |
 | 2026-08-14                                        | **zip 레이아웃 버그 수정** — zip 내부를 `patched/<플랫폼>/` 구조로 변경 (설치 스크립트 경로와 불일치하던 버그, v0.1.0 zip 영향). `patched/windows/` 대형 에셋은 v0.1.0 릴리스 zip에서 복원. 잔재 `patched-mac/` 삭제 + gitignore 정리 | `aab7c7f` |
 | 2026-08-14                                        | **macOS 패치본 재생성 완료** — EN 로케일 방식 파이프라인 재실행 (macOS 원본 기준): 번역 주입(322행)→KO 열→씬 패치(902/1563/274)→폰트 주입(verify 90건)→`patched/macos/` 완성 + hashes.txt. macOS zip 패키징 검증(v0.1.1-test) + install.sh 설치·코드사인 완료. v0.1.1 릴리스 대기 | `9627c8e` |

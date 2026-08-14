@@ -2,8 +2,8 @@
 
 Steam판 **Twilight Struggle**(App ID `406290`)용 한글 패치 프로젝트입니다.
 
-> **한글화 완료 (2026-08-13).** 카드/메뉴/인게임 UI/규칙북/도움말/씬 텍스트 **파일 패치 범위 100% 한글화**.
-> 배포는 보류 — 남은 영어는 IL2CPP 코드 문자열(턴 히스토리·튜토리얼 안내)로 BepInEx 훅이 필요합니다.
+> **한글화 완료 (2026-08-13) · 배포 완료 (2026-08-14, v0.1.1).** 카드/메뉴/인게임 UI/규칙북/도움말/씬 텍스트 **파일 패치 범위 100% 한글화**.
+> 배포: [GitHub Releases](https://github.com/oliverne/twilight-struggle-kr-patch/releases) — 남은 영어는 IL2CPP 코드 문자열(턴 히스토리·튜토리얼 안내)로 BepInEx 훅이 필요합니다.
 
 ## 현재 상태
 
@@ -14,7 +14,7 @@ Steam판 **Twilight Struggle**(App ID `406290`)용 한글 패치 프로젝트입
 | 언어 테이블 KO 열 | ✅ 5개 테이블 KO 열 추가 — 구형 KO 설정 호환용 (2026-08-14: 설정 무조작 방식 전환) |
 | 씬 하드코딩 문자열 | ✅ 2,548개 + 규칙 문단 — level1(메인 메뉴)·level2(인게임)·level3(보드) |
 | 규칙북/도움말 (Phase 7) | ✅ TS_RulesTutorial 313행 + 씬 규칙 문단 — 용어표·검수 완료 (2026-08-13) |
-| 한글 SDF 폰트 | ✅ 2048² SDF 2종(D2Coding 본문, Paperlogy 제목, 739자) → 24개 TMP 폰트 주입 |
+| 한글 SDF 폰트 | ✅ 2048² SDF 2종(D2Coding 본문, Paperlogy 제목, 794자) → 24개 TMP 폰트 주입 |
 | 게임 언어 설정 | ✅ 불필요 — **EN 로케일을 한글로 대체** (설정 무조작, 2026-08-14) |
 | Windows 실게임 테스트 | ✅ 4차 완료 — **카드·메뉴·인게임 UI 대부분 한글화 확인** |
 | macOS 실게임 테스트 | ✅ 완료 — macOS 원본 기준 파이프라인 재현 + 설치 확인 (2026-08-12) |
@@ -120,7 +120,8 @@ python scripts/verify_assets.py --orig <원본> --patched <패치본>
 | `translation/runtime-20260315.json` | 런타임 패치 TSV 2,253쌍 (기존 한글화 재사용) |
 | `translation/strings.json`, `cards.json` | Common_Strings·TS_Cards 키 매핑 |
 | `translation/manual-extra.json` | TS_Ingame/TS_Strings 잔존 키 수동 번역 52개 |
-| `translation/manual-scenes.json` | 씬 하드코딩 문자열 수동 번역 206개 |
+| `translation/manual-scenes.json` | 씬 하드코딩 문자열 수동 번역 367개 |
+| `translation/manual-rules.json` | 규칙북/도움말(TS_RulesTutorial) 수동 번역 313행 (Phase 7) |
 
 새 문자열 추가 시 해당 JSON에 키-값을 추가한 뒤 1·2·4단계 재실행. 상세: [translation/README.md](translation/README.md)
 
@@ -130,7 +131,7 @@ python scripts/verify_assets.py --orig <원본> --patched <패치본>
 |---|---|
 | [scripts/](scripts/README.md) | 주입·검증 스크립트 (핵심 5종 + 보조 + archive 보관) |
 | [tools/](tools/README.md) | 폰트 주입 도구·에셋 탐색 (Unity_Font_Replacer 등) |
-| [translation/](translation/README.md) | 번역 소스 (활성 5종 + 참고 산출물) |
+| [translation/](translation/README.md) | 번역 소스 (활성 6종 + 참고 산출물) |
 | [docs/](docs/PROGRESS.md) | 진행 현황·Phase 문서 |
 
 ## 감사의 말

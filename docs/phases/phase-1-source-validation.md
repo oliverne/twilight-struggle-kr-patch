@@ -85,7 +85,7 @@ Unity 6로 변경된 현재 게임에서 실제로 화면에 반영되는 텍스
 
 1. `scripts/restore-original.sh`로 게임 테스트 상태를 복원한다.
 2. `Common_Strings`, `TS_Cards`의 영문 문자열 전체를 추출해 `translation/` JSON으로 정리한다.
-3. 기존 블루칩 패치에서 한글 번역을 추출하고 현재 문자열과 자동 매칭한다.
+3. 기존 블루칩님 패치에서 한글 번역을 추출하고 현재 문자열과 자동 매칭한다.
 4. `TS_Ingame`, `TS_Strings`, `TS_RulesTutorial`, `Common_Ingame`의 실제 사용 여부를 함께 확인한다.
 
 ### 사용해야 하는 도구와 주의점

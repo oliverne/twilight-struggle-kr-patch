@@ -73,7 +73,7 @@
 - **위치**: level1·level2 MonoBehaviour — 'Twilight Struggle is a two-player game...' 등
 - **문제**: 런타임 TSV·수동 번역으로 커버 안 되는 규칙 본문이 씬에 하드코딩되어 있음 (TS_RulesTutorial 제외 결정과 별개로 씬에도 존재)
 - **제안**: 번역량 대비 우선순위 — Phase 7(배포 전 수행, 2026-08-13 결정)에서 `manual-scenes.json`에 추가해 번역
-- **상태**: 🚧 Phase 7에서 처리 중 (2026-08-13 착수, [phase-7-help-translation.md](phases/phase-7-help-translation.md))
+- **상태**: ✅ 처리 완료 (2026-08-13, Phase 7) — 씬 규칙 문단 167개 전량 한글화·실게임 확인 ([phase-7-help-translation.md](phases/phase-7-help-translation.md))
 
 ### #15 모든 언어 테이블 KO 열 부재 — 언어=KO에서 ${Key} 노출 (2026-08-12 해결)
 - **위치**: TS_Cards·TS_Ingame·TS_Strings·Common_Ingame·TS_RulesTutorial (Common_Strings는 KO 열 있음)

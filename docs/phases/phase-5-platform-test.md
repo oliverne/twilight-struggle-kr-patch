@@ -195,7 +195,7 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 
 ### 미해결 이슈 (보류)
 
-- **턴 히스토리 로그** — IL2CPP 코드 문자열(global-metadata.dat)로 파일 패치 불가. BepInEx 런타임 훅 프로젝트로만 해결 가능 (블루칩·런타임 패치 포함 모든 기존 패치가 미커버)
+- **턴 히스토리 로그** — IL2CPP 코드 문자열(global-metadata.dat)로 파일 패치 불가. BepInEx 런타임 훅 프로젝트로만 해결 가능 (블루칩님·런타임 패치 포함 모든 기존 패치가 미커버)
   - **보류 범위 확정 실측 (2026-08-12)**: 인게임 대기 메시지 "플레이어의 결정을 기다리는 중..."(원문 `Waiting for Player to decide...`)이 한글 표시되는 것을 계기로 전수 확인 — 원문이 global-metadata.dat 0건 / resources.assets 0건, patched/level2(인게임 씬)에 한글 2건·EN 0건 → **계층 2(씬 하드코딩, patch_scenes.py)로 해결된 문자열**임을 실측 확정. IL2CPP 코드 문자열 잔존은 **턴 히스토리 로그 템플릿뿐**으로 범위가 좁혀짐
 - ~~**폰트 크기 불일치**~~ → **해결 (2026-08-12)**: m_PointSize 70→77로 ~9% 축소, 줄 간격 유지 (글자만 축소). 절차는 `.agents/skills/twilight-struggle-font-size` 참조. 잔여 보조 보정(`--use-game-line-metrics` 재주입 등)은 미적용
 - **규칙북/튜토리얼 긴 문단** — 씬 하드코딩 167개 미번역 + TS_RulesTutorial 313행(6.4만 자) 전량 수동. **Phase 7에서 처리 (배포 전, 2026-08-13 결정)** — [phase-7-help-translation.md](phase-7-help-translation.md) 참조
@@ -232,6 +232,8 @@ macOS에서 전체 파이프라인(macOS 원본 기준)으로 패치 후 실게�
 
 ### patched/는 플랫폼별
 
+> ⚠️ **2026-08-14 이후 개정**: 아래 기록(patched/ = macOS 기준)은 폐기됐다. 현재는 `patched/windows/`·`patched/macos/`로 플랫폼별 분리되어 있다 (PROGRESS.md 참조). 아래는 당시(2026-08-12) 실행 기록이다.
+
 - `patched/resources.assets`, `sharedassets0.assets`, `level1~3` — **macOS 원본 기준** (현재 저장소 상태)
 - Windows용은 Windows 원본 기준으로 별도 보관 — 배포 시 플랫폼별 zip 분리 필요 (Phase 6)
 - macOS 씬 패치: `patch_scenes.py --gamepath tools/font-inject-work-mac/Twilight Struggle --outdir patched-mac/` (가상 폴더에 macOS 원본 level1~3 복사 후 실행)
@@ -257,7 +259,7 @@ macOS에서 전체 파이프라인(macOS 원본 기준)으로 패치 후 실게�
 ### 즉시 실행할 작업
 
 1. Windows용 patched 확보 (Windows 파이프라인 재실행) → 플랫폼별 zip 2쌍 생성
-2. LICENSE.txt / CREDITS.md 작성 (폰트 OFL, 블루칩 번역 크레딧)
+2. LICENSE.txt / CREDITS.md 작성 (폰트 OFL, 블루칩님 번역 크레딧)
 3. `gh release create`로 배포 + README 안내 확인
 
 ### 미해결 이슈 (Phase 6에 전달)

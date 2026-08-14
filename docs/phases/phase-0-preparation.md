@@ -18,7 +18,7 @@
 - [x] .NET 및 UABEA 설치·기동 확인
 - [x] Python venv 및 `numpy`/`scipy`/`Pillow` 설치
 - [x] 패치 대상 원본 백업 및 해시 기록
-- [x] 블루칩 기존 패치 v1/v2 확보
+- [x] 블루칩님 기존 패치 v1/v2 확보
 - [ ] 한패(hanpe.net) 백업 확보 — 로그인 필요로 보류
 
 ## 검증 결과

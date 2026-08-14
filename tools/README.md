@@ -50,7 +50,7 @@
 | 경로 | 용도 | 설치 |
 |---|---|---|
 | `uabea/` | 에셋 추출/수정 GUI — UnityPy 포크 파싱 실패 시 대안 | `scripts/setup-uabea-mac.sh` |
-| `legacy-patches/` | 기존 한글 패치 (블루칩 v1.0.1·v2.0.1 등) — 번역 추출 완료, 보존용 | [블루칩](https://bluechip2022.tistory.com/2) |
+| `legacy-patches/` | 기존 한글 패치 (블루칩 v1.0.1·v2.0.1 등) — 번역 추출 완료, 보존용 | [블루칩님](https://bluechip2022.tistory.com/2) |
 | `asset-ripper/` | UABEA 파싱 실패 시 대안 | [AssetRipper Releases](https://github.com/AssetRipper/AssetRipper/releases) |
 | `dump/` | UnityPy/asset-tool 추출 텍스트 덤프 (git 제외) | 스크립트로 재생성 |
 
