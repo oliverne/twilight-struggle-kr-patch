@@ -94,10 +94,11 @@ if [ $HAVE_WIN -eq 1 ]; then
     echo ""
     echo "=== [1/3] Windows 패키지 생성 중... ==="
     WIN_ROOT="$WORK/win/$BASE"
-    mkdir -p "$WIN_ROOT/patched" "$WIN_ROOT/scripts"
+    # ⚠️ zip 내부도 patched/<플랫폼>/ 구조 유지 — install-windows.ps1이 ..\patched\windows 에서 찾음
+    mkdir -p "$WIN_ROOT/patched/windows" "$WIN_ROOT/scripts"
     cp patched/windows/resources.assets patched/windows/sharedassets0.assets \
        patched/windows/level1 patched/windows/level2 patched/windows/level3 \
-       patched/windows/hashes.txt "$WIN_ROOT/patched/"
+       patched/windows/hashes.txt "$WIN_ROOT/patched/windows/"
     cp scripts/install-windows.ps1 scripts/uninstall-windows.ps1 "$WIN_ROOT/scripts/"
     cp README.md LICENSE "$WIN_ROOT/"
     mv "$WIN_ROOT/LICENSE" "$WIN_ROOT/LICENSE.txt"
@@ -111,10 +112,11 @@ if [ $HAVE_MAC -eq 1 ]; then
     echo ""
     echo "=== [2/3] macOS 패키지 생성 중... ==="
     MAC_ROOT="$WORK/mac/$BASE"
-    mkdir -p "$MAC_ROOT/patched" "$MAC_ROOT/scripts"
+    # ⚠️ zip 내부도 patched/<플랫폼>/ 구조 유지 — install.sh가 patched/macos 에서 찾음
+    mkdir -p "$MAC_ROOT/patched/macos" "$MAC_ROOT/scripts"
     cp patched/macos/resources.assets patched/macos/sharedassets0.assets \
        patched/macos/level1 patched/macos/level2 patched/macos/level3 \
-       patched/macos/hashes.txt "$MAC_ROOT/patched/"
+       patched/macos/hashes.txt "$MAC_ROOT/patched/macos/"
     cp scripts/install.sh scripts/uninstall.sh scripts/restore-original.sh "$MAC_ROOT/scripts/"
     cp README.md LICENSE "$MAC_ROOT/"
     mv "$MAC_ROOT/LICENSE" "$MAC_ROOT/LICENSE.txt"
