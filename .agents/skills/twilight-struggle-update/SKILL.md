@@ -84,6 +84,6 @@ sha256sum patched/*.assets patched/level1 patched/level2 patched/level3 > patche
 
 - ⚠️ **Unity 버전 변경** 시 씬 직렬화 레이아웃이 바뀔 수 있음 — patch_scenes의 객체 변경 수(level1 883/level2 1391/level3 274)와 크게 다르면 중단하고 조사
 - ⚠️ **새 문자열 추가 시**: EN 열 교체 → KO 열은 add_ko_columns가 EN 값 복사로 동기화 (순서: inject → add_ko 고정)
-- ⚠️ 폰트 주입은 Windows exe 기준이나 **macOS에서도 소스 실행으로 가능** (2026-08-12 검증) — Windows 빌드 `GameAssembly.dll` + `global-metadata.dat` 필요 (venv 패치 2건, [Runbook Step 5](../../../docs/runbooks/phase-3-windows-font-injection.md) 참조)
+- ⚠️ 폰트 주입은 Windows exe 기준이나 **macOS에서도 소스 실행으로 가능** (2026-08-12 검증) — Windows 빌드 `GameAssembly.dll` + `global-metadata.dat` 필요 (venv 패치 2건, [스킬 twilight-struggle-font-injection](../twilight-struggle-font-injection/SKILL.md) 참조)
 - ⚠️ 작업 전 `tools/font-inject-work/Twilight Struggle/TwilightStruggle_Data/Managed` 폴더 제거/이름변경 (Mono 오판 방지)
 - 관련 문서: `docs/PROGRESS.md` (현재 상태/핸드오프), `docs/PLAN.md`, `docs/phases/phase-5-platform-test.md`

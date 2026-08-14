@@ -29,7 +29,7 @@
 | 항목 | 위치 | 비고 |
 |---|---|---|
 | 폰트 주입 가상 작업 폴더 | `tools/font-inject-work-mac/` | macOS에서 소스 실행으로 폰트 주입 (Windows 빌드 GameAssembly.dll + global-metadata.dat 필요 — `original/`에 보관) |
-| Unity_Font_Replacer 파이썬 소스 | `tools/unity-font-replacer/src/` | venv 패치 2건 필요 (Runbook Step 5) |
+| Unity_Font_Replacer 파이썬 소스 | `tools/unity-font-replacer/src/` | venv 패치 2건 필요 (스킬 twilight-struggle-font-injection) |
 
 ### 게임 파일 변경 (Windows Steam 설치본, 2026-08-11)
 

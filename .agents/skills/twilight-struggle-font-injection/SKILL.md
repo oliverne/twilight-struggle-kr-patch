@@ -12,7 +12,7 @@ description: Twilight Struggle 한글 패치 프로젝트에서 한글 SDF 폰�
   - 제목: `BlackHanSans-Regular SDF` (= Paperlogy 5 Medium, 8개: Anton/Bangers/Oswald/Roboto/Gunplay/atwriter)
   - Sprite 3개(Default Sprite Asset·DropCap Numbers·EmojiOne)는 교체 제외 (빈 값)
 - ⚠️ **2026-08-13 실측**: IMPACT 3종은 트랙 첫 칸 H 넘침 문제로 제목(Paperlogy)이 아닌 **본문(D2Coding 모노스페이스)**으로 매핑
-- 원본 문서: `docs/runbooks/phase-3-windows-font-injection.md` (최초 검증 기록)
+- 최초 검증 기록: `docs/phases/phase-3-sdf-font.md`
 
 ## 사전 준비
 
@@ -147,4 +147,4 @@ level1~3은 플랫폼 원본 기준으로 patch_scenes.py 재실행해야 함 (�
 - ⚠️ **face info 차이**: 폰트마다 lineHeight/ascent가 달라 표시 크기·줄 간격 변동 — 기존 계열 폰트 유지 권장. 보정이 필요하면 `twilight-struggle-font-size` 스킬 (m_PointSize 조절)
 - ⚠️ **문자셋**: 교체 후 `□` 발견 시 `extract_charset.py`로 표시 문자열 전체 재추출 → chars.txt 갱신 → SDF 재생성 → 재주입
 - ⚠️ Steam 무결성/업데이트로 원복 시 `twilight-struggle-update` 스킬 참조
-- 관련: `twilight-struggle-font-swap` (폰트 교체) / `twilight-struggle-font-size` (크기 조절) / `docs/runbooks/phase-3-windows-font-injection.md`
+- 관련: `twilight-struggle-font-swap` (폰트 교체) / `twilight-struggle-font-size` (크기 조절)

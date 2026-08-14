@@ -10,11 +10,11 @@ description: Twilight Struggle 한글 패치 프로젝트에서 TMP SDF 폰트(�
 - 게임의 24개 TMP 폰트(TIMES·GOTHIC·Anton·Bangers·atwriter 등)에 한글 SDF 2종이 매핑돼 있음
 - 본문: `NotoSerifKR SDF` (TIMES/FRAMD/GOTHIC/LiberationSans/Unity 계열 13개)
 - 제목: `BlackHanSans-Regular SDF` (Anton/Bangers/Oswald/IMPACT/atwriter 계열 11개)
-- 전체 구조는 `docs/runbooks/phase-3-windows-font-injection.md` 참조
+- 전체 구조는 스킬 `twilight-struggle-font-injection` 참조
 
 ## 사전 준비
 
-- Windows 게임 설치본 (GameAssembly.dll 필요 — 가상 폴더 구성용). macOS에서도 소스 실행으로 가능 (Windows 빌드 `GameAssembly.dll`+`global-metadata.dat` 2개만 있으면 됨 — [Runbook Step 5](../../../docs/runbooks/phase-3-windows-font-injection.md))
+- Windows 게임 설치본 (GameAssembly.dll 필요 — 가상 폴더 구성용). macOS에서도 소스 실행으로 가능 (Windows 빌드 `GameAssembly.dll`+`global-metadata.dat` 2개만 있으면 됨 — [스킬 twilight-struggle-font-injection](../twilight-struggle-font-injection/SKILL.md))
 - `PYTHONIOENCODING=utf-8` + venv python: `.venv/Scripts/python.exe` (Windows) / `.venv/bin/python` (macOS)
 - **라이선스 확인**: 재배포 허용 폰트만 (SIL OFL 등). `fonts/`에 라이선스 동봉 필수
 
@@ -112,4 +112,4 @@ powershell -ExecutionPolicy Bypass -File scripts/install-windows.ps1
 - ⚠️ **문자셋**: 교체 후 `□` 누락 글자 발생 시 chars.txt 확장 → SDF 재생성 → 재주입
 - ⚠️ Steam 무결성 확인/업데이트로 패치 원복 가능 — 스킬 `twilight-struggle-update` 참조
 - 주입 파이프라인 상세: 스킬 `twilight-struggle-font-injection` (가상 폴더 구성 → parse → 매핑 → 주입 → 검증 → 반영)
-- 관련 문서: `docs/runbooks/phase-3-windows-font-injection.md`, `docs/phases/phase-3-sdf-font.md`, `docs/phases/phase-5-platform-test.md` (SDF 재생성 기록)
+- 관련 문서: `docs/phases/phase-3-sdf-font.md`, `docs/phases/phase-5-platform-test.md` (SDF 재생성 기록)

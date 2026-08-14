@@ -23,7 +23,7 @@ description: Twilight Struggle 한글 패치의 TMP SDF 폰트(본문 D2Coding /
 ## 사전 준비
 
 - Windows 게임 설치본 + 가상 폴더(`tools/font-inject-work/Twilight Struggle/TwilightStruggle_Data/`)
-  (macOS에서도 소스 실행으로 가능 — Windows 빌드 `GameAssembly.dll`+`global-metadata.dat` 필요, [Runbook Step 5](../../../docs/runbooks/phase-3-windows-font-injection.md))
+  (macOS에서도 소스 실행으로 가능 — Windows 빌드 `GameAssembly.dll`+`global-metadata.dat` 필요, [스킬 twilight-struggle-font-injection](../twilight-struggle-font-injection/SKILL.md))
 - `PYTHONIOENCODING=utf-8` + venv python: `.venv/Scripts/python.exe` (Windows) / `.venv/bin/python` (macOS)
 - 주입 전 `patched/resources.assets`가 가상 폴더와 동일한지 확인:
   `sha256sum patched/resources.assets "tools/font-inject-work/Twilight Struggle/TwilightStruggle_Data/resources.assets"`
@@ -126,5 +126,5 @@ mv "tools/font-inject-work/Twilight Struggle/TwilightStruggle_Data/Managed.off" 
 - ⚠️ **한 번에 큰 폭 변경 금지**: 5~10% 단위로 조절하고 실게임 확인 후 미세 조정
 - ⚠️ 글자만 작아지고 줄 간격은 유지된다. 줄 간격까지 줄이려면 도구 포크 수정 필요 (비권장)
 - 원복: `D:/Games/.../backup-20260812/resources.assets.pre-scale90` 복사 (크기 조절 전)
-- 관련 문서: `docs/runbooks/phase-3-windows-font-injection.md`, 이 스킬의 상위 절차는
+- 이 스킬의 상위 절차는
   `twilight-struggle-font-swap` (폰트 자체 교체 시)

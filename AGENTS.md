@@ -88,7 +88,7 @@
 > 전체 목록·라이선스·링크는 [docs/TOOLS.md](docs/TOOLS.md) 참조.
 
 - **UABEA** (에셋 추출/수정, 크로스플랫폼) — 문제 시 UABEANext/AssetRipper 대안
-- **Unity_Font_Replacer** v1.2.8: `make_sdf.py`로 Unity 없이 TTF → TMP SDF 생성, `unity_font_replacer_ko.exe --parse/--list`로 에셋 주입 (⚠️ `oneshot`은 없음, `Managed` 폴더 제거 필요 — Runbook 참조). Windows exe 외에 **macOS 소스 실행도 가능** (Windows 빌드 `GameAssembly.dll`+`global-metadata.dat` 필요, venv 패치 2건 — Runbook Step 5)
+- **Unity_Font_Replacer** v1.2.8: `make_sdf.py`로 Unity 없이 TTF → TMP SDF 생성, `unity_font_replacer_ko.exe --parse/--list`로 에셋 주입 (⚠️ `oneshot`은 없음, `Managed` 폴더 제거 필요 — 스킬 참조). Windows exe 외에 **macOS 소스 실행도 가능** (Windows 빌드 `GameAssembly.dll`+`global-metadata.dat` 필요, venv 패치 2건 — 스킬 "macOS 소스 실행 시 유의점")
 - **번역 주입**: `scripts/inject_translations.py` (TextAsset) — 포크 UnityPy + typetree_generator 필수 (공식 UnityPy 저장 금지)
 - **씬 패치**: `scripts/patch_scenes.py` (level1-3 하드코딩 문자열) — Unity 6 헤드 레이아웃 실측 기반 (m_text @ head_end+56 / +112)
 - **번역 소스**: `translation/runtime-20260315.json`(런타임 TSV) + `manual-extra.json`(TextAsset 잔존키) + `manual-scenes.json`(씬 문자열) + `manual-rules.json`(규칙북, Phase 7)

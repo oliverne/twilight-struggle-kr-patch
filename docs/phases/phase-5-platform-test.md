@@ -176,7 +176,7 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 1. ~~미번역 텍스트 전체 확인~~ — ✅ 완료 (2026-08-12, 사용자 실게임 확인 — 대부분 한글, 영어 잔존 미발견. **전수 조사는 미실시**)
    - 이후 화면에서 영어 잔존 발견 시: 영어 잔존(TextAsset 키) → `translation/manual-extra.json`, 영어 잔존(씬 하드코딩) → `translation/manual-scenes.json`에 추가
    - 재주입: `inject_translations.py` → `add_ko_columns.py` → (문자 변경 시) 폰트 재주입
-2. **잔존 `□` 확인** — `fonts/chars.txt`에 글자 추가 → make_sdf.py 재생성 → 폰트 재주입 (Runbook 참조)
+2. **잔존 `□` 확인** — `fonts/chars.txt`에 글자 추가 → make_sdf.py 재생성 → 폰트 재주입 (스킬 twilight-struggle-font-injection 참조)
 3. ~~macOS 적용~~ — ✅ 완료 (2026-08-12): macOS에서 직접 전체 파이프라인 재현 → `scripts/install.sh` 적용 (level1~3 포함 5개 파일, 백업·재서명·언어 KO 자동)
 4. **Windows 설치 스크립트 작성** — `scripts/install-windows.ps1` (백업 → 복사 → 해시 검증) — ✅ 완료 (2026-08-12, 실동작 검증 완료)
 5. **멀티플레이 테스트** — 패치 후 온라인 기능 정상 동작 확인 (미실시)
@@ -189,7 +189,7 @@ python scripts/patch_scenes.py --gamepath <게임루트> --apply    # 백업 후
 
 - 게임 언어는 레지스트리 PlayerPrefs로 관리 — 패치에 언어 설정이 포함되지 않으므로 설치 안내에 명시 필요
 - 씬 패치는 `patch_scenes.py`로 재현 가능 (번역 소스만 추가하면 재실행)
-- 폰트 재주입은 **macOS에서도 가능** (2026-08-12 검증) — Windows 빌드 GameAssembly.dll + global-metadata.dat 필요, 절차는 [Runbook Step 5](../runbooks/phase-3-windows-font-injection.md) 참조
+- 폰트 재주입은 **macOS에서도 가능** (2026-08-12 검증) — Windows 빌드 GameAssembly.dll + global-metadata.dat 필요, 절차는 스킬 [twilight-struggle-font-injection](../../.agents/skills/twilight-struggle-font-injection/SKILL.md) 참조
 - **번역 소스 추가 시 재주입 순서**: `inject_translations.py`(TextAsset EN 열) → `add_ko_columns.py`(KO 열 동기화) → 필요시 폰트 재주입 → `verify_assets.py` 검증
 - ~~**알려진 미번역 잔존**~~ → **해결 (2026-08-12)**: TS_Ingame의 일부 키('Start'=Panel_SpaceRaceStd01Title → '출발', 'In' 등)는 전수 조사에서 manual-extra에 추가 완료 (52키) — TextAsset 정적 전수 조사로 미번역 0건 확인
 

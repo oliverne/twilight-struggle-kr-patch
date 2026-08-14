@@ -15,7 +15,7 @@
 | Unity_Font_Replacer   | v1.2.8      | `make_sdf.py`(TTF→TMP SDF 생성) + `unity_font_replacer_ko.exe --parse/--list`(에셋 폰트 교체)                            | MIT      | https://github.com/snowyegret23/Unity_Font_Replacer |
 S
 > ⚠️ `Unity_Font_Replacer_AT`(C#/AssetsTools.NET 포트)는 참고 자료이며, 실제 사용은 **v1.2.8 (Python 기반)** 이다.
-> 폰트 주입 절차는 [Runbook — Windows 폰트 주입](runbooks/phase-3-windows-font-injection.md) 참조.
+> 폰트 주입 절차는 스킬 [twilight-struggle-font-injection](../.agents/skills/twilight-struggle-font-injection/SKILL.md) 참조.
 
 ## 2. 파이썬 패키지 (`.venv`)
 

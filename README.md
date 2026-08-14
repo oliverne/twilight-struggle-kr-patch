@@ -103,7 +103,7 @@ python scripts/inject_translations.py --gamepath <게임루트> \
 python scripts/add_ko_columns.py --gamepath <게임루트> \
     --src <중간본1> --out <중간본2>
 
-# 3. 폰트 주입 — Unity_Font_Replacer (Windows exe 또는 macOS 소스 실행, Runbook 참조)
+# 3. 폰트 주입 — Unity_Font_Replacer (Windows exe 또는 macOS 소스 실행, 스킬 twilight-struggle-font-injection 참조)
 #    가상 폴더의 resources.assets를 <중간본2>로 교체 후 --parse → 매핑 → --list
 
 # 4. 씬 패치 (level1-3)
@@ -131,7 +131,7 @@ python scripts/verify_assets.py --orig <원본> --patched <패치본>
 | [scripts/](scripts/README.md) | 주입·검증 스크립트 (핵심 5종 + 보조 + archive 보관) |
 | [tools/](tools/README.md) | 폰트 주입 도구·에셋 탐색 (Unity_Font_Replacer 등) |
 | [translation/](translation/README.md) | 번역 소스 (활성 5종 + 참고 산출물) |
-| [docs/](docs/PROGRESS.md) | 진행 현황·Phase 문서·Runbook |
+| [docs/](docs/PROGRESS.md) | 진행 현황·Phase 문서 |
 
 ## 감사의 말
 

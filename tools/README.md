@@ -56,6 +56,6 @@
 
 ## 관련 문서
 
-- 폰트 주입 절차: `.agents/skills/twilight-struggle-font-swap/SKILL.md`, `docs/runbooks/phase-3-windows-font-injection.md`
+- 폰트 주입 절차: `.agents/skills/twilight-struggle-font-injection/SKILL.md`, `.agents/skills/twilight-struggle-font-swap/SKILL.md`
 - 게임 업데이트 대응: `.agents/skills/twilight-struggle-update/SKILL.md`
 - 파이프라인 스크립트: `scripts/README.md`
