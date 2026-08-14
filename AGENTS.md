@@ -44,7 +44,7 @@
 ## 불변 원칙
 
 1. **Steam 폴더에서 직접 작업하지 않는다.** 수정 파일은 `patched/`, 원본 백업은 `original/`(git 제외)에 둔다.
-2. 모든 패치는 **멱등한 설치 스크립트**(`scripts/install-*.sh`)로만 적용 — 백업 → 복사 → 재서명 순서 유지.
+2. 모든 패치는 **멱등한 설치 스크립트**(macOS: `scripts/install.sh`, Windows: `scripts/install-windows.ps1`)로만 적용 — 백업 → 복사 → 재서명 순서 유지.
 3. macOS는 수정 후 반드시 애드혹 재서명: `codesign --force --sign -`
 4. 번역 소스(진짜 코드)는 `translation/`의 JSON/CSV로 관리. 텍스트 주입은 반복 실행 가능한 스크립트로만 수행.
 5. UTF-8 일관 사용. 인코딩 깨짐 의심 시 게임 로드 테스트로 확인.
@@ -61,6 +61,7 @@
 | 다국어 문자열 테이블 | `resources.assets` 내 **Common_Strings** (키값 방식 `Key_XXX`) | 🟢 최우선 — ✅ 주입 완료 |
 | 카드/국가 텍스트 | `resources.assets` 내 `TS_Cards` 등 TextAsset (`"행:열":"값"` JSON) | 🟢 실게임 반영 확인 — ✅ 주입 완료 |
 | 인게임/도움말 키 | `TS_Ingame`·`TS_Strings`·`Common_Ingame` | 🟢 실게임 반영 확인 — ✅ 주입 완료 (잔존 52키 수동 번역 포함) |
+| 규칙북/도움말 (Phase 7) | `TS_RulesTutorial` (manual-rules.json) | 🟢 ✅ 주입 완료 — 313행 전량 번역 (2026-08-13) |
 | **씬 하드코딩 문자열** | level1~3 MonoBehaviour (TextMeshProUGUI.m_text, Text.m_Text) | 🟢 패치 완료 — `patch_scenes.py` |
 | 번역 재사용 소스 | 블루칩 v1.0.1 MonoBehaviour string 필드 (432개 고유 한글) | 🟢 raw 바이트 수동 파싱으로 추출 가능 (Phase 2) |
 | **IL2CPP 코드 문자열** | global-metadata.dat (턴 히스토리 템플릿 + **튜토리얼 안내**) | 🔴 파일 패치 불가 — BepInEx 런타임 훅 필요 (보류, ISSUES #11·#17) |
@@ -78,7 +79,7 @@
 ## 게임 경로
 
 - macOS: `~/Library/Application Support/Steam/steamapps/common/Twilight Struggle/TwilightStruggle.app/Contents/Resources/Data/`
-- Windows: `steamapps/common/Twilight Struggle/TwilightStruggle_Data/` (⚠️ **공백 없음** — 실측, 2026-08-11)
+- Windows: `steamapps/common/Twilight Struggle/TwilightStruggle_Data/` (⚠️ 게임 폴더는 공백 있음, **Data 폴더명 `TwilightStruggle_Data`만 공백 없음** — 실측, 2026-08-11)
 - 에셋 파일은 플랫폼 공용(동일 빌드) → 한쪽에서 수정한 파일은 다른 플랫폼에도 그대로 복사 가능 ⚠️ **단, level1~3(씬)은 플랫폼별** (2026-08-12 실측 — Windows 씬 패치본을 macOS에 적용 시 크래시) — 각 플랫폼 원본 기준으로 `patch_scenes.py` 재실행
 - **게임 언어 설정(PlayerPrefs)**: **설치 스크립트는 언어 설정을 건드리지 않는다** (2026-08-14 확정 — EN 로케일 덮어쓰기 방식, 유저는 기본 언어 EN 사용). 참고: 언어 저장 위치는 Windows `HKCU\Software\Playdek\TwilightStruggle` 레지스트리 키 `localization_h2525087814`, macOS `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist`의 `localization` — 게임 내 언어 선택 UI는 없음 (2026-08-12 실측). 언어=KO로 설정된 구형 설치본은 KO 열이 있어 계속 한글 표시됨 (호환 유지)
 
@@ -88,7 +89,7 @@
 - **Unity_Font_Replacer** v1.2.8: `make_sdf.py`로 Unity 없이 TTF → TMP SDF 생성, `unity_font_replacer_ko.exe --parse/--list`로 에셋 주입 (⚠️ `oneshot`은 없음, `Managed` 폴더 제거 필요 — Runbook 참조). Windows exe 외에 **macOS 소스 실행도 가능** (Windows 빌드 `GameAssembly.dll`+`global-metadata.dat` 필요, venv 패치 2건 — Runbook Step 5)
 - **번역 주입**: `scripts/inject_translations.py` (TextAsset) — 포크 UnityPy + typetree_generator 필수 (공식 UnityPy 저장 금지)
 - **씬 패치**: `scripts/patch_scenes.py` (level1-3 하드코딩 문자열) — Unity 6 헤드 레이아웃 실측 기반 (m_text @ head_end+56 / +112)
-- **번역 소스**: `translation/runtime-20260315.json`(런타임 TSV) + `manual-extra.json`(TextAsset 잔존키) + `manual-scenes.json`(씬 문자열)
+- **번역 소스**: `translation/runtime-20260315.json`(런타임 TSV) + `manual-extra.json`(TextAsset 잔존키) + `manual-scenes.json`(씬 문자열) + `manual-rules.json`(규칙북, Phase 7)
 - 폰트: **D2Coding**(본문), **Paperlogy 5 Medium**(제목) — 모두 재배포 허용 라이선스(SIL OFL 1.1)만 사용
 - IL2CPP 바이너리 패치는 **최후의 수단** (턴 히스토리는 길이 제약으로 사실상 불가 → BepInEx 훅)
 
@@ -100,13 +101,13 @@
 - 멀티플레이 버전 체크 → 에셋 교체 후 멀티 동작 반드시 테스트
 - **UnityPy 저장 시 로드 파일 ≠ 저장 파일 필수** — 같은 경로 저장 시 지연 스트리밍(Replacer)이 깨져 EOFError
 - **턴 히스토리(IL2CPP 코드 문자열)** — 파일 패치 불가, 기존 런타임 패치도 미커버 → BepInEx 훅 필요시 별도 프로젝트
-- **폰트 크기 불일치** — 24개 원본 폰트 → 한글 2종 통일로 크기/줄 간격 차이. `--use-game-line-metrics` 재주입 또는 m_FaceInfo 배율 조정으로 보정 가능 (미적용)
+- **폰트 크기 불일치** — 24개 원본 폰트 → 한글 2종 통일로 크기/줄 간격 차이. `m_PointSize 70→77` 축소 적용 완료 (2026-08-12). `--use-game-line-metrics` 재주입 또는 m_FaceInfo 배율 조정은 미적용
 
 ## 저장소 구조
 
 ```
 patched/windows/  # Windows 설치본 — level1~3은 git 관리, *.assets는 100MB 초과로 gitignore
-patched/macos/    # macOS 설치본 (macOS 원본 기준 재생성) — 같은 구조
+patched/macos/    # macOS 설치본 (macOS 원본 기준 재생성 — ⚠️ 2026-08-14 현재 비어 있음, 재생성 예정)
                   # ⚠️ level1~3은 플랫폼별 (교차 복사 시 크래시 — 2026-08-12 실측)
                   # ⚠️ 배포는 package-release.sh의 dist/ zip 3종 (windows/macos/src)
 original/     # 원본 백업 (git 제외)
