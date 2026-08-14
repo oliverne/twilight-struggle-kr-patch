@@ -50,3 +50,7 @@ fonts/backup-*/
 # macOS 폰트 주입 가상 작업 폴더 (재생성 가능)
 tools/font-inject-work-mac/
 
+# Impeccable — 로컬 설정·라운드 산출물 (design.json 사이드카는 관리)
+.impeccable/config*.json
+.impeccable/website-round1.json
+

@@ -1,0 +1,136 @@
+---
+import '@fontsource/oswald/500.css';
+import '@fontsource/oswald/600.css';
+import '../styles/global.css';
+const base = import.meta.env.BASE_URL;
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title = 'Twilight Struggle 한글 패치', description = 'Steam판 Twilight Struggle의 비공식 한글 패치 — 카드·메뉴·규칙북까지. 무료 다운로드.' } = Astro.props;
+---
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0e1a2f" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <title>{title}</title>
+    <style is:global>
+      @font-face {
+        font-family: 'D2Coding';
+        src: url('/fonts/d2coding.woff2') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Paperlogy';
+        src: url('/fonts/paperlogy.woff2') format('woff2');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Paperlogy';
+        src: url('/fonts/paperlogy.woff2') format('woff2');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* 도트 세계지도 마스크 — 절대 경로는 Vite가 base를 붙여 재작성 */
+      .dotmap .west {
+        -webkit-mask-image: url('/img/world-mask-west.png');
+        mask-image: url('/img/world-mask-west.png');
+        -webkit-mask-size: cover;
+        mask-size: cover;
+      }
+      .dotmap .east {
+        -webkit-mask-image: url('/img/world-mask-east.png');
+        mask-image: url('/img/world-mask-east.png');
+        -webkit-mask-size: cover;
+        mask-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+      THESIS: 한글 패치를 한 장의 해제된 작전 문서로 배포한다 — 표지의 도장이 곧 다운로드다. 카테고리 기본(히어로+카드 3열)을 거부한다.
+      OWN-WORLD: 네이비 표지와 크림 서류지, 신호빨강 도장·기밀 바, 검은 마스킹 리빌, 도트 세계지도(파랑/빨강 진영), D2Coding 본문 + Paperlogy 제목 + Oswald 라틴 디스플레이.
+      STORY: 방문자는 기밀 파일이 해제된 순간을 마주한다 — 제목 아래 빨간 도장 버튼이 유일한 액션, 서류를 넘기듯 개요·입수·설치·한계를 읽고 발주 도장으로 끝난다.
+      FIRST VIEWPORT: 네이비 표지 전면. 상단 기밀 바, 도트 세계지도 배경, 가운데 'TWILIGHT STRUGGLE' 오스왈드 대형 로고와 '한글 패치' 페이퍼로지, 우하단 빨간 '해제·다운로드' 도장 버튼, 하단 파일 메타(플랫폼·버전).
+      FORM: 정보 문서(Classified Dossier) — surface 롤 5번(리드), 시드 키 e48475e7.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+    -->
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <div class="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <header class="site-head">
+      <div class="container">
+        <a class="brand" href="#top" aria-label="Twilight Struggle 한글 패치 · 맨 위로">
+          <span class="mark" aria-hidden="true"><b>解</b></span>
+          <span class="word">TS&nbsp;·&nbsp;KR</span>
+        </a>
+        <nav class="site-nav" aria-label="문서 목차">
+          <a href="#intro">개요</a>
+          <a href="#download">입수</a>
+          <a href="#install">설치</a>
+          <a href="#limits">한계·문의</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <slot name="footer" />
+    <script>
+      // 진행 바
+      const bar = document.getElementById('progress-bar');
+      const onScroll = () => {
+        const h = document.documentElement;
+        const p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
+        bar.style.transform = `scaleX(${p})`;
+      };
+      addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // 마스킹 리빌
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.15 },
+      );
+      document.querySelectorAll('[data-reveal]').forEach((el) => {
+        if (reduced) el.classList.add('in');
+        else io.observe(el);
+      });
+
+      // 명령어 복사
+      document.querySelectorAll('[data-copy]').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const text = btn.dataset.copy || '';
+          try {
+            await navigator.clipboard.writeText(text);
+            const prev = btn.textContent;
+            btn.textContent = '복사됨';
+            setTimeout(() => (btn.textContent = prev), 1400);
+          } catch {
+            /* 클립보드 불가 시 무시 */
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

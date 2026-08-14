@@ -160,6 +160,7 @@ python scripts/verify_assets.py \
 | [`tools/`](tools/) | 폰트 주입 도구와 에셋 조사 도구 |
 | [`docs/PROGRESS.md`](docs/PROGRESS.md) | 전체 진행 상황과 검증 기록 |
 | [`docs/phases/`](docs/phases/) | Phase별 작업 기록 |
+| [`website/`](website/) | 배포 웹사이트 (Astro, GitHub Pages) — 소개·다운로드·설치 안내 |
 
 ## 번역 출처와 감사의 말
 

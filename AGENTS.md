@@ -118,4 +118,7 @@ translation/  # 번역 소스 JSON/CSV — runtime-20260315.json, manual-extra.j
 fonts/        # TTF 원본 + 생성된 SDF 산출물
 scripts/      # install/verify/inject/patch 스크립트
 docs/         # PLAN.md 등
+website/      # 배포 웹사이트 (Astro + GitHub Pages) — 소개·다운로드·설치·크레딧
+PRODUCT.md    # 제품 맥락 (impeccable init)
+DESIGN.md     # 웹사이트 디자인 시스템 (impeccable document)
 ```

@@ -1,0 +1,351 @@
+---
+import Base from '../layouts/Base.astro';
+import StampRound from '../components/StampRound.astro';
+import ShotSlot from '../components/ShotSlot.astro';
+
+const RELEASE = 'v0.1.1';
+const GH = 'https://github.com/oliverne/twilight-struggle-kr-patch';
+const DL = `${GH}/releases/download/${RELEASE}`;
+const F = (os: string) => `twilight-struggle-kr-patch-${RELEASE}-${os}.zip`;
+
+const osList = [
+  {
+    id: 'windows',
+    name: 'Windows',
+    desc: 'Windows 10 / 11 · Steam 데스크톱판',
+    file: F('windows'),
+    size: '9.3MB',
+    url: `${DL}/${F('windows')}`,
+    cmd: 'powershell -ExecutionPolicy Bypass -File .\\scripts\\install-windows.ps1',
+    cmdNote: '압축을 푼 폴더에서 PowerShell을 열어 실행',
+  },
+  {
+    id: 'macos',
+    name: 'macOS',
+    desc: 'macOS 10.13 이상 · Steam 데스크톱판',
+    file: F('macos'),
+    size: '9.8MB',
+    url: `${DL}/${F('macos')}`,
+    cmd: 'chmod +x scripts/install.sh && ./scripts/install.sh',
+    cmdNote: '압축을 푼 폴더에서 터미널을 열어 실행',
+  },
+  {
+    id: 'deck',
+    name: 'Steam Deck · Linux',
+    desc: 'Proton 사용 · Windows 빌드 적용',
+    file: F('windows'),
+    size: '9.3MB',
+    url: `${DL}/${F('windows')}`,
+    cmd: 'powershell -ExecutionPolicy Bypass -File .\\scripts\\install-windows.ps1',
+    cmdNote: '데스크톱 모드에서 Windows용 zip 사용 (Proton)',
+  },
+] as const;
+---
+<Base
+  title="Twilight Struggle 한글 패치 · Steam판을 한국어로"
+  description="Steam판 Twilight Struggle의 비공식 한글 패치. 카드·메뉴·인게임 UI·규칙북·도움말을 모두 한국어로. 설치 약 3분, 제거하면 원래대로."
+>
+  <!-- ══ 파일 표지 ══ -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="dotmap" aria-hidden="true">
+      <i class="west"></i>
+      <i class="east"></i>
+    </div>
+    <div class="hero-vignette" aria-hidden="true"></div>
+
+    <div class="container hero-inner">
+      <div class="hero-copy" data-reveal>
+        <p class="hero-fileid">문서번호 TS-KR-001 · 공개 전환</p>
+        <h1 class="hero-title" id="hero-title">
+          Twilight Struggle
+          <span class="kr">한글 패치</span>
+        </h1>
+        <p class="hero-lead">
+          Steam판 트와일라잇 스트러글의 카드·메뉴·규칙북까지, 게임 전체를 한국어로
+          바꿉니다. 언어 설정은 건드리지 않습니다. 설치하면 한글, 복원하면 영어.
+        </p>
+        <dl class="hero-meta">
+          <div><dt class="section-label">대상</dt><b>Windows · macOS · Steam Deck</b></div>
+          <div><dt class="section-label">버전</dt><b>{RELEASE}</b></div>
+          <div><dt class="section-label">설치</dt><b>3단계 · 무료</b></div>
+        </dl>
+        <div class="hero-actions">
+          <a class="stamp-btn" href="#download">
+            <svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5 12 7.5"/></svg>
+            해제 · 다운로드
+          </a>
+          <p class="hero-note">zip 안에 설치 스크립트가 들어 있습니다. 원본 파일은 설치 시 자동 백업됩니다.</p>
+        </div>
+      </div>
+      <div class="hero-stamp" aria-hidden="true">
+        <StampRound label="해제" sub="DECLASSIFIED" ring="· TS-KR · 2026 · DECLASSIFIED ·" rotate="8deg" />
+      </div>
+    </div>
+
+    <div class="container">
+      <p class="hero-foot">
+        <span class="declass">기밀 해제 · 공개 전환됨 (DECLASSIFIED)</span>
+        <span>작성 2026.08 · 갱신 {RELEASE}</span>
+      </p>
+    </div>
+  </section>
+
+  <div class="sheets">
+    <!-- ══ 서류 01 · 개요 ══ -->
+    <section class="sheet" id="intro" aria-labelledby="intro-h">
+      <div class="container" data-reveal>
+        <div class="mask-strip" aria-hidden="true"></div>
+        <p class="file-tab"><b>서류 01</b>&nbsp;·&nbsp;개요</p>
+        <h2 id="intro-h">게임 전체를 한국어로</h2>
+        <p class="lead">
+          Twilight Struggle의 텍스트는 게임 파일에 세 겹으로 들어 있습니다. 이 패치는 그 모든
+          겹을 한국어로 바꿉니다. 카드와 국가 텍스트, 메뉴·설정·로비, 인게임 HUD, 규칙북과
+          도움말까지.
+        </p>
+        <table class="ledger">
+          <thead>
+            <tr>
+              <th scope="col">항목</th>
+              <th scope="col">상태</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>카드 · 국가 텍스트</td><td class="ok">✓ 한글</td></tr>
+            <tr><td>메뉴 · 설정 · 로비</td><td class="ok">✓ 한글</td></tr>
+            <tr><td>인게임 HUD · 판세</td><td class="ok">✓ 한글</td></tr>
+            <tr><td>규칙북 · 도움말</td><td class="ok">✓ 한글</td></tr>
+          </tbody>
+        </table>
+        <p class="redacted-line">검토: <b>████████</b> · 승인: <b>████</b> · 기밀 해제: <b>2026.08</b></p>
+        <ShotSlot n={1} caption="슬롯 1 · 게임 화면 (16:9, 교체 예정)" />
+      </div>
+    </section>
+
+    <!-- ══ 서류 02 · 입수 + 철 문서함 · 설치 ══ -->
+    <section class="sheet" id="download" aria-labelledby="dl-h">
+      <div class="container sheet-grid" data-reveal>
+        <div class="mask-strip" aria-hidden="true"></div>
+        <div>
+          <p class="file-tab"><b>서류 02</b>&nbsp;·&nbsp;입수</p>
+          <h2 id="dl-h">내 컴퓨터에 맞는 파일을 받으세요</h2>
+          <p class="lead">셋 중 하나만 받으면 됩니다. 받은 파일은 나중에 다시 다운로드할 필요가 없습니다.</p>
+
+          <div class="os-picker" id="os-picker" role="radiogroup" aria-label="운영체제 선택">
+            {osList.map((os) => (
+              <div class="os-opt">
+                <input type="radio" name="os" id={`os-${os.id}`} value={os.id} data-os={os.id} />
+                <label for={`os-${os.id}`}>
+                  <svg class="os-glyph" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                    {os.id === 'windows' && (
+                      <>
+                        <rect x="5" y="5" width="22" height="22" />
+                        <path d="M5 11h22M11 5v22" />
+                      </>
+                    )}
+                    {os.id === 'macos' && (
+                      <>
+                        <rect x="4" y="7" width="24" height="15" rx="1.5" />
+                        <path d="M4 27h24" />
+                      </>
+                    )}
+                    {os.id === 'deck' && (
+                      <>
+                        <rect x="4" y="8" width="20" height="13" rx="2" />
+                        <circle cx="11" cy="14.5" r="0.5" fill="currentColor" />
+                        <circle cx="17" cy="14.5" r="0.5" fill="currentColor" />
+                        <path d="M24 12v5l4-2v-1z" />
+                        <path d="M26 11v2M26 17v2" />
+                      </>
+                    )}
+                  </svg>
+                  <span>
+                    <span class="os-name">{os.name}</span>
+                    <span class="os-desc">{os.desc}</span>
+                  </span>
+                  <span class="os-file"><b>{os.file}</b>{os.size}</span>
+                </label>
+              </div>
+            ))}
+          </div>
+
+          {osList.map((os) => (
+            <div class="dl-panel" data-os={os.id} id={`dl-${os.id}`} aria-live="polite">
+              <span class="dl-file">
+                <b>{os.file}</b>
+                zip {os.size} · SHA256SUMS 포함 · 원본은 설치 시 <b>.bak</b> 백업
+              </span>
+              <a class="stamp-btn" href={os.url} download>
+                <svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5 12 7.5"/></svg>다운로드
+              </a>
+            </div>
+          ))}
+          <p class="file-note">
+            어느 파일인지 모르겠다면? 게임을 설치한 컴퓨터의 운영체제가 기준입니다. 릴리스
+            <a href={`${GH}/releases/tag/${RELEASE}`}>릴리스 페이지</a>에서도 받을 수 있습니다.
+          </p>
+
+          <ShotSlot n={2} caption="슬롯 2 · 인게임 보드 화면 (16:9, 교체 예정)" />
+        </div>
+
+        <aside class="filebox" id="install" aria-labelledby="install-h">
+          <p class="box-head">철 문서함 · 설치 절차 · {RELEASE}</p>
+          <h2 id="install-h" class="section-label" style="margin-bottom:1rem">세 단계로 끝납니다</h2>
+
+          <ol style="list-style:none;margin:0;padding:0">
+            <li class="step">
+              <span class="num" aria-hidden="true">01</span>
+              <div>
+                <h3>게임 종료 · 압축 해제</h3>
+                <p>게임을 완전히 종료하고, 받은 zip 파일을 아무 폴더에나 압축 해제합니다.</p>
+              </div>
+            </li>
+            <li class="step">
+              <span class="num" aria-hidden="true">02</span>
+              <div>
+                <h3>설치 스크립트 실행</h3>
+                {osList.map((os) => (
+                  <>
+                    <p class="cmd" data-os={os.id} data-cmd>
+                      <code>{os.cmd}</code>
+                      <button type="button" class="copy" data-copy={os.cmd}>복사</button>
+                    </p>
+                    <p data-os={os.id} data-cmdnote style="margin-top:.4rem">{os.cmdNote}</p>
+                  </>
+                ))}
+              </div>
+            </li>
+            <li class="step">
+              <span class="num" aria-hidden="true">03</span>
+              <div>
+                <h3>게임 실행</h3>
+                <p>Steam에서 게임을 시작하면 한글로 표시됩니다. 제거하려면 uninstall 스크립트를 실행하세요.</p>
+              </div>
+            </li>
+          </ol>
+          <p class="box-warn">
+            <svg class="warn-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2.5 15 14H1z"/><path d="M8 7v3.5"/><path d="M8 12.5v.5"/></svg>
+            <b>참고</b> Steam 업데이트·무결성 확인 후 영어로 돌아오면, 이 절차를 다시 실행하면 됩니다.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ══ 서류 03 · 한계·문의 ══ -->
+    <section class="sheet" id="limits" aria-labelledby="limits-h">
+      <div class="container" data-reveal>
+        <div class="mask-strip" aria-hidden="true"></div>
+        <p class="file-tab"><b>서류 03</b>&nbsp;·&nbsp;한계·문의</p>
+        <h2 id="limits-h">알아두면 좋은 것들</h2>
+        <p class="lead">솔직하게 말씀드리면, 이 패치가 닿지 못하는 곳이 있습니다.</p>
+        <ul class="limits">
+          <li>턴 히스토리 로그와 튜토리얼 안내 문구는 게임 코드 안에 있어 영어로 남습니다.</li>
+          <li>멀티플레이 매칭은 싱글플레이 기준으로 확인했습니다.</li>
+          <li>보드맵 이미지에 새겨진 국가명은 그림이라 범위에 없습니다.</li>
+        </ul>
+
+        <div class="faq">
+          <details>
+            <summary>설치는 했는데 영어로 보여요</summary>
+            <p class="a">게임 업데이트나 Steam의 <em>파일 무결성 확인</em>으로 패치가 원복된 상태일 수 있습니다. 위 설치 절차를 다시 실행하면 한글로 돌아옵니다.</p>
+          </details>
+          <details>
+            <summary>원래대로 되돌리고 싶어요</summary>
+            <p class="a">zip 안의 uninstall 스크립트를 실행하거나, Steam에서 <em>파일 무결성 확인</em>을 돌리면 원본 파일로 복원됩니다.</p>
+          </details>
+          <details>
+            <summary>모바일에서도 되나요?</summary>
+            <p class="a">이 패치는 Steam 데스크톱판 전용입니다. 모바일 앱은 별도 빌드라 적용할 수 없습니다.</p>
+          </details>
+          <details>
+            <summary>문제를 발견했어요</summary>
+            <p class="a">
+              <a href={`${GH}/issues`}>GitHub Issues</a>로 알려주세요. 번역 오타·어색한 문장 포함해 모두 환영합니다.
+            </p>
+          </details>
+        </div>
+
+        <ShotSlot n={3} caption="슬롯 3 · 한글 카드 클로즈업 (16:9, 교체 예정)" />
+      </div>
+    </section>
+  </div>
+
+  <!-- ══ 발주 ══ -->
+  <footer slot="footer" class="site-foot" aria-labelledby="foot-h">
+    <div class="container">
+      <h2 id="foot-h" class="section-label" style="color:var(--red-bright);margin-bottom:1.5rem">발주 · 폐문</h2>
+      <div class="foot-grid">
+        <div>
+          <h3>문서</h3>
+          <p><a href={`${GH}`}>GitHub 저장소</a></p>
+          <p><a href={`${GH}/releases/tag/${RELEASE}`}>릴리스 페이지 (v0.1.1)</a></p>
+          <p><a href={`${GH}/issues`}>문제 보고 · 건의</a></p>
+        </div>
+        <div>
+          <h3>번역 크레딧</h3>
+          <p>이 패치의 번역은 <a href="https://cafe.naver.com/hansicgu/32259">한식구 네이버 카페 런타임 패치</a>(2026-03-15)의 번역을 재사용했습니다.</p>
+          <p><a href="https://bluechip2022.tistory.com/2">블루칩님 한글 패치</a>를 참고·검증에 사용했습니다.</p>
+          <p>기존 패치 제작자와 번역 원저작자께 감사드립니다.</p>
+        </div>
+        <div>
+          <h3>라이선스</h3>
+          <p>코드·문서: MIT / 번역문: 원저작자 정책</p>
+          <p>폰트: D2Coding · Paperlogy (SIL OFL 1.1)</p>
+          <p>세계지도: Wikimedia Commons (퍼블릭 도메인)</p>
+        </div>
+      </div>
+      <div class="foot-credits">
+        <p class="fine">
+          비공식 팬 패치입니다. GMT Games, Playdek, Valve와 무관하며, 게임과 에셋의 저작권은 각 권리자에게
+          있습니다.
+        </p>
+        <span class="stamp-mini" aria-hidden="true">발행 · 2026.08</span>
+      </div>
+    </div>
+  </footer>
+</Base>
+
+<style>
+  .hero-stamp {
+    position: absolute;
+    right: clamp(1rem, 6vw, 4rem);
+    top: 24%;
+    opacity: 0.92;
+  }
+  .hero-stamp .stamp-round {
+    width: clamp(7rem, 12vw, 10rem);
+    height: clamp(7rem, 12vw, 10rem);
+  }
+  @media (max-width: 880px) {
+    .hero-stamp {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // OS 선택 → 다운로드 패널·설치 명령 연동
+  const radios = document.querySelectorAll<HTMLInputElement>('#os-picker input[name="os"]');
+  const panels = document.querySelectorAll<HTMLElement>('.dl-panel');
+  const cmds = document.querySelectorAll<HTMLElement>('[data-cmd]');
+  const cmdnotes = document.querySelectorAll<HTMLElement>('[data-cmdnote]');
+
+  const applyOs = (id: string) => {
+    panels.forEach((p) => p.classList.toggle('on', p.dataset.os === id));
+    cmds.forEach((c) => (c.style.display = c.dataset.os === id ? '' : 'none'));
+    cmdnotes.forEach((c) => (c.style.display = c.dataset.os === id ? '' : 'none'));
+  };
+
+  // 자동 제안: macOS 감지 시 macOS 선택 (기본 Windows)
+  const nav = navigator.userAgent;
+  const suggested = /Mac|iPhone|iPad/.test(nav) ? 'macos' : 'windows';
+  let current = suggested;
+  radios.forEach((r) => {
+    r.addEventListener('change', () => {
+      current = r.value;
+      applyOs(current);
+    });
+  });
+  const suggestedEl = document.getElementById(`os-${suggested}`) as HTMLInputElement | null;
+  if (suggestedEl) suggestedEl.checked = true;
+  applyOs(current);
+</script>
