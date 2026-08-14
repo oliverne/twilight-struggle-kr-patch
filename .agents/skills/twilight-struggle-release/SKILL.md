@@ -14,6 +14,13 @@ description: Twilight Struggle 한글 패치 배포(Phase 6) 절차. 플랫폼�
 - `patched/*/*.assets`는 GitHub 100MB 제한으로 gitignore지만 **zip 압축 시 104MB → ~8MB**라 Releases 첨부(파일당 2GB)로 충분
 - 원본 문서: `docs/phases/phase-6-release.md` (체크리스트 원본)
 
+## 릴리스 이력
+
+| 버전 | 날짜 | 내용 |
+|---|---|---|
+| v0.1.0 | 2026-08-14 | Windows+src만 (macOS 패치본 미생성). ⚠️ **zip 레이아웃 버그**: zip 내부가 `patched/` 평평 구조라 `install-windows.ps1`(`..\patched\windows`)과 경로 불일치 → **zip으로 설치 시 실패** |
+| v0.1.1 | 2026-08-14 | Windows+macOS+src 전부. zip 레이아웃을 `patched/<플랫폼>/` 구조로 수정(`aab7c7f`) + SHA256SUMS 자기 자신 포함 버그 수정(`7587793`) |
+
 ## 사전 조건 (게이트 — 미충족 시 배포 금지)
 
 각 플랫폼에 대해:
@@ -41,41 +48,52 @@ description: Twilight Struggle 한글 패치 배포(Phase 6) 절차. 플랫폼�
 ### 2. 패키징
 
 ```bash
-./scripts/package-release.sh v0.1.0
-# → dist/twilight-struggle-kr-patch-v0.1.0-windows.zip   (Windows 사용자용 ~9MB)
-# → dist/twilight-struggle-kr-patch-v0.1.0-macos.zip     (macOS 사용자용 ~9MB)
-# → dist/twilight-struggle-kr-patch-v0.1.0-src.zip       (재현용 ~3MB)
+./scripts/package-release.sh v0.1.1
+# → dist/twilight-struggle-kr-patch-v0.1.1-windows.zip   (Windows 사용자용 ~9MB)
+# → dist/twilight-struggle-kr-patch-v0.1.1-macos.zip     (macOS 사용자용 ~10MB)
+# → dist/twilight-struggle-kr-patch-v0.1.1-src.zip       (재현용 ~16MB)
 ```
 
 - 존재하지 않는 플랫폼 폴더는 **경고 후 자동 스킵** — 두 플랫폼 모두 배포하려면 둘 다 패치 완성 필수
 - 해시는 sha256sum/shasum 자동 선택, 압축은 Python zipfile (전 플랫폼 호환)
+- ⚠️ zip 내부는 `patched/<플랫폼>/` 구조여야 한다 (스크립트·README·설치 스크립트와 일치 — `patched/` 평평 구조는 v0.1.0 구버전 버그)
 
 ### 3. 산출물 검증
 
 ```bash
-# zip 내부 구조 확인 (플랫폼별 파일이 정확히 들어갔는지)
-python -m zipfile -l dist/twilight-struggle-kr-patch-v0.1.0-windows.zip | grep -E "patched|scripts|README" | head
-# Windows zip: install-windows.ps1 / uninstall-windows.ps1 포함
-# macOS zip:   install.sh / uninstall.sh / restore-original.sh 포함
+# zip 내부 구조 확인 (플랫폼별 파일이 정확히 들어갔는지 — patched/<플랫폼>/ 구조 확인)
+python -m zipfile -l dist/twilight-struggle-kr-patch-v0.1.1-windows.zip | grep -E "patched/windows|scripts|README"
+python -m zipfile -l dist/twilight-struggle-kr-patch-v0.1.1-macos.zip | grep -E "patched/macos|scripts|README"
+# Windows zip: install-windows.ps1 / uninstall-windows.ps1 + patched/windows/
+# macOS zip:   install.sh / uninstall.sh / restore-original.sh + patched/macos/
 
-# SHA256SUMS 검증 (압축 해제 후)
-unzip -q dist/*.zip -d /tmp/rel-check && (cd /tmp/rel-check/* && sha256sum -c SHA256SUMS)
+# SHA256SUMS 검증 (zip별 개별 해제 — macOS unzip은 여러 zip 동시 처리 불가, 2026-08-14 실측)
+rm -rf /tmp/rel-check && mkdir -p /tmp/rel-check
+for z in dist/twilight-struggle-kr-patch-v0.1.1-*.zip; do
+  n=$(basename "$z" .zip); mkdir -p "/tmp/rel-check/$n"
+  unzip -q "$z" -d "/tmp/rel-check/$n"
+  echo "--- $n ---"
+  (cd "/tmp/rel-check/$n"/* && sha256sum -c SHA256SUMS)  # 전부 OK여야 정상
+  rm -rf "/tmp/rel-check/$n"
+done
 ```
 
+- ⚠️ SHA256SUMS는 **자기 자신을 포함하지 않는다** (`find ! -name SHA256SUMS`, v0.1.1부터) — FAILED가 1개라도 나오면 실제 무결성 문제로 조사할 것 (v0.1.0은 자기 자신 포함 버그로 검증 시 1건 FAILED)
 - 원본 게임 파일(Steam 설치본의 다른 에셋)이 포함되지 않았는지 확인
 - 개인 파일(레지스트리 덤프 등) 미포함 확인
 
 ### 4. GitHub Releases 업로드
 
 ```bash
-gh release create v0.1.0 \
-  dist/twilight-struggle-kr-patch-v0.1.0-windows.zip \
-  dist/twilight-struggle-kr-patch-v0.1.0-macos.zip \
-  dist/twilight-struggle-kr-patch-v0.1.0-src.zip \
-  --title "v0.1.0" --notes "..."
+gh release create v0.1.1 \
+  dist/twilight-struggle-kr-patch-v0.1.1-windows.zip \
+  dist/twilight-struggle-kr-patch-v0.1.1-macos.zip \
+  dist/twilight-struggle-kr-patch-v0.1.1-src.zip \
+  --title "v0.1.1" --notes "..."
 ```
 
 - 릴리스 노트에 포함할 내용: 지원 플랫폼(Windows/macOS/스팀덱·Linux Proton), 알려진 한계(턴 히스토리·튜토리얼 영어), 설치/제거 방법 요약, 기존 패치 제작자 크레딧
+- ⚠️ 이전 버전(v0.1.0) zip에 버그가 발견된 경우: 새 버전 릴리스 후 이전 릴리스에 경고 문구를 추가하거나 재업로드 검토
 
 ### 5. 배포 후 확인 (사용자 관점)
 
@@ -89,4 +107,5 @@ gh release create v0.1.0 \
 - ⚠️ **스팀덱/리눅스(Proton)**: Windows 배포본을 그대로 사용 — 별도 zip 불필요 (README에 안내)
 - ⚠️ **언어 설정 무조작 방식** (2026-08-14): 설치 스크립트가 레지스트리/plist를 건드리지 않음 — 설치=한글, 제거=영어. 사용자 안내에서 언어 설정 관련 조작을 제거할 것
 - ⚠️ 배포 zip에는 LICENSE가 `LICENSE.txt`로 자동 포함된다 (package-release.sh가 복사) — 별도 CREDITS.md는 두지 않고 LICENSE [2][5]항 + README '감사의 말'로 대체
+- ⚠️ **v0.1.0 zip은 구버전 레이아웃** (`patched/` 평평 + SHA256SUMS 자기 포함 버그) — 설치 스크립트와 불일치하므로 그대로 사용 금지. v0.1.1부터 정상
 - Steam 업데이트로 패치가 무효화되면 `twilight-struggle-update` 스킬로 재적용
