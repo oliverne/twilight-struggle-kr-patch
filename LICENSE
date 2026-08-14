@@ -1,0 +1,104 @@
+# LICENSE
+
+**Twilight Struggle 한글 패치**는 팬이 만든 비공식 한글화 프로젝트입니다.
+본 파일은 (1) 프로젝트 자체 소스 코드의 라이선스, (2) 재사용한 번역문의 출처와 권리,
+(3) 원저작권자 권리 존중 및 면책 조항을 정리합니다.
+
+---
+
+## 1. 프로젝트 소스 코드 — MIT License
+
+이 저장소에서 직접 작성한 것들 — 설치·주입·검증 스크립트(`scripts/`), 도구 구성
+(`tools/`), 문서(`docs/`, `README.md` 등), 파이프라인 설정 — 은 아래 MIT License를
+따릅니다.
+
+> MIT License
+>
+> Copyright (c) 2026 Twilight Struggle 한글 패치 프로젝트
+>
+> Permission is hereby granted, free of charge, to any person obtaining a copy
+> of this software and associated documentation files (the "Software"), to deal
+> in the Software without restriction, including without limitation the rights
+> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> copies of the Software, and to permit persons to whom the Software is
+> furnished to do so, subject to the following conditions:
+>
+> The above copyright notice and this permission notice shall be included in all
+> copies or substantial portions of the Software.
+>
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+> SOFTWARE.
+
+⚠️ **단, 아래 2·3·4항의 대상(번역문·게임 에셋·저작권 있는 자료)에는 이 MIT 라이선스가
+적용되지 않습니다.**
+
+---
+
+## 2. 번역문 — 기존 커뮤니티 패치에 기반 (해당 정책 존중)
+
+이 패치의 번역문은 처음부터 새로 작성한 것이 아니라, 기존 커뮤니티 한글 패치의
+번역을 **참고·재사용**하여 구성했습니다. 번역문의 저작권과 사용 조건은 각
+원저작자(아래)의 정책을 따르며, 이 프로젝트의 MIT 라이선스는 **번역문에는
+적용되지 않습니다.**
+
+| 기반 패치 | 링크 | 기여 내용 |
+|---|---|---|
+| **한식구 네이버 카페 — 런타임 패치 (BepInEx)** | https://cafe.naver.com/hansicgu/32259 | 1차 번역 소스 (런타임 TSV 2,253쌍 재사용) |
+| **블루칩님 한글패치** (우드킹님 패치 기반) | https://bluechip2022.tistory.com/2 | 참고 소스 — 게임 업데이트로 더는 동작하지 않지만, 번역 매칭·검증에 활용 |
+
+- 위 패치와 원저작자분들께 감사드리며, 번역문의 권리와 책임은 원저작자에게
+  있습니다.
+- 번역문을 재배포·수정·활용하는 경우에도 위 원저작자의 정책과 고지 사항을
+  우선적으로 따르시기 바랍니다.
+- 이 프로젝트의 일부 문자열은 기존 번역과 매칭되지 않아 직접 작성했으며
+  (수동 번역), 이는 본 패치 번역문 전체의 일부로 취급합니다.
+
+---
+
+## 3. 원저작권자 권리 존중
+
+이 프로젝트는 아래 원저작권자들과 **무관한 비공식 팬 프로젝트**이며, 아래
+권리자들의 승인·후원·보증을 받지 않았습니다.
+
+| 대상 | 권리자 | 링크 |
+|---|---|---|
+| 디지털 게임 (본 패치 대상) | **Playdek, Inc.** | https://www.playdekgames.com/twilight-struggle |
+| 디지털 게임 유통 | **Steam / Valve** | https://store.steampowered.com/app/406290/Twilight_Struggle/ |
+| 실물 보드게임 원작 | **GMT Games** | https://www.gmtgames.com/c-111-twilight-struggle-series-games.aspx |
+| 실물 한국어판 | **보드피아 (Boardpia)** | https://smartstore.naver.com/boardpia/products/11046379512 |
+
+- 게임 타이틀, 로고, 에셋, 텍스트, 아트워크 등 일체의 지적 재산권·상표권은 각
+  권리자에게 있습니다.
+- 본 패치가 수정하는 게임 파일(`resources.assets`, `level1~3` 등)은 각
+  권리자의 저작물이며, 이 저장소에는 **원본 게임 파일을 포함하지 않습니다.**
+  (패치는 원본 파일에 대한 변형물로서, 재배포 시 각 권리자의 정책을 따르세요)
+- 원저작권자가 요청할 경우, 이 프로젝트의 배포는 즉시 중단·삭제될 수 있습니다.
+
+---
+
+## 4. 면책 조항 (Disclaimer)
+
+- 본 패치는 **팬심으로 만든 비공식 패치**입니다. 상업적 목적이 없으며, 유료
+  판매·광고 수익 등을 목적으로 하지 않습니다.
+- 게임의 이용약관, Steam 규정, 각 권리자의 정책을 위반하는 사용은 패치
+  제작자의 의도와 무관하며, **패치 사용으로 발생하는 모든 결과의 책임은
+  사용자 본인에게 있습니다.**
+- 패치는 **"있는 그대로"(AS-IS)** 제공됩니다. 게임 데이터 손상, 저장 파일
+  손실, 온라인·멀티플레이 계정 제재 등 어떠한 손해에 대해서도 제작자는
+  책임을 지지 않습니다.
+- 게임 업데이트로 패치가 동작하지 않거나 오류가 발생할 수 있으며, 이에 대한
+  지속적 유지보수 의무는 없습니다.
+- 설치 전 반드시 원본 파일을 백업하시고, 문제 시 설치 스크립트의 제거
+  기능(또는 Steam 무결성 확인)으로 원복하세요.
+
+---
+
+## 5. 폰트
+
+- `fonts/`에 포함된 폰트(D2Coding, Paperlogy)는 각각 **SIL Open Font License
+  1.1**로 배포되며, 각 폰트의 라이선스 전문은 `fonts/`에 동봉되어 있습니다.

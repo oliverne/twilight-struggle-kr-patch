@@ -135,5 +135,9 @@ python scripts/verify_assets.py --orig <원본> --patched <패치본>
 
 ## 라이선스
 
-- 폰트: D2Coding, Paperlogy 5 Medium (SIL OFL 1.1) — `fonts/`에 라이선스 동봉
-- 번역문: 기존 한글 패치(블루칩 등)의 번역을 참고·재사용 — 배포 전 크레딧 정리 필요 (Phase 6)
+전체 내용은 [`LICENSE`](LICENSE) 참조. 요약:
+
+- **소스 코드** (스크립트·문서): MIT License
+- **번역문**: 한식구 런타임 패치·블루칩 한글패치 번역 참고·재사용 — 번역문의 권리는 원저작자 정책을 따름
+- **게임 에셋·원저작권**: Playdek/Steam/GMT Games/보드피아 등 원저작권자 권리 존중 — 비공식 팬 패치이며 상업적 이용 금지
+- **폰트**: D2Coding, Paperlogy 5 Medium (SIL OFL 1.1) — `fonts/`에 라이선스 동봉
