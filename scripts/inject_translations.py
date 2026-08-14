@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 """Phase 4: 번역 소스를 resources.assets TextAsset에 주입한다.
 
-전략:
-  - Common_Strings: RU(10열) → KO로 교체 (헤더 "RU"→"KO", 322행→한글)
+전략 (2026-08-14 개정 — EN 로케일 덮어쓰기 방식):
+  게임 언어 설정(레지스트리/plist)을 건드리지 않고, **EN 로케일 자체를 한글로
+  대체**한다. 유저는 기본 언어(EN)를 그대로 쓰므로 설치=한글, 제거=영어가 된다.
+  (구방식: Common_Strings만 RU→KO 교체 + 언어=KO 설정 — 설정 조작/기록/복원 필요)
+  - Common_Strings: EN 열(2열) + RU→KO(10열) 모두 한글 주입 (언어=EN/KO 무관 한글)
   - TS_Cards: row-key 기반 col 2(EN) → 한국어 교체
   - TS_Ingame: key 기반 EN→KO (런타임 TSV에서 117/157행 커버)
   - Common_Ingame: key 기반 EN→KO (수동 번역 포함, 22행)
   - TS_Strings: key 기반 EN→KO (런타임 TSV에서 38/50행 커버)
   - TS_RulesTutorial: EN 열(3열) → KO 번역 주입 (Phase 7, manual-rules.json) — 시트 1631793870 (1열=키, 2열=US, 3열=EN, 10열=KO)
-  - AvailableCultures: ru → ko (한국어 선택 가능하게)
-  - EN 열(2열)은 절대 수정하지 않음
+  - AvailableCultures: ru → ko (KO 열 호환용 — 무해)
+  - KO 열(8/9/10열)은 add_ko_columns.py가 EN 열 값(한글)을 복사해 유지
 
 사용법:
   python scripts/inject_translations.py [--gamepath <게임루트>] [--src <원본assets>] [--out <출력>]
@@ -175,7 +178,13 @@ def inject_simple_table(text: str, key_to_ko: dict, rt_index: dict, manual: dict
 
 
 def inject_common_strings(text: str, key_to_ko: dict) -> tuple[str, int]:
-    """Common_Strings: RU(10열) → KO"""
+    """Common_Strings: EN 열(2열) + RU→KO(10열) 모두 한글 주입
+
+    2026-08-14 개정 — EN 로케일 덮어쓰기 방식:
+      게임 언어 설정을 변경하지 않아도 한글이 표시되도록 EN 열(2열)에도
+      한글을 넣는다. KO 열(10열) 주입은 유지해 언어=KO로 설정된 구형
+      설치본과도 호환된다.
+    """
     date_end = text.index("\n") + 1
     date_line = text[:date_end]
     data = json.loads(text[date_end:].strip())
@@ -187,9 +196,12 @@ def inject_common_strings(text: str, key_to_ko: dict) -> tuple[str, int]:
     for row_num in range(2, 324):  # row 2~323 (row 1은 header)
         key_cell = f"{row_num}:1"
         ru_cell = f"{row_num}:10"
+        en_cell = f"{row_num}:2"
         key_name = cells.get(key_cell, "")
         if key_name in key_to_ko:
-            cells[ru_cell] = key_to_ko[key_name]
+            ko = key_to_ko[key_name]
+            cells[en_cell] = ko  # EN 로케일 덮어쓰기 (언어 설정 무조작)
+            cells[ru_cell] = ko  # KO 열 (구형 KO 설정 호환)
             changed += 1
     
     cells["1:10"] = "KO"  # header: RU → KO
@@ -422,8 +434,8 @@ def main():
 
     print(f"\n→ {out_path}")
 
-    # EN 보존 검증 (Common_Strings)
-    print("\n=== EN 열 보존 검증 ===")
+    # EN 로케일 덮어쓰기 검증 (Common_Strings — EN 열에 한글 주입 확인)
+    print("\n=== EN 로케일 덮어쓰기 검증 (Common_Strings) ===")
     env2 = UnityPy.load(str(out_path))
     for obj2 in env2.objects:
         if obj2.type.name != "TextAsset":
@@ -435,14 +447,21 @@ def main():
             data2 = json.loads(text2[date_end2:].strip())
             cells2 = data2.get("0", {})
             en_ok = True
-            for r in range(2, min(324, 10)):
+            en_count = 0
+            for r in range(2, 324):
+                key = cells2.get(f"{r}:1", "")
+                if key not in key_to_ko_cs:
+                    continue
                 en_val = cells2.get(f"{r}:2", "")
-                ko_val = cells2.get(f"{r}:10", "")
-                if en_val == ko_val and en_val not in ("null", "", "EN"):
+                if en_val == key_to_ko_cs[key]:
+                    en_count += 1
+                else:
                     en_ok = False
-                    print(f"  ❌ Row {r}: EN == KO ({en_val})")
+                    print(f"  ❌ Row {r} ({key}): EN 열 미주입 — {en_val!r}")
             if en_ok:
-                print(f"  ✅ Common_Strings EN 열 무결함")
+                print(f"  ✅ Common_Strings EN 열 한글 주입 완료 ({en_count}행)")
+            else:
+                print(f"  ⚠️  일부 행 미주입 (번역 소스 부족 가능) — 주입 {en_count}행")
 
     # m_Script 무손상 검증 (MonoBehaviour 참조가 원본과 동일한지)
     print("\n=== m_Script 무손상 검증 ===")

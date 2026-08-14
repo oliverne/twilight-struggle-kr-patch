@@ -10,12 +10,12 @@ Steam판 **Twilight Struggle**(App ID `406290`)용 한글 패치 프로젝트입
 | 항목 | 상태 |
 |---|---|
 | 대상 게임 | Steam Twilight Struggle (Unity 6 `6000.0.58f2`, IL2CPP) |
-| 번역 주입 (TextAsset) | ✅ 666행 + 잔존 키 52개 — `Common_Strings`(KO 열), `TS_Cards`, `TS_Ingame`, `TS_Strings`, `Common_Ingame` |
-| 언어 테이블 KO 열 | ✅ 5개 테이블에 KO 열 추가 (언어=KO에서 카드/PANEL/HELP 키 해석) |
+| 번역 주입 (TextAsset) | ✅ 666행 + 잔존 키 52개 — `Common_Strings`, `TS_Cards`, `TS_Ingame`, `TS_Strings`, `Common_Ingame` — **EN 열에 한글 주입 (EN 로케일 대체)** |
+| 언어 테이블 KO 열 | ✅ 5개 테이블 KO 열 추가 — 구형 KO 설정 호환용 (2026-08-14: 설정 무조작 방식 전환) |
 | 씬 하드코딩 문자열 | ✅ 2,548개 + 규칙 문단 — level1(메인 메뉴)·level2(인게임)·level3(보드) |
 | 규칙북/도움말 (Phase 7) | ✅ TS_RulesTutorial 313행 + 씬 규칙 문단 — 용어표·검수 완료 (2026-08-13) |
 | 한글 SDF 폰트 | ✅ 2048² SDF 2종(D2Coding 본문, Paperlogy 제목, 739자) → 24개 TMP 폰트 주입 |
-| 게임 언어 설정 | ✅ KO 전환 (레지스트리/plist PlayerPrefs) |
+| 게임 언어 설정 | ✅ 불필요 — **EN 로케일을 한글로 대체** (설정 무조작, 2026-08-14) |
 | Windows 실게임 테스트 | ✅ 4차 완료 — **카드·메뉴·인게임 UI 대부분 한글화 확인** |
 | macOS 실게임 테스트 | ✅ 완료 — macOS 원본 기준 파이프라인 재현 + 설치 확인 (2026-08-12) |
 | 미번역 텍스트 확인 | ✅ 화면 단위 확인 (2026-08-12, 전수 조사는 미실시) |
@@ -46,11 +46,11 @@ Steam판 **Twilight Struggle**(App ID `406290`)용 한글 패치 프로젝트입
 | Android / iOS | ❌ 지원 불가 | Playdek의 **별도 모바일 앱**(별도 빌드·구매) — 데스크톱 에셋 적용 불가. Steam Link 스트리밍으로 한글화 화면 감상만 가능 |
 
 > 스팀덱/리눅스는 게임 실행 방식이 Proton(Windows 빌드)이므로 **Windows 배포본 파일을 그대로 복사**하면 됩니다.
-> 게임 언어 KO 설정(레지스트리)은 Wine prefix에 주입합니다 (`protontricks` 활용, 스크립트는 배포 재개 시 작성 예정).
+> 언어 설정은 건드리지 않으므로 Wine prefix 조작이 필요 없습니다 (2026-08-14 개정).
 
 ## 설치 방법
 
-배포 zip을 압축 해제한 뒤 운영체제별 설치 스크립트를 실행합니다 (백업 → 복사 → 언어 KO 설정 자동 처리).
+배포 zip을 압축 해제한 뒤 운영체제별 설치 스크립트를 실행합니다 (백업 → 복사만 — 언어 설정은 건드리지 않습니다).
 
 ### Windows
 
@@ -69,8 +69,7 @@ powershell -ExecutionPolicy Bypass -File scripts\install-windows.ps1
 1. 게임 종료 상태에서 `TwilightStruggle_Data/` 폴더의 다음 파일을 백업:
    `resources.assets`, `sharedassets0.assets`, `level1`, `level2`, `level3`
 2. `patched/` 폴더의 같은 이름 파일을 게임 Data 폴더에 복사
-3. 게임 언어를 KO로 설정 (Windows: 레지스트리 `HKCU\Software\Playdek\TwilightStruggle`의 `localization_h2525087814` / macOS: `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist`의 `localization`)
-4. macOS는 추가로 `codesign --force --sign -` 재서명 필요
+3. macOS는 추가로 `codesign --force --sign -` 재서명 필요
 
 ### 제거 (영문/원래 언어 복귀)
 
@@ -79,22 +78,9 @@ powershell -ExecutionPolicy Bypass -File scripts\install-windows.ps1
 - Windows: `powershell -ExecutionPolicy Bypass -File scripts\uninstall-windows.ps1`
 - macOS: `./scripts/uninstall.sh`
 
-원본 파일을 `.bak`에서 복원하고, 게임 언어를 **설치 전 값**으로 되돌립니다 (설치 시 `krpatch-install-info.txt`에 기록).
+원본 파일을 `.bak`에서 복원합니다. 게임 언어 설정은 건드리지 않습니다 (EN 로케일 대체 방식 — 복원만 하면 영어로 돌아감).
 
-⚠️ **패치 파일만 지우면 안 됩니다.** Steam 무결성 확인만 하면 파일은 원복되지만 언어가 KO로 남아 메뉴·카드가 `${Key}`로 표시됩니다. `.bak`이 없을 때(Steam 업데이트 등)는 Steam 무결성 확인을 먼저 실행한 뒤 위 스크립트를 다시 실행하세요.
-
-⚠️ **게임 삭제·재설치를 해도 언어 설정은 남습니다.** macOS plist(`~/Library/Preferences/`)와 Windows 레지스트리는 게임 폴더 밖에 있어 Steam이 지우지 않습니다. 재설치 후 언어가 KO로 남아 있으면 `${Key}`가 표시되므로 아래를 실행하세요 (이 게임에는 언어 선택 UI가 없어 PlayerPrefs 값 변경으로만 바뀝니다):
-
-```bash
-# macOS
-defaults write ~/Library/Preferences/unity.Playdek.TwilightStruggle.plist localization -string "EN"
-defaults write ~/Library/Preferences/unity.Playdek.TwilightStruggle.plist localization_h2525087814 -string "EN"
-```
-
-```powershell
-# Windows
-Set-ItemProperty -Path "HKCU:\Software\Playdek\TwilightStruggle" -Name "localization_h2525087814" -Value "EN"
-```
+⚠️ **패치 파일만 지우면 안 됩니다.** Steam 무결성 확인만 하면 파일이 원복되어 영어로 돌아갑니다. `.bak`이 없을 때(Steam 업데이트 등)는 Steam 무결성 확인을 먼저 실행한 뒤 위 스크립트를 다시 실행하세요.
 
 ## 안전 원칙
 

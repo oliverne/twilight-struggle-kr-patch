@@ -41,19 +41,23 @@
 - `Common_Strings`와 `TS_Cards`는 실게임 반영이 확인됐다.
 - `StreamingAssets/Lua`는 죽은 잔재 파일이므로 작업 대상에서 제외한다.
 - 한글 입력과 인코딩은 정상이나 기존 SDF 폰트에 CJK 글리프가 없어 게임에서 `ㅁ`으로 표시된다.
-- **번역 주입 방식: EN 열 보존 + RU(10열)→KO 교체 + AvailableCultures에 ko 등록 + 모든 언어 테이블에 KO 열 추가.**
-  SmartLocalization이 언어별 열 헤더("EN"/"KO")로 해석하므로, 언어=KO에서도 한글이 표시되려면
-  **모든 테이블(TS_Cards·TS_Ingame·TS_Strings·Common_Ingame·TS_RulesTutorial)에 KO 열이 필요**
-  (Common_Strings만 KO 열이면 메뉴만 한글, 카드/스코어링은 ${Key} 노출 — 2차 테스트에서 확인).
-  `scripts/add_ko_columns.py`가 KO 열을 추가·유지한다.
-  ⚠️ **KO 열은 반드시 원본에 존재하는 열 번호 범위 내의 빈 열에 배치** (TS_Cards 9, 나머지 8~10).
+- **번역 주입 방식 (2026-08-14 개정 — EN 로케일 덮어쓰기): 모든 언어 테이블의 EN 열에 한글 주입** (Common_Strings 포함).
+  게임 언어 설정(레지스트리/plist)은 **건드리지 않음** — 유저는 기본 언어 EN을 그대로 사용,
+  **설치=한글, 제거=원본 복원 시 영어**가 된다. KO 열(8/9/10열)은 `add_ko_columns.py`가
+  유지해 언어=KO로 설정된 구형 설치본과도 호환된다.
+  (구방식: Common_Strings만 RU(10열)→KO 교체 + 언어=KO 설정 + 기록·복원 — 2026-08-14 폐기)
+  ⚠️ KO 열은 반드시 원본에 존재하는 열 번호 범위 내의 빈 열에 배치 (TS_Cards 9, 나머지 8~10).
   원본에 없는 열 번호(27열 등)에 셀을 추가하면 게임 파서가 무시한다 (3차 테스트 확인).
 - **번역 재사용 소스: 신규 런타임 패치 `runtime_exact.tsv` (2,253쌍).** 블루칩 v1.0.1의 MonoBehaviour 한글(432개)은 v1.0.1에 `Common_Strings`/`TS_Cards`가 없어 매칭 불가. 런타임 TSV + 수동 번역으로 666행 전체 커버.
 - **게임 텍스트 3계층 구조** (Phase 5 확정):
-  1. TextAsset 키 참조 (`${Key_XXX}`) — 언어=ko에서 KO 열 사용 → 번역 주입 + 언어 설정으로 해결
+  1. TextAsset 키 참조 (`${Key_XXX}`) — **EN 열에 한글 주입 (EN 로케일 덮어쓰기, 언어 설정 무조작)**
   2. 씬 하드코딩 문자열 (level1-3 MonoBehaviour) — **씬 패치(`patch_scenes.py`)로 해결**
   3. IL2CPP 코드 문자열 (global-metadata.dat, 턴 히스토리 템플릿) — BepInEx 런타임 훅 필요, 보류
-- **게임 언어 저장 위치: `HKCU\Software\Playdek\TwilightStruggle` 레지스트리 `localization_h2525087814`** (PlayerPrefs) — KO로 변경 완료. ⚠️ **게임 내 언어 선택 UI는 없음 (2026-08-12 실측)** — PlayerPrefs 값 변경으로만 설정 가능. **설치 스크립트가 파일 복사와 함께 자동으로 KO 설정** (Windows: 레지스트리 / macOS: `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist` plist). **제거 시 uninstall 스크립트가 이전 언어로 복원** (설치 시 `krpatch-install-info.txt`에 기록, 첫 설치 값 보존)
+- **게임 언어 설정: 설치/제거 스크립트는 언어 설정을 건드리지 않는다 (2026-08-14 확정).**
+  EN 로케일 덮어쓰기 방식 — 유저는 기본 언어 EN 사용. 참고: 언어 저장 위치는
+  Windows `HKCU\Software\Playdek\TwilightStruggle` 레지스트리 `localization_h2525087814`,
+  macOS `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist`의 `localization`.
+  ⚠️ **게임 내 언어 선택 UI는 없음 (2026-08-12 실측)**. 언어=KO 구형 설정은 KO 열 덕분에 계속 한글 표시 (호환).
 - **배포물은 `scripts/package-release.sh`가 생성하는 zip 2종** (사용자용 ~9MB / 재현용 ~3MB, SHA256SUMS 포함). `patched/*.assets`는 100MB 제한으로 gitignore지만 **압축 시 104MB→~8MB**라 GitHub Releases 첨부(파일당 2GB)로 충분 — gitignore는 Releases 업로드와 무관
 - **SDF 폰트 교체 도구: [Unity_Font_Replacer](https://github.com/snowyegret23/Unity_Font_Replacer) v1.2.8.** `make_sdf.py`로 TTF→SDF 생성, `unity_font_replacer_ko.exe`로 게임 에셋 자동 교체.
 - **⚠️ UnityPy(공식) `env.file.save()`는 IL2CPP 게임에서 MonoBehaviour m_Script 참조를 재매핑해 TMP 폰트를 파괴한다** (Phase 4 기존 patched가 m_Script 11,890건 손상). → 포크 UnityPy + TypeTreeGeneratorAPI(typetree_generator) 방식으로 재구축 완료.
@@ -134,3 +138,4 @@
 | 2026-08-13                                        | 튜토리얼 안내 IL2CPP 코드 문자열 실측 — 계층 3 보류 (ISSUES #17) | `86aaa08` |
 | 2026-08-13                                        | **Phase 7 완료 + 배포 보류 결정** — 한글화 마무리, 한계 문서화 | 본 커밋 |
 | 2026-08-13                                        | **IMPACT SDF 3종 → D2Coding** — 트랙 첫 칸 H 넘침 해결 (원인: Paperlogy H 폭이 숫자보다 20% 넓음), 실게임 확인 완료 | `7ecf94e` |
+| 2026-08-14                                        | **EN 로케일 덮어쓰기 전환 (언어 설정 무조작)** — Common_Strings EN 열(2열)에도 한글 주입, 설치/제거 스크립트에서 레지스트리·plist 조작·기록·복원 전부 제거. 유저는 기본 EN 사용 → 설치=한글, 제거=영어. KO 열은 구형 KO 설정 호환으로 유지 | 본 커밋 |

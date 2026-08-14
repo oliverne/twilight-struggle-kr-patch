@@ -40,7 +40,7 @@
 | `TwilightStruggle_Data/level1` | 씬 하드코딩 문자열 883개 한글화 | `backup-20260811/level1.pre-scene-patch` |
 | `TwilightStruggle_Data/level2` | 씬 하드코딩 문자열 1,391개 한글화 | `backup-20260811/level2.pre-scene-patch` |
 | `TwilightStruggle_Data/level3` | 씬 하드코딩 문자열 274개 한글화 | `backup-20260811/level3.pre-scene-patch` |
-| 레지스트리 `HKCU\Software\Playdek\TwilightStruggle` | `localization_h2525087814` = `KO` (게임 언어) | 변경 전 값: `EN` (설치 시 `krpatch-install-info.txt`에 기록) |
+| ~~레지스트리 `HKCU\Software\Playdek\TwilightStruggle`~~ | ~~`localization_h2525087814` = `KO` (게임 언어)~~ — **2026-08-14 폐기: 언어 설정 무조작** (EN 로케일 덮어쓰기 방식) | — |
 
 > 백업 폴더 위치: `D:\Games\steamapps\common\Twilight Struggle\TwilightStruggle_Data\backup-20260811\`
 
@@ -51,9 +51,9 @@
 | `TwilightStruggle_Data/resources.assets` | macOS 원본 기준 번역+KO 열+폰트 주입본 |
 | `TwilightStruggle_Data/sharedassets0.assets` | atwriter SDF 폰트 주입본 |
 | `TwilightStruggle_Data/level1~3` | macOS 원본 기준 씬 패치본 (Windows 씬 패치본과 호환 불가) |
-| plist `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist` | `localization` = `KO` (macOS 키) |
+| ~~plist `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist`~~ | ~~`localization` = `KO` (macOS 키)~~ — **2026-08-14 폐기: 언어 설정 무조작** (EN 로케일 덮어쓰기 방식) |
 
-> 현재 저장소 `patched/`는 **macOS 원본 기준**이다. 설치·제거는 `scripts/install.sh` / `scripts/uninstall.sh`가 백업·복원·언어 복원을 자동 처리한다.
+> 현재 저장소 `patched/`는 **macOS 원본 기준**이다. 설치·제거는 `scripts/install.sh` / `scripts/uninstall.sh`가 백업·복원을 자동 처리한다 (언어 설정은 건드리지 않음 — 2026-08-14 개정).
 
 ## 전체 정리 (완전 되돌리기)
 

@@ -37,7 +37,7 @@
 
 | 계층 | 위치 | 상태 | 해결 수단 |
 |---|---|---|---|
-| 1. TextAsset 키 참조 | `resources.assets` — Common_Strings/TS_Ingame 등 (`${Key_XXX}`) | ✅ 한글화 | 번역 주입 + **게임 언어=ko** (아래) |
+| 1. TextAsset 키 참조 | `resources.assets` — Common_Strings/TS_Ingame 등 (`${Key_XXX}`) | ✅ 한글화 | 번역 주입 — **EN 로케일 덮어쓰기** (언어 설정 무조작, 아래) |
 | 2. 씬 하드코딩 문자열 | level1(메인 메뉴)·level2(인게임)·level3(보드) MonoBehaviour | ✅ 한글화 (2,548개 + 규칙 문단) | `patch_scenes.py` |
 | 3. IL2CPP 코드 문자열 | global-metadata.dat (턴 히스토리 템플릿·**튜토리얼 안내**) | ❌ 영어 잔존 | BepInEx 런타임 훅 (보류) |
 
@@ -50,8 +50,8 @@
 5. UTF-8 일관 사용. 인코딩 깨짐 의심 시 게임 로드 테스트로 확인.
 6. TMP 리치텍스트 태그(`<color>`, `<font="...">`, `<br>`, `<indent>`)는 보존한다.
 7. 텍스처에 구워진 문자(보드맵 국가명 등)는 현재 범위에서 제외.
-8. **EN 원문은 번역 소스(`translation/*.json`)에 보존하고, 에셋 주입 시 원문(EN)을 덮어쓰지 않는다.** 단, 언어=KO에서 한글을 표시하려면 각 테이블의 EN 열(2열)에 한글을 주입하고(TS_Cards·TS_Ingame 등), `Common_Strings`는 RU(10열)를 KO로 교체해 EN 열을 보존한다. `add_ko_columns.py`가 KO 열에 EN 값(한글)을 복사한다.
-9. **언어=KO에서 모든 텍스트가 한글이 되려면 모든 언어 테이블에 KO 열이 필요하다.** SmartLocalization은 언어별 열 헤더("EN"/"KO")로 해석한다. Common_Strings만 KO 열을 만들면 메뉴만 한글화되고, 카드/스코어링(TS_Cards·TS_Ingame 등)은 `${Key}`가 노출된다 (2026-08-12 2차 테스트 확인). `scripts/add_ko_columns.py`가 KO 열을 추가·유지한다. ⚠️ **KO 열은 원본에 존재하는 열 번호 범위 내 빈 열에 배치** (TS_Cards 9열, 나머지 8~10열) — 원본 밖 열 번호에 셀을 추가하면 파서가 무시한다 (3차 테스트 확인).
+8. **EN 원문은 번역 소스(`translation/*.json`)에 보존한다.** 에셋 주입 시 **EN 열(2열)에 한글을 직접 주입**하는 EN 로케일 덮어쓰기 방식을 사용한다 (2026-08-14 확정: 게임 언어 설정을 건드리지 않고 기본 언어 EN을 한글로 대체 — 설치=한글, 제거=원본 복원 시 영어). `Common_Strings`도 EN 열에 한글을 주입한다 (구방식은 RU(10열)→KO 교체 + 언어=KO 설정 필요였으나 폐기). `add_ko_columns.py`가 KO 열에 EN 값(한글)을 복사해 언어=KO 구형 설정과도 호환한다.
+9. **모든 언어 테이블의 EN 열에 한글이 있으면 언어 설정과 무관하게 한글이 표시된다.** (2026-08-14 개정 — 구방식 "언어=KO에는 KO 열이 필요"는 설정 무조작으로 불필요해짐) 단, **KO 열(8/9/10열)은 구형 KO 설정 호환을 위해 유지**한다. SmartLocalization은 언어별 열 헤더("EN"/"KO")로 해석하며, 언어=KO에서 KO 열이 없으면 `${Key}`가 노출된다 (2026-08-12 2차 테스트). `scripts/add_ko_columns.py`가 KO 열을 추가·유지한다. ⚠️ **KO 열은 원본에 존재하는 열 번호 범위 내 빈 열에 배치** (TS_Cards 9열, 나머지 8~10열) — 원본 밖 열 번호에 셀을 추가하면 파서가 무시한다 (3차 테스트 확인).
 10. **JSON 저장 시 LF 강제 (CRLF 방지)** — Windows Python의 `write_text()`/`open('w')`는 `\n`을 `os.linesep`(`\r\n`)으로 변환해 저장한다 (2026-08-12 실측). `translation/*.json`을 저장하는 스크립트는 반드시 **LF 강제**: `open(path, 'w', encoding='utf-8', newline='\n')` 또는 `Path.write_text(text, encoding='utf-8', newline='\n')`을 사용한다. CRLF로 저장되면 (a) git status에 내용이 같아도 M 노이즈, (b) 커밋 시 CRLF/LF 혼재 위험. 판정 기준: `git diff --no-index --ignore-cr-at-eol <HEAD버전> <현재파일>`이 비어있으면 내용 동일(무해) — 단, **git이 autocrlf(input)로 정규화하므로 CRLF 저장 후에도 내용 손실은 없다.**
 
 ## 텍스트 소스 (우선순위)
@@ -80,7 +80,7 @@
 - macOS: `~/Library/Application Support/Steam/steamapps/common/Twilight Struggle/TwilightStruggle.app/Contents/Resources/Data/`
 - Windows: `steamapps/common/Twilight Struggle/TwilightStruggle_Data/` (⚠️ **공백 없음** — 실측, 2026-08-11)
 - 에셋 파일은 플랫폼 공용(동일 빌드) → 한쪽에서 수정한 파일은 다른 플랫폼에도 그대로 복사 가능 ⚠️ **단, level1~3(씬)은 플랫폼별** (2026-08-12 실측 — Windows 씬 패치본을 macOS에 적용 시 크래시) — 각 플랫폼 원본 기준으로 `patch_scenes.py` 재실행
-- **게임 언어 설정(PlayerPrefs)**: `HKCU\Software\Playdek\TwilightStruggle` 레지스트리 키 `localization_h2525087814` — `KO`로 설정해야 TextAsset KO 열이 로드됨 (`EN`이면 영어). ⚠️ **게임 내 언어 선택 UI는 없음 (2026-08-12 실측)** — PlayerPrefs 값 변경으로만 설정 가능. **설치 스크립트(`install-windows.ps1`/`install.sh`)가 파일 복사와 함께 자동으로 KO 설정** (Windows: 레지스트리, macOS: `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist` plist)
+- **게임 언어 설정(PlayerPrefs)**: **설치 스크립트는 언어 설정을 건드리지 않는다** (2026-08-14 확정 — EN 로케일 덮어쓰기 방식, 유저는 기본 언어 EN 사용). 참고: 언어 저장 위치는 Windows `HKCU\Software\Playdek\TwilightStruggle` 레지스트리 키 `localization_h2525087814`, macOS `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist`의 `localization` — 게임 내 언어 선택 UI는 없음 (2026-08-12 실측). 언어=KO로 설정된 구형 설치본은 KO 열이 있어 계속 한글 표시됨 (호환 유지)
 
 ## 주요 도구
 
