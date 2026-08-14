@@ -7,7 +7,8 @@
 ## 현재 상태
 
 **한글화 완료 (2026-08-13)** — 파일 패치 가능 범위 100% (계층 1 TextAsset + 계층 2 씬).
-배포(Phase 6)는 **보류 결정** — 남은 영어는 전부 계층 3(IL2CPP 코드 문자열: 턴 히스토리·튜토리얼 안내)로 BepInEx 런타임 훅 필요.
+**Windows 배포 완료 (2026-08-14, v0.1.0)** — [GitHub Releases](https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.0). macOS 패치본은 추후 재생성 후 릴리스 예정.
+남은 영어는 전부 계층 3(IL2CPP 코드 문자열: 턴 히스토리·튜토리얼 안내)로 BepInEx 런타임 훅 필요.
 
 - 완료: Phase 0 — 준비, Phase 1 — 텍스트 위치 검증, Phase 2 — 번역 소스 구축
 - 완료: Phase 3 SDF 생성 (2048² 최적화) + Windows 폰트 주입 (24개 TMP 폰트)
@@ -74,13 +75,13 @@
 | Phase 3 — 한글 SDF 폰트 아틀라스 생성  | ✅   | 2048² SDF 2종 + Windows 주입 완료 (24개 폰트) | [상세](phases/phase-3-sdf-font.md)           |
 | Phase 4 — 텍스트 주입 & 레이아웃 조정  | ✅   | 무손상 주입 재구축 + 잔존 키 52개 재주입    | [상세](phases/phase-4-injection-layout.md)   |
 | Phase 5 — 플랫폼 적용 & 테스트         | ✅   | **전부 완료 (2026-08-12)** — Windows 4차 테스트·macOS 실게임·Steam 무결성 복구·uninstall 검증. 잔여: 멀티플레이(스킵) | [상세](phases/phase-5-platform-test.md)      |
-| Phase 6 — 배포                         | ⬜   | **보류 (2026-08-13)** — 한글화 마무리로 배포 일단 보류, 추후 재검토 | [상세](phases/phase-6-release.md)            |
+| Phase 6 — 배포                         | 🚧   | **Windows 배포 완료 (2026-08-14, v0.1.0)** — macOS 패치본 재생성 후 추후 릴리스 | [상세](phases/phase-6-release.md)            |
 | Phase 7 — 도움말/규칙 번역             | ✅   | **완료 (2026-08-13)** — 용어표·규칙 313행·씬 문단·500자 제한 수정 | [상세](phases/phase-7-help-translation.md)   |
 
 ## 현재 핸드오프 요약 (한글화 완료 — 배포 보류)
 
 - **한글화 완료 (2026-08-13)**: 계층 1(TextAsset)·계층 2(씬) 100% — 카드/메뉴/인게임 UI/규칙북/HELP/씬 규칙 문단 전부 한글
-- **배포 보류 (2026-08-13 사용자 결정)** — 배포(Phase 6)는 추후 재검토, 한글화 한계는 문서화 완료
+- **Windows 배포 완료 (2026-08-14, v0.1.0)** — https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.0 (windows 9.3MB + src 3.6MB). macOS 패치본 미생성으로 제외, 추후 재생성 후 릴리스 예정
 - **남은 영어 (전부 계층 3, 파일 패치 불가)**: ① 턴 히스토리 로그 (ISSUES #11) ② **튜토리얼 단계별 안내 (ISSUES #17)** ③ 보드맵 텍스처 국가명(범위 제외) — BepInEx 런타임 훅 프로젝트로만 해결 가능 (보류)
 - 재적용: `scripts/install.sh` / 제거: `scripts/uninstall.sh` (Windows: `install-windows.ps1`/`uninstall-windows.ps1`)
 - 잔존 영어/`□` 발견 시 → `translation/manual-*.json`에 추가 → 재주입 (inject → add_ko → 필요시 폰트 → verify)
@@ -142,3 +143,4 @@
 | 2026-08-14                                        | **EN 로케일 실게임 검증 완료 (Windows)** — 레지스트리 EN 설정에서 메뉴/카드 한글 확인. Steam 위치 자동 탐색 추가 (레지스트리+VDF, D 드라이브 검증) | `64a512f`, `e9cf6dd` |
 | 2026-08-14                                        | **patched 플랫폼별 분리** — `patched/windows/`(Windows 원본 기준)·`patched/macos/`(macOS 재생성 예정), install 스크립트 경로 갱신, inject/patch_scenes에 `--platform` 인자, package-release.sh zip 3종(windows/macos/src) 개편 | 본 커밋 |
 | 2026-08-14                                        | **배포 라이선스 정리** — README '감사의 말' 섹션 추가(한식구·블루칩), package-release.sh가 LICENSE를 LICENSE.txt로 자동 포함(사용자·src zip), 스킬/Phase 6 문서의 CREDITS.md·경고 설명 불일치 정리 | 본 커밋 |
+| 2026-08-14                                        | **Windows 배포 (v0.1.0)** — 패키징·SHA256SUMS 검증·gh release 생성 완료. [릴리스](https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.0) (windows 9.3MB + src 3.6MB). macOS는 패치본 미생성으로 제외, 추후 릴리스 예정 | 본 커밋 |

@@ -14,11 +14,11 @@
 - [x] README 사용자 설치·복구 안내 작성 — 설치/제거/언어 KO 자동 설정 반영으로 갱신됨 (2026-08-12, 최종 확인 필요)
 - [x] Windows 설치 스크립트(`install-windows.ps1`) 작성 — **Phase 5에서 완료** (언어 KO 자동 설정 포함)
 - [x] **배포 패키징 스크립트(`scripts/package-release.sh`) 작성 (2026-08-12)** — 사용자용/재현용 zip 2종 + SHA256SUMS 생성, 실동작 검증 완료 (104MB → 8.9MB)
-- [ ] 라이선스와 크레딧 정리 (폰트 OFL + 기존 패치 번역 크레딧) — **package-release.sh가 LICENSE.txt/CREDITS.md 부재 시 경고 출력**
-- [ ] 배포물에 원본 게임 파일이 포함되지 않았는지 확인
-- [ ] GitHub Releases 배포 — `gh release create` 또는 웹 UI로 dist/*.zip 첨부 (gitignore와 무관, 파일당 2GB 제한 내)
-- [ ] 기존 패치 제작자 크레딧·연락
-- [ ] 알려진 이슈와 지원 게임 버전 명시 (턴 히스토리 미번역 등)
+- [x] 라이선스와 크레딧 정리 — LICENSE(MIT + 번역 출처 + 면책 + 폰트 OFL) 작성 완료, README '감사의 말' 섹션 추가 (2026-08-14). CREDITS.md 별도 파일은 두지 않음 (LICENSE와 중복) — package-release.sh가 LICENSE를 LICENSE.txt로 자동 포함
+- [x] 배포물에 원본 게임 파일이 포함되지 않았는지 확인 — v0.1.0 zip 목록 검증 완료 (patched 5종 + 스크립트 2 + README/LICENSE/SHA256SUMS만 포함, 2026-08-14)
+- [x] GitHub Releases 배포 — `v0.1.0` 생성 완료 (2026-08-14) — https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.0
+- [ ] 기존 패치 제작자 크레딧·연락 — 크레딧은 LICENSE/README/릴리스 노트에 반영됨. 직접 연락은 미실시
+- [x] 알려진 이슈와 지원 게임 버전 명시 — 릴리스 노트에 한계(턴 히스토리·튜토리얼)와 게임 버전 명시 완료
 
 ## 배포 구성 (package-release.sh, 2026-08-14 개편 — 플랫폼별 zip 3종)
 
@@ -60,7 +60,7 @@ dist/twilight-struggle-kr-patch-<버전>-src.zip        # 재현용 (~3MB)
 |---|---|---|
 | 패키징 스크립트 | `./scripts/package-release.sh v0.1.0-test` 실행 | ✅ 성공 — 사용자용 8.9MB / 재현용 3.4MB 생성, zip 내용·SHA256SUMS 확인 (2026-08-12) |
 | zip 내용 | python zipfile 목록 비교 | ✅ 사용자용(patched 6 + scripts 5 + README + SHA256SUMS), 재현용 35개 (fonts backup 제외) — uninstall 2종 포함 확인 (2026-08-12) |
-| — | — | ⬜ 배포 대기 |
+| v0.1.0 배포 | gh release create | ✅ Windows+src 릴리스 완료 (2026-08-14) — https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.0 (macOS는 패치본 미생성으로 제외) |
 
 ## 완료 기록
 
