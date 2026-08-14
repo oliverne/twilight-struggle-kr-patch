@@ -8,17 +8,19 @@
 #   powershell -ExecutionPolicy Bypass -File scripts\install-windows.ps1
 #
 # 옵션:
-#   -GameData <경로>   게임 Data 폴더 (기본: Steam 기본 설치 경로)
+#   -GameData <경로>   게임 Data 폴더 (기본: Steam 설치 위치 자동 탐색)
 #   -Force             백업 스킵 없이 강제 재복사
 #
 # 참고:
 #   - 게임이 실행 중이면 파일이 잠겨 실패하므로 종료 후 실행
+#   - Steam이 기본 경로(C:\Program Files (x86)\Steam)가 아닌 곳에 있으면
+#     레지스트리(SteamPath) + libraryfolders.vdf로 자동 탐색 (D 드라이브 등)
 #   - 복원: 백업 폴더(backup-<날짜>)에서 파일을 되돌리거나
 #     Steam "파일 무결성 확인" 실행
 #   - macOS용: scripts/install.sh (코드사인 자동)
 
 param(
-    [string]$GameData = "$env:ProgramFiles(x86)\Steam\steamapps\common\Twilight Struggle\TwilightStruggle_Data",
+    [string]$GameData = "",
     [switch]$Force
 )
 
@@ -39,7 +41,49 @@ function Get-SHA256($path) {
     } finally { $sha.Dispose() }
 }
 
+# Steam 설치 위치 자동 탐색 (기본 경로가 아닌 D 드라이브 등)
+function Find-GameData {
+    $libPaths = @()
+
+    # 1) Steam 설치 경로: 레지스트리 (HKCU: 실제 설치 위치, HKLM: 32비트 Steam)
+    $steamPath = ""
+    try { $steamPath = (Get-ItemProperty -Path "HKCU:\Software\Valve\Steam" -Name "SteamPath" -ErrorAction SilentlyContinue).SteamPath } catch {}
+    if (-not $steamPath) { try { $steamPath = (Get-ItemProperty -Path "HKLM:\SOFTWARE\WOW6432Node\Valve\Steam" -Name "InstallPath" -ErrorAction SilentlyContinue).InstallPath } catch {} }
+    if ($steamPath) { $libPaths += $steamPath }
+
+    # 2) libraryfolders.vdf에서 추가 라이브러리 폴더 파싱
+    if ($steamPath) {
+        $vdf = Join-Path $steamPath "steamapps\libraryfolders.vdf"
+        if (Test-Path $vdf) {
+            $vdfText = Get-Content $vdf -Raw -ErrorAction SilentlyContinue
+            if ($vdfText) {
+                foreach ($m in [regex]::Matches($vdfText, '"path"\s+"([^"]+)"')) {
+                    $p = $m.Groups[1].Value -replace '\\\\', '\'  # VDF 이스케이프 해제
+                    if ($p -and ($libPaths -notcontains $p)) { $libPaths += $p }
+                }
+            }
+        }
+    }
+
+    # 3) 기본 설치 경로 후보도 포함
+    $libPaths += "$env:ProgramFiles(x86)\Steam"
+    $libPaths += "$env:ProgramFiles\Steam"
+
+    # 4) 후보 탐색
+    foreach ($lp in $libPaths) {
+        $cand = Join-Path $lp "steamapps\common\Twilight Struggle\TwilightStruggle_Data"
+        if (Test-Path $cand) { return $cand }
+    }
+    return $null
+}
+
 Write-Host "=== Twilight Struggle 한글 패치 설치 (Windows) ===" -ForegroundColor White
+
+# ── 게임 경로 결정: -GameData 지정 > 자동 탐색 ──
+if (-not $GameData) {
+    $GameData = Find-GameData
+    if ($GameData) { Write-OK "Steam 위치 자동 탐색: $GameData" }
+}
 
 # ── 사전 검증 ──
 if (-not (Test-Path $GameData)) {

@@ -20,8 +20,23 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 PATCHED_DIR="$PROJECT_DIR/patched"
 
-# Steam 게임 경로 (macOS)
+# Steam 게임 경로 (macOS) — 기본 경로 + libraryfolders.vdf 자동 탐색 (다른 볼륨 설치 대응)
 GAME_APP="$HOME/Library/Application Support/Steam/steamapps/common/Twilight Struggle/TwilightStruggle.app"
+if [ ! -d "$GAME_APP" ]; then
+    VDF="$HOME/Library/Application Support/Steam/steamapps/libraryfolders.vdf"
+    if [ -f "$VDF" ]; then
+        while IFS= read -r line; do
+            lib_path=$(printf '%s' "$line" | sed -n 's/.*"path"[[:space:]]*"\([^"]*\)".*/\1/p' | sed 's/\\\\/\\/g')
+            [ -n "$lib_path" ] || continue
+            cand_app="$lib_path/steamapps/common/Twilight Struggle/TwilightStruggle.app"
+            if [ -d "$cand_app" ]; then
+                GAME_APP="$cand_app"
+                echo -e "${GREEN}  ✅ Steam 위치 자동 탐색: $GAME_APP${NC}"
+                break
+            fi
+        done < "$VDF"
+    fi
+fi
 GAME_DATA="$GAME_APP/Contents/Resources/Data"
 
 # ── 사전 검증 ──

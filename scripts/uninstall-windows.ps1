@@ -8,7 +8,7 @@
 #   powershell -ExecutionPolicy Bypass -File scripts\uninstall-windows.ps1
 #
 # 옵션:
-#   -GameData <경로>   게임 Data 폴더 (기본: Steam 기본 설치 경로)
+#   -GameData <경로>   게임 Data 폴더 (기본: Steam 설치 위치 자동 탐색)
 #
 # 참고:
 #   - 게임이 실행 중이면 파일이 잠겨 실패하므로 종료 후 실행
@@ -16,7 +16,7 @@
 #   - Steam 업데이트로 .bak이 옛 버전이면 Steam 무결성 확인이 더 안전 (아래 안내 출력)
 
 param(
-    [string]$GameData = "$env:ProgramFiles(x86)\Steam\steamapps\common\Twilight Struggle\TwilightStruggle_Data"
+    [string]$GameData = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -26,7 +26,41 @@ function Write-Step($msg)  { Write-Host "==> $msg" -ForegroundColor Cyan }
 function Write-OK($msg)   { Write-Host "  [OK] $msg" -ForegroundColor Green }
 function Write-Warn($msg) { Write-Host "  [!] $msg" -ForegroundColor Yellow }
 
+# Steam 설치 위치 자동 탐색 (install-windows.ps1과 동일)
+function Find-GameData {
+    $libPaths = @()
+    $steamPath = ""
+    try { $steamPath = (Get-ItemProperty -Path "HKCU:\Software\Valve\Steam" -Name "SteamPath" -ErrorAction SilentlyContinue).SteamPath } catch {}
+    if (-not $steamPath) { try { $steamPath = (Get-ItemProperty -Path "HKLM:\SOFTWARE\WOW6432Node\Valve\Steam" -Name "InstallPath" -ErrorAction SilentlyContinue).InstallPath } catch {} }
+    if ($steamPath) { $libPaths += $steamPath }
+    if ($steamPath) {
+        $vdf = Join-Path $steamPath "steamapps\libraryfolders.vdf"
+        if (Test-Path $vdf) {
+            $vdfText = Get-Content $vdf -Raw -ErrorAction SilentlyContinue
+            if ($vdfText) {
+                foreach ($m in [regex]::Matches($vdfText, '"path"\s+"([^"]+)"')) {
+                    $p = $m.Groups[1].Value -replace '\\\\', '\'
+                    if ($p -and ($libPaths -notcontains $p)) { $libPaths += $p }
+                }
+            }
+        }
+    }
+    $libPaths += "$env:ProgramFiles(x86)\Steam"
+    $libPaths += "$env:ProgramFiles\Steam"
+    foreach ($lp in $libPaths) {
+        $cand = Join-Path $lp "steamapps\common\Twilight Struggle\TwilightStruggle_Data"
+        if (Test-Path $cand) { return $cand }
+    }
+    return $null
+}
+
 Write-Host "=== Twilight Struggle 한글 패치 제거 (Windows) ===" -ForegroundColor White
+
+# ── 게임 경로 결정: -GameData 지정 > 자동 탐색 ──
+if (-not $GameData) {
+    $GameData = Find-GameData
+    if ($GameData) { Write-OK "Steam 위치 자동 탐색: $GameData" }
+}
 
 # ── 사전 검증 ──
 if (-not (Test-Path $GameData)) {

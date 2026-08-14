@@ -23,6 +23,21 @@ NC='\033[0m'
 # ── 경로 설정 ──
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 GAME_APP="$HOME/Library/Application Support/Steam/steamapps/common/Twilight Struggle/TwilightStruggle.app"
+if [ ! -d "$GAME_APP" ]; then
+    VDF="$HOME/Library/Application Support/Steam/steamapps/libraryfolders.vdf"
+    if [ -f "$VDF" ]; then
+        while IFS= read -r line; do
+            lib_path=$(printf '%s' "$line" | sed -n 's/.*"path"[[:space:]]*"\([^"]*\)".*/\1/p' | sed 's/\\\\/\\/g')
+            [ -n "$lib_path" ] || continue
+            cand_app="$lib_path/steamapps/common/Twilight Struggle/TwilightStruggle.app"
+            if [ -d "$cand_app" ]; then
+                GAME_APP="$cand_app"
+                echo -e "${GREEN}  ✅ Steam 위치 자동 탐색: $GAME_APP${NC}"
+                break
+            fi
+        done < "$VDF"
+    fi
+fi
 GAME_DATA="$GAME_APP/Contents/Resources/Data"
 
 FILES=(resources.assets sharedassets0.assets sharedassets1.assets sharedassets2.assets sharedassets3.assets level1 level2 level3)
