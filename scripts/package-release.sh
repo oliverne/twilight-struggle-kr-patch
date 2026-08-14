@@ -102,7 +102,7 @@ if [ $HAVE_WIN -eq 1 ]; then
     cp scripts/install-windows.ps1 scripts/uninstall-windows.ps1 "$WIN_ROOT/scripts/"
     cp README.md LICENSE "$WIN_ROOT/"
     mv "$WIN_ROOT/LICENSE" "$WIN_ROOT/LICENSE.txt"
-    ( cd "$WIN_ROOT" && find . -type f -print0 | sort -z | xargs -0 "${HASH_CMD[@]}" > SHA256SUMS )
+    ( cd "$WIN_ROOT" && find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 "${HASH_CMD[@]}" > SHA256SUMS )
     zip_dir "$WIN_ROOT" "$WIN_ZIP"
     echo "  ✅ $WIN_ZIP ($(du -h "$WIN_ZIP" | cut -f1))"
 fi
@@ -120,7 +120,7 @@ if [ $HAVE_MAC -eq 1 ]; then
     cp scripts/install.sh scripts/uninstall.sh scripts/restore-original.sh "$MAC_ROOT/scripts/"
     cp README.md LICENSE "$MAC_ROOT/"
     mv "$MAC_ROOT/LICENSE" "$MAC_ROOT/LICENSE.txt"
-    ( cd "$MAC_ROOT" && find . -type f -print0 | sort -z | xargs -0 "${HASH_CMD[@]}" > SHA256SUMS )
+    ( cd "$MAC_ROOT" && find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 "${HASH_CMD[@]}" > SHA256SUMS )
     zip_dir "$MAC_ROOT" "$MAC_ZIP"
     echo "  ✅ $MAC_ZIP ($(du -h "$MAC_ZIP" | cut -f1))"
 fi
@@ -146,7 +146,7 @@ done
 cp docs/PLAN.md docs/PROGRESS.md "$SRC_ROOT/docs/"
 cp LICENSE "$SRC_ROOT/LICENSE.txt"
 
-( cd "$SRC_ROOT" && find . -type f -print0 | sort -z | xargs -0 "${HASH_CMD[@]}" > SHA256SUMS )
+( cd "$SRC_ROOT" && find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 "${HASH_CMD[@]}" > SHA256SUMS )
 zip_dir "$SRC_ROOT" "$SRC_ZIP"
 echo "  ✅ $SRC_ZIP ($(du -h "$SRC_ZIP" | cut -f1))"
 
