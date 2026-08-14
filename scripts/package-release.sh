@@ -74,15 +74,17 @@ else
 fi
 
 # zip 명령 대신 Python zipfile 사용 (전 플랫폼 호환, 최대 압축)
+# 최상위 폴더(폴더 basename)를 포함해 압축 해제 시 파일이 섞이지 않게 한다.
 zip_dir() {  # $1=폴더  $2=출력 zip
     python - "$1" "$2" <<'EOF'
 import sys, zipfile, os
 src, dst = sys.argv[1], sys.argv[2]
+root = os.path.basename(src.rstrip('/\\'))
 with zipfile.ZipFile(dst, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as z:
-    for root, _, files in os.walk(src):
+    for dirpath, _, files in os.walk(src):
         for f in sorted(files):
-            p = os.path.join(root, f)
-            z.write(p, os.path.relpath(p, src))
+            p = os.path.join(dirpath, f)
+            z.write(p, os.path.join(root, os.path.relpath(p, src)))
 print('  zip ok:', dst)
 EOF
 }

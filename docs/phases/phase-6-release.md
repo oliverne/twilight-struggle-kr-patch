@@ -20,20 +20,28 @@
 - [ ] 기존 패치 제작자 크레딧·연락
 - [ ] 알려진 이슈와 지원 게임 버전 명시 (턴 히스토리 미번역 등)
 
-## 배포 구성 (package-release.sh, 2026-08-12 확정)
+## 배포 구성 (package-release.sh, 2026-08-14 개편 — 플랫폼별 zip 3종)
 
 ```
-dist/twilight-struggle-kr-patch-<버전>.zip          # 사용자용 (~9MB)
-  patched/{resources.assets, sharedassets0.assets, level1~3, hashes.txt}
-  scripts/{install.sh, install-windows.ps1, uninstall.sh, uninstall-windows.ps1, restore-original.sh}
+dist/twilight-struggle-kr-patch-<버전>-windows.zip   # Windows 사용자용 (~9MB)
+  patched/windows/{resources.assets, sharedassets0.assets, level1~3, hashes.txt}
+  scripts/{install-windows.ps1, uninstall-windows.ps1}
   README.md (+ LICENSE.txt, CREDITS.md — 존재 시)
   SHA256SUMS
 
-dist/twilight-struggle-kr-patch-<버전>-src.zip      # 재현용 (~3MB)
+dist/twilight-struggle-kr-patch-<버전>-macos.zip      # macOS 사용자용 (~9MB)
+  patched/macos/{resources.assets, sharedassets0.assets, level1~3, hashes.txt}
+  scripts/{install.sh, uninstall.sh, restore-original.sh}
+  README.md (+ LICENSE.txt, CREDITS.md — 존재 시)
+  SHA256SUMS
+
+dist/twilight-struggle-kr-patch-<버전>-src.zip        # 재현용 (~3MB)
   translation/  fonts/  scripts/(파이프라인 전체 + 설치·제거)  docs/{PLAN,PROGRESS}.md  SHA256SUMS
 ```
 
-- `patched/*.assets`는 GitHub 100MB 제한으로 gitignore — **zip 압축 시 104MB → ~8MB**라 Releases 첨부로 충분 (LFS 불필요)
+- ⚠️ patched/는 플랫폼별 분리 (2026-08-14): `patched/windows/`·`patched/macos/` — level1~3 교차 복사 시 크래시 (실측)
+- 존재하지 않는 플랫폼 폴더는 경고 후 자동 스킵 — 배포 전 양쪽 플랫폼 패치 완성 필수
+- `patched/*/*.assets`는 GitHub 100MB 제한으로 gitignore — **zip 압축 시 104MB → ~8MB**라 Releases 첨부로 충분 (LFS 불필요)
 - 사용법: `./scripts/package-release.sh v0.1.0` → `gh release create v0.1.0 dist/*.zip`
 - macOS/Linux/Windows(Git Bash) 호환: 해시는 sha256sum/shasum 자동 선택, 압축은 Python zipfile
 

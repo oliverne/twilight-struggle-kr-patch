@@ -92,12 +92,18 @@ PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe scripts/verify_assets.py \
 ### 7. 설치
 
 ```bash
-# 백업 → 복사 → 해시 갱신
-cp patched/resources.assets patched/sharedassets0.assets "D:/Games/steamapps/common/Twilight Struggle/TwilightStruggle_Data/"  # 실제로는 백업 폴더에 이전본 먼저 복사
-sha256sum patched/*.assets patched/level1 patched/level2 patched/level3 > patched/hashes.txt
+# ⚠️ patched/는 플랫폼별 분리 (2026-08-14): windows / macos 폴더
+# 주입 결과를 해당 플랫폼 폴더에 반영 + 해시 갱신 (폴더 내부 기준 상대경로)
+cp font-output/resources.assets font-output/sharedassets0.assets patched/<windows|macos>/
+cd patched/<플랫폼> && sha256sum level1 level2 level3 resources.assets sharedassets0.assets > hashes.txt && cd -
+
+# Windows
+powershell -ExecutionPolicy Bypass -File scripts/install-windows.ps1
+# macOS
+./scripts/install.sh
 ```
 
-- 작업 후 `Managed.off` → `Managed` 복원
+- 작업 후 `Managed.off` → `Managed` 복원 (가상 폴더 기준)
 
 ## 주의사항
 
@@ -105,4 +111,5 @@ sha256sum patched/*.assets patched/level1 patched/level2 patched/level3 > patche
 - ⚠️ **한글 글리프**: 제목용 폰트(BlackHanSans 대체)에도 한글 포함 여부 확인. 한글이 없으면 별도 처리
 - ⚠️ **문자셋**: 교체 후 `□` 누락 글자 발생 시 chars.txt 확장 → SDF 재생성 → 재주입
 - ⚠️ Steam 무결성 확인/업데이트로 패치 원복 가능 — 스킬 `twilight-struggle-update` 참조
+- 주입 파이프라인 상세: 스킬 `twilight-struggle-font-injection` (가상 폴더 구성 → parse → 매핑 → 주입 → 검증 → 반영)
 - 관련 문서: `docs/runbooks/phase-3-windows-font-injection.md`, `docs/phases/phase-3-sdf-font.md`, `docs/phases/phase-5-platform-test.md` (SDF 재생성 기록)
