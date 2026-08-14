@@ -26,13 +26,13 @@
 dist/twilight-struggle-kr-patch-<버전>-windows.zip   # Windows 사용자용 (~9MB)
   patched/windows/{resources.assets, sharedassets0.assets, level1~3, hashes.txt}
   scripts/{install-windows.ps1, uninstall-windows.ps1}
-  README.md (+ LICENSE.txt, CREDITS.md — 존재 시)
+  README.md + LICENSE.txt
   SHA256SUMS
 
 dist/twilight-struggle-kr-patch-<버전>-macos.zip      # macOS 사용자용 (~9MB)
   patched/macos/{resources.assets, sharedassets0.assets, level1~3, hashes.txt}
   scripts/{install.sh, uninstall.sh, restore-original.sh}
-  README.md (+ LICENSE.txt, CREDITS.md — 존재 시)
+  README.md + LICENSE.txt
   SHA256SUMS
 
 dist/twilight-struggle-kr-patch-<버전>-src.zip        # 재현용 (~3MB)

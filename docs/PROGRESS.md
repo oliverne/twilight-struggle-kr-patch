@@ -141,3 +141,4 @@
 | 2026-08-14                                        | **EN 로케일 덮어쓰기 전환 (언어 설정 무조작)** — Common_Strings EN 열(2열)에도 한글 주입, 설치/제거 스크립트에서 레지스트리·plist 조작·기록·복원 전부 제거. 유저는 기본 EN 사용 → 설치=한글, 제거=영어. KO 열은 구형 KO 설정 호환으로 유지 | 본 커밋 |
 | 2026-08-14                                        | **EN 로케일 실게임 검증 완료 (Windows)** — 레지스트리 EN 설정에서 메뉴/카드 한글 확인. Steam 위치 자동 탐색 추가 (레지스트리+VDF, D 드라이브 검증) | `64a512f`, `e9cf6dd` |
 | 2026-08-14                                        | **patched 플랫폼별 분리** — `patched/windows/`(Windows 원본 기준)·`patched/macos/`(macOS 재생성 예정), install 스크립트 경로 갱신, inject/patch_scenes에 `--platform` 인자, package-release.sh zip 3종(windows/macos/src) 개편 | 본 커밋 |
+| 2026-08-14                                        | **배포 라이선스 정리** — README '감사의 말' 섹션 추가(한식구·블루칩), package-release.sh가 LICENSE를 LICENSE.txt로 자동 포함(사용자·src zip), 스킬/Phase 6 문서의 CREDITS.md·경고 설명 불일치 정리 | 본 커밋 |

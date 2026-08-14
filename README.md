@@ -133,6 +133,16 @@ python scripts/verify_assets.py --orig <원본> --patched <패치본>
 | [translation/](translation/README.md) | 번역 소스 (활성 5종 + 참고 산출물) |
 | [docs/](docs/PROGRESS.md) | 진행 현황·Phase 문서·Runbook |
 
+## 감사의 말
+
+이 패치의 번역은 처음부터 새로 쓴 것이 아니라, 기존 커뮤니티 한글 패치를 참고·재사용해 구성했습니다.
+
+- **한식구 네이버 카페** 런타임 패치 제작자님 — 런타임 TSV 2,253쌍을 1차 번역 소스로 재사용 (https://cafe.naver.com/hansicgu/32259)
+- **블루칩님** 한글 패치 — 게임 업데이트로 더는 동작하지 않지만 번역 매칭·검증에 활용 (https://bluechip2022.tistory.com/2)
+
+두 패치가 없었다면 이 프로젝트의 번역 품질은 크게 낮았을 것입니다. 다시 한번 감사드립니다.
+번역문의 권리와 책임은 원저작자에게 있으며, 상세 출처와 라이선스는 [`LICENSE`](LICENSE)를 참조하세요.
+
 ## 라이선스
 
 전체 내용은 [`LICENSE`](LICENSE) 참조. 요약:

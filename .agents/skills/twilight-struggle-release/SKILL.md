@@ -23,7 +23,7 @@ description: Twilight Struggle 한글 패치 배포(Phase 6) 절차. 플랫폼�
 - [ ] 실게임 확인 완료: 메뉴·카드·인게임 UI 한글, 폰트 정상 (언어=EN 기본값에서)
 - [ ] hashes.txt가 현재 patched 파일과 일치: `sha256sum -c patched/<플랫폼>/hashes.txt`
 - [ ] 알려진 한계 문서화: 턴 히스토리/튜토리얼(계층 3) 영어 — ISSUES #11·#17
-- [ ] (배포 전 정리) LICENSE.txt / CREDITS.md 존재 — 폰트 OFL + 기존 패치 번역 크레딧
+- [ ] (배포 전 정리) LICENSE 존재 — 폰트 OFL + 기존 패치 번역 크레딧은 LICENSE [2][5]항과 README '감사의 말' 섹션에 포함 (CREDITS.md 별도 파일 없음)
 
 ## 절차
 
@@ -88,5 +88,5 @@ gh release create v0.1.0 \
 - ⚠️ **플랫폼 zip 교차 금지**: macOS zip을 Windows에, Windows zip을 macOS에 적용하지 않도록 README·릴리스 노트에 명시 (level1~3 크래시)
 - ⚠️ **스팀덱/리눅스(Proton)**: Windows 배포본을 그대로 사용 — 별도 zip 불필요 (README에 안내)
 - ⚠️ **언어 설정 무조작 방식** (2026-08-14): 설치 스크립트가 레지스트리/plist를 건드리지 않음 — 설치=한글, 제거=영어. 사용자 안내에서 언어 설정 관련 조작을 제거할 것
-- ⚠️ 배포 전 `LICENSE.txt`/`CREDITS.md`가 없으면 package-release.sh가 경고 출력 — Phase 6 체크리스트에서 정리 필요
+- ⚠️ 배포 zip에는 LICENSE가 `LICENSE.txt`로 자동 포함된다 (package-release.sh가 복사) — 별도 CREDITS.md는 두지 않고 LICENSE [2][5]항 + README '감사의 말'로 대체
 - Steam 업데이트로 패치가 무효화되면 `twilight-struggle-update` 스킬로 재적용
