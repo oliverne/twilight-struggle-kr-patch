@@ -75,18 +75,17 @@
 | Phase 3 — 한글 SDF 폰트 아틀라스 생성  | ✅   | 2048² SDF 2종 + Windows 주입 완료 (24개 폰트) | [상세](phases/phase-3-sdf-font.md)           |
 | Phase 4 — 텍스트 주입 & 레이아웃 조정  | ✅   | 무손상 주입 재구축 + 잔존 키 52개 재주입    | [상세](phases/phase-4-injection-layout.md)   |
 | Phase 5 — 플랫폼 적용 & 테스트         | ✅   | **전부 완료 (2026-08-12)** — Windows 4차 테스트·macOS 실게임·Steam 무결성 복구·uninstall 검증. 잔여: 멀티플레이(스킵) | [상세](phases/phase-5-platform-test.md)      |
-| Phase 6 — 배포                         | 🚧   | **v0.1.1 릴리스 완료 (2026-08-14)** — Windows+macOS+src. 남은 것: v0.1.1 사용자 설치 검증(외부) | [상세](phases/phase-6-release.md)            |
+| Phase 6 — 배포                         | ✅   | **v0.1.1 릴리스 완료 (2026-08-14)** — Windows+macOS+src zip 3종 (실게임 확인 포함) | [상세](phases/phase-6-release.md)            |
 | Phase 7 — 도움말/규칙 번역             | ✅   | **완료 (2026-08-13)** — 용어표·규칙 313행·씬 문단·500자 제한 수정 | [상세](phases/phase-7-help-translation.md)   |
 
-## 현재 핸드오프 요약 (한글화 완료 — 배포 보류)
+## 현재 핸드오프 요약 (프로젝트 마감 — Phase 0~7 전부 완료)
 
 - **한글화 완료 (2026-08-13)**: 계층 1(TextAsset)·계층 2(씬) 100% — 카드/메뉴/인게임 UI/규칙북/HELP/씬 규칙 문단 전부 한글
-- **Windows 배포 완료 (2026-08-14, v0.1.0)** — https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.0 (windows 9.3MB + src 3.6MB). ⚠️ v0.1.0 zip은 구버전 레이아웃(patched/ 평평)이라 설치 스크립트와 불일치 — v0.1.1에서 수정됨 (aab7c7f)
-- **v0.1.1 릴리스 완료 (2026-08-14)** — https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.1 (windows 9MB + macos 10MB + src 16MB) — zip 레이아웃·SHA256SUMS 버그 수정 + macOS 패치본 포함
+- **배포 완료 (2026-08-14)**: v0.1.0(Windows+src) → **v0.1.1(Windows+macOS+src)** — https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.1. macOS 실게임 확인 포함. 배포 스킬에 버그 이력·검증 절차 반영
 - **남은 영어 (전부 계층 3, 파일 패치 불가)**: ① 턴 히스토리 로그 (ISSUES #11) ② **튜토리얼 단계별 안내 (ISSUES #17)** ③ 보드맵 텍스처 국가명(범위 제외) — BepInEx 런타임 훅 프로젝트로만 해결 가능 (보류)
-- 재적용: `scripts/install.sh` / 제거: `scripts/uninstall.sh` (Windows: `install-windows.ps1`/`uninstall-windows.ps1`)
+- 재적용: `scripts/install.sh` / 제거: `scripts/uninstall.sh` (Windows: `install-windows.ps1`/`uninstall-windows.ps1`) — Steam 업데이트/무결성 원복 시 `twilight-struggle-update` 스킬로 재적용
 - 잔존 영어/`□` 발견 시 → `translation/manual-*.json`에 추가 → 재주입 (inject → add_ko → 필요시 폰트 → verify)
-- **알려진 잔여 개선 포인트**: 멀티플레이 검증(미실시), 폰트 줄 간격 보조 보정(`--use-game-line-metrics`, 미적용), 씬 미매칭 잔존(더미/크레딧/UI 라벨 — 무해)
+- **보류 이슈**: 배포 후 외부 사용자 설치 검증, 멀티플레이 검증, 폰트 줄 간격 보조 보정, ISSUES #6·#7·#9 — 상세는 phase-6 핸드오프 참조
 - 주의: `patched/*/*.assets`는 GitHub 100MB 제한 초과로 gitignore — 재생성 방법은 Phase 문서 참조 (level1~3은 git 관리)
 
 ## 로그
@@ -147,4 +146,6 @@
 | 2026-08-14                                        | **Windows 배포 (v0.1.0)** — 패키징·SHA256SUMS 검증·gh release 생성 완료. [릴리스](https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.0) (windows 9.3MB + src 3.6MB). macOS는 패치본 미생성으로 제외, 추후 릴리스 예정 | 본 커밋 |
 | 2026-08-14                                        | **zip 레이아웃 버그 수정** — zip 내부를 `patched/<플랫폼>/` 구조로 변경 (설치 스크립트 경로와 불일치하던 버그, v0.1.0 zip 영향). `patched/windows/` 대형 에셋은 v0.1.0 릴리스 zip에서 복원. 잔재 `patched-mac/` 삭제 + gitignore 정리 | `aab7c7f` |
 | 2026-08-14                                        | **macOS 패치본 재생성 완료** — EN 로케일 방식 파이프라인 재실행 (macOS 원본 기준): 번역 주입(322행)→KO 열→씬 패치(902/1563/274)→폰트 주입(verify 90건)→`patched/macos/` 완성 + hashes.txt. macOS zip 패키징 검증(v0.1.1-test) + install.sh 설치·코드사인 완료. v0.1.1 릴리스 대기 | `9627c8e` |
-| 2026-08-14                                        | **v0.1.1 릴리스** — Windows+macOS+src zip 3종 (macOS 10MB·Windows 9MB·src 16MB). SHA256SUMS 자기 자신 포함 버그 수정(`find ! -name SHA256SUMS`) + 전체 검증 완료. [릴리스](https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.1) | 본 커밋 |
+| 2026-08-14                                        | **v0.1.1 릴리스** — Windows+macOS+src zip 3종 (macOS 10MB·Windows 9MB·src 16MB). SHA256SUMS 자기 자신 포함 버그 수정(`find ! -name SHA256SUMS`) + 전체 검증 완료. [릴리스](https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.1) | `7587793` |
+| 2026-08-14                                        | **release 스킬 현행화** — 릴리스 이력·zip `patched/<플랫폼>/` 구조 검증·SHA256SUMS 검증 절차 반영 | `e36fe80` |
+| 2026-08-14                                        | **Phase 6 완료 + 프로젝트 마감** — v0.1.1 배포(실게임 확인 포함)·버그 수정 2건 완료 처리, phase-6 핸드오프(보류 이슈 정리) 작성. Phase 0~7 전부 ✅ | 본 커밋 |
