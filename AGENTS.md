@@ -105,8 +105,10 @@
 ## 저장소 구조
 
 ```
-patched/      # 수정 파일 — level1~3은 git 관리, *.assets는 100MB 초과로 gitignore
-              # ⚠️ 배포는 package-release.sh의 dist/ zip으로 (플랫폼별 zip 분리 필요)
+patched/windows/  # Windows 설치본 — level1~3은 git 관리, *.assets는 100MB 초과로 gitignore
+patched/macos/    # macOS 설치본 (macOS 원본 기준 재생성) — 같은 구조
+                  # ⚠️ level1~3은 플랫폼별 (교차 복사 시 크래시 — 2026-08-12 실측)
+                  # ⚠️ 배포는 package-release.sh의 dist/ zip 3종 (windows/macos/src)
 original/     # 원본 백업 (git 제외)
 dist/         # 배포 zip 산출물 (git 제외, scripts/package-release.sh가 생성)
 translation/  # 번역 소스 JSON/CSV — runtime-20260315.json, manual-extra.json, manual-scenes.json, manual-rules.json, glossary.md(용어표)

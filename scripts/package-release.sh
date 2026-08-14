@@ -1,18 +1,25 @@
 #!/bin/bash
 # Twilight Struggle 한글 패치 — 배포 패키징 스크립트
 #
-# 용도: GitHub Releases 업로드용 zip 2종 + SHA256SUMS 생성
-#   사용자용: patched/* + 설치/복원 스크립트 + README (+ LICENSE/CREDITS 존재 시)
-#   재현용  : translation/ + fonts/ + 패치 파이프라인 스크립트 + 핵심 문서
+# 용도: GitHub Releases 업로드용 zip 3종 + SHA256SUMS 생성
+#   사용자용(windows): patched/windows/ + install-windows.ps1 + uninstall-windows.ps1 + README
+#   사용자용(macos)  : patched/macos/ + install.sh + uninstall.sh + restore-original.sh + README
+#   재현용(src)      : translation/ + fonts/ + 패치 파이프라인 스크립트 + 핵심 문서
 #
 # 사용법:
 #   ./scripts/package-release.sh [버전]
 #     예: ./scripts/package-release.sh v0.1.0
-#         → dist/twilight-struggle-kr-patch-v0.1.0.zip
+#         → dist/twilight-struggle-kr-patch-v0.1.0-windows.zip
+#         → dist/twilight-struggle-kr-patch-v0.1.0-macos.zip
 #         → dist/twilight-struggle-kr-patch-v0.1.0-src.zip
 #
 # 산출물: dist/ (gitignore 대상 — Releases 첨부로 업로드)
 # 업로드: gh release create <버전> dist/*.zip --title "..." --notes "..."
+#
+# ⚠️ patched/는 플랫폼별 (level1~3은 크래시 위험 — 2026-08-12 실측):
+#   patched/windows/  — Windows 원본 기준 (install-windows.ps1이 사용)
+#   patched/macos/    — macOS 원본 기준 (install.sh가 사용)
+#   존재하는 플랫폼만 패키징하며, 없으면 경고 후 스킵한다.
 
 set -euo pipefail
 
@@ -21,20 +28,39 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 VERSION="${1:-v0.1.0}"
 OUT_DIR="$PROJECT_DIR/dist"
 BASE="twilight-struggle-kr-patch-$VERSION"
-USER_ZIP="$OUT_DIR/$BASE.zip"
+WIN_ZIP="$OUT_DIR/$BASE-windows.zip"
+MAC_ZIP="$OUT_DIR/$BASE-macos.zip"
 SRC_ZIP="$OUT_DIR/$BASE-src.zip"
 
 cd "$PROJECT_DIR"
 
 # ── 사전 검증 ──
 echo "=== Twilight Struggle 한글 패치 패키징 ($VERSION) ==="
-for f in patched/resources.assets patched/sharedassets0.assets \
-         patched/level1 patched/level2 patched/level3; do
-    if [ ! -f "$f" ]; then
-        echo -e "\033[0;31m[오류] $f 없음 — 패치 파이프라인을 먼저 실행하세요.\033[0m"
-        exit 1
+
+check_platform() {  # $1=platform  $2=설치 스크립트
+    local plat="$1" script="$2"
+    local ok=1
+    for f in "patched/$plat/resources.assets" "patched/$plat/sharedassets0.assets" \
+             "patched/$plat/level1" "patched/$plat/level2" "patched/$plat/level3"; do
+        if [ ! -f "$f" ]; then
+            echo -e "\033[0;33m[경고] $f 없음 — $plat 패키지는 스킵.\033[0m"
+            ok=0
+        fi
+    done
+    if [ $ok -eq 1 ] && [ ! -f "$script" ]; then
+        echo -e "\033[0;33m[경고] $script 없음 — $plat 패키지는 스킵.\033[0m"
+        ok=0
     fi
-done
+    return $((1 - ok))
+}
+
+HAVE_WIN=0; HAVE_MAC=0
+check_platform windows scripts/install-windows.ps1 && HAVE_WIN=1
+check_platform macos scripts/install.sh && HAVE_MAC=1
+if [ $HAVE_WIN -eq 0 ] && [ $HAVE_MAC -eq 0 ]; then
+    echo -e "\033[0;31m[오류] 패치할 플랫폼 폴더가 없습니다 — 패치 파이프라인을 먼저 실행하세요.\033[0m"
+    exit 1
+fi
 
 WORK="$(mktemp -d)"
 trap 'rm -rf "$WORK"' EXIT
@@ -61,35 +87,41 @@ print('  zip ok:', dst)
 EOF
 }
 
-# ── 1. 사용자용 zip ──
+# ── 1. Windows 사용자용 zip ──
+if [ $HAVE_WIN -eq 1 ]; then
+    echo ""
+    echo "=== [1/3] Windows 패키지 생성 중... ==="
+    WIN_ROOT="$WORK/win/$BASE"
+    mkdir -p "$WIN_ROOT/patched" "$WIN_ROOT/scripts"
+    cp patched/windows/resources.assets patched/windows/sharedassets0.assets \
+       patched/windows/level1 patched/windows/level2 patched/windows/level3 \
+       patched/windows/hashes.txt "$WIN_ROOT/patched/"
+    cp scripts/install-windows.ps1 scripts/uninstall-windows.ps1 "$WIN_ROOT/scripts/"
+    cp README.md "$WIN_ROOT/"
+    ( cd "$WIN_ROOT" && find . -type f -print0 | sort -z | xargs -0 "${HASH_CMD[@]}" > SHA256SUMS )
+    zip_dir "$WIN_ROOT" "$WIN_ZIP"
+    echo "  ✅ $WIN_ZIP ($(du -h "$WIN_ZIP" | cut -f1))"
+fi
+
+# ── 2. macOS 사용자용 zip ──
+if [ $HAVE_MAC -eq 1 ]; then
+    echo ""
+    echo "=== [2/3] macOS 패키지 생성 중... ==="
+    MAC_ROOT="$WORK/mac/$BASE"
+    mkdir -p "$MAC_ROOT/patched" "$MAC_ROOT/scripts"
+    cp patched/macos/resources.assets patched/macos/sharedassets0.assets \
+       patched/macos/level1 patched/macos/level2 patched/macos/level3 \
+       patched/macos/hashes.txt "$MAC_ROOT/patched/"
+    cp scripts/install.sh scripts/uninstall.sh scripts/restore-original.sh "$MAC_ROOT/scripts/"
+    cp README.md "$MAC_ROOT/"
+    ( cd "$MAC_ROOT" && find . -type f -print0 | sort -z | xargs -0 "${HASH_CMD[@]}" > SHA256SUMS )
+    zip_dir "$MAC_ROOT" "$MAC_ZIP"
+    echo "  ✅ $MAC_ZIP ($(du -h "$MAC_ZIP" | cut -f1))"
+fi
+
+# ── 3. 재현용 zip ──
 echo ""
-echo "=== [1/2] 사용자용 패키지 생성 중... ==="
-USER_ROOT="$WORK/user/$BASE"
-mkdir -p "$USER_ROOT/patched" "$USER_ROOT/scripts"
-
-cp patched/resources.assets patched/sharedassets0.assets \
-   patched/level1 patched/level2 patched/level3 patched/hashes.txt \
-   "$USER_ROOT/patched/"
-cp scripts/install.sh scripts/install-windows.ps1 scripts/uninstall.sh scripts/uninstall-windows.ps1 \
-   scripts/restore-original.sh \
-   "$USER_ROOT/scripts/"
-cp README.md "$USER_ROOT/"
-
-for f in LICENSE.txt CREDITS.md; do
-    if [ -f "$f" ]; then
-        cp "$f" "$USER_ROOT/"
-    else
-        echo "  [경고] $f 없음 — Phase 6에서 라이선스/크레딧 정리 필요 (미포함)"
-    fi
-done
-
-( cd "$USER_ROOT" && find . -type f -print0 | sort -z | xargs -0 "${HASH_CMD[@]}" > SHA256SUMS )
-zip_dir "$USER_ROOT" "$USER_ZIP"
-echo "  ✅ $USER_ZIP ($(du -h "$USER_ZIP" | cut -f1))"
-
-# ── 2. 재현용 zip ──
-echo ""
-echo "=== [2/2] 재현용 패키지 생성 중... ==="
+echo "=== [3/3] 재현용 패키지 생성 중... ==="
 SRC_ROOT="$WORK/src/$BASE-src"
 mkdir -p "$SRC_ROOT/scripts" "$SRC_ROOT/docs"
 
@@ -117,6 +149,5 @@ echo "=== 완료 ($VERSION) ==="
 ls -lh "$OUT_DIR"
 echo ""
 echo "업로드 (GitHub Releases):"
-echo "  gh release create $VERSION $USER_ZIP $SRC_ZIP \\"
-echo "      --title \"Twilight Struggle 한글 패치 $VERSION\" \\"
-echo "      --notes \"설치 방법: zip 압축 해제 후 README.md 참조\""
+echo "  gh release create $VERSION dist/${BASE}-windows.zip dist/${BASE}-macos.zip dist/${BASE}-src.zip \\"
+echo "      --title \"$VERSION\" --notes \"...\""

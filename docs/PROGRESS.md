@@ -33,7 +33,7 @@
 1. ~~macOS 적용~~ — ✅ 완료 (2026-08-12): macOS 파이프라인 재현 + 실게임 확인 (메뉴/카드 한글, 턴 히스토리 영어는 보류 — Windows와 동일)
 2. ~~게임 실행 확인~~ — ✅ 메뉴·카드 한글 + 폰트 정상 (2026-08-12)
 3. ~~Steam 무결성 확인 후 재설치 테스트~~ — ✅ 완료 (2026-08-12): ${Key} 노출 → uninstall.sh → EN 복귀 → 재설치 확인
-4. Phase 6 배포 (package-release.sh 사용) — ⚠️ patched는 플랫폼별이므로 macOS용/Windows용 분리 필요
+4. Phase 6 배포 (package-release.sh 사용) — ✅ 플랫폼별 분리 완료: `patched/windows/`·`patched/macos/` (2026-08-14)
 
 ## 핵심 확정 사항
 
@@ -58,7 +58,7 @@
   Windows `HKCU\Software\Playdek\TwilightStruggle` 레지스트리 `localization_h2525087814`,
   macOS `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist`의 `localization`.
   ⚠️ **게임 내 언어 선택 UI는 없음 (2026-08-12 실측)**. 언어=KO 구형 설정은 KO 열 덕분에 계속 한글 표시 (호환).
-- **배포물은 `scripts/package-release.sh`가 생성하는 zip 2종** (사용자용 ~9MB / 재현용 ~3MB, SHA256SUMS 포함). `patched/*.assets`는 100MB 제한으로 gitignore지만 **압축 시 104MB→~8MB**라 GitHub Releases 첨부(파일당 2GB)로 충분 — gitignore는 Releases 업로드와 무관
+- **배포물은 `scripts/package-release.sh`가 생성하는 zip 3종** (windows/macos 사용자용 ~9MB + 재현용 ~3MB, SHA256SUMS 포함). **patched/는 플랫폼별 분리**: `patched/windows/`(Windows 원본 기준)·`patched/macos/`(macOS 원본 기준) — level1~3은 교차 복사 시 크래시 (2026-08-12 실측), resources.assets는 동일 빌드 전제 하에 공용. `patched/*/*.assets`는 100MB 제한으로 gitignore지만 **압축 시 104MB→~8MB**라 GitHub Releases 첨부(파일당 2GB)로 충분 — gitignore는 Releases 업로드와 무관
 - **SDF 폰트 교체 도구: [Unity_Font_Replacer](https://github.com/snowyegret23/Unity_Font_Replacer) v1.2.8.** `make_sdf.py`로 TTF→SDF 생성, `unity_font_replacer_ko.exe`로 게임 에셋 자동 교체.
 - **⚠️ UnityPy(공식) `env.file.save()`는 IL2CPP 게임에서 MonoBehaviour m_Script 참조를 재매핑해 TMP 폰트를 파괴한다** (Phase 4 기존 patched가 m_Script 11,890건 손상). → 포크 UnityPy + TypeTreeGeneratorAPI(typetree_generator) 방식으로 재구축 완료.
 - **⚠️ UnityPy 저장 시 로드 파일과 저장 파일은 분리해야 한다** — 같은 경로 저장 시 지연 스트리밍(Replacer)이 깨져 EOFError 발생 (씬 패치에서 확인).
@@ -85,7 +85,7 @@
 - 재적용: `scripts/install.sh` / 제거: `scripts/uninstall.sh` (Windows: `install-windows.ps1`/`uninstall-windows.ps1`)
 - 잔존 영어/`□` 발견 시 → `translation/manual-*.json`에 추가 → 재주입 (inject → add_ko → 필요시 폰트 → verify)
 - **알려진 잔여 개선 포인트**: 멀티플레이 검증(미실시), 폰트 줄 간격 보조 보정(`--use-game-line-metrics`, 미적용), 씬 미매칭 잔존(더미/크레딧/UI 라벨 — 무해)
-- 주의: `patched/*.assets`는 GitHub 100MB 제한 초과로 gitignore — 재생성 방법은 Phase 문서 참조 (level1~3은 git 관리)
+- 주의: `patched/*/*.assets`는 GitHub 100MB 제한 초과로 gitignore — 재생성 방법은 Phase 문서 참조 (level1~3은 git 관리)
 
 ## 로그
 
@@ -139,3 +139,5 @@
 | 2026-08-13                                        | **Phase 7 완료 + 배포 보류 결정** — 한글화 마무리, 한계 문서화 | 본 커밋 |
 | 2026-08-13                                        | **IMPACT SDF 3종 → D2Coding** — 트랙 첫 칸 H 넘침 해결 (원인: Paperlogy H 폭이 숫자보다 20% 넓음), 실게임 확인 완료 | `7ecf94e` |
 | 2026-08-14                                        | **EN 로케일 덮어쓰기 전환 (언어 설정 무조작)** — Common_Strings EN 열(2열)에도 한글 주입, 설치/제거 스크립트에서 레지스트리·plist 조작·기록·복원 전부 제거. 유저는 기본 EN 사용 → 설치=한글, 제거=영어. KO 열은 구형 KO 설정 호환으로 유지 | 본 커밋 |
+| 2026-08-14                                        | **EN 로케일 실게임 검증 완료 (Windows)** — 레지스트리 EN 설정에서 메뉴/카드 한글 확인. Steam 위치 자동 탐색 추가 (레지스트리+VDF, D 드라이브 검증) | `64a512f`, `e9cf6dd` |
+| 2026-08-14                                        | **patched 플랫폼별 분리** — `patched/windows/`(Windows 원본 기준)·`patched/macos/`(macOS 재생성 예정), install 스크립트 경로 갱신, inject/patch_scenes에 `--platform` 인자, package-release.sh zip 3종(windows/macos/src) 개편 | 본 커밋 |

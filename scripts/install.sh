@@ -18,7 +18,7 @@ NC='\033[0m'
 # ── 경로 설정 ──
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
-PATCHED_DIR="$PROJECT_DIR/patched"
+PATCHED_DIR="$PROJECT_DIR/patched/macos"
 
 # Steam 게임 경로 (macOS) — 기본 경로 + libraryfolders.vdf 자동 탐색 (다른 볼륨 설치 대응)
 GAME_APP="$HOME/Library/Application Support/Steam/steamapps/common/Twilight Struggle/TwilightStruggle.app"

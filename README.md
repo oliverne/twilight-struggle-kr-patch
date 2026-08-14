@@ -68,7 +68,7 @@ powershell -ExecutionPolicy Bypass -File scripts\install-windows.ps1
 
 1. 게임 종료 상태에서 `TwilightStruggle_Data/` 폴더의 다음 파일을 백업:
    `resources.assets`, `sharedassets0.assets`, `level1`, `level2`, `level3`
-2. `patched/` 폴더의 같은 이름 파일을 게임 Data 폴더에 복사
+2. `patched/<플랫폼>/` 폴더 (windows 또는 macos)의 같은 이름 파일을 게임 Data 폴더에 복사
 3. macOS는 추가로 `codesign --force --sign -` 재서명 필요
 
 ### 제거 (영문/원래 언어 복귀)
@@ -85,7 +85,7 @@ powershell -ExecutionPolicy Bypass -File scripts\install-windows.ps1
 ## 안전 원칙
 
 - Steam 설치 폴더에서 직접 개발하지 않습니다.
-- 원본은 `original/`에 백업하고, 수정 결과는 `patched/`에 둡니다.
+- 원본은 `original/`에 백업하고, 수정 결과는 `patched/windows/`(Windows)·`patched/macos/`(macOS)에 플랫폼별로 둡니다.
 - 모든 실제 패치 적용은 멱등적인 설치 스크립트로 수행합니다.
 - macOS에서 게임 파일을 수정하면 애드혹 코드 서명이 필요합니다.
 - 원본 백업과 레거시 패치 파일은 용량 및 저작권 문제로 Git에 포함하지 않습니다.

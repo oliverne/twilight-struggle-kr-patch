@@ -53,7 +53,7 @@
 | `TwilightStruggle_Data/level1~3` | macOS 원본 기준 씬 패치본 (Windows 씬 패치본과 호환 불가) |
 | ~~plist `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist`~~ | ~~`localization` = `KO` (macOS 키)~~ — **2026-08-14 폐기: 언어 설정 무조작** (EN 로케일 덮어쓰기 방식) |
 
-> 현재 저장소 `patched/`는 **macOS 원본 기준**이다. 설치·제거는 `scripts/install.sh` / `scripts/uninstall.sh`가 백업·복원을 자동 처리한다 (언어 설정은 건드리지 않음 — 2026-08-14 개정).
+> 저장소 `patched/`는 **플랫폼별 분리**되어 있다: `patched/windows/`(Windows 원본 기준, 2026-08-14 갱신)·`patched/macos/`(macOS 원본 기준 — macOS에서 재생성). 설치·제거는 각 플랫폼 스크립트가 백업·복원을 자동 처리한다 (언어 설정은 건드리지 않음 — 2026-08-14 개정).
 
 ## 전체 정리 (완전 되돌리기)
 

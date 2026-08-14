@@ -7,10 +7,12 @@ TextMeshProUGUI.m_text(head_end+56) / Text.m_Text(head_end+112)를 raw 레벨에
 blob은 head + 새 문자열 + 나머지 순으로 재구성한다.
 
 사용법:
-  python scripts/patch_scenes.py --gamepath <게임루트> [--outdir <출력폴더>]
+  python scripts/patch_scenes.py --gamepath <게임루트> [--outdir <출력폴더>] [--platform windows|macos]
   python scripts/patch_scenes.py --gamepath <게임루트> --apply
 
-  기본: 패치된 level 파일을 --outdir(기본: patched/)에 저장
+  기본: 패치된 level 파일을 --outdir(기본: patched/<플랫폼>/)에 저장
+  ⚠️ level1~3은 플랫폼별 원본 기준으로 재실행해야 한다 (Windows 씬 패치본을
+     macOS에 복사 시 크래시 — 2026-08-12 실측)
   --apply: 원본을 original/에 백업하고 Steam 폴더에 직접 적용
 """
 import argparse
@@ -163,6 +165,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--gamepath", required=True)
     ap.add_argument("--outdir", default=None)
+    ap.add_argument("--platform", choices=["windows", "macos"], default=None,
+                    help="대상 플랫폼 — 출력 기본 경로 patched/<플랫폼>/ 지정")
     ap.add_argument("--apply", action="store_true", help="Steam 폴더에 직접 적용 (백업 후)")
     args = ap.parse_args()
 
@@ -173,7 +177,12 @@ def main() -> int:
     exact, norm, manual = load_translation_maps(base)
     print(f"번역 소스: 정확 {len(exact)} / 정규화 {len(norm)} / 수동 {len(manual)}")
 
-    outdir = Path(args.outdir) if args.outdir else base / "patched"
+    if args.outdir:
+        outdir = Path(args.outdir)
+    elif args.platform:
+        outdir = base / "patched" / args.platform
+    else:
+        outdir = base / "patched"
     outdir.mkdir(parents=True, exist_ok=True)
 
     for level in LEVELS:

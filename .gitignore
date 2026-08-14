@@ -23,7 +23,8 @@ fonts/**/*.png
 .DS_Store
 
 # 패치 결과물 중 대형 에셋 (재생성 가능, GitHub 100MB 제한 초과)
-patched/*.assets
+# ⚠️ 플랫폼별 분리: patched/windows/ (Windows 설치본), patched/macos/ (macOS 설치본)
+patched/*/*.assets
 
 # 배포 zip 산출물 (scripts/package-release.sh 생성, GitHub Releases로 업로드)
 dist/
@@ -50,6 +51,6 @@ fonts/backup-*/
 tools/font-inject-work-mac/
 
 
-# macOS 씬 패치 임시 출력 (patched/가 최종)
+# macOS 씬 패치 임시 출력 (patched/windows·macos/가 최종)
 patched-mac/
 

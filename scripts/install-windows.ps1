@@ -25,7 +25,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$PatchedDir = Join-Path $PSScriptRoot "..\patched"
+$PatchedDir = Join-Path $PSScriptRoot "..\patched\windows"
 $Files = @("resources.assets", "sharedassets0.assets", "level1", "level2", "level3")
 
 function Write-Step($msg)  { Write-Host "==> $msg" -ForegroundColor Cyan }

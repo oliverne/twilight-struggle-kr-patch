@@ -15,12 +15,15 @@
   - KO 열(8/9/10열)은 add_ko_columns.py가 EN 열 값(한글)을 복사해 유지
 
 사용법:
-  python scripts/inject_translations.py [--gamepath <게임루트>] [--src <원본assets>] [--out <출력>]
+  python scripts/inject_translations.py [--gamepath <게임루트>] [--src <원본assets>] [--out <출력>] [--platform windows|macos]
 
   --gamepath: 게임 루트 경로 (IL2CPP 바이너리/메타데이터 탐색용).
               생략 시 original/resources.assets 기준으로 시도하되
               UnityPy 포크의 typetree_generator 없이 저장하면 참조가 깨지므로
               게임 경로 지정을 권장한다.
+  --platform: windows 또는 macos — 기본 출력을 patched/<플랫폼>/로 지정
+              (⚠️ level1~3은 플랫폼별이라 씬은 patch_scenes.py를 각 플랫폼 원본으로
+               재실행해야 하며, resources.assets는 동일 빌드 전제 하에 공용)
 
 출력:
   patched/resources.assets (수정된 에셋)
@@ -303,7 +306,9 @@ def main():
     parser = argparse.ArgumentParser(description="번역 주입 (무손상 저장)")
     parser.add_argument("--gamepath", default=None, help="게임 루트 경로 (IL2CPP 탐색용)")
     parser.add_argument("--src", default=None, help="원본 assets 경로 (기본: original/resources.assets)")
-    parser.add_argument("--out", default=None, help="출력 경로 (기본: patched/resources.assets)")
+    parser.add_argument("--out", default=None, help="출력 경로 (기본: patched/<platform>/resources.assets)")
+    parser.add_argument("--platform", choices=["windows", "macos"], default=None,
+                        help="대상 플랫폼 — 출력 기본 경로 patched/<플랫폼>/ 지정")
     args = parser.parse_args()
 
     base = Path(__file__).resolve().parent.parent
@@ -427,6 +432,8 @@ def main():
     
     # 저장
     out_dir = base / "patched"
+    if args.platform:
+        out_dir = base / "patched" / args.platform
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = Path(args.out) if args.out else out_dir / "resources.assets"
     with open(out_path, "wb") as f:
