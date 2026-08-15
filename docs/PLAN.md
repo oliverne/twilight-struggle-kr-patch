@@ -112,6 +112,7 @@
 
 - `original/`은 부피가 크므로 git에 넣지 않고 로컬에만 보관 (`.gitignore`), 또는 Git LFS
 - `patched/*/*.assets`도 108MB로 GitHub 100MB 제한을 초과하므로 gitignore — **배포는 `scripts/package-release.sh`의 dist/ zip으로** (압축 시 ~8MB, Releases 첨부 가능). `patched/<플랫폼>/level1~3`은 git 관리
+- **`patched/*/*.assets`는 `.assets.gz`(결정적 gzip ~8MB)로 git 추적** (2026-08-15 확정 — Git LFS 대신 채택). 작업 후 `scripts/assets-sync.py compress` → `.gz` 커밋, pull 후 `decompress`. 두 컴퓨터(맥/윈도우) 간 대형 에셋 공유 목적. Git LFS는 버전 누적으로 무료 1GB를 금방 초과해 부적합
 - 설치 스크립트는 **멱등성** 있게: 재실행해도 안전, 업데이트 후 재적용 한 줄로 해결
 
 ---

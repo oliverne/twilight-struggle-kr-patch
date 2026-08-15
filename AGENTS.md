@@ -91,6 +91,7 @@
 - **Unity_Font_Replacer** v1.2.8: `make_sdf.py`로 Unity 없이 TTF → TMP SDF 생성, `unity_font_replacer_ko.exe --parse/--list`로 에셋 주입 (⚠️ `oneshot`은 없음, `Managed` 폴더 제거 필요 — 스킬 참조). Windows exe 외에 **macOS 소스 실행도 가능** (Windows 빌드 `GameAssembly.dll`+`global-metadata.dat` 필요, venv 패치 2건 — 스킬 "macOS 소스 실행 시 유의점")
 - **번역 주입**: `scripts/inject_translations.py` (TextAsset) — 포크 UnityPy + typetree_generator 필수 (공식 UnityPy 저장 금지)
 - **씬 패치**: `scripts/patch_scenes.py` (level1-3 하드코딩 문자열) — Unity 6 헤드 레이아웃 실측 기반 (m_text @ head_end+56 / +112)
+- **에셋 공유**: `scripts/assets-sync.py` — `patched/*/*.assets`(gitignore, 100MB+) ↔ `.assets.gz`(git 추적, 결정적 gzip ~8MB). 작업 후 `compress` → 커밋, pull 후 `decompress` (2026-08-15 — Git LFS 대신 채택). `inject_translations.py`는 저장 후 자동으로 `compress` 호출 (`--no-sync`로 끔)
 - **번역 소스**: `translation/runtime-20260315.json`(런타임 TSV) + `manual-extra.json`(TextAsset 잔존키) + `manual-scenes.json`(씬 문자열) + `manual-rules.json`(규칙북, Phase 7)
 - 폰트: **D2Coding**(본문), **Paperlogy 5 Medium**(제목) — 모두 재배포 허용 라이선스(SIL OFL 1.1)만 사용
 - IL2CPP 바이너리 패치는 **최후의 수단** (턴 히스토리는 길이 제약으로 사실상 불가 → BepInEx 훅)
@@ -108,15 +109,16 @@
 ## 저장소 구조
 
 ```
-patched/windows/  # Windows 설치본 — level1~3은 git 관리, *.assets는 100MB 초과로 gitignore
+patched/windows/  # Windows 설치본 — level1~3은 git 관리, *.assets는 100MB 초과로 gitignore (단, *.assets.gz는 git 추적 — assets-sync.py)
 patched/macos/    # macOS 설치본 (macOS 원본 기준 재생성 완료 — 2026-08-14, v0.1.1 포함)
                   # ⚠️ level1~3은 플랫폼별 (교차 복사 시 크래시 — 2026-08-12 실측)
+                  # ⚠️ *.assets는 플랫폼별 별도 파일 — 두 플랫폼 .gz 모두 git 관리 (2026-08-15)
                   # ⚠️ 배포는 package-release.sh의 dist/ zip 3종 (windows/macos/src)
 original/     # 원본 백업 (git 제외)
 dist/         # 배포 zip 산출물 (git 제외, scripts/package-release.sh가 생성)
 translation/  # 번역 소스 JSON/CSV — runtime-20260315.json, manual-extra.json, manual-scenes.json, manual-rules.json, glossary.md(용어표)
 fonts/        # TTF 원본 + 생성된 SDF 산출물
-scripts/      # install/verify/inject/patch 스크립트
+scripts/      # install/verify/inject/patch 스크립트 + assets-sync.py(에셋 압축/해제)
 docs/         # PLAN.md 등
 website/      # 배포 웹사이트 (Astro + GitHub Pages) — 소개·다운로드·설치·크레딧
 PRODUCT.md    # 제품 맥락 (impeccable init)

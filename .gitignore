@@ -28,7 +28,9 @@ fonts/**/*.png
 
 # 패치 결과물 중 대형 에셋 (재생성 가능, GitHub 100MB 제한 초과)
 # ⚠️ 플랫폼별 분리: patched/windows/ (Windows 설치본), patched/macos/ (macOS 설치본)
+# ⚠️ .assets.gz는 git 추적 (scripts/assets-sync.py로 압축/해제, 2026-08-15)
 patched/*/*.assets
+!patched/*/*.assets.gz
 
 # 배포 zip 산출물 (scripts/package-release.sh 생성, GitHub Releases로 업로드)
 dist/

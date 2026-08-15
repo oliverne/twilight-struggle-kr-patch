@@ -15,7 +15,7 @@
   - KO 열(8/9/10열)은 add_ko_columns.py가 EN 열 값(한글)을 복사해 유지
 
 사용법:
-  python scripts/inject_translations.py [--gamepath <게임루트>] [--src <원본assets>] [--out <출력>] [--platform windows|macos]
+  python scripts/inject_translations.py [--gamepath <게임루트>] [--src <원본assets>] [--out <출력>] [--platform windows|macos] [--no-sync]
 
   --gamepath: 게임 루트 경로 (IL2CPP 바이너리/메타데이터 탐색용).
               생략 시 original/resources.assets 기준으로 시도하되
@@ -24,6 +24,8 @@
   --platform: windows 또는 macos — 기본 출력을 patched/<플랫폼>/로 지정
               (⚠️ level1~3은 플랫폼별이라 씬은 patch_scenes.py를 각 플랫폼 원본으로
                재실행해야 하며, resources.assets는 동일 빌드 전제 하에 공용)
+  --no-sync: 저장 후 patched/*/*.assets.gz 자동 재압축을 끈다.
+              (기본: 출력이 patched/ 안이면 scripts/assets-sync.py compress 자동 실행)
 
 출력:
   patched/resources.assets (수정된 에셋)
@@ -38,6 +40,7 @@
 
 import json
 import struct
+import subprocess
 import sys
 from pathlib import Path
 
@@ -309,6 +312,8 @@ def main():
     parser.add_argument("--out", default=None, help="출력 경로 (기본: patched/<platform>/resources.assets)")
     parser.add_argument("--platform", choices=["windows", "macos"], default=None,
                         help="대상 플랫폼 — 출력 기본 경로 patched/<플랫폼>/ 지정")
+    parser.add_argument("--no-sync", action="store_true",
+                        help="저장 후 patched/*/*.assets.gz 자동 재압축 끔 (기본: 출력이 patched/ 안이면 자동)")
     args = parser.parse_args()
 
     base = Path(__file__).resolve().parent.parent
@@ -440,6 +445,17 @@ def main():
         f.write(env.file.save(packer="original"))
 
     print(f"\n→ {out_path}")
+
+    # 자동 .gz 동기화 — 출력이 patched/ 안이면 assets-sync.py compress 실행 (--no-sync로 끔)
+    out_resolved = out_path.resolve()
+    patched_resolved = (base / "patched").resolve()
+    if not args.no_sync and str(out_resolved).startswith(str(patched_resolved)):
+        sync_py = Path(__file__).resolve().parent / "assets-sync.py"
+        ret = subprocess.run([sys.executable, str(sync_py), "compress"])
+        if ret.returncode != 0:
+            print("  ⚠️  .gz 동기화 실패 — python scripts/assets-sync.py compress 를 직접 실행하세요.")
+    elif not args.no_sync:
+        print("  (출력이 patched/ 밖 — .gz 동기화 생략)")
 
     # EN 로케일 덮어쓰기 검증 (Common_Strings — EN 열에 한글 주입 확인)
     print("\n=== EN 로케일 덮어쓰기 검증 (Common_Strings) ===")

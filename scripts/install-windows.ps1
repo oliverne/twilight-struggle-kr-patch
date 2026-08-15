@@ -91,6 +91,19 @@ if (-not (Test-Path $GameData)) {
     Write-Host "  -GameData <경로>로 직접 지정할 수 있습니다."
     exit 1
 }
+
+# ── .assets.gz 자동 해제 (git clone 후 첫 실행 대응) ──
+$gzs = Get-ChildItem -Path $PatchedDir -Filter "*.assets.gz" -ErrorAction SilentlyContinue
+if ($gzs) {
+    $py = Get-Command python -ErrorAction SilentlyContinue
+    if ($py) {
+        Write-Step "git 공유 압축 에셋(.assets.gz) 자동 해제"
+        & python (Join-Path $PSScriptRoot "assets-sync.py") decompress
+    } else {
+        Write-Warn "python 없음 — .assets.gz 해제를 건너뜁니다"
+    }
+}
+
 if (-not (Test-Path (Join-Path $PatchedDir "resources.assets"))) {
     Write-Host "[오류] 패치 파일이 없습니다: $PatchedDir" -ForegroundColor Red
     exit 1

@@ -24,6 +24,8 @@ PYTHONIOENCODING=utf-8 .venv/bin/python scripts/<스크립트>.py ...           
 
 **파이프라인 순서**: `inject_translations.py` → `add_ko_columns.py` → (`patch_scenes.py`) → 폰트 주입(apply_font_mapping.py 포함) → `verify_assets.py` → 설치
 
+**에셋 공유 워크플로 (2026-08-15)**: `patched/*/*.assets`는 GitHub 100MB 제한으로 gitignore지만 **`.assets.gz`(압축 시 ~8MB)는 git 추적**한다 (Git LFS 불필요). 패치 재생성 후 `python scripts/assets-sync.py compress` → `.gz`를 함께 커밋, pull 후 `python scripts/assets-sync.py decompress`. **`inject_translations.py`는 저장 후 `patched/` 내부 출력이면 자동으로 compress를 호출**한다 (`--no-sync`로 끔). 설치 스크립트(`install.sh`/`install-windows.ps1`)는 `.assets`가 없으면 자동 해제한다.
+
 ## 2️⃣ 보조 도구 (재실행 시 필요)
 
 | 스크립트 | 용도 | 언제 |
@@ -33,6 +35,7 @@ PYTHONIOENCODING=utf-8 .venv/bin/python scripts/<스크립트>.py ...           
 | `extract_charset.py` | 번역 소스 ko 필드에서 사용 글자 문자셋 추출 → `fonts/chars.txt` | 새 번역 추가로 글리프 누락 시 |
 | `backup-original.sh` | 게임 원본 → `original/` 백업 (멱등) | 업데이트/실험 전 |
 | `restore-original.sh` | `original/` → 게임 폴더 복원 (멱등) | 복구 절차 검증 시 |
+| `assets-sync.py` | `patched/*/*.assets` ↔ `.assets.gz` 동기화 (결정적 gzip, mtime=0). 작업 후 `compress`, pull 후 `decompress` | 두 컴퓨터(맥/윈도우) 간 대형 에셋 공유 |
 | `install.sh` | **macOS 설치**: patched/ → Steam + 코드사인 자동 (멱등) | macOS 적용 시 |
 | `install-windows.ps1` | **Windows 설치**: patched/ → Steam (백업 → 복사 → SHA256 검증, 멱등) | Windows 적용 시 |
 

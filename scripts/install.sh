@@ -43,6 +43,16 @@ GAME_DATA="$GAME_APP/Contents/Resources/Data"
 echo -e "${YELLOW}=== Twilight Struggle 한글 패치 설치 ===${NC}"
 echo ""
 
+# ── .assets.gz 자동 해제 (git clone 후 첫 실행 대응) ──
+if ls "$PATCHED_DIR"/*.assets.gz >/dev/null 2>&1; then
+    if command -v python3 >/dev/null 2>&1; then
+        echo -e "${YELLOW}[정보] git 공유 압축 에셋(.assets.gz) 자동 해제 중...${NC}"
+        python3 "$SCRIPT_DIR/assets-sync.py" decompress
+    else
+        echo -e "${YELLOW}[경고] python3 없음 — .assets.gz 해제를 건너뜁니다.${NC}"
+    fi
+fi
+
 if [ ! -d "$GAME_DATA" ]; then
     echo -e "${RED}[오류] 게임을 찾을 수 없습니다:${NC}"
     echo "  $GAME_DATA"

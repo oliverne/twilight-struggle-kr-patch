@@ -61,6 +61,7 @@
   macOS `~/Library/Preferences/unity.Playdek.TwilightStruggle.plist`의 `localization`.
   ⚠️ **게임 내 언어 선택 UI는 없음 (2026-08-12 실측)**. 언어=KO 구형 설정은 KO 열 덕분에 계속 한글 표시 (호환).
 - **배포물은 `scripts/package-release.sh`가 생성하는 zip 3종** (windows/macos 사용자용 ~9MB + 재현용 ~3MB, SHA256SUMS 포함). **patched/는 플랫폼별 분리**: `patched/windows/`(Windows 원본 기준)·`patched/macos/`(macOS 원본 기준) — level1~3은 교차 복사 시 크래시 (2026-08-12 실측), resources.assets는 동일 빌드 전제 하에 공용. `patched/*/*.assets`는 100MB 제한으로 gitignore지만 **압축 시 104MB→~8MB**라 GitHub Releases 첨부(파일당 2GB)로 충분 — gitignore는 Releases 업로드와 무관
+- **`patched/*/*.assets`는 `.assets.gz`(결정적 gzip ~8MB)로 git 추적 (2026-08-15 확정 — Git LFS 대신 채택)**. 두 컴퓨터(맥/윈도우) 간 대형 에셋 공유 목적. `scripts/assets-sync.py compress/decompress` + 설치 스크립트 자동 해제. Git LFS는 버전 누적으로 무료 1GB 초과 위험
 - **SDF 폰트 교체 도구: [Unity_Font_Replacer](https://github.com/snowyegret23/Unity_Font_Replacer) v1.2.8.** `make_sdf.py`로 TTF→SDF 생성, `unity_font_replacer_ko.exe`로 게임 에셋 자동 교체.
 - **⚠️ UnityPy(공식) `env.file.save()`는 IL2CPP 게임에서 MonoBehaviour m_Script 참조를 재매핑해 TMP 폰트를 파괴한다** (Phase 4 기존 patched가 m_Script 11,890건 손상). → 포크 UnityPy + TypeTreeGeneratorAPI(typetree_generator) 방식으로 재구축 완료.
 - **⚠️ UnityPy 저장 시 로드 파일과 저장 파일은 분리해야 한다** — 같은 경로 저장 시 지연 스트리밍(Replacer)이 깨져 EOFError 발생 (씬 패치에서 확인).
@@ -87,7 +88,7 @@
 - 재적용: `scripts/install.sh` / 제거: `scripts/uninstall.sh` (Windows: `install-windows.ps1`/`uninstall-windows.ps1`) — Steam 업데이트/무결성 원복 시 `twilight-struggle-update` 스킬로 재적용
 - 잔존 영어/`□` 발견 시 → `translation/manual-*.json`에 추가 → 재주입 (inject → add_ko → 필요시 폰트 → verify)
 - **보류 이슈**: 배포 후 외부 사용자 설치 검증, 멀티플레이 검증, 폰트 줄 간격 보조 보정, ISSUES #6·#7·#9 — 상세는 phase-6 핸드오프 참조
-- 주의: `patched/*/*.assets`는 GitHub 100MB 제한 초과로 gitignore — 재생성 방법은 Phase 문서 참조 (level1~3은 git 관리)
+- 주의: `patched/*/*.assets`는 GitHub 100MB 제한 초과로 gitignore지만 **`.assets.gz`(결정적 gzip ~8MB)는 git 추적** — 재생성/공유 방법은 Phase 문서 참조 (level1~3은 git 관리, `.gz`는 `scripts/assets-sync.py`로 압축/해제)
 
 ## 로그
 
@@ -151,3 +152,4 @@
 | 2026-08-14                                        | **v0.1.1 릴리스** — Windows+macOS+src zip 3종 (macOS 10MB·Windows 9MB·src 16MB). SHA256SUMS 자기 자신 포함 버그 수정(`find ! -name SHA256SUMS`) + 전체 검증 완료. [릴리스](https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.1) | `7587793` |
 | 2026-08-14                                        | **release 스킬 현행화** — 릴리스 이력·zip `patched/<플랫폼>/` 구조 검증·SHA256SUMS 검증 절차 반영 | `e36fe80` |
 | 2026-08-14                                        | **Phase 6 완료 + 프로젝트 마감** — v0.1.1 배포(실게임 확인 포함)·버그 수정 2건 완료 처리, phase-6 핸드오프(보류 이슈 정리) 작성. Phase 0~7 전부 ✅ | 본 커밋 |
+| 2026-08-15                                        | **patched 에셋 git 공유 전환** — `scripts/assets-sync.py` (결정적 gzip mtime=0, compress/decompress/status, 왕복 검증). `patched/*/*.assets.gz`(총 ~17MB) git 추적, `.assets`는 gitignore 유지. 설치 스크립트 자동 해제 + **`inject_translations.py` 저장 후 자동 compress (`--no-sync`로 끔)** 추가. Git LFS는 버전 누적으로 무료 1GB 초과 위험 → 채택 안 함 | 본 커밋 |
