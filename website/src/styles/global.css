@@ -1,7 +1,8 @@
 /* ═══════════════════════════════════════════════════════════════════
    TWILIGHT STRUGGLE 한글 패치 — 배포 사이트
-   세계: 정보 문서(Classified Dossier) · 게임 BI 룩앤필
-   팔레트: 네이비 표지 / 크림 서류지 / 신호 빨강 도장 / 미군 블루
+   간결한 안내면. 네이비 표지 + 크림 면. 도트 세계지도 배경(냉전 진영: 서반구 미주=파랑 / 동반구 구대륙=빨강). 빨강 도장 CTA.
+   히어로 우측: 파일철에 꽂힌 증거 인화지 3장(계약 인쇄지) — 네이비 표지에 크림 면이 풀로 붙은 재질.
+   팔레트: 네이비 표지 / 크림 면 / 신호 빨강 / 미군 블루
    타이포: Paperlogy(제목) · D2Coding(본문·라벨) · Oswald(라틴 디스플레이)
    ═══════════════════════════════════════════════════════════════════ */
 
@@ -11,7 +12,7 @@
   --navy-800: #0e1a2f;
   --navy-700: #16263f;
   --navy-600: #20344f;
-  /* 서류지(크림) */
+  /* 크림 면 */
   --paper: #e9e0cb;
   --paper-deep: #d9cdb2;
   --paper-line: rgba(32, 36, 46, 0.16);
@@ -78,7 +79,6 @@ a {
   border-radius: 2px;
 }
 /* 네이비 위 포커스 링은 밝은 빨강으로 */
-.site-head a:focus-visible,
 .site-foot a:focus-visible,
 .filebox a:focus-visible,
 .cmd .copy:focus-visible {
@@ -127,12 +127,6 @@ a {
   width: min(1080px, 100% - 3rem);
   margin-inline: auto;
 }
-.section-label {
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--steel-dim);
-}
 :is(h1, h2, h3) {
   font-family: var(--ff-display);
   font-weight: 500;
@@ -159,78 +153,7 @@ a {
   transform-origin: left;
 }
 
-/* ── 헤더 ────────────────────────────────────────────────────────── */
-.site-head {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: color-mix(in srgb, var(--navy-900) 92%, transparent);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(170, 180, 196, 0.18);
-  color: var(--steel);
-}
-.site-head .container {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  height: 3.5rem;
-}
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  text-decoration: none;
-  color: var(--cream);
-  font-family: var(--ff-latin);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.brand .mark {
-  width: 1.4rem;
-  height: 1.4rem;
-  border: 2px solid var(--red);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  position: relative;
-}
-.brand .mark::after {
-  content: '';
-  position: absolute;
-  inset: 3px;
-  border: 1px dashed var(--red);
-  border-radius: 50%;
-}
-.brand .mark b {
-  font-family: var(--ff-mono);
-  font-weight: 400;
-  font-size: 0.55rem;
-  color: var(--red);
-  letter-spacing: 0;
-}
-.site-nav {
-  margin-left: auto;
-  display: flex;
-  gap: 1.25rem;
-  font-size: 0.8rem;
-}
-.site-nav a {
-  color: var(--steel);
-  text-decoration: none;
-  letter-spacing: 0.06em;
-  padding: 0.25rem 0;
-  border-bottom: 1px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
-}
-.site-nav a:hover {
-  color: var(--cream);
-  border-bottom-color: var(--red);
-}
-
-/* ── 히어로 — 파일 표지 ───────────────────────────────────────────── */
+/* ── 히어로 — 파일 표지 + 증거 인화지 ═══════════════════════════════ */
 .hero {
   position: relative;
   color: var(--cream);
@@ -256,6 +179,14 @@ a {
 .dotmap .east {
   background-image: radial-gradient(circle at 1.5px 1.5px, rgba(200, 16, 46, 0.8) 1.6px, transparent 1.8px);
 }
+/* 모바일: cover가 좁고 긴 히어로에서 지도를 가운데 세로 띠로 자르므로
+   contain로 전 세계가 한 띠로 보이게 한다. (inline mask-size는 !important로 겹침) */
+@media (max-width: 600px) {
+  .dotmap i {
+    -webkit-mask-size: contain !important;
+    mask-size: contain !important;
+  }
+}
 .hero-vignette {
   position: absolute;
   inset: 0;
@@ -264,107 +195,88 @@ a {
     linear-gradient(rgba(10, 19, 34, 0.25), rgba(10, 19, 34, 0.55));
 }
 
+/* 히어로 — 단일 컬럼 중앙 정렬, 콘텐츠는 제목 + 다운로드 도장뿐 */
 .hero-inner {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  padding: clamp(3.5rem, 9vh, 6.5rem) 0 clamp(3rem, 8vh, 5.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(24rem, 74vh, 42rem);
+  padding: clamp(4rem, 10vh, 7rem) 0 clamp(2.5rem, 6vh, 4rem);
 }
 .hero-copy {
-  max-width: 44rem;
-}
-.hero-fileid {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--steel-dim);
-  margin-bottom: 1.75rem;
-}
-.hero-fileid::before {
-  content: '';
-  width: 2.5rem;
-  height: 1px;
-  background: var(--red);
+  min-width: 0;
 }
 .hero-title {
   font-family: var(--ff-latin);
   font-weight: 600;
-  font-size: clamp(2.6rem, 7.5vw, 5.6rem);
+  font-size: clamp(2.4rem, 7.5vw, 5.6rem);
   line-height: 0.98;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   color: var(--white);
 }
-.hero-title .kr {
+/* 기밀 해제 오프닝 — 제목 줄 단위 마스킹 바 */
+.hero-title .mask-line {
   display: block;
+  overflow: hidden;
+  position: relative;
+}
+.hero-title .mask-line-inner {
+  display: block;
+  line-height: 1.06;
+}
+.hero-title .kr {
   font-family: var(--ff-display);
   font-weight: 500;
-  font-size: clamp(1.7rem, 4.2vw, 3.1rem);
+  font-size: clamp(1.6rem, 3.8vw, 2.9rem);
   letter-spacing: -0.02em;
   color: var(--cream);
-  margin-top: 0.35rem;
-}
-.hero-lead {
-  margin: 1.5rem 0 0;
-  max-width: 34rem;
-  color: var(--steel);
-  font-size: 1rem;
-}
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.75rem;
-  margin-top: 2rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  color: var(--steel-dim);
-  text-transform: uppercase;
-}
-.hero-meta b {
-  color: var(--steel);
-  font-weight: 400;
+  margin-top: 0.45rem;
 }
 .hero-actions {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.5rem;
-  margin-top: 2.5rem;
+  justify-content: center;
+  margin-top: 2.75rem;
 }
-.hero-note {
-  font-size: 0.78rem;
-  color: var(--steel-dim);
-  max-width: 18rem;
+/* 살아있는 상황판 — Canvas(스캔선·접촉점), 도트맵 위·비네트 아래 */
+.war-room {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
-.hero-foot {
-  position: relative;
-  border-top: 1px solid var(--navy-600);
-  padding: 0.9rem 0;
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--steel-dim);
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.hero-foot .declass {
-  color: var(--red-bright);
-}
-.hero-foot .declass::before {
-  content: '';
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  background: var(--red-bright);
-  margin-right: 7px;
-  position: relative;
-  top: -1px;
+/* 기밀 해제 오프닝 애니메이션 — 들쭉날쭉 마스킹 바가 찢기며 제목 해제 */
+@media (prefers-reduced-motion: no-preference) {
+  .mask-line-inner {
+    animation: hero-rise 0.8s cubic-bezier(0.22, 0.9, 0.3, 1) backwards;
+    animation-delay: calc(var(--i, 0) * 0.16s + 0.45s);
+  }
+  .mask-bar {
+    position: absolute;
+    inset: -14% -2% 0 0;
+    background: var(--navy-900);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), 96.5% 100%, 93% calc(100% - 5px), 89.5% calc(100% - 11px), 86% 100%, 82.5% calc(100% - 4px), 79% calc(100% - 13px), 75.5% 100%, 72% calc(100% - 6px), 68.5% calc(100% - 10px), 65% 100%, 61.5% calc(100% - 4px), 58% calc(100% - 12px), 54.5% 100%, 51% calc(100% - 5px), 47.5% calc(100% - 11px), 44% 100%, 40.5% calc(100% - 6px), 37% calc(100% - 13px), 33.5% 100%, 30% calc(100% - 4px), 26.5% calc(100% - 10px), 23% 100%, 19.5% calc(100% - 5px), 16% calc(100% - 12px), 12.5% 100%, 9% calc(100% - 6px), 5.5% calc(100% - 10px), 2% 100%, 0 calc(100% - 6px));
+    pointer-events: none;
+    animation: hero-tear 0.75s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    animation-delay: calc(var(--i, 0) * 0.16s + 0.32s);
+  }
+  .hero-actions .stamp-btn {
+    animation: hero-stamp 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+    animation-delay: 1.35s;
+  }
+  @keyframes hero-rise {
+    from { transform: translateY(118%); }
+    to { transform: translateY(0); }
+  }
+  @keyframes hero-tear {
+    to { transform: translateY(-118%); }
+  }
+  @keyframes hero-stamp {
+    from { opacity: 0; transform: scale(0.5) rotate(-12deg); }
+  }
 }
 
 /* ── 도장(스탬프) 언어 ────────────────────────────────────────────── */
@@ -436,35 +348,11 @@ a {
   width: 1.1rem;
   height: 1.1rem;
 }
-/* 미니 도장 — 미첨부/확인 */
-.stamp-mini {
-  display: inline-block;
-  font-family: var(--ff-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.14em;
-  color: var(--red);
-  border: 2px solid var(--red);
-  border-radius: 2px;
-  padding: 0.1rem 0.4rem;
-  rotate: -8deg;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
 
-/* ── 서류(섹션) ───────────────────────────────────────────────────── */
+/* ── 섹션(서류 면) ───────────────────────────────────────────────── */
 .sheets {
   background: var(--paper);
   position: relative;
-}
-.sheets::before {
-  /* 서류 뭉치 가장자리 — 겹친 종이 그림자 */
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, rgba(32, 36, 46, 0.07) 1px, transparent 1px) 0 0 / 24px 100%,
-    linear-gradient(180deg, rgba(32, 36, 46, 0.09) 0%, transparent 8%);
-  pointer-events: none;
 }
 .sheet {
   position: relative;
@@ -474,247 +362,149 @@ a {
 .sheet:last-child {
   border-bottom: 0;
 }
-/* 붉은 제본 테이프 */
-.sheet::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: var(--red);
-  opacity: 0.85;
-}
 .sheet-grid {
   display: grid;
-  grid-template-columns: 7fr 5fr;
+  grid-template-columns: 5fr 7fr;
   gap: clamp(2rem, 5vw, 4rem);
   align-items: start;
 }
-.sheet-grid.single {
-  grid-template-columns: 1fr;
-}
-.file-tab {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.6rem;
-  font-family: var(--ff-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  border: 1px solid var(--ink);
-  border-bottom: 0;
-  border-radius: 3px 3px 0 0;
-  padding: 0.35rem 0.8rem 0.3rem;
-  background: color-mix(in srgb, var(--paper) 70%, var(--white));
-  position: relative;
-  top: -0.6rem;
-}
-.file-tab b {
-  color: var(--red-deep);
-  font-weight: 400;
+/* 긴 설치 명령 코드(nowrap)가 그리드 트랙을 강제 확장하지 않게 */
+.sheet-grid > * {
+  min-width: 0;
 }
 .sheet h2 {
   font-size: clamp(1.7rem, 3.4vw, 2.5rem);
-  margin: 0 0 1.1rem;
+  margin: 0 0 1.25rem;
 }
 .sheet h3 {
   font-size: 1.15rem;
   margin: 0 0 0.5rem;
 }
 .sheet .lead {
-  margin: 0 0 1.4rem;
+  margin: 0 0 1.6rem;
   color: var(--ink-soft);
   max-width: 36rem;
 }
 .sheet p {
   margin: 0 0 1rem;
 }
-.rule {
-  border: 0;
-  border-top: 1px solid var(--paper-line);
-  margin: 1.75rem 0;
-}
 
-/* 마스킹 리빌 — 시그니처 인터랙션 */
-[data-reveal] {
-  position: relative;
+.box-title {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin: 0 0 1.25rem;
 }
-.mask-strip {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: var(--ink);
-  overflow: hidden;
-  transform-origin: top;
-  transition: transform 0.9s var(--ease-out);
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-.mask-strip::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 8px;
-  background: var(--ink);
-  clip-path: polygon(0 100%, 100% 100%, 100% 45%, 0 70%);
-}
-[data-reveal].in .mask-strip {
-  transform: translateY(-110%);
-}
-[data-reveal] > :not(.mask-strip) {
-  opacity: 0.001;
-  transition: opacity 0.6s var(--ease-out) 0.35s;
-}
-[data-reveal].in > :not(.mask-strip) {
-  opacity: 1;
-}
-
-/* ── 개요 검토표 ──────────────────────────────────────────────────── */
-.ledger {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.85rem;
-  margin: 1.25rem 0 0.5rem;
-}
-.ledger th,
-.ledger td {
-  text-align: left;
-  padding: 0.55rem 0.25rem;
-  border-bottom: 1px solid var(--paper-line);
-  vertical-align: top;
-}
-.ledger th {
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  font-weight: 400;
-}
-.ledger td:last-child {
-  text-align: right;
-  white-space: nowrap;
-}
-.ok {
-  color: var(--red-deep);
+.cmd-note {
+  margin: 0.4rem 0 0;
   font-size: 0.72rem;
-  letter-spacing: 0.1em;
-}
-.redacted-line {
-  color: var(--ink-soft);
-  font-size: 0.8rem;
-  margin-top: 1.1rem;
-}
-.redacted-line b {
-  display: inline-block;
-  background: var(--ink);
-  color: transparent;
-  padding: 0 0.35rem;
-  border-radius: 1px;
-  user-select: none;
+  color: var(--steel-dim);
 }
 
-/* ── 입수(다운로드) ───────────────────────────────────────────────── */
-.os-picker {
-  display: grid;
-  gap: 0.75rem;
-  margin: 1.1rem 0 1.4rem;
-}
-.os-opt {
-  position: relative;
-}
-.os-opt input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-.os-opt label {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+/* ── 다운로드 — 중앙 정렬 단순 탭 세그먼트 ──────────────────────── */
+.download-block {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.9rem;
+  text-align: center;
+}
+.download-block h2 {
+  text-align: center;
+}
+.dl-tabs {
+  display: inline-flex;
+  margin-inline: auto;
   border: 1px solid var(--ink);
-  background: color-mix(in srgb, var(--paper) 78%, var(--white));
-  padding: 0.85rem 1rem;
-  cursor: pointer;
   border-radius: var(--radius);
-  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--paper) 78%, var(--white));
 }
-.os-opt label:hover {
-  background: var(--white);
-}
-.os-opt input:checked + label {
-  background: var(--white);
-  border-color: var(--red);
-  box-shadow: inset 0 0 0 1px var(--red);
-}
-.os-opt input:focus-visible + label {
-  outline: 2px dashed var(--red);
-  outline-offset: 2px;
-}
-.os-glyph {
-  width: 2rem;
-  height: 2rem;
-  color: var(--ink);
-}
-.os-name {
+.dl-tab {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0.7rem 1.7rem;
   font-family: var(--ff-display);
   font-weight: 700;
   font-size: 1rem;
-}
-.os-desc {
-  display: block;
-  font-size: 0.75rem;
+  letter-spacing: -0.01em;
   color: var(--ink-soft);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
-.os-file {
-  text-align: right;
-  font-size: 0.72rem;
-  color: var(--ink-soft);
-  line-height: 1.5;
+.dl-tab.active {
+  background: var(--red);
+  color: var(--white);
 }
-.os-file b {
-  display: block;
+.dl-tab:not(.active):hover {
+  background: var(--white);
   color: var(--ink);
-  font-weight: 400;
-  white-space: nowrap;
 }
+.dl-tab:focus-visible {
+  outline: 2px dashed var(--red);
+  outline-offset: -4px;
+}
+
 .dl-panel {
+  width: 100%;
   border: 1px solid var(--ink);
   border-radius: var(--radius);
   background: var(--navy-900);
   color: var(--cream);
-  padding: 1.1rem 1.2rem;
+  padding: 1.5rem 1.4rem;
   display: none;
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.6rem;
 }
 .dl-panel.on {
   display: flex;
 }
-.dl-panel .dl-file {
+.dl-meta {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.55rem;
+  row-gap: 0.15rem;
+}
+.dl-file {
+  font-family: var(--ff-mono);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--cream);
+  word-break: break-all;
+  letter-spacing: 0.01em;
+}
+.dl-sep {
+  color: var(--steel-dim);
+}
+.dl-sub {
   font-size: 0.78rem;
   color: var(--steel);
-  word-break: break-all;
+  line-height: 1.6;
 }
-.dl-panel .dl-file b {
-  display: block;
-  color: var(--cream);
-  font-size: 0.85rem;
-  margin-bottom: 0.15rem;
+.dl-sub b {
+  color: var(--red-bright);
+  font-weight: 400;
 }
 .dl-panel .stamp-btn {
-  flex: none;
-  font-size: 0.95rem;
-  padding: 0.7rem 1.2rem;
-  rotate: 0deg;
+  align-self: center;
+  margin-top: 0.35rem;
 }
 .file-note {
   font-size: 0.78rem;
   color: var(--ink-soft);
-  margin: 0.9rem 0 0;
+  margin: 1rem 0 0;
+  text-align: center;
 }
 .file-note a {
   color: var(--red-deep);
@@ -730,8 +520,6 @@ a {
   border-radius: var(--radius);
   box-shadow: var(--shadow-paper);
   padding: 1.75rem 1.6rem;
-  position: sticky;
-  top: 4.5rem;
 }
 .filebox .box-head {
   display: flex;
@@ -776,6 +564,10 @@ a {
   line-height: 1;
   color: var(--red-bright);
   width: 2.2rem;
+}
+/* 긴 설치 명령(nowrap)이 1fr 트랙을 강제 확장하지 않게 */
+.step > div {
+  min-width: 0;
 }
 .step h3 {
   font-size: 1rem;
@@ -843,135 +635,83 @@ a {
   margin-right: 0.3rem;
 }
 
-/* ── 한계·FAQ ─────────────────────────────────────────────────────── */
-.limits {
-  list-style: none;
-  margin: 0 0 1.75rem;
-  padding: 0;
-  display: grid;
-  gap: 0.6rem;
+/* ── 다운로드 + 설치 — 우측 고정 열(하나의 영역) ─────────────────── */
+.download-zone {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 3.5vw, 2.75rem);
+  min-width: 0;
+  grid-column: 2;
+  position: sticky;
+  top: 1rem;
 }
-.limits li {
-  padding-left: 1.4rem;
-  position: relative;
-  font-size: 0.9rem;
-  color: var(--ink);
+.download-zone > * {
+  min-width: 0;
 }
-.limits li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: var(--red-deep);
+
+/* ── 알아두면 좋은 점 — 좌측 열 평문 메모(서류) ─────────────────── */
+.notes-block {
+  grid-column: 1;
 }
-.faq {
+.notes {
   border-top: 1px solid var(--paper-line);
 }
-.faq details {
+.note {
+  padding: 1.15rem 0;
   border-bottom: 1px solid var(--paper-line);
 }
-.faq summary {
-  cursor: pointer;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 0.25rem;
-  font-family: var(--ff-display);
-  font-weight: 700;
-  font-size: 1rem;
+.note:last-child {
+  border-bottom: 0;
 }
-.faq summary::-webkit-details-marker {
-  display: none;
+.note-q {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: baseline;
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.55;
 }
-.faq summary::after {
-  content: '+';
+.note-mark {
   font-family: var(--ff-mono);
-  color: var(--red);
-  font-size: 1.2rem;
-  transition: transform 0.25s var(--ease-out);
+  font-weight: 400;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--red-deep);
+  padding-top: 0.15rem;
 }
-.faq details[open] summary::after {
-  transform: rotate(45deg);
-}
-.faq .a {
-  padding: 0 0.25rem 1.1rem;
-  font-size: 0.88rem;
+.note-a {
+  margin: 0.5rem 0 0 2.35rem;
+  font-size: 0.86rem;
   color: var(--ink-soft);
   max-width: 40rem;
+  line-height: 1.7;
 }
-.faq .a a {
+.note-a a {
   color: var(--red-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: break-all;
 }
 
-/* ── 스크린샷 슬롯 ────────────────────────────────────────────────── */
-.shot {
-  margin: 1.75rem 0 0;
-}
-.shot-plate {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  border: 1px solid var(--ink);
-  background:
-    linear-gradient(45deg, transparent 49%, var(--paper-line) 49% 51%, transparent 51%) 0 0 / 48px 48px,
-    var(--paper-deep);
-  display: grid;
-  place-items: center;
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-.shot-plate::before,
-.shot-plate::after {
-  content: '';
-  position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(32, 36, 46, 0.35);
-  pointer-events: none;
-}
-.shot-plate::after {
-  inset: 15px;
-  border-color: transparent;
-  border-top-color: rgba(32, 36, 46, 0.35);
-  border-bottom-color: rgba(32, 36, 46, 0.35);
-}
-.shot-note {
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 0.35rem;
-}
-.shot-note .lbl {
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-.shot-note .sub {
-  font-size: 0.7rem;
-  color: var(--ink-soft);
-  opacity: 0.75;
-}
-.shot-plate .stamp-mini {
-  position: absolute;
-  right: 2rem;
-  bottom: 1.4rem;
-  z-index: 2;
-  background: color-mix(in srgb, var(--paper-deep) 65%, transparent);
-}
-.shot figcaption {
-  font-size: 0.72rem;
-  color: var(--ink-soft);
-  margin-top: 0.45rem;
-  letter-spacing: 0.06em;
-}
-
-/* ── 발주(푸터) ───────────────────────────────────────────────────── */
+/* ── 크레딧 · 라이선스(푸터) ──────────────────────────────────────── */
 .site-foot {
   background: var(--navy-900);
   color: var(--steel);
   border-top: 5px solid var(--red);
   padding: clamp(2.5rem, 6vh, 4rem) 0 2rem;
+}
+.foot-title {
+  font-family: var(--ff-mono);
+  font-weight: 400;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--steel-dim);
+  border-bottom: 1px solid var(--navy-600);
+  margin: 0 0 2rem;
+  padding-bottom: 0.6rem;
 }
 .foot-grid {
   display: grid;
@@ -1027,36 +767,44 @@ a {
   .sheet-grid {
     grid-template-columns: 1fr;
   }
-  .filebox {
+  .sheet-grid > * {
+    grid-column: auto;
+  }
+  .download-zone {
     position: static;
+  }
+  /* 모바일: 파일함 뒤 메모를 헤어라인으로 분리 */
+  .notes-block {
+    border-top: 1px solid var(--paper-line);
+    padding-top: clamp(1.25rem, 3.5vh, 2rem);
   }
   .foot-grid {
     grid-template-columns: 1fr;
     gap: 1.75rem;
   }
-  .site-nav {
-    gap: 0.85rem;
-    font-size: 0.72rem;
-  }
-  .brand .word {
-    display: none;
-  }
 }
 @media (max-width: 560px) {
-  .os-opt label {
-    grid-template-columns: auto 1fr;
-  }
-  .os-file {
-    grid-column: 2;
-    text-align: left;
+  .dl-tab {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.92rem;
   }
   .dl-panel {
-    flex-direction: column;
-    align-items: stretch;
+    padding: 1.3rem 1.1rem;
   }
-  .hero-actions {
-    flex-direction: column;
-    align-items: flex-start;
+  .dl-panel .stamp-btn {
+    align-self: stretch;
+    justify-content: center;
+    rotate: 0deg;
+  }
+  .dl-tabs {
+    align-self: stretch;
+  }
+  .note-q {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+  .note-a {
+    margin-left: 0;
   }
 }
 
@@ -1071,11 +819,8 @@ a {
     transition: none !important;
     animation: none !important;
   }
-  [data-reveal] > :not(.mask-strip) {
-    opacity: 1 !important;
-  }
-  [data-reveal] .mask-strip {
-    transform: none !important;
+  /* 기밀 해제 마스킹 바는 항상 숨김 — 제목이 처음부터 보인다 */
+  .mask-bar {
     display: none;
   }
 }

@@ -1,18 +1,22 @@
 ---
 import Base from '../layouts/Base.astro';
-import StampRound from '../components/StampRound.astro';
-import ShotSlot from '../components/ShotSlot.astro';
 
+const base = import.meta.env.BASE_URL;
 const RELEASE = 'v0.1.1';
 const GH = 'https://github.com/oliverne/twilight-struggle-kr-patch';
 const DL = `${GH}/releases/download/${RELEASE}`;
 const F = (os: string) => `twilight-struggle-kr-patch-${RELEASE}-${os}.zip`;
 
+// 도트 세계지도 마스크 — 서반구(미주=파랑) / 동반구(구대륙=빨강)
+// 절대경로('/') 대신 base를 붙여야 GitHub Pages 프로젝트 경로에서도 불러온다.
+const maskStyle = (file: string) =>
+  `-webkit-mask-image:url('${base}img/${file}');mask-image:url('${base}img/${file}');-webkit-mask-size:cover;mask-size:cover;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;`;
+
 const osList = [
   {
     id: 'windows',
     name: 'Windows',
-    desc: 'Windows 10 / 11 · Steam 데스크톱판',
+    desc: 'Windows 10 / 11',
     file: F('windows'),
     size: '9.3MB',
     url: `${DL}/${F('windows')}`,
@@ -22,262 +26,184 @@ const osList = [
   {
     id: 'macos',
     name: 'macOS',
-    desc: 'macOS 10.13 이상 · Steam 데스크톱판',
+    desc: 'macOS 10.13 이상',
     file: F('macos'),
     size: '9.8MB',
     url: `${DL}/${F('macos')}`,
     cmd: 'chmod +x scripts/install.sh && ./scripts/install.sh',
     cmdNote: '압축을 푼 폴더에서 터미널을 열어 실행',
   },
+] as const;
+
+const notes = [
   {
-    id: 'deck',
-    name: 'Steam Deck · Linux',
-    desc: 'Proton 사용 · Windows 빌드 적용',
-    file: F('windows'),
-    size: '9.3MB',
-    url: `${DL}/${F('windows')}`,
-    cmd: 'powershell -ExecutionPolicy Bypass -File .\\scripts\\install-windows.ps1',
-    cmdNote: '데스크톱 모드에서 Windows용 zip 사용 (Proton)',
+    q: '턴 히스토리 로그와 튜토리얼 안내 문구는 게임 코드 안에 들어 있어 영어로 남습니다.',
+    a: '파일 패치로는 닿지 않는 영역입니다. 게임 플레이 자체에는 영향이 없습니다.',
+  },
+  {
+    q: '싱글플레이 기준으로 동작을 확인했습니다. 멀티플레이 매칭은 아직 검증하지 않았습니다.',
+    a: '혼자 즐기거나 로컬 대국은 문제없이 한글로 표시됩니다.',
+  },
+  {
+    q: '보드 지도에 새겨진 국가명은 그림이라 이 패치의 범위에서 다루지 않습니다.',
+    a: '그래픽 자산이라 번역∙교체가 불가합니다. 카드와 패널의 국가명은 한글로 표시됩니다.',
+  },
+  {
+    q: '설치했는데 영어로 보여요',
+    a: 'Steam의 파일 무결성 확인이나 게임 업데이트로 패치가 원래대로 돌아갔을 수 있습니다. 위 설치 절차를 다시 실행하면 한글로 돌아옵니다.',
+  },
+  {
+    q: '원래대로 되돌리고 싶어요',
+    a: 'zip 안의 uninstall 스크립트를 실행하거나, Steam에서 파일 무결성 확인을 돌리면 원본 파일로 복원됩니다.',
+  },
+  {
+    q: '모바일에서도 되나요?',
+    a: '이 패치는 Steam 데스크톱판 전용입니다. 모바일 앱은 별도 빌드라 적용할 수 없습니다.',
+  },
+  {
+    q: '문제를 발견했어요',
+    a: `GitHub Issues로 알려주세요. 번역 오타나 어색한 문장도 모두 환영합니다. → ${GH}/issues`,
   },
 ] as const;
 ---
 <Base
   title="Twilight Struggle 한글 패치 · Steam판을 한국어로"
-  description="Steam판 Twilight Struggle의 비공식 한글 패치. 카드·메뉴·인게임 UI·규칙북·도움말을 모두 한국어로. 설치 약 3분, 제거하면 원래대로."
+  description="Steam판 Twilight Struggle의 비공식 한글 패치. 카드·메뉴·인게임 UI·규칙북·도움말을 한국어로. 무료 다운로드, 설치하면 바로 한글."
 >
-  <!-- ══ 파일 표지 ══ -->
+  <!-- ══ 히어로 — 기밀 해제 시네마틱 + 살아있는 도트 상황판 (콘텐츠: 제목·CTA뿐) ══ -->
   <section class="hero" id="top" aria-labelledby="hero-title">
     <div class="dotmap" aria-hidden="true">
-      <i class="west"></i>
-      <i class="east"></i>
+      <i class="west" id="map-west" style={maskStyle('world-mask-west.png')}></i>
+      <i class="east" id="map-east" style={maskStyle('world-mask-east.png')}></i>
     </div>
+    <canvas class="war-room" id="war-room" aria-hidden="true"></canvas>
     <div class="hero-vignette" aria-hidden="true"></div>
 
     <div class="container hero-inner">
-      <div class="hero-copy" data-reveal>
-        <p class="hero-fileid">문서번호 TS-KR-001 · 공개 전환</p>
+      <div class="hero-copy">
         <h1 class="hero-title" id="hero-title">
-          Twilight Struggle
-          <span class="kr">한글 패치</span>
+          <span class="mask-line" style="--i: 0">
+            <span class="mask-line-inner">Twilight Struggle</span>
+            <span class="mask-bar" aria-hidden="true"></span>
+          </span>
+          <span class="mask-line kr" style="--i: 1">
+            <span class="mask-line-inner">한글 패치</span>
+            <span class="mask-bar" aria-hidden="true"></span>
+          </span>
         </h1>
-        <p class="hero-lead">
-          Steam판 트와일라잇 스트러글의 카드·메뉴·규칙북까지, 게임 전체를 한국어로
-          바꿉니다. 언어 설정은 건드리지 않습니다. 설치하면 한글, 복원하면 영어.
-        </p>
-        <dl class="hero-meta">
-          <div><dt class="section-label">대상</dt><b>Windows · macOS · Steam Deck</b></div>
-          <div><dt class="section-label">버전</dt><b>{RELEASE}</b></div>
-          <div><dt class="section-label">설치</dt><b>3단계 · 무료</b></div>
-        </dl>
+
         <div class="hero-actions">
           <a class="stamp-btn" href="#download">
             <svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5 12 7.5"/></svg>
-            해제 · 다운로드
+            다운로드
           </a>
-          <p class="hero-note">zip 안에 설치 스크립트가 들어 있습니다. 원본 파일은 설치 시 자동 백업됩니다.</p>
         </div>
       </div>
-      <div class="hero-stamp" aria-hidden="true">
-        <StampRound label="해제" sub="DECLASSIFIED" ring="· TS-KR · 2026 · DECLASSIFIED ·" rotate="8deg" />
-      </div>
-    </div>
-
-    <div class="container">
-      <p class="hero-foot">
-        <span class="declass">기밀 해제 · 공개 전환됨 (DECLASSIFIED)</span>
-        <span>작성 2026.08 · 갱신 {RELEASE}</span>
-      </p>
     </div>
   </section>
 
   <div class="sheets">
-    <!-- ══ 서류 01 · 개요 ══ -->
-    <section class="sheet" id="intro" aria-labelledby="intro-h">
-      <div class="container" data-reveal>
-        <div class="mask-strip" aria-hidden="true"></div>
-        <p class="file-tab"><b>서류 01</b>&nbsp;·&nbsp;개요</p>
-        <h2 id="intro-h">게임 전체를 한국어로</h2>
-        <p class="lead">
-          Twilight Struggle의 텍스트는 게임 파일에 세 겹으로 들어 있습니다. 이 패치는 그 모든
-          겹을 한국어로 바꿉니다. 카드와 국가 텍스트, 메뉴·설정·로비, 인게임 HUD, 규칙북과
-          도움말까지.
-        </p>
-        <table class="ledger">
-          <thead>
-            <tr>
-              <th scope="col">항목</th>
-              <th scope="col">상태</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>카드 · 국가 텍스트</td><td class="ok">✓ 한글</td></tr>
-            <tr><td>메뉴 · 설정 · 로비</td><td class="ok">✓ 한글</td></tr>
-            <tr><td>인게임 HUD · 판세</td><td class="ok">✓ 한글</td></tr>
-            <tr><td>규칙북 · 도움말</td><td class="ok">✓ 한글</td></tr>
-          </tbody>
-        </table>
-        <p class="redacted-line">검토: <b>████████</b> · 승인: <b>████</b> · 기밀 해제: <b>2026.08</b></p>
-        <ShotSlot n={1} caption="슬롯 1 · 게임 화면 (16:9, 교체 예정)" />
-      </div>
-    </section>
-
-    <!-- ══ 서류 02 · 입수 + 철 문서함 · 설치 ══ -->
+    <!-- ══ 다운로드 · 설치 · 알아두면 좋은 점 — 한 장의 서류 ══ -->
     <section class="sheet" id="download" aria-labelledby="dl-h">
-      <div class="container sheet-grid" data-reveal>
-        <div class="mask-strip" aria-hidden="true"></div>
-        <div>
-          <p class="file-tab"><b>서류 02</b>&nbsp;·&nbsp;입수</p>
-          <h2 id="dl-h">내 컴퓨터에 맞는 파일을 받으세요</h2>
-          <p class="lead">셋 중 하나만 받으면 됩니다. 받은 파일은 나중에 다시 다운로드할 필요가 없습니다.</p>
+      <div class="container sheet-grid">
+        <div class="download-zone">
+          <div class="download-block">
+            <h2 id="dl-h">다운로드</h2>
 
-          <div class="os-picker" id="os-picker" role="radiogroup" aria-label="운영체제 선택">
+            <div class="dl-tabs" id="os-picker" role="tablist" aria-label="운영체제 선택">
+              {osList.map((os) => (
+                <button type="button" class="dl-tab" data-os={os.id} role="tab" aria-controls={`dl-${os.id}`} aria-selected="false">
+                  {os.name}
+                </button>
+              ))}
+            </div>
+
             {osList.map((os) => (
-              <div class="os-opt">
-                <input type="radio" name="os" id={`os-${os.id}`} value={os.id} data-os={os.id} />
-                <label for={`os-${os.id}`}>
-                  <svg class="os-glyph" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-                    {os.id === 'windows' && (
-                      <>
-                        <rect x="5" y="5" width="22" height="22" />
-                        <path d="M5 11h22M11 5v22" />
-                      </>
-                    )}
-                    {os.id === 'macos' && (
-                      <>
-                        <rect x="4" y="7" width="24" height="15" rx="1.5" />
-                        <path d="M4 27h24" />
-                      </>
-                    )}
-                    {os.id === 'deck' && (
-                      <>
-                        <rect x="4" y="8" width="20" height="13" rx="2" />
-                        <circle cx="11" cy="14.5" r="0.5" fill="currentColor" />
-                        <circle cx="17" cy="14.5" r="0.5" fill="currentColor" />
-                        <path d="M24 12v5l4-2v-1z" />
-                        <path d="M26 11v2M26 17v2" />
-                      </>
-                    )}
-                  </svg>
-                  <span>
-                    <span class="os-name">{os.name}</span>
-                    <span class="os-desc">{os.desc}</span>
-                  </span>
-                  <span class="os-file"><b>{os.file}</b>{os.size}</span>
-                </label>
+              <div class="dl-panel" data-os={os.id} id={`dl-${os.id}`} role="tabpanel" aria-live="polite">
+                <p class="dl-meta">
+                  <b class="dl-file">{os.file}</b>
+                  <span class="dl-sep" aria-hidden="true">·</span>
+                  <span class="dl-sub">zip {os.size} · SHA256SUMS 포함 · 원본은 설치할 때 <b>.bak</b>으로 백업</span>
+                </p>
+                <a class="stamp-btn" href={os.url} download>
+                  <svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5 12 7.5"/></svg>다운로드
+                </a>
+              </div>
+            ))}
+            <p class="file-note">
+              어느 파일인지 모르겠다면 게임을 설치한 컴퓨터의 운영체제가 기준입니다.
+              <a href={`${GH}/releases/tag/${RELEASE}`}>릴리스 페이지</a>에서도 받을 수 있습니다.
+            </p>
+          </div>
+
+          <aside class="filebox" id="install" aria-labelledby="install-h">
+            <p class="box-head">설치 · 세 단계로 끝 · {RELEASE}</p>
+            <h2 id="install-h" class="box-title">3단계로 끝납니다</h2>
+
+            <ol class="steps">
+              <li class="step">
+                <span class="num" aria-hidden="true">01</span>
+                <div>
+                  <h3>게임 종료 · 압축 해제</h3>
+                  <p>게임을 완전히 종료하고, 받은 zip 파일을 아무 폴더에나 압축 해제합니다.</p>
+                </div>
+              </li>
+              <li class="step">
+                <span class="num" aria-hidden="true">02</span>
+                <div>
+                  <h3>설치 스크립트 실행</h3>
+                  {osList.map((os) => (
+                    <>
+                      <p class="cmd" data-os={os.id} data-cmd>
+                        <code>{os.cmd}</code>
+                        <button type="button" class="copy" data-copy={os.cmd}>복사</button>
+                      </p>
+                      <p class="cmd-note" data-os={os.id} data-cmdnote>{os.cmdNote}</p>
+                    </>
+                  ))}
+                </div>
+              </li>
+              <li class="step">
+                <span class="num" aria-hidden="true">03</span>
+                <div>
+                  <h3>게임 실행</h3>
+                  <p>Steam에서 게임을 시작하면 한글로 표시됩니다. 되돌리려면 zip 안의 uninstall 스크립트를 실행하세요.</p>
+                </div>
+              </li>
+            </ol>
+            <p class="box-warn">
+              <svg class="warn-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2.5 15 14H1z"/><path d="M8 7v3.5"/><path d="M8 12.5v.5"/></svg>
+              <b>참고</b> Steam 업데이트나 <em>파일 무결성 확인</em>으로 영어로 돌아오면, 위 절차를 다시 실행하면 한글로 돌아옵니다.
+            </p>
+          </aside>
+        </div>
+
+        <div class="notes-block" id="faq">
+          <h2>알아두면 좋은 점</h2>
+          <p class="lead">솔직하게 말씀드리면, 이 패치가 닿지 못하는 곳이 있습니다.</p>
+
+          <div class="notes">
+            {notes.map((nt, i) => (
+              <div class="note">
+                <p class="note-q"><span class="note-mark">Q{String(i + 1).padStart(2, '0')}</span>{nt.q}</p>
+                <p class="note-a">{nt.a}</p>
               </div>
             ))}
           </div>
-
-          {osList.map((os) => (
-            <div class="dl-panel" data-os={os.id} id={`dl-${os.id}`} aria-live="polite">
-              <span class="dl-file">
-                <b>{os.file}</b>
-                zip {os.size} · SHA256SUMS 포함 · 원본은 설치 시 <b>.bak</b> 백업
-              </span>
-              <a class="stamp-btn" href={os.url} download>
-                <svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5 12 7.5"/></svg>다운로드
-              </a>
-            </div>
-          ))}
-          <p class="file-note">
-            어느 파일인지 모르겠다면? 게임을 설치한 컴퓨터의 운영체제가 기준입니다. 릴리스
-            <a href={`${GH}/releases/tag/${RELEASE}`}>릴리스 페이지</a>에서도 받을 수 있습니다.
-          </p>
-
-          <ShotSlot n={2} caption="슬롯 2 · 인게임 보드 화면 (16:9, 교체 예정)" />
         </div>
-
-        <aside class="filebox" id="install" aria-labelledby="install-h">
-          <p class="box-head">철 문서함 · 설치 절차 · {RELEASE}</p>
-          <h2 id="install-h" class="section-label" style="margin-bottom:1rem">세 단계로 끝납니다</h2>
-
-          <ol style="list-style:none;margin:0;padding:0">
-            <li class="step">
-              <span class="num" aria-hidden="true">01</span>
-              <div>
-                <h3>게임 종료 · 압축 해제</h3>
-                <p>게임을 완전히 종료하고, 받은 zip 파일을 아무 폴더에나 압축 해제합니다.</p>
-              </div>
-            </li>
-            <li class="step">
-              <span class="num" aria-hidden="true">02</span>
-              <div>
-                <h3>설치 스크립트 실행</h3>
-                {osList.map((os) => (
-                  <>
-                    <p class="cmd" data-os={os.id} data-cmd>
-                      <code>{os.cmd}</code>
-                      <button type="button" class="copy" data-copy={os.cmd}>복사</button>
-                    </p>
-                    <p data-os={os.id} data-cmdnote style="margin-top:.4rem">{os.cmdNote}</p>
-                  </>
-                ))}
-              </div>
-            </li>
-            <li class="step">
-              <span class="num" aria-hidden="true">03</span>
-              <div>
-                <h3>게임 실행</h3>
-                <p>Steam에서 게임을 시작하면 한글로 표시됩니다. 제거하려면 uninstall 스크립트를 실행하세요.</p>
-              </div>
-            </li>
-          </ol>
-          <p class="box-warn">
-            <svg class="warn-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2.5 15 14H1z"/><path d="M8 7v3.5"/><path d="M8 12.5v.5"/></svg>
-            <b>참고</b> Steam 업데이트·무결성 확인 후 영어로 돌아오면, 이 절차를 다시 실행하면 됩니다.
-          </p>
-        </aside>
-      </div>
-    </section>
-
-    <!-- ══ 서류 03 · 한계·문의 ══ -->
-    <section class="sheet" id="limits" aria-labelledby="limits-h">
-      <div class="container" data-reveal>
-        <div class="mask-strip" aria-hidden="true"></div>
-        <p class="file-tab"><b>서류 03</b>&nbsp;·&nbsp;한계·문의</p>
-        <h2 id="limits-h">알아두면 좋은 것들</h2>
-        <p class="lead">솔직하게 말씀드리면, 이 패치가 닿지 못하는 곳이 있습니다.</p>
-        <ul class="limits">
-          <li>턴 히스토리 로그와 튜토리얼 안내 문구는 게임 코드 안에 있어 영어로 남습니다.</li>
-          <li>멀티플레이 매칭은 싱글플레이 기준으로 확인했습니다.</li>
-          <li>보드맵 이미지에 새겨진 국가명은 그림이라 범위에 없습니다.</li>
-        </ul>
-
-        <div class="faq">
-          <details>
-            <summary>설치는 했는데 영어로 보여요</summary>
-            <p class="a">게임 업데이트나 Steam의 <em>파일 무결성 확인</em>으로 패치가 원복된 상태일 수 있습니다. 위 설치 절차를 다시 실행하면 한글로 돌아옵니다.</p>
-          </details>
-          <details>
-            <summary>원래대로 되돌리고 싶어요</summary>
-            <p class="a">zip 안의 uninstall 스크립트를 실행하거나, Steam에서 <em>파일 무결성 확인</em>을 돌리면 원본 파일로 복원됩니다.</p>
-          </details>
-          <details>
-            <summary>모바일에서도 되나요?</summary>
-            <p class="a">이 패치는 Steam 데스크톱판 전용입니다. 모바일 앱은 별도 빌드라 적용할 수 없습니다.</p>
-          </details>
-          <details>
-            <summary>문제를 발견했어요</summary>
-            <p class="a">
-              <a href={`${GH}/issues`}>GitHub Issues</a>로 알려주세요. 번역 오타·어색한 문장 포함해 모두 환영합니다.
-            </p>
-          </details>
-        </div>
-
-        <ShotSlot n={3} caption="슬롯 3 · 한글 카드 클로즈업 (16:9, 교체 예정)" />
       </div>
     </section>
   </div>
 
-  <!-- ══ 발주 ══ -->
+  <!-- ══ 크레딧 · 라이선스 ══ -->
   <footer slot="footer" class="site-foot" aria-labelledby="foot-h">
     <div class="container">
-      <h2 id="foot-h" class="section-label" style="color:var(--red-bright);margin-bottom:1.5rem">발주 · 폐문</h2>
+      <h2 id="foot-h" class="foot-title">크레딧 · 라이선스</h2>
       <div class="foot-grid">
         <div>
           <h3>문서</h3>
           <p><a href={`${GH}`}>GitHub 저장소</a></p>
-          <p><a href={`${GH}/releases/tag/${RELEASE}`}>릴리스 페이지 (v0.1.1)</a></p>
+          <p><a href={`${GH}/releases/tag/${RELEASE}`}>릴리스 페이지 ({RELEASE})</a></p>
           <p><a href={`${GH}/issues`}>문제 보고 · 건의</a></p>
         </div>
         <div>
@@ -295,57 +221,247 @@ const osList = [
       </div>
       <div class="foot-credits">
         <p class="fine">
-          비공식 팬 패치입니다. GMT Games, Playdek, Valve와 무관하며, 게임과 에셋의 저작권은 각 권리자에게
-          있습니다.
+          비공식 팬 패치입니다. GMT Games, Playdek, Valve와 무관하며, 게임과 에셋의 저작권은 각 권리자에게 있습니다.
         </p>
-        <span class="stamp-mini" aria-hidden="true">발행 · 2026.08</span>
+        <p class="fine">갱신 2026.08 · {RELEASE}</p>
       </div>
     </div>
   </footer>
 </Base>
 
-<style>
-  .hero-stamp {
-    position: absolute;
-    right: clamp(1rem, 6vw, 4rem);
-    top: 24%;
-    opacity: 0.92;
-  }
-  .hero-stamp .stamp-round {
-    width: clamp(7rem, 12vw, 10rem);
-    height: clamp(7rem, 12vw, 10rem);
-  }
-  @media (max-width: 880px) {
-    .hero-stamp {
-      display: none;
-    }
-  }
-</style>
-
 <script>
-  // OS 선택 → 다운로드 패널·설치 명령 연동
-  const radios = document.querySelectorAll<HTMLInputElement>('#os-picker input[name="os"]');
-  const panels = document.querySelectorAll<HTMLElement>('.dl-panel');
-  const cmds = document.querySelectorAll<HTMLElement>('[data-cmd]');
-  const cmdnotes = document.querySelectorAll<HTMLElement>('[data-cmdnote]');
+  // OS 탭 → 다운로드 패널·설치 명령 연동
+  const tabList = document.getElementById('os-picker');
+  const tabs = Array.from(tabList?.querySelectorAll('.dl-tab') ?? []);
+  const panels = document.querySelectorAll('.dl-panel');
+  const cmds = document.querySelectorAll('[data-cmd]');
+  const cmdnotes = document.querySelectorAll('[data-cmdnote]');
 
-  const applyOs = (id: string) => {
+  const applyOs = (id) => {
     panels.forEach((p) => p.classList.toggle('on', p.dataset.os === id));
+    tabs.forEach((t) => {
+      const active = t.dataset.os === id;
+      t.classList.toggle('active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
     cmds.forEach((c) => (c.style.display = c.dataset.os === id ? '' : 'none'));
     cmdnotes.forEach((c) => (c.style.display = c.dataset.os === id ? '' : 'none'));
   };
 
-  // 자동 제안: macOS 감지 시 macOS 선택 (기본 Windows)
+  // 자동 추천: macOS 감지 시 macOS, 그 외는 Windows
   const nav = navigator.userAgent;
   const suggested = /Mac|iPhone|iPad/.test(nav) ? 'macos' : 'windows';
-  let current = suggested;
-  radios.forEach((r) => {
-    r.addEventListener('change', () => {
-      current = r.value;
-      applyOs(current);
-    });
+  applyOs(suggested);
+
+  tabs.forEach((t) => t.addEventListener('click', () => applyOs(t.dataset.os)));
+  // 키보드: 좌/우 화살표로 탭 이동
+  tabList?.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    e.preventDefault();
+    const cur = tabs.findIndex((t) => t.classList.contains('active'));
+    if (cur < 0) return;
+    const next = e.key === 'ArrowRight' ? (cur + 1) % tabs.length : (cur - 1 + tabs.length) % tabs.length;
+    tabs[next].focus();
+    applyOs(tabs[next].dataset.os);
   });
-  const suggestedEl = document.getElementById(`os-${suggested}`) as HTMLInputElement | null;
-  if (suggestedEl) suggestedEl.checked = true;
-  applyOs(current);
+
+  // ── 히어로 상황판 — 커서·스크롤 패럴랙스 + Canvas(스캔선·접촉점) ──
+  // 진행성 강화: JS/Canvas 미지원·모션 절감 시 정적 도트맵으로 안전하게 폴백
+  (() => {
+    const hero = document.querySelector('.hero');
+    if (!hero || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const cv = document.getElementById('war-room');
+    const westEl = document.getElementById('map-west');
+    const eastEl = document.getElementById('map-east');
+    const dotmapEl = hero.querySelector('.dotmap');
+    const ctx = cv ? cv.getContext('2d') : null;
+
+    // ── 패럴랙스 — 마우스(반구 분리) + 스크롤(느린 이동) ──
+    let px = 0, py = 0, tx = 0, ty = 0, sy = 0;
+    addEventListener('mousemove', (e) => {
+      const r = hero.getBoundingClientRect();
+      tx = (e.clientX - r.left) / r.width - 0.5;
+      ty = (e.clientY - r.top) / r.height - 0.5;
+    }, { passive: true });
+    addEventListener('scroll', () => { sy = scrollY * 0.09; }, { passive: true });
+    const applyParallax = () => {
+      if (!westEl || !eastEl || !dotmapEl) return;
+      px += (tx - px) * 0.055;
+      py += (ty - py) * 0.055;
+      dotmapEl.style.transform = `translate3d(0, ${sy.toFixed(2)}px, 0)`;
+      westEl.style.transform = `translate3d(${(px * 22).toFixed(2)}px, ${(py * 12).toFixed(2)}px, 0)`;
+      eastEl.style.transform = `translate3d(${(-px * 22).toFixed(2)}px, ${(-py * 12).toFixed(2)}px, 0)`;
+    };
+
+    if (!ctx) {
+      const rafOnly = () => { applyParallax(); requestAnimationFrame(rafOnly); };
+      requestAnimationFrame(rafOnly);
+      return;
+    }
+
+    // ── Canvas 상황판 — 접촉점(육지 위만) + 7초 주기 스캔선 ──
+    const dpr = Math.min(2, devicePixelRatio || 1);
+    let W = 0, H = 0;
+    const land = { west: null, east: null };
+    const maskImg = { west: new Image(), east: new Image() };
+    maskImg.west.src = `${import.meta.env.BASE_URL}img/world-mask-west.png`;
+    maskImg.east.src = `${import.meta.env.BASE_URL}img/world-mask-east.png`;
+    let landReady = false;
+
+    const coverRect = (iw, ih) => {
+      const s = Math.max(W / iw, H / ih);
+      const w = iw * s;
+      const h = ih * s;
+      return { x: (W - w) / 2, y: (H - h) / 2, w, h };
+    };
+    // 마스크를 오프스크린에 그려 '육지' 판정용 알파맵 구성 (CSS 도트맵과 동일 기하)
+    const buildLand = () => {
+      for (const side of ['west', 'east']) {
+        const c = document.createElement('canvas');
+        c.width = W * dpr;
+        c.height = H * dpr;
+        const g = c.getContext('2d');
+        g.scale(dpr, dpr);
+        const r = coverRect(maskImg[side].width, maskImg[side].height);
+        g.drawImage(maskImg[side], r.x, r.y, r.w, r.h);
+        land[side] = c;
+      }
+    };
+    const onLand = (side, x, y) => {
+      const c = land[side];
+      if (!c) return true;
+      const d = c.getContext('2d').getImageData(Math.round(x * dpr), Math.round(y * dpr), 1, 1).data;
+      return d[3] > 40;
+    };
+    const mkBlip = (side) => {
+      const color = side === 'west' ? '#3d6bbd' : '#c8102e';
+      for (let i = 0; i < 100; i++) {
+        const x = W * (side === 'west' ? 0.03 + Math.random() * 0.42 : 0.55 + Math.random() * 0.42);
+        const y = H * (0.08 + Math.random() * 0.8);
+        if (!onLand(side, x, y)) continue;
+        const a = Math.random() * Math.PI * 2;
+        const sp = 3 + Math.random() * 7;
+        return { side, color, x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, ph: Math.random() * 6.28, r: 1.7 + Math.random() * 1.3, ping: 9 };
+      }
+      return null;
+    };
+    const blips = [];
+    const spawn = () => {
+      blips.length = 0;
+      for (const side of ['west', 'east']) {
+        for (let k = 0; k < 7; k++) {
+          const b = mkBlip(side);
+          if (b) blips.push(b);
+        }
+      }
+    };
+    const resize = () => {
+      W = hero.clientWidth;
+      H = hero.clientHeight;
+      cv.width = W * dpr;
+      cv.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (landReady) {
+        buildLand();
+        spawn();
+      }
+    };
+
+    let loaded = 0;
+    const onMask = () => {
+      loaded += 1;
+      if (loaded === 2 && maskImg.west.naturalWidth && maskImg.east.naturalWidth) {
+        landReady = true;
+        buildLand();
+        spawn();
+      }
+    };
+    maskImg.west.onload = onMask;
+    maskImg.east.onload = onMask;
+    maskImg.west.onerror = onMask;
+    maskImg.east.onerror = onMask;
+    addEventListener('resize', resize);
+    resize();
+    spawn(); // 마스크 로드 전에도 반구 안에 배치 (육지 판정 불가 시 폴백)
+
+    const SCAN = 7; // 스캔 주기(초)
+    const t0 = performance.now();
+    let last = t0;
+    const draw = (t) => {
+      const dt = Math.min(0.05, (t - last) / 1000);
+      last = t;
+      const s = (t - t0) / 1000;
+      ctx.clearRect(0, 0, W, H);
+
+      const prog = (s % SCAN) / SCAN;
+      const scanY = prog * (H + 120) - 60;
+
+      // 접촉점 — 느린 표류(육지 경계 반사) + 스캔 통과 시 ping 링
+      for (const b of blips) {
+        const nx = b.x + b.vx * dt * 2.2;
+        const ny = b.y + b.vy * dt * 2.2;
+        if (!onLand(b.side, nx, ny)) { b.vx *= -1; b.vy *= -1; }
+        b.x += b.vx * dt;
+        b.y += b.vy * dt;
+        b.ping += dt;
+        if (b.ping > 3 && Math.abs(b.y - scanY) < 44) b.ping = 0;
+
+        // 상시 호흡 링
+        ctx.globalAlpha = 0.16;
+        ctx.strokeStyle = b.color;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.r + 3.5 + Math.sin(s * 0.9 + b.ph) * 1.6, 0, 6.283);
+        ctx.stroke();
+
+        // ping 링 — 스캔에 응답해 팽창
+        if (b.ping < 2.6) {
+          ctx.globalAlpha = 0.55 * (1 - b.ping / 2.6);
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, b.r + 8 + b.ping * 46, 0, 6.283);
+          ctx.stroke();
+          ctx.globalAlpha = 1;
+          ctx.fillStyle = '#f7f3e8';
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, b.r + 1, 0, 6.283);
+          ctx.fill();
+        }
+
+        ctx.fillStyle = b.color;
+        ctx.globalAlpha = 0.9;
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.r, 0, 6.283);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      // 스캔 헤어라인 + 우측 스윕 헤드 틱
+      ctx.strokeStyle = 'rgba(170, 180, 196, 0.5)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, scanY);
+      ctx.lineTo(W, scanY);
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(200, 16, 46, 0.85)';
+      ctx.fillRect(W - 30, scanY - 1.5, 30, 3);
+    };
+
+    let running = true;
+    let rafId = 0;
+    const loop = (t) => {
+      rafId = 0;
+      if (!running) return;
+      applyParallax();
+      draw(t);
+      rafId = requestAnimationFrame(loop);
+    };
+    // 뷰포트 이탈 시 렌더링 정지 — 리소스 절약
+    const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => {
+      running = es[0].isIntersecting;
+      if (running && !rafId) rafId = requestAnimationFrame(loop);
+    }, { threshold: 0 }) : null;
+    if (io) io.observe(hero);
+    rafId = requestAnimationFrame(loop);
+  })();
 </script>
