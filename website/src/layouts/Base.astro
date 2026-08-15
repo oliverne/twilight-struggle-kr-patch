@@ -11,10 +11,12 @@ const { title = 'Twilight Struggle 한글 패치', description = 'Steam판 Twili
 
 // @font-face는 base를 붙여야 GitHub Pages 프로젝트 경로(/twilight-struggle-kr-patch/)에서 폰트 로드 가능.
 const fontFace = `
+@font-face{font-family:'YKompyuta';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/Ycomputer-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'D2Coding';src:url('${base}fonts/d2coding.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'Paperlogy';src:url('${base}fonts/paperlogy.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
 @font-face{font-family:'Paperlogy';src:url('${base}fonts/paperlogy.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
 `;
+const surfaceAssets = `--archive-texture:url('${base}img/archive-grain.webp')`;
 ---
 <!doctype html>
 <html lang="ko">
@@ -22,7 +24,7 @@ const fontFace = `
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0e1a2f" />
+    <meta name="theme-color" content="#17191e" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -31,12 +33,12 @@ const fontFace = `
     <title>{title}</title>
     <style is:inline set:html={fontFace}></style>
   </head>
-  <body>
+  <body style={surfaceAssets}>
     <!--
       THESIS: Steam판 비공식 한글 패치를 가장 가깝게 배포한다. 과장·의장 없이 게임·다운로드·설치·스크린샷·문의만 남긴다.
-      LOOK: 네이비 표지 + 크림 면, 도트 세계지도 배경(서반구 미주=파랑 / 동반구 구대륙=빨강, 냉전 진영 분할). 빨강 도장 CTA. D2Coding 본문 + Paperlogy 제목 + Oswald 라틴 디스플레이.
-      STORY: 방문자가 본 컴퓨터 OS를 고르고 → 파일을 받고 → 세 단계로 설치한다. 한 화면에 한 주장.
-      FIRST VIEWPORT: 네이비 전면, 살아있는 도트 세계지도(스캔선·접촉점), 중앙 'TWILIGHT STRUGGLE / 한글 패치' 제목이 기밀 마스킹을 찢고 해제되고 이어서 빨간 '다운로드' 도장이 찍힌다. 콘텐츠는 제목·도장·풋뿐.
+      LOOK: 빨강·파랑 냉전 진영 지도가 인쇄된 철색 표지 위에 펼친 카키 사건 파일. 로고 외 모든 글자는 YKompyuta로 타자하고, 영문/한글 텍스트 로고만 Oswald/Paperlogy를 쓴다.
+      STORY: 방문자가 배포 승인을 확인하고 → 운영체제별 파일을 받고 → 실행 절차와 현장 기록을 한 장의 문서에서 읽는다.
+      FIRST VIEWPORT: 1970년대 정보기관 파일 표지. 서반구 파랑·동반구 빨강 지도가 대치하고, 영문 로고가 아래에서 인양된 뒤 검은 잉크에 덮여 폭이 줄어든 '황혼의 투쟁'으로 재인쇄된다.
     -->
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
     <div class="progress" aria-hidden="true"><i id="progress-bar"></i></div>
@@ -48,6 +50,7 @@ const fontFace = `
       // 진행 바
       const bar = document.getElementById('progress-bar');
       const onScroll = () => {
+        if (!bar) return;
         const h = document.documentElement;
         const p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
         bar.style.transform = `scaleX(${p})`;
@@ -65,7 +68,9 @@ const fontFace = `
             btn.textContent = '복사됨';
             setTimeout(() => (btn.textContent = prev), 1400);
           } catch {
-            /* 클립보드 불가 시 무시 */
+            const prev = btn.textContent;
+            btn.textContent = '복사 실패';
+            setTimeout(() => (btn.textContent = prev), 1400);
           }
         });
       });

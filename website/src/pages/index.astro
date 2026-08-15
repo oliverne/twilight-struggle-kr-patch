@@ -35,34 +35,33 @@ const osList = [
   },
 ] as const;
 
-const notes = [
+const fieldNotes = [
   {
-    q: '턴 히스토리 로그와 튜토리얼 안내 문구는 게임 코드 안에 들어 있어 영어로 남습니다.',
-    a: '파일 패치로는 닿지 않는 영역입니다. 게임 플레이 자체에는 영향이 없습니다.',
+    mark: '적용 범위',
+    title: '카드·메뉴·인게임 UI·규칙북·도움말은 한글로 표시됩니다.',
+    detail: '턴 히스토리와 튜토리얼 안내, 보드 그림에 새겨진 국가명은 영어로 남습니다.',
   },
   {
-    q: '싱글플레이 기준으로 동작을 확인했습니다. 멀티플레이 매칭은 아직 검증하지 않았습니다.',
-    a: '혼자 즐기거나 로컬 대국은 문제없이 한글로 표시됩니다.',
+    mark: '검증 기록',
+    title: 'Steam 데스크톱판의 싱글플레이와 로컬 대국에서 확인했습니다.',
+    detail: '모바일판에는 적용할 수 없으며, 멀티플레이 매칭은 아직 검증하지 않았습니다.',
   },
   {
-    q: '보드 지도에 새겨진 국가명은 그림이라 이 패치의 범위에서 다루지 않습니다.',
-    a: '그래픽 자산이라 번역∙교체가 불가합니다. 카드와 패널의 국가명은 한글로 표시됩니다.',
+    mark: '복구 절차',
+    title: '업데이트 뒤 영어로 돌아오면 설치 스크립트를 다시 실행하세요.',
+    detail: 'Steam 업데이트나 파일 무결성 확인은 패치 파일을 원본으로 되돌릴 수 있습니다.',
   },
   {
-    q: '설치했는데 영어로 보여요',
-    a: 'Steam의 파일 무결성 확인이나 게임 업데이트로 패치가 원래대로 돌아갔을 수 있습니다. 위 설치 절차를 다시 실행하면 한글로 돌아옵니다.',
+    mark: '원본 복원',
+    title: '제거 스크립트 또는 Steam 파일 무결성 확인으로 되돌릴 수 있습니다.',
+    detail: '설치 과정에서 원본 파일도 자동으로 백업합니다.',
   },
   {
-    q: '원래대로 되돌리고 싶어요',
-    a: 'zip 안의 uninstall 스크립트를 실행하거나, Steam에서 파일 무결성 확인을 돌리면 원본 파일로 복원됩니다.',
-  },
-  {
-    q: '모바일에서도 되나요?',
-    a: '이 패치는 Steam 데스크톱판 전용입니다. 모바일 앱은 별도 빌드라 적용할 수 없습니다.',
-  },
-  {
-    q: '문제를 발견했어요',
-    a: `GitHub Issues로 알려주세요. 번역 오타나 어색한 문장도 모두 환영합니다. → ${GH}/issues`,
+    mark: '보고 접수',
+    title: '번역 오류나 설치 문제는 GitHub Issues에 남겨주세요.',
+    detail: '확인 가능한 화면과 재현 절차를 함께 적어주시면 도움이 됩니다.',
+    href: `${GH}/issues`,
+    linkLabel: '문제 보고하기',
   },
 ] as const;
 ---
@@ -70,27 +69,41 @@ const notes = [
   title="Twilight Struggle 한글 패치 · Steam판을 한국어로"
   description="Steam판 Twilight Struggle의 비공식 한글 패치. 카드·메뉴·인게임 UI·규칙북·도움말을 한국어로. 무료 다운로드, 설치하면 바로 한글."
 >
-  <!-- ══ 히어로 — 기밀 해제 시네마틱 + 살아있는 도트 상황판 (콘텐츠: 제목·CTA뿐) ══ -->
+  <!-- ══ 히어로 — 1970년대 정보기관 사건 파일 표지 ══ -->
   <section class="hero" id="top" aria-labelledby="hero-title">
-    <div class="dotmap" aria-hidden="true">
-      <i class="west" id="map-west" style={maskStyle('world-mask-west.png')}></i>
-      <i class="east" id="map-east" style={maskStyle('world-mask-east.png')}></i>
+    <div class="dossier-map" aria-hidden="true">
+      <i class="west" style={maskStyle('world-mask-west.png')}></i>
+      <i class="east" style={maskStyle('world-mask-east.png')}></i>
     </div>
-    <canvas class="war-room" id="war-room" aria-hidden="true"></canvas>
     <div class="hero-vignette" aria-hidden="true"></div>
 
     <div class="container hero-inner">
+      <div class="cover-meta" aria-hidden="true">
+        <span><b>CASE NO.</b> TS-KR-406290</span>
+        <span><b>DATE RELEASED</b> 2026.08</span>
+        <span><b>DISTRIBUTION</b> STEAM DESKTOP</span>
+        <span class="cover-status">DECLASSIFIED</span>
+      </div>
+
       <div class="hero-copy">
         <h1 class="hero-title" id="hero-title">
-          <span class="mask-line" style="--i: 0">
-            <span class="mask-line-inner">Twilight Struggle</span>
-            <span class="mask-bar" aria-hidden="true"></span>
+          <span class="mask-line brand-line" style="--i: 0">
+            <span class="mask-line-inner logo-wordmark" aria-label="Twilight Struggle, 황혼의 투쟁">
+              <span class="logo-english" aria-hidden="true">
+                <span class="logo-twilight">Twilight</span><span class="logo-struggle">Struggle</span>
+              </span>
+              <span class="logo-ink" aria-hidden="true"></span>
+              <span class="logo-korean" aria-hidden="true">
+                <span class="logo-korean-twilight">황혼의</span><span class="logo-korean-struggle">투쟁</span>
+              </span>
+            </span>
           </span>
-          <span class="mask-line kr" style="--i: 1">
-            <span class="mask-line-inner">한글 패치</span>
-            <span class="mask-bar" aria-hidden="true"></span>
+          <span class="mask-line patch-line" style="--i: 1">
+            <span class="mask-line-inner patch-lockup">한글 패치</span>
           </span>
         </h1>
+
+        <p class="hero-summary">Steam 데스크톱판의 카드·메뉴·인게임 UI·규칙북·도움말을 한국어로 바꿉니다. 설치하면 바로 한글로 표시됩니다.</p>
 
         <div class="hero-actions">
           <a class="stamp-btn" href="#download">
@@ -99,46 +112,93 @@ const notes = [
           </a>
         </div>
       </div>
+
+      <div class="cover-approval" aria-hidden="true">
+        <span>TRANSLATION FILE</span>
+        <b>REVIEWED COPY</b>
+      </div>
     </div>
   </section>
 
   <div class="sheets">
+    <div class="board-chart board-chart--north" aria-hidden="true">
+      <i class="west" style={maskStyle('world-mask-west.png')}></i>
+      <i class="east" style={maskStyle('world-mask-east.png')}></i>
+    </div>
+    <div class="board-chart board-chart--south" aria-hidden="true">
+      <i class="west" style={maskStyle('world-mask-west.png')}></i>
+      <i class="east" style={maskStyle('world-mask-east.png')}></i>
+    </div>
     <!-- ══ 다운로드 · 설치 · 알아두면 좋은 점 — 한 장의 서류 ══ -->
     <section class="sheet" id="download" aria-labelledby="dl-h">
+      <span class="envelope-seams" aria-hidden="true"></span>
       <div class="container sheet-grid">
-        <div class="download-zone">
-          <div class="download-block">
-            <h2 id="dl-h">다운로드</h2>
+        <div class="document-meta" aria-hidden="true">
+          <span>FILE TS-KR-406290 · RELEASE {RELEASE}</span>
+          <span class="document-status">DECLASSIFIED COPY</span>
+        </div>
+        <div class="download-zone case-contents">
+          <div class="download-block document-section">
+            <header class="section-head">
+              <span aria-hidden="true">배포 승인 01</span>
+              <div>
+                <h2 id="dl-h">패치 파일 받기</h2>
+                <p class="download-lead">게임이 설치된 컴퓨터의 운영체제를 선택하세요.</p>
+              </div>
+            </header>
 
             <div class="dl-tabs" id="os-picker" role="tablist" aria-label="운영체제 선택">
               {osList.map((os) => (
-                <button type="button" class="dl-tab" data-os={os.id} role="tab" aria-controls={`dl-${os.id}`} aria-selected="false">
+                <button
+                  type="button"
+                  id={`tab-${os.id}`}
+                  class:list={['dl-tab', { active: os.id === 'windows' }]}
+                  data-os={os.id}
+                  role="tab"
+                  aria-controls={`dl-${os.id}`}
+                  aria-selected={os.id === 'windows' ? 'true' : 'false'}
+                  tabindex={os.id === 'windows' ? 0 : -1}
+                >
                   {os.name}
                 </button>
               ))}
             </div>
 
             {osList.map((os) => (
-              <div class="dl-panel" data-os={os.id} id={`dl-${os.id}`} role="tabpanel" aria-live="polite">
+              <div
+                class:list={['dl-panel', { on: os.id === 'windows' }]}
+                data-os={os.id}
+                id={`dl-${os.id}`}
+                role="tabpanel"
+                aria-labelledby={`tab-${os.id}`}
+                hidden={os.id !== 'windows'}
+              >
+                <div class="dl-heading">
+                  <strong>{os.name}용 패치</strong>
+                  <span>{os.desc}</span>
+                </div>
                 <p class="dl-meta">
                   <b class="dl-file">{os.file}</b>
-                  <span class="dl-sep" aria-hidden="true">·</span>
-                  <span class="dl-sub">zip {os.size} · SHA256SUMS 포함 · 원본은 설치할 때 <b>.bak</b>으로 백업</span>
+                  <span class="dl-sub">zip · {os.size} · SHA256SUMS 포함 · 원본 자동 백업</span>
                 </p>
-                <a class="stamp-btn" href={os.url} download>
-                  <svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5 12 7.5"/></svg>다운로드
+                <a class="stamp-btn" href={os.url} download aria-label={`${os.name}용 한글 패치 ${RELEASE} 다운로드`}>
+                  <svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5 12 7.5"/></svg>{os.name}용 다운로드
                 </a>
               </div>
             ))}
             <p class="file-note">
-              어느 파일인지 모르겠다면 게임을 설치한 컴퓨터의 운영체제가 기준입니다.
-              <a href={`${GH}/releases/tag/${RELEASE}`}>릴리스 페이지</a>에서도 받을 수 있습니다.
+              파일을 직접 확인하려면 <a href={`${GH}/releases/tag/${RELEASE}`}>{RELEASE} 릴리스 페이지</a>를 이용하세요.
             </p>
           </div>
 
-          <aside class="filebox" id="install" aria-labelledby="install-h">
-            <p class="box-head">설치 · 세 단계로 끝 · {RELEASE}</p>
-            <h2 id="install-h" class="box-title">3단계로 끝납니다</h2>
+          <section class="filebox document-section" id="install" aria-labelledby="install-h">
+            <header class="section-head section-head--dark">
+              <span aria-hidden="true">실행 절차 02</span>
+              <div>
+                <h2 id="install-h" class="box-title">패치 설치하기</h2>
+                <p>{RELEASE} · 원본 자동 백업 · 제거 스크립트 포함</p>
+              </div>
+            </header>
 
             <ol class="steps">
               <li class="step">
@@ -154,11 +214,11 @@ const notes = [
                   <h3>설치 스크립트 실행</h3>
                   {osList.map((os) => (
                     <>
-                      <p class="cmd" data-os={os.id} data-cmd>
+                      <p class="cmd" data-os={os.id} data-cmd hidden={os.id !== 'windows'}>
                         <code>{os.cmd}</code>
-                        <button type="button" class="copy" data-copy={os.cmd}>복사</button>
+                        <button type="button" class="copy" data-copy={os.cmd} aria-live="polite">복사</button>
                       </p>
-                      <p class="cmd-note" data-os={os.id} data-cmdnote>{os.cmdNote}</p>
+                      <p class="cmd-note" data-os={os.id} data-cmdnote hidden={os.id !== 'windows'}>{os.cmdNote}</p>
                     </>
                   ))}
                 </div>
@@ -175,49 +235,54 @@ const notes = [
               <svg class="warn-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2.5 15 14H1z"/><path d="M8 7v3.5"/><path d="M8 12.5v.5"/></svg>
               <b>참고</b> Steam 업데이트나 <em>파일 무결성 확인</em>으로 영어로 돌아오면, 위 절차를 다시 실행하면 한글로 돌아옵니다.
             </p>
-          </aside>
-        </div>
+          </section>
 
-        <div class="notes-block" id="faq">
-          <h2>알아두면 좋은 점</h2>
-          <p class="lead">솔직하게 말씀드리면, 이 패치가 닿지 못하는 곳이 있습니다.</p>
-
-          <div class="notes">
-            {notes.map((nt, i) => (
-              <div class="note">
-                <p class="note-q"><span class="note-mark">Q{String(i + 1).padStart(2, '0')}</span>{nt.q}</p>
-                <p class="note-a">{nt.a}</p>
+          <section class="notes-block document-section" id="faq" aria-labelledby="notes-h">
+            <header class="section-head">
+              <span aria-hidden="true">현장 기록 03</span>
+              <div>
+                <h2 id="notes-h">적용 범위 · 문제 해결</h2>
+                <p class="lead">설치 전 알아둘 내용과 복구 절차입니다.</p>
               </div>
-            ))}
-          </div>
+            </header>
+            <div class="notes">
+              {fieldNotes.map((item) => (
+                <div class="note">
+                  <p class="note-q"><span class="note-mark">{item.mark}</span>{item.title}</p>
+                  <p class="note-a">
+                    {item.detail}
+                    {'href' in item && <><br /><a href={item.href}>{item.linkLabel}</a></>}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- ══ 크레딧 · 라이선스 ══ -->
+  <!-- ══ 기록 및 권리 정보 ══ -->
   <footer slot="footer" class="site-foot" aria-labelledby="foot-h">
     <div class="container">
-      <h2 id="foot-h" class="foot-title">크레딧 · 라이선스</h2>
-      <div class="foot-grid">
-        <div>
-          <h3>문서</h3>
-          <p><a href={`${GH}`}>GitHub 저장소</a></p>
-          <p><a href={`${GH}/releases/tag/${RELEASE}`}>릴리스 페이지 ({RELEASE})</a></p>
-          <p><a href={`${GH}/issues`}>문제 보고 · 건의</a></p>
-        </div>
-        <div>
-          <h3>번역 크레딧</h3>
-          <p>이 패치의 번역은 <a href="https://cafe.naver.com/hansicgu/32259">한식구 네이버 카페 런타임 패치</a>(2026-03-15)의 번역을 재사용했습니다.</p>
-          <p><a href="https://bluechip2022.tistory.com/2">블루칩님 한글 패치</a>를 참고·검증에 사용했습니다.</p>
-          <p>기존 패치 제작자와 번역 원저작자께 감사드립니다.</p>
-        </div>
-        <div>
-          <h3>라이선스</h3>
-          <p>코드·문서: MIT / 번역문: 원저작자 정책</p>
-          <p>폰트: D2Coding · Paperlogy (SIL OFL 1.1)</p>
-          <p>세계지도: Wikimedia Commons (퍼블릭 도메인)</p>
-        </div>
+      <div class="foot-head">
+        <h2 id="foot-h" class="foot-title">기록 및 권리 정보</h2>
+        <span>ARCHIVE REGISTER · TS-KR-406290</span>
+      </div>
+      <div class="foot-register">
+        <section>
+          <h3>연결</h3>
+          <p class="foot-links"><a href={`${GH}`}>GitHub 저장소</a><a href={`${GH}/releases/tag/${RELEASE}`}>릴리스 {RELEASE}</a><a href={`${GH}/issues`}>문제 보고</a></p>
+        </section>
+        <section>
+          <h3>번역 출처</h3>
+          <p><a href="https://cafe.naver.com/hansicgu/32259">한식구 런타임 패치</a>(2026-03-15)의 번역을 재사용하고, <a href="https://bluechip2022.tistory.com/2">블루칩님 한글 패치</a>를 참고·검증했습니다. 기존 제작자와 번역 원저작자께 감사드립니다.</p>
+        </section>
+        <section>
+          <h3>이용 조건</h3>
+          <p>코드·문서 MIT · 번역문 원저작자 정책</p>
+          <p>본문 YKompyuta · 로고 Oswald/Paperlogy · 세계지도 Wikimedia Commons 퍼블릭 도메인</p>
+        </section>
       </div>
       <div class="foot-credits">
         <p class="fine">
@@ -238,14 +303,19 @@ const notes = [
   const cmdnotes = document.querySelectorAll('[data-cmdnote]');
 
   const applyOs = (id) => {
-    panels.forEach((p) => p.classList.toggle('on', p.dataset.os === id));
+    panels.forEach((p) => {
+      const active = p.dataset.os === id;
+      p.classList.toggle('on', active);
+      p.hidden = !active;
+    });
     tabs.forEach((t) => {
       const active = t.dataset.os === id;
       t.classList.toggle('active', active);
       t.setAttribute('aria-selected', active ? 'true' : 'false');
+      t.tabIndex = active ? 0 : -1;
     });
-    cmds.forEach((c) => (c.style.display = c.dataset.os === id ? '' : 'none'));
-    cmdnotes.forEach((c) => (c.style.display = c.dataset.os === id ? '' : 'none'));
+    cmds.forEach((c) => (c.hidden = c.dataset.os !== id));
+    cmdnotes.forEach((c) => (c.hidden = c.dataset.os !== id));
   };
 
   // 자동 추천: macOS 감지 시 macOS, 그 외는 Windows
@@ -265,203 +335,5 @@ const notes = [
     applyOs(tabs[next].dataset.os);
   });
 
-  // ── 히어로 상황판 — 커서·스크롤 패럴랙스 + Canvas(스캔선·접촉점) ──
-  // 진행성 강화: JS/Canvas 미지원·모션 절감 시 정적 도트맵으로 안전하게 폴백
-  (() => {
-    const hero = document.querySelector('.hero');
-    if (!hero || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const cv = document.getElementById('war-room');
-    const westEl = document.getElementById('map-west');
-    const eastEl = document.getElementById('map-east');
-    const dotmapEl = hero.querySelector('.dotmap');
-    const ctx = cv ? cv.getContext('2d') : null;
-
-    // ── 패럴랙스 — 마우스(반구 분리) + 스크롤(느린 이동) ──
-    let px = 0, py = 0, tx = 0, ty = 0, sy = 0;
-    addEventListener('mousemove', (e) => {
-      const r = hero.getBoundingClientRect();
-      tx = (e.clientX - r.left) / r.width - 0.5;
-      ty = (e.clientY - r.top) / r.height - 0.5;
-    }, { passive: true });
-    addEventListener('scroll', () => { sy = scrollY * 0.09; }, { passive: true });
-    const applyParallax = () => {
-      if (!westEl || !eastEl || !dotmapEl) return;
-      px += (tx - px) * 0.055;
-      py += (ty - py) * 0.055;
-      dotmapEl.style.transform = `translate3d(0, ${sy.toFixed(2)}px, 0)`;
-      westEl.style.transform = `translate3d(${(px * 22).toFixed(2)}px, ${(py * 12).toFixed(2)}px, 0)`;
-      eastEl.style.transform = `translate3d(${(-px * 22).toFixed(2)}px, ${(-py * 12).toFixed(2)}px, 0)`;
-    };
-
-    if (!ctx) {
-      const rafOnly = () => { applyParallax(); requestAnimationFrame(rafOnly); };
-      requestAnimationFrame(rafOnly);
-      return;
-    }
-
-    // ── Canvas 상황판 — 접촉점(육지 위만) + 7초 주기 스캔선 ──
-    const dpr = Math.min(2, devicePixelRatio || 1);
-    let W = 0, H = 0;
-    const land = { west: null, east: null };
-    const maskImg = { west: new Image(), east: new Image() };
-    maskImg.west.src = `${import.meta.env.BASE_URL}img/world-mask-west.png`;
-    maskImg.east.src = `${import.meta.env.BASE_URL}img/world-mask-east.png`;
-    let landReady = false;
-
-    const coverRect = (iw, ih) => {
-      const s = Math.max(W / iw, H / ih);
-      const w = iw * s;
-      const h = ih * s;
-      return { x: (W - w) / 2, y: (H - h) / 2, w, h };
-    };
-    // 마스크를 오프스크린에 그려 '육지' 판정용 알파맵 구성 (CSS 도트맵과 동일 기하)
-    const buildLand = () => {
-      for (const side of ['west', 'east']) {
-        const c = document.createElement('canvas');
-        c.width = W * dpr;
-        c.height = H * dpr;
-        const g = c.getContext('2d');
-        g.scale(dpr, dpr);
-        const r = coverRect(maskImg[side].width, maskImg[side].height);
-        g.drawImage(maskImg[side], r.x, r.y, r.w, r.h);
-        land[side] = c;
-      }
-    };
-    const onLand = (side, x, y) => {
-      const c = land[side];
-      if (!c) return true;
-      const d = c.getContext('2d').getImageData(Math.round(x * dpr), Math.round(y * dpr), 1, 1).data;
-      return d[3] > 40;
-    };
-    const mkBlip = (side) => {
-      const color = side === 'west' ? '#3d6bbd' : '#c8102e';
-      for (let i = 0; i < 100; i++) {
-        const x = W * (side === 'west' ? 0.03 + Math.random() * 0.42 : 0.55 + Math.random() * 0.42);
-        const y = H * (0.08 + Math.random() * 0.8);
-        if (!onLand(side, x, y)) continue;
-        const a = Math.random() * Math.PI * 2;
-        const sp = 3 + Math.random() * 7;
-        return { side, color, x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, ph: Math.random() * 6.28, r: 1.7 + Math.random() * 1.3, ping: 9 };
-      }
-      return null;
-    };
-    const blips = [];
-    const spawn = () => {
-      blips.length = 0;
-      for (const side of ['west', 'east']) {
-        for (let k = 0; k < 7; k++) {
-          const b = mkBlip(side);
-          if (b) blips.push(b);
-        }
-      }
-    };
-    const resize = () => {
-      W = hero.clientWidth;
-      H = hero.clientHeight;
-      cv.width = W * dpr;
-      cv.height = H * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      if (landReady) {
-        buildLand();
-        spawn();
-      }
-    };
-
-    let loaded = 0;
-    const onMask = () => {
-      loaded += 1;
-      if (loaded === 2 && maskImg.west.naturalWidth && maskImg.east.naturalWidth) {
-        landReady = true;
-        buildLand();
-        spawn();
-      }
-    };
-    maskImg.west.onload = onMask;
-    maskImg.east.onload = onMask;
-    maskImg.west.onerror = onMask;
-    maskImg.east.onerror = onMask;
-    addEventListener('resize', resize);
-    resize();
-    spawn(); // 마스크 로드 전에도 반구 안에 배치 (육지 판정 불가 시 폴백)
-
-    const SCAN = 7; // 스캔 주기(초)
-    const t0 = performance.now();
-    let last = t0;
-    const draw = (t) => {
-      const dt = Math.min(0.05, (t - last) / 1000);
-      last = t;
-      const s = (t - t0) / 1000;
-      ctx.clearRect(0, 0, W, H);
-
-      const prog = (s % SCAN) / SCAN;
-      const scanY = prog * (H + 120) - 60;
-
-      // 접촉점 — 느린 표류(육지 경계 반사) + 스캔 통과 시 ping 링
-      for (const b of blips) {
-        const nx = b.x + b.vx * dt * 2.2;
-        const ny = b.y + b.vy * dt * 2.2;
-        if (!onLand(b.side, nx, ny)) { b.vx *= -1; b.vy *= -1; }
-        b.x += b.vx * dt;
-        b.y += b.vy * dt;
-        b.ping += dt;
-        if (b.ping > 3 && Math.abs(b.y - scanY) < 44) b.ping = 0;
-
-        // 상시 호흡 링
-        ctx.globalAlpha = 0.16;
-        ctx.strokeStyle = b.color;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.arc(b.x, b.y, b.r + 3.5 + Math.sin(s * 0.9 + b.ph) * 1.6, 0, 6.283);
-        ctx.stroke();
-
-        // ping 링 — 스캔에 응답해 팽창
-        if (b.ping < 2.6) {
-          ctx.globalAlpha = 0.55 * (1 - b.ping / 2.6);
-          ctx.beginPath();
-          ctx.arc(b.x, b.y, b.r + 8 + b.ping * 46, 0, 6.283);
-          ctx.stroke();
-          ctx.globalAlpha = 1;
-          ctx.fillStyle = '#f7f3e8';
-          ctx.beginPath();
-          ctx.arc(b.x, b.y, b.r + 1, 0, 6.283);
-          ctx.fill();
-        }
-
-        ctx.fillStyle = b.color;
-        ctx.globalAlpha = 0.9;
-        ctx.beginPath();
-        ctx.arc(b.x, b.y, b.r, 0, 6.283);
-        ctx.fill();
-      }
-      ctx.globalAlpha = 1;
-
-      // 스캔 헤어라인 + 우측 스윕 헤드 틱
-      ctx.strokeStyle = 'rgba(170, 180, 196, 0.5)';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(0, scanY);
-      ctx.lineTo(W, scanY);
-      ctx.stroke();
-      ctx.fillStyle = 'rgba(200, 16, 46, 0.85)';
-      ctx.fillRect(W - 30, scanY - 1.5, 30, 3);
-    };
-
-    let running = true;
-    let rafId = 0;
-    const loop = (t) => {
-      rafId = 0;
-      if (!running) return;
-      applyParallax();
-      draw(t);
-      rafId = requestAnimationFrame(loop);
-    };
-    // 뷰포트 이탈 시 렌더링 정지 — 리소스 절약
-    const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => {
-      running = es[0].isIntersecting;
-      if (running && !rafId) rafId = requestAnimationFrame(loop);
-    }, { threshold: 0 }) : null;
-    if (io) io.observe(hero);
-    rafId = requestAnimationFrame(loop);
-  })();
+  // 히어로는 이미 해제된 기록물로 고정한다. 실시간 추적·레이더 효과는 사용하지 않는다.
 </script>

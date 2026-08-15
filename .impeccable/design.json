@@ -1,304 +1,396 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-14T13:18:07.115127+00:00",
+  "generatedAt": "2026-08-16T00:35:00.000Z",
   "title": "Design System: Twilight Struggle 한글 패치 — 배포 사이트",
   "extensions": {
     "colorMeta": {
       "signal-red": {
         "role": "primary",
-        "displayName": "신호 빨강 Signal Red",
-        "canonical": "signal-red",
+        "displayName": "게임 로고 레드 Signal Red",
+        "canonical": "#c71d22",
         "tonalRamp": [
-          "#310000",
-          "#5c0000",
-          "#870000",
-          "#b2001b",
-          "#de3140",
-          "#ff5e64",
-          "#ff8889",
-          "#ffb1af"
+          "#2d0608",
+          "#620e11",
+          "#97161a",
+          "#cd1e23",
+          "#e44449",
+          "#ec797d",
+          "#f3afb1",
+          "#fbe4e5"
         ]
       },
       "red-deep": {
         "role": "primary",
-        "displayName": "진한 빨강 Red Deep",
-        "canonical": "red-deep",
+        "displayName": "소련 보드 딥 레드",
+        "canonical": "#5d1916",
         "tonalRamp": [
-          "#0c0000",
-          "#370000",
-          "#600000",
-          "#890012",
-          "#b32935",
-          "#de5357",
-          "#ff7a7b",
-          "#ffa2a1"
+          "#290b0a",
+          "#5b1815",
+          "#8c2621",
+          "#be332d",
+          "#d65752",
+          "#e28783",
+          "#edb7b5",
+          "#f9e7e6"
         ]
       },
       "red-bright": {
         "role": "primary",
-        "displayName": "밝은 빨강 Red Bright",
-        "canonical": "red-bright",
+        "displayName": "상황판용 브라이트 레드",
+        "canonical": "#ef6a6e",
         "tonalRamp": [
-          "#5b0000",
-          "#85001d",
-          "#af143d",
-          "#da465e",
-          "#ff6e82",
-          "#ff96a7",
-          "#ffbece",
-          "#ffe7f6"
+          "#2e0506",
+          "#650b0e",
+          "#9d1115",
+          "#d4171c",
+          "#ea3e43",
+          "#f07579",
+          "#f6acae",
+          "#fce3e4"
         ]
       },
       "nato-blue": {
         "role": "secondary",
         "displayName": "미군 블루 NATO Blue",
-        "canonical": "nato-blue",
+        "canonical": "#2a5999",
         "tonalRamp": [
-          "#000027",
-          "#00004a",
-          "#00256e",
-          "#1e4894",
-          "#406cbc",
-          "#6391e4",
-          "#87b8ff",
-          "#ade0ff"
+          "#0b1728",
+          "#183358",
+          "#254f88",
+          "#336bb8",
+          "#578bd1",
+          "#87acde",
+          "#b7cdeb",
+          "#e7eef8"
         ]
       },
       "blue-soft": {
         "role": "secondary",
-        "displayName": "연한 미군 블루",
-        "canonical": "blue-soft",
+        "displayName": "보드 바다 청회색",
+        "canonical": "#738f9a",
         "tonalRamp": [
-          "#000039",
-          "#000f5d",
-          "#013582",
-          "#2c59a9",
-          "#4e7dd1",
-          "#72a3fa",
-          "#97cbff",
-          "#bdf3ff"
+          "#151b1e",
+          "#2f3c41",
+          "#495d65",
+          "#627e88",
+          "#839ba5",
+          "#a6b8bf",
+          "#cad4d9",
+          "#edf1f2"
         ]
       },
       "navy-cover": {
         "role": "neutral",
-        "displayName": "네이비 표지",
-        "canonical": "navy-cover",
+        "displayName": "철색 파일 커버",
+        "canonical": "#17191e",
         "tonalRamp": [
-          "#000000",
-          "#000000",
-          "#000000",
-          "#000014",
-          "#172131",
-          "#354052",
-          "#566174",
-          "#788498"
+          "#16181d",
+          "#313540",
+          "#4b5262",
+          "#666f85",
+          "#868ea2",
+          "#a8aebd",
+          "#cbcfd7",
+          "#eeeff2"
         ]
       },
       "navy-panel": {
         "role": "neutral",
-        "displayName": "네이비 패널",
-        "canonical": "navy-panel",
+        "displayName": "게임 UI 레일",
+        "canonical": "#1f2027",
         "tonalRamp": [
-          "#000000",
-          "#000000",
-          "#000000",
-          "#000c20",
-          "#1c293f",
-          "#3a4860",
-          "#5b6a84",
-          "#7e8ea9"
+          "#17171c",
+          "#32333f",
+          "#4d4f61",
+          "#686b83",
+          "#888ba0",
+          "#aaacbb",
+          "#cccdd6",
+          "#eeeef1"
         ]
       },
       "navy-border": {
         "role": "neutral",
-        "displayName": "네이비 테두리",
-        "canonical": "navy-border",
+        "displayName": "금속 구분선",
+        "canonical": "#5a6164",
         "tonalRamp": [
-          "#000000",
-          "#000000",
-          "#00011f",
-          "#11253e",
-          "#2f4460",
-          "#506684",
-          "#728aa9",
-          "#97afd0"
+          "#181a1b",
+          "#35393b",
+          "#52595b",
+          "#6f787b",
+          "#8e969a",
+          "#aeb4b7",
+          "#cfd2d4",
+          "#eff0f1"
+        ]
+      },
+      "board-sea": {
+        "role": "secondary",
+        "displayName": "게임 보드 바다",
+        "canonical": "#738f9a",
+        "tonalRamp": [
+          "#151b1e",
+          "#2f3c41",
+          "#495d65",
+          "#627e88",
+          "#839ba5",
+          "#a6b8bf",
+          "#cad4d9",
+          "#edf1f2"
         ]
       },
       "dossier-paper": {
         "role": "neutral",
-        "displayName": "서류지 Dossier Paper",
-        "canonical": "dossier-paper",
+        "displayName": "카키 작전 서류",
+        "canonical": "#c8c6a8",
         "tonalRamp": [
-          "#665e4c",
-          "#89816e",
-          "#aea692",
-          "#d5ccb8",
-          "#fdf4df",
-          "#ffffff",
-          "#ffffff",
-          "#ffffff"
+          "#1f1f14",
+          "#45432b",
+          "#6a6843",
+          "#908c5b",
+          "#aca97c",
+          "#c4c2a1",
+          "#dbdac7",
+          "#f3f3ec"
         ]
       },
       "paper-deep": {
         "role": "neutral",
-        "displayName": "짙은 서류지",
-        "canonical": "paper-deep",
+        "displayName": "아프리카 보드 카키",
+        "canonical": "#9f925b",
         "tonalRamp": [
-          "#584e36",
-          "#7b7057",
-          "#9f947a",
-          "#c5ba9f",
-          "#ede1c5",
-          "#ffffed",
-          "#ffffff",
-          "#ffffff"
+          "#201e13",
+          "#474229",
+          "#6e653f",
+          "#958955",
+          "#b1a677",
+          "#c7bf9e",
+          "#ded9c5",
+          "#f4f2ec"
         ]
       },
       "off-white": {
         "role": "neutral",
-        "displayName": "오프화이트",
-        "canonical": "off-white",
+        "displayName": "로고 화이트",
+        "canonical": "#f7f5ed",
         "tonalRamp": [
-          "#726e65",
-          "#969288",
-          "#bcb8ad",
-          "#e3dfd4",
-          "#fffffc",
-          "#ffffff",
-          "#ffffff",
-          "#ffffff"
+          "#231f10",
+          "#4e4523",
+          "#786b35",
+          "#a29048",
+          "#bdad6b",
+          "#d0c495",
+          "#e3dcbf",
+          "#f6f3ea"
         ]
       },
       "cream": {
         "role": "neutral",
-        "displayName": "크림",
-        "canonical": "cream",
+        "displayName": "게임 카드 크림",
+        "canonical": "#dae5eb",
         "tonalRamp": [
-          "#6d685a",
-          "#918c7d",
-          "#b7b1a2",
-          "#ded8c8",
-          "#fffff0",
-          "#ffffff",
-          "#ffffff",
-          "#ffffff"
+          "#121c21",
+          "#273d49",
+          "#3d5e71",
+          "#528098",
+          "#749db4",
+          "#9cb9c9",
+          "#c3d5df",
+          "#ebf1f4"
         ]
       },
       "ink": {
         "role": "neutral",
-        "displayName": "먹 Ink",
-        "canonical": "ink",
+        "displayName": "먹",
+        "canonical": "#1f2027",
         "tonalRamp": [
-          "#000000",
-          "#000000",
-          "#000000",
-          "#12161f",
-          "#2f333e",
-          "#4e535f",
-          "#717682",
-          "#959aa7"
+          "#17171c",
+          "#32333f",
+          "#4d4f61",
+          "#686b83",
+          "#888ba0",
+          "#aaacbb",
+          "#cccdd6",
+          "#eeeef1"
         ]
       },
       "ink-soft": {
         "role": "neutral",
-        "displayName": "연한 먹",
-        "canonical": "ink-soft",
+        "displayName": "부드러운 먹",
+        "canonical": "#3d4848",
         "tonalRamp": [
-          "#000000",
-          "#00000f",
-          "#1c202c",
-          "#3a3f4b",
-          "#5b606d",
-          "#7d8391",
-          "#a2a8b7",
-          "#c8cfde"
+          "#171c1c",
+          "#333d3d",
+          "#505e5e",
+          "#6c7f7f",
+          "#8b9d9d",
+          "#acb9b9",
+          "#cdd5d5",
+          "#eef1f1"
         ]
       },
       "steel": {
         "role": "neutral",
-        "displayName": "강철 Steel",
-        "canonical": "steel",
+        "displayName": "밝은 강철",
+        "canonical": "#c0c6be",
         "tonalRamp": [
-          "#313946",
-          "#515a68",
-          "#737c8b",
-          "#97a1b1",
-          "#bdc7d8",
-          "#e4efff",
-          "#ffffff",
-          "#ffffff"
+          "#191b18",
+          "#363c34",
+          "#545c51",
+          "#717d6e",
+          "#909b8d",
+          "#b0b8ad",
+          "#d0d4ce",
+          "#eff1ef"
         ]
       },
       "steel-dim": {
         "role": "neutral",
-        "displayName": "어두운 강철",
-        "canonical": "steel-dim",
+        "displayName": "흐린 강철",
+        "canonical": "#9c9fa0",
         "tonalRamp": [
-          "#0e1725",
-          "#2b3544",
-          "#4a5566",
-          "#6c788a",
-          "#909caf",
-          "#b6c3d6",
-          "#ddeafe",
-          "#ffffff"
+          "#191a1a",
+          "#373939",
+          "#555858",
+          "#737778",
+          "#929596",
+          "#b1b3b4",
+          "#d0d2d2",
+          "#eff0f0"
+        ]
+      },
+      "map-gold": {
+        "role": "tertiary",
+        "displayName": "아시아 보드 골드",
+        "canonical": "#c5af3f",
+        "tonalRamp": [
+          "#27230c",
+          "#564c1a",
+          "#857628",
+          "#b4a036",
+          "#cdba5a",
+          "#dcce89",
+          "#eae2b8",
+          "#f8f5e7"
+        ]
+      },
+      "map-green": {
+        "role": "tertiary",
+        "displayName": "남미 보드 그린",
+        "canonical": "#5d9e4f",
+        "tonalRamp": [
+          "#142211",
+          "#2c4b25",
+          "#44743a",
+          "#5c9c4e",
+          "#7db870",
+          "#a2cc99",
+          "#c7e0c2",
+          "#ecf5eb"
+        ]
+      },
+      "logo-black": {
+        "role": "neutral",
+        "displayName": "워드마크 블랙",
+        "canonical": "#050607",
+        "tonalRamp": [
+          "#15191e",
+          "#2f3841",
+          "#485765",
+          "#627589",
+          "#8294a6",
+          "#a6b3bf",
+          "#c9d1d9",
+          "#edf0f2"
         ]
       }
     },
     "typographyMeta": {
-      "display": {
-        "displayName": "라틴 디스플레이",
-        "purpose": "히어로 영문 로고·단계 번호. Oswald 600 대문자."
-      },
       "headline": {
         "displayName": "한글 헤드라인",
-        "purpose": "섹션 제목. Paperlogy 500."
+        "purpose": "사건 파일의 주요 제목. YKompyuta 400."
+      },
+      "title": {
+        "displayName": "한글 제목",
+        "purpose": "설치 절차와 현장 기록의 제목. YKompyuta 400."
+      },
+      "action": {
+        "displayName": "액션",
+        "purpose": "다운로드 버튼과 선택 탭. YKompyuta 400."
+      },
+      "patch-label": {
+        "displayName": "한글 패치 표찰",
+        "purpose": "공식 게임 로고 아래의 한글 패치 표찰. YKompyuta 400."
       },
       "body": {
         "displayName": "본문",
-        "purpose": "모든 본문 텍스트. D2Coding 모노, 65–75자."
+        "purpose": "주요 설명 텍스트. YKompyuta Regular, 65-75자."
+      },
+      "body-sm": {
+        "displayName": "작은 본문",
+        "purpose": "설치 단계와 보조 설명."
+      },
+      "caption": {
+        "displayName": "캡션",
+        "purpose": "파일 메타와 환경 정보."
+      },
+      "fine": {
+        "displayName": "세부 정보",
+        "purpose": "푸터와 라이선스 정보."
+      },
+      "annotation": {
+        "displayName": "표지 주석",
+        "purpose": "검수 표식과 모바일 사건 필드. YKompyuta 0.66rem."
+      },
+      "micro": {
+        "displayName": "사건 필드명",
+        "purpose": "CASE NO. 등 표지 메타 라벨. YKompyuta 0.58rem."
+      },
+      "step-number": {
+        "displayName": "단계 번호",
+        "purpose": "순서가 중요한 설치 단계 번호. YKompyuta 1.35rem."
       },
       "label": {
         "displayName": "라벨",
-        "purpose": "파일 탭·도장·메타. 대문자 + 자간 0.14em."
+        "purpose": "문서함 머리와 상태 메타."
+      },
+      "logo-wordmark": {
+        "displayName": "텍스트 워드마크",
+        "purpose": "영문은 Oswald 600, 검은 잉크가 덮인 뒤 한글은 Paperlogy 700으로 글리프 잘림 없이 한 번에 재인쇄."
       }
     },
     "shadows": [
       {
         "name": "paper",
-        "value": "0 1px 0 rgba(32,36,46,.1), 0 18px 44px -20px rgba(10,19,34,.5)",
-        "purpose": "떠 있는 면(철 문서함) — 소프트 종이 그림자."
+        "value": "3px 4px 0 rgba(31,32,39,.22), 0 26px 56px -18px rgba(31,32,39,.72)",
+        "purpose": "작전판 위에 놓인 거친 봉투형 서류."
       },
       {
         "name": "stamp",
-        "value": "0 10px 26px -10px rgba(158,11,36,.55)",
-        "purpose": "빨간 도장 CTA의 찍힌 깊이."
+        "value": "0 10px 26px -10px rgba(93,25,22,.7)",
+        "purpose": "빨간 다운로드 도장이 찍힌 깊이."
       }
     ],
     "motion": [
       {
         "name": "ease-out",
         "value": "cubic-bezier(0.22, 1, 0.36, 1)",
-        "purpose": "마스킹 리빌(0.9s)·콘텐츠 페이드(0.6s, 지연 0.35s)."
+        "purpose": "마스킹 리빌과 도장 등장."
       },
       {
         "name": "ease-snap",
-        "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
-        "purpose": "도장 버튼 호버(0.25s) — 찍히는 탄성."
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "도장 버튼 호버의 빠른 감속."
       }
     ],
     "breakpoints": [
       {
         "name": "desktop",
-        "value": ">880px — 7fr/5fr 그리드, 철 문서함 sticky"
-      },
-      {
-        "name": "tablet",
-        "value": "≤880px — 단일 컬럼, sticky 해제"
+        "value": ">560px — 청회색 보드 여백 안에 단일 카키 문서"
       },
       {
         "name": "mobile",
-        "value": "≤560px — OS 카드 적층, 패널 세로"
+        "value": "≤560px — 바깥 여백 제거, 다운로드·설치·도움말 단일 흐름 유지"
       }
     ]
   },
@@ -307,60 +399,55 @@
       "name": "Primary Stamp Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "주 액션 — 고무도장으로 찍힌 다운로드 버튼.",
-      "html": "<a class=\"ds-stamp-btn\" href=\"#\"><svg class=\"ds-glyph\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M8 2v9M4 7.5 8 11.5 12 7.5\"/></svg>해제 · 다운로드</a>",
-      "css": ".ds-stamp-btn{display:inline-flex;align-items:center;gap:.75rem;background:#c8102e;color:#f7f3e8;font-family:'Paperlogy',sans-serif;font-weight:700;font-size:1.05rem;padding:.95rem 1.6rem;border:2px solid #c8102e;outline:2px dashed rgba(247,243,232,.85);outline-offset:3px;border-radius:4px;text-decoration:none;rotate:-1.5deg;box-shadow:0 10px 26px -10px rgba(158,11,36,.55);transition:transform .25s cubic-bezier(.34,1.56,.64,1),background .2s;cursor:pointer}.ds-stamp-btn:hover{transform:scale(1.06) rotate(-2.5deg);background:#9e0b24}.ds-stamp-btn:active{transform:scale(.96) rotate(-1deg)}.ds-stamp-btn:focus-visible{outline-color:#f7f3e8}.ds-glyph{width:1.1rem;height:1.1rem}"
+      "description": "주 액션을 고무도장으로 표현한 다운로드 버튼.",
+      "html": "<a class=\"ds-stamp-btn\" href=\"#\"><svg class=\"ds-glyph\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M8 2v9M4 7.5 8 11.5 12 7.5\"/></svg>다운로드</a>",
+      "css": ".ds-stamp-btn{display:inline-flex;align-items:center;gap:.75rem;background:#c71d22;color:#f7f5ed;font-family:'YKompyuta','D2Coding',monospace;font-weight:400;font-size:1.05rem;padding:.95rem 1.6rem;border:2px solid #c71d22;outline:2px dashed rgba(251,250,244,.86);outline-offset:3px;border-radius:1px;text-decoration:none;rotate:-1.5deg;box-shadow:0 10px 26px -10px rgba(93,25,22,.7);transition:transform .25s cubic-bezier(.16,1,.3,1),background .2s;cursor:pointer}.ds-stamp-btn:hover{transform:scale(1.06) rotate(-2.5deg);background:#5d1916}.ds-stamp-btn:active{transform:scale(.96) rotate(-1deg)}.ds-stamp-btn:focus-visible{outline-color:#f7f5ed}.ds-glyph{width:1.1rem;height:1.1rem}"
     },
     {
-      "name": "OS Select Card",
-      "kind": "card",
+      "name": "OS Tab Group",
+      "kind": "nav",
       "refersTo": "os-card",
-      "description": "운영체제 선택 라디오 카드 — 선택 시 빨간 링.",
-      "html": "<label class=\"ds-os\"><input type=\"radio\" name=\"os\" checked><span class=\"ds-os-box\"><span class=\"ds-os-name\">Windows</span><span class=\"ds-os-file\">zip 9.3MB</span></span></label>",
-      "css": ".ds-os input{position:absolute;opacity:0}.ds-os-box{display:grid;grid-template-columns:1fr auto;gap:.9rem;border:1px solid #20242e;background:color-mix(in srgb,#e9e0cb 78%,#f7f3e8);padding:.85rem 1rem;border-radius:4px;cursor:pointer;transition:background .2s}.ds-os-box:hover{background:#f7f3e8}.ds-os input:checked + .ds-os-box{background:#f7f3e8;border-color:#c8102e;box-shadow:inset 0 0 0 1px #c8102e}.ds-os input:focus-visible + .ds-os-box{outline:2px dashed #c8102e;outline-offset:2px}.ds-os-name{font-family:'Paperlogy',sans-serif;font-weight:700}.ds-os-file{font-family:'D2Coding',monospace;font-size:.72rem;color:#4a4f5c}"
+      "description": "현재 운영체제를 고르는 두 칸 세그먼트.",
+      "html": "<div class=\"ds-tabs\"><button>Windows</button><button class=\"ds-active\">macOS</button></div>",
+      "css": ".ds-tabs{display:inline-flex;border:1px solid #1f2027;border-radius:1px;overflow:hidden;background:color-mix(in srgb,#c8c6a8 78%,#f7f5ed)}.ds-tabs button{border:0;background:transparent;color:#3d4848;padding:.7rem 1.7rem;font:400 1rem 'YKompyuta','D2Coding',monospace;cursor:pointer}.ds-tabs button:hover{background:#f7f5ed;color:#1f2027}.ds-tabs .ds-active{background:#c71d22;color:#f7f5ed}.ds-tabs button:focus-visible{outline:2px dashed #c71d22;outline-offset:-4px}"
+    },
+    {
+      "name": "Download Panel",
+      "kind": "card",
+      "refersTo": "download-panel",
+      "description": "선택한 운영체제 파일과 주 액션을 묶는 어두운 상황판.",
+      "html": "<section class=\"ds-download\"><strong>Windows용 패치</strong><span>Windows 10 / 11</span><p>twilight-struggle-kr-patch-v0.1.1-windows.zip</p></section>",
+      "css": ".ds-download{display:grid;grid-template-columns:1fr auto;gap:1rem;background:#17191e;color:#dae5eb;border-block:1px solid #1f2027;border-radius:1px;padding:1.45rem 1.4rem;font-family:'YKompyuta','D2Coding',monospace}.ds-download strong{font-family:inherit;color:#f7f5ed}.ds-download span{color:#c0c6be;font-size:.78rem}.ds-download p{grid-column:1/-1;margin:0;padding-top:.75rem;border-top:1px solid #5a6164;font-size:.82rem;overflow-wrap:anywhere}"
     },
     {
       "name": "Command Block",
       "kind": "custom",
-      "refersTo": "download-panel",
-      "description": "설치 명령어 블록 — 빨간 좌측 바 + 복사 버튼.",
-      "html": "<div class=\"ds-cmd\"><code>powershell -ExecutionPolicy Bypass -File .\\scripts\\install-windows.ps1</code><button class=\"ds-copy\">복사</button></div>",
-      "css": ".ds-cmd{display:flex;justify-content:space-between;gap:.75rem;align-items:center;background:#0a1322;border:1px solid #20344f;border-left:3px solid #c8102e;padding:.6rem .75rem;font-family:'D2Coding',monospace;font-size:.74rem;color:#f2ecdc;overflow-x:auto;white-space:nowrap;border-radius:0 4px 4px 0}.ds-copy{flex:none;background:none;border:1px solid #20344f;color:#aab4c4;font-family:'D2Coding',monospace;font-size:.66rem;padding:.2rem .5rem;border-radius:2px;cursor:pointer;letter-spacing:.08em;text-transform:uppercase}.ds-copy:hover{color:#f05a70;border-color:#f05a70}.ds-copy:active{background:#f05a70;color:#0a1322}"
-    },
-    {
-      "name": "File Tab",
-      "kind": "nav",
       "refersTo": "filebox",
-      "description": "서류 탭 — 붉은 서류 코드 + 이름.",
-      "html": "<p class=\"ds-tab\"><b>서류 02</b> · 입수</p>",
-      "css": ".ds-tab{display:inline-flex;align-items:baseline;gap:.6rem;font-family:'D2Coding',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#4a4f5c;border:1px solid #20242e;border-bottom:0;border-radius:3px 3px 0 0;padding:.35rem .8rem .3rem;background:color-mix(in srgb,#e9e0cb 70%,#f7f3e8);position:relative;top:-.6rem}.ds-tab b{color:#9e0b24;font-weight:400}"
+      "description": "설치 명령과 복사 액션을 한 줄에 놓는 코드 블록.",
+      "html": "<div class=\"ds-cmd\"><code>chmod +x scripts/install.sh &amp;&amp; ./scripts/install.sh</code><button>복사</button></div>",
+      "css": ".ds-cmd{display:flex;justify-content:space-between;gap:.75rem;align-items:center;background:#17191e;border:1px solid #5a6164;border-top-color:#c71d22;padding:.6rem .75rem;font-family:'YKompyuta','D2Coding',monospace;font-size:.74rem;color:#dae5eb;overflow-x:auto;white-space:nowrap;border-radius:1px}.ds-cmd button{flex:none;background:none;border:1px solid #5a6164;color:#c0c6be;font:400 .72rem 'YKompyuta','D2Coding',monospace;min-height:2.75rem;padding:.35rem .65rem;border-radius:1px;cursor:pointer}.ds-cmd button:hover{color:#ef6a6e;border-color:#ef6a6e}.ds-cmd button:focus-visible{outline:2px dashed #ef6a6e;outline-offset:3px}"
     },
     {
-      "name": "Mini Stamp",
-      "kind": "chip",
-      "refersTo": "button-primary",
-      "description": "미니 도장 — 상태·부가 표시.",
-      "html": "<span class=\"ds-mini\">미첨부</span>",
-      "css": ".ds-mini{display:inline-block;font-family:'D2Coding',monospace;font-size:.66rem;letter-spacing:.14em;color:#c8102e;border:2px solid #c8102e;border-radius:2px;padding:.1rem .4rem;rotate:-8deg;text-transform:uppercase;white-space:nowrap}"
-    },
-    {
-      "name": "Screenshot Slot",
-      "kind": "custom",
-      "refersTo": "download-panel",
-      "description": "16:9 스크린샷 플레이스홀더 — 교체 전 정직한 자리 표시.",
-      "html": "<figure class=\"ds-shot\"><div class=\"ds-plate\"><span class=\"ds-mini\">미첨부</span></div></figure>",
-      "css": ".ds-shot{margin:1.75rem 0 0}.ds-plate{position:relative;aspect-ratio:16/9;border:1px solid #20242e;background:linear-gradient(45deg,transparent 49%,rgba(32,36,46,.16) 49% 51%,transparent 51%) 0 0/48px 48px,#d9cdb2;display:grid;place-items:center;border-radius:4px;overflow:hidden}.ds-plate::before{content:'';position:absolute;inset:12px;border:1px solid rgba(32,36,46,.35)}.ds-plate .ds-mini{position:absolute;right:2rem;bottom:1.4rem;background:color-mix(in srgb,#d9cdb2 65%,transparent)}"
+      "name": "Installation Record",
+      "kind": "section",
+      "refersTo": "filebox",
+      "description": "카키 사건 파일 위의 이중선과 행 구분으로 설치 순서를 기록한 연속 문서.",
+      "html": "<section class=\"ds-record\"><small>실행 절차 02</small><h3>패치 설치하기</h3><div><b>01</b><p>게임 종료 · 압축 해제</p></div></section>",
+      "css": ".ds-record{background:transparent;color:#1f2027;border-top:3px double #1f2027;padding-top:1.25rem;font-family:'YKompyuta','D2Coding',monospace}.ds-record small{color:#5d1916;border:2px solid currentColor;padding:.28rem .48rem}.ds-record h3{color:#1f2027;font:400 1.7rem 'YKompyuta','D2Coding',monospace}.ds-record div{display:grid;grid-template-columns:4rem 1fr;gap:1rem;border-top:1px solid rgba(31,32,39,.28);padding:1rem 0}.ds-record b{color:#5d1916;font:400 1.35rem 'YKompyuta','D2Coding',monospace}.ds-record p{margin:0;color:#3d4848;font:400 .82rem 'YKompyuta','D2Coding',monospace}"
     }
   ],
   "narrative": {
     "northStar": "해제된 작전 파일 (The Declassified Dossier)",
-    "overview": "한글 패치라는 제품을 기밀 작전 문서가 공개로 전환된 순간으로 표현한다. 페이지는 네이비 표지로 열리고, 방문자가 스크롤할 때마다 검은 마스킹 바가 벗겨지며 실제 정보가 해제된다. 세계는 냉전 보드게임 Twilight Struggle의 두 가지 재질, 즉 진영 색(파랑 vs 빨강)과 서류(도장·기밀 바·검은 마스킹)로 이뤄진다. 밀도는 중간에서 낮음 사이로, 한 화면에 하나의 주장만 둔다. 장식은 세계의 재질로만 한다: 도트 세계지도, 헤어라인, 붉은 제본 테이프, 고무도장. 평면 인쇄 문법을 지키며, 그라데이션이나 가짜 물리 질감(베벨·엠보싱)은 쓰지 않는다. 액션은 항상 도장이다 — 빨간 도장이 곧 다운로드 버튼이다.",
+    "overview": "한글 패치를 봉인이 풀린 냉전 작전 서류로 표현한다. 첫 화면은 실시간 상황판이 아니라 사건 번호·해제일·배포 등급이 적힌 1970년대 정보기관 파일 표지다. 바랜 2색 오프셋 세계지도 뒤로 청회색 작전판과 카키 봉투형 문서가 이어지며, 공식 로고의 빨강과 검정이 낡은 종이 섬유와 복사 얼룩으로 연결된다.",
     "keyCharacteristics": [
-      "두 표면 문법: 네이비 표지와 크림 서류지의 교차",
-      "액션 = 도장: 회전·점선 외곽선·찍히는 호버",
-      "검은 마스킹 리빌: 스크롤 시 정보 해제",
-      "도트 세계지도: 파랑(미주)·빨강(유라시아)",
-      "세 글자 세계: Oswald · Paperlogy · D2Coding"
+      "거친 철색 파일 커버와 작전 지도 위에 펼친 카키 봉투형 서류",
+      "TWILIGHT 빨간 블록과 STRUGGLE 검정 트랙의 텍스트 워드마크",
+      "영문 워드마크를 검은 잉크가 덮고 원본 글리프 레이어를 제거하면 황혼의 투쟁 한글판이 잘림 없이 한 번에 재인쇄되는 단일 모션",
+      "파랑 서반구와 빨강 동반구의 대치를 전면에 드러낸 1970년대 파일 표지",
+      "배포 승인 → 실행 절차 → 적용 범위와 문제 해결을 합친 현장 기록의 단일 사건 파일",
+      "파일 번호·타공·공개 도장·붉은 제본 테이프·봉투 접힘선의 문서 크롬",
+      "세계지도 윤곽과 위경도선이 바랜 청회색 작전판",
+      "실제 무문자 아카이브 스캔을 공유하는 표지·지도·서류·푸터"
     ],
     "rules": [
       {
@@ -375,27 +462,30 @@
       },
       {
         "name": "The Real-Type Rule",
-        "body": "세계의 글자는 시스템 폰트로 대체하지 않는다 — Oswald·Paperlogy·D2Coding 셋만 쓴다. 모노는 '기술적' 코스튬이 아니라 게임의 실제 본문 글자다.",
+        "body": "텍스트 로고만 Oswald·Paperlogy를 쓰고, 제목·본문·번호·버튼·라벨은 모두 YKompyuta를 쓴다. D2Coding은 YKompyuta 로딩 실패 시 폴백이다.",
         "section": "typography"
       },
       {
-        "name": "The Flat-Print Rule",
-        "body": "서류는 평면이다. 그라데이션·베벨·엠보싱·그레인으로 종이를 흉내 내지 않는다 — 평면 크림 면 + 헤어라인 + 테이프가 재질이다.",
+        "name": "The Archive-Surface Rule",
+        "body": "질감은 실제 무문자 아카이브 스캔 한 장에서만 가져오고 표면 색과 혼합 강도로 변주한다. 그라데이션은 지도 격자와 봉투 접힘선 같은 인쇄 선에만 쓰며, 광택·베벨·엠보싱으로 재질을 꾸미지 않는다.",
         "section": "elevation"
       }
     ],
     "dos": [
       "액션은 도장 언어로 만든다: 회전 + 점선 외곽선 + 찍히는 호버.",
-      "마스킹 리빌은 실제 정보를 드러내는 데만 쓴다.",
+      "마스킹 리빌은 실제 정보를 드러내는 데만 쓰고 한글 글리프 중간을 자르지 않는다.",
       "빨강 3역할을 지킨다: 면=signal-red, 서류지 텍스트=red-deep, 네이비 텍스트=red-bright.",
-      "글자 세계를 지킨다: Oswald / Paperlogy / D2Coding 셋만.",
-      "표면이 바뀌면 텍스트 색도 바꾼다 (steel ↔ ink)."
+      "텍스트 로고 외 모든 글자는 YKompyuta로 통일한다. D2Coding은 폴백으로만 둔다.",
+      "표면이 바뀌면 텍스트 색도 바꾼다 (steel ↔ ink).",
+      "실제 아카이브 스캔 한 장을 표면마다 다른 혼합 강도로 재사용한다.",
+      "지도 격자에는 실제 세계지도 윤곽을 함께 둔다."
     ],
     "donts": [
       "유니코드 글리프·이모지(⬇ ⚠ ▲ ■ 등)를 아이콘 대용으로 쓰지 않는다.",
       "본문에 em-dash를 남발하지 않는다 — 한국어 구두점을 쓴다.",
       "네이비 위 작은 텍스트에 단색 signal-red를 쓰지 않는다.",
-      "가짜 물리 질감(베벨·엠보싱·그레인)이나 그라데이션으로 재질을 흉내 내지 않는다.",
+      "광택 그라데이션·베벨·엠보싱·유리 효과로 현대적인 재질을 끌어들이지 않는다.",
+      "의미 없는 격자만 단독으로 쓰지 않는다 — 위경도선은 세계지도 윤곽과 함께 쓴다.",
       "증거 없는 계량('설치 약 3분' 등)을 주장하지 않는다.",
       "시스템 디스플레이 폰트(Impact류)나 하드 오프셋 섀도를 세계에 끌어들이지 않는다."
     ]

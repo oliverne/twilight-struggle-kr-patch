@@ -1,48 +1,112 @@
 ---
 name: Twilight Struggle 한글 패치 — 배포 사이트
-description: Steam판 Twilight Struggle 한글 패치를 배포하는 해제된 작전 문서 — 냉전 기밀 파일 세계
+description: Steam판 Twilight Struggle 한글 패치를 배포하는 빛바랜 냉전 작전 문서 — 오래된 지도와 봉투형 서류의 세계
 colors:
-  signal-red: "#c8102e"
-  red-deep: "#9e0b24"
-  red-bright: "#f05a70"
-  nato-blue: "#2f5aa8"
-  blue-soft: "#3d6bbd"
-  navy-cover: "#0a1322"
-  navy-panel: "#0e1a2f"
-  navy-border: "#20344f"
-  dossier-paper: "#e9e0cb"
-  paper-deep: "#d9cdb2"
-  off-white: "#f7f3e8"
-  cream: "#f2ecdc"
-  ink: "#20242e"
-  ink-soft: "#4a4f5c"
-  steel: "#aab4c4"
-  steel-dim: "#7e8a9c"
+  signal-red: "#c71d22"
+  red-deep: "#5d1916"
+  red-bright: "#ef6a6e"
+  nato-blue: "#2a5999"
+  blue-soft: "#738f9a"
+  navy-cover: "#17191e"
+  navy-panel: "#1f2027"
+  navy-border: "#5a6164"
+  board-sea: "#738f9a"
+  dossier-paper: "#c8c6a8"
+  paper-deep: "#9f925b"
+  off-white: "#f7f5ed"
+  cream: "#dae5eb"
+  ink: "#1f2027"
+  ink-soft: "#3d4848"
+  steel: "#c0c6be"
+  steel-dim: "#9c9fa0"
+  map-gold: "#c5af3f"
+  map-green: "#5d9e4f"
+  logo-black: "#050607"
 typography:
-  display:
-    fontFamily: "Oswald, Arial Narrow, sans-serif"
-    fontSize: "clamp(2.6rem, 7.5vw, 5.6rem)"
-    fontWeight: 600
-    lineHeight: 0.98
-    letterSpacing: "0.01em"
   headline:
-    fontFamily: "Paperlogy, Pretendard, sans-serif"
+    fontFamily: "YKompyuta, D2Coding, SF Mono, Consolas, monospace"
     fontSize: "clamp(1.7rem, 3.4vw, 2.5rem)"
     fontWeight: 500
     lineHeight: 1.15
     letterSpacing: "-0.02em"
+  title:
+    fontFamily: "YKompyuta, D2Coding, SF Mono, Consolas, monospace"
+    fontSize: "1.15rem"
+    fontWeight: 500
+    lineHeight: 1.15
+    letterSpacing: "-0.02em"
+  action:
+    fontFamily: "YKompyuta, D2Coding, SF Mono, Consolas, monospace"
+    fontSize: "1.05rem"
+    fontWeight: 700
+    lineHeight: 1.15
+  patch-label:
+    fontFamily: "YKompyuta, D2Coding, SF Mono, Consolas, monospace"
+    fontSize: "1.75rem"
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: "0.08em"
+  logo-wordmark:
+    fontFamily: "Oswald, Arial Narrow, sans-serif"
+    fontSize: "clamp(1.8rem, 7.8vw, 6rem)"
+    fontWeight: 600
+    lineHeight: 0.82
+    letterSpacing: "0.01em"
+  logo-wordmark-ko:
+    fontFamily: "Paperlogy, Apple SD Gothic Neo, sans-serif"
+    fontSize: "0.88em"
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: "0.015em"
+  archive-title:
+    fontFamily: "YKompyuta, D2Coding, SF Mono, Consolas, monospace"
+    fontSize: "1.35rem"
+    fontWeight: 400
+    lineHeight: 1.15
   body:
-    fontFamily: "D2Coding, SF Mono, Consolas, monospace"
+    fontFamily: "YKompyuta, D2Coding, SF Mono, Consolas, monospace"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.75
+  body-sm:
+    fontFamily: "YKompyuta, D2Coding, SF Mono, Consolas, monospace"
+    fontSize: "0.82rem"
+    fontWeight: 400
+    lineHeight: 1.7
+  caption:
+    fontFamily: "YKompyuta, D2Coding, SF Mono, Consolas, monospace"
+    fontSize: "0.78rem"
+    fontWeight: 400
+    lineHeight: 1.6
+  fine:
+    fontFamily: "YKompyuta, D2Coding, SF Mono, Consolas, monospace"
+    fontSize: "0.8rem"
+    fontWeight: 400
+    lineHeight: 1.7
+  annotation:
+    fontFamily: "YKompyuta, D2Coding, SF Mono, Consolas, monospace"
+    fontSize: "0.66rem"
+    fontWeight: 400
+    lineHeight: 1.5
+  micro:
+    fontFamily: "YKompyuta, D2Coding, SF Mono, Consolas, monospace"
+    fontSize: "0.58rem"
+    fontWeight: 400
+    lineHeight: 1.45
+  step-number:
+    fontFamily: "YKompyuta, D2Coding, SF Mono, Consolas, monospace"
+    fontSize: "1.35rem"
+    fontWeight: 400
+    lineHeight: 1
   label:
-    fontFamily: "D2Coding, SF Mono, Consolas, monospace"
+    fontFamily: "YKompyuta, D2Coding, SF Mono, Consolas, monospace"
     fontSize: "0.72rem"
     fontWeight: 400
     letterSpacing: "0.14em"
 rounded:
-  sm: "4px"
+  xs: "0"
+  sm: "1px"
+  md: "2px"
 spacing:
   xs: "0.35rem"
   sm: "0.75rem"
@@ -53,7 +117,7 @@ components:
   button-primary:
     backgroundColor: "{colors.signal-red}"
     textColor: "{colors.off-white}"
-    typography: "{typography.headline}"
+    typography: "{typography.action}"
     rounded: "{rounded.sm}"
     padding: "0.95rem 1.6rem"
   button-primary-hover:
@@ -71,10 +135,10 @@ components:
     rounded: "{rounded.sm}"
     padding: "1.1rem 1.2rem"
   filebox:
-    backgroundColor: "{colors.navy-panel}"
-    textColor: "{colors.cream}"
-    rounded: "{rounded.sm}"
-    padding: "1.75rem 1.6rem"
+    backgroundColor: "{colors.dossier-paper}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.xs}"
+    padding: "1.15rem 0 0"
 ---
 
 # Design System: Twilight Struggle 한글 패치 — 배포 사이트
@@ -83,36 +147,44 @@ components:
 
 **Creative North Star: "해제된 작전 파일 (The Declassified Dossier)"**
 
-한글 패치라는 제품을 기밀 작전 문서가 공개로 전환된 순간으로 표현한다. 페이지는 네이비 표지로 열리고, 방문자가 스크롤할 때마다 검은 마스킹 바가 벗겨지며 실제 정보가 해제된다. 세계는 냉전 보드게임 Twilight Struggle의 두 가지 재질, 즉 진영 색(파랑 vs 빨강)과 서류(도장·기밀 바·검은 마스킹)로 이뤄진다.
+한글 패치라는 제품을 봉인이 풀린 냉전 작전 서류로 표현한다. 페이지는 거칠게 복사된 철색 파일 커버로 열리고, 제목이 파일 가장자리 안에서 인양되며 정보가 해제된다. 이어지는 본문은 위경도선과 빛바랜 세계지도가 인쇄된 청회색 작전판 위에 펼친 카키 봉투형 문서다. 공식 로고의 빨강·검정, 진영 색, 아프리카 지역의 바랜 카키가 낡은 종이 섬유와 복사 얼룩으로 이어진다.
 
-밀도는 중간에서 낮음 사이로, 한 화면에 하나의 주장만 둔다. 장식은 세계의 재질로만 한다: 도트 세계지도, 헤어라인, 붉은 제본 테이프, 고무도장. 평면 인쇄 문법을 지키며, 그라데이션이나 가짜 물리 질감(베벨·엠보싱)은 쓰지 않는다. 액션은 항상 도장이다 — 빨간 도장이 곧 다운로드 버튼이다.
+밀도는 중간에서 낮음 사이로, 한 화면에 하나의 주장만 둔다. 장식은 세계의 재질로만 한다: 오프셋 망점 세계지도, 위경도선, 아카이브 종이 스캔, 봉투 접힘선, 사건 메타, 고무도장. 실제 스캔 질감은 표면마다 혼합 강도만 달리해 반복 사용하고, 광택 그라데이션·베벨·엠보싱은 쓰지 않는다. 액션은 항상 도장이다 — 빨간 도장이 곧 다운로드 버튼이다.
 
 **Key Characteristics:**
-- 두 표면 문법: 네이비 표지(진영·어두운 재질)와 크림 서류지(정보·밝은 재질)의 교차
+- 두 표면 문법: 거친 철색 파일 커버와 작전 지도 위에 펼친 카키 봉투형 서류
+- 텍스트 워드마크: Oswald로 로고 구조를 재현하고 TWILIGHT는 빨간 블록, STRUGGLE은 검정 트랙 위 빨강으로 표현
 - 액션 = 도장: 회전·점선 외곽선·'찍히는' 호버로 버튼을 고무도장으로 만든다
-- 검은 마스킹 리빌: 페이지 진입 시 히어로 제목 줄이 기밀 마스킹 바를 찢고 해제되고, 서류 시트 진입 시에도 마스킹 바가 벗겨진다
-- 살아있는 상황판: 히어로 도트 지도 위로 스캔선이 돌고, 육지 위 접촉점이 맥박하며 스캔에 응답한다(Canvas + 커서·스크롤 패럴랙스)
-- 도트 세계지도: 파랑(미주)·빨강(유라시아) 진영 도트가 표지 배경을 이룬다
-- 세 글자 세계: Oswald(라틴) · Paperlogy(한글) · D2Coding(본문) — 셋만 쓴다
+- 클리핑 리빌: 페이지 진입 시 제목이 부모 영역 안에서 아래에서 위로 인양되며, 별도 찢김 오버레이나 하단 잔상을 남기지 않는다. 한글은 글리프 중간을 자르는 와이프 없이 한 번에 인쇄하고, 완료 뒤 필터·변형·클리핑 합성 레이어를 남기지 않아 선명하게 렌더링한다
+- 해제된 기록물: 히어로는 실시간 추적·레이더 효과 없이 이미 분류가 끝난 1970년대 정보기관 파일 표지다
+- 냉전 대치 지도: 파랑(서반구)과 빨강(동반구) 인쇄판을 강한 대비로 나누고 몇 픽셀 어긋나게 겹친다
+- 사건 메타: CASE NO.·DATE RELEASED·DISTRIBUTION·DECLASSIFIED를 실제 서류 필드처럼 비대칭 배치한다
+- 아카이브 표면: 무문자 종이 스캔의 섬유·복사 얼룩·스크래치를 표지, 지도, 서류, 푸터에 같은 계보로 적용한다
+- 작전판: 청회색 바닥에 세계지도 윤곽, 30도 간격을 연상시키는 위경도 격자, 바랜 인쇄 농도를 겹친다
+- 봉투형 문서: 상단의 큰 삼각 덮개 접힘선, 점선 봉합선, 접힌 귀퉁이로 개봉된 마닐라 봉투를 만든다
+- 단일 문서 글자: 텍스트 로고만 Oswald(영문)·Paperlogy(한글), 나머지 제목·본문·번호·버튼·라벨은 모두 YKompyuta를 쓴다. D2Coding은 로딩 실패 시 폴백이다
 
 ## Colors
 
-두 표면(네이비 표지 / 크림 서류지) 위에 하나의 신호 빨강 가족이 액션을 담당하고, 미군 블루가 지도·진영을 담당한다. 빨강은 표면에 따라 역할이 갈린다 — 아래 Named Rules 참조.
+철색 파일 커버와 카키 작전 서류를 게임 보드의 청회색 바다 위에 놓는다. 게임 로고의 빨강이 액션을 담당하고, 미국 진영의 블루와 아프리카 보드의 카키·골드·그린은 표면과 보조 상태를 담당한다. 팔레트의 주요 값은 제공된 영문 게임 스크린샷에서 직접 추출했다.
 
 ### Primary
-- **신호 빨강 (Signal Red)** (#c8102e): 도장·버튼 면, 제본 테이프, 기밀 바. 흰 텍스트와 함께 쓴다 (대비 5.9:1).
-- **진한 빨강 (Red Deep)** (#9e0b24): 서류지 위의 빨강 텍스트·링크·상태 표시 (대비 6.6:1).
-- **밝은 빨강 (Red Bright)** (#f05a70): 네이비 위의 빨강 텍스트·진행 바·경고 (대비 5.3:1).
+- **신호 빨강 (Signal Red)** (#c71d22): 공식 로고의 빨강. 도장·버튼 면, 제본 테이프, 기밀 바에 사용한다.
+- **진한 빨강 (Red Deep)** (#5d1916): 소련 보드에서 추출한 어두운 빨강. 작전 서류 위 링크·도장에 쓴다.
+- **밝은 빨강 (Red Bright)** (#ef6a6e): 철색 상황판 위의 빨강 텍스트·진행 바·경고.
 
 ### Secondary
-- **미군 블루 (NATO Blue)** (#2f5aa8): 서반구 지도 도트와 진영 표시의 파랑. 밝은 단계(blue-soft #3d6bbd)와 함께 쓴다.
+- **미군 블루 (NATO Blue)** (#2a5999): 미국 진영에서 추출한 파랑. 서반구 지도 도트와 진영 표시에 쓴다.
+- **보드 바다 (Board Sea)** (#738f9a): 게임 화면의 가장 넓은 면. 작전 서류 바깥 캔버스를 전담한다.
+- **보드 골드·그린** (#c5af3f / #5d9e4f): 아시아·남미 보드에서 추출한 보조색. 작은 상태와 문서 표식에만 제한한다.
 
 ### Neutral
-- **네이비 표지 (Navy Cover)** (#0a1322): 페이지 바닥·다운로드 패널·명령 블록. 표지 면 위로 navy-panel(#0e1a2f, 철 문서함·올린 면) → navy-border(#20344f, 구분선)으로 층을 쌓는다.
-- **서류지 (Dossier Paper)** (#e9e0cb): 서류 섹션 바닥. paper-deep(#d9cdb2)은 판·플레이트 면.
-- **먹 (Ink)** (#20242e): 서류지 위 본문·테두리. ink-soft(#4a4f5c)는 부차 텍스트.
-- **강철 (Steel)** (#aab4c4): 네이비 위 본문. steel-dim(#7e8a9c)은 부차 텍스트·라벨.
-- **크림 (Cream)** (#f2ecdc)·**오프화이트 (Off White)** (#f7f3e8): 네이비 위 강조 텍스트·제목.
+- **철색 표지 (Navy Cover)** (#17191e): 히어로 바닥. navy-panel(#1f2027)은 게임 하단 레일과 다운로드 패널, navy-border(#5a6164)는 금속 구분선이다.
+- **작전 서류 (Dossier Paper)** (#c8c6a8): 다운로드·설치·도움말을 담는 단일 문서. paper-deep(#9f925b)은 탭과 눌린 면이다.
+- **먹 (Ink)** (#1f2027): 서류 위 본문·테두리. ink-soft(#3d4848)는 부차 텍스트.
+- **강철 (Steel)** (#c0c6be): 철색 면 위 본문. steel-dim(#9c9fa0)은 부차 텍스트·라벨.
+- **크림 (Cream)** (#dae5eb)·**오프화이트 (Off White)** (#f7f5ed): 철색 면 위 강조 텍스트·제목.
+- **로고 블랙 (Logo Black)** (#050607): 텍스트 워드마크의 검정 트랙에만 쓴다.
 
 ### Named Rules
 **The Red Context Rule.** 빨강은 표면에 따라 역할이 갈린다: 면(도장·테이프·버튼)은 signal-red, 서류지 위 텍스트는 red-deep, 네이비 위 텍스트는 red-bright. 단색 signal-red를 작은 텍스트에 억지로 쓰지 않는다 — 대비 4.5:1 미만이면 역할을 바꾼다.
@@ -120,31 +192,36 @@ components:
 
 ## Typography
 
-**Display Font:** Oswald (500/600, 자체 호스팅, 영문 대문자용)
-**Headline Font:** Paperlogy 5 Medium (500/700, 자체 호스팅, 한글 제목용)
-**Body Font:** D2Coding (400, 자체 호스팅 — 게임이 실제로 쓰는 본문 폰트)
-**Label Font:** D2Coding (파일 라벨·도장·메타, 대문자 + 자간)
+**Brand Logotype:** Oswald 600으로 공식 로고의 블록 구조를 재현한 텍스트 워드마크
+**Headline Font:** YKompyuta Regular (400, 본문과 같은 타자기 인쇄 계열)
+**Body Font:** YKompyuta Regular (400, jsDelivr 제공 — 낡은 타자기 인쇄의 불균일한 획)
+**Label Font:** YKompyuta (파일 라벨·도장·메타, 대문자 + 자간). D2Coding은 네트워크 실패 시 폴백.
+**Numeral Font:** YKompyuta (400, 설치 단계 번호용)
 
-**Character:** 게임 자체의 타이포를 그대로 가져온다. 라틴 디스플레이는 응축된 Oswald로 게임 로고의 위압감을, 한글 제목은 Paperlogy로 부드러운 현대 산스의 균형을, 본문은 D2Coding 모노로 '기계가 찍은 문서'의 질감을 낸다.
+**Character:** 영문·한글 텍스트 로고에만 Oswald와 Paperlogy의 굵은 인쇄물 대비를 남긴다. 그 밖의 모든 정보는 YKompyuta로 타자해 한 장의 기밀 문서처럼 묶는다.
 
 ### Hierarchy
-- **Display** (Oswald 600, clamp(2.6rem, 7.5vw, 5.6rem), 0.98): 히어로의 영문 로고 "TWILIGHT STRUGGLE". 대문자·약간 벌린 자간(0.01em).
-- **Headline** (Paperlogy 500, clamp(1.7rem, 3.4vw, 2.5rem), 1.15): 섹션 제목·한글 대제목. 자간 -0.02em, text-wrap: balance.
-- **Title** (Paperlogy 700, 1.0–1.15rem): OS 카드 이름·FAQ 질문·설치 단계 제목.
-- **Body** (D2Coding 400, 1rem, 1.75): 모든 본문. 한 줄 65–75자(36rem)로 제한.
-- **Label** (D2Coding 400, 0.72rem, 자간 0.14–0.18em, 대문자): 파일 탭·문서함 머리·메타·도장.
+- **Brand Lockup** (Oswald 600 영문 / Paperlogy 700 한글, clamp(1.8rem, 7.8vw, 6rem)): 유일한 비-YKompyuta 영역.
+- **Step Number** (YKompyuta 400, 1.35rem, 1): 순서가 중요한 설치 단계 번호.
+- **Headline** (YKompyuta 400, clamp(1.7rem, 3.4vw, 2.5rem), 1.15): 사건 파일의 주요 제목.
+- **Title** (YKompyuta 400, 1.0–1.15rem): 파일명·현장 기록·설치 단계 제목.
+- **Body** (YKompyuta 400, 1rem, 1.75): 모든 본문. 한 줄 65–75자(36rem)로 제한.
+- **Label** (YKompyuta 400, 0.72rem, 자간 0.14–0.18em, 대문자): 파일 탭·문서함 머리·메타·도장.
+- **Annotation** (YKompyuta 400, 0.66rem, 1.5): 표지 검수 표식과 모바일 사건 필드.
+- **Micro** (YKompyuta 400, 0.58rem, 1.45): 사건 메타의 필드명.
 
 ### Named Rules
-**The Real-Type Rule.** 세계의 글자는 시스템 폰트로 대체하지 않는다 — Oswald·Paperlogy·D2Coding 셋만 쓴다. 모노는 '기술적' 코스튬이 아니라 게임의 실제 본문 글자다.
+**The Real-Type Rule.** 텍스트 로고만 Oswald·Paperlogy를 쓰고, 나머지는 예외 없이 YKompyuta를 쓴다. D2Coding은 네트워크 로딩 실패 시 가독성을 지키는 폴백이다.
 
 ## Layout
 
-컨테이너는 `min(1080px, 100% - 3rem)` 단일 컬럼. 히어로와 푸터는 네이비 풀블리드, 서류 구간은 크림 풀블리드로 표면이 번갈아 나온다.
+히어로와 푸터는 아카이브 스캔이 밴 철색 풀블리드다. 본문은 세계지도와 위경도선이 바랜 청회색 작전판 위에 폭 1120px 이하의 단일 카키 봉투형 서류를 올린다.
 
-- **히어로**: 단일 컬럼 중앙 정렬 — 제목 + 다운로드 도장뿐. 최소 높이 74vh. 기밀 해제 오프닝(줄 간 0.16s 스태거)이 열리는 무대.
-- **서류 (알아두면 좋은 점 · 다운로드 · 설치)**: 데스크톱에서 5fr/7fr 그리드 — 왼쪽 열에 알아두면 좋은 점, 오른쪽 열에 다운로드 + 철 문서함(설치) 적층. 오른쪽 열은 sticky(top 1rem)로 스크롤 동안 고정된다.
-- **반응형**: 880px 이하에서 단일 컬럼(다운로드 → 설치 → 알아두면 좋은 점 순), sticky 해제, 메모는 헤어라인으로 분리. 560px 이하에서 OS 탭이 전체 폭, 다운로드 패널이 세로 적층.
-- **리듬**: 서류 섹션 패딩 `clamp(3rem, 7vh, 5rem)` — 제목 위 공간이 아래보다 넉넉하다. 조밀 그룹 0.75–1rem, 섹션 간 헤어라인 + 붉은 제본 테이프(5px)로 구분.
+- **히어로**: 사건 메타 → 좌측 파일 라벨형 제목·설명·다운로드 도장 → 우측 하단 검수 표식의 비대칭 파일 편집. 지속 애니메이션 없이 검열 해제와 도장 등장만 한 번 실행한다.
+- **서류 흐름**: 모든 화면에서 배포 승인 → 실행 절차 → 현장 기록 순의 단일 사건 파일. 적용 범위와 문제 해결은 하나의 기록 목록으로 합친다.
+- **문서 크롬**: 파일 번호, 타공 두 개, 공개 도장, 상단 붉은 제본 테이프, 봉투 덮개 접힘선과 접힌 귀퉁이가 개봉된 작전 서류를 분명히 만든다.
+- **반응형**: 560px 이하에서 청회색 바깥 여백을 제거하고, OS 탭과 다운로드 버튼을 전체 폭으로 확장한다.
+- **리듬**: 서류 내부 주요 영역 사이는 `clamp(3.5rem, 7vw, 5.5rem)`. 도움말 앞에는 먹색 헤어라인을 둔다.
 - **진행**: 화면 최상단 3px 빨간 스크롤 진행 바(scaleX).
 
 ## Elevation & Depth
@@ -152,43 +229,43 @@ components:
 하이브리드: 어두운 면은 **톤 레이어링**(navy-cover → navy-panel → navy-border)으로, 밝은 면은 **소프트 섀도**로 깊이를 준다. 하드 오프셋 섀도(네오브루탈)는 세계에 없다.
 
 ### Shadow Vocabulary
-- **paper** (`0 1px 0 rgba(32,36,46,.1), 0 18px 44px -20px rgba(10,19,34,.5)`): 철 문서함 등 떠 있는 면.
-- **stamp** (`0 10px 26px -10px rgba(158,11,36,.55)`): 빨간 도장 CTA가 '찍혀' 있음을 강조.
+- **paper** (`3px 4px 0 rgba(31,32,39,.22), 0 26px 56px -18px rgba(31,32,39,.72)`): 작전판 위에 놓인 거친 봉투형 서류.
+- **stamp** (`0 10px 26px -10px rgba(93,25,22,.7)`): 빨간 도장 CTA가 '찍혀' 있음을 강조.
 
-**The Flat-Print Rule.** 서류는 평면이다. 그라데이션·베벨·엠보싱·그레인으로 종이를 흉내 내지 않는다 — 평면 크림 면 + 헤어라인 + 테이프가 재질이다.
+**The Archive-Surface Rule.** 질감은 실제 무문자 아카이브 스캔 한 장에서만 가져오고 표면 색과 혼합 강도로 변주한다. 그라데이션은 지도 격자와 봉투 접힘선 같은 인쇄 선에만 쓰며, 광택·베벨·엠보싱으로 재질을 꾸미지 않는다.
 
 ## Shapes
 
-- **모서리**: 4px(radius sm). 종이·서류·도장의 깔끔한 모서리 — 카드류 12–16px 둥금은 이 세계에 없다.
+- **모서리**: 1px(radius sm). 낡은 종이·철제 패널·도장의 거의 직각인 모서리 — 카드류 12–16px 둥금은 이 세계에 없다.
 - **원형 도장**: 3px 실선 원 + 7px 안쪽 점선 원. -6~8도 회전이 '찍힘'을 만든다.
 - **주 CTA**: 사각 도장 — 2px 실선 + 3px 오프셋 점선 외곽선, -1.5도 회전.
-- **스캔선**: 히어로 상황판 위를 도는 1px 헤어라인 + 우측 빨간 스윕 헤드 틱.
-- **서류 시트**: 상단 5px 붉은 제본 테이프 + 하단 헤어라인.
+- **파일 접힘선**: 표지에는 낮은 대비의 비뚤어진 점선과 연필선만 두며, 상태나 진행으로 오해할 수 있는 세로 레일은 쓰지 않는다.
+- **서류 시트**: 상단 8px 붉은 제본 테이프 + 파일 메타 헤어라인 + 두 개의 타공 + 큰 봉투 덮개 접힘선 + 접힌 귀퉁이.
 
 ## Components
 
 ### Buttons (도장)
-- **Shape:** 4px radius, 회전(-1.5deg), 2px 점선 외곽선(offset 3px).
-- **Primary (stamp-btn):** signal-red 배경 · off-white 텍스트 · Paperlogy 700 1.05rem · padding 0.95rem 1.6rem · stamp 섀도.
+- **Shape:** 1px radius, 회전(-1.5deg), 2px 점선 외곽선(offset 3px).
+- **Primary (stamp-btn):** 아카이브 질감을 곱한 signal-red 배경 · off-white 텍스트 · YKompyuta 1.05rem · padding 0.95rem 1.6rem · stamp 섀도.
 - **Hover / Focus:** 호버 = scale(1.06) + red-deep 배경 + 회전 증가 — '도장이 다시 찍히는' 느낌. active = scale(0.96). 포커스 = 흰 점선.
 - **Secondary:** 텍스트 링크(red-deep, 밑줄 offset 3px)와 미니 도장(stamp-mini, 2px 테두리 0.66rem 대문자)만.
 
 ### OS 선택 카드 (radio)
-- **Style:** 서류지 배경 · 1px 먹 테두리 · 4px radius · 3열 그리드(글리프/이름/파일명).
+- **Style:** 서류지 배경 · 1px 먹 테두리 · 1px radius · 3열 그리드(글리프/이름/파일명).
 - **State:** 선택 = 오프화이트 배경 + 빨간 테두리 + inset 1px 빨강 링. 호버 = 오프화이트. 포커스 = 빨간 점선.
 
 ### 다운로드 패널
-- **Style:** navy-cover 배경 · 크림 텍스트 · 4px radius · 파일명 모노. 기본 숨김, OS 선택 시 `.on`으로 나타난다.
+- **Style:** 아카이브 스캔이 밴 navy-cover 배경 · 크림 텍스트 · 1px radius · 파일명 모노. 기본 숨김, OS 선택 시 `.on`으로 나타난다.
 
-### 철 문서함 (설치 카드)
-- **Style:** navy-panel 배경 · navy-border 테두리 · paper 섀도. 단계 = Oswald 번호(red-bright) + Paperlogy 제목 + steel 본문, 점선 구분.
-- **명령 블록:** navy-cover 배경 · 좌측 3px 빨간 바 · 모노 0.74rem · 가로 스크롤 + 복사 버튼(steel → 호버 red).
+### 설치 실행 기록
+- **Style:** 별도 카드 없이 카키 사건 파일 위의 이중선과 행 구분으로 이어진다. 단계 번호·제목·본문은 모두 YKompyuta이며 red-deep 번호가 순서만 표시한다.
+- **명령 블록:** navy-cover 배경 · 위쪽 1px 빨간 헤어라인 · 모노 0.74rem · 가로 스크롤 + 복사 버튼(steel → 호버 red).
 
 ### 기밀 해제 오프닝 (히어로 시그니처)
-- 페이지 진입 시 제목 두 줄을 검은 마스킹 바(하단 들쭉날쭉 clip-path)가 줄 단위로 찢고 올라가며 해제. 줄 간 0.16s 스태거, 다운로드 도장은 1.35s에 '찍히며' 등장. prefers-reduced-motion에서는 마스킹 없이 즉시 표시.
+- 제목은 별도 찢김 바 없이 부모 클리핑 안에서 인양된다. 영문 로고가 드러난 뒤 1.35초에 검은 잉크가 덮고, 덮기가 끝나면 영문 글리프 레이어를 제거한다. 1.9초부터 폭이 한글 내용에 맞게 줄어든 뒤 2.08초에 `황혼의 투쟁`이 글리프 잘림 없이 한 번에 재인쇄된다. 다운로드 도장은 2.55초에 찍힌다. `prefers-reduced-motion`에서는 한글 로고를 최종 폭으로 즉시 표시한다.
 
-### 살아있는 상황판 (히어로 Canvas)
-- 도트맵 위 Canvas 레이어: 7초 주기 스캔 헤어라인 + 육지 위 접촉점 14개(서반구 파랑·동반구 빨강) — 스캔 통과 시 ping 링. 커서에 반구가 반대 방향으로 기울고, 스크롤 시 지도가 느리게 이동. 뷰포트 이탈 시 일시정지, 모션 절감 시 비활성.
+### 해제된 사건 파일 (히어로 시그니처)
+- 정적 2색 망점 세계지도에 아카이브 스캔과 위경도선을 겹친다. 서반구·동반구 인쇄판은 서로 4px가량 어긋나며, Canvas·스캔선·접촉점·패럴랙스는 사용하지 않는다. CASE NO.·DATE RELEASED·DISTRIBUTION·DECLASSIFIED가 파일 표지의 진위를 만든다.
 
 ## Do's and Don'ts
 
@@ -196,13 +273,16 @@ components:
 - **Do** 액션은 도장 언어로 만든다: 회전 + 점선 외곽선 + 찍히는 호버.
 - **Do** 마스킹 리빌은 실제 정보를 드러내는 데만 쓴다 — 스크롤 후에도 남는 장식용 마스킹은 금지.
 - **Do** 빨강 3역할을 지킨다: 면=signal-red, 서류지 텍스트=red-deep, 네이비 텍스트=red-bright.
-- **Do** 글자 세계를 지킨다: Oswald / Paperlogy / D2Coding 셋만.
+- **Do** 텍스트 로고 외 모든 글자는 YKompyuta로 통일한다. D2Coding은 폴백으로만 둔다.
 - **Do** 표면이 바뀌면 텍스트 색도 바꾼다 (steel ↔ ink).
+- **Do** 실제 아카이브 스캔 한 장을 표면마다 다른 혼합 강도로 재사용해 같은 시대의 물성으로 묶는다.
+- **Do** 지도 격자에는 실제 세계지도 윤곽을 함께 두어 의미 있는 작전판으로 만든다.
 
 ### Don't:
 - **Don't** 유니코드 글리프·이모지(⬇ ⚠ ▲ ■ 등)를 아이콘 대용으로 쓰지 않는다 — SVG로 직접 그린다.
 - **Don't** 본문에 em-dash를 남발하지 않는다 — 한국어 구두점(마침표·가운뎃점)을 쓴다.
 - **Don't** 네이비 위 작은 텍스트에 단색 signal-red를 쓰지 않는다 (대비 3:1 미만).
-- **Don't** 가짜 물리 질감(베벨·엠보싱·그레인)이나 그라데이션으로 재질을 흉내 내지 않는다.
+- **Don't** 광택 그라데이션·베벨·엠보싱·매끈한 유리 효과로 현대적인 재질을 끌어들이지 않는다.
+- **Don't** 의미 없는 격자만 단독으로 쓰지 않는다 — 위경도선은 세계지도 윤곽과 함께 쓴다.
 - **Don't** 증거 없는 계량("설치 약 3분" 등)을 주장하지 않는다 — 사실만.
 - **Don't** 시스템 디스플레이 폰트(Impact류)나 하드 오프셋 섀도를 세계에 끌어들이지 않는다.
