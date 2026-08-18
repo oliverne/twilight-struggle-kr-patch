@@ -1,9 +1,9 @@
 ---
-import Base from '../layouts/Base.astro';
+import Base from "../layouts/Base.astro";
 
 const base = import.meta.env.BASE_URL;
-const RELEASE = 'v0.1.1';
-const GH = 'https://github.com/oliverne/twilight-struggle-kr-patch';
+const RELEASE = "v0.1.1";
+const GH = "https://github.com/oliverne/twilight-struggle-kr-patch";
 const DL = `${GH}/releases/download/${RELEASE}`;
 const F = (os: string) => `twilight-struggle-kr-patch-${RELEASE}-${os}.zip`;
 
@@ -14,66 +14,71 @@ const maskStyle = (file: string) =>
 
 const osList = [
   {
-    id: 'windows',
-    name: 'Windows',
-    desc: 'Windows 10 / 11',
-    file: F('windows'),
-    size: '9.3MB',
-    url: `${DL}/${F('windows')}`,
-    cmd: 'powershell -ExecutionPolicy Bypass -File .\\scripts\\install-windows.ps1',
-    cmdNote: '압축을 푼 폴더에서 PowerShell을 열어 실행',
+    id: "windows",
+    name: "윈도우",
+    desc: "Windows 10 / 11",
+    file: F("windows"),
+    size: "9.3MB",
+    url: `${DL}/${F("windows")}`,
+    cmd: "powershell -ExecutionPolicy Bypass -File .\\scripts\\install-windows.ps1",
+    cmdNote: "압축을 푼 폴더에서 PowerShell을 열고 설치 스크립트 실행",
   },
   {
-    id: 'macos',
-    name: 'macOS',
-    desc: 'macOS 10.13 이상',
-    file: F('macos'),
-    size: '9.8MB',
-    url: `${DL}/${F('macos')}`,
-    cmd: 'chmod +x scripts/install.sh && ./scripts/install.sh',
-    cmdNote: '압축을 푼 폴더에서 터미널을 열어 실행',
+    id: "macos",
+    name: "맥OS",
+    desc: "macOS 그럭저럭 최근 버전 이상",
+    file: F("macos"),
+    size: "9.8MB",
+    url: `${DL}/${F("macos")}`,
+    cmd: "chmod +x scripts/install.sh && ./scripts/install.sh",
+    cmdNote: "압축을 푼 폴더에서 터미널을 열고 설치 스크립트 실행",
   },
 ] as const;
 
 const fieldNotes = [
   {
-    mark: '적용 범위',
-    title: '카드·메뉴·인게임 UI·규칙북·도움말은 한글로 표시됩니다.',
-    detail: '턴 히스토리와 튜토리얼 안내, 보드 그림에 새겨진 국가명은 영어로 남습니다.',
+    mark: "적용 범위",
+    title: "패치 후에도 영어로 나오는 문구가 있습니다. 어떻게 된거에요?!",
+    detail:
+      "턴 히스토리와 튜토리얼 안내, 그리고 일분 진행 메시지는 직접 패치하기 어려운 구조라 영어로 표시됩니다. 한식구 카페 패치는 방식이 달라 그 부분이 한국어로 나올지도 몰라요",
   },
   {
-    mark: '검증 기록',
-    title: 'Steam 데스크톱판의 싱글플레이와 로컬 대국에서 확인했습니다.',
-    detail: '모바일판에는 적용할 수 없으며, 멀티플레이 매칭은 아직 검증하지 않았습니다.',
+    mark: "검증 결과",
+    title: "검수는 똑바로 했나요? 멀티플레이는 제대로 되나요?",
+    detail:
+      "라이트 게이머라 내용이 틀려도 잘 몰라요. 또한, 친구가 없어 멀티 플레이는 못해봤습니다. (AI로) 어색한 번역투, 틀린 조사 및 오타를 일부 수정했습니다.",
   },
   {
-    mark: '복구 절차',
-    title: '업데이트 뒤 영어로 돌아오면 설치 스크립트를 다시 실행하세요.',
-    detail: 'Steam 업데이트나 파일 무결성 확인은 패치 파일을 원본으로 되돌릴 수 있습니다.',
+    mark: "지원 범위",
+    title:
+      "안드로이드나 iOS(아이폰, 아이패드)에서도 한글 패치가 되나요? 스팀덱은 되나요?",
+    detail:
+      "아니오, 아쉽지만 안드로이드와 iOS에서는 안됩니다. (AI가) 스팀덱에서는 동작할 거라고는 하는데, 제가 스팀덱이 없어 테스트는 못해봤습니다.",
   },
   {
-    mark: '원본 복원',
-    title: '제거 스크립트 또는 Steam 파일 무결성 확인으로 되돌릴 수 있습니다.',
-    detail: '설치 과정에서 원본 파일도 자동으로 백업합니다.',
+    mark: "수동 설치",
+    title: "뭘 믿고 스크립트를 실행하나요? 수동으로 설치할 수 없나요?",
+    detail:
+      "다운로드한 파일의 압출을 풀고, 패치 파일을 직접 게임 설치 폴더에 덮어쓰면 됩니다. 복원할 때는 게임 삭제후 재설치 또는 스팀 무결성 검사를 이용하세요. ",
   },
   {
-    mark: '보고 접수',
-    title: '번역 오류나 설치 문제는 GitHub Issues에 남겨주세요.',
-    detail: '확인 가능한 화면과 재현 절차를 함께 적어주시면 도움이 됩니다.',
-    href: `${GH}/issues`,
-    linkLabel: '문제 보고하기',
+    mark: "만든 이유",
+    title: "한글 패치를 굳이? 또? 왜? 만들었나요?",
+    detail:
+      "오랜만에 게임 좀 해보고 싶었습니다만, 블루문(우드킹)님 패치가 게임 업데이트로 지원이 끊겼길래 '그럼 AI로 직접 고치면 되지 않을까?' 하고 시작했는데, AI가 한식구 네이버 카페의 최신 패치를 찾아 주었습니다. 하지만, BepInEx 방식 패치는 맥OS에서 사용할 수 없어 직접... 아니, AI 시켜 고쳐봤습니다.",
   },
 ] as const;
 ---
+
 <Base
-  title="Twilight Struggle 한글 패치 · Steam판을 한국어로"
-  description="Steam판 Twilight Struggle의 비공식 한글 패치. 카드·메뉴·인게임 UI·규칙북·도움말을 한국어로. 무료 다운로드, 설치하면 바로 한글."
+  title="Twilight Struggle 한국어 패치 · Steam판을 한국어로"
+  description="Steam판 Twilight Struggle의 비공식 한국어 패치. 카드·메뉴·인게임 UI·규칙북·도움말을 한국어로. 무료 다운로드, 설치하면 바로 한글."
 >
   <!-- ══ 히어로 — 1970년대 정보기관 사건 파일 표지 ══ -->
   <section class="hero" id="top" aria-labelledby="hero-title">
     <div class="dossier-map" aria-hidden="true">
-      <i class="west" style={maskStyle('world-mask-west.png')}></i>
-      <i class="east" style={maskStyle('world-mask-east.png')}></i>
+      <i class="west" style={maskStyle("world-mask-west.png")}></i>
+      <i class="east" style={maskStyle("world-mask-east.png")}></i>
     </div>
     <div class="hero-vignette" aria-hidden="true"></div>
 
@@ -88,26 +93,46 @@ const fieldNotes = [
       <div class="hero-copy">
         <h1 class="hero-title" id="hero-title">
           <span class="mask-line brand-line" style="--i: 0">
-            <span class="mask-line-inner logo-wordmark" aria-label="Twilight Struggle, 황혼의 투쟁">
+            <span
+              class="mask-line-inner logo-wordmark"
+              aria-label="Twilight Struggle, 황혼의 투쟁"
+            >
               <span class="logo-english" aria-hidden="true">
-                <span class="logo-twilight">Twilight</span><span class="logo-struggle">Struggle</span>
+                <span class="logo-twilight">Twilight</span><span
+                  class="logo-struggle">Struggle</span
+                >
               </span>
               <span class="logo-ink" aria-hidden="true"></span>
               <span class="logo-korean" aria-hidden="true">
-                <span class="logo-korean-twilight">황혼의</span><span class="logo-korean-struggle">투쟁</span>
+                <span class="logo-korean-twilight">황혼의</span><span
+                  class="logo-korean-struggle">투쟁</span
+                >
               </span>
             </span>
           </span>
           <span class="mask-line patch-line" style="--i: 1">
-            <span class="mask-line-inner patch-lockup">한글 패치</span>
+            <span class="mask-line-inner patch-lockup"
+              >한국어 패치 {RELEASE}</span
+            >
           </span>
         </h1>
 
-        <p class="hero-summary">Steam 데스크톱판의 카드·메뉴·인게임 UI·규칙북·도움말을 한국어로 바꿉니다. 설치하면 바로 한글로 표시됩니다.</p>
+        <p class="hero-summary">
+          디지털 보드게임 Twilight Struggle의 Steam 버전 한국어 패치입니다.
+          윈도우와 맥OS를 지원합니다.
+        </p>
 
         <div class="hero-actions">
           <a class="stamp-btn" href="#download">
-            <svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5 12 7.5"/></svg>
+            <svg
+              class="glyph"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              aria-hidden="true"
+              ><path d="M8 2v9M4 7.5 8 11.5 12 7.5"></path></svg
+            >
             다운로드
           </a>
         </div>
@@ -122,12 +147,12 @@ const fieldNotes = [
 
   <div class="sheets">
     <div class="board-chart board-chart--north" aria-hidden="true">
-      <i class="west" style={maskStyle('world-mask-west.png')}></i>
-      <i class="east" style={maskStyle('world-mask-east.png')}></i>
+      <i class="west" style={maskStyle("world-mask-west.png")}></i>
+      <i class="east" style={maskStyle("world-mask-east.png")}></i>
     </div>
     <div class="board-chart board-chart--south" aria-hidden="true">
-      <i class="west" style={maskStyle('world-mask-west.png')}></i>
-      <i class="east" style={maskStyle('world-mask-east.png')}></i>
+      <i class="west" style={maskStyle("world-mask-west.png")}></i>
+      <i class="east" style={maskStyle("world-mask-east.png")}></i>
     </div>
     <!-- ══ 다운로드 · 설치 · 알아두면 좋은 점 — 한 장의 서류 ══ -->
     <section class="sheet" id="download" aria-labelledby="dl-h">
@@ -143,60 +168,94 @@ const fieldNotes = [
               <span aria-hidden="true">배포 승인 01</span>
               <div>
                 <h2 id="dl-h">패치 파일 받기</h2>
-                <p class="download-lead">게임이 설치된 컴퓨터의 운영체제를 선택하세요.</p>
+                <p class="download-lead">
+                  게임이 설치된 컴퓨터의 운영체제를 선택하세요.
+                </p>
               </div>
             </header>
 
-            <div class="dl-tabs" id="os-picker" role="tablist" aria-label="운영체제 선택">
-              {osList.map((os) => (
-                <button
-                  type="button"
-                  id={`tab-${os.id}`}
-                  class:list={['dl-tab', { active: os.id === 'windows' }]}
-                  data-os={os.id}
-                  role="tab"
-                  aria-controls={`dl-${os.id}`}
-                  aria-selected={os.id === 'windows' ? 'true' : 'false'}
-                  tabindex={os.id === 'windows' ? 0 : -1}
-                >
-                  {os.name}
-                </button>
-              ))}
+            <div
+              class="dl-tabs"
+              id="os-picker"
+              role="tablist"
+              aria-label="운영체제 선택"
+            >
+              {
+                osList.map((os) => (
+                  <button
+                    type="button"
+                    id={`tab-${os.id}`}
+                    class:list={["dl-tab", { active: os.id === "windows" }]}
+                    data-os={os.id}
+                    role="tab"
+                    aria-controls={`dl-${os.id}`}
+                    aria-selected={os.id === "windows" ? "true" : "false"}
+                    tabindex={os.id === "windows" ? 0 : -1}
+                  >
+                    {os.name}
+                  </button>
+                ))
+              }
             </div>
 
-            {osList.map((os) => (
-              <div
-                class:list={['dl-panel', { on: os.id === 'windows' }]}
-                data-os={os.id}
-                id={`dl-${os.id}`}
-                role="tabpanel"
-                aria-labelledby={`tab-${os.id}`}
-                hidden={os.id !== 'windows'}
-              >
-                <div class="dl-heading">
-                  <strong>{os.name}용 패치</strong>
-                  <span>{os.desc}</span>
+            {
+              osList.map((os) => (
+                <div
+                  class:list={["dl-panel", { on: os.id === "windows" }]}
+                  data-os={os.id}
+                  id={`dl-${os.id}`}
+                  role="tabpanel"
+                  aria-labelledby={`tab-${os.id}`}
+                  hidden={os.id !== "windows"}
+                >
+                  <div class="dl-heading">
+                    <strong>{os.name}용 패치</strong>
+                    <span>{os.desc}</span>
+                  </div>
+                  <p class="dl-meta">
+                    <b class="dl-file">{os.file}</b>
+                    <span class="dl-sub">{os.size}</span>
+                  </p>
+                  <a
+                    class="stamp-btn"
+                    href={os.url}
+                    download
+                    aria-label={`${os.name}용 한글 패치 ${RELEASE} 다운로드`}
+                  >
+                    <svg
+                      class="glyph"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      aria-hidden="true"
+                    >
+                      <path d="M8 2v9M4 7.5 8 11.5 12 7.5" />
+                    </svg>
+                    {os.name}용 다운로드
+                  </a>
+                  <div class="file-note">
+                    파일을 직접 확인하려면{" "}
+                    <a href={`${GH}/releases/tag/${RELEASE}`}>
+                      {RELEASE} 릴리스 페이지
+                    </a>
+                    를 이용하세요.
+                  </div>
                 </div>
-                <p class="dl-meta">
-                  <b class="dl-file">{os.file}</b>
-                  <span class="dl-sub">zip · {os.size} · SHA256SUMS 포함 · 원본 자동 백업</span>
-                </p>
-                <a class="stamp-btn" href={os.url} download aria-label={`${os.name}용 한글 패치 ${RELEASE} 다운로드`}>
-                  <svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5 12 7.5"/></svg>{os.name}용 다운로드
-                </a>
-              </div>
-            ))}
-            <p class="file-note">
-              파일을 직접 확인하려면 <a href={`${GH}/releases/tag/${RELEASE}`}>{RELEASE} 릴리스 페이지</a>를 이용하세요.
-            </p>
+              ))
+            }
           </div>
 
-          <section class="filebox document-section" id="install" aria-labelledby="install-h">
+          <section
+            class="filebox document-section"
+            id="install"
+            aria-labelledby="install-h"
+          >
             <header class="section-head section-head--dark">
               <span aria-hidden="true">실행 절차 02</span>
               <div>
                 <h2 id="install-h" class="box-title">패치 설치하기</h2>
-                <p>{RELEASE} · 원본 자동 백업 · 제거 스크립트 포함</p>
+                <p>게임 설치 폴더 확인 · 원본 자동 백업 · 제거 스크립트 포함</p>
               </div>
             </header>
 
@@ -205,56 +264,91 @@ const fieldNotes = [
                 <span class="num" aria-hidden="true">01</span>
                 <div>
                   <h3>게임 종료 · 압축 해제</h3>
-                  <p>게임을 완전히 종료하고, 받은 zip 파일을 아무 폴더에나 압축 해제합니다.</p>
+                  <p>
+                    게임을 완전히 종료하고, 받은 zip 파일을 아무 폴더에나 압축
+                    해제합니다.
+                  </p>
                 </div>
               </li>
               <li class="step">
                 <span class="num" aria-hidden="true">02</span>
                 <div>
-                  <h3>설치 스크립트 실행</h3>
-                  {osList.map((os) => (
-                    <>
-                      <p class="cmd" data-os={os.id} data-cmd hidden={os.id !== 'windows'}>
-                        <code>{os.cmd}</code>
-                        <button type="button" class="copy" data-copy={os.cmd} aria-live="polite">복사</button>
-                      </p>
-                      <p class="cmd-note" data-os={os.id} data-cmdnote hidden={os.id !== 'windows'}>{os.cmdNote}</p>
-                    </>
-                  ))}
+                  {
+                    osList.map((os) => (
+                      <>
+                        <h3
+                          data-os={os.id}
+                          data-cmdnote
+                          hidden={os.id !== "windows"}
+                        >
+                          {os.cmdNote}
+                        </h3>
+                        <p
+                          class="cmd"
+                          data-os={os.id}
+                          data-cmd
+                          hidden={os.id !== "windows"}
+                        >
+                          <code>{os.cmd}</code>
+                          <button
+                            type="button"
+                            class="copy"
+                            data-copy={os.cmd}
+                            aria-live="polite"
+                          >
+                            복사
+                          </button>
+                        </p>
+                      </>
+                    ))
+                  }
+                  <p class="cmd-note">그냥 압축을 푼 파일을 게임 설치 폴더에 복사해도 됩니다. 꼭 기존 파일을 덮어씌워야 합니다.</p>
                 </div>
               </li>
               <li class="step">
                 <span class="num" aria-hidden="true">03</span>
                 <div>
                   <h3>게임 실행</h3>
-                  <p>Steam에서 게임을 시작하면 한글로 표시됩니다. 되돌리려면 zip 안의 uninstall 스크립트를 실행하세요.</p>
+                  <p>
+                    Steam에서 게임을 시작하면 한글로 표시됩니다. (게임에 언어 선택 메뉴가 없어, 영어를 한국어로 대체합니다.) 
+                  </p>
                 </div>
               </li>
             </ol>
-            <p class="box-warn">
-              <svg class="warn-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2.5 15 14H1z"/><path d="M8 7v3.5"/><path d="M8 12.5v.5"/></svg>
-              <b>참고</b> Steam 업데이트나 <em>파일 무결성 확인</em>으로 영어로 돌아오면, 위 절차를 다시 실행하면 한글로 돌아옵니다.
-            </p>
           </section>
 
-          <section class="notes-block document-section" id="faq" aria-labelledby="notes-h">
+          <section
+            class="notes-block document-section"
+            id="faq"
+            aria-labelledby="notes-h"
+          >
             <header class="section-head">
               <span aria-hidden="true">현장 기록 03</span>
               <div>
-                <h2 id="notes-h">적용 범위 · 문제 해결</h2>
-                <p class="lead">설치 전 알아둘 내용과 복구 절차입니다.</p>
+                <h2 id="notes-h">자주 묻지 않는 질문</h2>
+                <p class="lead"></p>
               </div>
             </header>
             <div class="notes">
-              {fieldNotes.map((item) => (
-                <div class="note">
-                  <p class="note-q"><span class="note-mark">{item.mark}</span>{item.title}</p>
-                  <p class="note-a">
-                    {item.detail}
-                    {'href' in item && <><br /><a href={item.href}>{item.linkLabel}</a></>}
-                  </p>
-                </div>
-              ))}
+              {
+                fieldNotes.map((item) => (
+                  <div class="note">
+                    <p class="note-q">
+                      <span class="note-mark">{item.mark}</span>
+                      {item.title}
+                    </p>
+                    <p class="note-a">
+                      {item.detail}
+                      {"href" in item && (
+                        <>
+                          <br />
+                          <a href={item.href}>{item.linkLabel}</a>
+                        </>
+                      )}
+                    </p>
+                  </div>
+                ))
+              }
             </div>
           </section>
         </div>
@@ -271,24 +365,43 @@ const fieldNotes = [
       </div>
       <div class="foot-register">
         <section>
-          <h3>연결</h3>
-          <p class="foot-links"><a href={`${GH}`}>GitHub 저장소</a><a href={`${GH}/releases/tag/${RELEASE}`}>릴리스 {RELEASE}</a><a href={`${GH}/issues`}>문제 보고</a></p>
+          <h3>바로가기</h3>
+          <p class="foot-links">
+            <a href={`${GH}`}>GitHub 저장소</a><a
+              href={`${GH}/releases/tag/${RELEASE}`}>릴리스 {RELEASE}</a
+            ><a href={`${GH}/issues`}>오류 제보</a>
+          </p>
         </section>
         <section>
           <h3>번역 출처</h3>
-          <p><a href="https://cafe.naver.com/hansicgu/32259">한식구 런타임 패치</a>(2026-03-15)의 번역을 재사용하고, <a href="https://bluechip2022.tistory.com/2">블루칩님 한글 패치</a>를 참고·검증했습니다. 기존 제작자와 번역 원저작자께 감사드립니다.</p>
+          <p>
+            <a href="https://cafe.naver.com/hansicgu/32259"
+              >네이버 카페 한식구 짜짜님 패치</a
+            >(2026-03-15)의 번역을 재사용하고, <a
+              href="https://bluechip2022.tistory.com/2"
+              >블루칩(+우드킹)님 한글 패치</a
+            >를 참고·검증했습니다. 기존 제작자분께 감사드립니다.
+          </p>
+          <p>일부 오타, 번역투, 한국어 조사 오류 등을 AI로 수정했습니다.</p>
         </section>
         <section>
-          <h3>이용 조건</h3>
-          <p>코드·문서 MIT · 번역문 원저작자 정책</p>
-          <p>본문 YKompyuta · 로고 Oswald/Paperlogy · 세계지도 Wikimedia Commons 퍼블릭 도메인</p>
+          <h3>라이센스</h3>
+          <p>
+            이 코드와 문서는 MIT 라이센스지만, 번역문은 원저작자 정책을
+            따릅니다.
+          </p>
+          <p>
+            이 한국어 패치는 비공식 팬 패치입니다. GMT Games, Playdek, Valve와
+            무관하며, 게임과 에셋의 저작권은 각 권리자에게 있습니다.
+          </p>
         </section>
       </div>
       <div class="foot-credits">
         <p class="fine">
-          비공식 팬 패치입니다. GMT Games, Playdek, Valve와 무관하며, 게임과 에셋의 저작권은 각 권리자에게 있습니다.
+          본문 폰트: YKompyuta · 헤드라인 폰트: Oswald/Paperlogy · 세계지도:
+          Wikimedia Commons
         </p>
-        <p class="fine">갱신 2026.08 · {RELEASE}</p>
+        <p class="fine">마지막 수정: 2026년 8월 중순</p>
       </div>
     </div>
   </footer>
@@ -296,22 +409,22 @@ const fieldNotes = [
 
 <script>
   // OS 탭 → 다운로드 패널·설치 명령 연동
-  const tabList = document.getElementById('os-picker');
-  const tabs = Array.from(tabList?.querySelectorAll('.dl-tab') ?? []);
-  const panels = document.querySelectorAll('.dl-panel');
-  const cmds = document.querySelectorAll('[data-cmd]');
-  const cmdnotes = document.querySelectorAll('[data-cmdnote]');
+  const tabList = document.getElementById("os-picker");
+  const tabs = Array.from(tabList?.querySelectorAll(".dl-tab") ?? []);
+  const panels = document.querySelectorAll(".dl-panel");
+  const cmds = document.querySelectorAll("[data-cmd]");
+  const cmdnotes = document.querySelectorAll("[data-cmdnote]");
 
   const applyOs = (id) => {
     panels.forEach((p) => {
       const active = p.dataset.os === id;
-      p.classList.toggle('on', active);
+      p.classList.toggle("on", active);
       p.hidden = !active;
     });
     tabs.forEach((t) => {
       const active = t.dataset.os === id;
-      t.classList.toggle('active', active);
-      t.setAttribute('aria-selected', active ? 'true' : 'false');
+      t.classList.toggle("active", active);
+      t.setAttribute("aria-selected", active ? "true" : "false");
       t.tabIndex = active ? 0 : -1;
     });
     cmds.forEach((c) => (c.hidden = c.dataset.os !== id));
@@ -320,17 +433,20 @@ const fieldNotes = [
 
   // 자동 추천: macOS 감지 시 macOS, 그 외는 Windows
   const nav = navigator.userAgent;
-  const suggested = /Mac|iPhone|iPad/.test(nav) ? 'macos' : 'windows';
+  const suggested = /Mac|iPhone|iPad/.test(nav) ? "macos" : "windows";
   applyOs(suggested);
 
-  tabs.forEach((t) => t.addEventListener('click', () => applyOs(t.dataset.os)));
+  tabs.forEach((t) => t.addEventListener("click", () => applyOs(t.dataset.os)));
   // 키보드: 좌/우 화살표로 탭 이동
-  tabList?.addEventListener('keydown', (e) => {
-    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+  tabList?.addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
     e.preventDefault();
-    const cur = tabs.findIndex((t) => t.classList.contains('active'));
+    const cur = tabs.findIndex((t) => t.classList.contains("active"));
     if (cur < 0) return;
-    const next = e.key === 'ArrowRight' ? (cur + 1) % tabs.length : (cur - 1 + tabs.length) % tabs.length;
+    const next =
+      e.key === "ArrowRight"
+        ? (cur + 1) % tabs.length
+        : (cur - 1 + tabs.length) % tabs.length;
     tabs[next].focus();
     applyOs(tabs[next].dataset.os);
   });

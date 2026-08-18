@@ -837,7 +837,7 @@ a {
   background-size: 620px 620px;
   background-blend-mode: soft-light;
   color: var(--cream);
-  padding: 1.45rem clamp(1rem, 3vw, 2rem) 1.55rem;
+  padding: 1.45rem clamp(1rem, 3vw, 2rem) 1.75rem;
   display: none;
   flex-direction: column;
   align-items: stretch;
@@ -895,13 +895,13 @@ a {
 }
 .file-note {
   font-size: 0.78rem;
-  color: var(--ink-soft);
-  margin: 1rem 0 0;
-  text-align: left;
+  color: var(--cream);
+  margin: 0.75rem 0 0;
+  text-align: center;
   padding-left: clamp(0rem, 2vw, 1.5rem);
 }
 .file-note a {
-  color: var(--red-deep);
+  color: var(--red-bright);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -927,6 +927,9 @@ a {
 }
 .step:first-child {
   border-top: 1px solid var(--paper-line);
+}
+.step:last-child {
+  border-bottom: none;
 }
 .step .num {
   font-family: var(--ff-copy);
@@ -1048,10 +1051,6 @@ a {
   border-bottom: 0;
 }
 .note-q {
-  display: grid;
-  grid-template-columns: minmax(6.5rem, 0.28fr) minmax(0, 1fr);
-  gap: 0.85rem;
-  align-items: baseline;
   margin: 0;
   font-size: 1rem;
   color: var(--ink);
@@ -1066,12 +1065,13 @@ a {
   color: var(--red-deep);
   border-bottom: 1px solid currentColor;
   padding-top: 0.15rem;
+  margin-right: 0.6rem;
 }
 .note-a {
-  margin: 0.45rem 0 0 calc(28% + 0.85rem);
+  margin: 0.45rem 0 0;
   font-size: 1rem;
   color: var(--ink-soft);
-  max-width: 40rem;
+  max-width: max-content;
   line-height: 1.7;
 }
 .note-a a {
@@ -1116,7 +1116,7 @@ a {
   display: grid;
   grid-template-columns: 0.7fr 1.4fr 1fr;
   border-bottom: 1px solid var(--navy-600);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 .foot-register > section {
   padding: 1.5rem clamp(1rem, 2.5vw, 2rem) 1.5rem 0;
@@ -1154,19 +1154,24 @@ a {
   gap: 0.45rem;
 }
 .foot-credits {
-  border-top: 1px solid var(--navy-600);
-  padding-top: 1.5rem;
+  padding-top: .5rem;
   display: flex;
   justify-content: space-between;
   gap: 1.5rem;
   align-items: flex-start;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .foot-credits .fine {
   font-size: 0.72rem;
   color: var(--steel-dim);
-  max-width: 34rem;
   line-height: 1.8;
+}
+.foot-credits .fine:first-child {
+  white-space: nowrap;
+  max-width: none;
+}
+.foot-credits .fine:last-child {
+  flex-shrink: 0;
 }
 .foot-credits .fine a {
   color: var(--steel);
@@ -1301,10 +1306,6 @@ a {
   }
   .cmd .copy {
     align-self: stretch;
-  }
-  .note-q {
-    grid-template-columns: 1fr;
-    gap: 0.35rem;
   }
   .note-a {
     margin-left: 0;
