@@ -6,15 +6,24 @@ const base = import.meta.env.BASE_URL;
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  imageAlt?: string;
 }
-const { title = 'Twilight Struggle 한글 패치', description = 'Steam판 Twilight Struggle의 비공식 한글 패치 — 카드·메뉴·규칙북까지. 무료 다운로드.' } = Astro.props;
+const {
+  title = 'Twilight Struggle 한글 패치',
+  description = 'Steam판 Twilight Struggle의 비공식 한글 패치 — 카드·메뉴·규칙북까지. 윈도우/맥 지원.',
+  image = `${base}img/ts-kr-1.jpg`,
+  imageAlt = '한국어 패치된 Twilight Struggle 게임 보드',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL(image, Astro.site);
 
 // @font-face는 base를 붙여야 GitHub Pages 프로젝트 경로(/twilight-struggle-kr-patch/)에서 폰트 로드 가능.
 const fontFace = `
 @font-face{font-family:'YKompyuta';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/Ycomputer-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'D2Coding';src:url('${base}fonts/d2coding.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'Paperlogy';src:url('${base}fonts/paperlogy.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
-@font-face{font-family:'Paperlogy';src:url('${base}fonts/paperlogy.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'D2Coding';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff') format('woff');font-weight:normal;font-style:normal;font-display:swap}
+@font-face{font-family:'Paperlogy';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
 `;
 const surfaceAssets = `--archive-texture:url('${base}img/archive-grain.webp')`;
 ---
@@ -24,11 +33,28 @@ const surfaceAssets = `--archive-texture:url('${base}img/archive-grain.webp')`;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#17191e" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Twilight Struggle 한글 패치" />
     <meta property="og:locale" content="ko_KR" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:width" content="3024" />
+    <meta property="og:image:height" content="1964" />
+    <meta property="og:image:alt" content={imageAlt} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <title>{title}</title>
     <style is:inline set:html={fontFace}></style>
