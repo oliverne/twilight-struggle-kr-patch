@@ -74,6 +74,21 @@ const fieldNotes = [
       "오랜만에 게임 좀 해 보고 싶었습니다만, 블루문(우드킹)님 패치가 게임 업데이트로 지원이 끊겼길래 '그럼 AI로 직접 고치면 되지 않을까?' 하고 시작했는데, AI가 한식구 네이버 카페의 최신 패치를 찾아 주었습니다. 하지만, BepInEx 방식 패치는 macOS에서 사용할 수 없어 직접... 아니, AI를 시켜 고쳐 봤습니다.",
   },
 ] as const;
+
+const screenshots = [
+  {
+    file: "ts-kr-1",
+    alt: "한국어로 표시된 Twilight Struggle 메인 메뉴",
+  },
+  {
+    file: "ts-kr-2",
+    alt: "한국어 카드 설명이 열린 Twilight Struggle 게임 보드",
+  },
+  {
+    file: "ts-kr-3",
+    alt: "한국어로 표시된 Twilight Struggle 작전 결과 화면",
+  },
+] as const;
 ---
 
 <Base
@@ -96,51 +111,128 @@ const fieldNotes = [
         <span class="cover-status">DECLASSIFIED</span>
       </div>
 
-      <div class="hero-copy">
-        <h1 class="hero-title" id="hero-title">
-          <span class="mask-line brand-line" style="--i: 0">
-            <span
-              class="mask-line-inner logo-wordmark"
-              aria-label="Twilight Struggle, 황혼의 투쟁"
-            >
-              <span class="logo-english" aria-hidden="true">
-                <span class="logo-twilight">Twilight</span><span
-                  class="logo-struggle">Struggle</span
-                >
-              </span>
-              <span class="logo-ink" aria-hidden="true"></span>
-              <span class="logo-korean" aria-hidden="true">
-                <span class="logo-korean-twilight">황혼의</span><span
-                  class="logo-korean-struggle">투쟁</span
-                >
+      <div class="hero-main">
+        <div class="hero-copy">
+          <h1 class="hero-title" id="hero-title">
+            <span class="mask-line brand-line" style="--i: 0">
+              <span
+                class="mask-line-inner logo-wordmark"
+                role="img"
+                aria-label="Twilight Struggle, 황혼의 투쟁"
+              >
+                <span class="logo-english" aria-hidden="true">
+                  <span class="logo-twilight">Twilight</span><span
+                    class="logo-struggle">Struggle</span
+                  >
+                </span>
+                <span class="logo-ink" aria-hidden="true"></span>
+                <span class="logo-korean" aria-hidden="true">
+                  <span class="logo-korean-twilight">황혼의</span><span
+                    class="logo-korean-struggle">투쟁</span
+                  >
+                </span>
               </span>
             </span>
-          </span>
-          <span class="mask-line patch-line" style="--i: 1">
-            <span class="mask-line-inner patch-lockup"
-              >한국어 패치 {RELEASE}</span
-            >
-          </span>
-        </h1>
+            <span class="mask-line patch-line" style="--i: 1">
+              <span class="mask-line-inner patch-lockup"
+                >한국어 패치 {RELEASE}</span
+              >
+            </span>
+          </h1>
 
-        <p class="hero-summary">
-          디지털 보드게임 Twilight Struggle의 Steam 버전 한국어 패치입니다.
-          윈도우와 macOS를 지원합니다.
-        </p>
+          <p class="hero-summary">
+            디지털 보드게임 Twilight Struggle의 Steam 버전 한국어 패치입니다.
+            윈도우와 macOS를 지원합니다.
+          </p>
 
-        <div class="hero-actions">
-          <a class="stamp-btn" href="#download">
-            <svg
-              class="glyph"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              aria-hidden="true"
-              ><path d="M8 2v9M4 7.5 8 11.5 12 7.5"></path></svg
-            >
-            다운로드
-          </a>
+          <div class="hero-actions">
+            <a class="stamp-btn" href="#download">
+              <svg
+                class="glyph"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                aria-hidden="true"
+                ><path d="M8 2v9M4 7.5 8 11.5 12 7.5"></path></svg
+              >
+              다운로드
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="hero-carousel"
+          role="region"
+          aria-roledescription="캐러셀"
+          aria-label="한글 패치 적용 화면"
+          tabindex="0"
+          data-carousel
+        >
+          <div class="carousel-viewport">
+            {
+              screenshots.map((screenshot, index) => (
+                <figure
+                  class="carousel-slide"
+                  role="group"
+                  aria-roledescription="슬라이드"
+                  aria-label={`${index + 1} / ${screenshots.length}`}
+                  data-carousel-slide
+                  hidden={index !== 0}
+                >
+                  <a
+                    href={`${base}img/${screenshot.file}.jpg`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${screenshot.alt}, 원본 이미지 새 탭에서 보기`}
+                  >
+                    <picture>
+                      <source
+                        srcset={`${base}img/${screenshot.file}.webp`}
+                        type="image/webp"
+                      />
+                      <img
+                        src={`${base}img/${screenshot.file}.jpg`}
+                        width="3024"
+                        height="1964"
+                        alt={screenshot.alt}
+                        loading={index === 0 ? "eager" : "lazy"}
+                        fetchpriority={index === 0 ? "high" : "auto"}
+                      />
+                    </picture>
+                  </a>
+                </figure>
+              ))
+            }
+          </div>
+          <div class="carousel-footer">
+            <span>macOS · 패치 적용 화면</span>
+            <div class="carousel-controls">
+              <button type="button" data-carousel-prev aria-label="이전 화면">
+                <svg
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                  ><path d="m10 3-5 5 5 5"></path></svg
+                >
+              </button>
+              <span class="carousel-count" aria-live="polite" aria-atomic="true">
+                <b data-carousel-current>01</b> / {String(screenshots.length).padStart(2, "0")}
+              </span>
+              <button type="button" data-carousel-next aria-label="다음 화면">
+                <svg
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                  ><path d="m6 3 5 5-5 5"></path></svg
+                >
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -455,6 +547,38 @@ const fieldNotes = [
         : (cur - 1 + tabs.length) % tabs.length;
     tabs[next].focus();
     applyOs(tabs[next].dataset.os);
+  });
+
+  // 패치 적용 화면 — 첫 장은 무작위로 고르고 이후에는 사용자가 직접 넘긴다.
+  const carousel = document.querySelector("[data-carousel]");
+  const slides = Array.from(
+    carousel?.querySelectorAll("[data-carousel-slide]") ?? [],
+  );
+  const current = carousel?.querySelector("[data-carousel-current]");
+  let activeSlide = slides.length > 0
+    ? Math.floor(Math.random() * slides.length)
+    : 0;
+
+  const showSlide = (next) => {
+    activeSlide = (next + slides.length) % slides.length;
+    slides.forEach((slide, index) => {
+      slide.hidden = index !== activeSlide;
+    });
+    if (current) current.textContent = String(activeSlide + 1).padStart(2, "0");
+  };
+
+  if (slides.length > 0) showSlide(activeSlide);
+
+  carousel
+    ?.querySelector("[data-carousel-prev]")
+    ?.addEventListener("click", () => showSlide(activeSlide - 1));
+  carousel
+    ?.querySelector("[data-carousel-next]")
+    ?.addEventListener("click", () => showSlide(activeSlide + 1));
+  carousel?.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    showSlide(activeSlide + (event.key === "ArrowRight" ? 1 : -1));
   });
 
   // 히어로는 이미 해제된 기록물로 고정한다. 실시간 추적·레이더 효과는 사용하지 않는다.

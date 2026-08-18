@@ -285,7 +285,7 @@ a {
   rotate: -3deg;
 }
 
-/* 히어로 — 사건 메타·라벨·승인 도장의 비대칭 파일 편집 */
+/* 히어로 — 사건 메타·라벨·증거 사진·승인 도장의 비대칭 파일 편집 */
 .hero-inner {
   position: relative;
   z-index: 3;
@@ -295,11 +295,21 @@ a {
   min-height: clamp(36rem, 80svh, 50rem);
   padding: clamp(2rem, 5vh, 3.5rem) 0 clamp(2.5rem, 6vh, 4rem);
 }
-.hero-copy {
+.hero-main {
   align-self: center;
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(18rem, 0.88fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  width: 100%;
+  margin-block: clamp(3.5rem, 8vh, 5.5rem);
+}
+.hero-copy {
+  position: relative;
+  z-index: 2;
   min-width: 0;
-  width: min(54rem, 82%);
-  margin: clamp(3.5rem, 9vh, 6rem) 0 clamp(2.5rem, 6vh, 4rem) clamp(0rem, 4vw, 3.25rem);
+  width: 100%;
+  margin-left: clamp(0rem, 2vw, 1.5rem);
   text-align: left;
 }
 .hero-title {
@@ -316,6 +326,10 @@ a {
 }
 .hero-title .mask-line-inner {
   display: block;
+}
+.hero-title .brand-line {
+  width: clamp(22rem, 70vw, 58rem);
+  max-width: none;
 }
 .logo-wordmark {
   position: relative;
@@ -438,6 +452,118 @@ a {
   rotate: 0.8deg;
   pointer-events: none;
 }
+.hero-carousel {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  width: 100%;
+  justify-self: end;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image: var(--archive-texture);
+  background-size: 520px 520px;
+  background-blend-mode: soft-light;
+  border: 1px solid color-mix(in srgb, var(--steel) 54%, transparent);
+  padding: 0.5rem 0.5rem 0;
+  rotate: 0.5deg;
+  box-shadow: 0 18px 42px -18px rgba(5, 6, 7, 0.88);
+}
+.hero-carousel::before {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: -0.4rem;
+  left: 8%;
+  width: 28%;
+  height: 0.65rem;
+  background: color-mix(in srgb, var(--red) 84%, transparent);
+  rotate: -1.5deg;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.hero-carousel:focus-visible {
+  outline-color: var(--red-bright);
+}
+.carousel-viewport {
+  position: relative;
+  aspect-ratio: 3024 / 1964;
+  overflow: hidden;
+  background: var(--logo-black);
+  border: 1px solid color-mix(in srgb, var(--ink) 72%, transparent);
+}
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+.carousel-slide > a,
+.carousel-slide picture,
+.carousel-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.carousel-slide > a {
+  cursor: zoom-in;
+}
+.carousel-slide > a:focus-visible {
+  outline: 3px solid var(--red-bright);
+  outline-offset: -4px;
+}
+.carousel-slide img {
+  object-fit: cover;
+}
+.carousel-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 3rem;
+  padding-left: 0.4rem;
+  color: var(--ink-soft);
+  font-size: 0.66rem;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+}
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  flex: 0 0 auto;
+}
+.carousel-controls button {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+}
+.carousel-controls button:hover {
+  color: var(--white);
+  background: var(--red-deep);
+}
+.carousel-controls button:active {
+  background: var(--ink);
+}
+.carousel-controls svg {
+  width: 1rem;
+  height: 1rem;
+}
+.carousel-count {
+  min-width: 4rem;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+.carousel-count b {
+  color: var(--red-deep);
+  font-weight: 700;
+}
 .cover-approval {
   justify-self: end;
   width: min(15rem, 38vw);
@@ -466,7 +592,11 @@ a {
     animation: hero-stamp 0.55s var(--ease-out) backwards;
     animation-delay: 2.55s;
   }
+  .hero-carousel {
+    animation: hero-evidence-reveal 0.55s var(--ease-out) 2.55s backwards;
+  }
   .logo-wordmark {
+    max-width: none;
     animation:
       hero-rise 0.72s var(--ease-out) 0.45s backwards,
       logo-contract 0.34s var(--ease-out) 1.9s backwards;
@@ -495,6 +625,14 @@ a {
   @keyframes hero-stamp {
     from { opacity: 0; transform: scale(0.5) rotate(-12deg); }
   }
+  @keyframes hero-evidence-reveal {
+    from {
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(1rem) scale(0.96);
+      clip-path: inset(8% 0 0);
+    }
+  }
   @keyframes logo-ink-over {
     0% { transform: scaleX(0); }
     72% { transform: scaleX(0.96); }
@@ -505,7 +643,7 @@ a {
     to { visibility: hidden; }
   }
   @keyframes logo-contract {
-    from { width: clamp(22rem, 66vw, 54rem); }
+    from { width: clamp(22rem, 70vw, 58rem); }
     to { width: clamp(18rem, 43vw, 35rem); }
   }
   @keyframes logo-korean-print {
@@ -1182,8 +1320,19 @@ a {
   .cover-meta {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .hero-inner {
+    min-height: auto;
+  }
+  .hero-main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3rem;
+    margin-block: 3.5rem;
+  }
   .hero-copy {
-    width: min(46rem, 92%);
+    width: min(46rem, 100%);
+  }
+  .hero-carousel {
+    width: min(40rem, 100%);
   }
   .download-zone {
     position: static;
@@ -1217,7 +1366,28 @@ a {
   }
   .hero-copy {
     width: 100%;
-    margin: 3rem 0 2.5rem;
+    margin-left: 0;
+  }
+  .logo-wordmark {
+    max-width: 100%;
+  }
+  .hero-title .brand-line {
+    width: 100%;
+    max-width: 100%;
+  }
+  .hero-main {
+    gap: 2.5rem;
+    margin-block: 3rem 2.5rem;
+  }
+  .hero-carousel {
+    width: 100%;
+    padding: 0.35rem 0.35rem 0;
+    rotate: 0.25deg;
+  }
+  .carousel-footer {
+    min-height: 2.75rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
   }
   .hero-summary,
   .hero-actions {
