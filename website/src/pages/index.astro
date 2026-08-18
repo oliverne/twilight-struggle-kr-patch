@@ -8,7 +8,7 @@ const DL = `${GH}/releases/download/${RELEASE}`;
 const F = (os: string) => `twilight-struggle-kr-patch-${RELEASE}-${os}.zip`;
 
 // 도트 세계지도 마스크 — 서반구(미주=파랑) / 동반구(구대륙=빨강)
-// 절대경로('/') 대신 base를 붙여야 GitHub Pages 프로젝트 경로에서도 불러온다.
+// 절대 경로('/') 대신 base를 붙여야 GitHub Pages 프로젝트 경로에서도 불러온다.
 const maskStyle = (file: string) =>
   `-webkit-mask-image:url('${base}img/${file}');mask-image:url('${base}img/${file}');-webkit-mask-size:cover;mask-size:cover;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;`;
 
@@ -25,8 +25,8 @@ const osList = [
   },
   {
     id: "macos",
-    name: "맥OS",
-    desc: "macOS 그럭저럭 최근 버전 이상",
+    name: "macOS",
+    desc: "최근 macOS 버전",
     file: F("macos"),
     size: "9.8MB",
     url: `${DL}/${F("macos")}`,
@@ -38,34 +38,34 @@ const osList = [
 const fieldNotes = [
   {
     mark: "적용 범위",
-    title: "패치 후에도 영어로 나오는 문구가 있습니다. 어떻게 된거에요?!",
+    title: "패치 후에도 영어로 나오는 문구가 있습니다. 어떻게 된 거예요?!",
     detail:
-      "턴 히스토리와 튜토리얼 안내, 그리고 일분 진행 메시지는 직접 패치하기 어려운 구조라 영어로 표시됩니다. 한식구 카페 패치는 방식이 달라 그 부분이 한국어로 나올지도 몰라요",
+      "턴 히스토리와 튜토리얼 안내, 그리고 일부 진행 메시지는 직접 패치하기 어려운 구조라 영어로 표시됩니다. 한식구 카페 패치는 방식이 달라 그 부분이 한국어로 나올지도 몰라요",
   },
   {
     mark: "검증 결과",
     title: "검수는 똑바로 했나요? 멀티플레이는 제대로 되나요?",
     detail:
-      "라이트 게이머라 내용이 틀려도 잘 몰라요. 또한, 친구가 없어 멀티 플레이는 못해봤습니다. (AI로) 어색한 번역투, 틀린 조사 및 오타를 일부 수정했습니다.",
+      "라이트 게이머라 내용이 틀려도 잘 몰라요. 또한, 친구가 없어 멀티플레이는 못 해 봤습니다. (AI로) 어색한 번역투, 틀린 조사 및 오타를 일부 수정했습니다.",
   },
   {
     mark: "지원 범위",
     title:
       "안드로이드나 iOS(아이폰, 아이패드)에서도 한글 패치가 되나요? 스팀덱은 되나요?",
     detail:
-      "아니오, 아쉽지만 안드로이드와 iOS에서는 안됩니다. (AI가) 스팀덱에서는 동작할 거라고는 하는데, 제가 스팀덱이 없어 테스트는 못해봤습니다.",
+      "아니요, 아쉽지만 안드로이드와 iOS에서는 안 됩니다. (AI가) 스팀덱에서는 동작할 거라고는 하는데, 제가 스팀덱이 없어 테스트는 못 해 봤습니다.",
   },
   {
     mark: "수동 설치",
     title: "뭘 믿고 스크립트를 실행하나요? 수동으로 설치할 수 없나요?",
     detail:
-      "다운로드한 파일의 압출을 풀고, 패치 파일을 직접 게임 설치 폴더에 덮어쓰면 됩니다. 복원할 때는 게임 삭제후 재설치 또는 스팀 무결성 검사를 이용하세요. ",
+      "다운로드한 파일의 압축을 풀고, 패치 파일을 직접 게임 설치 폴더에 덮어쓰면 됩니다. 복원할 때는 게임을 삭제한 후 재설치하거나 Steam 무결성 검사를 이용하세요.",
   },
   {
     mark: "만든 이유",
     title: "한글 패치를 굳이? 또? 왜? 만들었나요?",
     detail:
-      "오랜만에 게임 좀 해보고 싶었습니다만, 블루문(우드킹)님 패치가 게임 업데이트로 지원이 끊겼길래 '그럼 AI로 직접 고치면 되지 않을까?' 하고 시작했는데, AI가 한식구 네이버 카페의 최신 패치를 찾아 주었습니다. 하지만, BepInEx 방식 패치는 맥OS에서 사용할 수 없어 직접... 아니, AI 시켜 고쳐봤습니다.",
+      "오랜만에 게임 좀 해 보고 싶었습니다만, 블루문(우드킹)님 패치가 게임 업데이트로 지원이 끊겼길래 '그럼 AI로 직접 고치면 되지 않을까?' 하고 시작했는데, AI가 한식구 네이버 카페의 최신 패치를 찾아 주었습니다. 하지만, BepInEx 방식 패치는 macOS에서 사용할 수 없어 직접... 아니, AI를 시켜 고쳐 봤습니다.",
   },
 ] as const;
 ---
@@ -119,7 +119,7 @@ const fieldNotes = [
 
         <p class="hero-summary">
           디지털 보드게임 Twilight Struggle의 Steam 버전 한국어 패치입니다.
-          윈도우와 맥OS를 지원합니다.
+          윈도우와 macOS를 지원합니다.
         </p>
 
         <div class="hero-actions">
@@ -265,8 +265,8 @@ const fieldNotes = [
                 <div>
                   <h3>게임 종료 · 압축 해제</h3>
                   <p>
-                    게임을 완전히 종료하고, 받은 zip 파일을 아무 폴더에나 압축
-                    해제합니다.
+                    게임을 완전히 종료하고, 받은 zip 파일을 아무 폴더에나
+                    압축을 풉니다.
                   </p>
                 </div>
               </li>
@@ -302,7 +302,7 @@ const fieldNotes = [
                       </>
                     ))
                   }
-                  <p class="cmd-note">그냥 압축을 푼 파일을 게임 설치 폴더에 복사해도 됩니다. 꼭 기존 파일을 덮어씌워야 합니다.</p>
+                  <p class="cmd-note">그냥 압축을 푼 파일을 게임 설치 폴더에 복사해도 됩니다. 꼭 기존 파일을 덮어써야 합니다.</p>
                 </div>
               </li>
               <li class="step">
@@ -310,7 +310,7 @@ const fieldNotes = [
                 <div>
                   <h3>게임 실행</h3>
                   <p>
-                    Steam에서 게임을 시작하면 한글로 표시됩니다. (게임에 언어 선택 메뉴가 없어, 영어를 한국어로 대체합니다.) 
+                    Steam에서 게임을 시작하면 한글로 표시됩니다. (게임에 언어 선택 메뉴가 없어 영어를 한국어로 대체합니다.)
                   </p>
                 </div>
               </li>
@@ -325,7 +325,7 @@ const fieldNotes = [
             <header class="section-head">
               <span aria-hidden="true">현장 기록 03</span>
               <div>
-                <h2 id="notes-h">자주 묻지 않는 질문</h2>
+                <h2 id="notes-h">자주 묻는 질문</h2>
                 <p class="lead"></p>
               </div>
             </header>
@@ -365,7 +365,7 @@ const fieldNotes = [
       </div>
       <div class="foot-register">
         <section>
-          <h3>바로가기</h3>
+          <h3>바로 가기</h3>
           <p class="foot-links">
             <a href={`${GH}`}>GitHub 저장소</a><a
               href={`${GH}/releases/tag/${RELEASE}`}>릴리스 {RELEASE}</a
@@ -385,9 +385,9 @@ const fieldNotes = [
           <p>일부 오타, 번역투, 한국어 조사 오류 등을 AI로 수정했습니다.</p>
         </section>
         <section>
-          <h3>라이센스</h3>
+          <h3>라이선스</h3>
           <p>
-            이 코드와 문서는 MIT 라이센스지만, 번역문은 원저작자 정책을
+            이 코드와 문서는 MIT 라이선스이지만, 번역문은 원저작자 정책을
             따릅니다.
           </p>
           <p>
@@ -398,7 +398,7 @@ const fieldNotes = [
       </div>
       <div class="foot-credits">
         <p class="fine">
-          본문 폰트: YKompyuta · 헤드라인 폰트: Oswald/Paperlogy · 세계지도:
+          본문 폰트: YKompyuta · 헤드라인 폰트: Oswald/Paperlogy · 세계 지도:
           Wikimedia Commons
         </p>
         <p class="fine">마지막 수정: 2026년 8월 중순</p>
