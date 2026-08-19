@@ -64,6 +64,8 @@ fi
 
 WORK="$(mktemp -d)"
 trap 'rm -rf "$WORK"' EXIT
+# ⚠️ dist 폴더를 먼저 정리한다 — 이전 버전 zip이 남아 gh release 업로드 시 실수로 첨부되는 것 방지
+rm -rf "$OUT_DIR"
 mkdir -p "$OUT_DIR"
 
 # 해시 명령 자동 선택 (macOS: shasum / Linux·Windows Git Bash: sha256sum)
