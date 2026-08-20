@@ -35,6 +35,9 @@ patched/*/*.assets
 # 배포 zip 산출물 (scripts/package-release.sh 생성, GitHub Releases로 업로드)
 dist/
 
+# 스킬 실행 산출물 (로컬 전용)
+_workspace/
+
 # pnpm 로컬 스토어 (잘못된 위치에 생성된 경우 방지)
 .pnpm-store/
 
@@ -65,4 +68,3 @@ tools/font-inject-work-mac/
 .impeccable/questions/
 .impeccable/review/
 .impeccable/critique/
-
