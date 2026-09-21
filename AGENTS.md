@@ -32,6 +32,8 @@
 - 핵심 난제였던 **CJK SDF 폰트 아틀라스 주입** → ✅ 해결 (Phase 3~4, 24개 폰트)
 - **남은 난제: IL2CPP 코드 문자열(global-metadata.dat)** — 턴 히스토리 로그 + 튜토리얼 단계별 안내 → 파일 패치 불가, BepInEx 런타임 훅만 가능 (보류, ISSUES #11·#17)
 - 기존 한글화(런타임 패치 2026-03-15, 블루칩 v1.0.1)의 **번역문을 재사용**하며, 처음부터 번역하지 않음 (Phase 2 확정: 런타임 TSV 2,253쌍이 1차 소스, 블루칩 432개는 구버전이라 참고용)
+- **최신 릴리스 v0.1.2 (2026-09-21)** — 설치 스크립트·README·LICENSE·src 패키징 정비 (패치 에셋은 v0.1.1과 동일)
+- ⚠️ **공개 배포는 차단 상태 (2026-09-21 실측)** — 리포가 private + Free 플랜이라 GitHub Pages 활성화 불가(422), 로그아웃 상태의 릴리스 자산도 404다. 사이트(Phase 8)는 구축·CI 수정까지 완료했고 호스팅 방식 결정 대기 — 상세 [docs/phases/phase-8-website.md](docs/phases/phase-8-website.md) "블로커", ISSUES #19
 
 ## 게임 텍스트 3계층 구조 (Phase 5 확정)
 
@@ -120,7 +122,7 @@ translation/  # 번역 소스 JSON/CSV — runtime-20260315.json, manual-extra.j
 fonts/        # TTF 원본 + 생성된 SDF 산출물
 scripts/      # install/verify/inject/patch 스크립트 + assets-sync.py(에셋 압축/해제)
 docs/         # PLAN.md 등
-website/      # 배포 웹사이트 (Astro + GitHub Pages) — 소개·다운로드·설치·크레딧
+website/      # 배포 웹사이트 (Astro + GitHub Pages) — 소개·다운로드·설치·크레딧 (Phase 8, 공개 배포 차단 — ISSUES #19)
 PRODUCT.md    # 제품 맥락 (impeccable init)
 DESIGN.md     # 웹사이트 디자인 시스템 (impeccable document)
 ```

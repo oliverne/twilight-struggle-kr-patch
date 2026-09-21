@@ -106,6 +106,27 @@
 - **실게임 확인**: ✅ 사용자 확인 완료 (2026-08-13)
 - 참고: IMPACT SDF는 트랙 외 작전치·점수·카운터 등 강조 숫자 400+곳에서 사용 — 전부 D2Coding으로 통일됨
 
+## 🔴 Blocked / 🟡 Warning (2026-09-21 추가)
+
+### #19 GitHub Pages·Releases 공개 차단 — 리포 private + Free 플랜
+- **위치**: 리포 설정·플랜 (`gh api -X POST repos/.../pages` → 422)
+- **문제**: GitHub Pages는 private 리포에서 Pro/Team/Enterprise 플랜이 필요 → `has_pages: false`, 라이브 URL 404. 로그아웃 상태에서 릴리스 자산(`releases/download/v0.1.1/...zip`)과 릴리스 페이지도 **404** — 사이트 배포 여부와 무관하게 공개 다운로드가 성립하지 않는다
+- **영향**: Phase 8 사이트가 라이브 불가 (사이트 구축·CI는 완료)
+- **선택지**: (A) 리포 public 전환 (무료, 즉시 동작) · (B) private 유지 — 사이트는 Cloudflare Pages 등 + 파일은 별도 공개 저장소·버킷 · (C) Pro 업그레이드(+B 병행 필요)
+- **상태**: ⬜ 보류 (사용자 결정 필요) — 상세는 [phase-8-website.md](phases/phase-8-website.md) "블로커"
+- **관련 Phase**: Phase 8
+
+### #20 재현용(src) zip에 `assets-sync.py` 누락 → ✅ 해결 (2026-09-21)
+- **문제**: `install.sh`가 `.gz` 자동 해제 시 `assets-sync.py`를 호출하는데 `package-release.sh`의 src zip 파일 목록에 없었음 (현재 src zip에는 `.gz`가 없어 실해는 없었음)
+- **해결**: 패키징 목록에 `assets-sync.py` 추가 — v0.1.2 src zip에 포함 확인 (46개 파일 / SHA256SUMS 45개 전량 일치)
+- **관련 Phase**: Phase 8
+
+### #21 사이트 배포 워크플로 pnpm 버전 감지 실패 → ✅ 해결 (2026-09-21)
+- **증상**: Actions `Deploy site to GitHub Pages` 2회 연속 실패 (build job이 15초 만에 종료, deploy job 미실행)
+- **원인**: `pnpm/action-setup@v4`가 **리포 루트** `package.json`에서 `packageManager`를 찾는데(루트에는 해당 파일 없음) 사이트는 `website/package.json`에만 선언돼 있음
+- **해결**: 워크플로에 `package_json_file: website/package.json` 지정 + deploy job을 `!github.event.repository.private`로 게이팅 (`c2f4bfb`)
+- **관련 Phase**: Phase 8
+
 ## 처리된 이슈 (참고용)
 
 > Phase 0·1 완료 시점의 코드 리뷰에서 이미 처리된 항목. 커밋 `fbb70bc`, `50feea1`, `69e71a8` 참조.

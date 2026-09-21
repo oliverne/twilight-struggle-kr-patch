@@ -131,10 +131,12 @@
 | Phase 5 — 플랫폼 적용 & 테스트 | macOS·Windows·멀티플레이 및 복구 검증 | 2~3일 | [Phase 5](phases/phase-5-platform-test.md) |
 | Phase 6 — 배포 | ✅ **완료 (2026-08-14)** — v0.1.1 릴리스 (Windows+macOS+src zip 3종) | — | [Phase 6](phases/phase-6-release.md) |
 | Phase 7 — 도움말/규칙 번역 | ✅ **완료 (2026-08-13)** — TS_RulesTutorial 313행 + 씬 규칙 문단 전량 한글화 | — | [Phase 7](phases/phase-7-help-translation.md) |
+| Phase 8 — 배포 웹사이트 | 🚧 **진행 중** — 사이트 구축·콘텐츠·CI 수정 완료, 공개 배포는 차단 (리포 private + Free 플랜) | — | [Phase 8](phases/phase-8-website.md) |
 
 > ⚠️ **순서/상태 변경 (2026-08-13)**: Phase 7을 배포 전에 수행해 **완료**했다.
-> **배포(Phase 6)는 2026-08-14 완료** (v0.1.0 Windows+src → v0.1.1 Windows+macOS+src).
+> **배포(Phase 6)는 2026-08-14 완료** (v0.1.0 Windows+src → v0.1.1 Windows+macOS+src), **v0.1.2 재패키징 (2026-09-21)**.
 > 남은 영어(턴 히스토리·튜토리얼 안내)는 IL2CPP 코드 문자열이라 BepInEx 런타임 훅 프로젝트로만 해결 가능 (ISSUES #11·#17).
+> **Phase 8 웹사이트 (2026-08-14 착수)**: 사이트는 완성됐지만 GitHub Pages는 private + Free 플랜에서 쓸 수 없고 릴리스 자산도 공개 접근이 안 된다 — 호스팅 방식(A 리포 공개 / B 타 호스팅+별도 파일 호스팅 / C Pro) 결정이 선행돼야 한다 (ISSUES #19).
 
 ---
 
