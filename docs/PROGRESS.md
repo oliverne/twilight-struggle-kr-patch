@@ -10,7 +10,7 @@
 **Windows 배포 완료 (2026-08-14, v0.1.0)** — [GitHub Releases](https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.0). **macOS 배포 포함 v0.1.1 릴리스 완료 (2026-08-14)** — [v0.1.1](https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.1). **v0.1.2 릴리스 (2026-09-21)** — 설치 스크립트(`.assets.gz` 자동 해제)·README·LICENSE·src 패키징 정비 (패치 에셋은 v0.1.1과 동일)
 남은 영어는 전부 계층 3(IL2CPP 코드 문자열: 턴 히스토리·튜토리얼 안내)로 BepInEx 런타임 훅 필요.
 
-> ⚠️ **공개 배포 차단 (2026-09-21 실측)** — 리포가 private + Free 플랜이라 **GitHub Pages 활성화 불가(422)**이고, 로그아웃 상태에서 **릴리스 자산도 404**다. 사이트(Phase 8)는 구축·CI 복구(run `35609844485` ✅)까지 끝났지만 호스팅 방식(A 리포 공개 / B 타 호스팅+별도 파일 호스팅 / C Pro)을 결정해야 라이브가 가능하다 — 상세 [phase-8-website.md](phases/phase-8-website.md)
+> ✅ **배포 웹사이트 라이브 (2026-09-21)** — <https://oliverne.github.io/twilight-struggle-kr-patch/>. 리포를 public으로 전환(안 A)해 GitHub Pages·Releases 공개 문제를 함께 해결했다. 공개 zip 3종 SHA256SUMS 전량 일치 + macOS 설치→제거→재설치 라운드트립 실기 검증 완료 — 상세 [phase-8-website.md](phases/phase-8-website.md)
 
 - 완료: Phase 0 — 준비, Phase 1 — 텍스트 위치 검증, Phase 2 — 번역 소스 구축
 - 완료: Phase 3 SDF 생성 (2048² 최적화) + Windows 폰트 주입 (24개 TMP 폰트)
@@ -81,14 +81,14 @@
 | Phase 5 — 플랫폼 적용 & 테스트         | ✅   | **전부 완료 (2026-08-12)** — Windows 4차 테스트·macOS 실게임·Steam 무결성 복구·uninstall 검증. 잔여: 멀티플레이(스킵) | [상세](phases/phase-5-platform-test.md)      |
 | Phase 6 — 배포                         | ✅   | **v0.1.1 릴리스 완료 (2026-08-14)** — Windows+macOS+src zip 3종 (실게임 확인 포함), **v0.1.2 재패키징 (2026-09-21)** | [상세](phases/phase-6-release.md)            |
 | Phase 7 — 도움말/규칙 번역             | ✅   | **완료 (2026-08-13)** — 용어표·규칙 313행·씬 문단·500자 제한 수정 | [상세](phases/phase-7-help-translation.md)   |
-| Phase 8 — 배포 웹사이트                | 🚧   | 사이트 구축·콘텐츠·CI 수정 완료 — **공개 배포 차단** (private+Free 플랜) | [상세](phases/phase-8-website.md)            |
+| Phase 8 — 배포 웹사이트                | ✅   | **라이브 (2026-09-21)** — 사이트 구축·CI 복구·public 전환·Pages 배포 + 설치 라운드트립 검증 | [상세](phases/phase-8-website.md)            |
 
-## 현재 핸드오프 요약 (프로젝트 마감 — Phase 0~7 전부 완료)
+## 현재 핸드오프 요약 (Phase 0~8 전부 완료)
 
 - **한글화 완료 (2026-08-13)**: 계층 1(TextAsset)·계층 2(씬) 100% — 카드/메뉴/인게임 UI/규칙북/HELP/씬 규칙 문단 전부 한글
 - **배포 완료 (2026-08-14)**: v0.1.0(Windows+src) → **v0.1.1(Windows+macOS+src)** — https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.1. macOS 실게임 확인 포함. 배포 스킬에 버그 이력·검증 절차 반영
 - **최신 릴리스**: **v0.1.2 (2026-09-21)** — 설치 스크립트·README·LICENSE·src 패키징 정비, zip 3종 SHA256SUMS 전량 검증. https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.2. ⚠️ **private 리포라 외부인은 아직 다운로드 불가** (#19)
-- **Phase 8 (웹사이트) 미해결**: 호스팅 방식 결정 필요 — (A) 리포 공개 전환 · (B) Cloudflare Pages 등 + 별도 공개 파일 호스팅 · (C) Pro 업그레이드. 결정 전에는 사이트를 배포해도 다운로드가 404다. 사이트 릴리스 참조는 `website/src/pages/index.astro`의 `RELEASE` 상수(v0.1.2) — 릴리스마다 동기화 필요
+- **Phase 8 (웹사이트) 라이브**: <https://oliverne.github.io/twilight-struggle-kr-patch/> — 배포 워크플로는 `website/**` push 시 자동 실행, 공개 상태에서 다운로드·설치 실기 검증 완료. 남은 선택 작업은 커뮤니티 공지·검색 노출뿐이다 (상세 [phase-8](phases/phase-8-website.md))
 - **남은 영어 (전부 계층 3, 파일 패치 불가)**: ① 턴 히스토리 로그 (ISSUES #11) ② **튜토리얼 단계별 안내 (ISSUES #17)** ③ 보드맵 텍스처 국가명(범위 제외) — BepInEx 런타임 훅 프로젝트로만 해결 가능 (보류)
 - 재적용: `scripts/install.sh` / 제거: `scripts/uninstall.sh` (Windows: `install-windows.ps1`/`uninstall-windows.ps1`) — Steam 업데이트/무결성 원복 시 `twilight-struggle-update` 스킬로 재적용
 - 잔존 영어/`□` 발견 시 → `translation/manual-*.json`에 추가 → 재주입 (inject → add_ko → 필요시 폰트 → verify)
@@ -166,3 +166,4 @@
 | 2026-09-21                                        | **CI 수정 + v0.1.2 릴리스** — 워크플로 pnpm 지정·private 배포 가드, zip 3종 재패키징·SHA256SUMS 검증·릴리스 생성(src에 `assets-sync.py` 포함) | `c2f4bfb`, `7b491e2` |
 | 2026-09-21                                        | **Phase 8 착수** — 웹사이트 Phase 문서 신설(블로커·검증·핸드오프), PROGRESS·ISSUES(#19~#21) 반영 | 본 커밋 |
 | 2026-09-21                                        | **사이트 배포 CI 복구** — Pages API 404 가드 + `withastro/action` Node 22 지정 → run `35609844485` ✅ success (private에서는 build 검증만, public 전환 시 자동 배포) | `909f2c3`, `ceffa66` |
+| 2026-09-21                                        | **리포 public 전환 + Pages 활성화·배포** — 전환 전 시크릿·개인정보 감사(0건), `gen-map.py` 정리, 중복 아티팩트 업로드 제거(409). 배포 run `35610644379` ✅, 라이브 200 · 릴리스 공개 200 · zip 3종 SHA256SUMS 실패 0 · **macOS 설치→제거→재설치 라운드트립 통과** | `8a81197`, `eb9a044` |

@@ -4,6 +4,8 @@ Steam판 **Twilight Struggle**(App ID `406290`)을 위한 비공식 한글 패�
 
 최신 릴리스는 [`v0.1.2`](https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.2)입니다. 카드와 메뉴, 인게임 UI, 규칙북, 도움말 등 파일로 수정할 수 있는 텍스트를 한글화했습니다.
 
+> 설치 안내와 스크린샷은 배포 사이트에서도 볼 수 있습니다 — <https://oliverne.github.io/twilight-struggle-kr-patch/>
+>
 > 이 패치는 **Steam 데스크톱판**을 대상으로 합니다. 모바일판은 별도 앱이라 이 패치를 적용할 수 없습니다.
 
 ## 대상 버전

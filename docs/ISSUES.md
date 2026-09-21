@@ -108,12 +108,11 @@
 
 ## 🔴 Blocked / 🟡 Warning (2026-09-21 추가)
 
-### #19 GitHub Pages·Releases 공개 차단 — 리포 private + Free 플랜
+### #19 GitHub Pages·Releases 공개 차단 — 리포 private + Free 플랜 → ✅ 해결 (2026-09-21)
 - **위치**: 리포 설정·플랜 (`gh api -X POST repos/.../pages` → 422)
-- **문제**: GitHub Pages는 private 리포에서 Pro/Team/Enterprise 플랜이 필요 → `has_pages: false`, 라이브 URL 404. 로그아웃 상태에서 릴리스 자산(`releases/download/v0.1.1/...zip`)과 릴리스 페이지도 **404** — 사이트 배포 여부와 무관하게 공개 다운로드가 성립하지 않는다
-- **영향**: Phase 8 사이트가 라이브 불가 (사이트 구축·CI는 완료)
-- **선택지**: (A) 리포 public 전환 (무료, 즉시 동작) · (B) private 유지 — 사이트는 Cloudflare Pages 등 + 파일은 별도 공개 저장소·버킷 · (C) Pro 업그레이드(+B 병행 필요)
-- **상태**: ⬜ 보류 (사용자 결정 필요) — 상세는 [phase-8-website.md](phases/phase-8-website.md) "블로커"
+- **문제**: GitHub Pages는 private 리포에서 Pro/Team/Enterprise 플랜이 필요 → `has_pages: false`, 라이브 URL 404. 로그아웃 상태에서 릴리스 자산(`releases/download/v0.1.1/...zip`)과 릴리스 페이지도 **404** — 사이트 배포 여부와 무관하게 공개 다운로드가 성립하지 않았다
+- **해결**: 안 A — **리포 public 전환** (사용자 결정) + `build_type=workflow`로 Pages 활성화. 배포 run `35610644379` ✅, 라이브 <https://oliverne.github.io/twilight-struggle-kr-patch/> 200, 릴리스 자산·페이지 200, 공개 zip 3종 `SHA256SUMS` 실패 0, macOS 설치→제거→재설치 라운드트립 통과
+- **전환 전 감사**: 추적 파일 309개에서 시크릿·개인정보 0건 (`website/.impeccable` 세션 로그는 미추적)
 - **관련 Phase**: Phase 8
 
 ### #20 재현용(src) zip에 `assets-sync.py` 누락 → ✅ 해결 (2026-09-21)
@@ -122,16 +121,18 @@
 - **관련 Phase**: Phase 8
 
 ### #21 사이트 배포 워크플로가 빌드 단계에서 계속 실패 → ✅ 해결 (2026-09-21)
-- **증상**: Actions `Deploy site to GitHub Pages`가 계속 실패 (v3 이후 2회 + 수정 과정 2회, deploy job 미실행)
-- **원인 3건 (순차 노출)**
+- **증상**: Actions `Deploy site to GitHub Pages`가 계속 실패 (초기 2회 + 수정 과정 3회, deploy job 미실행)
+- **원인 4건 (순차 노출)**
   1. `pnpm/action-setup@v4` — `No pnpm version is specified`. action이 **리포 루트** `package.json`에서 `packageManager`를 찾는데 루트에는 파일이 없음 (사이트는 `website/package.json`)
   2. `actions/configure-pages@v5` — private 리포에서 Pages API가 **404 Not Found**를 돌려주며 build job 전체 실패
   3. `withastro/action@v3` — 자체 기본값 **Node 20**으로 재설정해 pnpm 11.x가 실패 (`ERR_UNKNOWN_BUILTIN_MODULE: node:sqlite`)
-- **해결** (`c2f4bfb`, `909f2c3`, `ceffa66`)
+  4. Pages 공개 후 — 워크플로의 별도 `upload-pages-artifact` 스텝이 `withastro/action` 내부 업로드와 **409 Conflict**
+- **해결** (`c2f4bfb`, `909f2c3`, `ceffa66`, `eb9a044`)
   - `package_json_file: website/package.json` 지정
   - `node-version: 22` 명시 (워크플로 상단 setup-node와 일치)
-  - Pages 관련 단계(configure-pages·upload-pages-artifact·deploy)를 `!github.event.repository.private`로 가드 → private에서는 **빌드 검증만** 하고 초록 유지, public 전환 시 추가 설정 없이 기존 배포 흐름 복귀
-- **검증**: run `35609844485` ✅ success (build 성공, deploy skipped)
+  - Pages 관련 단계(configure-pages·deploy)를 `!github.event.repository.private`로 가드 — private에서도 빌드 검증은 계속 초록, public 전환 시 자동으로 실제 배포
+  - 중복 아티팩트 업로드 스텝 제거 (withastro/action이 수행)
+- **검증**: run `35609844485` ✅ (private, build만) → run `35610644379` ✅ (public, build+deploy)
 - **관련 Phase**: Phase 8
 
 ## 처리된 이슈 (참고용)
