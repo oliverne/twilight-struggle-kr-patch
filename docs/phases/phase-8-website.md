@@ -19,7 +19,7 @@
 - [x] 콘텐츠 — OS별 다운로드 카드, 설치 안내, FAQ(적용 범위·호환 버전·멀티플레이 사실 고지), 스크린샷 갤러리, 크레딧 (`bd71202`, `63651f9`, `ceece14`)
 - [x] 웹폰트 외부화 — D2Coding·Paperlogy를 jsDelivr CDN 로드로 전환 + preconnect (저장소 1.6MB 감소, `d0e2871`)
 - [x] 릴리스 버전 연동 — `RELEASE` 상수 `v0.1.2`·용량 표기 갱신 (`7b491e2`)
-- [x] CI 워크플로 버그 수정 — pnpm 버전 감지 실패 해결 + private 리포 배포 가드 (`c2f4bfb`)
+- [x] CI 워크플로 수정 — pnpm 버전 감지·Pages API 404·Node 20 3건 해결 + private 리포 배포 가드 (`c2f4bfb`, `909f2c3`, `ceffa66`)
 - [ ] **GitHub Pages 활성화 + 공개 배포** — ❌ 차단 (아래 블로커)
 - [ ] 공개 상태에서 다운로드·설치 링크 실접속 검증
 - [ ] 유입 경로 준비 (커뮤니티 공지·검색 노출) — 배포 후
@@ -58,8 +58,9 @@ website/
 | --- | --- | --- |
 | 로컬 빌드 | `cd website && pnpm build` | ✅ 성공 — `dist/index.html` 22KB, 정적 라우트 1개 (2026-09-21) |
 | 다운로드 링크 생성 | `dist/index.html`에서 v0.1.2 URL grep | ✅ windows·macos 링크 2종 생성 (공개 전환 시 유효) |
-| CI 실패 원인 규명 | `gh run view 32153516544 --log-failed` | ✅ `pnpm/action-setup` → `No pnpm version is specified` — action이 **리포 루트** `package.json`을 읽는데 루트엔 없음 (build job 15초 만에 실패, deploy job 미실행) |
-| CI 수정 | 워크플로에 `package_json_file: website/package.json` 추가 | ✅ 수정 (`c2f4bfb`) — private 가드로 deploy는 스킵, build만 검증 |
+| CI 실패 원인 규명 | `gh run view 32153516544 --log-failed` 등 4회 실행 분석 | ✅ 3건: ① `pnpm/action-setup` `No pnpm version is specified`(리포 루트에 package.json 없음) ② `configure-pages` private 리포 Pages API 404 ③ `withastro/action` 기본 Node 20으로 pnpm 11.x 실패(`node:sqlite`) |
+| CI 수정 | `package_json_file: website/package.json`, `node-version: 22`, Pages 단계 가드 | ✅ 수정 (`c2f4bfb`, `909f2c3`, `ceffa66`) |
+| CI 재실행 | run `35609844485` (main push, 2026-09-21) | ✅ **success** — build 성공(install+build), Pages 단계·deploy는 조건부 skip |
 | Pages 활성화 | `gh api -X POST .../pages` | ❌ 422 — 플랜 미지원 (private + Free) |
 | 라이브 URL | `curl https://oliverne.github.io/twilight-struggle-kr-patch/` | ❌ 404 |
 | 릴리스 자산 공개 접근 | 로그아웃 상태 curl | ❌ 404 (private 리포) |
@@ -68,7 +69,7 @@ website/
 ## 결정 사항
 
 - **Astro + GitHub Pages 유지** (2026-08-14 사용자 결정) — 블로커는 배포 방식(리포 공개 여부)의 문제이며 스택 변경 사유가 아니다.
-- **CI는 `!github.event.repository.private` 조건으로 deploy를 게이팅** — public 전환 시 추가 설정 없이 자동 배포되고, private에서는 build만 돌아 초록 상태를 유지한다. Pro로 업그레이드해 private + Pages를 쓸 경우 이 조건만 제거하면 된다.
+- **CI는 `!github.event.repository.private` 조건으로 Pages 관련 단계를 전부 게이팅** (configure-pages·upload-pages-artifact·deploy) — public 전환 시 추가 설정 없이 자동 배포되고, private에서는 install+build만 돌아 초록 상태를 유지한다. Pro로 업그레이드해 private + Pages를 쓸 경우 이 조건 3곳을 제거하면 된다. `withastro/action`에는 `node-version: 22`를 명시해야 한다(자체 기본값 20은 pnpm 11.x와 비호환).
 - **웹폰트는 jsDelivr CDN 사용** — 저장소에서 woff2 2종 제거(1.6MB), 첫 로드만 외부 의존.
 - 사이트가 참조하는 릴리스는 **v0.1.2** — 버전을 올릴 때 `RELEASE` 상수와 용량 표기를 함께 갱신한다(누락 시 다운로드 404).
 

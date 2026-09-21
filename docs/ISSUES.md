@@ -121,10 +121,17 @@
 - **해결**: 패키징 목록에 `assets-sync.py` 추가 — v0.1.2 src zip에 포함 확인 (46개 파일 / SHA256SUMS 45개 전량 일치)
 - **관련 Phase**: Phase 8
 
-### #21 사이트 배포 워크플로 pnpm 버전 감지 실패 → ✅ 해결 (2026-09-21)
-- **증상**: Actions `Deploy site to GitHub Pages` 2회 연속 실패 (build job이 15초 만에 종료, deploy job 미실행)
-- **원인**: `pnpm/action-setup@v4`가 **리포 루트** `package.json`에서 `packageManager`를 찾는데(루트에는 해당 파일 없음) 사이트는 `website/package.json`에만 선언돼 있음
-- **해결**: 워크플로에 `package_json_file: website/package.json` 지정 + deploy job을 `!github.event.repository.private`로 게이팅 (`c2f4bfb`)
+### #21 사이트 배포 워크플로가 빌드 단계에서 계속 실패 → ✅ 해결 (2026-09-21)
+- **증상**: Actions `Deploy site to GitHub Pages`가 계속 실패 (v3 이후 2회 + 수정 과정 2회, deploy job 미실행)
+- **원인 3건 (순차 노출)**
+  1. `pnpm/action-setup@v4` — `No pnpm version is specified`. action이 **리포 루트** `package.json`에서 `packageManager`를 찾는데 루트에는 파일이 없음 (사이트는 `website/package.json`)
+  2. `actions/configure-pages@v5` — private 리포에서 Pages API가 **404 Not Found**를 돌려주며 build job 전체 실패
+  3. `withastro/action@v3` — 자체 기본값 **Node 20**으로 재설정해 pnpm 11.x가 실패 (`ERR_UNKNOWN_BUILTIN_MODULE: node:sqlite`)
+- **해결** (`c2f4bfb`, `909f2c3`, `ceffa66`)
+  - `package_json_file: website/package.json` 지정
+  - `node-version: 22` 명시 (워크플로 상단 setup-node와 일치)
+  - Pages 관련 단계(configure-pages·upload-pages-artifact·deploy)를 `!github.event.repository.private`로 가드 → private에서는 **빌드 검증만** 하고 초록 유지, public 전환 시 추가 설정 없이 기존 배포 흐름 복귀
+- **검증**: run `35609844485` ✅ success (build 성공, deploy skipped)
 - **관련 Phase**: Phase 8
 
 ## 처리된 이슈 (참고용)

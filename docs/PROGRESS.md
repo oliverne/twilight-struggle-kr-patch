@@ -10,7 +10,7 @@
 **Windows 배포 완료 (2026-08-14, v0.1.0)** — [GitHub Releases](https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.0). **macOS 배포 포함 v0.1.1 릴리스 완료 (2026-08-14)** — [v0.1.1](https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.1). **v0.1.2 릴리스 (2026-09-21)** — 설치 스크립트(`.assets.gz` 자동 해제)·README·LICENSE·src 패키징 정비 (패치 에셋은 v0.1.1과 동일)
 남은 영어는 전부 계층 3(IL2CPP 코드 문자열: 턴 히스토리·튜토리얼 안내)로 BepInEx 런타임 훅 필요.
 
-> ⚠️ **공개 배포 차단 (2026-09-21 실측)** — 리포가 private + Free 플랜이라 **GitHub Pages 활성화 불가(422)**이고, 로그아웃 상태에서 **릴리스 자산도 404**다. 사이트(Phase 8)는 구축·CI 수정까지 끝났지만 호스팅 방식(A 리포 공개 / B 타 호스팅+별도 파일 호스팅 / C Pro)을 결정해야 라이브가 가능하다 — 상세 [phase-8-website.md](phases/phase-8-website.md)
+> ⚠️ **공개 배포 차단 (2026-09-21 실측)** — 리포가 private + Free 플랜이라 **GitHub Pages 활성화 불가(422)**이고, 로그아웃 상태에서 **릴리스 자산도 404**다. 사이트(Phase 8)는 구축·CI 복구(run `35609844485` ✅)까지 끝났지만 호스팅 방식(A 리포 공개 / B 타 호스팅+별도 파일 호스팅 / C Pro)을 결정해야 라이브가 가능하다 — 상세 [phase-8-website.md](phases/phase-8-website.md)
 
 - 완료: Phase 0 — 준비, Phase 1 — 텍스트 위치 검증, Phase 2 — 번역 소스 구축
 - 완료: Phase 3 SDF 생성 (2048² 최적화) + Windows 폰트 주입 (24개 TMP 폰트)
@@ -165,3 +165,4 @@
 | 2026-09-21                                        | **상태 점검** — 웹사이트 배포 실패 원인 규명(pnpm 버전 감지), GitHub Pages 422·릴리스 자산 404(private+Free) 확인 | `c2f4bfb` |
 | 2026-09-21                                        | **CI 수정 + v0.1.2 릴리스** — 워크플로 pnpm 지정·private 배포 가드, zip 3종 재패키징·SHA256SUMS 검증·릴리스 생성(src에 `assets-sync.py` 포함) | `c2f4bfb`, `7b491e2` |
 | 2026-09-21                                        | **Phase 8 착수** — 웹사이트 Phase 문서 신설(블로커·검증·핸드오프), PROGRESS·ISSUES(#19~#21) 반영 | 본 커밋 |
+| 2026-09-21                                        | **사이트 배포 CI 복구** — Pages API 404 가드 + `withastro/action` Node 22 지정 → run `35609844485` ✅ success (private에서는 build 검증만, public 전환 시 자동 배포) | `909f2c3`, `ceffa66` |
