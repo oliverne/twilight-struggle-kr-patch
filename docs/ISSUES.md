@@ -135,6 +135,13 @@
 - **검증**: run `35609844485` ✅ (private, build만) → run `35610644379` ✅ (public, build+deploy)
 - **관련 Phase**: Phase 8
 
+### #22 `backup-original.sh` 백업 목록에 `sharedassets0.assets` 누락 → ✅ 해결 (2026-09-21)
+- **위치**: `scripts/backup-original.sh`의 `FILES` 배열 (resources.assets·globalgamemanagers·level0~3만 나열)
+- **문제**: 패치가 수정하는 `sharedassets0.assets`가 백업·`hashes.txt`에서 빠져 있어, `restore-original.sh`가 이를 복원하지 않았다 → 개발용 복구 경로(`original/` 기준)로 복원하면 **이 파일만 패치 상태로 남는** 혼합 상태가 됨. (배포용 `uninstall.sh`는 게임 폴더의 `.bak`을 쓰므로 영향 없음)
+- **해결**: `FILES`에 `sharedassets0~3.assets` 추가(+ 존재 시에만 복사), 원본 `.bak`에서 `sharedassets0~3`을 `original/`로 복구, `hashes.txt`에 4항목 추가(18항목·검증 통과). 덧붙여 해시 생성 시 `global-metadata.dat`·`.DS_Store` 제외를 명시 — `hashes.txt`는 `restore-original.sh`가 그대로 복원하는 목록이므로 Data 루트에 없는 파일이 들어가면 오복원된다
+- **검증**: `restore-original.sh` 실행 → 패치 대상 8파일 전부 원본 해시 일치(sharedassets0 포함) → `install.sh` 재실행 → 패치본 일치, `.bak` 8건 유지
+- **관련 Phase**: Phase 0/5 도구 정비 (2026-09-21)
+
 ## 처리된 이슈 (참고용)
 
 > Phase 0·1 완료 시점의 코드 리뷰에서 이미 처리된 항목. 커밋 `fbb70bc`, `50feea1`, `69e71a8` 참조.

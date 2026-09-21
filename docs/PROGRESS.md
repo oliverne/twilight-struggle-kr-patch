@@ -167,3 +167,4 @@
 | 2026-09-21                                        | **Phase 8 착수** — 웹사이트 Phase 문서 신설(블로커·검증·핸드오프), PROGRESS·ISSUES(#19~#21) 반영 | 본 커밋 |
 | 2026-09-21                                        | **사이트 배포 CI 복구** — Pages API 404 가드 + `withastro/action` Node 22 지정 → run `35609844485` ✅ success (private에서는 build 검증만, public 전환 시 자동 배포) | `909f2c3`, `ceffa66` |
 | 2026-09-21                                        | **리포 public 전환 + Pages 활성화·배포** — 전환 전 시크릿·개인정보 감사(0건), `gen-map.py` 정리, 중복 아티팩트 업로드 제거(409). 배포 run `35610644379` ✅, 라이브 200 · 릴리스 공개 200 · zip 3종 SHA256SUMS 실패 0 · **macOS 설치→제거→재설치 라운드트립 통과** | `8a81197`, `eb9a044` |
+| 2026-09-21                                        | **원본 백업 목록 결함 수정 (ISSUES #22)** — `backup-original.sh`에 `sharedassets0~3.assets` 추가(누락으로 `restore-original.sh`가 sharedassets0을 복원하지 않던 문제), `original/`·`hashes.txt` 보완(18항목). restore→install 라운드트립으로 검증 | 본 커밋 |

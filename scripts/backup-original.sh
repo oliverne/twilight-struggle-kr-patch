@@ -11,15 +11,18 @@ ORIG_DIR="$(cd "$(dirname "$0")/../original" && pwd)"
 mkdir -p "$ORIG_DIR"
 
 # 백업 대상 (.resS 대용량 파일 제외 — 수정 불필요)
+# ⚠️ 패치가 수정하는 파일은 전부 포함해야 한다 — 빠지면 restore-original.sh가 그 파일을
+#    복원하지 않아 패치 상태로 남는다 (2026-09-21: sharedassets0 누락 발견·수정)
 FILES=(
   resources.assets
+  sharedassets0.assets sharedassets1.assets sharedassets2.assets sharedassets3.assets
   globalgamemanagers
   globalgamemanagers.assets
   level0 level1 level2 level3
 )
 
 for f in "${FILES[@]}"; do
-  cp "$GAME_DIR/$f" "$ORIG_DIR/$f"
+  [ -f "$GAME_DIR/$f" ] && cp "$GAME_DIR/$f" "$ORIG_DIR/$f"
 done
 rm -rf "$ORIG_DIR/StreamingAssets"  # 재실행 시 중첩 방지
 cp -R "$GAME_DIR/StreamingAssets" "$ORIG_DIR/"
@@ -32,8 +35,11 @@ cp -R "$GAME_DIR/StreamingAssets" "$ORIG_DIR/"
 } > "$ORIG_DIR/VERSION.txt"
 
 # 해시 기록
+# ⚠️ global-metadata.dat(폰트 주입용 IL2CPP 메타데이터, 게임 Data 루트에 없는 파일)와
+#    macOS .DS_Store는 제외 — hashes.txt는 restore-original.sh가 그대로 복원하는 목록이다
 cd "$ORIG_DIR"
-find . -type f ! -name hashes.txt ! -name VERSION.txt ! -name .gitkeep -print0 \
+find . -type f ! -name hashes.txt ! -name VERSION.txt ! -name .gitkeep \
+  ! -name .DS_Store ! -name 'global-metadata.dat' -print0 \
   | xargs -0 shasum -a 256 | sed 's|\./||' | sort -k2 > hashes.txt
 
 # 검증

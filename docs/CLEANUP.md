@@ -12,7 +12,7 @@
 | .NET 10.0.302 | `/opt/homebrew/Cellar/dotnet/` | `brew install dotnet` | Homebrew 패키지, zsh completions 자동 설치 |
 | UABEA v8 + macOS 네이티브 dylib | `tools/uabea/` (프로젝트 내부) | `scripts/setup-uabea-mac.sh` | 없음 (프로젝트 로컬, gitignore) |
 | Python venv | `.venv/` (프로젝트 내부) | `python3 -m venv .venv` | 없음 (프로젝트 로컬, gitignore) |
-| 원본 백업 | `original/` (약 24MB) | `scripts/backup-original.sh` | 없음 (프로젝트 로컬, gitignore) |
+| 원본 백업 | `original/` (약 39MB, 21파일) | `scripts/backup-original.sh` | 없음 (프로젝트 로컬, gitignore) |
 | 기존 패치 | `tools/legacy-patches/` (약 930MB) | Google Drive 수동 다운로드 | 없음 (프로젝트 로컬, gitignore) |
 
 ### Windows (2026-08-11 작업 위치)
