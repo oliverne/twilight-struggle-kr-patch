@@ -13,8 +13,7 @@ rsvg-convert로 렌더링한 뒤, **알파 채널**로 육지를 판별해 이�
 CSS(.dotmap .west/.east 의 mask-image)에서 덮어씌운다.
 
 재실행:
-  /Users/oliverne/Projects/twilight-struggle-kr-patch/.venv/bin/python \\
-      website/scripts/gen-map.py
+  .venv/bin/python website/scripts/gen-map.py
 
 요구: rsvg-convert(librsvg), Pillow.
 """
@@ -59,47 +58,54 @@ def render(svg: bytes) -> PIL.Image.Image:
         sys.exit("rsvg-convert(librsvg)가 필요합니다. `brew install librsvg` 후 재시도.")
     tmp = tempfile.mkdtemp(prefix="svgmap-")
     src = os.path.join(tmp, "src.svg")
-    with open(src, "wb") as f:
-        f.write(svg)
+    try:
+        with open(src, "wb") as f:
+            f.write(svg)
+    except OSError as e:
+        sys.exit(f"임시 SVG 쓰기 실패: {e}")
     rgba_path = os.path.join(tmp, "render.png")
     subprocess.run(
         ["rsvg-convert", "-w", str(RENDER_W), "-h", str(RENDER_H), src, "-o", rgba_path],
         check=True,
         capture_output=True,
     )
-    return PIL.Image.open(rgba_path).convert("RGBA").resize((OUT_W, OUT_H), PIL.Image.LANCZOS)
+    with PIL.Image.open(rgba_path) as im:
+        resized = im.convert("RGBA").resize((OUT_W, OUT_H), PIL.Image.Resampling.LANCZOS)
+    return resized
+
+
+def _land_lut(cutoff: int) -> list[int]:
+    """point()용 룰업 테이블 — cutoff 이상이면 255, 아니면 0."""
+    return [255 if v >= cutoff else 0 for v in range(256)]
 
 
 def land_mask(rgba: PIL.Image.Image) -> PIL.Image.Image:
     """알파 채널 → 이진 육지 마스크(L 모드). land=255, sea=0. 축소 AA 재이진화."""
-    alpha = rgba.getchannel("A")
-    return alpha.point(lambda v: 255 if v >= ALPHA_LAND else 0).convert("L")
+    return rgba.getchannel("A").point(_land_lut(ALPHA_LAND))
 
 
 def split_mask(land: PIL.Image.Image, west: bool) -> PIL.Image.Image:
     """전체 OUT_W x OUT_H 마스크. west=True면 SPLIT_LON 서쪽 육지만, 아니면 동쪽만."""
     x_split = round((SPLIT_LON + 180.0) / 360.0 * OUT_W)
+    x0, x1 = (0, x_split) if west else (x_split, OUT_W)
+    cut = land.crop((x0, 0, x1, OUT_H)).point(_land_lut(250))
     rgba = PIL.Image.new("RGBA", (OUT_W, OUT_H), (0, 0, 0, 0))
-    px = land.load()
-    opx = rgba.load()
-    for y in range(OUT_H):
-        x0, x1 = (0, x_split) if west else (x_split, OUT_W)
-        for x in range(x0, x1):
-            if px[x, y] >= 250:  # 육지
-                opx[x, y] = (255, 255, 255, 255)
+    rgba.paste((255, 255, 255, 255), (x0, 0), cut)
     return rgba
 
 
 def coverage(rgba: PIL.Image.Image) -> tuple[int, float]:
-    """디버그: 불투명 알카 픽셀 수와 비율."""
-    a = rgba.getchannel("A")
-    vals = a.get_flattened_data() if hasattr(a, "get_flattened_data") else list(a.getdata())
-    opq = sum(1 for v in vals if v >= 250)
-    return opq, opq / (rgba.size[0] * rgba.size[1])
+    """디버그: 불투명(알파>=250) 픽셀 수와 비율."""
+    opaque = rgba.getchannel("A").point(_land_lut(250)).histogram()[255]
+    total = rgba.size[0] * rgba.size[1]
+    return opaque, opaque / total
 
 
 def main() -> None:
-    os.makedirs(OUT, exist_ok=True)
+    try:
+        os.makedirs(OUT, exist_ok=True)
+    except OSError as e:
+        sys.exit(f"출력 폴더 생성 실패: {e}")
     svg = fetch_svg()
     rgba = render(svg)
     land = land_mask(rgba)
