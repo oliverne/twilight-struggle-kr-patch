@@ -141,7 +141,7 @@ rm -rf "$SRC_ROOT"/fonts/backup-* "$SRC_ROOT/fonts/.gitkeep"
 for s in inject_translations.py add_ko_columns.py patch_scenes.py verify_assets.py \
          extract_textassets.py extract_charset.py apply_font_mapping.py \
          analyze_scene_texts.py install.sh install-windows.ps1 uninstall.sh uninstall-windows.ps1 \
-         restore-original.sh; do
+         restore-original.sh assets-sync.py; do
     [ -f "scripts/$s" ] && cp "scripts/$s" "$SRC_ROOT/scripts/"
 done
 

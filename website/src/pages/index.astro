@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 
 const base = import.meta.env.BASE_URL;
-const RELEASE = "v0.1.1";
+const RELEASE = "v0.1.2";
 const GH = "https://github.com/oliverne/twilight-struggle-kr-patch";
 const DL = `${GH}/releases/download/${RELEASE}`;
 const F = (os: string) => `twilight-struggle-kr-patch-${RELEASE}-${os}.zip`;
@@ -18,7 +18,7 @@ const osList = [
     name: "윈도우",
     desc: "Windows 10 / 11",
     file: F("windows"),
-    size: "9.3MB",
+    size: "8.9MB",
     url: `${DL}/${F("windows")}`,
     cmd: "powershell -ExecutionPolicy Bypass -File .\\scripts\\install-windows.ps1",
     cmdNote: "압축을 푼 폴더에서 PowerShell을 열고 설치 스크립트 실행",
@@ -28,7 +28,7 @@ const osList = [
     name: "macOS",
     desc: "최근 macOS 버전",
     file: F("macos"),
-    size: "9.8MB",
+    size: "9.4MB",
     url: `${DL}/${F("macos")}`,
     cmd: "chmod +x scripts/install.sh && ./scripts/install.sh",
     cmdNote: "압축을 푼 폴더에서 터미널을 열고 설치 스크립트 실행",

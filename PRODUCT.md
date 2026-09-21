@@ -23,7 +23,7 @@ web
 
 Steam판 Twilight Struggle(App ID 406290)의 비공식 한글 패치를 일반 유저가 쉽게 발견하고 다운로드·설치하게 하는 **배포 웹사이트**. 성공 = 유저가 몇 분 안에 패치를 받아 설치하고, 게임 전체(카드·메뉴·인게임 UI·규칙북·도움말)를 한글로 즐긴다.
 
-패치 자체(제품의 핵심 산출물)는 이미 완성 — v0.1.1 릴리스, 파일 패치 가능 범위 100% 한글화. 사이트는 그 완성된 패치의 유저용 프론트 도어다.
+패치 자체(제품의 핵심 산출물)는 이미 완성 — v0.1.2 릴리스, 파일 패치 가능 범위 100% 한글화. 사이트는 그 완성된 패치의 유저용 프론트 도어다.
 
 ## Positioning
 
@@ -36,7 +36,7 @@ Steam판 Twilight Struggle(App ID 406290)의 비공식 한글 패치를 일반 �
 - 유저는 커뮤니티(한식구 카페 등)·검색 유입 → 사이트에서 본인 OS 확인 → 해당 zip 다운로드
 - 설치 흐름: Steam 게임 설치 확인 → zip 압축 해제 → 설치 스크립트 실행(백업 → 복사 → SHA-256 검증 → macOS는 임시 코드 서명) → 게임 실행 → 한글 확인
 - **Steam 무결성 확인/게임 업데이트는 패치를 원복시킨다** — 사이트에 재설치 안내가 필요한 반복 상황
-- 다운로드 소스: GitHub Releases v0.1.1 — Windows/macOS 사용자용 zip(~9MB) 2종 + 재현용 src zip(~3MB), `SHA256SUMS` 포함
+- 다운로드 소스: GitHub Releases v0.1.2 — Windows/macOS 사용자용 zip(~9MB) 2종 + 재현용 src zip(~15MB), `SHA256SUMS` 포함
 - 게임은 싱글플레이 기준 검증 완료, 멀티플레이 미검증 — 유저에게 사실로만 안내
 
 ## Capabilities and Constraints
@@ -57,7 +57,7 @@ Steam판 Twilight Struggle(App ID 406290)의 비공식 한글 패치를 일반 �
 
 ## Evidence on Hand
 
-- GitHub Releases **v0.1.1**: https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.1 — zip 3종 + SHA256SUMS (산출물은 `dist/`, `scripts/package-release.sh`가 생성)
+- GitHub Releases **v0.1.2**: https://github.com/oliverne/twilight-struggle-kr-patch/releases/tag/v0.1.2 — zip 3종 + SHA256SUMS (산출물은 `dist/`, `scripts/package-release.sh`가 생성)
 - 설치·제거 스크립트: `scripts/install.sh`(macOS), `install-windows.ps1`(Windows), `uninstall-*` 2종
 - 번역 소스: `translation/*.json` (런타임 TSV 2,253쌍 재사용 + 수동 번역)
 - **폰트 자산: `fonts/`의 D2Coding·Paperlogy (OFL 1.1) — 웹에서 재사용 가능한 실자산**

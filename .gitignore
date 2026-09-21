@@ -38,6 +38,9 @@ dist/
 # 스킬 실행 산출물 (로컬 전용)
 _workspace/
 
+# zvec-grep 로컬 색인 (로컬 전용, 수십 MB)
+.zvec-grep/
+
 # pnpm 로컬 스토어 (잘못된 위치에 생성된 경우 방지)
 .pnpm-store/
 
