@@ -37,12 +37,16 @@ jobs:
           cache: pnpm
           cache-dependency-path: website/pnpm-lock.yaml
       - name: Setup Pages
+        # private 리포(Free 플랜)에서는 Pages API가 404를 반환한다 — 공개 전환 후에만 필요
+        if: ${{ !github.event.repository.private }}
         uses: actions/configure-pages@v5
       - name: Install and Build
         uses: withastro/action@v3
         with:
           path: website
       - name: Upload artifact
+        # Pages가 없으면 배포 산출물도 올릴 필요가 없다 (private에서는 빌드 검증만)
+        if: ${{ !github.event.repository.private }}
         uses: actions/upload-pages-artifact@v3
         with:
           path: website/dist
