@@ -1485,6 +1485,17 @@ a {
     flex-direction: column;
     gap: 0.45rem;
   }
+  .foot-credits {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .foot-credits .fine:first-child {
+    max-width: 100%;
+    white-space: normal;
+  }
+  .foot-credits .fine:last-child {
+    flex-shrink: 1;
+  }
 }
 
 /* ── 모션 절감 ────────────────────────────────────────────────────── */
